@@ -24,7 +24,7 @@
 | OOP: Klassen und Vererbung | `01-grundlagen/oop-klassen-vererbung.md` | notes | `oop`, `klassen`, `vererbung`, `polymorphie`, `uml` |
 | Softwareentwicklungsprozess | `01-grundlagen/softwareentwicklungsprozess.md` | notes | `softwareentwicklung`, `vorgehensmodelle`, `agil`, `scrum`, `git` |
 
-## 02-betriebssysteme (14)
+## 02-betriebssysteme (15)
 
 | Topic | File | Type | Tags |
 |-------|------|------|------|
@@ -42,6 +42,7 @@
 | Anti-Forensik im Betriebssystem | `02-betriebssysteme/anti-forensik-betriebssystem.md` | notes | `anti-forensik`, `timestomping`, `log-wiping`, `ads`, `rootkits` |
 | Mobile Forensik: Android und iOS | `02-betriebssysteme/mobile-forensik-android-ios.md` | notes | `mobile`, `android`, `ios`, `forensik`, `adb`, `sqlite` |
 | Container- und Docker-Forensik | `02-betriebssysteme/container-docker-forensik.md` | notes | `container`, `docker`, `kubernetes`, `forensik`, `overlay2` |
+| IoT-Security: Angriffe und Schutzmassnahmen | `02-betriebssysteme/iot-security-grundlagen.md` | notes | `iot`, `security`, `mqtt`, `coap`, `firmware`, `secure-boot` |
 
 ## 03-netzwerke (12)
 
@@ -101,7 +102,7 @@
 | Social Media Analyse | `06-osint/social-media-analyse.md` | notes | `osint`, `social-media`, `facebook`, `twitter`, `instagram`, `linkedin` |
 | Cybercrime-Ökonomie | `06-osint/cybercrime-oekonomie.md` | notes | `cybercrime`, `caas`, `underground`, `ransomware`, `bitcoin` |
 
-## 07-recht-kriminalistik (8)
+## 07-recht-kriminalistik (9)
 
 | Topic | File | Type | Tags |
 |-------|------|------|------|
@@ -113,6 +114,7 @@
 | Tatortarbeit und Spurenkunde | `07-recht-kriminalistik/tatortarbeit-spurenkunde.md` | notes | `tatort`, `spurenkunde`, `spurensicherung`, `beweiskraft`, `beweiswert` |
 | Eingriffsrecht: TKÜ | `07-recht-kriminalistik/eingriffsrecht-tkue.md` | notes | `eingriffsrecht`, `tkue`, `stpo`, `100a`, `online-durchsuchung` |
 | Ethik in der Informationssicherheit | `07-recht-kriminalistik/ethik-informationssicherheit.md` | notes | `ethik`, `informationssicherheit`, `kant`, `utilitarismus`, `privacy` |
+| Juristische Fallbearbeitung: Gutachtenstil | `07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.md` | notes | `recht`, `methodik`, `gutachtenstil`, `urteilsstil`, `subsumtion` |
 
 ## 08-ki-forensik (5)
 
@@ -124,11 +126,12 @@
 | Decision Trees und Klassifikation | `08-ki-forensik/decision-trees-klassifikation.md` | notes | `decision-tree`, `random-forest`, `klassifikation`, `id3` |
 | Bildforensik und Objekterkennung | `08-ki-forensik/bildforensik-objekterkennung.md` | notes | `bildforensik`, `yolo`, `ela`, `deepfake`, `exif` |
 
-## 09-tools (1)
+## 09-tools (2)
 
 | Topic | File | Type | Tags |
 |-------|------|------|------|
 | IP Log Analyzer | `09-tools/ip-log-analyzer/` | code | `tool`, `python`, `log-analysis`, `ip`, `forensik` |
+| Registry Hive Parser | `09-tools/registry-parser/` | code | `tool`, `python`, `registry`, `forensik`, `windows`, `hive` |
 
 ## 00-meta (1)
 

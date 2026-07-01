@@ -40,8 +40,8 @@ Die Registry ist die zentrale Konfigurationsdatenbank von Windows — und eine d
 - `HKLM\SYSTEM\CurrentControlSet\Enum\USB` — allgemein USB-Geräte
 
 #### Programm-Ausführung
-- **AmCache** (`HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache`): Ausgeführte Programme mit Pfad und SHA1-Hash
-- **ShimCache** / AppCompatCache: Ähnlich AmCache, aber enthält auch nicht mehr existierende Programme
+- **AmCache** (`%SystemRoot%\AppCompat\Programs\Amcache.hve`): Eigenstaendige Registry-Hive-Datei, die ausgefuhrte Programme mit Pfad, SHA1-Hash und Ausfuehrungszeitpunkt protokolliert
+- **ShimCache / AppCompatCache** (`HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache`): Liegt im laufenden SYSTEM-Hive, enthaelt ausgefuhrte Programme — auch solche, die nicht mehr existieren. Nicht zu verwechseln mit AmCache (das eine eigene Datei ist)
 - **UserAssist** (`NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist`): GUI-gestartete Programme mit Ausführungszähler und letzter Ausführung (ROT13-verschlüsselt)
 
 #### Autostarts
