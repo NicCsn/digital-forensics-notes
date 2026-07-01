@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DF Field Notes</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <a href="." class="logo" onclick="showHome(); return false">DF<span>FieldNotes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Suchen..." autocomplete="off">
+    <div id="searchResults"></div>
+  </div>
+  <ul class="nav-list">
+    <li class="nav-home"><a href="." onclick="showHome(); return false">Start</a></li>
+    <li><details open><summary>Grundlagen</summary><ul>
+      <li><a href="#" onclick="loadNote('01-grundlagen/zahlensysteme-und-kodierung.md'); return false">Zahlensysteme</a></li>
+      <li><a href="#" onclick="loadNote('01-grundlagen/rechnerarchitektur-von-neumann.md'); return false">Rechnerarchitektur</a></li>
+      <li><a href="#" onclick="loadNote('01-grundlagen/algorithmen-und-komplexitaet.md'); return false">Algorithmen</a></li>
+      <li><a href="#" onclick="loadNote('01-grundlagen/datenstrukturen.md'); return false">Datenstrukturen</a></li>
+      <li><a href="#" onclick="loadNote('01-grundlagen/programmierparadigmen.md'); return false">Programmierparadigmen</a></li>
+      <li><a href="#" onclick="loadNote('01-grundlagen/python-grundlagen.md'); return false">Python-Grundlagen</a></li>
+      <li><a href="#" onclick="loadNote('01-grundlagen/oop-klassen-vererbung.md'); return false">OOP: Klassen &amp; Vererbung</a></li>
+      <li><a href="#" onclick="loadNote('01-grundlagen/softwareentwicklungsprozess.md'); return false">Softwareentwicklung</a></li>
+    </ul></details></li>
+    <li><details open><summary>Betriebssysteme</summary><ul>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.md'); return false">Dateisysteme</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/betriebssystem-architekturen.md'); return false">BS-Architekturen</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/prozessmanagement-threads.md'); return false">Prozesse &amp; Threads</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/memory-management.md'); return false">Memory Management</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/linux-administration.md'); return false">Linux-Administration</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/windows-administration.md'); return false">Windows-Administration</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/datentraeger-verschluesselung.md'); return false">Verschluesselung</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/windows-registry-forensik.md'); return false">Registry-Forensik</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/betriebssystem-forensik-spurensuche.md'); return false">Spurensuche</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/file-carving.md'); return false">File Carving</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/embedded-systems-iot-forensik.md'); return false">Embedded &amp; IoT</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/anti-forensik-betriebssystem.md'); return false">Anti-Forensik</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/mobile-forensik-android-ios.md'); return false">Mobile Forensik</a></li>
+      <li><a href="#" onclick="loadNote('02-betriebssysteme/container-docker-forensik.md'); return false">Container &amp; Docker</a></li>
+    </ul></details></li>
+    <li><details open><summary>Netzwerke</summary><ul>
+      <li><a href="#" onclick="loadNote('03-netzwerke/wireshark-basics-paketanalyse.md'); return false">Wireshark Basics</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/tcp-ip-protokollfamilie.md'); return false">TCP/IP</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/ip-adressierung-subnetting.md'); return false">IP &amp; Subnetting</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/routing-switching-vlans.md'); return false">Routing &amp; VLANs</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/dhcp-dns-arp.md'); return false">DHCP, DNS, ARP</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/vpn-und-firewalls.md'); return false">VPN &amp; Firewalls</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/netzwerkforensik-methoden.md'); return false">Netzwerkforensik</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/darknet-tor-i2p.md'); return false">Darknet &amp; Tor</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/web-sicherheit-owasp.md'); return false">Web &amp; OWASP</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/browser-forensik.md'); return false">Browser-Forensik</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/tls-ssl-forensik.md'); return false">TLS/SSL-Forensik</a></li>
+      <li><a href="#" onclick="loadNote('03-netzwerke/wireless-forensik.md'); return false">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details open><summary>Forensik-Methoden</summary><ul>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/forensischer-prozess-chain-of-custody.md'); return false">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/forensisches-imaging.md'); return false">Forensisches Imaging</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/write-blocker.md'); return false">Write-Blocker</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/datentraeger-forensik.md'); return false">Datentraeger-Forensik</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/arbeitsspeicher-forensik.md'); return false">Arbeitsspeicher</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/logfile-analyse.md'); return false">Logfile-Analyse</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/triage-erstanalyse.md'); return false">Triage &amp; Erstanalyse</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/malware-analyse-statisch.md'); return false">Malware (Statisch)</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/malware-analyse-dynamisch.md'); return false">Malware (Dynamisch)</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/forensische-dokumentation.md'); return false">Dokumentation</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/datenbanken-forensik.md'); return false">Datenbanken</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/forensische-live-sicherung.md'); return false">Live-Sicherung</a></li>
+      <li><a href="#" onclick="loadNote('04-forensik-methoden/cloud-forensik.md'); return false">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details open><summary>IT-Security</summary><ul>
+      <li><a href="#" onclick="loadNote('05-it-security/schutzziele-cia-triad.md'); return false">Schutzziele (CIA)</a></li>
+      <li><a href="#" onclick="loadNote('05-it-security/risikoanalyse-threat-modeling.md'); return false">Risikoanalyse</a></li>
+      <li><a href="#" onclick="loadNote('05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.md'); return false">Kryptografie</a></li>
+      <li><a href="#" onclick="loadNote('05-it-security/authentifizierung-pki.md'); return false">Authentifizierung &amp; PKI</a></li>
+      <li><a href="#" onclick="loadNote('05-it-security/kryptoanalyse.md'); return false">Kryptoanalyse</a></li>
+      <li><a href="#" onclick="loadNote('05-it-security/post-quantum-blockchain.md'); return false">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="#" onclick="loadNote('05-it-security/security-incident-management.md'); return false">Incident Management</a></li>
+      <li><a href="#" onclick="loadNote('05-it-security/siem-und-monitoring.md'); return false">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details open><summary>OSINT</summary><ul>
+      <li><a href="#" onclick="loadNote('06-osint/osint-lifecycle-und-tooling.md'); return false">Lifecycle &amp; Tooling</a></li>
+      <li><a href="#" onclick="loadNote('06-osint/osint-recherche-methodik.md'); return false">Recherche-Methodik</a></li>
+      <li><a href="#" onclick="loadNote('06-osint/osint-anonymisierung-opsec.md'); return false">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="#" onclick="loadNote('06-osint/social-media-analyse.md'); return false">Social Media</a></li>
+      <li><a href="#" onclick="loadNote('06-osint/cybercrime-oekonomie.md'); return false">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details open><summary>Recht &amp; Kriminalistik</summary><ul>
+      <li><a href="#" onclick="loadNote('07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.md'); return false">Digitale Beweismittel</a></li>
+      <li><a href="#" onclick="loadNote('07-recht-kriminalistik/strafrecht-allgemeiner-teil.md'); return false">Strafrecht AT</a></li>
+      <li><a href="#" onclick="loadNote('07-recht-kriminalistik/grundrechte-digital.md'); return false">Grundrechte</a></li>
+      <li><a href="#" onclick="loadNote('07-recht-kriminalistik/dsgvo-datenschutz.md'); return false">DSGVO</a></li>
+      <li><a href="#" onclick="loadNote('07-recht-kriminalistik/kriminalistik-grundlagen.md'); return false">Kriminalistik</a></li>
+      <li><a href="#" onclick="loadNote('07-recht-kriminalistik/tatortarbeit-spurenkunde.md'); return false">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="#" onclick="loadNote('07-recht-kriminalistik/eingriffsrecht-tkue.md'); return false">Eingriffsrecht (TKUe)</a></li>
+      <li><a href="#" onclick="loadNote('07-recht-kriminalistik/ethik-informationssicherheit.md'); return false">Ethik</a></li>
+    </ul></details></li>
+    <li><details open><summary>KI &amp; Forensik</summary><ul>
+      <li><a href="#" onclick="loadNote('08-ki-forensik/llms-in-der-forensischen-analyse.md'); return false">LLMs in der Analyse</a></li>
+      <li><a href="#" onclick="loadNote('08-ki-forensik/ki-grundlagen-ml-overview.md'); return false">ML Overview</a></li>
+      <li><a href="#" onclick="loadNote('08-ki-forensik/neuronale-netze-deep-learning.md'); return false">Neuronale Netze</a></li>
+      <li><a href="#" onclick="loadNote('08-ki-forensik/decision-trees-klassifikation.md'); return false">Decision Trees</a></li>
+      <li><a href="#" onclick="loadNote('08-ki-forensik/bildforensik-objekterkennung.md'); return false">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+    <li><details open><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="09-tools/ip-log-analyzer/README.md">IP Log Analyzer</a></li>
+      <li><a href="#" onclick="loadNote('00-meta/glossary.md'); return false">Glossar (A-Z)</a></li>
+      <li><a href="INDEX.md">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <div id="homeContent">
+    <h1>Digital Forensics Field Notes</h1>
+    <p class="subtitle">Eine offene Sammlung von Lernnotizen, Cheatsheets und Tools zu Digitaler Forensik, IT-Security und Cyberkriminalistik.</p>
+
+    <div class="stats">73&nbsp;Notizen &middot; 8&nbsp;Themenbereiche &middot; 112&nbsp;Glossarbegriffe</div>
+
+    <h2>Schnelleinstieg</h2>
+    <div class="quick-links">
+      <a href="#" onclick="loadNote('04-forensik-methoden/forensischer-prozess-chain-of-custody.md'); return false" class="quick-card">
+        <strong>Forensischer Prozess</strong>
+        <span>Chain of Custody, ACPO, NIST -- die Grundlagen jeder Untersuchung</span>
+      </a>
+      <a href="#" onclick="loadNote('02-betriebssysteme/windows-registry-forensik.md'); return false" class="quick-card">
+        <strong>Windows Registry Forensik</strong>
+        <span>AmCache, ShellBags, USBSTOR -- die wichtigsten Artefakte</span>
+      </a>
+      <a href="#" onclick="loadNote('03-netzwerke/wireshark-basics-paketanalyse.md'); return false" class="quick-card">
+        <strong>Wireshark Basics</strong>
+        <span>Capture/Display-Filter, tshark, Export-Objects</span>
+      </a>
+      <a href="#" onclick="loadNote('04-forensik-methoden/arbeitsspeicher-forensik.md'); return false" class="quick-card">
+        <strong>Memory Forensics</strong>
+        <span>Volatility, LiME, RAM-Dump -- fluechtige Spuren sichern</span>
+      </a>
+      <a href="#" onclick="loadNote('01-grundlagen/python-grundlagen.md'); return false" class="quick-card">
+        <strong>Python fuer Forensik</strong>
+        <span>Scripting, Log-Analyse, Automatisierung</span>
+      </a>
+      <a href="#" onclick="loadNote('00-meta/glossary.md'); return false" class="quick-card">
+        <strong>Glossar A-Z</strong>
+        <span>112 Fachbegriffe von ACPO bis YARA -- durchsuchbar</span>
+      </a>
+    </div>
+
+    <h2>Alle Themenbereiche</h2>
+    <div class="topic-grid">
+      <a href="#" onclick="loadNote('01-grundlagen/zahlensysteme-und-kodierung.md'); return false" class="topic-card">Grundlagen <small>8 Notizen</small></a>
+      <a href="#" onclick="loadNote('02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.md'); return false" class="topic-card">Betriebssysteme <small>14 Notizen</small></a>
+      <a href="#" onclick="loadNote('03-netzwerke/tcp-ip-protokollfamilie.md'); return false" class="topic-card">Netzwerke <small>12 Notizen</small></a>
+      <a href="#" onclick="loadNote('04-forensik-methoden/forensischer-prozess-chain-of-custody.md'); return false" class="topic-card">Forensik-Methoden <small>13 Notizen</small></a>
+      <a href="#" onclick="loadNote('05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.md'); return false" class="topic-card">IT-Security <small>8 Notizen</small></a>
+      <a href="#" onclick="loadNote('06-osint/osint-lifecycle-und-tooling.md'); return false" class="topic-card">OSINT <small>5 Notizen</small></a>
+      <a href="#" onclick="loadNote('07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.md'); return false" class="topic-card">Recht <small>8 Notizen</small></a>
+      <a href="#" onclick="loadNote('08-ki-forensik/llms-in-der-forensischen-analyse.md'); return false" class="topic-card">KI &amp; Forensik <small>5 Notizen</small></a>
+    </div>
+
+    <h2>Navigation</h2>
+    <ul>
+      <li><strong>Sidebar links</strong> -- alle Notizen nach Themen gruppiert, ein Klick laedt den Inhalt</li>
+      <li><strong>Suche oben links</strong> -- findet Notizen nach Titel, Tags und Ordnername</li>
+      <li><strong>Glossar</strong> -- 112 Fachbegriffe von A wie ACPO bis Z wie Zeek</li>
+    </ul>
+
+    <h2>Disclaimer</h2>
+    <p>Alle Inhalte dienen ausschliesslich <strong>Lern- und Forschungszwecken</strong>. Keine Rechtsberatung, kein offizielles Kursmaterial. Techniken und Tools nur auf Systemen anwenden, die du besitzt oder fuer die du eine ausdrueckliche Genehmigung hast.</p>
+  </div>
+  <div id="noteContent" style="display:none"></div>
+</main>
+
+<script>
+// --- URL hash handling ---
+function getHashPath() {
+  var h = window.location.hash;
+  return h ? decodeURIComponent(h.substring(1)) : null;
+}
+
+function setHashPath(path) {
+  window.location.hash = path ? encodeURIComponent(path) : '';
+}
+
+// --- Markdown loading ---
+function stripFrontmatter(text) {
+  var m = text.match(/^---[\r\n]+([\s\S]*?)[\r\n]+---[\r\n]*/);
+  if (m) {
+    var fm = m[1];
+    var body = text.substring(m[0].length);
+    // Extract metadata for display
+    var title = '', difficulty = '';
+    var tm = fm.match(/title:\s*"?(.*?)"?[\r\n]/);
+    if (tm) title = tm[1];
+    var dm = fm.match(/difficulty:\s*"?(.*?)"?[\r\n]/);
+    if (dm) difficulty = dm[1];
+    return { title: title, difficulty: difficulty, body: body.trim() };
+  }
+  return { title: null, difficulty: null, body: text.trim() };
+}
+
+function loadNote(path, pushState) {
+  if (pushState !== false) {
+    setHashPath(path);
+    window.scrollTo(0, 0);
+  }
+  var noteEl = document.getElementById('noteContent');
+  var homeEl = document.getElementById('homeContent');
+  noteEl.innerHTML = '<div class="loading">Loading...</div>';
+  noteEl.style.display = 'block';
+  homeEl.style.display = 'none';
+
+  fetch(path)
+    .then(function(r) {
+      if (!r.ok) throw new Error('Not found: ' + path);
+      return r.text();
+    })
+    .then(function(text) {
+      var parsed = stripFrontmatter(text);
+      var html = marked.parse(parsed.body);
+      var header = '';
+      if (parsed.title) {
+        var diffBadge = '';
+        if (parsed.difficulty === 'basics') diffBadge = ' <span class="diff-badge diff-beginner">Grundlagen</span>';
+        else if (parsed.difficulty === 'intermediate') diffBadge = ' <span class="diff-badge diff-intermediate">Mittel</span>';
+        else if (parsed.difficulty === 'advanced') diffBadge = ' <span class="diff-badge diff-advanced">Fortgeschritten</span>';
+        header = '<h1>' + parsed.title + diffBadge + '</h1>';
+      }
+      noteEl.innerHTML = '<div class="note-view">' + header + html + '</div>';
+    })
+    .catch(function(err) {
+      noteEl.innerHTML = '<div class="error">Fehler beim Laden: ' + path + '<br><small>' + err.message + '</small><br><br><a href="." onclick="showHome(); return false">Zurueck zur Startseite</a></div>';
+    });
+}
+
+function showHome() {
+  setHashPath('');
+  document.getElementById('noteContent').style.display = 'none';
+  document.getElementById('homeContent').style.display = 'block';
+  document.getElementById('searchInput').value = '';
+  document.getElementById('searchResults').classList.remove('show');
+}
+
+// --- Init ---
+window.addEventListener('DOMContentLoaded', function() {
+  var hashPath = getHashPath();
+  if (hashPath) {
+    loadNote(hashPath, false);
+  }
+});
+
+window.addEventListener('hashchange', function() {
+  var hashPath = getHashPath();
+  if (hashPath) {
+    loadNote(hashPath, false);
+  } else {
+    showHome();
+  }
+});
+</script>
+
+<script src="search.js"></script>
+</body>
+</html>
