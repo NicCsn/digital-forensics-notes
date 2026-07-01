@@ -126,7 +126,7 @@
     <h1>Digital Forensics Field Notes</h1>
     <p class="subtitle">Eine offene Sammlung von Lernnotizen, Cheatsheets und Tools zu Digitaler Forensik, IT-Security und Cyberkriminalistik.</p>
 
-    <div class="stats">73&nbsp;Notizen &middot; 8&nbsp;Themenbereiche &middot; 112&nbsp;Glossarbegriffe</div>
+    <div class="stats">73&nbsp;Notizen &middot; 8&nbsp;Themenbereiche &middot; 246&nbsp;Glossarbegriffe</div>
 
     <h2>Schnelleinstieg</h2>
     <div class="quick-links">
@@ -152,7 +152,7 @@
       </a>
       <a href="#" onclick="loadNote('00-meta/glossary.md'); return false" class="quick-card">
         <strong>Glossar A-Z</strong>
-        <span>112 Fachbegriffe von ACPO bis YARA -- durchsuchbar</span>
+        <span>246 Fachbegriffe -- durchsuchbar mit Live-Filter</span>
       </a>
     </div>
 
@@ -172,7 +172,7 @@
     <ul>
       <li><strong>Sidebar links</strong> -- alle Notizen nach Themen gruppiert, ein Klick laedt den Inhalt</li>
       <li><strong>Suche oben links</strong> -- findet Notizen nach Titel, Tags und Ordnername</li>
-      <li><strong>Glossar</strong> -- 112 Fachbegriffe von A wie ACPO bis Z wie Zeek</li>
+      <li><strong>Glossar</strong> -- 246 Fachbegriffe, durchsuchbar mit Live-Filter</li>
     </ul>
 
     <h2>Disclaimer</h2>
@@ -237,6 +237,33 @@ function loadNote(path, pushState) {
         header = '<h1>' + parsed.title + diffBadge + '</h1>';
       }
       noteEl.innerHTML = '<div class="note-view">' + header + html + '</div>';
+
+      // --- Glossary live filter ---
+      if (path === '00-meta/glossary.md') {
+        var filterHtml = '<div class="glossary-filter"><input type="text" id="glossaryFilter" placeholder="Filter Glossar... (Begriff, Definition, siehe auch)" autocomplete="off"><span id="glossaryCount"></span></div>';
+        var noteView = noteEl.querySelector('.note-view');
+        noteView.insertAdjacentHTML('afterbegin', filterHtml);
+
+        var table = noteView.querySelector('table');
+        var rows = table ? table.querySelectorAll('tbody tr') : [];
+        var countEl = document.getElementById('glossaryCount');
+        if (rows.length > 0) countEl.textContent = rows.length + ' Eintraege';
+
+        document.getElementById('glossaryFilter').addEventListener('input', function() {
+          var q = this.value.toLowerCase();
+          var visible = 0;
+          for (var i = 0; i < rows.length; i++) {
+            var text = rows[i].textContent.toLowerCase();
+            if (q === '' || text.indexOf(q) !== -1) {
+              rows[i].style.display = '';
+              visible++;
+            } else {
+              rows[i].style.display = 'none';
+            }
+          }
+          countEl.textContent = visible + ' / ' + rows.length + ' Eintraege';
+        });
+      }
     })
     .catch(function(err) {
       noteEl.innerHTML = '<div class="error">Fehler beim Laden: ' + path + '<br><small>' + err.message + '</small><br><br><a href="." onclick="showHome(); return false">Zurueck zur Startseite</a></div>';

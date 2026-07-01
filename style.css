@@ -381,6 +381,41 @@ body {
 
 .diff-advanced { background: #fee7e6; color: #b32424; }
 
+/* ---- Glossary filter ---- */
+.glossary-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.glossary-filter input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.glossary-filter input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+#glossaryCount {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Make glossary table scroll on mobile */
+.note-view table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
 .loading, .error {
   padding: 40px;
   color: var(--text-muted);
