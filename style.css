@@ -409,13 +409,6 @@ body {
   white-space: nowrap;
 }
 
-/* Make glossary table scroll on mobile */
-.note-view table {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
 .loading, .error {
   padding: 40px;
   color: var(--text-muted);
