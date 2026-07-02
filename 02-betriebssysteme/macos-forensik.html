@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>macOS-Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details open><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (16)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../02-betriebssysteme/index.html">Betriebssysteme</a> / macOS-Forensik</span>
+</nav>
+<main><article>
+<h1>macOS-Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#apfs">APFS-Features forensisch relevant</a></li>
+<li><a href="#fsevents">FSEvents-Datenbank</a></li>
+<li><a href="#unified">Unified Logging</a></li>
+<li><a href="#quarantine">Quarantine-Datenbank und Gatekeeper</a></li>
+<li><a href="#knowledgec">KnowledgeC — User Activity Database</a></li>
+<li><a href="#plist">plist-Struktur und Parsing</a></li>
+<li><a href="#artefakte">macOS-spezifische Artefakte</a></li>
+<li><a href="#triage">Triage-Skript fuer macOS</a></li>
+<li><a href="#praxis">Praktische Anwendung</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Die forensische Analyse von macOS-Systemen unterscheidet sich grundlegend von Windows. macOS setzt auf das <strong>Apple File System (APFS)</strong> als Standard-Dateisystem (seit macOS 10.13 High Sierra), nutzt <strong>plist-Dateien</strong> (Property Lists) als zentrales Konfigurationsformat und verfuegt ueber ein <strong>Unified Logging</strong>-System, das alle System-, App- und Debug-Meldungen in einem strukturierten, durchsuchbaren Format speichert. Anders als Windows hat macOS keine Registry — stattdessen verteilen sich Konfigurationsdaten auf hunderte plist-Dateien und SQLite-Datenbanken.</p>
+
+<div class="callout info"><strong>macOS-Forensik ist eine Nische mit wachsender Bedeutung:</strong> In Unternehmensumgebungen steigt der macOS-Anteil kontinuierlich. Viele Incident-Responder haben jedoch nur Windows-Erfahrung. Die Artefakt-Landschaft auf macOS ist reichhaltig, aber grundsaetzlich anders organisiert. Wer sie beherrscht, hat einen massiven Vorteil.</div>
+
+<h2 id="apfs">APFS-Features forensisch relevant</h2>
+<p>APFS (Apple File System) wurde 2017 eingefuehrt und ersetzt HFS+. Es wurde speziell fuer Flash-Speicher (SSDs) entwickelt und bringt mehrere Features mit, die massive forensische Auswirkungen haben.</p>
+
+<table>
+<thead><tr><th>APFS-Feature</th><th>Funktionsweise</th><th>Forensische Implikation</th></tr></thead><tbody>
+<tr><td><strong>Copy-on-Write (CoW)</strong></td><td>Beim Aendern einer Datei wird NUR der geaenderte Block neu geschrieben, nicht die gesamte Datei. Das Original bleibt erhalten.</td><td>Geloeschte oder ueberschriebene Dateifragmente koennen in freien APFS-Blocks ueberleben. Gleichzeitig: Eine Datei kann in hunderten nicht-sequenzieller Blocks verstreut sein — File-Carving wird extrem schwierig.</td></tr>
+<tr><td><strong>Snapshots</strong></td><td>Point-in-Time-Abbilder des gesamten Volumes ohne Daten-Duplizierung (nur Metadaten-Aenderungen)</td><td>GOLDWERT: Snapshots koennen geloeschte Dateien im Originalzustand enthalten. macOS erstellt automatisch Snapshots vor System-Updates (tmutil listlocalsnapshots /). Diese sind eine unschaetzbare Quelle fuer geloeschte Daten.</td></tr>
+<tr><td><strong>Space Sharing</strong></td><td>Mehrere APFS-Volumes teilen sich denselben physischen Speicherplatz innerhalb eines Containers</td><td>Ein physisches Image kann mehrere logische Volumes enthalten. Alle Volumes muessen als Einheit betrachtet werden — freier Speicher auf einem Volume kann Daten eines anderen enthalten.</td></tr>
+<tr><td><strong>Encryption</strong></td><td>APFS unterstuetzt native Volume-Verschluesselung (FileVault) ohne Performance-Verlust</td><td>Ohne Entschluesselungspasswort oder Recovery-Key ist ein APFS-Volume forensisch unbrauchbar. FileVault-Key kann im RAM (Memory-Dump) oder via Recovery-Key/Apple-ID wiederhergestellt werden.</td></tr>
+<tr><td><strong>Hard Links auf Directories</strong></td><td>APFS erlaubt Hard Links auf Verzeichnisse (keine Symlinks)</td><td>Time Machine nutzt dies intensiv. Bei der Analyse von Backups muessen Hard-Link-Strukturen aufgeloest werden, um doppelte Dateien nicht als mehrere Kopien zu zaehlen.</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>APFS und geloeschte Dateien:</strong> Aufgrund von Copy-on-Write und TRIM (SSD) ist die Wiederherstellung geloeschter Dateien auf macOS deutlich schwieriger als auf NTFS mit HDD. Sobald ein Block per TRIM freigegeben wurde, ist er physisch unwiederbringlich. Snapshots sind oft die einzige Moeglichkeit, geloeschte Daten zu rekonstruieren.</div>
+
+<h2 id="fsevents">FSEvents-Datenbank (/.fseventsd/)</h2>
+<p>FSEvents ist das macOS-Event-Benachrichtigungssystem, das Dateisystemaenderungen in Echtzeit verfolgt. Jeder APFS-Volume hat ein verstecktes Verzeichnis /.fseventsd/, das bis zu 64 KB grosse, GZIP-komprimierte Log-Dateien enthaelt. Diese Logs protokollieren JEDE Dateisystemaenderung — welche Datei wurde erstellt, geaendert, geloescht oder umbenannt, inklusive vollstaendigem Pfad und Event-ID.</p>
+
+<pre><code># FSEvents-Logs auflisten
+sudo ls -la /.fseventsd/
+
+# FSEvents-Logs parsen mit Drittanbieter-Tools
+fseventer /.fseventsd/0000000000001a2d
+# Alternativ: FSEventsParser (macOS_Forensics_Artifacts)
+python3 fsevents_parser.py -i /.fseventsd/ -o fsevents_output.csv</code></pre>
+
+<table>
+<thead><tr><th>Event-Typ</th><th>Bedeutung</th><th>Forensischer Wert</th></tr></thead><tbody>
+<tr><td>Created</td><td>Datei/Verzeichnis wurde neu angelegt</td><td>Wann wurde Malware heruntergeladen? Wann wurde eine persistente Datei abgelegt?</td></tr>
+<tr><td>Removed</td><td>Datei/Verzeichnis wurde geloescht</td><td>Welche Dateien hat der Angreifer nach der Exfiltration geloescht? Zeitpunkt der Spurenbeseitigung</td></tr>
+<tr><td>Modified</td><td>Inhalt oder Metadaten wurden geaendert</td><td>Wann wurde eine Konfigurationsdatei manipuliert? Zeitpunkt der Schadcode-Aktivitaet</td></tr>
+<tr><td>Renamed</td><td>Datei/Verzeichnis wurde umbenannt</td><td>Wurde Malware getarnt (z.B. "malware.exe" zu "document.pdf")?</td></tr>
+<tr><td>Exchange</td><td>Atomarer Austausch zweier Dateien</td><td>Wurde eine Systemdatei durch eine manipulierte Version ersetzt?</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>FSEvents ist eine der wertvollsten Datenquellen auf macOS:</strong> Es protokolliert Aenderungen, die laengst aus anderen Logs verschwunden sind. Die Logs rotieren ueber Monate. Selbst nach Loeschung der eigentlichen Datei bleibt der FSEvents-Eintrag erhalten. FSEvents ist das macOS-Aequivalent zur USN-Journal / $LogFile auf NTFS.</div>
+
+<h2 id="unified">Unified Logging — log show</h2>
+<p>Das macOS Unified Logging System (eingefuehrt in iOS 10 / macOS 10.12 Sierra) ersetzt die alten System-Logdateien (/var/log/system.log) durch eine zentrale, binaere Trace-Datenbank unter /var/db/diagnostics/. Es speichert Log-Eintraege aller Subsysteme in einer einheitlichen, strukturierten Form — durchsuchbar mit dem log-Befehl.</p>
+
+<pre><code># Alle Logs der letzten 24 Stunden anzeigen
+log show --last 24h
+
+# Nur Logs eines bestimmten Subsystems (z.B. SSH-Logins)
+log show --predicate 'subsystem == "com.apple.ssh"' --last 3d
+
+# Prozess-spezifische Logs (z.B. Launchd-Aktivitaet)
+log show --predicate 'process == "launchd"' --last 1h
+
+# Nach bestimmten Event-Typen filtern
+log show --predicate 'eventType == "logEvent" AND message CONTAINS "error"' --last 7d
+
+# Logs als JSON exportieren (maschinenlesbar)
+log show --style json --last 24h > unified_logs.json</code></pre>
+
+<table>
+<thead><tr><th>Wichtige Subsysteme</th><th>Beschreibung</th><th>Hunting/IR-Relevanz</th></tr></thead><tbody>
+<tr><td>com.apple.ssh</td><td>SSH-Dienst (Remote Login)</td><td>Login-Versuche, erfolgreiche/failed Logins, verwendete Key-Typen</td></tr>
+<tr><td>com.apple.trustd</td><td>Zertifikatsvalidierung</td><td>Welche TLS-Zertifikate wurden geprueft? Welche abgelehnt? Man-in-the-Middle-Indikator?</td></tr>
+<tr><td>com.apple.launchd</td><td>Dienst- und Job-Management</td><td>Welche Dienste/Plist-Agents wurden gestartet? Neue Persistenz-Mechanismen?</td></tr>
+<tr><td>com.apple.network</td><td>Netzwerkverbindungen</td><td>Verbindungsaufbau, DNS-Aufloesungen, Proxy-Konfiguration</td></tr>
+<tr><td>com.apple.tcc</td><td>Transparency, Consent, Control (Berechtigungen)</td><td>Welche Apps haben auf Kamera, Mikrofon, TCC-Datenbank zugegriffen?</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Unified Logs sind fluechtig:</strong> Anders als persistente Logdateien rotieren Unified Logs — aeltere Eintraege werden ueberschrieben. Auf einem aktiven System sind selten mehr als 7-14 Tage an Log-Daten verfuegbar. Bei Incident Response: SOFORT log collect ausfuehren, um die aktuellen Logs zu sichern.</div>
+
+<h2 id="quarantine">Quarantine-Datenbank und Gatekeeper</h2>
+<p>Gatekeeper ist das zentrale Sicherheitssystem von macOS, das die Ausfuehrung nicht-signierter Software blockiert. Jede aus dem Internet heruntergeladene Datei erhaelt ein <strong>Quarantine-Attribut</strong> (com.apple.quarantine als Extended Attribute). Die Quarantine-Datenbank unter ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2 (SQLite) speichert jeden Download.</p>
+
+<pre><code># Quarantine-Datenbank auslesen
+sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2 \
+  "SELECT datetime(LSQuarantineTimeStamp + 978307200, 'unixepoch', 'localtime') as DownloadDate,
+          LSQuarantineAgentBundleIdentifier as App,
+          LSQuarantineDataURLString as DownloadURL,
+          LSQuarantineOriginURLString as OriginURL
+   FROM LSQuarantineEvent
+   ORDER BY LSQuarantineTimeStamp DESC;"</code></pre>
+
+<table>
+<thead><tr><th>Feld</th><th>Bedeutung</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td>LSQuarantineTimeStamp</td><td>Zeitpunkt des Downloads (Mac-absolute-Zeit)</td><td>WANN wurde die potenzielle Malware heruntergeladen?</td></tr>
+<tr><td>LSQuarantineDataURLString</td><td>Direkter Download-URL</td><td>Von welchem Server kam die Datei? IP/Domain als IOC</td></tr>
+<tr><td>LSQuarantineOriginURLString</td><td>Referrer-URL (die Seite, die den Download-Link enthielt)</td><td>Ueber welche Website wurde der Download ausgeloest? Phishing-Seite?</td></tr>
+<tr><td>LSQuarantineAgentBundleIdentifier</td><td>Welche App hat den Download ausgeloest?</td><td>Browser (com.apple.Safari, org.mozilla.firefox) oder E-Mail-Client?</td></tr>
+<tr><td>LSQuarantineAgentName</td><td>Anzeigename der downloadenden App</td><td>Safari, Firefox, Mail, Slack — welcher Kanal wurde fuer Malware-Delivery genutzt?</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Gatekeeper umgehen:</strong> Angreifer umgehen Gatekeeper haeufig via signierte Payloads (Apple Developer ID), via App-Bundles ohne Quarantine-Flag, oder durch Ausfuehrung ueber legitime Prozesse (z.B. Python-Interpreter). Eine leere Quarantine-Datenbank bei gleichzeitiger Malware-Aktivitaet ist selbst ein Indikator (Loeschung der Quarantine-Eintraege durch Angreifer).</div>
+
+<h2 id="knowledgec">KnowledgeC — User Activity Database</h2>
+<p><strong>KnowledgeC</strong> (/var/db/CoreDuet/Knowledge/knowledgeC.db) ist eine hochgradig forensisch wertvolle SQLite-Datenbank, die von Apples CoreDuet-Framework verwaltet wird. Sie zeichnet Nutzeraktivitaeten im Detail auf: Welche App wurde wann gestartet, wie lange genutzt, welche Webseite besucht, welches Dokument geoeffnet, wann wurde das Geraet entsperrt, wann in den Ruhezustand versetzt?</p>
+
+<pre><code># KnowledgeC auslesen (Application Focus) — welche Apps waren wann im Vordergrund?
+sqlite3 /var/db/CoreDuet/Knowledge/knowledgeC.db \
+  "SELECT datetime(ZOBJECT.ZCREATIONDATE + 978307200, 'unixepoch', 'localtime') as Timestamp,
+          ZOBJECT.ZVALUESTRING as AppName,
+          ZOBJECT.ZSTARTDATE,
+          ZOBJECT.ZENDDATE
+   FROM ZOBJECT
+   WHERE ZOBJECT.ZSTREAMNAME = '/app/usage'
+   ORDER BY ZOBJECT.ZCREATIONDATE DESC
+   LIMIT 100;"</code></pre>
+
+<table>
+<thead><tr><th>KnowledgeC-Stream</th><th>Enthaltene Daten</th><th>Forensischer Wert</th></tr></thead><tbody>
+<tr><td>/app/usage</td><td>Welche App war wann im Vordergrund (Fokus)? Startzeit, Endzeit, Bundle-ID</td><td>Nutzungsprofil: Welche App hat der Angreifer wann genutzt? Terminal, Python, Sublime?</td></tr>
+<tr><td>/display/isBacklit</td><td>Wann wurde das Display ein-/ausgeschaltet?</td><td>War das Geraet zu bestimmten Zeiten aktiv? Nachtaktivitaet?</td></tr>
+<tr><td>/device/isPluggedIn</td><td>Wann wurde das Geraet ans Stromnetz angeschlossen?</td><td>Korreliert mit laengeren Betriebszeiten, z.B. fuer Exfiltration</td></tr>
+<tr><td>/safari/history</td><td>Safari-Browser-History: URL, Zeitpunkt, Anzahl Besuche</td><td>Welche Webseiten wurden besucht? Downloads getaetigt?</td></tr>
+<tr><td>/bluetooth/isConnected</td><td>Bluetooth-Verbindungsstatus</td><td>Wurde ein unbekanntes Bluetooth-Geraet verbunden?</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>KnowledgeC ist das macOS-Aequivalent zur Windows-Timeline:</strong> Es liefert eine chronologische Aufzeichnung der Nutzeraktivitaet, die weit ueber das hinausgeht, was Einzelartefakte zeigen. Zusammen mit FSEvents und Unified Logs entsteht ein extrem detailliertes Bild des Nutzer- und Angreiferverhaltens.</div>
+
+<h2 id="plist">plist-Struktur und Parsing</h2>
+<p>Property Lists (.plist) sind das zentrale Datenformat fuer Konfigurations- und Metadaten auf macOS. Sie existieren in zwei Formaten: <strong>XML</strong> (menschenlesbar) und <strong>binaer</strong> (maschinenoptimiert). Praktisch alle macOS-Artefakte liegen als plist vor — LaunchAgents, LaunchDaemons, Preferences, App-Container, QuickLook, Spotlight und viele mehr.</p>
+
+<pre><code># plist in XML konvertieren
+plutil -convert xml1 com.apple.finder.plist -o finder_config.xml
+
+# plist direkt auslesen mit PlistBuddy (/usr/libexec/PlistBuddy)
+PlistBuddy -c "Print :DesktopViewSettings:IconViewSettings:arrangeBy" ~/Library/Preferences/com.apple.finder.plist
+
+# plist in Python parsen
+python3 -c "
+import plistlib
+with open('com.apple.loginwindow.plist', 'rb') as f:
+    pl = plistlib.load(f)
+    print(pl.get('lastUserName'))
+    print(pl.get('lastLoginTimestamp'))
+"</code></pre>
+
+<div class="callout warning"><strong>plist ist nicht gleich plist:</strong> macOS verwendet zunehmend JSON-basierte plist-Dateien (z.B. in LaunchAgents), insbesondere fuer Drittanbieter-Software. Tools muessen sowohl XML- als auch JSON-Plist unterstuetzen. Der file-Befehl zeigt "Apple binary property list" fuer binaere Plists.</div>
+
+<h2 id="artefakte">macOS-spezifische Artefakte</h2>
+
+<h3>Spotlight-Datenbank</h3>
+<p>Spotlight (/.Spotlight-V100/ auf jedem Volume) indiziert alle Dateiinhalte und Metadaten. Die Datenbank enthaelt eine vollstaendige Liste aller Dateien auf dem Volume, auch solcher die in anderen Artefakten nicht auftauchen. Loescht man eine Datei, bleibt der Spotlight-Eintrag oft noch erhalten — Spotlight kann als Referenz fuer geloeschte Dateien dienen.</p>
+<pre><code># Spotlight-Datenbank parsen (read-only)
+# Verzeichnis: /.Spotlight-V100/Store-V2/[UUID]/
+# Dateien: store.db (SQLite), .store.db (Journal)
+mdfind "kMDItemFSName == 'passwords.xlsx'"</code></pre>
+
+<h3>QuickLook Thumbnails</h3>
+<p>QuickLook generiert Vorschaubilder fuer fast jeden Dateityp und speichert sie unter /var/folders/. Auch nach Loeschung der Originaldatei koennen Thumbnails erhalten bleiben — ein starkes Indiz dafuer, dass eine Datei existiert hat.</p>
+
+<h3>Recent Items / zuletzt benutzte Objekte</h3>
+<pre><code># Recent Items auslesen (gespeichert in verschiedenen plists)
+plutil -p ~/Library/Preferences/com.apple.recentitems.plist
+# Enthaelt: zuletzt geoeffnete Apps, Dokumente, Server — sortiert nach Zeit</code></pre>
+
+<table>
+<thead><tr><th>Artefakt-Pfad</th><th>Typ</th><th>Inhalt</th></tr></thead><tbody>
+<tr><td>~/Library/Preferences/com.apple.finder.plist</td><td>plist</td><td>Finder-Einstellungen, zuletzt geoeffnete Ordner (FXRecentFolders)</td></tr>
+<tr><td>~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2</td><td>SQLite</td><td>Quarantine-Download-Datenbank</td></tr>
+<tr><td>/var/db/CoreDuet/Knowledge/knowledgeC.db</td><td>SQLite</td><td>KnowledgeC Nutzungsdatenbank</td></tr>
+<tr><td>~/.bash_history / ~/.zsh_history</td><td>Text</td><td>Kommandozeilen-Historie des Nutzers</td></tr>
+<tr><td>~/Library/Saved Application State/</td><td>plist/Data</td><td>Zustand geschlossener Apps inkl. geoeffneter Fenster und Dokumente</td></tr>
+<tr><td>/Library/LaunchAgents/ + /Library/LaunchDaemons/</td><td>plist</td><td>Systemweite Persistenz via Launchd-Jobs</td></tr>
+<tr><td>~/Library/LaunchAgents/</td><td>plist</td><td>Nutzer-spezifische Persistenz — Lieblingsort fuer Malware</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>LaunchAgents sind die macOS-Entsprechung zu Registry-RunKeys:</strong> Ein Angreifer kann eine .plist-Datei in ~/Library/LaunchAgents/ ablegen, die bei der naechsten Anmeldung automatisch ausgefuehrt wird. Der Pfad ~/Library/LaunchAgents/com.apple.[random].plist mit Pfad zu /tmp/malware ist ein klassischer Persistenz-Indikator.</div>
+
+<h2 id="triage">Triage-Skript fuer macOS</h2>
+<p>Ein grundlegendes Bash-Triage-Skript sammelt die wichtigsten fluechtigen und persistenten Artefakte eines macOS-Systems in einem Durchlauf:</p>
+
+<pre><code>#!/bin/bash
+# macOS Live-Triage — schnelle Erstanalyse
+OUTDIR="triage_$(hostname)_$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$OUTDIR"
+echo "[*] macOS Triage startet — Output: $OUTDIR"
+
+# System-Info
+sysctl -n kern.boottime > "$OUTDIR/boot_time.txt"
+sysctl -n kern.osversion > "$OUTDIR/os_version.txt"
+uptime > "$OUTDIR/uptime.txt"
+
+# Netzwerkverbindungen und offene Ports
+lsof -i -nP > "$OUTDIR/network_connections.txt"
+netstat -an > "$OUTDIR/netstat.txt"
+arp -a > "$OUTDIR/arp_cache.txt"
+
+# Prozessliste (mit Parent-Child-Beziehung)
+ps auxwww > "$OUTDIR/processes.txt"
+ps -eo pid,ppid,user,command > "$OUTDIR/process_tree.txt"
+
+# Geladene Kernel-Extensions (KEXTs) — Rootkit-Indikator
+kextstat > "$OUTDIR/kextstat.txt"
+
+# Unified Logs der letzten 7 Tage sichern
+log collect --last 7d --output "$OUTDIR/unified_logs.logarchive"
+
+# Quarantine-Datenbank kopieren
+cp ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2 "$OUTDIR/"
+
+# LaunchAgents und LaunchDaemons sichern
+cp -r /Library/LaunchAgents "$OUTDIR/system_launchagents"
+cp -r /Library/LaunchDaemons "$OUTDIR/system_launchdaemons"
+cp -r ~/Library/LaunchAgents "$OUTDIR/user_launchagents"
+
+# FSEvents-Datenbank falls vorhanden (root erforderlich)
+sudo cp -r /.fseventsd "$OUTDIR/fsevents" 2>/dev/null
+
+# Bash/Zsh-History
+cp ~/.bash_history "$OUTDIR/bash_history" 2>/dev/null
+cp ~/.zsh_history "$OUTDIR/zsh_history" 2>/dev/null
+
+# KnowledgeC-DB
+sudo cp /var/db/CoreDuet/Knowledge/knowledgeC.db "$OUTDIR/" 2>/dev/null
+
+# Alle Outputs in TAR verpacken
+tar -czf "$OUTDIR.tar.gz" "$OUTDIR"
+echo "[+] Triage abgeschlossen: $OUTDIR.tar.gz"</code></pre>
+
+<div class="callout tip"><strong>Dieses Skript NICHT blind ausfuehren:</strong> Es liest nur (keine Aenderungen am System), aber root-Rechte sind fuer einige Quellen erforderlich. Auf einem kompromittierten System: Immer von einem externen, vertrauenswuerdigen Medium booten, wenn moeglich.</div>
+
+<h2 id="praxis">Praktische Anwendung — Befehle und Tools</h2>
+
+<h3>Empfohlene macOS-Forensik-Tools</h3>
+<table>
+<thead><tr><th>Tool</th><th>Typ</th><th>Funktion</th></tr></thead><tbody>
+<tr><td><strong>macOS_Forensics_Artifacts</strong></td><td>Python-Sammlung</td><td>Skripte zum Parsen von Quarantine, FSEvents, KnowledgeC, Unified Logs, plist-Batch-Analyse</td></tr>
+<tr><td><strong>mac_apt</strong> (macOS Artifact Parsing Tool)</td><td>Python-Framework</td><td>Umfassende Struktur zur Extraktion von Artefakten aus macOS-Images — plugin-basiert wie Plaso</td></tr>
+<tr><td><strong>APOLLO</strong> (Apple Pattern of Life Lazy Output'er)</td><td>Python</td><td>Sammelt und korreliert macOS-Artefakte zu einer Timeline der Nutzeraktivitaet</td></tr>
+<tr><td><strong>The Sleuth Kit (TSK)</strong></td><td>C mit Python-Bindings</td><td>fsstat und fls unterstuetzen APFS (seit TSK 4.6+)</td></tr>
+<tr><td><strong>Volatility 3</strong> mit mac-Symbolen</td><td>Python</td><td>Memory-Analyse von macOS-RAM-Dumps: Prozessliste, Netzwerkverbindungen, Kernel-Module, Bash-History</td></tr>
+<tr><td><strong>Recon</strong> (macOS Incident Response)</td><td>Bash/Python</td><td>Live-IR-Tool — sammelt ueber 100 macOS-Artefakte in einem strukturierten Report</td></tr>
+</tbody></table>
+
+<h3>Beispiel: Malware-Analyse auf macOS</h3>
+<p><strong>Szenario:</strong> Nutzer meldet, sein Mac sei seit 3 Tagen "langsam und komisch" — unerwartete Popups, Luefter laeuft auf Maximaldrehzahl.</p>
+
+<ol>
+<li><strong>Persistenz pruefen:</strong> ls -la ~/Library/LaunchAgents/ und /Library/LaunchDaemons/ — alle .plist-Dateien auf ungewoehnliche Pfade und Programmnamen pruefen</li>
+<li><strong>Quarantine-DB checken:</strong> Welche Downloads in den letzten 7 Tagen? Stimmt die Download-URL mit bekannten Malware-Domains ueberein?</li>
+<li><strong>Prozesse anschauen:</strong> ps auxwww | grep -i -E "crypt|miner|coin|tor" — typische Indikatoren fuer Crypto-Miner</li>
+<li><strong>Netzwerkverbindungen:</strong> lsof -i -nP | grep ESTABLISHED — welche ausgehenden Verbindungen sind offen? Ports > 1024 zu unbekannten IPs?</li>
+<li><strong>Kernel-Extensions:</strong> kextstat | grep -v com.apple — nicht-Apple-KEXTs sind extrem verdaechtig auf macOS</li>
+<li><strong>FSEvents analysieren:</strong> Welche Dateien wurden in den Troubleshooting-Tagen erstellt/modifiziert/gelöscht?</li>
+</ol>
+
+<div class="callout warning"><strong>macOS-Triage ist zeitkritisch:</strong> Unified Logs rotieren, FSEvents-Daten werden ueberschrieben, KnowledgeC loescht alte Eintraege. Bei Verdacht SOFORT Triage-Skript ausfuehren und die fluechtigen Logs sichern — nicht erst eine Stunde lang recherchieren.</div>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://github.com/ydkhatri/mac_apt">mac_apt — macOS Artifact Parsing Tool</a></li>
+<li><a href="https://github.com/mac4n6/APOLLO">APOLLO — Apple Pattern of Life Lazy Output'er</a></li>
+<li><a href="https://github.com/nicksmokes/macOS_Forensics_Artifacts">macOS_Forensics_Artifacts Skriptsammlung</a></li>
+<li><a href="https://github.com/slothchunk/recon">Recon — macOS Incident Response</a></li>
+<li><a href="https://developer.apple.com/documentation/foundation/unified_logging">Apple Unified Logging Documentation</a></li>
+<li><a href="https://eclecticlight.co/">The Eclectic Light Company</a> — Fundierte Blog-Artikel zu macOS-Interna, APFS und Forensik</li>
+<li><a href="https://www.sentinelone.com/blog/macos-forensics/">SentinelOne: macOS Forensics Guide</a></li>
+<li>Levin, Jonathan (2019): <em>Mac OS and iOS Internals</em> — Das Standardwerk zu macOS-Interna</li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

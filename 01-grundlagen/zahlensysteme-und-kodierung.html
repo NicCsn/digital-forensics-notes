@@ -7,61 +7,571 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Zahlensysteme und Kodierung</span>
+  <span class="nav-crumb">/ <a href="../01-grundlagen/index.html">Grundlagen</a> / Zahlensysteme und Kodierung</span>
 </nav>
 <main>
 <article>
 <h1>Zahlensysteme und Kodierung <span class="diff-badge diff-beginner">Grundlagen</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz-berblick">Kurzüberblick</a></li>
+<li><a href="#zahlensysteme">Zahlensysteme: Dezimal, Binär, Oktal, Hexadezimal</a></li>
+<li><a href="#umrechnungstabellen">Umrechnungstabellen und Forensik-Beispiele</a></li>
+<li><a href="#zweier-komplement">2er-Komplement: Negative Zahlen und Overflow</a></li>
+<li><a href="#gleitkommazahlen">Gleitkommazahlen: IEEE 754</a></li>
+<li><a href="#zeichenkodierung">Zeichenkodierung: ASCII, UTF-8, UTF-16, UTF-32</a></li>
+<li><a href="#base64-hex">Base64 und Hex-Encoding</a></li>
+<li><a href="#endianness">Endianness: Big-Endian vs Little-Endian</a></li>
+<li><a href="#bit-operationen">Bit-Operationen: AND, OR, XOR, NOT, Shift</a></li>
+<li><a href="#praktische-anwendung">Praktische Anwendung / Befehle</a></li>
+<li><a href="#quellen">Quellen / Weiterführendes</a></li>
+</ol></details>
 
 <h2 id="kurz-berblick">Kurzüberblick</h2>
 
-<p>Computer speichern alle Daten als Bit-Folgen. Um Rohdaten forensisch zu interpretieren, muss man die zugrunde liegenden Zahlensysteme verstehen: Binär (Basis 2), Oktal (Basis 8), Dezimal (Basis 10) und Hexadezimal (Basis 16). Kodierungen wie ASCII, UTF-8 und Base64 übersetzen zwischen Bitmustern und menschenlesbaren Zeichen.</p>
+<p>Computer speichern alle Daten als Bit-Folgen. Um Rohdaten forensisch zu interpretieren, muss man die zugrunde liegenden Zahlensysteme verstehen: Binär (Basis 2), Oktal (Basis 8), Dezimal (Basis 10) und Hexadezimal (Basis 16). Kodierungen wie ASCII, UTF-8 und Base64 übersetzen zwischen Bitmustern und menschenlesbaren Zeichen. In der Forensik ist dieses Wissen unverzichtbar — vom Hex-Dump über Timestamp-Dekodierung bis zur Malware-Analyse.</p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>Forensischer Grundsatz:</strong> Jedes Byte in einem forensischen Image ist potenziell ein Beweismittel. Ohne Verständnis der Zahlensysteme und Kodierungen können Sie Rohdaten nicht korrekt interpretieren und übersehen oder verfälschen Beweise.</div>
 
-<h3>Binärsystem</h3>
+<h2 id="zahlensysteme">Zahlensysteme: Dezimal, Binär, Oktal, Hexadezimal</h2>
 
-<ul><li>Ein Bit hat zwei Zustände: 0 oder 1</li>
-<li><code>n</code> Bits können 2^n verschiedene Werte darstellen</li>
+<h3>Übersicht der Systeme</h3>
+
+<table class="styled-table">
+<thead><tr><th>System</th><th>Basis</th><th>Ziffern</th><th>Präfix</th><th>Beispiel</th><th>Forensischer Kontext</th></tr></thead><tbody>
+<tr><td>Dezimal</td><td>10</td><td>0–9</td><td>—</td><td><code>255</code></td><td>Menschenlesbare Darstellung von Größen (Bytes, KB, MB)</td></tr>
+<tr><td>Binär</td><td>2</td><td>0, 1</td><td><code>0b</code></td><td><code>0b11111111</code></td><td>Rohdaten, Bitmasken, File-Permissions, Flags</td></tr>
+<tr><td>Oktal</td><td>8</td><td>0–7</td><td><code>0</code> (C/Unix)</td><td><code>0377</code></td><td>Unix-Dateirechte (<code>chmod 755</code>), PDP-11 Legacy</td></tr>
+<tr><td>Hexadezimal</td><td>16</td><td>0–9, A–F</td><td><code>0x</code></td><td><code>0xFF</code></td><td>Hex-Dumps, Speicheradressen, Magic Bytes, Hash-Werte</td></tr>
+</tbody></table>
+
+<h3>Binärsystem im Detail</h3>
+
+<ul>
+<li>Ein Bit hat zwei Zustände: <strong>0</strong> oder <strong>1</strong></li>
+<li><code>n</code> Bits können <code>2^n</code> verschiedene Werte darstellen</li>
 <li>8 Bit = 1 Byte, das auf den meisten modernen Architekturen die kleinste adressierbare Einheit ist</li>
-<li>Ein Nibble sind 4 Bit, also eine halbe Byte (entspricht einer Hex-Ziffer)</li></ul>
+<li>Ein <strong>Nibble</strong> sind 4 Bit, also ein halbes Byte — entspricht genau einer Hex-Ziffer</li>
+<li>Ein <strong>Word</strong> ist architekturabhängig: 16 Bit (x86 real mode), 32 Bit (x86 protected mode), 64 Bit (x86-64)</li>
+</ul>
 
-<h3>Hexadezimal und Oktal</h3>
+<div class="callout tip"><strong>Merkhilfe:</strong> <code>2^10 = 1024 ≈ 1 KB</code>, <code>2^20 ≈ 1 MB</code>, <code>2^30 ≈ 1 GB</code>, <code>2^40 ≈ 1 TB</code>. Diese Zweierpotenzen tauchen überall in der Forensik auf — von Sektorgrößen (512 = 2^9) bis zu NTFS-Clustergrößen (4096 = 2^12).</div>
 
-<ul><li>Hex: Ziffern 0-9 + A-F (Basis 16). Zwei Hex-Ziffern = 1 Byte. Präfix oft <code>0x</code> (z.B. <code>0x4A</code>)</li>
-<li>Oktal: Ziffern 0-7 (Basis 8). Präfix oft <code>0</code> in C/Unix (z.B. <code>0755</code>)</li>
-<li>Warum Hex dominierte: 1 Byte = genau 2 Hex-Ziffern, bei Oktal braucht man 3 Ziffern mit Überhang</li></ul>
+<h3>Hexadezimalsystem im Detail</h3>
 
-<h3>Endianness</h3>
+<ul>
+<li><strong>Hex:</strong> Ziffern 0–9 + A–F (Basis 16). Zwei Hex-Ziffern = 1 Byte</li>
+<li>Präfix <code>0x</code> (z.B. <code>0x4A</code> = 74 dezimal) oder Suffix <code>h</code> in manchen Kontexten</li>
+<li><strong>Warum Hex dominierte:</strong> 1 Byte = genau 2 Hex-Ziffern — perfekte 1:1-Abbildung. Bei Oktal braucht man 3 Ziffern mit Überhang</li>
+<li><strong>Hex in der Forensik:</strong> Magic Bytes (z.B. JPEG = <code>FF D8 FF E0</code>), File Signaturen, Speicheradressen, Hash-Werte (SHA-256 = 64 Hex-Zeichen)</li>
+</ul>
 
-<ul><li><strong>Big-Endian:</strong> Höchstwertiges Byte zuerst (Netzwerk-Byte-Order)</li>
-<li><strong>Little-Endian:</strong> Niedrigstwertiges Byte zuerst (x86-Architektur)</li>
-<li>In der Forensik kritisch: Wenn man Rohdaten falsch interpretiert (falsche Endianness), liest man völlig falsche Werte</li></ul>
+<h3>Oktalsystem im Detail</h3>
+
+<ul>
+<li><strong>Oktal:</strong> Ziffern 0–7 (Basis 8)</li>
+<li>Präfix <code>0</code> in C/Unix (z.B. <code>0755</code> = rwxr-xr-x)</li>
+<li><strong>Forensisch relevant:</strong> Unix-Dateirechte, PDP-11-Architektur (historisch), einige Dateiformate (tar-Archive speichern oktale Größen)</li>
+</ul>
+
+<h2 id="umrechnungstabellen">Umrechnungstabellen und Forensik-Beispiele</h2>
+
+<h3>Dezimal → Binär → Hex Referenztabelle</h3>
+
+<table class="styled-table">
+<thead><tr><th>Dezimal</th><th>Binär (8 Bit)</th><th>Hex</th><th>Forensische Bedeutung</th></tr></thead><tbody>
+<tr><td>0</td><td>0000 0000</td><td>0x00</td><td>Null-Byte, String-Terminator in C</td></tr>
+<tr><td>10</td><td>0000 1010</td><td>0x0A</td><td>Line Feed (LF), Unix-Zeilenende</td></tr>
+<tr><td>13</td><td>0000 1101</td><td>0x0D</td><td>Carriage Return (CR), Windows-Zeilenende: CR+LF</td></tr>
+<tr><td>32</td><td>0010 0000</td><td>0x20</td><td>Leerzeichen (Space)</td></tr>
+<tr><td>65</td><td>0100 0001</td><td>0x41</td><td>ASCII 'A'</td></tr>
+<tr><td>255</td><td>1111 1111</td><td>0xFF</td><td>Maximalwert eines Bytes. Häufig in XOR-Mustern und Padding</td></tr>
+<tr><td>512</td><td>—</td><td>0x200</td><td>Standard-Sektorgröße bei Festplatten</td></tr>
+<tr><td>4096</td><td>—</td><td>0x1000</td><td>Typische Speicherseitengröße (4 KB), NTFS-Clustergröße</td></tr>
+</tbody></table>
+
+<h3>Umrechnungsmethoden</h3>
+
+<ul>
+<li><strong>Dezimal → Binär:</strong> Sukzessive Division durch 2, Reste von unten nach oben lesen</li>
+<li><strong>Binär → Hex:</strong> Von rechts nach links in 4er-Gruppen teilen, jede Gruppe in Hex-Ziffer umwandeln</li>
+<li><strong>Hex → Dezimal:</strong> Jede Stelle mit 16^Position multiplizieren und summieren</li>
+</ul>
+
+<pre><code># Python: Zahlensystem-Umrechnungen
+>>> hex(255)       # '0xff'
+>>> bin(42)        # '0b101010'
+>>> oct(64)        # '0o100'
+>>> int('0x4A', 16) # 74
+>>> int('1010', 2)  # 10
+>>> 0xFF            # 255 — Python interpretiert Hex-Literale direkt</code></pre>
+
+<div class="callout info"><strong>Forensik-Tipp:</strong> In Hex-Editoren wie HxD oder 010 Editor sehen Sie alle drei Darstellungen nebeneinander: Hex-Werte (Mitte), ASCII-Interpretation (rechts), und die Rohdaten. Lernen Sie, häufige Byte-Muster auf einen Blick zu erkennen — <code>0x00</code> (Null), <code>0xFF</code> (oft Padding), <code>0x20</code> (Space), <code>0x0D0A</code> (CRLF).</div>
+
+<h2 id="zweier-komplement">2er-Komplement: Negative Zahlen und Overflow</h2>
+
+<h3>Wie funktioniert das 2er-Komplement?</h3>
+
+<p>Moderne Computer verwenden das 2er-Komplement zur Darstellung negativer Ganzzahlen. Der Vorteil: Addition und Subtraktion benötigen dieselbe Hardware — es gibt keine Sonderfälle für negative Zahlen.</p>
+
+<ul>
+<li><strong>Bildung des 2er-Komplements:</strong> Alle Bits invertieren (1er-Komplement), dann +1 addieren</li>
+<li><strong>Wertebereich 8-Bit (signed):</strong> −128 bis +127</li>
+<li><strong>Wertebereich 32-Bit (signed):</strong> −2.147.483.648 bis +2.147.483.647</li>
+<li><strong>Erkennung:</strong> Das höchstwertige Bit (MSB) ist das Vorzeichenbit: 0 = positiv, 1 = negativ</li>
+</ul>
+
+<table class="styled-table">
+<thead><tr><th>Dezimal</th><th>8-Bit 2er-Komplement</th><th>Hex (signed byte)</th></tr></thead><tbody>
+<tr><td>+127</td><td>0111 1111</td><td>0x7F</td></tr>
+<tr><td>+1</td><td>0000 0001</td><td>0x01</td></tr>
+<tr><td>0</td><td>0000 0000</td><td>0x00</td></tr>
+<tr><td>−1</td><td>1111 1111</td><td>0xFF</td></tr>
+<tr><td>−128</td><td>1000 0000</td><td>0x80</td></tr>
+</tbody></table>
+
+<h3>Overflow und seine forensische Bedeutung</h3>
+
+<p>Ein Overflow tritt auf, wenn das Ergebnis einer Operation den darstellbaren Bereich überschreitet:</p>
+
+<pre><code># 8-Bit signed Overflow-Beispiel
+ 0111 1111  (+127)
++0000 0001  (+1)
+───────────
+ 1000 0000  (−128)  ← Overflow! 127 + 1 ergibt nicht +128, sondern −128</code></pre>
+
+<div class="callout warning"><strong>Forensische Relevanz — Timestamp-Overflow:</strong> Unix-Timestamps sind 32-Bit signed Integer (Sekunden seit 01.01.1970). Der Maximalwert ist 2.147.483.647, was dem <strong>19. Januar 2038, 03:14:07 UTC</strong> entspricht. Danach springt der Zähler auf −2.147.483.648 (= 13. Dezember 1901). Dies ist das <strong>Year-2038-Problem</strong> — analog zu Y2K, aber für 32-Bit-Systeme. Forensiker müssen dies bei der Analyse alter Systeme und Embedded-Geräte berücksichtigen.</div>
+
+<div class="callout info"><strong>Andere Integer-Typen in der Forensik:</strong> Windows FILETIME ist ein 64-Bit unsigned Integer (100-Nanosekunden-Intervalle seit 01.01.1601). NTFS-Zeitstempel nutzen dieses Format. Das verhindert Overflow-Probleme, erfordert aber spezielle Konvertierung für die forensische Analyse.</div>
+
+<h2 id="gleitkommazahlen">Gleitkommazahlen: IEEE 754</h2>
+
+<h3>IEEE 754 — Der Standard für Gleitkommazahlen</h3>
+
+<p>IEEE 754 definiert, wie Dezimalzahlen mit Nachkommastellen binär gespeichert werden. Das Format besteht aus drei Komponenten:</p>
+
+<ul>
+<li><strong>Vorzeichen (Sign):</strong> 1 Bit (0 = positiv, 1 = negativ)</li>
+<li><strong>Exponent:</strong> Gespeichert mit Bias (Single: Bias 127, Double: Bias 1023)</li>
+<li><strong>Mantisse (Significand):</strong> Die Nachkommastellen, normalisiert mit implizierter führender 1</li>
+</ul>
+
+<table class="styled-table">
+<thead><tr><th>Typ</th><th>Bits gesamt</th><th>Sign</th><th>Exponent</th><th>Mantisse</th><th>Bias</th><th>Dezimalstellen</th></tr></thead><tbody>
+<tr><td><strong>Single (float)</strong></td><td>32</td><td>1</td><td>8</td><td>23</td><td>127</td><td>~7</td></tr>
+<tr><td><strong>Double</strong></td><td>64</td><td>1</td><td>11</td><td>52</td><td>1023</td><td>~16</td></tr>
+</tbody></table>
+
+<h3>Normalisierte vs. Denormalisierte Zahlen</h3>
+
+<ul>
+<li><strong>Normalisiert:</strong> Exponent ≠ 0 und ≠ alle 1en. Die Mantisse hat eine implizite führende 1 (1.xxx). Dies ist der Normalfall</li>
+<li><strong>Denormalisiert (subnormal):</strong> Exponent = 0, Mantisse ≠ 0. Die implizite führende Ziffer ist 0 (0.xxx). Erlaubt die Darstellung sehr kleiner Zahlen nahe Null</li>
+<li><strong>Null:</strong> Exponent = 0, Mantisse = 0. Es gibt +0 und −0 (unterscheidbar!)</li>
+<li><strong>Unendlich:</strong> Exponent = alle 1en, Mantisse = 0. +∞ und −∞</li>
+<li><strong>NaN (Not a Number):</strong> Exponent = alle 1en, Mantisse ≠ 0. Zeigt ungültige Operationen an (z.B. 0/0)</li>
+</ul>
+
+<pre><code># IEEE 754 Single Precision — Beispiel: −12.625
+# −12.625 dezimal = −1100.101 binär = −1.100101 × 2^3
+# Sign:    1 (negativ)
+# Exponent: 3 + 127 (Bias) = 130 = 1000 0010
+# Mantisse: 100101 0000 0000 0000 0000 00 (23 Bit, führende 1 implizit)
+# Hex:     0xC14A0000</code></pre>
+
+<div class="callout warning"><strong>Forensische Relevanz — GPS-Koordinaten:</strong> GPS-Koordinaten werden häufig als IEEE 754 Double gespeichert. Breitengrad und Längengrad in EXIF-Daten, GPX-Dateien und Navigationssystemen nutzen 64-Bit-Floats. Bei der Analyse von RAM-Dumps oder gelöschten Dateien können Sie Float-Muster suchen: <strong>52.5200° N</strong> (Berlin) wäre als <code>0x404A3D70A3D70A3D</code> gespeichert. Tools wie <code>bulk_extractor</code> können GPS-Koordinaten aus Rohdaten extrahieren, indem sie nach Float-Mustern in plausiblen Wertebereichen suchen.</div>
+
+<div class="callout tip"><strong>Python-Tipp:</strong> <code>struct.unpack('&lt;d', bytes.fromhex('404A3D70A3D70A3D'))[0]</code> liest einen Little-Endian-Double aus einem Hex-String. <code>struct.pack('&lt;d', 52.52).hex()</code> macht das Gegenteil.</div>
+
+<h2 id="zeichenkodierung">Zeichenkodierung: ASCII, UTF-8, UTF-16, UTF-32</h2>
+
+<h3>ASCII (American Standard Code for Information Interchange)</h3>
+
+<ul>
+<li><strong>7-Bit-Kodierung</strong>, 128 Zeichen (0–127)</li>
+<li>32 Steuerzeichen (0–31, 127) + 96 druckbare Zeichen (32–126)</li>
+<li><strong>Forensisch relevant:</strong> Strings-Kommando erkennt standardmäßig ASCII-Sequenzen ≥ 4 Zeichen. Viele Logs, Config-Dateien und Protokolle (HTTP-Header) sind ASCII</li>
+</ul>
+
+<h3>UTF-8 (Unicode Transformation Format — 8 Bit)</h3>
+
+<ul>
+<li><strong>Variable Länge:</strong> 1–4 Bytes pro Zeichen</li>
+<li>1 Byte: 0xxxxxxx (ASCII-kompatibel, 0–127)</li>
+<li>2 Bytes: 110xxxxx 10xxxxxx (128–2047, z.B. Umlaute)</li>
+<li>3 Bytes: 1110xxxx 10xxxxxx 10xxxxxx (2048–65535, z.B. CJK-Zeichen)</li>
+<li>4 Bytes: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx (Emoji, seltene Zeichen)</li>
+<li><strong>Dominant in:</strong> Linux, Web (HTML5 Default), JSON, moderne APIs</li>
+</ul>
+
+<h3>UTF-16</h3>
+
+<ul>
+<li><strong>2 oder 4 Bytes</strong> pro Zeichen (meist 2)</li>
+<li>Zeichen im BMP (Basic Multilingual Plane, U+0000–U+FFFF): 2 Bytes direkt</li>
+<li>Zeichen außerhalb BMP: Surrogatpaare (4 Bytes)</li>
+<li><strong>UTF-16 LE (Little Endian):</strong> Windows-native Kodierung! Registry, NTFS-Dateinamen, Windows-API</li>
+<li><strong>UTF-16 BE (Big Endian):</strong> Selten, aber in einigen Netzwerkprotokollen</li>
+</ul>
+
+<h3>UTF-32</h3>
+
+<ul>
+<li><strong>4 Bytes fest</strong> pro Zeichen — jedes Unicode-Zeichen passt direkt</li>
+<li>In der Praxis selten wegen Speicherverschwendung (4× ASCII)</li>
+<li>Wird in einigen internen APIs und Datenbanken verwendet</li>
+</ul>
+
+<h3>BOM (Byte Order Mark)</h3>
+
+<p>Die BOM ist ein optionales Unicode-Zeichen (U+FEFF) am Anfang einer Datei, das die Byte-Reihenfolge anzeigt:</p>
+
+<table class="styled-table">
+<thead><tr><th>Kodierung</th><th>BOM (Hex)</th><th>BOM (Bytes)</th></tr></thead><tbody>
+<tr><td>UTF-8</td><td>EF BB BF</td><td>3 Bytes</td></tr>
+<tr><td>UTF-16 LE</td><td>FF FE</td><td>2 Bytes</td></tr>
+<tr><td>UTF-16 BE</td><td>FE FF</td><td>2 Bytes</td></tr>
+<tr><td>UTF-32 LE</td><td>FF FE 00 00</td><td>4 Bytes</td></tr>
+<tr><td>UTF-32 BE</td><td>00 00 FE FF</td><td>4 Bytes</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Forensik — Windows ist UTF-16 LE:</strong> Die Windows-Registry, NTFS-Dateinamen, Windows Event Logs und viele Windows-APIs verwenden UTF-16 LE. Wenn Sie mit <code>strings</code> auf einem Windows-Image arbeiten, müssen Sie <code>strings -e l image.dd</code> verwenden, um UTF-16 LE Strings zu extrahieren. Andernfalls sehen Sie nur ASCII und übersehen einen Großteil der Windows-spezifischen Strings (Registry-Pfade, Dateinamen, Benutzernamen).</div>
+
+<h2 id="base64-hex">Base64 und Hex-Encoding</h2>
 
 <h3>Base64</h3>
 
-<ul><li>Kodierung, die Binärdaten in ASCII-Zeichen (A-Z, a-z, 0-9, +, /) umwandelt</li>
-<li>Wird häufig in E-Mails (MIME) und Web (Data-URIs, JSON) genutzt</li>
-<li>Endet oft mit <code>=</code> oder <code>==</code> als Padding</li>
-<li>Forensisch relevant: Base64-Blobs in Logdateien, Registry-Exports, Malware-Konfigurationen</li></ul>
+<ul>
+<li>Kodiert Binärdaten in 64 druckbare ASCII-Zeichen: <strong>A–Z, a–z, 0–9, +, /</strong> (und <strong>=</strong> als Padding)</li>
+<li>3 Eingabe-Bytes → 4 Ausgabe-Zeichen (33 % Overhead)</li>
+<li><strong>Padding:</strong> Endet mit <code>=</code> (1 Byte übrig) oder <code>==</code> (2 Bytes übrig)</li>
+</ul>
 
-<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+<table class="styled-table">
+<thead><tr><th>Kontext</th><th>Base64-Verwendung</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td>E-Mail (MIME)</td><td>Anhänge, Bilder in HTML-Mails</td><td>Base64-dekodierte Anhänge in .eml-Dateien</td></tr>
+<tr><td>PowerShell</td><td><code>powershell -enc &lt;Base64&gt;</code></td><td>Malware führt obfuskierten Code aus — dekodieren mit <code>base64 -d</code></td></tr>
+<tr><td>Data URIs</td><td><code>data:image/png;base64,...</code></td><td>Eingebettete Bilder in Webseiten und Phishing-Mails</td></tr>
+<tr><td>JSON/APIs</td><td>Binäre Felder als Base64</td><td>API-Logs, OAuth-Tokens, JWT</td></tr>
+<tr><td>Zertifikate</td><td>PEM-Format (—–BEGIN CERTIFICATE—–)</td><td>TLS-Zertifikate in PCAPs und Logs</td></tr>
+</tbody></table>
 
-<ul><li><code>xxd datei.bin | head</code> — Hex-Dump einer Datei</li>
-<li><code>echo -n "SGVsbG8=" | base64 -d</code> — Base64 dekodieren</li>
-<li><code>python3 -c "print(0x2A)"</code> — Hex zu Dezimal</li>
-<li>Hex-Editoren wie <code>HxD</code> (Windows) oder <code>hexedit</code> (Linux) für manuelle Inspektion</li></ul>
+<pre><code># Base64 in Malware erkennen und dekodieren
+$ echo "powershell -enc SABlAGwAbABvAA==" | grep -oP '(?&lt;=-enc )[A-Za-z0-9+/=]+' | base64 -d
+# → Hello (UTF-16 LE, daher viele 00-Bytes)
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+# Base64 in Logfiles finden (typische Merkmale: lange Strings mit +=/)
+$ grep -oP '[A-Za-z0-9+/=]{40,}' suspicious.log | while read b64; do
+    echo "$b64" | base64 -d 2&gt;/dev/null && echo "---"
+done</code></pre>
 
-<ul><li><a href="https://en.wikipedia.org/wiki/Computer_number_format">Wikipedia: Computer Number Format</a></li>
+<h3>Hex-Encoding</h3>
+
+<ul>
+<li>Jedes Byte wird als zwei Hex-Ziffern dargestellt</li>
+<li>100 % Overhead (1 Byte → 2 Zeichen)</li>
+<li><strong>Verwendung:</strong> Hex-Dumps, Hash-Ausgaben (<code>sha256sum</code>), URL-Encoding (<code>%20</code> = Space)</li>
+<li><strong>Forensik:</strong> Hex-Editing von Magic Bytes, Manipulation von File-Signaturen in Anti-Forensik</li>
+</ul>
+
+<h2 id="endianness">Endianness: Big-Endian vs Little-Endian</h2>
+
+<h3>Konzept</h3>
+
+<p>Endianness definiert die Byte-Reihenfolge bei der Speicherung von Werten, die mehr als ein Byte belegen:</p>
+
+<ul>
+<li><strong>Big-Endian (BE):</strong> Höchstwertiges Byte zuerst („Big End first"). Netzwerk-Byte-Order (TCP/IP), Motorola 68000, SPARC</li>
+<li><strong>Little-Endian (LE):</strong> Niedrigstwertiges Byte zuerst („Little End first"). Intel x86/x86-64 — die dominierende Architektur auf Desktops und Servern</li>
+<li><strong>Bi-Endian:</strong> ARM-Architektur kann beide Modi (standardmäßig LE, aber umschaltbar). Relevant für mobile Geräte und Embedded Systems</li>
+</ul>
+
+<h3>Erkennung in Hex-Dumps</h3>
+
+<pre><code># Beispiel: 32-Bit-Wert 0x12345678 im Speicher
+
+# Big-Endian (Netzwerk-Byte-Order):
+# Adresse:  N    N+1   N+2   N+3
+# Wert:    0x12  0x34  0x56  0x78
+
+# Little-Endian (Intel x86):
+# Adresse:  N    N+1   N+2   N+3
+# Wert:    0x78  0x56  0x34  0x12</code></pre>
+
+<table class="styled-table">
+<thead><tr><th>Kontext</th><th>Endianness</th><th>Forensische Bedeutung</th></tr></thead><tbody>
+<tr><td>TCP/IP-Header</td><td>Big-Endian</td><td>IP-Adressen, Ports in PCAPs — müssen als BE gelesen werden</td></tr>
+<tr><td>NTFS $MFT</td><td>Little-Endian</td><td>Zeitstempel, Dateigrößen, Cluster-Nummern sind LE</td></tr>
+<tr><td>JPEG/EXIF</td><td>Big-Endian (meist)</td><td>EXIF-Header beginnt mit 'MM' (Motorola = BE) oder 'II' (Intel = LE)</td></tr>
+<tr><td>ELF (Linux Binaries)</td><td>LE oder BE</td><td>Byte 5 im ELF-Header: 1 = LE, 2 = BE</td></tr>
+<tr><td>PE (Windows Binaries)</td><td>Little-Endian</td><td>Windows läuft nur auf x86/x86-64 → immer LE</td></tr>
+<tr><td>ARM (Mobile/Embedded)</td><td>Bi-Endian (meist LE)</td><td>Android/iOS sind LE, aber Netzwerkdaten auf ARM können BE sein</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Häufiger Forensik-Fehler:</strong> Rohdaten mit falscher Endianness lesen führt zu völlig falschen Werten. Ein 64-Bit-NTFS-Zeitstempel als Big-Endian gelesen ergibt eine unsinnige Zeit im Jahr 30.000. <strong>Immer die Architektur des Quellsystems berücksichtigen.</strong></div>
+
+<div class="callout tip"><strong>Praktischer Test:</strong> Lesen Sie einen bekannten Wert (z.B. Dateigröße) aus einem Hex-Dump. Wenn <code>00 00 10 00</code> 4096 ergibt, ist es Big-Endian. Wenn <code>00 10 00 00</code> 4096 ergibt, ist es Little-Endian. Python: <code>int.from_bytes(b'\x00\x10\x00\x00', 'big')</code> vs <code>'little'</code>.</div>
+
+<h2 id="bit-operationen">Bit-Operationen: AND, OR, XOR, NOT, Shift</h2>
+
+<h3>Grundoperationen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Operation</th><th>Symbol (C/Python)</th><th>Wahrheitstabelle</th><th>Typische Anwendung</th></tr></thead><tbody>
+<tr><td>AND</td><td><code>&amp;</code></td><td>1 &amp; 1 = 1, sonst 0</td><td>Bitmasken: Flag prüfen, Bit auslesen</td></tr>
+<tr><td>OR</td><td><code>|</code></td><td>0 | 0 = 0, sonst 1</td><td>Flag setzen, Bits kombinieren</td></tr>
+<tr><td>XOR</td><td><code>^</code></td><td>unterschiedlich = 1, gleich = 0</td><td>Verschlüsselung (Malware), Checksummen, Toggling</td></tr>
+<tr><td>NOT</td><td><code>~</code></td><td>~1 = 0, ~0 = 1</td><td>Bit-Invertierung, 1er-Komplement</td></tr>
+<tr><td>Left Shift</td><td><code>&lt;&lt;</code></td><td>Bits nach links, mit 0 auffüllen</td><td>Schnelle Multiplikation mit 2^n</td></tr>
+<tr><td>Right Shift</td><td><code>&gt;&gt;</code></td><td>Bits nach rechts</td><td>Schnelle Division durch 2^n, Bit extrahieren</td></tr>
+</tbody></table>
+
+<h3>Forensische Relevanz von XOR</h3>
+
+<p>XOR ist DIE zentrale Bit-Operation in der Malware-Analyse:</p>
+
+<ul>
+<li><strong>XOR-Verschlüsselung:</strong> Einfachste Form der Obfuskation. Malware XORt Strings und Payloads mit einem Ein-Byte-Schlüssel (<code>data[i] ^ key</code>)</li>
+<li><strong>Erkennung:</strong> XOR-verschlüsselte Daten haben oft eine gleichmäßige Byte-Verteilung (keine dominierenden 0x00-Bytes wie bei Klartext)</li>
+<li><strong>Entschlüsselung:</strong> Da XOR selbstinvers ist (<code>A ^ K ^ K = A</code>), genügt dasselbe XOR erneut</li>
+</ul>
+
+<pre><code># XOR-String-Dekodierung in Python (Malware-Analyse)
+data = bytes.fromhex("2E0A1F00411C130600411B0415001B")
+# Häufigster Byte-Wert in englischen Texten ist 0x20 (Space) oder 0x00 (Null)
+# Brute-Force: Alle 256 möglichen Schlüssel probieren
+for key in range(256):
+    decoded = bytes(b ^ key for b in data)
+    if decoded.isascii() and decoded.isprintable():
+        print(f"Key 0x{key:02X}: {decoded.decode()}")</code></pre>
+
+<h3>Bitmasken in Dateisystemen</h3>
+
+<p>Dateisysteme nutzen Bitmasken extensiv für Flags und Attribute:</p>
+
+<ul>
+<li><strong>NTFS $MFT Attribute:</strong> Bit 0 = Read-Only, Bit 1 = Hidden, Bit 2 = System, Bit 5 = Archive</li>
+<li><strong>Unix-Dateirechte:</strong> <code>rwxr-xr-x</code> = <code>0755</code> oktal = <code>111 101 101</code> binär. Jedes 3er-Bit-Tripel = owner/group/other</li>
+<li><strong>Windows-Registry:</strong> REG_DWORD-Werte mit Bitfeldern (z.B. <code>0x00000001</code> = Enabled)</li>
+</ul>
+
+<pre><code># Bitmasken-Analyse in Python
+attr = 0x22  # NTFS-Attribut: 0010 0010 (Hidden + Archive)
+
+# Flags prüfen
+is_readonly = bool(attr &amp; 0x01)  # False
+is_hidden   = bool(attr &amp; 0x02)  # True
+is_system   = bool(attr &amp; 0x04)  # False
+is_archive  = bool(attr &amp; 0x20)  # True
+
+# Alle gesetzten Bits auflisten
+set_bits = [f"Bit {i}" for i in range(8) if attr &amp; (1 &lt;&lt; i)]
+print(f"Gesetzte Flags: {set_bits}")  # ['Bit 1', 'Bit 5']</code></pre>
+
+<h2 id="praktische-anwendung">Praktische Anwendung / Befehle</h2>
+
+<h3>Hex-Dump-Analyse</h3>
+
+<pre><code># Hex-Dump mit ASCII-Vorschau
+xxd suspicious.bin | head -50
+
+# Hex-Dump ohne Adressen (roh)
+xxd -p image.dd | head -c 256
+
+# Bestimmten Offset anspringen (Byte 512)
+xxd -s 512 -l 64 image.dd
+
+# Hex-Editoren: HxD (Windows), hexedit (Linux), 010 Editor (kommerziell, mit Templates)</code></pre>
+
+<h3>Base64-Analyse</h3>
+
+<pre><code># Dekodieren
+echo "SGVsbG8gV2VsdA==" | base64 -d
+
+# PowerShell -enc entschlüsseln
+echo "powershell -enc SABlAGwAbABvAA==" | sed 's/.*-enc //' | base64 -d
+
+# Base64-Strings in Datei finden
+grep -oP '[A-Za-z0-9+/]{20,}={0,2}' datei.txt | while read b; do echo "$b" | base64 -d 2&gt;/dev/null; done</code></pre>
+
+<h3>Endianness-Konvertierung</h3>
+
+<pre><code># Python: Endianness-Konvertierung
+import struct
+
+# Little-Endian 32-Bit-Wert aus Bytes lesen
+value = struct.unpack('&lt;I', b'\x78\x56\x34\x12')[0]  # → 0x12345678
+
+# In Big-Endian umwandeln
+big_endian = struct.pack('&gt;I', value)  # → b'\x12\x34\x56\x78'
+
+# 64-Bit Windows FILETIME → Unix Timestamp
+filetime = struct.unpack('&lt;Q', data[offset:offset+8])[0]
+unix_ts = (filetime - 116444736000000000) / 10_000_000</code></pre>
+
+<h3>Zahlensystem-Umrechnung CLI</h3>
+
+<pre><code># bash: Schnelle Umrechnungen
+echo $((16#FF))        # Hex → Dez: 255
+echo $((2#1010))       # Bin → Dez: 10
+printf '%x\n' 255      # Dez → Hex: ff
+printf '%o\n' 64       # Dez → Oktal: 100
+
+# Python: Interaktiver Rechner
+python3 -c "print(hex(255), bin(42), oct(64))"
+python3 -c "print(0xFF, 0b1010, 0o377)"</code></pre>
+
+<h2 id="quellen">Quellen / Weiterführendes</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Computer_number_format">Wikipedia: Computer Number Format</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Endianness">Wikipedia: Endianness</a></li>
-<li><a href="https://datatracker.ietf.org/doc/html/rfc4648">Base64 RFC 4648</a></li></ul>
+<li><a href="https://en.wikipedia.org/wiki/IEEE_754">Wikipedia: IEEE 754</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Two%27s_complement">Wikipedia: Two's Complement</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc4648">RFC 4648: Base64, Base32, Base16</a></li>
+<li><a href="https://www.unicode.org/faq/utf_bom.html">Unicode FAQ: UTF-8, UTF-16, UTF-32 & BOM</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows/win32/sysinfo/file-times">Microsoft: FILETIME Structure</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Year_2038_problem">Wikipedia: Year 2038 Problem</a></li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

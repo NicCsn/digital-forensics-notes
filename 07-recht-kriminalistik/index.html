@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recht &amp; Kriminalistik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (17)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details open><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-recht">Recht &amp; Kriminalistik</a> / Uebersicht</span>
+</nav>
+<main><article>
+<h1>Recht &amp; Kriminalistik <span class="diff-badge diff-beginner">Kategorie</span></h1>
+<p>Rechtliche Grundlagen der Cyberkriminalistik: Strafrecht, Grundrechte, DSGVO, Kriminalistik, Tatortarbeit und Eingriffsrecht. Ohne Rechtskenntnis ist jede forensische Analyse wertlos — die gerichtsfeste Verwertbarkeit digitaler Beweismittel haengt von der Einhaltung rechtlicher Vorgaben ab.</p>
+
+<h2>Warum diese Kategorie?</h2>
+<p>Die beste forensische Analyse nutzt nichts, wenn die Beweise vor Gericht nicht verwertbar sind. Diese Kategorie vermittelt das rechtliche Fundament: Wann duerfen Ermittlungsbehoerden Daten erheben? Welche Grundrechte schuetzen Beschuldigte? Wie wird die Chain of Custody dokumentiert, damit sie der richterlichen Pruefung standhaelt? Die Strafprozessordnung (StPO) und das Grundgesetz setzen klare Grenzen — wer sie ignoriert, riskiert Beweisverwertungsverbote.</p>
+<p>Neben dem formellen Recht behandelt diese Kategorie auch die praktische Kriminalistik: Tatortarbeit, Spurensicherung und Asservierung digitaler Beweismittel. Die ethische Dimension rundet das Bild ab — denn technische Machbarkeit ist nicht gleichbedeutend mit rechtlicher und moralischer Zulaessigkeit.</p>
+
+<div class="quick-links">
+  <a href="digitale-beweismittel-grundprinzipien.html" class="quick-card"><strong>Digitale Beweismittel</strong><span>Grundprinzipien der Beweiserhebung: Integritaet, Authentizitaet und gerichtsfeste Dokumentation.</span></a>
+  <a href="strafrecht-allgemeiner-teil.html" class="quick-card"><strong>Strafrecht AT</strong><span>Tatbestand, Rechtswidrigkeit, Schuld — die Grundstruktur der strafrechtlichen Pruefung.</span></a>
+  <a href="kriminalistik-grundlagen.html" class="quick-card"><strong>Kriminalistik</strong><span>Kriminaltechnik und Kriminaltaktik — die wissenschaftlichen Grundlagen der Spurensuche.</span></a>
+</div>
+
+<h2>Alle Notizen in dieser Kategorie</h2>
+<div class="card-grid">
+  <a href="digitale-beweismittel-grundprinzipien.html" class="quick-card"><strong>Digitale Beweismittel: Grundprinzipien</strong><span>Integritaet, Authentizitaet, Nachvollziehbarkeit — was digitale Beweise gerichtsfest macht.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="strafrecht-allgemeiner-teil.html" class="quick-card"><strong>Strafrecht: Allgemeiner Teil</strong><span>Tatbestandsmaessigkeit, Rechtswidrigkeit, Schuld, Versuch, Teilnahme — Strafbarkeitspruefung.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="grundrechte-digital.html" class="quick-card"><strong>Grundrechte im digitalen Raum</strong><span>Art. 10 GG, Art. 13 GG, IT-Grundrecht — Grundrechtsschutz bei digitalen Ermittlungen.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="dsgvo-datenschutz.html" class="quick-card"><strong>DSGVO und Datenschutz</strong><span>Personenbezogene Daten, Auftragsverarbeitung, Betroffenenrechte — Datenschutz in der Forensik.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="kriminalistik-grundlagen.html" class="quick-card"><strong>Kriminalistik: Grundlagen</strong><span>Tatortarbeit, Spurenkunde, Rekonstruktion — kriminalistische Methodik der Beweissicherung.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="tatortarbeit-spurenkunde.html" class="quick-card"><strong>Tatortarbeit und Spurenkunde</strong><span>Digitale Tatorte, Asservierung, Erstzugriff — praktische Tatortarbeit mit IT-Bezug.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="eingriffsrecht-tkue.html" class="quick-card"><strong>Eingriffsrecht: TKUe</strong><span>Telekommunikationsueberwachung, Online-Durchsuchung, Quellen-TKUE — rechtliche Grenzen.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="ethik-informationssicherheit.html" class="quick-card"><strong>Ethik in der Informationssicherheit</strong><span>Berufsethos, Verantwortung, Whistleblowing — ethische Fragestellungen in der Cyberkriminalistik.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="juristische-fallbearbeitung-gutachtenstil.html" class="quick-card"><strong>Juristische Fallbearbeitung</strong><span>Gutachtenstil, Subsumtion, Urteilsanalyse — wie juristische Argumentation funktioniert.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+</div>
+
+<h2>Zentrale Werkzeuge &amp; Ressourcen</h2>
+<table>
+<thead><tr><th>Werkzeug</th><th>Einsatzbereich</th></tr></thead><tbody>
+<tr><td><strong>dejure.org / Buzer</strong></td><td>Online-Gesetzestexte mit Rechtsprechung und Kommentaren</td></tr>
+<tr><td><strong>Chain-of-Custody-Formulare</strong></td><td>Standardisierte Dokumentation der Beweismittelkette</td></tr>
+<tr><td><strong>DSGVO-Text (Art. 1-99)</strong></td><td>Primaerquelle fuer alle datenschutzrechtlichen Fragen</td></tr>
+<tr><td><strong>BSI-Grundschutz</strong></td><td>Standard fuer Informationssicherheit mit rechtlicher Relevanz</td></tr>
+</tbody></table>
+
+<h2>Empfohlener Lernpfad</h2>
+<p>Fuer den Einstieg in die rechtlichen Grundlagen der Cyberkriminalistik empfiehlt sich diese Reihenfolge:</p>
+<ol>
+<li><strong>Digitale Beweismittel: Grundprinzipien</strong> — Integritaet, Authentizitaet, Nachvollziehbarkeit — die Basis fuer gerichtsfeste digitale Beweise.</li>
+<li><strong>Kriminalistik: Grundlagen</strong> — Kriminaltechnik und Kriminaltaktik — wie Spuren gesichert und ausgewertet werden.</li>
+<li><strong>Tatortarbeit &amp; Spurenkunde</strong> — Der digitale Tatort: Erstzugriff, Asservierung, Dokumentation.</li>
+<li><strong>Strafrecht AT</strong> — Tatbestand, Rechtswidrigkeit, Schuld — die Grundstruktur des deutschen Strafrechts verstehen.</li>
+<li><strong>Grundrechte im digitalen Raum</strong> — IT-Grundrecht, Art. 10 GG, Art. 13 GG — die verfassungsrechtlichen Schranken digitaler Ermittlungen.</li>
+<li><strong>Juristische Fallbearbeitung</strong> — Gutachtenstil und Subsumtionstechnik — wie juristische Argumentation strukturiert wird.</li>
+<li><strong>DSGVO und Datenschutz</strong> — Personenbezogene Daten, Auftragsverarbeitung — Datenschutz compliance in der Forensik.</li>
+<li><strong>Fortgeschrittene Themen</strong> — Eingriffsrecht (TKUe, Online-Durchsuchung) und Ethik in der Informationssicherheit.</li>
+</ol>
+
+<h2>Verwandte Kategorien</h2>
+<ul>
+<li><a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> — Forensischer Prozess, Dokumentation, Chain of Custody</li>
+<li><a href="../05-it-security/index.html">IT-Security</a> — Schutzziele, Risikoanalyse, Incident Management</li>
+<li><a href="../06-osint/index.html">OSINT</a> — Rechtliche Grenzen offener Recherchen</li>
+</ul>
+
+<h2>Haeufige Fragen</h2>
+<details class="fold"><summary>Macht ein Fehler in der Chain of Custody die Beweise unverwertbar?</summary>
+<p>Nicht zwingend — aber es ist ein erhebliches Risiko. In Deutschland gilt der Grundsatz der freien richterlichen Beweiswuerdigung: Das Gericht entscheidet, ob es einem Beweismittel glaubt. Eine lueckenhafte Chain of Custody erschuettert die Glaubwuerdigkeit — die Verteidigung wird argumentieren, dass die Beweise manipuliert worden sein koennten. Ein absolutes Beweisverwertungsverbot tritt nur bei schwerwiegenden, unheilbaren Rechtsverstoessen ein (z.B. Folter, Kernbereich privater Lebensgestaltung). In der Praxis: Dokumentiere die Chain of Custody so, als wuerde dein schaerfster Kritiker sie ueberpruefen.</p></details>
+<details class="fold"><summary>Was ist der Unterschied zwischen TKUe und Online-Durchsuchung?</summary>
+<p>Die <strong>Telekommunikationsueberwachung</strong> (TKUe, Par. 100a ff. StPO) erfasst laufende Kommunikation — also das, was gerade ueber die Leitung geht. Die <strong>Online-Durchsuchung</strong> (Par. 100b StPO) greift auf gespeicherte Daten auf dem Zielsystem zu — also das, was auf der Festplatte liegt. Die Online-Durchsuchung ist der schwerwiegendere Eingriff, da sie in den Kernbereich privater Lebensgestaltung eindringen kann. Beide Massnahmen unterliegen strengen Voraussetzungen (Richtervorbehalt, schwere Straftat, Subsidiaritaet).</p></details>
+<details class="fold"><summary>Wie wirkt sich die DSGVO auf die forensische Praxis aus?</summary>
+<p>Die DSGVO gilt immer dann, wenn personenbezogene Daten verarbeitet werden — und fast alle forensischen Analysen betreffen personenbezogene Daten. Relevante Prinzipien: Zweckbindung (Daten nur fuer den Ermittlungszweck nutzen), Datenminimierung (nicht mehr Daten erheben als noetig), Speicherbegrenzung (Daten nach Abschluss loeschen). Wichtig: Der Beschuldigte hat ein Auskunftsrecht nach Art. 15 DSGVO ueber die zu seiner Person gespeicherten Daten — Ermittlungsbehoerden koennen dies unter bestimmten Umstaenden beschraenken (Par. 34 BDSG).</p></details>
+
+<div style="margin-top:32px"></div>
+</article></main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">&#x2191;</button>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

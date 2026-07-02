@@ -7,79 +7,390 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Datenträger-Forensik: Partitionen und Dateisysteme</span>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Datenträger-Forensik: Partitionen und Dateisysteme</span>
 </nav>
 <main>
 <article>
 <h1>Datenträger-Forensik: Partitionen und Dateisysteme <span class="diff-badge diff-intermediate">Mittel</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#partitionstabellen">Partitionstabellen im Detail</a></li><li><a href="#tsk-workflow">TSK (Sleuth Kit) Workflow</a></li><li><a href="#lvm-raid">LVM und RAID Forensik</a></li><li><a href="#slack-space">Slack Space</a></li><li><a href="#orphaned-files">Orphaned Files &amp; Unallocated Space</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
 
 <h2 id="kurz-berblick">Kurzüberblick</h2>
 
-<p>Die Datenträger-Forensik analysiert die Struktur von Festplatten, SSDs und USB-Sticks unterhalb der Dateiebene. Partitionstabellen, Bootsektoren, Cluster Chains, Slack Space — hier findest du Daten, die kein Dateibrowser zeigt.</p>
+<p>Die Datenträger-Forensik analysiert die Struktur von Festplatten, SSDs und USB-Sticks <strong>unterhalb der Dateiebene</strong>. Partitionstabellen, Bootsektoren, Cluster Chains, Slack Space — hier findest du Daten, die kein Dateibrowser zeigt. Die Analyse beginnt immer auf der tiefsten Ebene: dem physischen Sektor.</p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>Grundprinzip:</strong> Ein Dateisystem ist eine Datenbank auf Rohdaten. Wer nur den Datei-Explorer benutzt, sieht nur, was die Datenbank aktuell referenziert — nicht das, was tatsächlich auf der Platte liegt.</div>
 
-<h3>Partitionstabellen</h3>
+<h2 id="partitionstabellen">Partitionstabellen im Detail</h2>
 
-<p>#### MBR (Master Boot Record)</p>
-<ul><li>Sektor 0: Bootloader-Code + Partitionstabelle (4 primäre Partitionen)</li>
-<li>Max. Adressierung: 2 TB (mit 512-Byte-Sektoren)</li>
-<li>Gelöschte Partition: Partitionstyp auf <code>00</code> gesetzt → Header rekonstruierbar</li></ul>
+<h3>MBR (Master Boot Record) — Sektor 0</h3>
 
-<p>#### GPT (GUID Partition Table)</p>
-<ul><li>Teil des UEFI-Standards, moderner Ersatz für MBR</li>
-<li>Schütztabelle am Anfang UND Ende (Redundanz!)</li>
-<li>Max. 128 Partitionen, Adressierung bis 9.4 Zettabytes</li>
-<li>Sehr forensisch freundlich: GPT-Header am Ende als Backup</li></ul>
-
-<h3>Dateisystem-Analyse</h3>
+<p>Der MBR belegt genau <strong>512 Bytes</strong> im ersten Sektor (LBA 0) und ist in drei Bereiche aufgeteilt:</p>
 
 <table class="styled-table">
-<thead><tr><th>Dateisystem</th><th>Wichtige Strukturen</th><th>Forensische Goldgruben</th></tr></thead><tbody>
-<tr><td>**NTFS**</td><td>MFT, $Bitmap, $LogFile, $UsnJrnl</td><td>Gelöschte MFT-Einträge, USN-Journal (Historie)</td></tr>
-<tr><td>**FAT**</td><td>Bootsektor, FAT-Tabelle, Root-Verzeichnis</td><td>Als gelöscht markierte Einträge (`E5` im ersten Byte)</td></tr>
-<tr><td>**ext4**</td><td>Superblock, Inode-Tabelle, Journal</td><td>Inodes gelöschter Dateien, Journal-Wiederholung</td></tr>
-<tr><td>**APFS**</td><td>Container, Volumes, B-Trees, Snapshots</td><td>Snapshots = Zeitmaschine-Effekte</td></tr>
+<thead><tr><th>Offset</th><th>Größe</th><th>Inhalt</th></tr></thead><tbody>
+<tr><td>0x000 – 0x1BD</td><td>446 Bytes</td><td><strong>Bootstrap-Code</strong> (Bootloader Stage 1)</td></tr>
+<tr><td>0x1BE – 0x1FD</td><td>64 Bytes</td><td><strong>Partitionstabelle</strong> (4 Einträge à 16 Bytes)</td></tr>
+<tr><td>0x1FE – 0x1FF</td><td>2 Bytes</td><td><strong>Boot-Signatur</strong> <code>0x55AA</code></td></tr>
 </tbody></table>
 
-<h3>Slack Space — Daten in der Lücke</h3>
+<p>Jeder der 4 Partitionseinträge (16 Bytes) enthält:</p>
+<ul>
+  <li><strong>Byte 0:</strong> Boot-Flag (0x80 = aktiv/bootable, 0x00 = inaktiv)</li>
+  <li><strong>Byte 1–3:</strong> CHS-Adresse des ersten Sektors</li>
+  <li><strong>Byte 4:</strong> Partitionstyp (0x07 = NTFS, 0x83 = Linux, 0x82 = Swap, 0x05 = erweiterte Partition)</li>
+  <li><strong>Byte 5–7:</strong> CHS-Adresse des letzten Sektors</li>
+  <li><strong>Byte 8–11:</strong> LBA des ersten Sektors (Startsektor)</li>
+  <li><strong>Byte 12–15:</strong> Anzahl der Sektoren (Größe)</li>
+</ul>
 
-<p><strong>File Slack:</strong></p>
-<ul><li>Ein File belegt ganze Cluster, auch wenn es kleiner ist</li>
-<li>Der Rest des letzten Clusters ist "Slack Space" — enthält Daten der Vorgänger-Datei</li></ul>
+<div class="callout warning"><strong>Forensische Einschränkung MBR:</strong> Maximal 2 TB adressierbar (512-Byte-Sektoren × 2³² Sektoren). Größere Platten benötigen zwingend GPT. Gelöschte Partition: Partitionstyp auf <code>0x00</code> gesetzt, Startsektor und Größe bleiben meist erhalten → wiederherstellbar.</div>
 
-<p><strong>RAM Slack:</strong></p>
-<ul><li>Bereich zwischen Dateiende und Sektor-Ende (Linux/Windows schreibt in 512-Byte-Blöcken)</li>
-<li>Die übrigen Bytes werden mit <code>00</code> oder Zufallsdaten aus dem RAM aufgefüllt — letztere können Beweise sein</li></ul>
+<h3>GPT (GUID Partition Table) — UEFI-Standard</h3>
+
+<p>GPT ist der moderne Ersatz für MBR und Teil des UEFI-Standards. Die Struktur verteilt sich über mehrere LBAs:</p>
+
+<table class="styled-table">
+<thead><tr><th>LBA</th><th>Inhalt</th><th>Details</th></tr></thead><tbody>
+<tr><td>0</td><td><strong>Protective MBR</strong></td><td>Ein MBR-kompatibler Eintrag, der die ganze Platte als eine Partition vom Typ <code>0xEE</code> markiert — schützt vor älteren Tools, die GPT nicht verstehen</td></tr>
+<tr><td>1</td><td><strong>GPT-Header</strong></td><td>Enthält Signatur ("EFI PART"), Revision, Header-Größe, CRC32, Anzahl der Partitionseinträge, Größe pro Eintrag</td></tr>
+<tr><td>2–33</td><td><strong>Partitionseinträge</strong></td><td>128 Einträge à 128 Bytes (standardmäßig, konfigurierbar). Jeder Eintrag: Typ-GUID, Unique-GUID, Start/End LBA, Attribute, Name (36 UTF-16 Zeichen)</td></tr>
+<tr><td>letzte 34</td><td><strong>Backup</strong></td><td>Letzte 33 Sektoren enthalten Backup-Header und Backup-Einträge — Redundanz am Plattenende</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Forensisch relevant:</strong> GPT speichert Header UND Partitionseinträge doppelt (Anfang + Ende der Platte). Wurde die primäre GPT zerstört, kann das Backup am Plattenende rekonstruiert werden. Tools: <code>gdisk</code> kann Backup wiederherstellen.</div>
+
+<h2 id="tsk-workflow">TSK (Sleuth Kit) Workflow</h2>
+
+<p>Der forensische Analyse-Workflow mit TSK folgt einer festen Reihenfolge — von grob nach fein:</p>
+
+<h3>1. mmstat — Welcher Partitionstyp?</h3>
+<pre><code>mmstat image.dd
+# Ausgabe: dos  → MBR-Partitionstabelle
+# Ausgabe: gpt  → GPT-Partitionstabelle
+# Ausgabe: mac  → Apple Partition Map</code></pre>
+<p>Bestimmt den Typ der Partitionstabelle, ohne das Image zu verändern.</p>
+
+<h3>2. mmls — Partitionen auflisten</h3>
+<pre><code>mmls image.dd
+# Ausgabe:
+# Slot  Start    End      Length   Description
+# 00:   Meta     0000000000  0000000000  0000000001  Primary Table (#0)
+# 01:   -----    0000000000  0000002047  0000002048  Unallocated
+# 02:   00:00    0000002048  0976560127  0976558080  NTFS / exFAT (0x07)
+# 03:   00:01    0976560128  1953523711  0976963584  Linux (0x83)</code></pre>
+<p>Der entscheidende Wert ist <strong>Start</strong> — der Offset in Sektoren, ab dem die Partition beginnt (hier: 2048).</p>
+
+<h3>3. fsstat — Dateisystem-Details</h3>
+<pre><code>fsstat -o 2048 image.dd
+# Ausgabe u.a.:
+# File System Type: NTFS
+# Cluster Size: 4096
+# Total Clusters: 122069760
+# MFT Start: 786432</code></pre>
+<p>Liefert Cluster-Größe, MFT-Position, Journal-Status, letzter Check — die Basis für alle weiteren Analysen.</p>
+
+<h3>4. fls — Dateien auflisten (auch gelöschte)</h3>
+<pre><code># Alle Dateien rekursiv
+fls -r -o 2048 image.dd
+
+# Nur gelöschte Dateien
+fls -d -r -o 2048 image.dd
+
+# Zeitstempel (m = modified, a = accessed, c = changed)
+fls -m "/" -r -o 2048 image.dd > bodyfile</code></pre>
+<p>Gelöschte Dateien erkennt man am <code>*</code> (Stern) vor dem Dateinamen oder an der <code>(deleted)</code>-Markierung.</p>
+
+<h3>5. icat — Datei-Inhalt extrahieren</h3>
+<pre><code># Datei per Inode-Nummer extrahieren (Inode aus fls-Ausgabe)
+icat -o 2048 image.dd 42 > wiederhergestellt.txt
+
+# Gelöschte Datei per MFT-Eintrag (NTFS)
+icat -o 2048 image.dd 256-128-3 > geloescht.docx</code></pre>
+
+<h3>6. istat — Metadaten einer Inode / eines MFT-Eintrags</h3>
+<pre><code>istat -o 2048 image.dd 42
+# Zeigt: Größe, Zeitstempel, Cluster-Runlist, Attribute, Berechtigungen</code></pre>
+
+<h2 id="lvm-raid">LVM und RAID Forensik</h2>
+
+<h3>LVM (Logical Volume Manager) — Linux</h3>
+<p>LVM abstrahiert physische Partitionen in einer Schichtenarchitektur:</p>
+<ol>
+  <li><strong>PV (Physical Volume):</strong> Physische Partition, markiert mit LVM-Signatur</li>
+  <li><strong>VG (Volume Group):</strong> Fasst mehrere PVs zu einem Pool zusammen</li>
+  <li><strong>LV (Logical Volume):</strong> Wird aus dem VG-Pool alloziert — das eigentliche "Dateisystem-Gerät"</li>
+</ol>
+
+<div class="callout warning"><strong>Herausforderung:</strong> TSK kann LVM nicht direkt lesen. Du musst LV aus dem Image assemblieren: <code>losetup</code> + <code>vgscan</code> + <code>vgchange -ay</code> oder spezielle Tools wie <code>lvm2</code> im Read-Only-Modus.</div>
+
+<pre><code># LVM-Scan auf Image
+losetup -f --show -r image.dd    # → /dev/loop0
+pvscan
+vgscan
+vgchange -ay --ignorelockingfailure
+lvscan                           # → /dev/vg0/root
+# Dann TSK auf /dev/vg0/root anwenden</code></pre>
+
+<h3>RAID — Redundant Array of Independent Disks</h3>
+<table class="styled-table">
+<thead><tr><th>RAID-Level</th><th>Striping</th><th>Forensische Rekonstruktion</th></tr></thead><tbody>
+<tr><td>RAID 0</td><td>Blockweise, kein Mirror</td><td>Reihenfolge + Stripe-Größe ermitteln (oft 64 KB oder 128 KB), dann mit <code>mdadm --build</code> assemblieren</td></tr>
+<tr><td>RAID 1</td><td>Kein Striping, Mirror</td><td>Beide Platten identisch — eine reicht. Achtung: unterschiedliche Versionen möglich</td></tr>
+<tr><td>RAID 5</td><td>Striping + Parität</td><td>Eine Platte darf fehlen. Stripe-Größe + Rotation (left/right sync/async) ermitteln. <code>mdadm --build</code></td></tr>
+<tr><td>RAID 10</td><td>Mirror + Stripe</td><td>Kombination aus RAID 1 und 0 — zuerst Spiegel, dann Stripe</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Kritisch:</strong> Falsche Stripe-Größe oder falsche Platten-Reihenfolge führt zu komplett unbrauchbaren Ergebnissen. Vor der Rekonstruktion: Superblock jeder Platte mit <code>mdadm --examine</code> analysieren. Dokumentieren, welche Platte an welchem Port hing.</div>
+
+<h2 id="slack-space">Slack Space — Daten in der Lücke</h2>
+
+<h3>File Slack</h3>
+<p>Dateisysteme allozieren Speicher in Clustern, nicht bytegenau. Eine 1-Byte-Datei auf NTFS mit 4 KB Clustern belegt einen ganzen Cluster (4096 Bytes). Die 4095 ungenutzten Bytes sind <strong>File Slack</strong>.</p>
+
+<div class="callout info"><strong>Berechnung:</strong> File Slack = Cluster-Größe − (Dateigröße mod Cluster-Größe)<br>
+Beispiel: Datei 1500 Bytes, Cluster 4096 Bytes → Slack = 4096 − 1500 = <strong>2596 Bytes</strong></div>
+
+<h3>RAM Slack</h3>
+<p>File Slack wird weiter unterteilt:</p>
+<ul>
+  <li><strong>RAM Slack:</strong> Der Bereich vom Dateiende bis zum Ende des letzten von der Datei belegten <em>Sektors</em> (512 Bytes). Wird mit Daten aus dem RAM-Puffer des Betriebssystems aufgefüllt.</li>
+  <li><strong>Drive Slack:</strong> Die restlichen Sektoren des Clusters, die nie von der Datei beschrieben wurden. Enthält Daten der Vorgängerdatei.</li>
+</ul>
+
+<table class="styled-table">
+<thead><tr><th>Begriff</th><th>Bereich</th><th>Inhalt</th><th>Forensischer Wert</th></tr></thead><tbody>
+<tr><td>RAM Slack</td><td>Dateiende bis Sektorende</td><td>RAM-Schnipsel, Pufferreste</td><td>Kann Passwörter, Keys, Klartexte enthalten</td></tr>
+<tr><td>Drive Slack</td><td>Sektorende bis Clusterende</td><td>Daten der Vorgängerdatei</td><td>Gelöschte Dokumente, Fragmente alter Dateien</td></tr>
+</tbody></table>
+
+<pre><code># Slack Space mit blkls extrahieren
+blkls -s image.dd > slackspace.bin
+
+# Dann carving auf der slackspace.bin
+photorec slackspace.bin</code></pre>
+
+<h2 id="orphaned-files">Orphaned Files &amp; Unallocated Space</h2>
 
 <h3>Unallocated Space</h3>
+<p>Der Bereich des Datenträgers, der laut Dateisystem keiner aktiven Datei zugeordnet ist:</p>
+<ul>
+  <li><strong>Nicht partitionierter Bereich:</strong> Zwischen Partitionen oder vor der ersten / nach der letzten Partition</li>
+  <li><strong>Nicht allozierte Cluster:</strong> Innerhalb einer Partition — Cluster, die nicht von $Bitmap (NTFS) oder der Block-Bitmap (ext4) als belegt markiert sind</li>
+  <li><strong>Enthält:</strong> Gelöschte Dateien, temporäre Dateien, alte Partitionen, Druck-Spooler-Daten</li>
+</ul>
 
-<ul><li>Bereich, der keiner aktiven Datei zugeordnet ist</li>
-<li>Enthält gelöschte Dateien, alte Partitionen, temporäre Daten</li>
-<li>Hier arbeitet File Carving</li></ul>
+<pre><code># Unallocated Space extrahieren (TSK)
+blkls -o 2048 image.dd > unallocated.bin
 
-<h3>Sleuth Kit (TSK) — Standardwerkzeuge</h3>
+# Nur den unallocierten Bereich (nicht allozierte Cluster)
+blkls -A -o 2048 image.dd > unalloc_only.bin</code></pre>
 
-<pre><code>fsstat -o 2048 image.dd # Dateisystem-Info (Offset der Partition)
-fls -r -o 2048 image.dd # Rekursives File Listing (auch gelöschte!)
-icat -o 2048 image.dd 5  # Datei-Inhalt per Inode extrahieren</code></pre>
+<h3>Orphaned Files</h3>
+<p>Orphaned Files sind Dateien, deren Inhalt noch auf der Platte existiert, deren Metadaten (MFT-Eintrag, Inode) aber <strong>gelöscht</strong> wurden. Sie sind nur noch durch File Carving auffindbar:</p>
+<ul>
+  <li>Die Clusters der Datei sind im $Bitmap als "frei" markiert</li>
+  <li>Die Clusters wurden noch nicht überschrieben</li>
+  <li>Carving-Tools durchsuchen den Rohdatenstrom nach Magic Bytes (Header/Footer)</li>
+</ul>
 
-<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+<table class="styled-table">
+<thead><tr><th>Methode</th><th>Tool</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td>Header/Footer-Carving</td><td>foremost</td><td>Extrahiert Dateien anhand bekannter Magic Bytes (FFD8 für JPEG, 25 50 44 46 für PDF)</td></tr>
+<tr><td>File-Structure-Carving</td><td>scalpel</td><td>Wie foremost, aber mit konfigurierbarer Datenbank</td></tr>
+<tr><td>Semantisches Carving</td><td>bulk_extractor</td><td>Extrahiert semantische Daten (E-Mails, URLs, Kreditkartennummern) unabhängig vom Dateiformat</td></tr>
+<tr><td>Fragment-Carving</td><td>PhotoRec</td><td>Rekonstruiert fragmentierte Dateien durch Validierung interner Strukturen</td></tr>
+</tbody></table>
 
-<ul><li><code>mmls</code> → Offset der Hauptpartition finden (z.B. startet bei Sektor 2048)</li>
-<li>Mit Offset arbeiten: <code>fls -o 2048 image.dd</code></li>
-<li>Detaillierte Analyse: <code>fsstat -o 2048 image.dd</code> → Cluster-Größe, Block-Count, Journal-Info</li>
-<li>Alle gelöschten Dateien: <code>fls -d -r -o 2048 image.dd</code></li></ul>
+<h2 id="praktische-anwendung">Praktische Anwendung: Vollständiger TSK-Workflow</h2>
+
+<p>Ein forensisches Image <code>asservat01.dd</code> wurde erstellt und per SHA-256 verifiziert. Die Analyse läuft wie folgt:</p>
+
+<pre><code># Schritt 1: Partitionstyp erkennen
+mmstat asservat01.dd
+# → dos
+
+# Schritt 2: Partitionen auflisten
+mmls asservat01.dd
+# Slot  Start    End      Length   Description
+# 02:   00:00    0000002048  0976560127  0976558080  NTFS (0x07)
+# 03:   00:01    0976560128  1953523711  0976963584  Linux (0x83)
+
+# Schritt 3: Dateisystem-Info (NTFS-Partition bei Offset 2048)
+fsstat -o 2048 asservat01.dd
+# Cluster Size: 4096, MFT Start: 786432
+
+# Schritt 4: Dateiliste erstellen (inkl. Zeitstempel)
+fls -m "/" -r -o 2048 asservat01.dd > bodyfile_ntfs.txt
+
+# Schritt 5: Timeline generieren
+mactime -b bodyfile_ntfs.txt -z UTC 2025-03-15 > timeline.csv
+
+# Schritt 6: Gelöschte Dateien identifizieren
+fls -d -r -o 2048 asservat01.dd > geloescht.txt
+
+# Schritt 7: Verdächtige Dateien extrahieren
+# (Angenommen Inode 55555 ist eine verdächtige .docx)
+icat -o 2048 asservat01.dd 55555 > verdacht.docx
+
+# Schritt 8: Unallocated Space extrahieren für Carving
+blkls -o 2048 asservat01.dd > unalloc.bin
+foremost -t all -o carved_output/ unalloc.bin
+
+# Schritt 9: Zweite Partition (ext4 bei Offset 976560128)
+fsstat -o 976560128 asservat01.dd
+fls -m "/" -r -o 976560128 asservat01.dd >> bodyfile_linux.txt</code></pre>
+
+<div class="callout tip"><strong>Praxis-Tipp:</strong> Immer zuerst <code>fsstat</code> aufrufen, um die Cluster-Größe zu erfahren. Viele TSK-Befehle verwenden intern Clusternummern — wenn du die falsche Cluster-Größe annimmst, kalkulierst du falsche Offsets.</div>
 
 <h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
 
-<ul><li>Carrier, B.: File System Forensic Analysis</li>
-<li><a href="https://wiki.sleuthkit.org/">Sleuth Kit Wiki</a></li></ul>
+<ul>
+  <li>Carrier, B.: <em>File System Forensic Analysis</em>, Addison-Wesley, 2005</li>
+  <li><a href="https://wiki.sleuthkit.org/">Sleuth Kit Wiki — offizielles TSK-Handbuch</a></li>
+  <li><a href="https://uefi.org/specifications">UEFI Specification — Kapitel 5: GUID Partition Table</a></li>
+  <li>NIST SP 800-86: Guide to Integrating Forensic Techniques into Incident Response</li>
+  <li><a href="https://github.com/sleuthkit/sleuthkit">TSK GitHub Repository</a></li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

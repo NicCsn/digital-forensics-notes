@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grundlagen der Informatik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details open><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (17)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../01-grundlagen/index.html">Grundlagen</a> / Übersicht</span>
+</nav>
+<main><article>
+<h1>Grundlagen der Informatik <span class="diff-badge diff-beginner">Kategorie</span></h1>
+<p>Fundamentale Informatik-Konzepte, die fuer die Digitale Forensik relevant sind: Zahlensysteme, Rechnerarchitektur, Algorithmen, Datenstrukturen und Programmierung. Ohne ein solides Verstaendnis dieser Grundlagen lassen sich forensische Werkzeuge und Methoden nur oberflaechlich anwenden.</p>
+
+<h2>Warum diese Kategorie?</h2>
+<p>Die Informatik-Grundlagen sind das Fundament jeder forensischen Analyse. Wer versteht, wie Daten im Speicher liegen (Endianness, Hexadezimal), wie Programme ausgefuehrt werden (Von-Neumann-Architektur) und wie Algorithmen Daten verarbeiten (O-Notation), kann forensische Artefakte auf Bitebene interpretieren. Python ist dabei das Schweizer Taschenmesser: ob Logfile-Parsing, Hash-Berechnung oder Malware-Analyse — mit Python automatisierst du wiederkehrende Aufgaben und erstellst eigene Analysewerkzeuge.</p>
+<p>Diese Kategorie richtet sich an Einsteiger ohne tiefe Informatik-Vorkenntnisse und bereitet gezielt auf die technischen Anforderungen der weiteren forensischen Fachkategorien vor. Wer die Grundlagen beherrscht, wird in Betriebssystemen, Netzwerken und Forensik-Methoden deutlich schneller vorankommen.</p>
+
+<div class="quick-links">
+  <a href="rechnerarchitektur-von-neumann.html" class="quick-card"><strong>Rechnerarchitektur</strong><span>CPU, Speicher und das Von-Neumann-Prinzip — die Hardware-Grundlage jeder forensischen Analyse.</span></a>
+  <a href="zahlensysteme-und-kodierung.html" class="quick-card"><strong>Zahlensysteme</strong><span>Binaer, Hexadezimal, Base64 — Kodierung verstehen, um Rohdaten zu interpretieren.</span></a>
+  <a href="python-grundlagen.html" class="quick-card"><strong>Python-Grundlagen</strong><span>Scripting mit Python: das Schweizer Taschenmesser fuer forensische Automatisierung.</span></a>
+</div>
+
+<h2>Alle Notizen in dieser Kategorie</h2>
+<div class="card-grid">
+  <a href="rechnerarchitektur-von-neumann.html" class="quick-card"><strong>Rechnerarchitektur: Von Neumann</strong><span>CPU, Speicherhierarchie und das Von-Neumann-Prinzip — die Hardware-Grundlage.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="zahlensysteme-und-kodierung.html" class="quick-card"><strong>Zahlensysteme und Kodierung</strong><span>Binaer, Hex, Oktal, Base64, Endianness — wie Daten im Speicher wirklich aussehen.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="algorithmen-und-komplexitaet.html" class="quick-card"><strong>Algorithmen und Komplexitaet</strong><span>Such- und Sortieralgorithmen, O-Notation — Effizienz bei grossen forensischen Datensaetzen.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="datenstrukturen.html" class="quick-card"><strong>Datenstrukturen</strong><span>Arrays, Listen, Hashtabellen, Baeume — wie forensische Tools Daten organisieren.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="programmierparadigmen.html" class="quick-card"><strong>Programmierparadigmen</strong><span>Imperativ, deklarativ, funktional, OOP — Denkmodelle hinter forensischen Werkzeugen.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="python-grundlagen.html" class="quick-card"><strong>Python-Grundlagen</strong><span>Datentypen, Schleifen, Funktionen — Scripting-Grundlagen fuer forensische Automatisierung.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="oop-klassen-vererbung.html" class="quick-card"><strong>OOP: Klassen und Vererbung</strong><span>Objektorientierte Programmierung — Grundlage fuer komplexe forensische Frameworks.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="softwareentwicklungsprozess.html" class="quick-card"><strong>Softwareentwicklungsprozess</strong><span>Vorgehensmodelle, Versionskontrolle, Testing — Qualitaetssicherung in der Forensik.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+</div>
+
+<h2>Zentrale Werkzeuge</h2>
+<table>
+<thead><tr><th>Werkzeug</th><th>Einsatzbereich</th></tr></thead><tbody>
+<tr><td><strong>Python 3</strong></td><td>Universelle Skriptsprache fuer Parsing, Automatisierung und Analyse</td></tr>
+<tr><td><strong>CyberChef</strong></td><td>Datenkodierung/-dekodierung: Base64, Hex, Binaer — visuell und interaktiv</td></tr>
+<tr><td><strong>ImHex / HxD</strong></td><td>Hex-Editoren fuer die direkte Inspektion von Rohdaten auf Bitebene</td></tr>
+<tr><td><strong>Jupyter Notebooks</strong></td><td>Interaktive Python-Umgebung fuer explorative Datenanalyse</td></tr>
+</tbody></table>
+
+<h2>Empfohlener Lernpfad</h2>
+<p>Fuer Einsteiger in die Informatik-Grundlagen empfiehlt sich diese Reihenfolge:</p>
+<ol>
+<li><strong>Rechnerarchitektur</strong> — Hardware verstehen, bevor man Software analysiert. Die Von-Neumann-Architektur erklaert, wie Daten im Speicher liegen.</li>
+<li><strong>Zahlensysteme und Kodierung</strong> — Binaer, Hexadezimal und Base64 sind die Sprache, in der forensische Tools Rohdaten praesentieren.</li>
+<li><strong>Python-Grundlagen</strong> — Mit Python automatisierst du wiederkehrende Analyseaufgaben und schreibst eigene forensische Skripte.</li>
+<li><strong>Algorithmen &amp; Datenstrukturen</strong> — Wer grosse Datenmengen forensisch auswertet, muss effiziente Such- und Sortierverfahren kennen.</li>
+<li><strong>Programmierparadigmen</strong> — Verstehe, wie forensische Frameworks wie Volatility oder Autopsy intern aufgebaut sind.</li>
+<li><strong>OOP: Klassen und Vererbung</strong> — Objektorientierung ist das dominierende Paradigma in forensischen Werkzeugen und Bibliotheken.</li>
+<li><strong>Softwareentwicklungsprozess</strong> — Versionskontrolle und Testing sind essenziell fuer reproduzierbare forensische Analysen.</li>
+</ol>
+
+<h2>Verwandte Kategorien</h2>
+<ul>
+<li><a href="../02-betriebssysteme/index.html">Betriebssysteme</a> — Forensische Spurensuche in Windows, Linux, macOS</li>
+<li><a href="../03-netzwerke/index.html">Netzwerke</a> — Netzwerkprotokolle und Paketanalyse</li>
+<li><a href="../05-it-security/index.html">IT-Security</a> — Kryptografie und Sicherheitskonzepte</li>
+</ul>
+
+<h2>Haeufige Fragen</h2>
+<details class="fold"><summary>In welcher Reihenfolge sollte ich die Notizen lesen?</summary>
+<p>Folge dem oben genannten Lernpfad. Starte mit Rechnerarchitektur und Zahlensystemen — diese Konzepte sind die Basis fuer alles Weitere. Python-Grundlagen kannst du parallel lernen und direkt in kleinen Analyse-Skripten anwenden.</p></details>
+<details class="fold"><summary>Welche Vorkenntnisse brauche ich fuer diese Kategorie?</summary>
+<p>Keine. Diese Kategorie ist bewusst als Einstieg konzipiert. Ein grundlegendes mathematisches Verstaendnis (Mittelstufe) ist hilfreich, aber nicht zwingend erforderlich. Alle Konzepte werden von Grund auf erklaert.</p></details>
+<details class="fold"><summary>Warum ist Python fuer die Forensik so wichtig?</summary>
+<p>Python ist die Lingua Franca der Digitalen Forensik. Die meisten Open-Source-Forensik-Tools (Volatility, Autopsy-Plugins, Plaso) sind in Python geschrieben. Mit Python kannst du Logfiles parsen, Hashes berechnen, Metadaten extrahieren und Analyse-Workflows automatisieren. Zudem ist Python durch seine lesbare Syntax ideal, um forensische Prozesse zu dokumentieren — der Code ist selbsterklaerend.</p></details>
+
+<div style="margin-top:32px"></div>
+</article></main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plaso Parser Plugin — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../index.html">Tools</a> / Plaso Parser Plugin</span>
+</nav>
+<main><article>
+
+<h1>Plaso Parser Plugin <span class="diff-badge diff-intermediate">Mittel</span></h1>
+
+<h2>Was ist Plaso?</h2>
+
+<p><strong>Plaso</strong> (Plaso Langar Að Safna Öllu, islaendisch fuer "log2timeline") ist das Standard-Framework zur Erstellung von <strong>Super-Timelines</strong> in der Digitalen Forensik. Es extrahiert Zeitstempel aus hunderten verschiedener Datenquellen (EventLogs, Registry, Prefetch, Browser-History, SQLite-Datenbanken, usw.) und vereint sie in einer einzigen, chronologisch sortierten Zeitleiste. Plaso ist das Schweizer Taschenmesser der Timeline-Forensik.</p>
+
+<h2>Was ist ein Plaso-Parser?</h2>
+
+<p>Ein <strong>Parser</strong> (auch Plugin genannt) ist eine Python-Klasse, die eine bestimmte Datei- oder Datenquelle lesen und deren zeitbezogene Informationen als <strong>EventData</strong>-Objekte extrahieren kann. Jeder Parser:</p>
+
+<ol>
+<li><strong>Registriert</strong> sich beim Plaso-Parser-Manager</li>
+<li><strong>Erkennt</strong> anhand einer Signatur, ob eine Datei von ihm verarbeitet werden kann</li>
+<li><strong>Parsiert</strong> die Datei Zeile fuer Zeile (oder Binaerstruktur)</li>
+<li><strong>Produziert</strong> EventData-Objekte mit Zeitstempel und relevanten Feldern</li>
+</ol>
+
+<p>Die EventData-Objekte werden anschliessend von Plaso in der Storage-Datenbank gespeichert und koennen mit Tools wie <code>psort.py</code> oder <code>Timesketch</code> durchsucht und analysiert werden.</p>
+
+<h2>Template-Struktur im Detail</h2>
+
+<p>Die Datei <code>plaso_plugin.py</code> enthaelt eine vollstaendige Parser-Vorlage mit folgenden Bestandteilen:</p>
+
+<table>
+<thead><tr><th>Komponente</th><th>Beschreibung</th></tr></thead>
+<tbody>
+<tr><td><strong>EventData-Klasse</strong></td><td>Definiert die datenbankfaehigen Felder, die der Parser produziert. Jedes Feld wird als Attribut mit <code>DATA_TYPE</code> registriert.</td></tr>
+<tr><td><strong>Parser-Klasse</strong></td><td>Erbt von <code>interface.FileEntryParser</code>. Enthaelt die Hauptlogik.</td></tr>
+<tr><td><strong>NAME</strong></td><td>Eindeutiger Kurzname des Parsers (fuer CLI-Auswahl).</td></tr>
+<tr><td><strong>DATA_FORMAT</strong></td><td>Menschenlesbare Beschreibung des Datenformats.</td></tr>
+<tr><td><strong>DESCRIPTION</strong></td><td>Ausfuehrliche Beschreibung fuer die Dokumentation.</td></tr>
+<tr><td><strong>GetFormatSpecification()</strong></td><td>Definiert die Signatur, anhand derer Plaso erkennt, ob dieser Parser zustaendig ist (z.B. Magic Bytes am Dateianfang).</td></tr>
+<tr><td><strong>ParseFileObject()</strong></td><td>Hauptmethode: iteriert ueber die Datei und ruft <code>_ParseLine()</code> fuer jede Zeile auf.</td></tr>
+<tr><td><strong>_ParseLine()</strong></td><td>Zerlegt eine einzelne Zeile/Entitaet in Felder und erzeugt ein EventData-Objekt.</td></tr>
+<tr><td><strong>SetTimestamp()</strong></td><td>Weist dem Event einen Plaso-kompatiblen Zeitstempel zu (via <code>dfdatetime</code>).</td></tr>
+</tbody>
+</table>
+
+<h2>Installation und Verwendung</h2>
+
+<h3>Parser im Plaso-System installieren</h3>
+
+<pre><code># 1. Parser-Datei ins Plaso-Verzeichnis kopieren:
+cp plaso_plugin.py plaso/parsers/custom_app_log.py
+
+# 2. Parser registrieren (in plaso/parsers/__init__.py oder manager eintragen):
+# Der Template-Code enthaelt bereits die Registrierung:
+#   manager.ParsersManager.RegisterParser(CustomAppLogParser)
+
+# 3. Plaso mit dem neuen Parser ausfuehren:
+log2timeline.py --parsers custom_app_log storage.plaso /pfad/zum/app.log
+
+# 4. Timeline exportieren:
+psort.py storage.plaso -o l2tcsv -w timeline.csv</code></pre>
+
+<h3>Beispiel: Eigenes Log-Format parsen</h3>
+
+<p>Das Template ist fuer ein zeilenbasiertes Log-Format mit folgender Struktur ausgelegt:</p>
+
+<pre>2026-07-02 12:34:56,INFO,AuthModule,Benutzer 'admin' hat sich erfolgreich angemeldet
+2026-07-02 12:35:01,WARN,Firewall,Verbindungsversuch von 10.0.0.99:443 abgelehnt
+2026-07-02 12:35:12,ERROR,Database,Verbindung zur Datenbank fehlgeschlagen: Timeout</pre>
+
+<p>Jede Zeile enthaelt vier durch Komma getrennte Felder: <strong>Zeitstempel</strong>, <strong>Level</strong>, <strong>Quelle</strong> und <strong>Nachricht</strong>.</p>
+
+<h2>Anpassung an eigene Beduerfnisse</h2>
+
+<p>Um das Template fuer ein anderes Log-Format anzupassen, muessen folgende Stellen geaendert werden:</p>
+
+<ol>
+<li><strong>EventData-Klasse:</strong> Die Attribut-Definitionen (<code>self.event_level</code>, <code>self.source</code>, <code>self.message</code>) an die eigenen Log-Felder anpassen.</li>
+<li><strong>DATA_TYPE:</strong> Einen eindeutigen Bezeichner waehlen (Konvention: <code>anwendung:modul:eventtyp</code>).</li>
+<li><strong>GetFormatSpecification:</strong> Die Signatur anpassen, damit Plaso die richtigen Dateien erkennt (z.B. <code>AddNewSignature(b"MYAPP_LOG", offset=0)</code>).</li>
+<li><strong>_ParseLine:</strong> Die Logik zum Zerlegen einer Zeile durch eigenen Parsing-Code ersetzen (Regex, CSV, JSON, etc.).</li>
+<li><strong>Timestamp-Parsing:</strong> <code>dfdatetime</code>-Klasse auswaehlen, die zum eigenen Zeitstempelformat passt (z.B. <code>TimeElements</code> fuer YYYY-MM-DD, <code>PosixTime</code> fuer Unix-Timestamps, <code>WebKitTime</code> fuer Browser-Zeitstempel).</li>
+</ol>
+
+<div class="callout warning"><strong>Wichtig</strong><p>Plaso-Parser muessen die Plaso-eigene Zeitstempel-Infrastruktur (<code>dfdatetime</code>) verwenden. Einfache <code>datetime</code>-Objekte aus der Python-Standardbibliothek werden nicht akzeptiert. Die Konvertierung erfordert das manuelle Zerlegen des Zeitstempels in seine Komponenten (Jahr, Monat, Tag, Stunde, Minute, Sekunde).</p></div>
+
+<h2>Einschraenkungen des Templates</h2>
+
+<ul>
+<li>Nur zeilenbasierte Log-Formate — fuer binaere Formate sind erweiterte Parsing-Methoden erforderlich</li>
+<li>Keine Validierung der Parsing-Ergebnisse (fehlende Plaso-Integration im Standalone-Betrieb)</li>
+<li>Einfache Signaturerkennung (nur erstes Byte des Logs)</li>
+<li>Keine Unterstuetzung fuer mehrzeilige Log-Eintraege (Stacktraces, JSON)</li>
+<li>Keine Behandlung von Zeichensatz-Konvertierungen (UTF-8 wird vorausgesetzt)</li>
+<li>Die Datei kann nicht eigenstaendig ausgefuehrt werden — sie benoetigt eine vollstaendige Plaso-Installation</li>
+</ul>
+
+<h2>Weiterfuehrende Ressourcen</h2>
+
+<ul>
+<li><a href="https://plaso.readthedocs.io/">Plaso-Dokumentation</a> — Offizielle Referenz</li>
+<li><a href="https://github.com/log2timeline/plaso">Plaso auf GitHub</a> — Quellcode und bestehende Parser als Referenz</li>
+<li><a href="https://github.com/log2timeline/plaso/blob/main/docs/sources/user/Creating-a-parser.md">Guide: Parser erstellen</a> — Schritt-fuer-Schritt-Anleitung</li>
+</ul>
+
+</article></main>
+</body>
+</html>

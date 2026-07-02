@@ -7,32 +7,293 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Forensischer Prozess</span>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Forensischer Prozess</span>
 </nav>
 <main><article>
 <h1>Forensischer Prozess und Chain of Custody <span class="diff-badge diff-beginner">Grundlagen</span></h1>
 <details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
-<li><a href="#kurz">Kurzueberblick</a></li><li><a href="#nist">NIST-Phasenmodell</a></li><li><a href="#acpo">ACPO-Prinzipien</a></li></ol></details>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#modelle">Vorgehensmodelle</a></li>
+<li><a href="#nist">NIST SP 800-86</a></li>
+<li><a href="#dfrws">DFRWS-Modell</a></li>
+<li><a href="#iso">ISO 27037</a></li>
+<li><a href="#acpo">ACPO-Grundprinzipien</a></li>
+<li><a href="#coc">Chain of Custody</a></li>
+<li><a href="#artefakte">Digitale Artefakte und Konfidenz</a></li>
+<li><a href="#praxis">Praktische Anwendung</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
 
 <h2 id="kurz">Kurzueberblick</h2>
-<p>Der forensische Prozess beschreibt den strukturierten Ablauf einer digitalforensischen Untersuchung — von der Sicherung bis zur Berichterstattung. Zentral ist die Chain of Custody: die lueckenlose Dokumentation aller Zugriffe auf ein Beweismittel.</p>
+<p>Der forensische Prozess beschreibt den strukturierten Ablauf einer digitalforensischen Untersuchung — von der Sicherung ueber die Analyse bis zur Berichterstattung. Zentral ist die <strong>Chain of Custody</strong>: die lueckenlose, gerichtsfeste Dokumentation aller Zugriffe auf ein Beweismittel. Ohne sie ist selbst die beste fachliche Analyse vor Gericht wertlos.</p>
+<p>Dieses Dokument ist das Fundament fuer alle weiteren forensischen Notizen. Es behandelt 5 etablierte Vorgehensmodelle, die internationalen Standards ISO 27037 und NIST SP 800-86, die ACPO-Prinzipien sowie das zentrale Konzept der Beweismittelkette.</p>
 
-<h2 id="nist">NIST-Phasenmodell (SP 800-86)</h2>
+<h2 id="modelle">Vorgehensmodelle im Vergleich</h2>
+
+<table>
+<thead><tr><th>Modell</th><th>Phasen</th><th>Fokus</th><th>Standard</th></tr></thead><tbody>
+<tr><td><strong>NIST SP 800-86</strong></td><td>4 Phasen</td><td>Allgemeine IT-Forensik</td><td>US NIST</td></tr>
+<tr><td><strong>DFRWS</strong></td><td>6 Phasen</td><td>Forschung &amp; Entwicklung</td><td>DFRWS-Konferenz 2001</td></tr>
+<tr><td><strong>ISO 27037</strong></td><td>4 Phasen</td><td>Internationale Standardisierung</td><td>ISO/IEC</td></tr>
+<tr><td><strong>ACPO</strong></td><td>4 Prinzipien</td><td>UK-Polizei-Praxis</td><td>UK ACPO</td></tr>
+<tr><td><strong>ENFSI</strong></td><td>5 Phasen</td><td>Europaeische Forensik-Labore</td><td>ENFSI</td></tr>
+</tbody></table>
+
+<h2 id="nist">NIST SP 800-86 — Guide to Integrating Forensic Techniques</h2>
+
+<p>Der NIST SP 800-86 ist einer der am haeufigsten referenzierten Standards fuer digitale Forensik. Er definiert 4 Phasen, die NICHT streng linear zu verstehen sind — Rueckspruenge zwischen Phasen sind normal, wenn neue Erkenntnisse gewonnen werden.</p>
+
 <div class="process-chain">
-  <div class="pc-step"><div class="pc-num">1</div><strong>Collection</strong><p>Sicherung digitaler Beweismittel</p></div><div class="pc-arrow">&rarr;</div>
-  <div class="pc-step"><div class="pc-num">2</div><strong>Examination</strong><p>Durchsuchung mit forensischen Werkzeugen</p></div><div class="pc-arrow">&rarr;</div>
-  <div class="pc-step"><div class="pc-num">3</div><strong>Analysis</strong><p>Interpretation der Artefakte im Fall-Kontext</p></div><div class="pc-arrow">&rarr;</div>
-  <div class="pc-step"><div class="pc-num">4</div><strong>Reporting</strong><p>Nachvollziehbare Dokumentation von Methodik und Funden</p></div>
+  <div class="pc-step"><div class="pc-num">1</div><strong>Collection</strong><p>Identifikation, Sicherung, Transport von Beweismitteln. Write-Blocker verwenden. Integritaets-Hash vor Ort berechnen.</p></div><div class="pc-arrow">&rarr;</div>
+  <div class="pc-step"><div class="pc-num">2</div><strong>Examination</strong><p>Systematische Durchsuchung mit forensischen Werkzeugen (Autopsy, FTK, EnCase). Daten extrahieren, filtern, indizieren.</p></div><div class="pc-arrow">&rarr;</div>
+  <div class="pc-step"><div class="pc-num">3</div><strong>Analysis</strong><p>Interpretation im Fallkontext. Welche Bedeutung haben die Artefakte? WER hat WAS wann getan? Hypothesen pruefen.</p></div><div class="pc-arrow">&rarr;</div>
+  <div class="pc-step"><div class="pc-num">4</div><strong>Reporting</strong><p>Nachvollziehbare, gerichtsverwertbare Dokumentation aller Schritte, Methoden und Funde. Fuer Laien verstaendlich formulieren.</p></div>
 </div>
 
+<h3>Collection im Detail</h3>
+<ul>
+<li><strong>Identifikation:</strong> Welche Geraete koennten relevante Daten enthalten? (PCs, Smartphones, Cloud-Speicher, IoT?)</li>
+<li><strong>Sicherung:</strong> Live-System? → RAM-Dump ZUERST (Order of Volatility). Ausgeschaltet? → Festplatten-Image via Write-Blocker.</li>
+<li><strong>Transport:</strong> Antistatische Verpackung, Faraday-Bags fuer Mobilgeraete, Beweismittelsiegel.</li>
+<li><strong>Dokumentation:</strong> JEDEN Schritt protokollieren. Fotos vom Tatort, Seriennummern, Anschlusskonfiguration.</li>
+</ul>
+
+<h2 id="dfrws">DFRWS-Modell (2001)</h2>
+
+<p>Das DFRWS (Digital Forensics Research Workshop) Modell ist das aelteste akademische Rahmenwerk — von der Community entwickelt und staerker forschungsorientiert:</p>
+
+<div class="timeline">
+  <div class="tl-item"><strong>Identification</strong><p>Ereignis erkennen, Beweismittel identifizieren</p></div>
+  <div class="tl-item"><strong>Preservation</strong><p>Beweismittel sichern, Integritaet wahren</p></div>
+  <div class="tl-item"><strong>Collection</strong><p>Daten sammeln, Imaging</p></div>
+  <div class="tl-item"><strong>Examination</strong><p>Daten durchsuchen, filtern</p></div>
+  <div class="tl-item"><strong>Analysis</strong><p>Bedeutung ermitteln, Hypothesen pruefen</p></div>
+  <div class="tl-item"><strong>Presentation</strong><p>Ergebnisse darstellen</p></div>
+</div>
+
+<div class="callout info"><strong>Unterschied zu NIST:</strong> DFRWS trennt Preservation von Collection und fuegt die Phase "Identification" vor der Sicherung hinzu — wichtig bei Incident Response, wo Erkennung zeitkritisch ist.</div>
+
+<h2 id="iso">ISO 27037 — Leitfaden zur Identifikation, Sammlung und Sicherung</h2>
+
+<p>ISO 27037 standardisiert den Umgang mit digitalen Beweismitteln international. Kernpunkte:</p>
+<ul>
+<li><strong>Minimale Intervention:</strong> So wenig wie moeglich veraendern</li>
+<li><strong>Kompetenznachweis:</strong> Wer forensisch arbeitet, muss nachweislich qualifiziert sein</li>
+<li><strong>Audit Trail:</strong> Jeder Schritt dokumentierbar und reproduzierbar</li>
+<li><strong>Verteidigungsfaehigkeit:</strong> Methoden vor Gericht begruendbar</li>
+</ul>
+<p>ISO 27037 unterscheidet 3 Phasen: <strong>Identification</strong> → <strong>Collection/Acquisition</strong> → <strong>Preservation</strong>. Die eigentliche Analyse ist NICHT Teil dieses Standards — dafuer gibt es ISO 27041/27042/27043.</p>
+
 <h2 id="acpo">ACPO-Grundprinzipien (UK)</h2>
-<div class="callout info"><strong>Prinzip 1 — Keine Veraenderung:</strong> Keine Aktion darf Daten veraendern, die als Beweismittel dienen.</div>
-<div class="callout info"><strong>Prinzip 2 — Kompetenz:</strong> Wer Originaldaten anfasst, muss qualifiziert sein und sein Handeln erklaeren koennen.</div>
-<div class="callout info"><strong>Prinzip 3 — Audit Trail:</strong> Alle Prozessschritte dokumentieren, von Dritten reproduzierbar.</div>
-<div class="callout info"><strong>Prinzip 4 — Verantwortlichkeit:</strong> Der Untersuchungsleiter traegt die Gesamtverantwortung.</div>
-<div class="callout warning"><strong>Wichtig:</strong> Ohne intakte Chain of Custody ist das Beweismittel vor Gericht unverwertbar — unabhaengig vom fachlichen Wert der Analyse.</div>
+
+<p>Die ACPO-Prinzipien (Association of Chief Police Officers) sind kompakt, praxisorientiert und bilden die Grundlage fuer die meisten europaeischen Polizeirichtlinien:</p>
+
+<div class="callout info"><strong>Prinzip 1 — Keine Veraenderung:</strong> Keine Aktion von Polizei oder Forensikern darf Daten veraendern, die spaeter als Beweismittel vor Gericht dienen sollen.</div>
+<div class="callout info"><strong>Prinzip 2 — Kompetenz:</strong> Personen, die auf Originaldaten zugreifen, muessen nachweislich kompetent sein und ihre Handlungen erklaeren koennen.</div>
+<div class="callout info"><strong>Prinzip 3 — Audit Trail:</strong> Alle Prozessschritte, die auf digitale Beweismittel angewendet werden, muessen dokumentiert und von einem unabhaengigen Dritten reproduzierbar sein.</div>
+<div class="callout info"><strong>Prinzip 4 — Verantwortlichkeit:</strong> Der Untersuchungsleiter (Case Officer) traegt die Gesamtverantwortung dafuer, dass Gesetze und diese Prinzipien eingehalten werden.</div>
+
+<div class="callout warning"><strong>Erweiterung: ADAM-Prinzipien:</strong> Die ACPO-Prinzipien wurden spaeter zu <strong>ADAM</strong> erweitert: Zusaetzlich zum Datenschutz werden <strong>Personensicherheit</strong> und <strong>Geraetesicherheit</strong> explizit gefordert — niemand soll waehrend der Beweismittelsicherung zu Schaden kommen.</div>
+
+<h2 id="coc">Chain of Custody — Die Beweismittelkette</h2>
+
+<p>Die Chain of Custody ist das <strong>zentrale juristische Dokument</strong> einer jeden forensischen Untersuchung. Jede Uebergabe, jede Analyse, jede Aufbewahrung muss protokolliert sein. Eine einzige Luecke in der Kette macht das gesamte Beweismittel vor Gericht unverwertbar.</p>
+
+<h3>Chain-of-Custody-Formular (Template)</h3>
+
+<table>
+<thead><tr><th>Feld</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td>Case ID</td><td>DF-2026-0147</td></tr>
+<tr><td>Beweismittel-ID</td><td>EVD-001 (Samsung SSD 870 EVO, S/N S6PXNJ0R)</td></tr>
+<tr><td>Hash bei Sicherung</td><td>SHA256: 3a7bd3e...</td></tr>
+<tr><td>Datum/Uhrzeit Sicherung</td><td>2026-01-15 14:22 CET</td></tr>
+<tr><td>Sichernde Person</td><td>Max Mustermann, DFIR-Analyst</td></tr>
+<tr><td>Sicherungsmethode</td><td>FTK Imager 4.7 via Tableau T8u Write-Blocker</td></tr>
+<tr><td>Uebergabe an Labor</td><td>2026-01-15 16:45 CET — Empfaenger: Jane Doe</td></tr>
+<tr><td>Lagerung</td><td>Tresor Nr. 3, 20°C, Beweismittelsiegel Nr. 08821</td></tr>
+</tbody></table>
+
+<h3>Checkliste Chain of Custody</h3>
+<ul>
+<li>[ ] Jede physische und logische Uebergabe dokumentiert</li>
+<li>[ ] Datum, Uhrzeit, Person, Grund der Uebergabe</li>
+<li>[ ] Unterschrift(en) von abgebender UND empfangender Person</li>
+<li>[ ] Hash-Werte vor und nach jedem Transport verifiziert</li>
+<li>[ ] Beweismittelsiegel intakt? (Foto dokumentieren)</li>
+<li>[ ] Keine unbegleiteten Zeitraeume (unattended evidence)</li>
+</ul>
+
+<div class="callout danger"><strong>Gefaengnis oder Freispruch:</strong> In einem realen Fall wurde eine Verurteilung aufgehoben, weil die Polizei nicht dokumentieren konnte, wer zwischen 23:00 und 07:00 Zugang zum Asservatenraum hatte. Eine 8-Stunden-Luecke in der Chain of Custody reichte fuer den Freispruch.</div>
+
+<h2 id="artefakte">Digitale Artefakte und Konfidenz</h2>
+
+<p>Nicht jedes digitale Artefakt hat denselben Beweiswert. Die <strong>Konfidenz</strong> beschreibt, wie sicher wir uns sind, dass ein Artefakt tatsaechlich ein bestimmtes Ereignis belegt.</p>
+
+<table>
+<thead><tr><th>Konfidenz-Stufe</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><span class="severity critical">Hoch</span></td><td>Mehrere unabhaengige Quellen belegen dasselbe Ereignis</td><td>EventLog (4624) + Registry (UserAssist) + Prefetch-Datei — alle zeigen dasselbe Programm zur selben Zeit</td></tr>
+<tr><td><span class="severity high">Mittel</span></td><td>Zwei Quellen korrelieren, eine davon indirekt</td><td>EventLog zeigt Login, Browser-History zeigt Website-Besuch 2 Min spaeter</td></tr>
+<tr><td><span class="severity low">Niedrig</span></td><td>Einzelnes Artefakt ohne Korrelation</td><td>Nur ein Eintrag im Browser-Cache</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Forensischer Grundsatz:</strong> Immer mehrere Artefakt-Quellen korrelieren. Ein einzelnes Artefakt ist eine Spur, erst die Korrelation mehrerer Spuren ist ein Beweis.</div>
+
+<h2 id="praxis">Praktische Anwendung</h2>
+
+<ul>
+<li><strong>Imaging-Workflow:</strong> Write-Blocker anschliessen → Hash berechnen → dd/FTK Imager → Hash verifizieren → CoC-Formular ausfuellen</li>
+<li><strong>Vor-Ort-Triage:</strong> Bei Incident Response zuerst Plan: Welche Systeme? RAM dumpen? Live-Daten sichern? Entscheidungen IMMER im CoC-Formular begruenden</li>
+<li><strong>Gerichtsfest dokumentieren:</strong> Screenshots machen, Kommandozeilen-Ausgaben speichern, Hash aller extrahierten Dateien berechnen</li>
+<li><strong>Tools:</strong> FTK Imager, Guymager, dc3dd, Tableau Write-Blocker</li>
+</ul>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+
+<ul>
+<li>NIST SP 800-86: Guide to Integrating Forensic Techniques into Incident Response</li>
+<li>ISO/IEC 27037: Guidelines for identification, collection, acquisition and preservation of digital evidence</li>
+<li>DFRWS Framework: A Road Map for Digital Forensic Research (Palmer, 2001)</li>
+<li>ACPO Good Practice Guide for Digital Evidence</li>
+<li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-86.pdf">NIST SP 800-86 (PDF)</a></li>
+</ul>
 </article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

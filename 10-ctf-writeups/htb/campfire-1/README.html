@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campfire-1 (HTB Sherlock) — DF Field Notes</title>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../../index.html">Startseite</a></li>
+    <li><a href="../../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+    <li><details open><summary>CTF-Writeups</summary><ul>
+      <li><a href="../../../10-ctf-writeups/htb/meerkat/README.html">HTB — Meerkat</a></li>
+      <li><a href="../../../10-ctf-writeups/htb/campfire-1/README.html">HTB — Campfire-1</a></li>
+      <li><a href="../../../10-ctf-writeups/misc-ctf/memlabs-1/README.html">Misc — MemLabs-1</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../index.html">CTF-Writeups</a> / Campfire-1</span>
+</nav>
+<main><article>
+<h1>Campfire-1 — Memory Forensics &amp; Kerberoasting <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#info">Challenge-Info</a></li>
+<li><a href="#szenario">Szenario</a></li>
+<li><a href="#tools">Eingesetzte Tools</a></li>
+<li><a href="#fragen">Key Questions</a></li>
+<li><a href="#walkthrough">Walkthrough</a></li>
+<li><a href="#kerberoasting">Exkurs: Kerberoasting</a></li>
+<li><a href="#lessons">Lessons Learned</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="info">Challenge-Info</h2>
+
+<table>
+<thead><tr><th>Eigenschaft</th><th>Wert</th></tr></thead><tbody>
+<tr><td><strong>Plattform</strong></td><td>Hack The Box (HTB)</td></tr>
+<tr><td><strong>Typ</strong></td><td>Sherlock</td></tr>
+<tr><td><strong>Name</strong></td><td>Campfire-1</td></tr>
+<tr><td><strong>Kategorie</strong></td><td>Memory Forensics, Active Directory, Kerberoasting</td></tr>
+<tr><td><strong>Schwierigkeit</strong></td><td>Fortgeschritten</td></tr>
+<tr><td><strong>Datenformat</strong></td><td>RAM-Dump (.raw / .vmem)</td></tr>
+</tbody></table>
+
+<h2 id="szenario">Szenario</h2>
+<p>Ein Unternehmen vermutet, dass sein Windows-Domain-Controller kompromittiert wurde. Das IR-Team hat einen RAM-Dump des betroffenen Domain-Controllers erstellt und übergibt ihn dir zur Analyse. Deine Aufgabe ist es, den Angriff zu rekonstruieren: Welches Betriebssystem läuft? Welche verdächtigen Prozesse sind aktiv? Welche Kerberos-Tickets wurden extrahiert? Und vor allem: Wurde via Kerberoasting ein Service-Account kompromittiert?</p>
+
+<p>Da es sich um einen Domain-Controller handelt, erwarten wir eine Vielzahl von <code>lsass.exe</code>-gespeicherten Credentials, Kerberos-Tickets im Speicher und möglicherweise Mimikatz-Artefakte. Die Analyse erfolgt primär mit Volatility und ergänzend mit Hashcat zur Passwortwiederherstellung.</p>
+
+<div class="callout warning"><strong>Wichtiger Hinweis:</strong> Memory-Forensik auf Domain-Controllern ist besonders kritisch, da <code>lsass.exe</code> sämtliche Kerberos-TGTs und Service-Tickets im Speicher hält. Ein Angreifer mit Administrator-Rechten kann diese Tickets dumpen und für Pass-the-Ticket- oder Kerberoasting-Angriffe nutzen.</div>
+
+<h2 id="tools">Eingesetzte Tools</h2>
+
+<table>
+<thead><tr><th>Tool</th><th>Zweck</th></tr></thead><tbody>
+<tr><td><strong>Volatility 3</strong></td><td>Hauptanalyse-Tool für RAM-Dumps (Prozesse, Netzwerk, Registry, Kerberos)</td></tr>
+<tr><td><strong>Volatility 2</strong></td><td>Für ältere Plugins (mimikatz, kerberos) — teilweise in Vol3 nicht vorhanden</td></tr>
+<tr><td><strong>Hashcat</strong></td><td>Cracken von Kerberos-TGS-Hashes (Kerberoasting)</td></tr>
+<tr><td><strong>Mimikatz</strong></td><td>Extraktion von Passwörtern, Hashes und Kerberos-Tickets aus LSASS</td></tr>
+<tr><td><strong>strings</strong></td><td>Rohdaten-Scan nach Klartext-Strings im Dump</td></tr>
+<tr><td><strong>bulk_extractor</strong></td><td>Extraktion von URLs, Email-Adressen, Credentials aus RAM-Dumps</td></tr>
+</tbody></table>
+
+<h2 id="fragen">Key Questions — Übersicht</h2>
+
+<table>
+<thead><tr><th>#</th><th>Fragestellung</th><th>Volatility-Befehl</th></tr></thead><tbody>
+<tr><td>1</td><td>Welches OS und Build wurde analysiert?</td><td><code>windows.info</code></td></tr>
+<tr><td>2</td><td>Welche verdächtigen Prozesse laufen?</td><td><code>windows.pslist</code>, <code>windows.pstree</code></td></tr>
+<tr><td>3</td><td>Welche Kerberos-Tickets wurden extrahiert?</td><td><code>windows.kerberos</code> (Vol2) oder manuelle Extraktion</td></tr>
+<tr><td>4</td><td>Welcher Benutzer wurde via Kerberoasting angegriffen?</td><td>Analyse der TGS-Tickets</td></tr>
+<tr><td>5</td><td>Was ist das Passwort des kompromittierten Accounts?</td><td>Hashcat (Kerberoasting-Modus 13100)</td></tr>
+<tr><td>6</td><td>Welche weiteren Credentials wurden im Dump gefunden?</td><td><code>windows.hashdump</code>, <code>windows.lsass</code></td></tr>
+</tbody></table>
+
+<h2 id="walkthrough">Walkthrough — Schritt für Schritt</h2>
+
+<h3>Schritt 1: OS-Profil und Image-Info bestimmen</h3>
+
+<p>Der erste Schritt in jeder Memory-Analyse: Welches Betriebssystem läuft? Volatility braucht das korrekte Profil (Vol2) oder Symbol-Tabelle (Vol3), um Datenstrukturen korrekt zu interpretieren.</p>
+
+<pre><code># Volatility 3 — Windows-Info abrufen
+vol -f campfire1.raw windows.info
+
+# Ausgabe (Beispiel):
+# Kernel Base: 0xf80271c18000
+# DTB: 0x1aa000
+# Symbol Table: ntkrnlmp.pdb
+# NT Build: 14393.amd64fre.rs1_release.161110-2025
+# OS: Windows 10 / Server 2016
+
+# Bei Volatility 2: Profil ermitteln
+vol.py -f campfire1.raw imageinfo
+
+# Gängige Profile:
+# Win10x64_14393  → Windows 10 / Server 2016 Version 1607
+# Win10x64_19041  → Windows 10 / Server 2019 Version 2004
+# Win2016x64_14393 → Windows Server 2016</code></pre>
+
+<div class="callout info"><strong>Build-Nummern als Referenz:</strong> Build 14393 = Windows 10 1607 / Server 2016. Build 17763 = Windows 10 1809 / Server 2019. Build 19041 = Windows 10 2004. Die Build-Nummer ist kritisch für die Auswahl des korrekten Profils in Volatility 2.</div>
+
+<h3>Schritt 2: Prozessliste analysieren</h3>
+
+<p>Wir listen alle laufenden Prozesse und deren Parent-Child-Beziehungen. Verdächtig sind: Prozesse mit ungewöhnlichen Namen, Prozesse die von <code>cmd.exe</code> oder <code>powershell.exe</code> gestartet wurden, sowie bekannte Malware-Prozesse.</p>
+
+<pre><code># Volatility 3 — Prozessliste
+vol -f campfire1.raw windows.pslist
+
+# Prozessbaum (Parent-Child-Beziehungen)
+vol -f campfire1.raw windows.pstree
+
+# Nach verdächtigen Prozessen filtern
+vol -f campfire1.raw windows.pslist | grep -iE "mimikatz|psexec|powershell|cmd|wmic|rundll32|regsvr32"
+
+# Command-Line-Argumente jedes Prozesses
+vol -f campfire1.raw windows.cmdline</code></pre>
+
+<table>
+<thead><tr><th>Prozess</th><th>Forensische Bedeutung</th></tr></thead><tbody>
+<tr><td><strong>lsass.exe</strong></td><td>Speichert Credentials, NTLM-Hashes, Kerberos-Tickets. Ziel Nr. 1 für Angreifer.</td></tr>
+<tr><td><strong>powershell.exe</strong></td><td>Base64-kodierte Command-Lines sind hochverdächtig (PowerShell-Empire, Cobalt Strike).</td></tr>
+<tr><td><strong>cmd.exe</strong></td><td>Child-Prozesse prüfen — welche Programme wurden von cmd aus gestartet?</td></tr>
+<tr><td><strong>rundll32.exe</strong></td><td>Wird oft für DLL-Sideloading und C2-Kommunikation missbraucht.</td></tr>
+<tr><td><strong>mshta.exe</strong></td><td>Führt HTA/VBS aus — fast immer bösartig auf Servern.</td></tr>
+<tr><td><strong>wsmprovhost.exe</strong></td><td>Host-Prozess für WinRM — deutet auf Lateral Movement hin.</td></tr>
+</tbody></table>
+
+<h3>Schritt 3: Netzwerkverbindungen prüfen</h3>
+
+<p>Offene Netzwerkverbindungen geben Aufschluss über C2-Kommunikation, Lateral Movement und Datenexfiltration:</p>
+
+<pre><code># Netzwerkverbindungen (Volatility 3)
+vol -f campfire1.raw windows.netstat
+
+# Nur ESTABLISHED-Verbindungen
+vol -f campfire1.raw windows.netstat | grep ESTABLISHED
+
+# DNS-Cache (welche Domains wurden aufgelöst?)
+vol -f campfire1.raw windows.dnscache</code></pre>
+
+<h3>Schritt 4: Kerberos-Tickets aus LSASS extrahieren</h3>
+
+<p>Der Domain-Controller hält Kerberos-Tickets im Speicher des <code>lsass.exe</code>-Prozesses. Volatility 2 bietet hierfür das <code>kerberos</code>-Plugin, Volatility 3 hat keinen direkten Ersatz — wir dumpen den LSASS-Speicher und analysieren ihn manuell:</p>
+
+<pre><code># Volatility 2 — Kerberos-Tickets auflisten
+vol.py -f campfire1.raw --profile=Win2016x64_14393 kerberostickets
+
+# LSASS-Speicher dumpen (Volatility 3)
+vol -f campfire1.raw -o ./dump/ windows.memmap --pid $(pgrep lsass) --dump
+
+# Aus dem LSASS-Dump Tickets mit Mimikatz extrahieren
+mimikatz.exe
+# sekurlsa::kerberos /export
+
+# Volatility 2 — Mimikatz-Plugin für direkte Extraktion
+vol.py -f campfire1.raw --profile=Win2016x64_14393 mimikatz</code></pre>
+
+<div class="callout tip"><strong>Volatility 2 vs. 3:</strong> Volatility 3 hat kein natives Kerberos-Plugin. Für Kerberos-Forensik ist Volatility 2 mit dem <code>mimikatz</code>-Plugin oft die bessere Wahl. Alternativ kann man <code>lsass.exe</code> dumpen und mit pypykatz offline analysieren.</div>
+
+<h3>Schritt 5: Kerberoasting — TGS-Tickets analysieren</h3>
+
+<p>Kerberoasting extrahiert das TGS (Ticket Granting Service) für einen Service-Account aus dem Kerberos-Ticket. Das TGS ist mit dem NTLM-Hash des Service-Account-Passworts verschlüsselt und kann offline gecrackt werden. Die entscheidenden Indikatoren sind:</p>
+
+<table>
+<thead><tr><th>Attribut</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td><code>ServiceName</code></td><td>Der angefragte Service (z. B. <code>HTTP/webserver.domain.local</code>)</td></tr>
+<tr><td><code>TargetDomainName</code></td><td>Die Domain des Service-Accounts</td></tr>
+<tr><td><code>TicketEncryption</code></td><td>Typischerweise <code>RC4-HMAC</code> (0x17) oder <code>AES256-CTS-HMAC-SHA1-96</code> (0x12)</td></tr>
+<tr><td><code>UserName</code></td><td>Der Benutzer, der das Ticket angefordert hat</td></tr>
+</tbody></table>
+
+<pre><code># Kerberoastbare Tickets identifizieren
+# TGS-REP mit RC4-Verschlüsselung (0x17) = crackbar mit Hashcat Modus 13100
+# TGS-REP mit AES256 (0x12) = mit AES256 verschlüsselt, schwerer crackbar
+
+# Hash-Extraktion für Hashcat
+# Format: $krb5tgs$23$*USERNAME$DOMAIN$SPN$HASH
+# Der Hash wird aus dem TGS-Ticket berechnet</code></pre>
+
+<h3>Schritt 6: Passwörter cracken mit Hashcat</h3>
+
+<p>Die extrahierten Kerberos-TGS-Hashes werden mit Hashcat und einer geeigneten Wordlist gecrackt:</p>
+
+<pre><code># Hashcat-Modus 13100 = Kerberos 5 TGS-REP etype 23 (RC4)
+hashcat -m 13100 -a 0 tgs_hashes.txt /usr/share/wordlists/rockyou.txt --force
+
+# Mit OneRuleToRuleThemAll (effizientere Regel-basierte Attacke)
+hashcat -m 13100 -a 0 tgs_hashes.txt /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/OneRuleToRuleThemAll.rule --force
+
+# Bruteforce als Fallback
+hashcat -m 13100 -a 3 tgs_hashes.txt ?a?a?a?a?a?a?a?a --increment --force</code></pre>
+
+<div class="callout danger"><strong>Kerberoasting-Prävention:</strong> Service-Account-Passwörter sollten mindestens 25 Zeichen lang, komplex und regelmässig rotiert werden. Group Managed Service Accounts (gMSA) verhindern Kerberoasting vollständig, da Windows das Passwort automatisch verwaltet und es für Angreifer praktisch unknackbar ist.</div>
+
+<h3>Schritt 7: Zusätzliche Credentials und Artefakte extrahieren</h3>
+
+<pre><code># NTLM-Hash-Dump
+vol -f campfire1.raw windows.hashdump
+
+# Cached Domain Credentials
+vol -f campfire1.raw windows.cachedump
+
+# Registry-Hives aus dem Speicher dumpen
+vol -f campfire1.raw -o ./registry/ windows.registry.hivelist
+vol -f campfire1.raw -o ./registry/ windows.registry.printkey --key "Software\Microsoft\Windows\CurrentVersion\Run"
+
+# Strings nach "password", "pwd", "credential" suchen
+strings campfire1.raw | grep -iE "password[=:]|pwd[=:]|credential[=:]" > strings_creds.txt</code></pre>
+
+<h2 id="kerberoasting">Exkurs: Kerberoasting — So funktioniert der Angriff</h2>
+
+<p>Kerberoasting ist eine Angriffstechnik gegen Service-Accounts in Active-Directory-Umgebungen. Der Ablauf ist wie folgt:</p>
+
+<ol>
+<li><strong>Authentifizierung:</strong> Der Angreifer authentisiert sich mit einem beliebigen kompromittierten Domain-User-Account (keine Admin-Rechte nötig).</li>
+<li><strong>TGS-Anfrage:</strong> Der Angreifer fragt ein Service-Ticket (TGS) für einen Service Principal Name (SPN) an — z. B. <code>MSSQLSvc/sql01.domain.local</code>.</li>
+<li><strong>Ticket-Empfang:</strong> Der Domain-Controller stellt das TGS aus, verschlüsselt mit dem NTLM-Hash des Service-Account-Passworts.</li>
+<li><strong>Offline-Cracking:</strong> Der Angreifer extrahiert das TGS aus dem Speicher und crackt den Hash offline mit Hashcat oder John the Ripper.</li>
+<li><strong>Privilege Escalation:</strong> Der Service-Account hat oft höhere Rechte (z. B. Domain-Admin) — der Angreifer eskaliert.</li>
+</ol>
+
+<div class="callout warning"><strong>Erkennung von Kerberoasting:</strong> Windows Event-ID 4769 (Kerberos Service Ticket Request) mit <code>TicketEncryptionType=0x17</code> (RC4) ist ein Indikator. Viele TGS-Anfragen von einem einzelnen Benutzer in kurzer Zeit = Alarm!</div>
+
+<h2 id="lessons">Lessons Learned</h2>
+
+<ul>
+<li><strong>Volatility-Profile sind entscheidend:</strong> Ohne das korrekte OS-Profil sind alle Analyseergebnisse unzuverlässig. Immer mit <code>imageinfo</code> / <code>windows.info</code> starten.</li>
+<li><strong>lsass.exe ist das Kronjuwel:</strong> Der LSASS-Prozess enthält NTLM-Hashes, Kerberos-Tickets, Klartext-Passwörter (bei WDigest) und DPAPI-Keys. Der Dump von LSASS ist immer der erste Schritt eines Angreifers.</li>
+<li><strong>Service-Accounts sind die Schwachstelle:</strong> Kerberoasting funktioniert, weil Service-Accounts oft schwache Passwörter haben. gMSA ist die Lösung.</li>
+<li><strong>RC4-Tickets sind crackbar:</strong> TGS-Tickets mit RC4-Verschlüsselung (etype 23) sind trivial mit Hashcat zu cracken. AES256 (etype 18) ist deutlich resistenter.</li>
+<li><strong>Memory-Dumps enthalten alles:</strong> Netzwerkverbindungen, Prozesse, Registry-Keys, Datei-Handles — der RAM-Dump ist das vollständigste Artefakt in der forensischen Analyse.</li>
+<li><strong>Volatility 2 + 3 kombiniert nutzen:</strong> Vol3 ist moderner und schneller, Vol2 hat mehr community-Plugins und das mimikatz-Modul. Beide Tools ergänzen sich.</li>
+</ul>
+
+<h2 id="quellen">Quellen / Weiterführendes</h2>
+<ul>
+<li><a href="https://github.com/volatilityfoundation/volatility3">Volatility 3 — GitHub Repository</a></li>
+<li><a href="https://github.com/volatilityfoundation/volatility">Volatility 2 — GitHub Repository</a></li>
+<li><a href="https://hashcat.net/wiki/doku.php?id=example_hashes">Hashcat Example Hashes (Modus 13100 = Kerberos 5 TGS-REP)</a></li>
+<li><a href="https://github.com/gentilkiwi/mimikatz">Mimikatz — GitHub (gentilkiwi)</a></li>
+<li><a href="https://adsecurity.org/?p=3458">ADSecurity.org — Kerberoasting Explained</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/">Microsoft Docs: Group Managed Service Accounts (gMSA)</a></li>
+<li><a href="https://github.com/skelsec/pypykatz">pypykatz — Mimikatz in Python</a></li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../../nav-order.js"></script>
+<script src="../../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

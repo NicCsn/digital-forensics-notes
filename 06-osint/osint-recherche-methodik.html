@@ -7,87 +7,631 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">OSINT</a> / OSINT-Recherche: Methodik und Werkzeuge</span>
+  <span class="nav-crumb">/ <a href="../06-osint/index.html">OSINT</a> / OSINT-Recherche: Methodik und Werkzeuge</span>
 </nav>
 <main>
 <article>
 <h1>OSINT-Recherche: Methodik und Werkzeuge <span class="diff-badge diff-beginner">Grundlagen</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz-berblick">Kurzüberblick</a></li>
+<li><a href="#google-dorking">Google-Dorking systematisch</a></li>
+<li><a href="#shodan">Shodan — Suchmaschine für Geräte</a></li>
+<li><a href="#certificate-transparency">Certificate Transparency Log Search</a></li>
+<li><a href="#dns-recon">DNS-Recon: DNS-Recherche</a></li>
+<li><a href="#whois">WHOIS und Domain-Geschichte</a></li>
+<li><a href="#email-tracing">Email-Tracing und Header-Analyse</a></li>
+<li><a href="#social-media">Social-Media-Graph-Analyse</a></li>
+<li><a href="#image-osint">Image OSINT: EXIF und Reverse Image Search</a></li>
+<li><a href="#url-analyse">URL-Analyse</a></li>
+<li><a href="#craap-test">Quellen-Bewertung: CRAAP-Test</a></li>
+<li><a href="#osint-workflow">Praktischer OSINT-Workflow</a></li>
+<li><a href="#tools-befehle">Praktische Anwendung / Befehle</a></li>
+<li><a href="#quellen">Quellen / Weiterführendes</a></li>
+</ol></details>
 
 <h2 id="kurz-berblick">Kurzüberblick</h2>
 
-<p>OSINT-Recherche beginnt nie einfach mit "mal googeln". Du brauchst einen Plan: Welche Frage willst du beantworten? Welche Quellen sind dafür relevant? Wie verifizierst du die Ergebnisse? Die meisten OSINT-Fehler entstehen durch unstrukturierte Suche und mangelnde Quellenkritik.</p>
+<p>OSINT-Recherche beginnt nie einfach mit "mal googeln". Sie brauchen einen Plan: Welche Frage wollen Sie beantworten? Welche Quellen sind dafür relevant? Wie verifizieren Sie die Ergebnisse? Die meisten OSINT-Fehler entstehen durch unstrukturierte Suche und mangelnde Quellenkritik. Dieser Leitfaden deckt alle wichtigen Techniken ab — von Google-Dorks über DNS-Recherche bis zur vollständigen Personenprofil-Erstellung.</p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>OSINT-Grundsatz:</strong> Keine einzelne Quelle ist unfehlbar. Jedes Ergebnis muss durch mindestens eine unabhängige zweite Quelle verifiziert werden. Das gilt besonders für Social-Media-Profile und WHOIS-Daten, die leicht gefälscht werden können.</div>
 
-<h3>Google Dorks (Google Hacking)</h3>
+<h2 id="google-dorking">Google-Dorking systematisch</h2>
 
-<p>Erweiterte Google-Suchoperatoren, die den Index gezielt durchsuchen:</p>
-
-<table class="styled-table">
-<thead><tr><th>Operator</th><th>Funktion</th><th>Beispiel</th></tr></thead><tbody>
-<tr><td>`site:`</td><td>Nur diese Domain</td><td>`site:example.com`</td></tr>
-<tr><td>`filetype:`</td><td>Dateityp einschränken</td><td>`filetype:pdf "vertraulich"`</td></tr>
-<tr><td>`intitle:`</td><td>Wort im Titel</td><td>`intitle:"index of"`</td></tr>
-<tr><td>`inurl:`</td><td>Wort in der URL</td><td>`inurl:admin`</td></tr>
-<tr><td>`intext:`</td><td>Wort im Text</td><td>`intext:"password"`</td></tr>
-<tr><td>`-`</td><td>Wort ausschließen</td><td>`-site:wikipedia.org`</td></tr>
-<tr><td>`..`</td><td>Zahlenbereich</td><td>`site:example.com 2018..2025`</td></tr>
-</tbody></table>
-
-<p><strong>Recherche-Beispiel:</strong></p>
-<p><code>site:example.com filetype:pdf OR filetype:docx "confidential" OR "internal" OR "password"</code></p>
-
-<h3>Shodan — die Suchmaschine für Geräte</h3>
-
-<ul><li>Durchsucht nicht Websites, sondern offene Ports und Dienste</li>
-<li>Findet: offene Datenbanken, ungesicherte Kameras, ICS/SCADA-Systeme</li>
-<li>Beispiel-Suche: <code>port:3389 country:DE</code> → alle offenen RDP-Ports in Deutschland</li>
-<li><code>org:"Target Corp"</code> → alle Geräte einer Organisation</li></ul>
-
-<h3>Social-Media-Recherche</h3>
+<h3>Übersicht aller Google-Suchoperatoren</h3>
 
 <table class="styled-table">
-<thead><tr><th>Tool</th><th>Funktion</th></tr></thead><tbody>
-<tr><td>**sherlock**</td><td>Username auf 300+ Plattformen gleichzeitig suchen</td></tr>
-<tr><td>**holehe**</td><td>Prüfen, ob eine E-Mail-Adresse auf bestimmten Seiten registriert ist</td></tr>
-<tr><td>**whatsmyname**</td><td>Ähnlich sherlock, webbasiert</td></tr>
-<tr><td>**twint / snscrape**</td><td>Twitter-Daten ohne API-Key scrapen</td></tr>
-<tr><td>**Instaloader**</td><td>Instagram-Profil und Posts herunterladen</td></tr>
+<thead><tr><th>Operator</th><th>Funktion</th><th>Forensik-Beispiel</th></tr></thead><tbody>
+<tr><td><code>site:example.com</code></td><td>Nur Ergebnisse von dieser Domain</td><td><code>site:gov.bund.de</code> — alle indexierten Seiten einer Behörde</td></tr>
+<tr><td><code>filetype:pdf</code></td><td>Nur diesen Dateityp</td><td><code>filetype:xlsx "Passwort"</code> — Excel-Dateien mit Passwörtern</td></tr>
+<tr><td><code>intitle:"index of"</code></td><td>Wort im HTML-Title-Tag</td><td><code>intitle:"index of" "parent directory"</code> — offene Verzeichnisse</td></tr>
+<tr><td><code>inurl:admin</code></td><td>Wort in der URL</td><td><code>inurl:wp-admin</code> — WordPress-Admin-Logins</td></tr>
+<tr><td><code>intext:"password"</code></td><td>Wort im Seiteninhalt</td><td><code>intext:"internal use only" filetype:pdf</code></td></tr>
+<tr><td><code>link:example.com</code></td><td>Seiten, die auf Domain verlinken</td><td><code>link:target.com -site:target.com</code> — Backlink-Profil</td></tr>
+<tr><td><code>cache:example.com</code></td><td>Googles zwischengespeicherte Version</td><td><code>cache:target.com/geheim</code> — Seite trotz Löschung einsehen</td></tr>
+<tr><td><code>-</code></td><td>Wort/Domain ausschließen</td><td><code>-site:wikipedia.org "target gmbh"</code></td></tr>
+<tr><td><code>..</code></td><td>Zahlenbereich</td><td><code>site:target.com 2019..2026</code> — Jahreszahlen filtern</td></tr>
+<tr><td><code>OR</code></td><td>Logisches Oder</td><td><code>filetype:pdf OR filetype:docx</code></td></tr>
+<tr><td><code>*</code></td><td>Wildcard (Platzhalter)</td><td><code>"Max * Mustermann"</code> — Namen mit unbekanntem Mittelnamen</td></tr>
+<tr><td><code>"genauer satz"</code></td><td>Exakte Phrasensuche</td><td><code>"vertraulich" filetype:pdf site:target.com</code></td></tr>
 </tbody></table>
 
-<h3>Quellenbewertung (CRAAP-Test)</h3>
+<h3>Fortgeschrittene Google-Dork-Kombinationen</h3>
 
-<p>Vor Verwendung einer Quelle prüfen:</p>
+<pre><code># Nach offenen Verzeichnissen mit sensiblen Dateien suchen
+intitle:"index of" (filetype:sql OR filetype:env OR filetype:bak OR filetype:conf)
 
-<ul><li><strong>C</strong>urrency (Aktualität): Wann zuletzt aktualisiert?</li>
-<li><strong>R</strong>elevance (Relevanz): Passt zum Recherche-Ziel?</li>
-<li><strong>A</strong>uthority (Autorität): Wer ist der Autor/die Organisation? Qualifikation?</li>
-<li><strong>A</strong>ccuracy (Genauigkeit): Sind die Informationen mit anderen Quellen verifizierbar?</li>
-<li><strong>P</strong>urpose (Zweck): Warum wurde die Seite erstellt? (Information, Propaganda, Verkauf?)</li></ul>
+# Nach geleakten Zugangsdaten suchen
+site:pastebin.com OR site:github.com "target.com" (password OR api_key OR secret)
 
-<h3>Fact-Checking</h3>
+# Nach internen Dokumenten einer Organisation suchen
+site:target.com filetype:pdf OR filetype:docx OR filetype:xlsx
+  ("vertraulich" OR "internal" OR "confidential" OR "nicht zur weitergabe")
 
-<ul><li><strong>Bilderrückwärtssuche:</strong> Google Images, TinEye, Yandex Images (besser für Gesichter), Bing</li>
-<li><strong>Metadaten:</strong> EXIF-Daten aus Bildern mit <code>exiftool</code> — Kamera, GPS, Zeitpunkt</li>
-<li><strong>Domain-Recherche:</strong> WHOIS (whois.domaintools.com), DNS-History (SecurityTrails)</li>
-<li><strong>Screenshot-Archiv:</strong> archive.org (Wayback Machine), archive.today</li></ul>
+# Subdomains ohne direkte DNS-Abfrage finden
+site:*.target.com -www -mail -ftp -blog</code></pre>
 
-<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+<div class="callout warning"><strong>Vorsicht beim Dorking:</strong> Viele Dork-Suchen berühren Systeme, auf die Sie keinen Zugriff haben sollten. Google-Dorking gegen fremde Systeme ohne Erlaubnis ist illegal. Die Technik dient der <strong>eigenen Sicherheitsüberprüfung</strong> und der Ermittlung im rechtlich zulässigen Rahmen.</div>
 
-<ul><li><code>sherlock johndoe</code> — Username überall suchen</li>
-<li><code>theHarvester -d example.com -b google,linkedin</code> — E-Mails und Kontakte</li>
-<li><code>exiftool -a -u bild.jpg</code> — alle EXIF-Daten anzeigen</li>
-<li><code>whois example.com</code> — Domain-Registrierungsdaten</li></ul>
+<div class="callout tip"><strong>Google Hacking Database (GHDB):</strong> Die GHDB von Exploit-DB enthält tausende vorgefertigte Dorks, kategorisiert nach Fund-Typ (Passwörter, Kameras, Logins, etc.). Unverzichtbare Ressource für OSINT-Ermittler: <code>exploit-db.com/google-hacking-database</code></div>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<h2 id="shodan">Shodan — Suchmaschine für Geräte</h2>
 
-<ul><li><a href="https://www.exploit-db.com/google-hacking-database">Google Hacking Database (GHDB)</a></li>
-<li><a href="https://docs.google.com/document/d/1B1P7GAwViXcfSSacWWDgCYrqCvtrYwZtgHcSJwv_tiQ/">Bellingcat's Digital Investigation Toolkit</a></li></ul>
+<h3>Shodan vs. Google</h3>
+
+<p>Shodan durchsucht nicht Websites, sondern scannt das gesamte Internet nach offenen Ports und Diensten. Es erfasst Banner, Service-Versionen und Metadaten von Milliarden Geräten.</p>
+
+<h3>Wichtigste Shodan-Filter</h3>
+
+<table class="styled-table">
+<thead><tr><th>Filter</th><th>Beschreibung</th><th>Beispiel-Query</th></tr></thead><tbody>
+<tr><td><code>org:"Target GmbH"</code></td><td>Alle Geräte einer Organisation</td><td><code>org:"Deutsche Bahn"</code></td></tr>
+<tr><td><code>port:22</code></td><td>Offener SSH-Port</td><td><code>port:22 country:DE</code></td></tr>
+<tr><td><code>port:3389</code></td><td>Offener RDP-Port (Windows!)</td><td><code>port:3389 country:DE org:"Target"</code></td></tr>
+<tr><td><code>country:DE</code></td><td>Geografisch einschränken</td><td><code>country:DE port:443</code></td></tr>
+<tr><td><code>city:"Berlin"</code></td><td>Nach Stadt filtern</td><td><code>city:"Berlin" port:80</code></td></tr>
+<tr><td><code>product:"Apache"</code></td><td>Bestimmte Software</td><td><code>product:"Apache" version:"2.4.49"</code></td></tr>
+<tr><td><code>os:"Windows"</code></td><td>Betriebssystem</td><td><code>os:"Windows 7" country:DE</code></td></tr>
+<tr><td><code>vuln:CVE-2021-44228</code></td><td>Nach CVE filtern (Log4Shell)</td><td><code>vuln:CVE-2021-44228 country:DE</code></td></tr>
+<tr><td><code>ssl:"target.com"</code></td><td>SSL-Zertifikat enthält Domain</td><td><code>ssl:"target.com"</code> — findet auch versteckte Server</td></tr>
+<tr><td><code>net:192.168.0.0/24</code></td><td>IP-Bereich</td><td><code>net:203.0.113.0/24</code></td></tr>
+</tbody></table>
+
+<h3>Shodan-Beispiel-Queries für die Forensik</h3>
+
+<pre><code># Offene Datenbanken ohne Authentifizierung
+port:27017,6379,9200,5432,3306 -"authentication"
+
+# Industrielle Steuerungssysteme (ICS/SCADA)
+port:502,102,47808,44818,1911,4911 category:"ics"
+
+# Webcams und Überwachungskameras
+title:"webcamXP" OR title:"webcam 7" OR title:"Network Camera"
+
+# Offene S3-Buckets (Amazon)
+product:"S3" org:"Amazon"
+
+# Veraltete/verwundbare Dienste
+vuln:CVE-2019-0708  # BlueKeep (RDP)
+vuln:CVE-2021-34527 # PrintNightmare</code></pre>
+
+<div class="callout info"><strong>Forensische Nutzung:</strong> Shodan-Daten sind zeitpunktbezogen. Für forensische Analysen kann der Shodan-History-Filter (<code>after:</code>, <code>before:</code>) zeigen, welche Dienste zu einem bestimmten Zeitpunkt offen waren. Premium-API liefert historische Daten — relevant für Incident-Response (war der Server schon vor dem Angriff exponiert?)</div>
+
+<h2 id="certificate-transparency">Certificate Transparency Log Search via crt.sh</h2>
+
+<h3>Konzept</h3>
+
+<p>Certificate Transparency (CT) ist ein offenes Logging-System für TLS-Zertifikate. Jede ausgestellte Zertifikatsanforderung wird in öffentlichen Logs gespeichert. crt.sh ist die einfachste Schnittstelle dafür.</p>
+
+<ul>
+<li><strong>Funktionsweise:</strong> <code>%.target.com</code> findet ALLE Zertifikate, die diese Domain enthalten — inklusive Subdomains, die nie öffentlich dokumentiert wurden</li>
+<li><strong>Vorteil gegenüber DNS-Brute-Force:</strong> Kein aktives Scannen nötig, crt.sh durchsucht nur öffentliche Logs</li>
+<li><strong>Reichweite:</strong> Findet auch Subdomains von Subdomains, Wildcard-Zertifikate, und historisch genutzte Domains</li>
+</ul>
+
+<h3>crt.sh-Abfragen</h3>
+
+<pre><code># Grundlegende Suche (Web-Interface oder API)
+https://crt.sh/?q=%.target.com          # Alle Zertifikate für target.com
+https://crt.sh/?q=%.target.com&amp;output=json  # JSON-Output
+
+# CLI über curl
+curl -s "https://crt.sh/?q=%.target.com&amp;output=json" | jq -r '.[].name_value' | sort -u
+
+# Nur aktuelle, nicht abgelaufene Zertifikate
+curl -s "https://crt.sh/?q=%.target.com&amp;output=json&amp;exclude=expired" | jq -r '.[].name_value' | sort -u</code></pre>
+
+<div class="callout tip"><strong>Forensischer Mehrwert:</strong> CT-Logs zeigen den <strong>genauen Zeitpunkt</strong> der Zertifikatserstellung. Wenn ein Angreifer eine Phishing-Domain registriert und ein Lets-Encrypt-Zertifikat anfordert, erscheint dies in CT-Logs. Dies kann helfen, den <strong>Tatzeitraum</strong> einzugrenzen, noch bevor die Domain überhaupt aktiv genutzt wurde.</div>
+
+<h2 id="dns-recon">DNS-Recon: DNS-Recherche</h2>
+
+<h3>DNS-Record-Typen und ihre forensische Bedeutung</h3>
+
+<table class="styled-table">
+<thead><tr><th>Record</th><th>Inhalt</th><th>Forensischer Wert</th></tr></thead><tbody>
+<tr><td><strong>A</strong></td><td>IPv4-Adresse</td><td>Webserver-Standort, Hosting-Provider identifizieren</td></tr>
+<tr><td><strong>AAAA</strong></td><td>IPv6-Adresse</td><td>Wie A, moderne Infrastruktur</td></tr>
+<tr><td><strong>MX</strong></td><td>Mailserver</td><td>E-Mail-Provider (Microsoft 365? Google Workspace? Eigenbetrieb?)</td></tr>
+<tr><td><strong>TXT</strong></td><td>Freitext-Einträge</td><td>SPF (erlaubte Mailserver), DKIM, DMARC, Verifikations-Tokens</td></tr>
+<tr><td><strong>NS</strong></td><td>Nameserver</td><td>DNS-Provider, Hosting-Company (Cloudflare? AWS Route53?)</td></tr>
+<tr><td><strong>CNAME</strong></td><td>Alias auf anderen Namen</td><td>Cloud-Dienste identifizieren (AWS CloudFront, Shopify, etc.)</td></tr>
+<tr><td><strong>SOA</strong></td><td>Start of Authority</td><td>Admin-Kontakt-Email, DNS-Aktualisierungsintervall</td></tr>
+<tr><td><strong>PTR</strong></td><td>Reverse DNS</td><td>IP → Hostname. Oft informativ (AWS-Server heißen anders als On-Prem)</td></tr>
+</tbody></table>
+
+<h3>DNS-Recherche-Werkzeuge</h3>
+
+<pre><code># Standard-Tools
+dig target.com ANY           # Alle Records (funktioniert nicht immer wg. ANY-Deprecation)
+dig target.com A             # IPv4
+dig target.com AAAA          # IPv6
+dig target.com MX            # Mailserver
+dig target.com TXT           # TXT-Records (SPF, DKIM, DMARC)
+dig target.com NS            # Nameserver
+dig -x 8.8.8.8               # Reverse-Lookup (PTR)
+
+# nslookup (einfacher)
+nslookup target.com
+nslookup -type=MX target.com
+
+# host (kompakt)
+host -t NS target.com
+host -t TXT target.com</code></pre>
+
+<h3>Rekursive DNS-Enumeration mit dnsrecon</h3>
+
+<pre><code># Standard-Scan
+dnsrecon -d target.com -t std
+
+# Brute-Force von Subdomains
+dnsrecon -d target.com -t brt -D /usr/share/wordlists/subdomains-top1m.txt
+
+# Zone-Transfer versuchen (AXFR)
+dnsrecon -d target.com -t axfr
+
+# Reverse-Lookup eines IP-Bereichs
+dnsrecon -r 192.168.1.0/24</code></pre>
+
+<div class="callout warning"><strong>SPF und DKIM als Informationsquelle:</strong> TXT-Records enthalten oft interne Hostnames (<code>include:_spf.google.com</code>, <code>include:mailgun.org</code>). Ein SPF-Record verrät ALLE Server, die legitim E-Mails für die Domain senden dürfen — inklusive interner Marketing-Tools (<code>include:spf.mandrillapp.com</code>), CRM-Systeme (<code>include:spf.salesforce.com</code>) und Transaktions-Email-Dienste. Diese Infrastruktur-Informationen sind Gold für OSINT.</div>
+
+<h2 id="whois">WHOIS und Domain-Geschichte</h2>
+
+<h3>WHOIS-Abfragen</h3>
+
+<pre><code># Linux CLI
+whois target.com
+
+# Spezifischer WHOIS-Server (wenn Standard nicht funktioniert)
+whois -h whois.denic.de target.de
+whois -h whois.verisign-grs.com target.com</code></pre>
+
+<h3>Was Sie aus WHOIS lernen können</h3>
+
+<table class="styled-table">
+<thead><tr><th>Feld</th><th>Information</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td><strong>Registrar</strong></td><td>Wer hat die Domain registriert?</td><td>Namecheap vs. GoDaddy vs. lokaler Anbieter — regionale Präferenzen</td></tr>
+<tr><td><strong>Creation Date</strong></td><td>Wann wurde die Domain registriert?</td><td>Brandneue Domain = höheres Phishing-Risiko. Alte Domain = legitim?</td></tr>
+<tr><td><strong>Updated Date</strong></td><td>Letzte WHOIS-Änderung</td><td>Kurz vor einem Angriff geändert? Verdächtig!</td></tr>
+<tr><td><strong>Expiry Date</strong></td><td>Wann läuft die Domain ab?</td><td>Domain-Parking, Expired-Domain-Sniping</td></tr>
+<tr><td><strong>Name Server</strong></td><td>Welche DNS-Server?</td><td>ns1.cloudflare.com → nutzt Cloudflare. ns1.hosteurope.de → HostEurope</td></tr>
+<tr><td><strong>Registrant Org</strong></td><td>Wer besitzt die Domain?</td><td>Bei GDPR oft geschwärzt. Historische WHOIS-Records zeigen alte Daten!</td></tr>
+</tbody></table>
+
+<h3>Historische WHOIS-Records</h3>
+
+<p>Da WHOIS-Daten heute oft durch GDPR geschwärzt sind, sind historische WHOIS-Records unbezahlbar: Sie zeigen die Daten von VOR Inkrafttreten der DSGVO (Mai 2018) — inklusive voller Namen, Adressen, Telefonnummern und E-Mail-Adressen.</p>
+
+<ul>
+<li><strong>DomainTools:</strong> Kommerziell, umfangreichstes WHOIS-History-Archiv (Bezahlservice)</li>
+<li><strong>WhoisXML API:</strong> Historische WHOIS-Daten und Reverse-WHOIS (welche Domains besitzt Person X?)</li>
+<li><strong>SecurityTrails:</strong> DNS-History, historische A/AAAA/MX/NS-Records</li>
+<li><strong>Wayback Machine:</strong> Screenshots + WHOIS-Daten zu verschiedenen Zeitpunkten</li>
+</ul>
+
+<div class="callout tip"><strong>Reverse WHOIS:</strong> Über WhoisXML API oder DomainTools können Sie nach <strong>allen Domains einer bestimmten Person oder E-Mail-Adresse</strong> suchen. Wenn Sie die E-Mail-Adresse des Verdächtigen kennen, finden Sie ALLE von ihm registrierten Domains — auch solche, die nichts mit dem aktuellen Fall zu tun haben. Perfekt für die Erstellung eines vollständigen Infrastruktur-Profils.</div>
+
+<h2 id="email-tracing">Email-Tracing und Header-Analyse</h2>
+
+<h3>Anatomie eines Email-Headers</h3>
+
+<p>Jede E-Mail enthält eine <strong>Received-Kette</strong> — jede Station, die die E-Mail durchlaufen hat, fügt einen Received-Header hinzu. Diese Kette von UNTEN nach OBEN lesen (Bottom-Up = chronologisch).</p>
+
+<pre><code># Typische Received-Kette einer Spam-Email
+Received: from mail.target.com (mail.target.com [203.0.113.1])
+  by mx.google.com with ESMTPS id xyz
+  for &lt;victim@gmail.com&gt;; Thu, 15 Jun 2025 14:30:00 +0200 (CEST)
+Received: from vps-attacker.ru (unknown [198.51.100.99])
+  by mail.target.com with SMTP id abc
+  for &lt;victim@gmail.com&gt;; Thu, 15 Jun 2025 14:29:58 +0200 (CEST)
+Received: from compromised-pc.local (192.168.1.50)
+  by vps-attacker.ru; Thu, 15 Jun 2025 15:29:45 +0300 (MSK)
+
+# Analyse (von unten nach oben):
+# 1. E-Mail stammt von 192.168.1.50 (internes IP, nicht öffentlich routbar)
+# 2. Ging über vps-attacker.ru (198.51.100.99) — das ist der Relayserver!
+# 3. Erreichte mail.target.com (203.0.113.1) — legitimer Mailserver des Opfers
+# 4. Wurde an Gmail zugestellt</code></pre>
+
+<h3>Email-Header-Analyse-Workflow</h3>
+
+<ol>
+<li><strong>Received-Kette extrahieren</strong> — alle Received:-Zeilen von unten nach oben lesen</li>
+<li><strong>IP-Adressen identifizieren</strong> — besonders die ERSTE (unterste) öffentliche IP in der Kette</li>
+<li><strong>IP → GeoIP → WHOIS</strong> — Standort und Besitzer der IP ermitteln</li>
+<li><strong>Message-ID analysieren</strong> — enthält oft Hostname und Timestamp des Absendersystems</li>
+<li><strong>Return-Path/Reply-To prüfen</strong> — kann vom From: abweichen (Spoofing-Indikator)</li>
+<li><strong>SPF/DKIM/DMARC prüfen</strong> — im Header: authentication-results: spf=pass/fail, dkim=pass/fail</li>
+<li><strong>Zeitstempel vergleichen</strong> — UTC-Offsets verraten Zeitzone des Absenders</li>
+</ol>
+
+<h3>Email-Header-Analyse mit Tools</h3>
+
+<pre><code># MXToolbox Header Analyzer (Online)
+https://mxtoolbox.com/EmailHeaders.aspx
+
+# Google Messageheader Analyzer
+https://toolbox.googleapps.com/apps/messageheader/
+
+# Manuell: IP extrahieren und prüfen
+grep -i "^Received:" email.eml | grep -oP '\b(?:\d{1,3}\.){3}\d{1,3}\b'
+whois 198.51.100.99
+# GeoIP: curl ipinfo.io/198.51.100.99</code></pre>
+
+<div class="callout info"><strong>Forensische Ermittlung — Email-to-Person-Profil:</strong> Wenn Sie eine verdächtige E-Mail haben, können Sie Schritt für Schritt ein Profil erstellen: 1) Header → Absender-IP → GeoIP → Stadt/Land, 2) IP → WHOIS → Hosting-Provider → Abuse-Kontakt, 3) Email-Adresse → holehe → registrierte Dienste → Social-Media-Profile, 4) Email-Adresse → gravatar.com/avatar/HASH → Profilbild, 5) Username aus Email → sherlock → Plattform-Präsenz.</div>
+
+<h2 id="social-media">Social-Media-Graph-Analyse</h2>
+
+<h3>Konzept</h3>
+
+<p>Soziale Netzwerke sind Graphen: Jede Person ist ein Knoten, jede Verbindung (Freundschaft, Follow, Gruppenmitgliedschaft) eine Kante. Die Analyse dieser Beziehungen deckt versteckte Verbindungen zwischen Personen auf.</p>
+
+<h3>Analysemethoden</h3>
+
+<table class="styled-table">
+<thead><tr><th>Methode</th><th>Beschreibung</th><th>Tool</th></tr></thead><tbody>
+<tr><td><strong>Mutual Friends</strong></td><td>Gemeinsame Freunde zweier Zielpersonen</td><td>Manuell über Facebook-Graph, LinkedIn</td></tr>
+<tr><td><strong>Follower-Overlap</strong></td><td>Welche Accounts folgen beiden Zielen?</td><td>Twitter API, Twint, snscrape</td></tr>
+<tr><td><strong>Gruppen-Mitgliedschaft</strong></td><td>Gemeinsame Gruppen/Subreddits/Foren</td><td>Reddit API, Facebook-Gruppen</td></tr>
+<tr><td><strong>Geotagged Posts</strong></td><td>Posts mit Ortsangabe analysieren</td><td>Instagram API, Twitter Geo-Search</td></tr>
+<tr><td><strong>Temporal Correlation</strong></td><td>Posten zwei Accounts zur gleichen Zeit?</td><td>Python + pandas (Zeitreihen-Korrelation)</td></tr>
+<tr><td><strong>Linguistic Analysis</strong></td><td>Schreibstil, Emoji-Nutzung, Tippfehler</td><td>Stylometry-Tools, manuelle Analyse</td></tr>
+</tbody></table>
+
+<h3>Social-Media-Ermittlungstools</h3>
+
+<pre><code># Username-Suche über 300+ Plattformen
+sherlock johndoe123
+
+# Prüfen, ob E-Mail auf bestimmten Plattformen registriert ist
+holehe johndoe@example.com
+
+# Twitter-Daten ohne API scrapen
+snscrape --jsonl twitter-search "from:username" > tweets.json
+
+# Instagram-Profil analysieren
+instaloader --login=YOUR_USERNAME profilname</code></pre>
+
+<div class="callout tip"><strong>Graph-Visualisierung:</strong> Tools wie Gephi oder Maltego können soziale Graphen visualisieren. Ein typischer Fall: Sie finden einen Account A, der mit B verbunden ist, B mit C und D, und D ist Mitglied in derselben Gruppe wie der ursprüngliche Verdächtige. Diese indirekte Verbindung wäre ohne Graph-Analyse unsichtbar geblieben.</div>
+
+<h2 id="image-osint">Image OSINT: EXIF und Reverse Image Search</h2>
+
+<h3>EXIF-Daten-Analyse</h3>
+
+<p>Digitale Bilder speichern Metadaten im EXIF-Format. Besonders wichtig für die Forensik:</p>
+
+<table class="styled-table">
+<thead><tr><th>EXIF-Feld</th><th>Information</th><th>Forensischer Wert</th></tr></thead><tbody>
+<tr><td><strong>GPSLatitude / GPSLongitude</strong></td><td>Geokoordinaten</td><td>Exakter Aufnahmeort (wenn GPS aktiviert)</td></tr>
+<tr><td><strong>DateTimeOriginal</strong></td><td>Aufnahmezeitpunkt</td><td>Alibi-Prüfung, Timeline-Rekonstruktion</td></tr>
+<tr><td><strong>Make / Model</strong></td><td>Kamera-Hersteller und Modell</td><td>Geräte-Zuordnung: "Diese Bilder stammen alle vom selben iPhone 14 Pro"</td></tr>
+<tr><td><strong>Software</strong></td><td>Bearbeitungssoftware</td><td>"Adobe Photoshop CC 2023" → Bild wurde bearbeitet. Vertrauenswürdigkeit?</td></tr>
+<tr><td><strong>ImageUniqueID</strong></td><td>Eindeutige Bild-ID</td><td>Geräte-Fingerprinting, Verknüpfung mehrerer Bilder</td></tr>
+<tr><td><strong>SerialNumber</strong></td><td>Kamera-Seriennummer</td><td>Geräte-Zuordnung in forensischen Datenbanken</td></tr>
+</tbody></table>
+
+<pre><code># EXIF-Daten extrahieren
+exiftool -a -u -g1 bild.jpg          # Alle Metadaten, inkl. unbekannter Tags
+exiftool -GPS* bild.jpg              # Nur GPS-Daten
+exiftool -DateTimeOriginal bild.jpg  # Nur Aufnahmezeitpunkt
+
+# GPS-Koordinaten aus allen Bildern in einem Verzeichnis
+exiftool -GPSLatitude -GPSLongitude -r /pfad/zum/ordner/</code></pre>
+
+<div class="callout warning"><strong>EXIF-Daten sind nicht vertrauenswürdig:</strong> EXIF-Daten können leicht manipuliert werden (exiftool kann sie auch schreiben). Soziale Netzwerke wie Facebook, Instagram und Twitter STRIPPEN EXIF-Daten beim Upload. WhatsApp und Telegram tun dies standardmäßig ebenfalls. EXIF verlassen Sie sich nur bei <strong>originalen, nicht weitergeleiteten</strong> Bilddateien von Endgeräten (Sicherstellung!).</div>
+
+<h3>Reverse Image Search</h3>
+
+<table class="styled-table">
+<thead><tr><th>Plattform</th><th>Stärke</th><th>Schwäche</th></tr></thead><tbody>
+<tr><td><strong>Google Images</strong></td><td>Größter Index, findet ähnliche Bilder</td><td>Schlecht bei Gesichtern, kein exaktes Matching</td></tr>
+<tr><td><strong>Yandex Images</strong></td><td>BESTE Gesichtserkennung! Findet auch stark bearbeitete Bilder</td><td>Fokus auf osteuropäische/russische Seiten</td></tr>
+<tr><td><strong>TinEye</strong></td><td>Exaktes Bild-Matching, zeigt "erstmals gesehen" an</td><td>Kleinerer Index, findet keine ähnlichen Bilder</td></tr>
+<tr><td><strong>Bing Images</strong></td><td>Gute Alternative zu Google</td><td>Ähnliche Stärken/Schwächen wie Google</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Multi-Engine-Strategie:</strong> Immer alle vier Engines nutzen! Yandex für Gesichter, TinEye für die Timeline (wann tauchte das Bild zuerst auf?), Google für allgemeine Ähnlichkeit, Bing als Backup. Keine Engine ist perfekt, aber die Kombination aus allen vieren maximiert die Trefferchancen.</div>
+
+<h2 id="url-analyse">URL-Analyse</h2>
+
+<h3>URL-Anatomie und forensische Analyse</h3>
+
+<pre><code># URL zerlegen
+https://subdomain.example.com:8080/pfad/zur/seite?param=wert#fragment
+\____/  \____________________/ \__/ \____________/ \________/ \______/
+ Schema   Hostname (Domain)     Port    Pfad       Query       Fragment</code></pre>
+
+<h3>URL-Analyse-Tools</h3>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Funktion</th><th>Forensische Nutzung</th></tr></thead><tbody>
+<tr><td><strong>urlscan.io</strong></td><td>Screenshot + DOM + IP + DNS + Redirects</td><td>Phishing-Seiten dokumentieren, Infrastruktur analysieren</td></tr>
+<tr><td><strong>urlquery.net</strong></td><td>Browser-basierte Malware-Analyse</td><td>JavaScript-Dekodierung, Redirect-Ketten verfolgen</td></tr>
+<tr><td><strong>Browser DevTools</strong></td><td>Network-Tab, Sources, Console</td><td>Manuelle Inspektion von XHR-Requests, versteckten Iframes</td></tr>
+<tr><td><strong>curl -I</strong></td><td>HTTP-Header abrufen</td><td>Server-Typ, Redirects, Cookies, Security-Header</td></tr>
+<tr><td><strong>VirusTotal</strong></td><td>URL-Reputation</td><td>Prüfen, ob URL von AV-Engines als bösartig eingestuft wird</td></tr>
+</tbody></table>
+
+<pre><code># Manuelle URL-Analyse mit curl
+curl -I -L https://verdaechtige-url.com          # Header und Redirects folgen
+curl -v https://verdaechtige-url.com 2>&1 | grep -i "server\|x-powered\|location"
+
+# Browser-DevTools Network-Tab
+# 1. Browser öffnen → F12 → Network-Tab
+# 2. "Preserve log" aktivieren (wichtig für Redirect-Ketten!)
+# 3. URL öffnen → alle Requests dokumentieren (XHR, WebSocket, Iframes)
+# 4. Response-Header auf Set-Cookie, Location, Server, Content-Type prüfen</code></pre>
+
+<h2 id="craap-test">Quellen-Bewertung: Der CRAAP-Test</h2>
+
+<p>Der CRAAP-Test ist das Standardverfahren zur Bewertung der Vertrauenswürdigkeit einer Quelle:</p>
+
+<table class="styled-table">
+<thead><tr><th>Kriterium</th><th>Fragen</th><th>Forensik-Beispiel</th></tr></thead><tbody>
+<tr><td><strong>C</strong>urrency</td><td>Wie aktuell? Wann zuletzt geändert?</td><td>Ein Blogpost von 2019 über eine aktuelle Malware ist wertlos</td></tr>
+<tr><td><strong>R</strong>elevance</td><td>Passt zum Recherche-Ziel?</td><td>WHOIS-Daten eines CDNs (Cloudflare) helfen nicht bei der Server-Identifikation</td></tr>
+<tr><td><strong>A</strong>uthority</td><td>Wer ist Autor/Organisation?</td><td>Tweet von @malware_joe_1337 vs. offizieller CISA-Alert — Vertrauensunterschied</td></tr>
+<tr><td><strong>A</strong>ccuracy</td><td>Verifizierbar durch andere Quellen?</td><td>Eine einzige Pastebin-Datenbank → mit HaveIBeenPwned abgleichen</td></tr>
+<tr><td><strong>P</strong>urpose</td><td>Warum existiert die Quelle?</td><td>Vendor-Blog (will Produkt verkaufen) vs. unabhängiges CERT (will informieren)</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Typische OSINT-Fallstricke:</strong> 1) Social-Media-Profil ohne Verifikation für bare Münze nehmen (Fake-Accounts!), 2) WHOIS-Daten als "aktuell" ansehen (können Monate veraltet sein), 3) Ein einzelnes Tool-Ergebnis als "Wahrheit" akzeptieren, 4) GeoIP auf Stadt-Ebene vertrauen (auf Landesebene ~99% korrekt, auf Stadtebene nur ~50-80%), 5) Screenshots ohne Wayback-Machine-Verifikation als authentisch behandeln.</div>
+
+<h2 id="osint-workflow">Praktischer OSINT-Workflow: Von der Email-Adresse zum vollständigen Personenprofil</h2>
+
+<p>Dieser Workflow zeigt den systematischen Aufbau eines Personenprofils ausgehend von einer einzigen E-Mail-Adresse:</p>
+
+<h3>Phase 1: Email-Adresse analysieren</h3>
+
+<ol>
+<li><strong>Email-Format analysieren:</strong> vorname.nachname@firma.de → Name bereits bekannt. Spitzname123@web.de → Username = "Spitzname123"</li>
+<li><strong>holehe</strong> — prüfen, auf welchen Plattformen die E-Mail registriert ist (Twitter? LinkedIn? XING? Reddit?)</li>
+<li><strong>Gravatar</strong> — <code>curl https://www.gravatar.com/avatar/$(echo -n email@example.com | md5sum | cut -d' ' -f1)?s=500</code> — Profilbild abrufen</li>
+</ol>
+
+<h3>Phase 2: Username und Profil finden</h3>
+
+<ol>
+<li><strong>Username extrahieren</strong> aus E-Mail (Teil vor dem @) oder aus holehe-Ergebnissen</li>
+<li><strong>sherlock</strong> — Username auf 300+ Plattformen gleichzeitig suchen</li>
+<li><strong>whatsmyname.app</strong> — webbasierte Alternative zu sherlock</li>
+<li><strong>Namenssuche:</strong> Gefundener Name → Google-Suche (mit Anführungszeichen, <code>"Vorname Nachname"</code>)</li>
+</ol>
+
+<h3>Phase 3: Profil-Inhalte analysieren</h3>
+
+<ol>
+<li><strong>Profilbilder</strong> — Reverse Image Search (Google + Yandex) → findet das Bild auf ANDEREN Plattformen</li>
+<li><strong>Bio/About-Sektion</strong> — enthält oft weitere Links, Berufsbezeichnung, Standort</li>
+<li><strong>Posts/Tweets</strong> — snscrape + Timeline-Analyse → wann aktiv? Von wo? Mit wem interagierend?</li>
+<li><strong>Geotagged Posts</strong> — Instagram/Twitter-Geodaten → Bewegungsprofil erstellen</li>
+</ol>
+
+<h3>Phase 4: Netzwerke kartieren</h3>
+
+<ol>
+<li><strong>Follower/Following</strong> analysieren — gemeinsame Kontakte mit anderen Zielpersonen?</li>
+<li><strong>Gruppen/Subreddits</strong> — in welchen Communities ist die Person aktiv?</li>
+<li><strong>Interaktionen</strong> — wer liked/kommentiert/retweetet regelmäßig? (Echte Freunde vs. Bots)</li>
+</ol>
+
+<h3>Phase 5: Querverbindungen herstellen</h3>
+
+<ol>
+<li><strong>E-Mail → Domain-Registrierung</strong> — Reverse WHOIS: Welche Domains besitzt die Person?</li>
+<li><strong>Username → GitHub/GitLab</strong> — Code-Repositories, Commit-History (Arbeitszeiten!), E-Mail in Commits</li>
+<li><strong>Telefonnummer</strong> (falls gefunden) → Truecaller, WhatsApp-Profilbild, Signal</li>
+<li><strong>Adresse</strong> (falls gefunden) → Google Maps, Street View, Grundbuch (falls öffentlich)</li>
+</ol>
+
+<h2 id="tools-befehle">Praktische Anwendung / Befehle</h2>
+
+<h3>Google-Dorking und Websuche</h3>
+
+<pre><code># Subdomain-Discovery ohne aktives Scannen
+site:*.target.com -www -mail -ftp
+
+# Geleakte Dokumente
+site:target.com filetype:pdf OR filetype:docx OR filetype:xlsx "vertraulich"
+
+# Login-Portale
+site:target.com inurl:login OR inurl:admin OR inurl:portal</code></pre>
+
+<h3>DNS und Domain</h3>
+
+<pre><code>dig target.com ANY
+dnsrecon -d target.com -t std
+whois target.com
+curl -s "https://crt.sh/?q=%.target.com&amp;output=json" | jq -r '.[].name_value' | sort -u</code></pre>
+
+<h3>Social Media und Personensuche</h3>
+
+<pre><code>sherlock johndoe
+holehe johndoe@example.com
+theHarvester -d example.com -b google,linkedin
+snscrape twitter-search "from:username"</code></pre>
+
+<h3>Bildanalyse</h3>
+
+<pre><code>exiftool -a -u bild.jpg
+exiftool -GPS* bild.jpg
+# Reverse Image Search: Google Images, Yandex Images, TinEye</code></pre>
+
+<h3>URL und Infrastruktur</h3>
+
+<pre><code>curl -I -L https://ziel-url.com
+# urlscan.io — Screenshot, Redirects, DNS, IP analysieren
+# Shodan: org:"Target" port:22,80,443,3389 country:DE</code></pre>
+
+<h2 id="quellen">Quellen / Weiterführendes</h2>
+
+<ul>
+<li><a href="https://www.exploit-db.com/google-hacking-database">Google Hacking Database (GHDB)</a> — Tausende vorgefertigte Google-Dorks</li>
+<li><a href="https://docs.google.com/document/d/1B1P7GAwViXcfSSacWWDgCYrqCvtrYwZtgHcSJwv_tiQ/">Bellingcat's Digital Investigation Toolkit</a> — Umfangreiches OSINT-Tool-Verzeichnis</li>
+<li><a href="https://www.shodan.io/">Shodan</a> — Suchmaschine für vernetzte Geräte</li>
+<li><a href="https://crt.sh/">crt.sh</a> — Certificate Transparency Log Search</li>
+<li><a href="https://osintframework.com/">OSINT Framework</a> — Interaktive OSINT-Tool-Mindmap</li>
+<li><a href="https://urlscan.io/">urlscan.io</a> — URL-Analyse und Screenshot-Service</li>
+<li><a href="https://www.bellingcat.com/resources/">Bellingcat Resources</a> — OSINT-Guides und Fallstudien</li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

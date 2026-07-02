@@ -7,81 +7,520 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">OSINT</a> / Cybercrime-Ökonomie: Geschäftsmodelle im Darknet</span>
+  <span class="nav-crumb">/ <a href="../06-osint/index.html">OSINT</a> / Cybercrime-Ökonomie: Geschäftsmodelle im Darknet</span>
 </nav>
 <main>
 <article>
 <h1>Cybercrime-Ökonomie: Geschäftsmodelle im Darknet <span class="diff-badge diff-intermediate">Mittel</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz-berblick">Kurzüberblick</a></li>
+<li><a href="#underground-economy">Underground Economy Überblick</a></li>
+<li><a href="#caas">CaaS (Cybercrime-as-a-Service)</a></li>
+<li><a href="#ransomware">Ransomware-Geschäftsmodell und RaaS</a></li>
+<li><a href="#initial-access-broker">Initial Access Broker (IAB)</a></li>
+<li><a href="#botnetze">Botnetze als Service</a></li>
+<li><a href="#bezahlmethoden">Bezahlmethoden und Geldwäsche</a></li>
+<li><a href="#krypto-follow-the-money">Kryptowährungs-Follow-the-Money</a></li>
+<li><a href="#darknet-markets">Darknet-Marktplätze</a></li>
+<li><a href="#taetergruppen">Tätergruppierungen</a></li>
+<li><a href="#ermittlungsansaetze">Forensische Ermittlungsansätze</a></li>
+<li><a href="#praktische-anwendung">Praktische Anwendung / Werkzeuge</a></li>
+<li><a href="#quellen">Quellen / Weiterführendes</a></li>
+</ol></details>
 
 <h2 id="kurz-berblick">Kurzüberblick</h2>
 
-<p>Cybercrime ist ein Milliardenmarkt mit eigenen Geschäftsmodellen, Dienstleistungen und Zahlungsmethoden. Wer versteht, wie Angreifer wirtschaftlich denken, kann ihre Spuren besser interpretieren und ihre nächsten Schritte antizipieren.</p>
+<p>Cybercrime ist ein Milliardenmarkt mit eigenen Geschäftsmodellen, Dienstleistungen und Zahlungsmethoden. Wer versteht, wie Angreifer wirtschaftlich denken, kann ihre Spuren besser interpretieren und ihre nächsten Schritte antizipieren. Die Cybercrime-Ökonomie funktioniert nach denselben Prinzipien wie die legale Wirtschaft — mit Spezialisierung, Arbeitsteilung, Service-Providern und komplexen Lieferketten.</p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>Schlüsselkonzept:</strong> Früher war ein Hacker Einzeltäter. Heute ist Cybercrime eine <strong>hochgradig spezialisierte Industrie</strong>: Der eine verschafft Zugang (IAB), der nächste entwickelt die Ransomware, der dritte verteilt sie, der vierte wäscht das Geld. Keiner macht alles allein.</div>
 
-<h3>Cybercrime-as-a-Service (CaaS)</h3>
+<h2 id="underground-economy">Underground Economy Überblick</h2>
 
-<p>Kriminelle spezialisieren sich und verkaufen ihre Dienste an andere:</p>
+<h3>Vertriebskanäle im Vergleich</h3>
 
 <table class="styled-table">
-<thead><tr><th>Service</th><th>Anbieter (Rolle)</th><th>Abnehmer</th></tr></thead><tbody>
-<tr><td>Initial Access Broker (IAB)</td><td>Verschafft Zugang zu kompromittierten Systemen</td><td>Ransomware-Gruppen</td></tr>
-<tr><td>Malware-Developer</td><td>Entwickelt Schadsoftware</td><td>Affiliates (Vertrieb)</td></tr>
-<tr><td>Bulletproof Hoster</td><td>Bietet "ignore abuse"-Hosting</td><td>Malware-C2, Phishing-Seiten</td></tr>
-<tr><td>Dropper-as-a-Service</td><td>Verbreitet Malware über Spam/Exploit-Kits</td><td>Malware-Betreiber</td></tr>
-<tr><td>Money Mules</td><td>Wäscht erbeutetes Geld</td><td>Organisierte Kriminalität</td></tr>
+<thead><tr><th>Plattform</th><th>Zugang</th><th>Währung</th><th>Typisches Angebot</th><th>Forensische Spuren</th></tr></thead><tbody>
+<tr><td><strong>Darknet-Märkte (.onion)</strong></td><td>Tor-Browser</td><td>Bitcoin, Monero</td><td>Drogen, gestohlene Daten, Malware-Kits</td><td>Bitcoin-Transaktionen, Foren-Posts, PGP-Keys</td></tr>
+<tr><td><strong>Clearnet-Foren</strong></td><td>Normaler Browser</td><td>Bitcoin, Escrow</td><td>Zero-Days, Zugangsdaten, Botnet-Zugang</td><td>IP-Adressen (wenn kein VPN), Foren-Profile</td></tr>
+<tr><td><strong>Telegram-Kanäle</strong></td><td>Telegram-App</td><td>Krypto, Tausch</td><td>Malware-Logs, gestohlene Accounts, DDoS</td><td>Telegram-ID, Telefonnummer (bei Anmeldung)</td></tr>
+<tr><td><strong>Discord-Server</strong></td><td>Discord-App</td><td>Krypto, PayPal</td><td>Cheats, gestohlene Gaming-Accounts</td><td>Discord-ID, E-Mail, IP (von Discord logged)</td></tr>
+<tr><td><strong>Paste-Sites</strong></td><td>Normaler Browser</td><td>—</td><td>Geleakte Datenbanken, Credential Dumps</td><td>Upload-Zeitstempel, Paste-ID (sequentielle IDs!)</td></tr>
 </tbody></table>
 
-<h3>Ransomware-as-a-Service (RaaS)</h3>
+<h3>Aktuelle Trends in der Underground Economy</h3>
+
+<ul>
+<li><strong>Verlagerung zu Telegram/Discord:</strong> Darknet-Märkte werden zunehmend von Messenger-basierten Handelsplätzen ersetzt — schneller, einfacher, weniger technische Hürden</li>
+<li><strong>Professionalisierung:</strong> RaaS-Gruppen haben HR-Abteilungen, Support-Ticketing, Marketing und Affiliate-Programme mit Provisionsmodellen</li>
+<li><strong>Spezialisierung:</strong> Access-Broker, Malware-Entwickler, Ransomware-Affiliates, Money-Launderer — jeder macht nur seinen Teil</li>
+<li><strong>Kundendienst:</strong> Viele Cybercrime-Dienste bieten 24/7-Support, SLA-Garantien und Geld-zurück-Garantien</li>
+</ul>
+
+<h2 id="caas">CaaS (Cybercrime-as-a-Service)</h2>
+
+<h3>Das Service-Modell der Kriminalität</h3>
+
+<p>Cybercrime-as-a-Service folgt dem SaaS-Modell (Software-as-a-Service): Kriminelle mieten Zugang zu Malware, Infrastruktur oder Expertise, statt alles selbst zu entwickeln.</p>
+
+<table class="styled-table">
+<thead><tr><th>Service</th><th>Anbieter (Rolle)</th><th>Abnehmer</th><th>Preis (ca.)</th></tr></thead><tbody>
+<tr><td><strong>RaaS</strong></td><td>Operator (entwickelt Ransomware)</td><td>Affiliate (verteilt, kassiert Lösegeld)</td><td>20-30 % Provision an Operator</td></tr>
+<tr><td><strong>PhaaS</strong></td><td>Phishing-Kit-Entwickler</td><td>Betrüger ohne technische Skills</td><td>50-500 €/Monat</td></tr>
+<tr><td><strong>DDoS-for-Hire</strong></td><td>Botnetz-Betreiber</td><td>Jeder mit Kryptowährung</td><td>10-100 €/Stunde</td></tr>
+<tr><td><strong>IAB (Access Broker)</strong></td><td>Hacker mit Zugängen</td><td>Ransomware-Gruppen</td><td>500-100.000 € pro Zugang</td></tr>
+<tr><td><strong>Malware-as-a-Service</strong></td><td>Malware-Entwickler</td><td>Kriminelle ohne Coding-Skills</td><td>200-5.000 €/Monat</td></tr>
+<tr><td><strong>Bulletproof Hosting</strong></td><td>Hosting-Provider</td><td>Malware-C2, Phishing-Seiten</td><td>100-1.000 €/Monat</td></tr>
+<tr><td><strong>Dropper-as-a-Service</strong></td><td>Malware-Verteiler</td><td>Malware-Betreiber</td><td>Pro-Installation (Pay-per-Install)</td></tr>
+<tr><td><strong>Money Mule-Netzwerke</strong></td><td>Geldwäscher</td><td>Ransomware-Gruppen, Betrüger</td><td>30-50 % Provision</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Warum CaaS wächst:</strong> Es senkt die Eintrittsbarriere massiv. Ein Krimineller ohne Programmierkenntnisse kann für 500 € ein Phishing-Kit mieten, Templates anpassen und sofort mit dem Betrug beginnen. Die eigentliche technische Arbeit wurde bereits von Spezialisten erledigt.</div>
+
+<h3>PhaaS (Phishing-as-a-Service) im Detail</h3>
+
+<ul>
+<li>Vorgefertigte Phishing-Kits mit Templates für PayPal, Microsoft 365, Banken, Netflix</li>
+<li>Inklusive: E-Mail-Versand, Opfer-Verwaltungspanel, Redirect-Mechanismen</li>
+<li>Anti-Detection: Proxy-Check (Forscher/Bots werden auf harmlose Seite umgeleitet), Geolocation-Filter</li>
+<li>Forensische Spur: Phishing-Kits enthalten oft <strong>Telegram-Bot-Token</strong> für Benachrichtigungen. Diese Token sind eindeutig und können von Ermittlern zurückverfolgt werden!</li>
+</ul>
+
+<h2 id="ransomware">Ransomware-Geschäftsmodell und RaaS</h2>
+
+<h3>Das RaaS-Modell (Ransomware-as-a-Service)</h3>
 
 <p>Das dominierende Geschäftsmodell seit 2020:</p>
-<ul><li><strong>Operator:</strong> Entwickelt Ransomware, unterhält Infrastruktur</li>
-<li><strong>Affiliate:</strong> Verteilt die Ransomware, führt Verhandlungen mit Opfern</li>
-<li><strong>Aufteilung:</strong> 70-80% an Affiliate, 20-30% an Operator</li></ul>
 
-<p>Bekannte RaaS-Gruppen: LockBit, BlackCat/ALPHV, Conti (aufgelöst), REvil</p>
+<ul>
+<li><strong>Operator (Entwickler):</strong> Programmiert die Ransomware, unterhält Zahlungsportal, Leak-Site, Support-Infrastruktur</li>
+<li><strong>Affiliate (Vertriebspartner):</strong> Verschafft sich Zugang zu Opfernetzwerken (oder kauft ihn beim IAB), installiert die Ransomware, führt Lösegeldverhandlungen</li>
+<li><strong>Aufteilung:</strong> 70-80 % des Lösegelds an den Affiliate, 20-30 % an den Operator</li>
+</ul>
 
-<h3>Underground-Marktplätze</h3>
+<h3>Bekannte RaaS-Gruppen und ihre Eigenschaften</h3>
 
 <table class="styled-table">
-<thead><tr><th>Plattform</th><th>Schwerpunkt</th><th>Währung</th></tr></thead><tbody>
-<tr><td>Darknet-Märkte (.onion)</td><td>Drogen, Waffen, gestohlene Daten</td><td>Bitcoin, Monero</td></tr>
-<tr><td>Telegram-Channels</td><td>Malware-Logs, gestohlene Accounts</td><td>Krypto, Tausch</td></tr>
-<tr><td>Exploit-Foren (XSS.is, Exploit.in)</td><td>Zero-Days, Zugangsdaten</td><td>Bitcoin, Escrow</td></tr>
-<tr><td>Paste-Sites</td><td>Geleakte Datenbanken, Dumps</td><td>-</td></tr>
+<thead><tr><th>Gruppe</th><th>Status</th><th>Besonderheiten</th><th>Affiliate-Modell</th></tr></thead><tbody>
+<tr><td><strong>LockBit</strong></td><td>Zerschlagen (2024), wiederbelebt</td><td>Schnellste Verschlüsselung, automatisierte Verbreitung, LockBit 3.0 "LockBit Green"</td><td>80/20 Split zugunsten Affiliate</td></tr>
+<tr><td><strong>BlackCat/ALPHV</strong></td><td>Aktiv</td><td>In Rust geschrieben (plattformunabhängig), targeting ESXi, hatte FBI-Aktion</td><td>80-90 % an Affiliate</td></tr>
+<tr><td><strong>Conti</strong></td><td>Aufgelöst (2022)</td><td>Double-Extortion-Pionier, russische Verbindungen, geleakte interne Chats</td><td>70/30 Split</td></tr>
+<tr><td><strong>Hive</strong></td><td>Zerschlagen (2023, FBI)</td><td>FBI infiltrierte Server, verteilte Entschlüsselungsschlüssel an 1.300+ Opfer</td><td>—</td></tr>
+<tr><td><strong>REvil/Sodinokibi</strong></td><td>Zerschlagen (2022)</td><td>Einer der ersten großen RaaS-Player, Kaseya-Angriff 2021</td><td>60/40 Split</td></tr>
+<tr><td><strong>Clop</strong></td><td>Aktiv</td><td>Spezialisiert auf MOVEit/GoAnywhere-Angriffe (Supply-Chain)</td><td>Unbekannt</td></tr>
 </tbody></table>
 
-<h3>Bezahlung und Geldwäsche</h3>
+<h3>Profit-Sharing und Zahlungsablauf</h3>
 
-<ul><li><strong>Bitcoin:</strong> Pseudonym, alle Transaktionen öffentlich → nachverfolgbar</li>
-<li><strong>Monero:</strong> Wirklich anonym → bevorzugt von Ransomware-Gruppen</li>
-<li><strong>Chain-Hopping:</strong> BTC → Monero → BTC (verwischt die Spur)</li>
-<li><strong>Mixer/Tumbler:</strong> Viele Transaktionen vermischen → Herkunft verschleiern</li>
-<li><strong>KYC-Börsen:</strong> Fiat-Auszahlung erfordert Identitätsverifikation (Angriffspunkt für Ermittler!)</li></ul>
+<ol>
+<li>Affiliate erhält Zugang zum Opfernetzwerk (selbst erbeutet oder vom IAB gekauft)</li>
+<li>Affiliate installiert Ransomware über das Operator-Dashboard</li>
+<li>Opfer zahlt Lösegeld in Bitcoin an eine vom Operator kontrollierte Wallet</li>
+<li>Operator behält 20-30 %, leitet 70-80 % an den Affiliate weiter</li>
+<li>Beide Seiten waschen ihre Anteile separat (Mixer, Chain-Hopping, Exchanges)</li>
+</ol>
 
-<h3>Forensische Ermittlungsansätze</h3>
+<div class="callout danger"><strong>Double Extortion:</strong> Moderne Ransomware-Gruppen verschlüsseln nicht nur, sie stehlen DIE Daten VOR der Verschlüsselung. Das Opfer wird doppelt erpresst: 1) "Zahle für den Entschlüsselungs-Key", 2) "Zahle, damit wir die gestohlenen Daten NICHT veröffentlichen". Die Leak-Sites der Gruppen sind öffentlich einsehbar (ransomlook.io).</div>
 
-<ul><li><strong>Blockchain-Analyse:</strong> Wallet-Adresse aus Erpresserbrief → Transaktionskette verfolgen → Exchange → KYC-Daten</li>
-<li><strong>Infrastruktur-Analyse:</strong> C2-Server-IP → Hosting-Provider → Zahlungsdaten</li>
-<li><strong>Code-Analyse:</strong> Ransomware-Variante → RaaS-Familie identifizieren (Noten, Code-Überschneidungen)</li>
-<li><strong>TTPs:</strong> Taktiken, Techniken, Prozeduren → Gruppenzuordnung (z.B. "LockBit nutzt immer X für initial access")</li>
-<li><strong>Kommunikation:</strong> Erpresserbriefe stilistisch analysieren, Übersetzungsfehler → Herkunftsland?</li></ul>
+<h2 id="initial-access-broker">Initial Access Broker (IAB)</h2>
 
-<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+<h3>Wer sind Initial Access Broker?</h3>
 
-<ul><li><code>oxt.me</code> oder <code>blockchain.com/explorer</code> — Bitcoin-Transaktionen verfolgen</li>
-<li><code>ransomlook.io</code> — Ransomware-Gruppen und ihre Leak-Sites tracken</li>
-<li><code>urlscan.io</code> — Phishing-Infrastruktur analysieren</li></ul>
+<p>IABs sind spezialisierte Hacker, die Unternehmensnetzwerke infiltrieren und den Zugang dann an Ransomware-Gruppen verkaufen. Sie sind die "Türöffner" der Cybercrime-Wirtschaft.</p>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<h3>Wie gelangen IABs an Zugänge?</h3>
 
-<ul><li><a href="https://www.chainalysis.com/">Chainalysis Crypto Crime Report</a> (jährlich)</li>
-<li><a href="https://attack.mitre.org/">MITRE ATT&CK</a> — TTPs von Cybercrime-Gruppen</li></ul>
+<table class="styled-table">
+<thead><tr><th>Methode</th><th>Beschreibung</th><th>Forensische Spur</th></tr></thead><tbody>
+<tr><td><strong>RDP-Brute-Force</strong></td><td>Passwörter für offene RDP-Ports (3389) erraten</td><td>Windows Event ID 4625 (Failed Logon) + 4624 (Success)</td></tr>
+<tr><td><strong>VPN-Exploits</strong></td><td>Schwachstellen in VPN-Gateways (z.B. Pulse Secure, Fortinet)</td><td>VPN-Logs, ungewöhnliche Login-Zeiten/Geolocations</td></tr>
+<tr><td><strong>Phishing + Malware</strong></td><td>Infostealer (RedLine, Vidar) installieren</td><td>Registry-RunKeys, Browser-Saved-Passwords, Malware-Traces</td></tr>
+<tr><td><strong>Gestohlene Credentials</strong></td><td>Kauf von Zugangsdaten aus früheren Datenlecks</td><td>Keine direkte Spur am Opfersystem (legitime Anmeldung!)</td></tr>
+<tr><td><strong>Exploit-Kits</strong></td><td>Automatisierte Ausnutzung von Software-Schwachstellen</td><td>Browser-Cache, Exploit-Artefakte, C2-Kommunikation</td></tr>
+</tbody></table>
+
+<h3>Was kostet ein Unternehmenszugang?</h3>
+
+<table class="styled-table">
+<thead><tr><th>Art des Zugangs</th><th>Preisspanne</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td>RDP-Zugang (kleines Unternehmen)</td><td>500-5.000 €</td><td>Einzelner Windows-Server mit Domänen-User</td></tr>
+<tr><td>RDP + Domain Admin (mittelständisch)</td><td>10.000-50.000 €</td><td>Voller Admin-Zugriff auf Active Directory</td></tr>
+<tr><td>Unternehmensnetzwerk (Enterprise)</td><td>50.000-500.000 €</td><td>Vollständiger Zugang mit Umsatz > 100 Mio. €</td></tr>
+<tr><td>Citrix/VPN-Zugang</td><td>1.000-20.000 €</td><td>Pulse-Secure-/Fortinet-VPN-Zugang mit MFA umgangen</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Ermittlungsansatz:</strong> Auf Foren wie Exploit.in und XSS.is werden Zugänge mit detaillierten Beschreibungen angeboten (Mitarbeiterzahl, Umsatz, installierte Sicherheitssoftware, Domänen-Admin ja/nein). Diese Anzeigen sind öffentlich und können im Monitoring-Tool für Threat Intelligence genutzt werden. Abgleich mit tatsächlichen Incidents kann direkte Verbindungen zwischen IABs und Angriffen herstellen.</div>
+
+<h2 id="botnetze">Botnetze als Service</h2>
+
+<h3>Botnetz-Geschäftsmodelle</h3>
+
+<ul>
+<li><strong>DDoS-for-Hire (Booter/Stresser):</strong> Stunde für Stunde DDoS-Angriffe mieten. Ab 10 €/Stunde für kleine Angriffe, 100+ €/Stunde für massive Layer-7-Angriffe</li>
+<li><strong>Spam-Kampagnen:</strong> Botnetz-Vermietung für Massen-E-Mail-Versand (Phishing, Malware-Verteilung). Preise pro 1 Mio. E-Mails</li>
+<li><strong>Proxy-Netzwerke:</strong> Infizierte Rechner als anonymisierende Proxies nutzen. "Residential Proxies" aus echten Heimanschlüssen</li>
+<li><strong>Krypto-Mining:</strong> Botnetz-Ressourcen für Monero-Mining nutzen (geringes Risiko, stetige Einnahmen)</li>
+</ul>
+
+<h3>Bekannte Botnetz-Familien</h3>
+
+<table class="styled-table">
+<thead><tr><th>Botnetz</th><th>Typ</th><th>Größe (geschätzt)</th><th>Hauptnutzung</th></tr></thead><tbody>
+<tr><td><strong>Mirai</strong></td><td>IoT-Botnetz</td><td>Hunderttausende</td><td>DDoS (Rekord: 1,3 Tbps Angriff auf GitHub 2018)</td></tr>
+<tr><td><strong>Emotet</strong></td><td>Trojaner/Malware-Loader</td><td>~1,6 Mio. Bots (vor Zerschlagung 2021)</td><td>Spam-Verteilung, Malware-Dropper für andere Gruppen</td></tr>
+<tr><td><strong>TrickBot</strong></td><td>Banking-Trojaner</td><td>Hunderttausende</td><td>Credential-Stealing, Netzwerk-Recon, Ransomware-Dropper</td></tr>
+<tr><td><strong>QakBot/QBot</strong></td><td>Banking-Trojaner</td><td>~700.000 Bots (vor FBI-Zerschlagung 2023)</td><td>Initial Access für Ransomware-Gruppen, Credential-Theft</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Forensische Botnetz-Analyse:</strong> Botnetz-C2-Infrastruktur folgt Mustern: Domain-Generation-Algorithmen (DGA), Fast-Flux-DNS, Peer-to-Peer-Kommunikation. Mit Tools wie <code>dnstwist</code> und <code>passivedns</code> können Sie C2-Domains identifizieren, bevor sie aktiv genutzt werden.</div>
+
+<h2 id="bezahlmethoden">Bezahlmethoden und Geldwäsche</h2>
+
+<h3>Kryptowährungen im Vergleich</h3>
+
+<table class="styled-table">
+<thead><tr><th>Kryptowährung</th><th>Anonymität</th><th>Verbreitung</th><th>Forensische Verfolgbarkeit</th></tr></thead><tbody>
+<tr><td><strong>Bitcoin (BTC)</strong></td><td>Pseudonym</td><td>Höchste</td><td>Alle Transaktionen öffentlich → Blockchain-Analyse möglich</td></tr>
+<tr><td><strong>Monero (XMR)</strong></td><td>Anonym (Ring Signatures)</td><td>Hoch (Ransomware-Favorit)</td><td>Extrem schwierig — RingCT verschleiert Absender, Empfänger, Betrag</td></tr>
+<tr><td><strong>Ethereum (ETH)</strong></td><td>Pseudonym</td><td>Hoch</td><td>Öffentliche Blockchain, Smart-Contract-Interaktionen analysierbar</td></tr>
+<tr><td><strong>Litecoin (LTC)</strong></td><td>Pseudonym</td><td>Mittel</td><td>Wie Bitcoin, aber weniger Analyse-Tooling</td></tr>
+<tr><td><strong>Zcash (ZEC)</strong></td><td>Optional anonym (z-address)</td><td>Niedrig</td><td>t-addresses (transparent) sind öffentlich, z-addresses (shielded) nicht</td></tr>
+</tbody></table>
+
+<h3>Geldwäsche-Methoden</h3>
+
+<ol>
+<li><strong>Mixer/Tumbler:</strong> Viele Nutzer senden Krypto an einen Mixer, der die Coins vermischt und minus Gebühr an neue Adressen auszahlt. Die Herkunft ist nicht mehr rückverfolgbar. Bekannte Mixer: Tornado Cash (ETH, sanktioniert), ChipMixer (BTC, zerschlagen), Sinbad (BTC, sanktioniert)</li>
+<li><strong>Chain-Hopping (Cross-Chain Swaps):</strong> BTC → XMR → BTC oder BTC → ETH → XMR. Jeder Chain-Hop erschwert die Rückverfolgung exponentiell</li>
+<li><strong>KYC-freie Exchanges:</strong> Börsen ohne Identitätsprüfung (oft in nicht-kooperativen Jurisdiktionen). Hier wird Krypto in Fiat getauscht</li>
+<li><strong>Peel Chains:</strong> Automatisierte Aufteilung großer Beträge in tausende kleine Transaktionen, die durch viele Wallets geschleust werden</li>
+<li><strong>Over-the-Counter (OTC) Trading:</strong> Direkter Handel außerhalb von Börsen — keine öffentlichen Order-Bücher, keine KYC-Pflicht (oft)</li>
+</ol>
+
+<h3>Escrow-Systeme auf Darknet-Märkten</h3>
+
+<ul>
+<li><strong>Funktionsweise:</strong> Käufer zahlt in Marktplatz-Escrow → Verkäufer liefert → Käufer bestätigt → Gelder werden freigegeben</li>
+<li><strong>Schutz:</strong> Verhindert Scam durch Verkäufer (bezahlt, aber nie geliefert) und durch Käufer (geliefert, aber nie bezahlt)</li>
+<li><strong>Forensischer Wert:</strong> Escrow-Transaktionen sind auf der Blockchain sichtbar — der Marktplatz ist der intermediäre Empfänger. Marktplatz-Wallets können identifiziert und geclustert werden</li>
+</ul>
+
+<div class="callout info"><strong>KYC-Börsen als Schwachstelle:</strong> Egal wie gut die Geldwäsche-Kette ist — am Ende muss Krypto irgendwann in Fiat-Währung (EUR, USD) getauscht werden. Dies geschieht fast immer über regulierte Börsen (Coinbase, Kraken, Binance), die KYC (Know Your Customer) verlangen. Dies ist der kritische Angriffspunkt für Ermittler: Finden Sie die Exchange-Deposit-Adresse, und mit einem Rechtshilfeersuchen bekommen Sie die Identität des Kontoinhabers.</div>
+
+<h2 id="krypto-follow-the-money">Kryptowährungs-Follow-the-Money</h2>
+
+<h3>Bitcoin-Blockchain-Analyse</h3>
+
+<p>Grundprinzipien der Blockchain-Analyse:</p>
+
+<ol>
+<li><strong>Transaktionsgraph:</strong> Jede Bitcoin-Transaktion verbindet Input-Adressen (Absender) mit Output-Adressen (Empfänger). Der gesamte Graph ist öffentlich</li>
+<li><strong>Clustering:</strong> Adressen, die in derselben Transaktion als Inputs auftauchen, gehören sehr wahrscheinlich derselben Entität (weil nur der Besitzer mehrerer Adressen sie gemeinsam ausgeben kann)</li>
+<li><strong>Change-Erkennung:</strong> Bitcoin-Transaktionen geben oft "Wechselgeld" an eine neue Adresse des Absenders zurück. Diese Change-Adressen können geclustert werden</li>
+<li><strong>Exchange-Tagging:</strong> Bekannte Exchange-Wallets sind öffentlich getaggt. Sobald eine Spur zu einer getaggten Exchange-Adresse führt, kann ein Rechtshilfeersuchen gestellt werden</li>
+</ol>
+
+<pre><code># Bitcoin-Transaktion verfolgen (manuell)
+# 1. Wallet-Adresse aus Erpresserbrief: z.B. bc1q...
+# 2. Auf blockchain.com/explorer oder blockchair.com eingeben
+# 3. Transaktionshistorie einsehen: wann gingen wie viele BTC ein/aus?
+# 4. Ausgehende Transaktionen verfolgen → nächste Adresse
+# 5. Wiederholen, bis eine Exchange-Adresse erreicht wird</code></pre>
+
+<h3>Clustering und Visualisierung</h3>
+
+<p>Clustering-Software (Chainalysis, TRM Labs, Elliptic) automatisiert diesen Prozess:</p>
+
+<ul>
+<li><strong>Input-Clustering:</strong> Alle Input-Adressen einer Transaktion → eine Entität</li>
+<li><strong>Change-Clustering:</strong> Change-Outputs identifizieren und dem Absender zuordnen</li>
+<li><strong>Behavioral-Clustering:</strong> Transaktionsmuster (Uhrzeit, Beträge, Gebühren) vergleichen</li>
+<li><strong>Visualisierung:</strong> Graph-Darstellung: Wallet → Mixer → Peel Chain → Exchange → Fiat</li>
+</ul>
+
+<h3>Praktisches Beispiel: Ransomware-Zahlung verfolgen</h3>
+
+<pre><code># 1. Erpresserbrief: Bitcoin-Adresse = bc1q...
+# 2. blockchain.com → 2,5 BTC in 3 Transaktionen eingegangen
+# 3. Funds wurden an 12 neue Adressen aufgeteilt (Peel Chain)
+# 4. Kleinere Beträge gehen an Adressen, die als "Binance Deposit" getaggt sind
+# 5. → Rechtshilfeersuchen an Binance mit Transaktions-Hash und Deposit-Adresse
+# 6. Binance liefert KYC-Daten des Kontoinhabers</code></pre>
+
+<h2 id="darknet-markets">Darknet-Marktplätze</h2>
+
+<h3>Historische und aktuelle Marktplätze</h3>
+
+<table class="styled-table">
+<thead><tr><th>Marktplatz</th><th>Zeitraum</th><th>Status</th><th>Besonderheiten</th></tr></thead><tbody>
+<tr><td><strong>Silk Road</strong></td><td>2011-2013</td><td>Vom FBI geschlossen</td><td>Erster großer Darknet-Markt, Ross Ulbricht verurteilt</td></tr>
+<tr><td><strong>AlphaBay</strong></td><td>2014-2017</td><td>Geschlossen, 2021 wiederbelebt</td><td>Größter Markt seiner Zeit, Alexandre Cazes in Thailand verhaftet (Suizid)</td></tr>
+<tr><td><strong>Hydra</strong></td><td>2015-2022</td><td>Vom BKA zerschlagen</td><td>Russischsprachig, 80 % aller Darknet-Transaktionen, 5,2 Mrd. € Umsatz</td></tr>
+<tr><td><strong>Dream Market</strong></td><td>2013-2019</td><td>Freiwillig geschlossen</td><td>Langlebig, übernahm nach AlphaBay-Schließung</td></tr>
+<tr><td><strong>Wall Street Market</strong></td><td>2016-2019</td><td>Zerschlagen (Europol)</td><td>Drei deutsche Betreiber verhaftet und verurteilt</td></tr>
+<tr><td><strong>Archetyp</strong></td><td>2021-heute</td><td>Aktiv</td><td>Aktuell einer der größten Darknet-Märkte</td></tr>
+<tr><td><strong>Incognito Market</strong></td><td>2023-2024</td><td>Zerschlagen</td><td>Exit-Scam + Betreiber verhaftet (Taiwan/USA)</td></tr>
+</tbody></table>
+
+<h3>Darknet-Marktplatz-Architektur (forensisch relevant)</h3>
+
+<ul>
+<li><strong>.onion-Adresse:</strong> Tor Hidden Service — die eigentliche Server-IP ist verschleiert</li>
+<li><strong>Escrow-System:</strong> Marktplatz hält Zahlungen treuhänderisch → Blockchain-Adressen des Marktplatzes identifizierbar</li>
+<li><strong>PGP-Verschlüsselung:</strong> Kommunikation zwischen Käufer/Verkäufer ist verschlüsselt. Aber: PGP-Public-Keys sind persistent und können über mehrere Märkte hinweg verfolgt werden</li>
+<li><strong>Feedback-System:</strong> Wie eBay — Bewertungen, Trust-Levels. Forensisch nutzbar: Verkäufer-Profil über mehrere Märkte korrelieren</li>
+<li><strong>Dead-Drop / Postal:</strong> Physische Lieferung von Drogen/Ware. Forensisch: Postwege, DNA, Fingerabdrücke, Überwachungskameras</li>
+</ul>
+
+<div class="callout warning"><strong>Hydra-Zerschlagung (2022):</strong> Das BKA zerschlug Hydra nach monatelanger verdeckter Ermittlung. Schlüssel zum Erfolg: Blockchain-Analyse identifizierte die Bitcoin-Wallets des Marktplatzes. Undercover-Ermittler tätigten Testkäufe und verfolgten die Zahlungsflüsse. Die Server standen in Deutschland — das BKA beschlagnahmte 543 Bitcoins (damals ~23 Mio. €).</div>
+
+<h2 id="taetergruppen">Tätergruppierungen</h2>
+
+<h3>Klassifikation von Cybercrime-Akteuren</h3>
+
+<table class="styled-table">
+<thead><tr><th>Gruppierung</th><th>Motivation</th><th>Fähigkeiten</th><th>Typische Angriffe</th><th>Beispiele</th></tr></thead><tbody>
+<tr><td><strong>APTs (staatlich)</strong></td><td>Spionage, Sabotage</td><td>Sehr hoch</td><td>Supply-Chain, Zero-Days, Langzeit-Infiltration</td><td>APT29/Cozy Bear, APT41, Lazarus Group</td></tr>
+<tr><td><strong>FIN-Gruppen (finanziell)</strong></td><td>Gewinnmaximierung</td><td>Hoch</td><td>Ransomware, Bankraub, BEC, Kryptodiebstahl</td><td>FIN7/Carbanak, FIN12, Lazarus (auch finanziell)</td></tr>
+<tr><td><strong>Organisierte Kriminalität</strong></td><td>Gewinn</td><td>Variabel</td><td>RaaS, Drogenhandel, Geldwäsche</td><td>Ransomware-Kartelle, Darknet-Syndikate</td></tr>
+<tr><td><strong>Hacktivists</strong></td><td>Ideologisch/politisch</td><td>Niedrig-Mittel</td><td>DDoS, Defacements, Leaks, Doxing</td><td>Anonymous, Killnet, Cyber-Partisans</td></tr>
+<tr><td><strong>Insider Threats</strong></td><td>Rache, Geld</td><td>Mittel (mit Zugang)</td><td>Datendiebstahl, Sabotage</td><td>Ehemalige Mitarbeiter, bestochene Admins</td></tr>
+<tr><td><strong>Script-Kiddies</strong></td><td>Ruhm, Neugier</td><td>Niedrig</td><td>DDoS-for-Hire, vorgefertigte Exploits</td><td>Lizard Squad (historisch)</td></tr>
+</tbody></table>
+
+<h3>FIN7 — Prototyp einer professionellen Cybercrime-Gruppe</h3>
+
+<ul>
+<li><strong>Struktur:</strong> Hierarchisch organisiert mit Abteilungen (IT, HR, Vertrieb, Entwicklung)</li>
+<li><strong>Methoden:</strong> Phishing → Carbanak/REvil-Malware → POS-Compromise → Kartendaten-Verkauf</li>
+<li><strong>Umsatz:</strong> Geschätzt über 1 Mrd. € über mehrere Jahre</li>
+<li><strong>Forensische Erkenntnisse:</strong> FIN7 betrieb eine Scheinfirma ("Combi Security") mit physischem Büro, um Mitarbeiter einzustellen und Pentesting-Dienstleistungen als Tarnung anzubieten</li>
+</ul>
+
+<div class="callout tip"><strong>Täterprofil-Erstellung:</strong> Anhand der TTPs (Tactics, Techniques, Procedures) können Angreifergruppen identifiziert werden. MITRE ATT&CK erfasst diese systematisch. Fragekatalog: Welche Malware-Familie? Welcher Initial-Access-Vektor? Welche Exfiltrationsmethode? Welche bevorzugte Währung (BTC vs XMR)? Welche Sprache in Erpresserbriefen? Welche Arbeitszeiten (Commits/Attacken-Zeitstempel)?</div>
+
+<h2 id="ermittlungsansaetze">Forensische Ermittlungsansätze</h2>
+
+<h3>Ganzheitlicher Ermittlungsansatz</h3>
+
+<table class="styled-table">
+<thead><tr><th>Ansatz</th><th>Was wird analysiert?</th><th>Welche Frage beantwortet das?</th></tr></thead><tbody>
+<tr><td><strong>Blockchain-Analyse</strong></td><td>Bitcoin-/Ethereum-Transaktionen</td><td>Wer hat bezahlt? Wohin fließt das Geld? Exchange-Verbindung?</td></tr>
+<tr><td><strong>Infrastruktur-Analyse</strong></td><td>C2-Server, IPs, Domains, Hosting</td><td>Wer hostet die Malware? Bezahlt per Kreditkarte/PayPal?</td></tr>
+<tr><td><strong>Malware-Analyse</strong></td><td>Code, Strings, C2-Protokoll</td><td>Welche RaaS-Familie? Wiederverwendeter Code? PGP-Keys in Strings?</td></tr>
+<tr><td><strong>TTP-Analyse</strong></td><td>Angriffsmuster, MITRE ATT&CK</td><td>Welche Gruppe? Staatlich oder finanziell motiviert?</td></tr>
+<tr><td><strong>Kommunikations-Analyse</strong></td><td>Erpresserbriefe, Foren-Posts</td><td>Sprache/Stil → Herkunftsland? Wiederverwendete Formulierungen?</td></tr>
+<tr><td><strong>Opfer-Analyse</strong></td><td>Opferprofil, Branche, Größe</td><td>Targeting-Muster? Gezielter Angriff oder Opportunist?</td></tr>
+</tbody></table>
+
+<h3>Konkrete Ermittlungsschritte</h3>
+
+<ol>
+<li><strong>Blockchain-Analyse:</strong> Wallet-Adresse aus Erpresserbrief → Transaktionskette verfolgen → Exchange-Deposit → Rechtshilfeersuchen → KYC-Daten</li>
+<li><strong>Infrastruktur-Analyse:</strong> C2-Server-IP aus Malware-Analyse → IP-WHOIS (ARIN/RIPE) → Hosting-Provider → Zahlungsdaten des Mieters</li>
+<li><strong>Code-Analyse:</strong> Malware-Sample disassemblieren → Code-Ähnlichkeiten mit bekannten Familien → RaaS-Gruppe identifizieren</li>
+<li><strong>TTPs:</strong> MITRE ATT&CK-Mapping → Gruppenzuordnung (z.B. T1566.001 = Phishing, T1486 = Data Encrypted for Impact)</li>
+<li><strong>Kommunikation:</strong> Erpresserbrief linguistisch analysieren → Muttersprache, Bildung, charakteristische Phrasen → Profil schärfen</li>
+<li><strong>Undercover:</strong> In einschlägigen Foren/Kanälen als Kaufinteressent auftreten → Kontakte knüpfen, PGP-Keys sammeln, Transaktionsmuster studieren</li>
+</ol>
+
+<h2 id="praktische-anwendung">Praktische Anwendung / Werkzeuge</h2>
+
+<h3>Kryptowährungs-Tracing</h3>
+
+<pre><code># Bitcoin-Transaktionen verfolgen
+# https://www.blockchain.com/explorer
+# https://blockchair.com/bitcoin/address/&lt;ADRESSE&gt;
+# https://oxt.me/ — speziell für forensische Analyse
+
+# Monero (eingeschränkt, da anonym)
+# https://localmonero.co/blocks — Block-Explorer (nur Block-Daten, keine Transaktionsdetails)</code></pre>
+
+<h3>Ransomware-Monitoring</h3>
+
+<pre><code># Ransomware-Gruppen und Leak-Sites tracken
+# https://ransomlook.io/ — Übersicht aller aktiven Ransomware-Gruppen
+# https://www.ransomware.live/ — Live-Tracking von Opfern und Gruppen
+
+# Ransomware-ID (Noten, Dateiendung → RaaS-Familie)
+# https://id-ransomware.malwarehunterteam.com/
+# https://www.nomoreransom.org/ — Entschlüsselungstools für bekannte Ransomware</code></pre>
+
+<h3>Infrastruktur-Analyse</h3>
+
+<pre><code># IP/WHOIS
+whois &lt;IP-Adresse&gt;
+curl ipinfo.io/&lt;IP-Adresse&gt;
+
+# Domain-Analyse
+# https://urlscan.io/ — Screenshots, Redirects, DNS, IP
+# https://www.shodan.io/ — Geräte und offene Ports
+
+# Malware-Konfiguration extrahieren
+# https://www.virustotal.com/ — Datei-Hash prüfen
+# https://any.run/ — Sandbox-Analyse</code></pre>
+
+<h3>Darknet-Monitoring</h3>
+
+<pre><code># Tor-Suchmaschinen
+# Ahmia.fi — Darknet-Suchmaschine (.onion-Index)
+# Torch — älteste Darknet-Suchmaschine
+
+# Darknet-Markt-Monitoring
+# dark.fail — Status der wichtigsten Darknet-Märkte
+# Dread (dreadditevelidot.onion) — Reddit-ähnliches Darknet-Forum</code></pre>
+
+<h2 id="quellen">Quellen / Weiterführendes</h2>
+
+<ul>
+<li><a href="https://www.chainalysis.com/">Chainalysis Crypto Crime Report</a> — Jährlicher Bericht zu Krypto-Kriminalität</li>
+<li><a href="https://attack.mitre.org/">MITRE ATT&CK</a> — Taktiken, Techniken und Prozeduren von Angreifergruppen</li>
+<li><a href="https://ransomlook.io/">Ransomlook.io</a> — Übersicht aktiver Ransomware-Gruppen und Leak-Sites</li>
+<li><a href="https://www.blockchain.com/explorer">Blockchain.com Explorer</a> — Bitcoin-Transaktionsanalyse</li>
+<li><a href="https://www.shodan.io/">Shodan</a> — Device Search Engine (C2-Server, offene Ports)</li>
+<li><a href="https://urlscan.io/">urlscan.io</a> — URL- und Infrastruktur-Analyse</li>
+<li><a href="https://www.europol.europa.eu/activities-services/main-reports/internet-organised-crime-threat-assessment-iocta">Europol IOCTA</a> — Internet Organised Crime Threat Assessment (jährlich)</li>
+<li><a href="https://www.bka.de/DE/UnsereAufgaben/Deliktsbereiche/Cybercrime/cybercrime_node.html">BKA Cybercrime-Lagebild</a> — Bundeslagebild Cybercrime (jährlich)</li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

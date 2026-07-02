@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT-Security — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (17)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details open><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../05-it-security/index.html">IT-Security</a> / Übersicht</span>
+</nav>
+<main><article>
+<h1>IT-Security <span class="diff-badge diff-beginner">Kategorie</span></h1>
+<p>Grundlagen der Informationssicherheit: Schutzziele, Risikoanalyse, Kryptografie, Authentifizierung und Security Incident Management. IT-Security und Digitale Forensik sind zwei Seiten derselben Medaille — wer Sicherheitsmechanismen versteht, kann Angriffe besser rekonstruieren.</p>
+
+<h2>Warum diese Kategorie?</h2>
+<p>IT-Security definiert, WAS geschuetzt werden soll (CIA-Triade), WIE Bedrohungen analysiert werden (STRIDE, DREAD) und WOMIT man sich schuetzt (Kryptografie, PKI). Fuer Forensiker ist dieses Wissen unverzichtbar: Wer versteht, wie eine Verschluesselung funktioniert, kann besser beurteilen, ob und wie sie umgangen werden kann. Wer Threat Modeling beherrscht, weiss, wonach er bei der Spurensuche Ausschau halten muss.</p>
+<p>Besonders relevant ist die Schnittstelle zum Security Incident Management: Der Uebergang von der Erkennung eines Vorfalls (SIEM-Alert) zur forensischen Analyse ist fliessend. Diese Kategorie schlaegt die Bruecke zwischen proaktiver Sicherheit und reaktiver Forensik.</p>
+
+<div class="quick-links">
+  <a href="schutzziele-cia-triad.html" class="quick-card"><strong>Schutzziele: CIA-Triade</strong><span>Vertraulichkeit, Integritaet, Verfuegbarkeit — die drei Saeulen der Informationssicherheit.</span></a>
+  <a href="kryptografie-grundlagen-symmetrisch-asymmetrisch.html" class="quick-card"><strong>Kryptografie-Grundlagen</strong><span>Symmetrische und asymmetrische Verschluesselung — das mathematische Fundament der Sicherheit.</span></a>
+  <a href="security-incident-management.html" class="quick-card"><strong>Security Incident Management</strong><span>Vorfallerkennung, Reaktion und Nachbereitung — der Incident-Response-Lifecycle.</span></a>
+</div>
+
+<h2>Alle Notizen in dieser Kategorie</h2>
+<div class="card-grid">
+  <a href="schutzziele-cia-triad.html" class="quick-card"><strong>Schutzziele: CIA-Triade</strong><span>Vertraulichkeit, Integritaet, Verfuegbarkeit — und weitere Schutzziele wie Authentizitaet und Nichtabstreitbarkeit.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="risikoanalyse-threat-modeling.html" class="quick-card"><strong>Risikoanalyse &amp; Threat Modeling</strong><span>STRIDE, DREAD, Angriffsbaeume — Bedrohungen systematisch identifizieren und bewerten.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="kryptografie-grundlagen-symmetrisch-asymmetrisch.html" class="quick-card"><strong>Kryptografie: Symmetrisch &amp; Asymmetrisch</strong><span>AES, RSA, ECC — Verschluesselungsverfahren und ihre forensische Relevanz.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="authentifizierung-pki.html" class="quick-card"><strong>Authentifizierung &amp; PKI</strong><span>Zertifikate, CAs, Trust Chains — wie digitale Identitaeten verifiziert werden.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="kryptoanalyse.html" class="quick-card"><strong>Kryptoanalyse</strong><span>Angriffe auf Verschluesselung: Brute-Force, Seitenkanal, Known-Plaintext — Krypto brechen verstehen.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="post-quantum-blockchain.html" class="quick-card"><strong>Post-Quantum &amp; Blockchain</strong><span>Quantenresistente Kryptografie und Blockchain-Forensik — Zukunftstechnologien im Fokus.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="security-incident-management.html" class="quick-card"><strong>Security Incident Management</strong><span>Vorbereitung, Erkennung, Eindämmung, Wiederherstellung — der Incident-Response-Prozess.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="siem-und-monitoring.html" class="quick-card"><strong>SIEM &amp; Monitoring</strong><span>Splunk, ELK, Wazuh — Security Information and Event Management fuer die Echtzeitueberwachung.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+</div>
+
+<h2>Zentrale Werkzeuge</h2>
+<table>
+<thead><tr><th>Werkzeug</th><th>Einsatzbereich</th></tr></thead><tbody>
+<tr><td><strong>OpenSSL</strong></td><td>Verschluesselung, Zertifikatsanalyse, Hash-Berechnung</td></tr>
+<tr><td><strong>hashcat / John the Ripper</strong></td><td>Passwort-Cracking und Hash-Analyse</td></tr>
+<tr><td><strong>Splunk / ELK Stack</strong></td><td>SIEM — Security Information and Event Management</td></tr>
+<tr><td><strong>Wazuh</strong></td><td>Open-Source SIEM mit XDR-Funktionalitaet</td></tr>
+</tbody></table>
+
+<h2>Empfohlener Lernpfad</h2>
+<p>Fuer den Einstieg in die IT-Security empfiehlt sich diese Reihenfolge:</p>
+<ol>
+<li><strong>Schutzziele: CIA-Triade</strong> — Vertraulichkeit, Integritaet, Verfuegbarkeit sind die drei Saeulen. Erweitere sie um Authentizitaet, Nichtabstreitbarkeit und Verbindlichkeit.</li>
+<li><strong>Risikoanalyse &amp; Threat Modeling</strong> — STRIDE, DREAD, Angriffsbaeume — lerne, Bedrohungen systematisch zu identifizieren und zu priorisieren.</li>
+<li><strong>Kryptografie-Grundlagen</strong> — Symmetrische (AES) und asymmetrische (RSA, ECC) Verschluesselung — das mathematische Fundament aller Sicherheitsmechanismen.</li>
+<li><strong>Authentifizierung &amp; PKI</strong> — Zertifikate, CAs, Trust Chains — wie digitale Identitaeten im Netz verifiziert werden.</li>
+<li><strong>Security Incident Management</strong> — Der Incident-Response-Lifecycle: Vorbereitung, Erkennung, Eindaemmung, Wiederherstellung, Nachbereitung.</li>
+<li><strong>SIEM &amp; Monitoring</strong> — Splunk, ELK, Wazuh — Echtzeitueberwachung und Alerting in der Praxis.</li>
+<li><strong>Fortgeschrittene Themen</strong> — Kryptoanalyse, Post-Quantum-Kryptografie und Blockchain bauen auf den Grundlagen auf.</li>
+</ol>
+
+<h2>Verwandte Kategorien</h2>
+<ul>
+<li><a href="../03-netzwerke/index.html">Netzwerke</a> — VPN, Firewalls, TLS/SSL, Web-Sicherheit</li>
+<li><a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> — Incident Response, Malware-Analyse, Threat Hunting</li>
+<li><a href="../07-recht-kriminalistik/index.html">Recht &amp; Kriminalistik</a> — DSGVO, Ethik, Eingriffsrecht</li>
+<li><a href="../01-grundlagen/index.html">Grundlagen der Informatik</a> — Algorithmen und Datenstrukturen fuer kryptografische Verfahren</li>
+</ul>
+
+<h2>Haeufige Fragen</h2>
+<details class="fold"><summary>Was ist der Unterschied zwischen Encoding, Hashing und Encryption?</summary>
+<p><strong>Encoding</strong> (Base64, URL-Encoding) ist KEINE Sicherheitsmassnahme — es macht Daten nur transportfaehig und ist jederzeit umkehrbar. <strong>Hashing</strong> (SHA-256, MD5) ist eine Einbahnstrasse — aus dem Hash laesst sich der Input nicht rekonstruieren. Es dient der Integritaetspruefung. <strong>Encryption</strong> (AES, RSA) macht Daten mit einem Schluessel unlesbar und MIT dem Schluessel wieder lesbar — das ist echte Vertraulichkeit. Forensisch relevant: Encoding entschluesselt man, Hashes vergleicht man, Encryption muss man knacken oder den Schluessel finden.</p></details>
+<details class="fold"><summary>Was ist ein guter Einstieg in die Kryptografie?</summary>
+<p>Beginne mit symmetrischer Verschluesselung (AES) — das Konzept ist intuitiv: ein Schluessel, der ver- und entschluesselt. Dann verstehe asymmetrische Kryptografie (RSA, ECC) — oeffentlicher und privater Schluessel, Schluesseltausch. Schliesslich PKI: Wie werden oeffentliche Schluessel vertrauenswuerdig verteilt? Das OpenSSL-Kommandozeilenwerkzeug ist ideal zum Experimentieren.</p></details>
+<details class="fold"><summary>Wie haengen SIEM und Incident Response zusammen?</summary>
+<p>SIEM (Security Information and Event Management) ist das Fruehwarnsystem: Es sammelt und korreliert Logs aus dem gesamten Netzwerk und generiert Alerts bei Auffaelligkeiten. Incident Response ist die Reaktion auf diese Alerts: Analyse, Eindaemmung, Wiederherstellung. SIEM ohne IR ist wie eine Alarmanlage ohne Wachdienst. IR ohne SIEM ist wie blindes Herumstochern. Beide zusammen bilden das Rueckgrat der Security Operations.</p></details>
+
+<div style="margin-top:32px"></div>
+</article></main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

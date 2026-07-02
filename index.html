@@ -14,7 +14,7 @@
 
 <h1>Digital Forensics Field Notes</h1>
 <p class="subtitle">Eine offene Sammlung von Lernnotizen, Cheatsheets und Tools zu Digitaler Forensik, IT-Security und Cyberkriminalitaet.</p>
-<p class="home-stats">75 Notizen &middot; 8 Themenbereiche &middot; 245 Glossarbegriffe</p>
+<p class="home-stats">85+ Notizen &middot; 9 Themenbereiche &middot; 245 Glossarbegriffe</p>
 
 <div class="search-box-home">
   <input type="text" id="searchInput" placeholder="Notizen durchsuchen..." autocomplete="off">
@@ -45,7 +45,7 @@
 
 <h2>Alle Notizen nach Kategorie</h2>
 
-<details class="cat-section"><summary>Grundlagen (8)</summary>
+<details class="cat-section" id="cat-grundlagen"><summary>Grundlagen (8)</summary>
 <ul class="cat-list">
   <li><a href="01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
   <li><a href="01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
@@ -57,26 +57,27 @@
   <li><a href="01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
 </ul></details>
 
-<details class="cat-section"><summary>Betriebssysteme (15)</summary>
+<details class="cat-section" id="cat-betriebssysteme"><summary>Betriebssysteme (16)</summary>
 <ul class="cat-list">
   <li><a href="02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
-  <li><a href="02-betriebssysteme/betriebssystem-architekturen.html">Betriebssystem-Architekturen</a></li>
-  <li><a href="02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement und Threads</a></li>
+  <li><a href="02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+  <li><a href="02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
   <li><a href="02-betriebssysteme/memory-management.html">Memory Management</a></li>
   <li><a href="02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
   <li><a href="02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
   <li><a href="02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
-  <li><a href="02-betriebssysteme/windows-registry-forensik.html">Windows Registry Forensik</a></li>
+  <li><a href="02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
   <li><a href="02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
   <li><a href="02-betriebssysteme/file-carving.html">File Carving</a></li>
   <li><a href="02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
   <li><a href="02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
   <li><a href="02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+  <li><a href="02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
   <li><a href="02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
   <li><a href="02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
 </ul></details>
 
-<details class="cat-section"><summary>Netzwerke (12)</summary>
+<details class="cat-section" id="cat-netzwerke"><summary>Netzwerke (12)</summary>
 <ul class="cat-list">
   <li><a href="03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
   <li><a href="03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
@@ -92,7 +93,7 @@
   <li><a href="03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
 </ul></details>
 
-<details class="cat-section"><summary>Forensik-Methoden (13)</summary>
+<details class="cat-section" id="cat-forensik"><summary>Forensik-Methoden (17)</summary>
 <ul class="cat-list">
   <li><a href="04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
   <li><a href="04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
@@ -107,9 +108,13 @@
   <li><a href="04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
   <li><a href="04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
   <li><a href="04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+  <li><a href="04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+  <li><a href="04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+  <li><a href="04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+  <li><a href="04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
 </ul></details>
 
-<details class="cat-section"><summary>IT-Security (8)</summary>
+<details class="cat-section" id="cat-it-security"><summary>IT-Security (8)</summary>
 <ul class="cat-list">
   <li><a href="05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
   <li><a href="05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
@@ -121,7 +126,7 @@
   <li><a href="05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
 </ul></details>
 
-<details class="cat-section"><summary>OSINT (5)</summary>
+<details class="cat-section" id="cat-osint"><summary>OSINT (5)</summary>
 <ul class="cat-list">
   <li><a href="06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
   <li><a href="06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
@@ -130,7 +135,7 @@
   <li><a href="06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
 </ul></details>
 
-<details class="cat-section"><summary>Recht &amp; Kriminalistik (9)</summary>
+<details class="cat-section" id="cat-recht"><summary>Recht &amp; Kriminalistik (9)</summary>
 <ul class="cat-list">
   <li><a href="07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
   <li><a href="07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
@@ -143,7 +148,7 @@
   <li><a href="07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
 </ul></details>
 
-<details class="cat-section"><summary>KI &amp; Forensik (5)</summary>
+<details class="cat-section" id="cat-ki"><summary>KI &amp; Forensik (5)</summary>
 <ul class="cat-list">
   <li><a href="08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
   <li><a href="08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
@@ -152,13 +157,34 @@
   <li><a href="08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
 </ul></details>
 
-<details class="cat-section"><summary>Tools &amp; Referenzen</summary>
+<details class="cat-section" id="cat-tools"><summary>Tools &amp; Referenzen</summary>
 <ul class="cat-list">
+  <li><a href="09-tools/kape/README.html">KAPE</a></li>
+  <li><a href="09-tools/velociraptor/README.html">Velociraptor</a></li>
+  <li><a href="09-tools/autopsy/README.html">Autopsy</a></li>
+  <li><a href="09-tools/ftk-encase-axiom/README.html">FTK / EnCase / AXIOM</a></li>
+  <li><a href="09-tools/axiom/README.html">Magnet AXIOM</a></li>
   <li><a href="09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
   <li><a href="09-tools/registry-parser/README.html">Registry Parser</a></li>
-  <li><a href="00-meta/glossary.html">Glossar (A-Z, 245 Begriffe)</a></li>
+  <li><a href="09-tools/log-parser/README.html">Log Parser</a></li>
+  <li><a href="09-tools/wireshark-dissector/README.html">Wireshark Dissector</a></li>
+  <li><a href="09-tools/plaso-plugin/README.html">Plaso Plugin</a></li>
+  <li><a href="00-meta/glossary.html">Glossar (A-Z)</a></li>
   <li><a href="INDEX.html">Themen-Index</a></li>
   <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+</ul></details>
+
+<details class="cat-section" id="cat-ctf"><summary>CTF-Writeups (3)</summary>
+<ul class="cat-list">
+  <li><a href="10-ctf-writeups/htb/meerkat/README.html">Meerkat (Event Logs)</a></li>
+  <li><a href="10-ctf-writeups/htb/campfire-1/README.html">Campfire-1 (Memory)</a></li>
+  <li><a href="10-ctf-writeups/misc-ctf/memlabs-1/README.html">MemLabs-1 (Volatility)</a></li>
+</ul></details>
+
+<details class="cat-section" id="cat-labs"><summary>Labs &amp; Projekte (2)</summary>
+<ul class="cat-list">
+  <li><a href="11-labs-projekte/windows-triage/index.html">Windows-Triage-Lab</a></li>
+  <li><a href="11-labs-projekte/ram-forensik/index.html">RAM-Forensik-Lab</a></li>
 </ul></details>
 
 <h2>Disclaimer</h2>

@@ -7,80 +7,343 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Recht & Kriminalistik</a> / Kriminalistik: Grundlagen und Verdachtslehre</span>
+  <span class="nav-crumb">/ <a href="../index.html#cat-recht">Recht & Kriminalistik</a> / Kriminalistik: Grundlagen und Verdachtslehre</span>
 </nav>
 <main>
 <article>
 <h1>Kriminalistik: Grundlagen und Verdachtslehre <span class="diff-badge diff-beginner">Grundlagen</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzueberblick</a></li>
+  <li><a href="#abgrenzung">Abgrenzung: Kriminalistik vs. Kriminologie vs. Kriminaltechnik</a></li>
+  <li><a href="#verdachtslehre">Kriminalistische Verdachtslehre</a></li>
+  <li><a href="#fallanalyse">Kriminalistische Fallanalyse</a></li>
+  <li><a href="#informationsquellen">Informationsquellen</a></li>
+  <li><a href="#spurenkunde">Spurenkunde im Detail</a></li>
+  <li><a href="#ermittlungsverfahren">Ermittlungsverfahren: Ablauf und Zustaendigkeiten</a></li>
+  <li><a href="#personal-sachbeweis">Zusammenwirken Personalbeweis + Sachbeweis</a></li>
+  <li><a href="#cybercrime-kriminalistik">Cybercrime-spezifische Kriminalistik</a></li>
+  <li><a href="#fallbearbeitung">Praktische Anwendung: Fallbearbeitung mit kriminalistischem Denkschema</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</a></li>
+</ol></details>
 
-<h2 id="kurz-berblick">Kurzüberblick</h2>
+<h2 id="kurz-berblick">Kurzueberblick</h2>
 
-<p>Kriminalistik ist die Wissenschaft von der Aufklärung und Verhütung von Straftaten. Sie beschreibt, WIE ermittelt wird. Im Unterschied dazu: Kriminologie fragt WARUM (Ursachenforschung), Kriminaltechnik liefert die naturwissenschaftlichen Methoden der Spurenauswertung (DNA, Fingerabdrücke, digitale Forensik).</p>
+<p>Kriminalistik ist die Wissenschaft von der Aufklaerung und Verhuetung von Straftaten. Sie beschreibt, <strong>WIE</strong> ermittelt wird. Im Unterschied dazu: Kriminologie fragt <strong>WARUM</strong> (Ursachenforschung), Kriminaltechnik liefert die naturwissenschaftlichen Methoden der Spurenauswertung (DNA, Fingerabdruecke, digitale Forensik).</p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>Kernfrage der Kriminalistik:</strong> Was ist passiert? Wer ist der Taeter? Welche Spuren gibt es? Wie koennen diese Spuren gesichert und interpretiert werden?</div>
 
-<h3>Abgrenzung der Disziplinen</h3>
+<h2 id="abgrenzung">Abgrenzung: Kriminalistik vs. Kriminologie vs. Kriminaltechnik</h2>
 
 <table class="styled-table">
-<thead><tr><th>Disziplin</th><th>Fragestellung</th><th>Beispiele</th></tr></thead><tbody>
-<tr><td>**Kriminalistik**</td><td>Wie klärt man eine Straftat auf?</td><td>Taktik, Vernehmung, Tatortarbeit, Fallanalyse</td></tr>
-<tr><td>**Kriminaltechnik**</td><td>Wie untersucht man Spuren naturwissenschaftlich?</td><td>DNA-Analyse, Daktyloskopie, digitale Forensik</td></tr>
-<tr><td>**Kriminologie**</td><td>Warum werden Menschen kriminell?</td><td>Täterprofile, Kriminalitätstheorien</td></tr>
+<thead><tr><th>Disziplin</th><th>Fragestellung</th><th>Methoden</th><th>Beispiele</th></tr></thead><tbody>
+<tr><td><strong>Kriminalistik</strong></td><td>Wie klaert man eine Straftat auf? Wie fuehrt man Ermittlungen?</td><td>Taktik, Vernehmungslehre, Tatortarbeit, Fallanalyse, Verdachtslehre</td><td>Vernehmungstaktik, Observation, Durchsuchungsplanung, Rekonstruktion des Tathergangs</td></tr>
+<tr><td><strong>Kriminaltechnik</strong></td><td>Wie untersucht man Spuren naturwissenschaftlich?</td><td>Physik, Chemie, Biologie, Informatik</td><td>DNA-Analyse, Daktyloskopie (Fingerabdruecke), Forensische Toxikologie, digitale Forensik</td></tr>
+<tr><td><strong>Kriminologie</strong></td><td>Warum werden Menschen kriminell? Welche gesellschaftlichen Faktoren beguenstigen Kriminalitaet?</td><td>Soziologie, Psychologie, Statistik</td><td>Taeterprofile, Kriminalitaetstheorien (Anomie, Subkultur, Rational Choice), Rueckfallforschung, Dunkelfeldforschung</td></tr>
 </tbody></table>
 
-<blockquote>Merksatz: Kriminalistik = Methodenlehre der Verbrechensbekämpfung, Kriminologie = Wissenschaft vom Verbrechen als sozialem Phänomen</blockquote>
+<blockquote>Merksatz: Kriminalistik = Methodenlehre der Verbrechensbekämpfung. Kriminologie = Wissenschaft vom Verbrechen als sozialem Phaenomen. Kriminaltechnik = naturwissenschaftliche Spurenuntersuchung.</blockquote>
 
-<h3>Die kriminalistische Verdachtslehre</h3>
+<h2 id="verdachtslehre">Kriminalistische Verdachtslehre</h2>
 
-<p>Ein Verdacht durchläuft Stufen. Die forensische Analyse dient dazu, den Verdacht zu qualifizieren:</p>
+<p>Ein Verdacht durchlaeuft Stufen. Die forensische Analyse dient dazu, den Verdacht zu qualifizieren — vom vagen Anfangsverdacht bis zum dringenden Tatverdacht, der Untersuchungshaft rechtfertigt.</p>
 
 <table class="styled-table">
-<thead><tr><th>Stufe</th><th>Definition</th><th>Forensische Aktion</th></tr></thead><tbody>
-<tr><td>**Anfangsverdacht**</td><td>Konkrete, tatsächliche Anhaltspunkte für eine Straftat</td><td>Ermittlungen dürfen aufgenommen werden</td></tr>
-<tr><td>**Einfacher Verdacht**</td><td>Wahrscheinlichkeit der Täterschaft aufgrund von Indizien</td><td>Gerichtlicher Durchsuchungsbeschluss möglich</td></tr>
-<tr><td>**Hinreichender Tatverdacht**</td><td>Überwiegende Wahrscheinlichkeit der Verurteilung</td><td>Anklageerhebung</td></tr>
-<tr><td>**Dringender Tatverdacht**</td><td>Hohe Wahrscheinlichkeit der Täterschaft</td><td>Untersuchungshaft</td></tr>
+<thead><tr><th>Stufe</th><th>Definition</th><th>Ermittlungsmassnahme</th><th>Forensische Aktion</th></tr></thead><tbody>
+<tr><td><strong>Anfangsverdacht</strong></td><td>Konkrete, tatsaechliche Anhaltspunkte fuer eine Straftat (§152 II StPO). <strong>KEINE</strong> blossen Vermutungen!</td><td>Ermittlungen duerfen aufgenommen werden. Polizei wird taetig, StA leitet Verfahren ein.</td><td>Erste Sichtung: Logfiles, Alerts, Hinweisgeber-Meldung. Reichen die Anhaltspunkte fuer §152 II?</td></tr>
+<tr><td><strong>Einfacher Tatverdacht</strong></td><td>Wahrscheinlichkeit der Taeterschaft aufgrund von Indizien</td><td>Gerichtlicher Durchsuchungsbeschluss moeglich (§102 StPO). Beschlagnahme moeglich.</td><td>Forensische Sicherung der Beweismittel. Erste Analyse zur Verdachtserhaertung.</td></tr>
+<tr><td><strong>Hinreichender Tatverdacht</strong></td><td>Ueberwiegende Wahrscheinlichkeit der Verurteilung (§170 I StPO)</td><td><strong>Anklageerhebung.</strong> Eroeffnung des Hauptverfahrens (§203 StPO).</td><td>Forensisches Gutachten fertiggestellt. Chain of Custody dokumentiert. Beweiskette geschlossen.</td></tr>
+<tr><td><strong>Dringender Tatverdacht</strong></td><td>Hohe Wahrscheinlichkeit der Taeterschaft (§112 I StPO)</td><td><strong>Untersuchungshaft.</strong> Haftbefehl (§114 StPO).</td><td>Verdichtung des forensischen Befunds: IP-Adressen, Zeitstempel, Account-Zuordnung — Beweise, die den Beschuldigten direkt belasten.</td></tr>
 </tbody></table>
 
-<h3>Beweisführung im Ermittlungsverfahren</h3>
+<div class="callout warning"><strong>Forensische Relevanz:</strong> Ein forensischer Bericht dient dazu, den Verdacht von Stufe zu Stufe zu "heben". Ein schwacher forensischer Befund (z.B. "IP-Adresse X war involviert") reicht fuer Anfangsverdacht, aber NICHT fuer Haftbefehl. Dafuer braucht es zusaetzliche Indizien (Account-Daten, Zeitkorrelation, Zeugen, Motiv).</div>
 
-<p><strong>Unterschiedliche Beweisanforderungen:</strong></p>
-<ul><li><strong>Ermittlungsverfahren:</strong> Freie Beweiswürdigung — alle zulässigen Beweismittel werden berücksichtigt</li>
-<li><strong>Gerichtsverfahren (Hauptverhandlung):</strong> Strengbeweis — nur bestimmte Beweismittel (Sachverständige, Urkunden, Zeugen, Augenschein)</li></ul>
+<h2 id="fallanalyse">Kriminalistische Fallanalyse</h2>
 
-<p>Ein forensischer Bericht ist ein Sachverständigenbeweis oder Urkundenbeweis.</p>
+<p>Systematische Methode zur Analyse von Straftaten. Die Fallanalyse ist ein iterativer Prozess: Hypothese → Pruefung → Verfeinerung → Neue Hypothese.</p>
 
-<h3>Kriminalistische Fallanalyse</h3>
+<h3>Phasen der Fallanalyse</h3>
 
-<p>Systematische Methode zur Analyse von Straftaten:</p>
-<ul><li><strong>Fallinformation sammeln:</strong> Alle verfügbaren Spuren, Zeugenaussagen, Tatortbefunde</li>
-<li><strong>Rekonstruktion:</strong> Tathergang logisch nachvollziehen</li>
-<li><strong>Hypothesen bilden:</strong> Täterprofil, Motiv, Modus Operandi</li>
-<li><strong>Hypothesen prüfen:</strong> Durch weitere Spuren/Funde falsifizieren oder stützen</li>
-<li><strong>Verknüpfung:</strong> Diese Tat mit anderen Taten (Tatserie) abgleichen</li></ul>
+<ol>
+  <li><strong>Fallinformation sammeln:</strong> Alle verfuegbaren Spuren, Zeugenaussagen, Tatortbefunde, digitale Artefakte zusammentragen. NICHTS voreilig ausschliessen.</li>
+  <li><strong>Tathergangsrekonstruktion:</strong> Zeitstrahl erstellen. Was geschah zuerst? Was folgte? Logische Abhaengigkeiten identifizieren (A konnte nicht vor B passieren, weil...).</li>
+  <li><strong>Hypothesen bilden:</strong> Welche moeglichen Szenarien erklaeren die Spurenlage? Jede Hypothese muss <em>falsifizierbar</em> sein.</li>
+  <li><strong>Hypothesen pruefen:</strong> Durch weitere Spuren/Funde falsifizieren oder stuetzen. Welche Spuren muessten bei Hypothese H1 vorhanden sein, die fehlen?</li>
+  <li><strong>Taeterprofil:</strong> Welche Faehigkeiten/Kenntnisse setzt die Tat voraus? Welches Motiv? Modus Operandi: Wiedererkennbare Verhaltensmuster des Taeters?</li>
+  <li><strong>Tatserien-Verknuepfung:</strong> Diese Tat mit anderen Taten (Tatserie) abgleichen. Gleicher Modus Operandi? Gleiche Infrastruktur (C2-Server, Malware-Familie)?</li>
+</ol>
 
-<h3>Cyber-Kriminalist — eine neue Rolle</h3>
+<h3>Modus Operandi (MO)</h3>
 
-<ul><li>Cyber-Kriminalisten untersuchen Straftaten mit digitalem Bezug</li>
-<li>Sie nutzen kriminalistische Methodik UND IT-Forensik</li>
-<li>Auftreten als <strong>Zeuge vom Hörensagen</strong> (was hat der Forensik-Bericht ergeben?) oder als <strong>Sachverständiger</strong> (eigene technische Expertise)</li>
-<li>Jeder forensische Fund muss im Rahmen der Beweisführung eingeordnet werden: Warum ist dieser Fund relevant? Was beweist er? Was beweist er nicht?</li></ul>
+<ul>
+  <li><strong>Definition:</strong> Das wiedererkennbare, in seiner Gesamtheit charakteristische Verhaltensmuster eines Taeters bei der Tatausfuehrung</li>
+  <li><strong>Cyber-MO:</strong> Immer die gleiche Malware-Familie? Gleicher Exploit? Gleiche C2-Domain-Struktur? Gleiche Zahlungsmethode (Bitcoin-Wallet)? Gleiche Loesegeld-Forderung?</li>
+  <li><strong>Forensisch:</strong> MO-Vergleich ueber mehrere Faelle hinweg → Tatserie. Hash-Abgleich, Code-Reuse-Analyse, DNS-Passive-Replication.</li>
+</ul>
 
-<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+<h2 id="informationsquellen">Informationsquellen</h2>
 
-<ul><li>Fallanalyse-Template: Wer? Was? Wann? Wo? Womit? Warum? Wie?</li>
-<li>Verdachtsdokumentation: Nicht "Ich glaube", sondern "Die IP-Adresse X verbindet sich um 03:17 Uhr mit Server Y → Anfangsverdacht auf unbefugten Zugriff"</li>
-<li>Zeugenrolle verstehen: Vor Gericht nur Fakten, keine Meinung</li></ul>
+<table class="styled-table">
+<thead><tr><th>Quelle</th><th>Art</th><th>Beispiele</th><th>Beweiswert</th></tr></thead><tbody>
+<tr><td><strong>Aussagen (Zeugen, Beschuldigte)</strong></td><td>Personalbeweis</td><td>Zeugenvernehmung, Beschuldigtenvernehmung, informatorische Befragung</td><td>Subjektiv. Glaubhaftigkeitspruefung erforderlich. Aussage-gegen-Aussage-Konstellationen problematisch.</td></tr>
+<tr><td><strong>Sachbeweise</strong></td><td>Sachbeweis (Real Evidence)</td><td>DNA-Spuren, Fingerabdruecke, Werkzeugspuren, digitale Artefakte</td><td>Objektiv (wenn korrekt gesichert). Hochwertig, weil nicht von menschlicher Erinnerung abhaengig.</td></tr>
+<tr><td><strong>Urkunden</strong></td><td>Urkundenbeweis</td><td>Vertraege, Rechnungen, Kontoauszuege, amtliche Dokumente</td><td>Hoch (wenn Echtheit feststeht). Urkundsdelikte (§267 StGB) als Gegencheck.</td></tr>
+<tr><td><strong>Digitale Spuren</strong></td><td>Mischform (Sachbeweis + Urkunde)</td><td>Log-Dateien, E-Mails, Chatverlaeufe, Metadaten, Browser-History, GPS-Tracks, Transaktionsdaten</td><td>Abhaengig von Sicherungsqualitaet und Interpretationskontext. Kein "stiller Zeuge" ohne menschliche Interpretation.</td></tr>
+</tbody></table>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<h2 id="spurenkunde">Spurenkunde im Detail</h2>
 
-<ul><li>Ackermann, Clages, Roll: Handbuch der Kriminalistik</li>
-<li><a href="https://www.bka.de/DE/UnsereAufgaben/Ermittlungsunterstuetzung/Kriminaltechnik/kriminaltechnik_node.html">BKA: Methoden der Kriminaltechnik</a></li></ul>
+<table class="styled-table">
+<thead><tr><th>Spurenart</th><th>Definition</th><th>Beispiele</th><th>Forensische Methode</th></tr></thead><tbody>
+<tr><td><strong>Formspuren</strong></td><td>Spuren, die durch Formuebertragung entstehen (Abdruck, Ritzspur)</td><td>Werkzeugspuren an aufgebrochenem Server-Rack, Schuhabdruck im Serverraum, Reifenspuren vor dem Rechenzentrum</td><td>Fotogrammetrie, 3D-Scan, Gipsabdruck</td></tr>
+<tr><td><strong>Materialspuren</strong></td><td>Spuren, die durch Materialuebertragung entstehen</td><td>DNA am Tatort-Rechner, Fingerabdruecke auf USB-Stick, Faseruebertragung, Toner-Chemie (bei Ausdrucken)</td><td>DNA-Analyse, Daktyloskopie, Mikroskopie, chemische Analyse</td></tr>
+<tr><td><strong>Situationsspuren</strong></td><td>Spuren, die den Zustand/Zusammenhang am Tatort dokumentieren</td><td>Position des Rechners, Kabelverbindungen (was ist wo eingesteckt?), Bildschirm war an/aus, Lueftergeraeusch? Raumtemperatur?</td><td>Tatortfotografie, Skizze, Beschreibung im Tatortbericht</td></tr>
+<tr><td><strong>Digitale Spuren</strong></td><td>Spuren in/aus informationstechnischen Systemen</td><td>Logfiles, Registry-Artefakte, Prefetch-Dateien, Browser-Verlauf, E-Mails, Netzwerk-PCAPs, Malware-Artefakte, $MFT/$UsnJrnl</td><td>Forensische Imaging + Analyse (Autopsy, X-Ways, Volatility, KAPE)</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Locard'sches Prinzip (uebertragen auf Cyber):</strong> "Jeder Kontakt hinterlaesst Spuren." — Auch im Digitalen: Jeder Login, jeder Netzwerkzugriff, jede Dateioeffnung hinterlaesst Spuren. Der Forensiker muss sie nur finden und interpretieren koennen. Auch ANTI-Forensik (Loeschen, Verschluesselung) hinterlaesst Spuren (geloeschte Logs = verdaechtig!).</div>
+
+<h2 id="ermittlungsverfahren">Ermittlungsverfahren: Ablauf und Zustaendigkeiten</h2>
+
+<h3>Beteiligte im Strafverfahren</h3>
+
+<table class="styled-table">
+<thead><tr><th>Akteur</th><th>Rolle</th><th>Im Ermittlungsverfahren</th><th>In der Hauptverhandlung</th></tr></thead><tbody>
+<tr><td><strong>Polizei</strong></td><td>Ermittlungsperson der StA (§152 GVG)</td><td>Ermittlungen vor Ort, Sicherung von Beweisen, Vernehmungen, Durchsuchungen auf Anordnung. <strong>IT-Forensik-Einheiten</strong> des BKA/LKA.</td><td>Zeugenvernehmung der ermittelnden Beamten</td></tr>
+<tr><td><strong>Staatsanwaltschaft</strong></td><td>Herrin des Ermittlungsverfahrens</td><td>Leitet Verfahren, stellt Antraege bei Gericht (Durchsuchung, Beschlagnahme, Haft), entscheidet ueber Anklage oder Einstellung.</td><td>Anklagevertretung (Sitzungsvertreter)</td></tr>
+<tr><td><strong>Gericht</strong></td><td>Unabhaengige Entscheidungsinstanz</td><td>Ermittlungsrichter: Entscheidet ueber Grundrechtseingriffe (Durchsuchung, TKUE, Haft). <strong>KEINE</strong> eigenen Ermittlungen.</td><td>Strafsenat/Schoeffengericht: Beweisaufnahme, Urteil. §§261, 244 II StPO (Amtsaufklaerungsgrundsatz).</td></tr>
+<tr><td><strong>Verteidigung</strong></td><td>Wahrung der Beschuldigtenrechte</td><td>Akteneinsicht (§147 StPO), eigene Ermittlungen moeglich (eigener Sachverstaendiger)</td><td>Beweisantraege, Fragerecht, Plaedoyer</td></tr>
+</tbody></table>
+
+<h3>Ablauf (vereinfacht)</h3>
+
+<ol>
+  <li><strong>Anfangsverdacht</strong> → Polizei oder StA werden taetig (von Amts wegen oder durch Anzeige/Strafantrag)</li>
+  <li><strong>Ermittlungsverfahren</strong> (§§160 ff. StPO) → Polizei ermittelt unter Leitung der StA. Beweise werden gesammelt und gesichert.</li>
+  <li><strong>Zwischenentscheidung:</strong> Hinreichender Tatverdacht? JA → Anklage (§170 I). NEIN → Einstellung (§170 II).</li>
+  <li><strong>Zwischenverfahren</strong> (§§199-211 StPO) → Gericht prueft Anklage. Eroeffnungsbeschluss ODER Nichteroeröfnung.</li>
+  <li><strong>Hauptverhandlung</strong> (§§226 ff. StPO) → Beweisaufnahme, Plaedoyer, Urteil.</li>
+</ol>
+
+<h2 id="personal-sachbeweis">Zusammenwirken Personalbeweis + Sachbeweis</h2>
+
+<p>Kein Beweismittel hat von vornherein hoeheren Beweiswert. Das Gericht wuerdigt alle Beweise frei (§261 StPO). Die Kunst liegt in der <strong>Kombination</strong>:</p>
+
+<table class="styled-table">
+<thead><tr><th>Kombination</th><th>Beispiel</th><th>Beweiskraft</th></tr></thead><tbody>
+<tr><td><strong>Nur Personalbeweis</strong></td><td>"Ich sah den Angeklagten am Rechner"</td><td>Mittel (Zeuge kann irren/luegen)</td></tr>
+<tr><td><strong>Nur Sachbeweis</strong></td><td>"Die IP-Adresse des Anschlusses des Angeklagten griff um 03:17 auf den Server zu"</td><td>Mittel (IP = Anschluss, nicht zwingend Person; offenes WLAN?)</td></tr>
+<tr><td><strong>Personal + Sachbeweis kombiniert</strong></td><td>Sachbeweis: IP-Adresse + Browser-History + Login-Daten. Personalbeweis: Zeuge sah Angeklagten zur Tatzeit am Rechner. Beides deckungsgleich.</td><td><strong>Sehr hoch</strong> — sich gegenseitig bestaetigende Beweise, kein vernuenftiger Zweifel mehr.</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Fehlinterpretation:</strong> Ein digitaler Sachbeweis allein ("Die E-Mail kam von seinem Account") beweist nicht, dass der Account-Inhaber sie schrieb. Account-Kompromittierung, Malware, geteilter Rechner, offenes WLAN sind alternative Erklaerungen. Der Forensiker muss diese Alternativhypothesen im Gutachten <em>mitpruefen und ausschliessen</em>.</div>
+
+<h2 id="cybercrime-kriminalistik">Cybercrime-spezifische Kriminalistik</h2>
+
+<h3>Online-Tatorte</h3>
+
+<ul>
+  <li><strong>Klassischer Tatort:</strong> Ein physischer Ort (Buero, Wohnung, Serverraum)</li>
+  <li><strong>Online-Tatort:</strong> Verteilt ueber mehrere Geraete, Netze und Laender. Der "Tatort" ist eine Cloud-Instanz in Irland, ein C2-Server in Russland, ein Bot in Brasilien und der Rechner des Opfers in Deutschland.</li>
+  <li><strong>Forensische Konsequenz:</strong> Tatortarbeit im Digitalen = Logfile-Korrelation ueber Zeitzonen hinweg. Virtualisierte Tatorte (Container, Serverless) existieren nur Sekunden.</li>
+</ul>
+
+<h3>Darknet-Ermittlungen</h3>
+
+<ul>
+  <li><strong>Herausforderungen:</strong> Anonymisierung (Tor, VPN), Kryptowaehrungen (Monero = privacy coin), verschluesselte Kommunikation (PGP), internationale Serverstandorte</li>
+  <li><strong>Ermittlungsansaetze:</strong> Blockchain-Analyse (bei Bitcoin), Undercover-Ermittlungen, Fehler der Taeter (OpSec-Fails: Klartext-IP in Forenpost, gleicher Username im Clearnet und Darknet), Mithilfe von Exchanges (KYC-Daten)</li>
+  <li><strong>Rechtliche Grenzen:</strong> Quellen-TKUE bei Aufenthaltsermittlung im Darknet. Grenzueberschreitende Rechtshilfe (Europol, Interpol, Joint Investigation Teams).</li>
+</ul>
+
+<h3>Grenzüberschreitende Verfahren</h3>
+
+<ul>
+  <li><strong>Rechtshilfeersuchen:</strong> Formeller Antrag an auslaendischen Staat um Beweiserhebung (z.B. Server-Beschlagnahme in USA)</li>
+  <li><strong>European Investigation Order (EIO):</strong> EU-Richtlinie 2014/41/EU — vereinfachte grenzueberschreitende Beweiserhebung innerhalb der EU</li>
+  <li><strong>MLAT (Mutual Legal Assistance Treaty):</strong> Bilaterale Abkommen ausserhalb der EU. LANGSAM (oft 6-24 Monate).</li>
+</ul>
+
+<h2 id="fallbearbeitung">Praktische Anwendung: Fallbearbeitung mit kriminalistischem Denkschema</h2>
+
+<h3>Die 7 W-Fragen der Kriminalistik</h3>
+
+<pre><code>WER?     — Taeter, Opfer, Zeugen, Beteiligte identifizieren
+WAS?     — Was genau ist passiert? Welche Straftat? Welcher Schaden?
+WANN?    — Tatzeit (Start, Ende, Dauer). Zeitstrahl mit allen relevanten Ereignissen.
+WO?      — Tatort: Physischer Ort + Online-Tatort (IPs, Server, Cloud)
+WOMIT?   — Tatwerkzeug: Malware, Exploit, Hardware, Account, Passwort
+WARUM?   — Motiv: Finanziell? Politisch? Persoenlicher Racheakt? Spionage?
+WIE?     — Modus Operandi: Technische Durchfuehrung, Verschleierung, Fluchtweg</code></pre>
+
+<h3>Kriminalistische Denkschema-Checkliste</h3>
+
+<ol>
+  <li><strong>Spuren erfassen (quantitativ):</strong> ALLE Spuren sammeln — nichts voreilig als irrelevant ausschliessen.</li>
+  <li><strong>Spuren strukturieren (qualitativ):</strong> Zeitlich ordnen (Timeline). Raumlich ordnen (Netzwerk-Topologie, Zugriffswege).</li>
+  <li><strong>Hypothesen generieren:</strong> Mindestens 2 Alternativhypothesen formulieren. "Der Angreifer kam ueber Phishing" — Alternative: "Der Angreifer kam ueber offenen RDP-Port"?</li>
+  <li><strong>Hypothesen testen:</strong> Welche Spur muesste bei Hypothese A vorhanden sein, die bei Hypothese B fehlt? (Discriminating Facts)</li>
+  <li><strong>Verdachtsgrad bestimmen:</strong> Anfangsverdacht? Hinreichend? Welche zusaetzlichen Spuren wuerden den Verdacht erhaerten?</li>
+  <li><strong>Dokumentieren:</strong> Nicht nur WAS gefunden wurde, sondern WARUM es relevant ist. "Die Prefetch-Datei beweist die Ausfuehrung der Malware um 14:22:17 UTC, weil der Prefetch-Zeitstempel beim ersten Programmstart gesetzt wird."</li>
+</ol>
+
+<h3>Cyber-Kriminalist — Rolle und Auftreten vor Gericht</h3>
+
+<ul>
+  <li>Cyber-Kriminalisten untersuchen Straftaten mit digitalem Bezug</li>
+  <li>Sie nutzen kriminalistische Methodik UND IT-Forensik</li>
+  <li>Auftreten als <strong>Zeuge vom Hoerensagen</strong> (was hat der Forensik-Bericht ergeben?) oder als <strong>Sachverstaendiger</strong> (eigene technische Expertise)</li>
+  <li>Jeder forensische Fund muss im Rahmen der Beweisfuehrung eingeordnet werden: Warum ist dieser Fund relevant? Was beweist er? Was beweist er <em>nicht</em>?</li>
+  <li><strong>Goldene Regel:</strong> Ein Befund ist erst dann ein Beweis, wenn er in den kriminalistischen Kontext gesetzt wird: "Die IP-Adresse X zum Zeitpunkt Y in Kombination mit dem Login-Account Z unter Ausschluss alternativer Erklaerungen (kein WLAN, kein geteilter Rechner) belegt die Taeterschaft des Angeklagten."</li>
+</ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</h2>
+
+<ul>
+  <li>Ackermann, Clages, Roll: <em>Handbuch der Kriminalistik</em>. Boorberg Verlag</li>
+  <li><a href="https://www.bka.de/DE/UnsereAufgaben/Ermittlungsunterstuetzung/Kriminaltechnik/kriminaltechnik_node.html">BKA: Methoden der Kriminaltechnik</a></li>
+  <li><a href="https://www.europol.europa.eu/">Europol: European Cybercrime Centre (EC3)</a></li>
+  <li><a href="https://www.gesetze-im-internet.de/stpo/">StPO (Strafprozessordnung) — Gesetze im Internet</a></li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

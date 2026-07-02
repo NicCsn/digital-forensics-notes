@@ -7,72 +7,522 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Algorithmen und Komplexität</span>
+  <span class="nav-crumb">/ <a href="../01-grundlagen/index.html">Grundlagen</a> / Algorithmen und Komplexität</span>
 </nav>
 <main>
 <article>
 <h1>Algorithmen und Komplexität <span class="diff-badge diff-beginner">Grundlagen</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz-berblick">Kurzüberblick</a></li>
+<li><a href="#o-notation">O-Notation (Landau-Notation)</a></li>
+<li><a href="#suchalgorithmen">Suchalgorithmen für die Forensik</a></li>
+<li><a href="#aho-corasick">Aho-Corasick: Multi-Pattern-Suche</a></li>
+<li><a href="#bloom-filter">Bloom-Filter: Probabilistische Datenstruktur</a></li>
+<li><a href="#hashing">Hashing: Kryptografisch vs. nicht-kryptografisch</a></li>
+<li><a href="#sortieralgorithmen">Sortieralgorithmen und ihre Relevanz</a></li>
+<li><a href="#regex">Regular Expressions: DFA vs NFA, ReDoS</a></li>
+<li><a href="#praktische-anwendung">Praktische Anwendung / Befehle</a></li>
+<li><a href="#quellen">Quellen / Weiterführendes</a></li>
+</ol></details>
 
 <h2 id="kurz-berblick">Kurzüberblick</h2>
 
-<p>Ein Algorithmus ist eine präzise Schritt-für-Schritt-Anweisung zur Lösung eines Problems. In der Forensik brauchst du Algorithmen z.B. für File Carving, Duplikatsuche, Log-Analyse oder Passwort-Hashing. Die Komplexität (O-Notation) sagt dir, wie ein Algorithmus skaliert — entscheidend bei großen Datenmengen.</p>
+<p>Ein Algorithmus ist eine präzise Schritt-für-Schritt-Anweisung zur Lösung eines Problems. In der Forensik brauchen Sie Algorithmen z.B. für File Carving, Duplikatsuche, Log-Analyse oder Passwort-Hashing. Die Komplexität (O-Notation) sagt Ihnen, wie ein Algorithmus skaliert — entscheidend bei großen Datenmengen von mehreren Terabyte.</p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>Forensischer Grundsatz:</strong> Ein 8-TB-Festplattenimage mit einem O(n²)-Algorithmus zu analysieren ist keine Geduldsfrage — es ist praktisch unmöglich. Die Wahl des richtigen Algorithmus entscheidet, ob eine Analyse Minuten oder Jahrzehnte dauert.</div>
 
-<h3>O-Notation (Landau-Notation)</h3>
+<h2 id="o-notation">O-Notation (Landau-Notation)</h2>
 
-<p>Beschreibt das Laufzeitverhalten im Worst Case in Abhängigkeit der Eingabegröße n:</p>
+<h3>Was beschreibt die O-Notation?</h3>
+
+<p>Die O-Notation beschreibt das Laufzeit- oder Speicherverhalten eines Algorithmus im <strong>Worst Case</strong> in Abhängigkeit der Eingabegröße <code>n</code>. Sie abstrahiert von Hardware, Programmiersprache und konstanten Faktoren.</p>
 
 <table class="styled-table">
-<thead><tr><th>Notation</th><th>Name</th><th>Beispiel</th><th>1 TB-Daten</th></tr></thead><tbody>
-<tr><td>O(1)</td><td>Konstant</td><td>Array-Zugriff per Index</td><td>sofort</td></tr>
-<tr><td>O(log n)</td><td>Logarithmisch</td><td>Binäre Suche</td><td>~40 Schritte</td></tr>
-<tr><td>O(n)</td><td>Linear</td><td>Lineare Suche in Image</td><td>~1 Stunde (hängt von I/O ab)</td></tr>
-<tr><td>O(n log n)</td><td>Quasilinear</td><td>Mergesort, Heapsort</td><td>~2 Stunden</td></tr>
-<tr><td>O(n²)</td><td>Quadratisch</td><td>Bubblesort</td><td>~Jahre</td></tr>
-<tr><td>O(2^n)</td><td>Exponentiell</td><td>Brute-Force-Passwort</td><td>nicht praktikabel</td></tr>
+<thead><tr><th>Notation</th><th>Name</th><th>Beispiel</th><th>n = 1 TB (10^12 Bytes)</th></tr></thead><tbody>
+<tr><td><strong>O(1)</strong></td><td>Konstant</td><td>Array-Zugriff per Index, Hash-Table Lookup</td><td>sofort</td></tr>
+<tr><td><strong>O(log n)</strong></td><td>Logarithmisch</td><td>Binäre Suche in sortierter Dateiliste</td><td>~40 Schritte</td></tr>
+<tr><td><strong>O(n)</strong></td><td>Linear</td><td>Lineare Suche, Hash-Berechnung</td><td>~1 Stunde (I/O-gebunden)</td></tr>
+<tr><td><strong>O(n log n)</strong></td><td>Quasilinear</td><td>Mergesort, Heapsort, Timsort</td><td>~2 Stunden</td></tr>
+<tr><td><strong>O(n²)</strong></td><td>Quadratisch</td><td>Bubblesort, naive Duplikatsuche</td><td>~Jahre (10^24 Operationen!)</td></tr>
+<tr><td><strong>O(2^n)</strong></td><td>Exponentiell</td><td>Brute-Force-Passwort (n = Schlüssellänge)</td><td>nicht praktikabel</td></tr>
 </tbody></table>
 
-<h3>Wichtige Algorithmen für die Forensik</h3>
+<h3>Forensik-Beispiele für jede Komplexitätsklasse</h3>
 
-<p><strong>Hashing (SHA-256, MD5):</strong> O(n) zum Hashen. <code>sha256sum image.dd</code> liest die gesamte Datei einmal linear.</p>
+<table class="styled-table">
+<thead><tr><th>Klasse</th><th>Forensik-Beispiel</th><th>Warum relevant?</th></tr></thead><tbody>
+<tr><td><strong>O(1)</strong></td><td>Hash-Table-Lookup: "Ist Hash X in NSRL?"</td><td>80 Mio. Hashes in konstanter Zeit prüfen</td></tr>
+<tr><td><strong>O(log n)</strong></td><td>Binäre Suche in sortiertem Event-Log nach Zeitstempel</td><td>Statt 1 Mrd. Events linear zu scannen, in ~30 Vergleichen finden</td></tr>
+<tr><td><strong>O(n)</strong></td><td><code>sha256sum image.dd</code>, <code>strings image.dd</code></td><td>Jedes Byte einmal lesen — optimal für vollständige Scans</td></tr>
+<tr><td><strong>O(n log n)</strong></td><td>Timeline sortieren: 100 Mio. Events → Super-Timeline</td><td>plaso/log2timeline sortiert alle extrahierten Zeitstempel</td></tr>
+<tr><td><strong>O(n²)</strong></td><td>Jeden Hash mit jedem anderen vergleichen (Duplikatsuche)</td><td>Nie so implementieren! Stattdessen: sortieren O(n log n) + linear scannen</td></tr>
+<tr><td><strong>O(2^n)</strong></td><td>Brute-Force: Alle 8-Zeichen-Passwörter durchprobieren</td><td>95^8 ≈ 6,6 × 10^15 Kombinationen — ohne GPU nicht machbar</td></tr>
+</tbody></table>
 
-<p><strong>Sortierung (Quicksort, Mergesort):</strong> O(n log n). IP-Adressen oder Zeitstempel sortieren für Timeline-Analyse.</p>
+<h3>Grafik: Wachstumsvergleich</h3>
 
-<p><strong>Reguläre Ausdrücke:</strong> Mustersuche in Logs. Worst Case exponentiell → ReDoS (Regular Expression Denial of Service). Immer Regex testen, bevor du ihn auf 10 GB Logs loslässt.</p>
+<pre><code># Vergleich der Komplexitätsklassen (Python)
+import math
+n_values = [10, 100, 1000, 10000, 100000, 1000000]
 
-<p><strong>Aho-Corasick-Algorithmus:</strong> Multi-Pattern-String-Matching — sucht nach Tausenden von IOCs gleichzeitig in O(n + m + z), wobei n = Textlänge, m = Summe aller Pattern-Längen, z = Treffer. Perfekt für IOC-Scanning über große Logdateien.</p>
+print(f"{'n':&gt;10} {'O(1)':&gt;6} {'O(log n)':&gt;10} {'O(n)':&gt;10} {'O(n log n)':&gt;12} {'O(n²)':&gt;12}")
+for n in n_values:
+    print(f"{n:&gt;10} {1:&gt;6} {math.log2(n):&gt;10.1f} {n:&gt;10} {n*math.log2(n):&gt;12.1f} {n**2:&gt;12}")
 
-<p><strong>Rabin-Karp-Algorithmus:</strong> Rolling-Hash-Verfahren. Perfekt für File Carving: Statt jeden Byte-Versatz auf eine Header-Signatur zu prüfen (O(n·m)), berechnet Rabin-Karp einen fortlaufenden Hash und vergleicht in O(n+m).</p>
+# Ausgabe zeigt: Bei n=1.000.000 ist O(n)=1M, O(n²)=1 Billion — der Unterschied ist dramatisch!</code></pre>
 
-<p><strong>Bloom-Filter:</strong> Datenstruktur, die prüft, ob ein Element in einer Menge enthalten sein KÖNNTE. Falsch-Positive möglich, aber keine Falsch-Negative. Anwendung: NSRL-Abgleich — "Ist dieser Hash in den 80 Millionen Known-Good-Hashes?" → Bloom-Filter sagt "nein" oder "vielleicht". Speicherverbrauch: ~100 MB statt 10 GB.</p>
+<div class="callout tip"><strong>Merkhilfe:</strong> Ein O(n)-Algorithmus auf 8 TB Daten ist technisch machbar (einmal alles lesen). Ein O(n²)-Algorithmus auf denselben Daten würde ~10^25 Operationen benötigen — das Universum ist nicht alt genug dafür. In der Forensik bedeutet das: <strong>sortieren, dann scannen</strong> (O(n log n) + O(n)) statt naiv vergleichen (O(n²)).</div>
 
-<h3>Praxis-Beispiel: File Carving mit Rabin-Karp</h3>
+<h2 id="suchalgorithmen">Suchalgorithmen für die Forensik</h2>
 
-<pre><code>Besser: Rolling Hash über 4-Byte-Fenster. Hash == Hash(JPEG-Header)? → Kandidat gefunden!
-Dann: Struktur validieren (JPEG-Marker, Länge)</code></pre>
+<h3>Lineare Suche (Grep)</h3>
 
-<h3>Praxis-Beispiel: IOC-Scanning mit Aho-Corasick</h3>
+<ul>
+<li><strong>Komplexität:</strong> O(n)</li>
+<li><strong>Prinzip:</strong> Jedes Element der Reihe nach prüfen</li>
+<li><strong>Forensik-Nutzung:</strong> <code>grep</code>, <code>strings</code>, <code>xxd</code>, Rohdaten-Scanning</li>
+<li><strong>Optimal für:</strong> Unsortierte Daten, einmalige Volltextsuche, Pattern-Matching auf Rohdaten</li>
+<li><strong>Grenzen:</strong> Bei 10 TB pro Suchmuster wird es ineffizient — besser: einmal indizieren (Aho-Corasick)</li>
+</ul>
 
-<p>Du hast eine Liste mit 50.000 verdächtigen IPs, Domains und Hashes. Statt 50.000× <code>grep</code>-Durchläufen (Tage) scannt Aho-Corasick deine Logs in EINEM Durchlauf (Minuten).</p>
+<pre><code># Lineare Suche in der Praxis
+$ grep -r "password" /mnt/forensic_image/
+$ strings image.dd | grep -i "admin@"</code></pre>
 
-<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+<h3>Binäre Suche (Sortierte Daten)</h3>
 
-<ul><li><code>ssdeep -r /mnt/image/</code> — Fuzzy-Hashing mit kontextbasiertem Rolling Hash</li>
-<li><code>grep -F -f iocs.txt access.log</code> — Fixed-String-Matching (schneller als Regex für viele IOCs)</li>
-<li><code>sort log.txt | uniq -c | sort -rn</code> — Häufigkeitsanalyse</li>
-<li><code>bulk_extractor -o output/ image.dd</code> — hochoptimiertes Multi-Pattern-Scanning</li></ul>
+<ul>
+<li><strong>Komplexität:</strong> O(log n)</li>
+<li><strong>Voraussetzung:</strong> Daten müssen sortiert sein (Sortierung kostet O(n log n) upfront)</li>
+<li><strong>Forensik-Nutzung:</strong> Zeitstempel-Suche in sortierten Event-Logs, Suchen in sortierten Hash-Listen (NSRL), MFT-Record-Nummern (sind aufsteigend)</li>
+</ul>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<pre><code># Binäre Suche in sortierter Datei
+# Angenommen: hashes.txt ist sortiert, 80 Mio. Zeilen
+$ grep -n "^5d41402abc4b2a76b9719d911017c592" hashes.txt  # lineare Suche (langsam)
+# Besser: lookup in vorgefertigter Hash-Table (O(1))</code></pre>
 
-<ul><li>Cormen, Leiserson, Rivest, Stein: Introduction to Algorithms</li>
-<li>Harel, D.: Algorithmik — Die Kunst des Rechnens</li>
-<li><a href="https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm">Aho-Corasick Algorithm (Wikipedia)</a></li></ul>
+<h3>Hash-basierte Suche (O(1) Lookup)</h3>
+
+<ul>
+<li><strong>Komplexität:</strong> O(1) durchschnittlich, O(n) worst-case bei vielen Kollisionen</li>
+<li><strong>Prinzip:</strong> Hash-Funktion berechnet Index im Array, direkter Zugriff</li>
+<li><strong>Forensik-Nutzung:</strong> NSRL-Abgleich, Hash-Sets (HashKeeper), Deduplizierung in Forensic-Tools</li>
+<li><strong>IDEAL für:</strong> Known-Good/Known-Bad Hash-Abgleich in Echtzeit</li>
+</ul>
+
+<pre><code># Python: Hash-Set für O(1) Lookup
+known_bad = set()
+with open("malware_hashes.txt") as f:
+    for line in f:
+        known_bad.add(line.strip().lower())  # O(1) insert
+
+# Später: O(1) lookup
+if file_hash in known_bad:
+    print(f"MALWARE FOUND: {file_hash}")</code></pre>
+
+<h2 id="aho-corasick">Aho-Corasick: Multi-Pattern-Suche</h2>
+
+<h3>Was ist Aho-Corasick?</h3>
+
+<p>Aho-Corasick ist ein String-Matching-Algorithmus, der <strong>alle</strong> Patterns in einem einzigen Durchlauf durch den Text findet.</p>
+
+<ul>
+<li><strong>Komplexität:</strong> O(n + m + z) wobei n = Textlänge, m = Summe aller Pattern-Längen, z = Anzahl Treffer</li>
+<li><strong>Funktionsweise:</strong> Baut einen Trie (Präfixbaum) aus allen Such-Patterns, ergänzt um Fehler-Links (Failure-Links) — ein endlicher Automat</li>
+<li><strong>Schlüsselvorteil:</strong> Die Anzahl der Patterns hat (fast) keinen Einfluss auf die Suchzeit!</li>
+</ul>
+
+<table class="styled-table">
+<thead><tr><th>Tool/System</th><th>Verwendung von Aho-Corasick</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td><strong>YARA</strong></td><td>Pattern-Matching-Engine basiert auf Aho-Corasick</td><td>Malware-Scanning mit Tausenden von Regeln gleichzeitig</td></tr>
+<tr><td><strong>ClamAV</strong></td><td>Viren-Signatur-Matching</td><td>Open-Source AV-Scanner — scannt Millionen Signaturen in einem Durchlauf</td></tr>
+<tr><td><strong>Snort/Suricata</strong></td><td>IDS/IPS Pattern Matching</td><td>Netzwerkverkehr in Echtzeit auf Tausende IOCs prüfen</td></tr>
+<tr><td><strong>bulk_extractor</strong></td><td>Multi-Pattern-Extraktion aus Rohdaten</td><td>E-Mail-Adressen, URLs, Kreditkartennummern gleichzeitig extrahieren</td></tr>
+<tr><td><strong>strings (GNU)</strong></td><td>Kein AC, aber ähnliches Prinzip</td><td>ASCII/Unicode-Strings aus Binärdaten extrahieren</td></tr>
+</tbody></table>
+
+<h3>Forensik-Szenario: IOC-Scanning</h3>
+
+<p>Sie haben eine Liste mit 50.000 verdächtigen IPs, Domains und Hashes aus Threat Intelligence Feeds. Sie müssen ein 500 GB forensisches Image danach durchsuchen.</p>
+
+<pre><code># Naiver Ansatz (Tage!):
+for ioc in $(cat iocs.txt); do
+    grep -r "$ioc" /mnt/image/     # 50.000 × 500 GB = 25 PB I/O!
+done
+
+# Aho-Corasick-Ansatz (Minuten!):
+# Einmal 500 GB lesen, alle 50.000 IOCs gleichzeitig matchen
+# Tools: bulk_extractor, YARA mit IOC-Liste, oder pyahocorasick
+python3 -c "
+import ahocorasick
+A = ahocorasick.Automaton()
+for ioc in open('iocs.txt'):
+    A.add_word(ioc.strip(), ioc.strip())
+A.make_automaton()
+# → scannt 500 GB in O(n) mit allen 50.000 Patterns gleichzeitig
+"</code></pre>
+
+<div class="callout info"><strong>Performance-Vergleich:</strong> 1.000 Patterns × 100 GB Logs mit Grep ≈ <strong>~28 Stunden</strong> (1.000 separate lineare Scans). Mit Aho-Corasick ≈ <strong>~10 Minuten</strong> (ein linearer Scan). Faktor > 150× schneller!</div>
+
+<h2 id="bloom-filter">Bloom-Filter: Probabilistische Datenstruktur</h2>
+
+<h3>Konzept</h3>
+
+<p>Ein Bloom-Filter ist eine platzsparende Datenstruktur, die Mengenzugehörigkeit prüft — mit einer bewussten Fehlertoleranz:</p>
+
+<ul>
+<li><strong>"Definitiv nicht in der Menge"</strong> → 100% korrekt (keine Falsch-Negative)</li>
+<li><strong>"Vielleicht in der Menge"</strong> → mit einstellbarer Falsch-Positiv-Rate (typisch 0,1–1 %)</li>
+<li><strong>Speicherverbrauch:</strong> ~1 Byte pro Element (statt 32+ Bytes für Hash-Set)</li>
+</ul>
+
+<h3>Forensische Anwendung: NSRL-Abgleich</h3>
+
+<p>Die <strong>NSRL (National Software Reference Library)</strong> enthält ~80 Millionen Hash-Werte bekannter, unverdächtiger Dateien (Windows-Systemdateien, Standard-Software).</p>
+
+<table class="styled-table">
+<thead><tr><th>Ansatz</th><th>Speicher</th><th>Lookup-Zeit</th><th>Falsch-Positive</th></tr></thead><tbody>
+<tr><td>Hash-Set (MD5, 16 Bytes × 80M)</td><td>~10 GB RAM</td><td>O(1)</td><td>0%</td></tr>
+<tr><td>Bloom-Filter (1% FP-Rate)</td><td>~100 MB RAM</td><td>O(k) ≈ O(1)</td><td>~1%</td></tr>
+<tr><td>Datenbank (SQLite, indiziert)</td><td>~5 GB Disk</td><td>O(log n)</td><td>0%</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Workflow:</strong> 1) Bloom-Filter sagt "nein" → Datei ist definitiv nicht in NSRL → <strong>verdächtig, analysieren!</strong> 2) Bloom-Filter sagt "vielleicht" → exakter Hash-Lookup in vollständiger NSRL-Datenbank → bestätigt oder nicht. Der Bloom-Filter eliminiert 99% der irrelevanten Dateien mit nur 100 MB RAM.</div>
+
+<h3>Weitere Bloom-Filter-Anwendungen in der Forensik</h3>
+
+<ul>
+<li><strong>Passwort-Cracking:</strong> Bloom-Filter für bereits getestete Passwörter (verhindert doppelte Arbeit)</li>
+<li><strong>Carving:</strong> Bereits bekannte Sektoren überspringen (Deduplizierung im Voraus)</li>
+<li><strong>Netzwerkforensik:</strong> Bereits gesehene IP-Adressen/Flows tracken (Cuckoo Sandbox)</li>
+<li><strong>Browser-Forensik:</strong> Besuchte URLs in Bloom-Filter (Chrome Safe Browsing)</li>
+</ul>
+
+<h2 id="hashing">Hashing: Kryptografisch vs. nicht-kryptografisch</h2>
+
+<h3>Kryptografische Hash-Funktionen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Hash</th><th>Länge</th><th>Sicherheit</th><th>Forensische Verwendung</th></tr></thead><tbody>
+<tr><td><strong>MD5</strong></td><td>128 Bit</td><td>Gebrochen (Kollisionen)</td><td>Legacy, File-Integrity (nicht für Sicherheit), NSRL-Einträge</td></tr>
+<tr><td><strong>SHA-1</strong></td><td>160 Bit</td><td>Gebrochen (SHAttered)</td><td>Git (intern), Legacy-Zertifikate</td></tr>
+<tr><td><strong>SHA-256</strong></td><td>256 Bit</td><td>Sicher</td><td>Forensische Images verifizieren, Beweismittel-Integrität, Blockchain</td></tr>
+<tr><td><strong>SHA-3</strong></td><td>Variabel</td><td>Sicher</td><td>Neuere Standard-Hashes, Post-Quantum-resistent (kein SHA-2-Nachfolger notwendig)</td></tr>
+</tbody></table>
+
+<h3>Nicht-kryptografische Hash-Funktionen</h3>
+
+<p>Diese sind auf Geschwindigkeit optimiert, nicht auf Sicherheit:</p>
+
+<ul>
+<li><strong>Fowler-Noll-Vo (FNV):</strong> Extrem schnell, gute Verteilung, für Hash-Tables. FNV-1a ist die verbreitetste Variante</li>
+<li><strong>MurmurHash:</strong> Sehr schnell, verwendet in vielen Datenbanken und NoSQL-Systemen</li>
+<li><strong>xxHash:</strong> Aktuell einer der schnellsten nicht-kryptografischen Hashes, verwendet in <code>zstd</code>, LZ4</li>
+<li><strong>CityHash/FarmHash:</strong> Von Google für interne Hash-Tables optimiert</li>
+</ul>
+
+<h3>Hash-Kollisionen und forensische Bedeutung</h3>
+
+<ul>
+<li><strong>Geburtstagsparadoxon:</strong> Bei einem 128-Bit-Hash braucht man ~2^64 (~1,8 × 10^19) Dateien für eine 50%-Kollisionswahrscheinlichkeit — praktisch irrelevant für forensische Duplikatsuche</li>
+<li><strong>MD5 in der Forensik:</strong> Obwohl kryptografisch gebrochen, ist MD5 für reine Duplikaterkennung immer noch sicher (Kollisionen können nicht zufällig entstehen, sondern müssen aktiv konstruiert werden)</li>
+<li><strong>Best Practice:</strong> Immer SHA-256 verwenden, MD5 höchstens zusätzlich für Kompatibilität mit Legacy-Tools</li>
+</ul>
+
+<h3>Hash-Sets in der Forensik</h3>
+
+<table class="styled-table">
+<thead><tr><th>Hash-Set</th><th>Beschreibung</th><th>Größe</th><th>Nutzung</th></tr></thead><tbody>
+<tr><td><strong>NSRL</strong></td><td>Known-Good (Windows, Office, etc.)</td><td>~80 Mio. Hashes</td><td>Unverdächtige Dateien herausfiltern</td></tr>
+<tr><td><strong>HashKeeper</strong></td><td>Known-Bad (Malware, Contraband)</td><td>~30 Mio. Hashes</td><td>Bekannte illegale Dateien identifizieren</td></tr>
+<tr><td><strong>VirusShare</strong></td><td>Malware-Samples</td><td>~50 Mio. Hashes</td><td>Malware-Erkennung</td></tr>
+<tr><td><strong>Project VIC</strong></td><td>CSAM-Hashes</td><td>~5 Mio. Hashes</td><td>Illegale Inhalte identifizieren</td></tr>
+</tbody></table>
+
+<h2 id="sortieralgorithmen">Sortieralgorithmen und ihre Relevanz</h2>
+
+<h3>Vergleich der wichtigsten Sortieralgorithmen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Algorithmus</th><th>Average</th><th>Worst</th><th>Stabil</th><th>Forensische Verwendung</th></tr></thead><tbody>
+<tr><td><strong>Quicksort</strong></td><td>O(n log n)</td><td>O(n²)</td><td>Nein</td><td>Schnellster In-Memory-Sort, in vielen C-Standardbibliotheken</td></tr>
+<tr><td><strong>Mergesort</strong></td><td>O(n log n)</td><td>O(n log n)</td><td>Ja</td><td>Externes Sortieren (Festplatte), stabil = wichtig für mehrstufiges Sortieren</td></tr>
+<tr><td><strong>Timsort</strong></td><td>O(n log n)</td><td>O(n log n)</td><td>Ja</td><td>Python/Java Standard-Sort! Optimal für teilweise vorsortierte Daten (Logs!)</td></tr>
+<tr><td><strong>Heapsort</strong></td><td>O(n log n)</td><td>O(n log n)</td><td>Nein</td><td>Garantiertes O(n log n), in-place — für eingebettete Systeme</td></tr>
+</tbody></table>
+
+<h3>Warum Timsort für die Forensik relevant ist</h3>
+
+<p><strong>Timsort</strong> (der Standard-Sort in Python und Java) ist ein hybrider Sortieralgorithmus, der von Mergesort und Insertion Sort abstammt:</p>
+
+<ul>
+<li><strong>Optimal für realweltliche Daten:</strong> Logdateien, Zeitstempel und Event-Streams sind oft teilweise vorsortiert. Timsort erkennt und nutzt existierende "Runs"</li>
+<li><strong>Stabil:</strong> Mehrstufiges Sortieren (z.B. erst nach IP, dann nach Zeitstempel) behält die Reihenfolge gleicher Elemente bei</li>
+</ul>
+
+<pre><code># Python: Timsort ist der Standard
+events = load_timeline()  # Liste von (timestamp, source, event)
+events.sort()             # Timsort — O(n log n), nutzt existierende Runs
+
+# Mehrstufig sortieren (stabil)
+events.sort(key=lambda e: e.event)    # Erst nach Event-Typ
+events.sort(key=lambda e: e.timestamp) # Dann nach Zeit — behält Event-Reihenfolge!</code></pre>
+
+<h3>Externes Sortieren bei großen Datenmengen</h3>
+
+<p>Wenn Daten größer als RAM sind, wird externes Sortieren benötigt:</p>
+
+<pre><code># Linux: sort kann extern sortieren (Mergesort auf Festplatte)
+$ sort -S 50% --parallel=8 -o sorted.txt huge_log.txt
+# -S 50%: Nutzt 50% des RAM als Puffer
+# --parallel=8: 8 Threads
+# Mergesort-Phasen: sortierte Chunks schreiben → mergen</code></pre>
+
+<h2 id="regex">Regular Expressions: DFA vs NFA, ReDoS</h2>
+
+<h3>Theoretische Grundlagen</h3>
+
+<p>Reguläre Ausdrücke werden von zwei Arten endlicher Automaten verarbeitet:</p>
+
+<table class="styled-table">
+<thead><tr><th>Eigenschaft</th><th>DFA (Deterministisch)</th><th>NFA (Nicht-deterministisch)</th></tr></thead><tbody>
+<tr><td>Zustände</td><td>Genau ein Folgezustand pro Eingabe</td><td>Mehrere mögliche Folgezustände</td></tr>
+<tr><td>Backtracking</td><td>Kein Backtracking</td><td>Backtracking bei Fehlschlag</td></tr>
+<tr><td>Laufzeit</td><td>O(n) — garantiert linear!</td><td>O(2^n) worst-case — exponentiell!</td></tr>
+<tr><td>Kompilierungszeit</td><td>Langsam, großer Speicher</td><td>Schnell, kompakt</td></tr>
+<tr><td>Features</td><td>Keine Backreferences</td><td>Backreferences, Lookahead/Lookbehind</td></tr>
+<tr><td>Engines</td><td>RE2 (Google), Hyperscan (Intel), Rust regex</td><td>PCRE (Perl, Python, grep -P), JavaScript, .NET</td></tr>
+</tbody></table>
+
+<h3>ReDoS (Regular Expression Denial of Service)</h3>
+
+<p>ReDoS tritt auf, wenn eine Regex-Engine mit NFA-Backtracking auf bestimmte Eingaben exponentiell viele Pfade evaluiert:</p>
+
+<pre><code># ReDoS-anfällige Regex (katastrophales Backtracking):
+# /^(a+)+$/  —  matcht "aaaa...a", aber NICHT "aaaa...X"
+# Eingabe "aaaaaaaaaaaaaaaaaaaaX" (20× a + X)
+# Die Engine probiert ALLE Aufteilungen der a's → 2^20 Pfade → evtl. Jahre!
+
+# Sichere Alternative (kein verschachteltes Quantifier):
+# /^a+$/  —  macht dasselbe, aber O(n)!</code></pre>
+
+<div class="callout danger"><strong>Forensik-Gefahr:</strong> Wenn Sie eine selbstgeschriebene Regex auf 10 GB Logs anwenden, die ReDoS-anfällig ist, kann Ihre Analyse <strong>scheinbar hängen</strong>. Die CPU ist bei 100%, aber es kommt kein Fortschritt. <strong>Regeln:</strong> 1) Kein verschachteltes Quantifiering (<code>(a+)+</code>), 2) Nicht mehrere Alternativen mit gemeinsamen Präfix (<code>(a|ab)+</code>), 3) Im Zweifel RE2/Hyperscan statt PCRE verwenden.</div>
+
+<h3>Praktische Forensik-Grep-Muster</h3>
+
+<pre><code># E-Mail-Adressen (vereinfacht, O(n), DFA-sicher)
+grep -oP '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' file.txt
+
+# IPv4-Adressen (DFA-sicher)
+grep -oP '\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'
+
+# Kreditkartennummern (Visa/MC/Amex — Luhn-Prüfung separat nötig)
+grep -oP '\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})\b'
+
+# Base64-Strings (lange Zeichenfolgen mit typischem Alphabet)
+grep -oP '[A-Za-z0-9+/]{40,}={0,2}'</code></pre>
+
+<h3>bulk_extractor-Prinzip</h3>
+
+<p><code>bulk_extractor</code> ist ein forensisches Tool von Simson Garfinkel, das auf Geschwindigkeit optimiert ist:</p>
+
+<ul>
+<li><strong>Multi-Pattern-Scanning:</strong> Scannt gleichzeitig nach E-Mails, URLs, Kreditkarten, GPS-Koordinaten, Domain-Namen usw.</li>
+<li><strong>Optimierungen:</strong> Nutzt Aho-Corasick-ähnliche Automaten, vermeidet Backtracking, arbeitet in 16 MB-Blöcken für Cache-Lokalität</li>
+<li><strong>Kein Dateisystem-Parsing:</strong> Arbeitet direkt auf Rohdaten (Byte-Strom) — findet Daten auch in gelöschten/Fragmentierten Bereichen</li>
+<li><strong>Parallelisierung:</strong> Multi-Threaded, skaliert linear mit CPU-Kernen</li>
+</ul>
+
+<pre><code># bulk_extractor: Forensik-Schweizer-Taschenmesser
+$ bulk_extractor -o output/ image.dd
+# Extrahiert: E-Mails, URLs, Telefonnummern, GPS, EXIF, JSON, Kreditkartennummern
+# Ausgabe in output/: url.txt, email.txt, telephone.txt, ccn.txt, ...</code></pre>
+
+<h2 id="praktische-anwendung">Praktische Anwendung / Befehle</h2>
+
+<h3>Hashing und Deduplizierung</h3>
+
+<pre><code># Alle Dateien hashen und Duplikate finden
+find /mnt/image/ -type f -exec sha256sum {} \; | sort | uniq -w64 -dD
+
+# Fuzzy-Hashing (ähnliche Dateien finden)
+ssdeep -r /mnt/image/ > hashes.ssdeep
+ssdeep -m hashes.ssdeep suspicious_file.exe</code></pre>
+
+<h3>Sortieren und Filtern</h3>
+
+<pre><code># Große Datei sortieren (externes Mergesort)
+sort -S 50% --parallel=8 -o sorted.txt huge_log.txt
+
+# Häufigkeitsanalyse
+sort log.txt | uniq -c | sort -rn | head -20
+
+# Mehrstufig sortieren (Unix)
+sort -k2,2 -k1,1nr data.txt  # Nach Spalte 2 alphabetisch, dann Spalte 1 numerisch absteigend</code></pre>
+
+<h3>IOC-Scanning und Pattern-Matching</h3>
+
+<pre><code># Fixed-String-Matching (schneller als Regex!)
+grep -F -f iocs.txt access.log
+
+# YARA-Regeln kompilieren und scannen
+yara -r rules.yar /mnt/image/
+
+# bulk_extractor für Rohdaten-Extraktion
+bulk_extractor -o output/ image.dd</code></pre>
+
+<h2 id="quellen">Quellen / Weiterführendes</h2>
+
+<ul>
+<li>Cormen, Leiserson, Rivest, Stein: <em>Introduction to Algorithms</em> (CLRS) — Das Standardwerk</li>
+<li><a href="https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm">Aho-Corasick Algorithm (Wikipedia)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom Filter (Wikipedia)</a></li>
+<li><a href="https://github.com/google/re2">RE2: Google's DFA-basierte Regex-Bibliothek</a></li>
+<li><a href="https://www.usenix.org/legacy/event/leet08/tech/full_papers/wicherski/wicherski_html/">ReDoS-Angriffe erklärt (Wicherski, 2008)</a></li>
+<li><a href="https://github.com/simsong/bulk_extractor">bulk_extractor (GitHub)</a></li>
+<li><a href="https://www.nist.gov/itl/ssd/software-quality-group/national-software-reference-library-nsrl">NIST NSRL — National Software Reference Library</a></li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

@@ -7,31 +7,219 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Rechnerarchitektur</span>
+  <span class="nav-crumb">/ <a href="../01-grundlagen/index.html">Grundlagen</a> / Rechnerarchitektur</span>
 </nav>
 <main><article>
 <h1>Rechnerarchitektur: Von Neumann und Harvard <span class="diff-badge diff-beginner">Grundlagen</span></h1>
 <details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
-<li><a href="#kurz">Kurzueberblick</a></li><li><a href="#neumann">Von Neumann</a></li><li><a href="#hierarchie">Speicher-Hierarchie</a></li><li><a href="#arm">ARM vs x86</a></li></ol></details>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#neumann">Von-Neumann-Architektur</a></li>
+<li><a href="#harvard">Harvard-Architektur</a></li>
+<li><a href="#pipeline">Pipelining und Superskalaritaet</a></li>
+<li><a href="#hierarchie">Speicher-Hierarchie</a></li>
+<li><a href="#isa">Befehlssatzarchitektur: CISC vs RISC</a></li>
+<li><a href="#arm">ARM vs x86 — Forensische Unterschiede</a></li>
+<li><a href="#bios">Bootprozess: BIOS vs UEFI</a></li>
+<li><a href="#forensik">Forensische Relevanz</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
 
 <h2 id="kurz">Kurzueberblick</h2>
-<p>Jeder Computer folgt einem Architekturprinzip. Die zwei fundamentalen Modelle sind Von-Neumann- und Harvard-Architektur. Forensisch relevant, weil die Architektur bestimmt, wo und wie Daten abgelegt werden — und welche Spuren fluechtig sind.</p>
+<p>Jeder Computer folgt einem Architekturprinzip. Die zwei fundamentalen Modelle sind die <strong>Von-Neumann-Architektur</strong> (gemeinsamer Speicher fuer Code und Daten, alle Desktop-PCs) und die <strong>Harvard-Architektur</strong> (getrennte Speicher, Mikrocontroller, ARM Cortex-M).</p>
+<p>Fuer die Digitale Forensik ist das Verstaendnis der Rechnerarchitektur essenziell, weil sie bestimmt: <strong>wo</strong> Daten gespeichert werden, <strong>welche Spuren fluechtig</strong> sind und <strong>wie Malware auf Hardware-Ebene</strong> agiert (Cache Poisoning, DMA-Angriffe, Firmware-Rootkits).</p>
 
 <h2 id="neumann">Von-Neumann-Architektur</h2>
-<p>Gemeinsamer Speicher fuer Programme und Daten. ALU (Rechenwerk) + CU (Steuerwerk) + Speicher + E/A. Alle modernen Desktop-CPUs (x86-64) folgen diesem Prinzip.</p>
-<p>Harvard-Architektur: Getrennte Speicher fuer Code und Daten. Typisch fuer Mikrocontroller (ARM Cortex-M). Moderne CPUs: modifiziertes Harvard mit getrennten L1-Caches aber gemeinsamem Hauptspeicher.</p>
+
+<p>Die Von-Neumann-Architektur (1945, John von Neumann) ist das dominierende Design fuer Universalrechner. Ihr Kernmerkmal: <strong>Programme und Daten teilen sich denselben Speicher.</strong> Das macht sie flexibel (jedes Programm kann geladen werden), aber auch anfaellig fuer Buffer-Overflow-Angriffe (Code kann als Daten eingeschleust und dann ausgefuehrt werden).</p>
+
+<h3>Komponenten</h3>
+
+<table>
+<thead><tr><th>Komponente</th><th>Funktion</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td><strong>ALU</strong> (Arithmetic Logic Unit)</td><td>Fuehrt arithmetische (+, -, *, /) und logische (AND, OR, XOR) Operationen aus</td><td>Seitenkanalangriffe (Timing, Power-Analysis) nutzen ALU-Verhalten</td></tr>
+<tr><td><strong>CU</strong> (Control Unit)</td><td>Holt Instruktionen aus dem Speicher, dekodiert sie, steuert die Ausfuehrung</td><td>Branch-Prediction-Spuren (Spectre/Meltdown) koennen sensible Daten leaken</td></tr>
+<tr><td><strong>Register</strong></td><td>Kleinste, schnellste Speichereinheit direkt im CPU-Kern</td><td>Register-Inhalte sind im RAM-Dump NICHT enthalten, nur in CPU-Cache</td></tr>
+<tr><td><strong>Bus-Systeme</strong></td><td>Datenbus, Adressbus, Steuerbus — verbinden CPU, RAM und Peripherie</td><td>DMA (Direct Memory Access) ermoeglicht RAM-Zugriff ohne CPU → FireWire/Thunderbolt-Angriffe</td></tr>
+<tr><td><strong>E/A-Einheit (I/O)</strong></td><td>Schnittstelle zu Tastatur, Festplatte, Netzwerk, GPU</td><td>PCIe-DMA via Thunderbolt: Angreifer kann RAM auslesen (Inception-Angriff)</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Von-Neumann-Flaschenhals:</strong> CPU und Speicher teilen sich EINEN Bus → die CPU wartet oft auf Daten aus dem RAM. Caches und Prefetching wurden entwickelt, um diesen Flaschenhals zu umgehen — genau diese Mechanismen sind forensisch relevant (Cache-Artefakte, Prefetch-Dateien).</div>
+
+<h2 id="harvard">Harvard-Architektur</h2>
+
+<p>Getrennte Speicher und Busse fuer Programmcode und Daten. Vorteil: Code kann nicht versehentlich ueberschrieben werden (Sicherheit). Nachteil: weniger flexibel, mehr Hardware-Aufwand.</p>
+
+<div class="side-by-side">
+  <div>
+    <h3>Von Neumann</h3>
+    <ul>
+      <li>1 gemeinsamer Bus fuer Code + Daten</li>
+      <li>Flexibel, Software-definiert</li>
+      <li>Anfaellig fuer Buffer-Overflows</li>
+      <li>Typisch fuer: x86-64 Desktop</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Harvard</h3>
+    <ul>
+      <li>2 getrennte Busse (Code + Daten)</li>
+      <li>Hoehere Sicherheit, weniger Flexibilitaet</li>
+      <li>Schutz vor Code-Injection</li>
+      <li>Typisch fuer: ARM Cortex-M, AVR, PIC</li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout tip"><strong>Modifiziertes Harvard:</strong> Moderne Desktop-CPUs (Intel, AMD) nutzen ein <strong>modifiziertes Harvard-Design</strong>: Getrennte L1-Caches fuer Instruktionen und Daten, aber gemeinsamer Hauptspeicher. Forensisch: Cache-Spuren koennen nach Prozessor-Generation unterschiedlich sein (Intel vs AMD Cache-Hierarchie).</div>
+
+<h2 id="pipeline">Pipelining und Superskalaritaet</h2>
+
+<p>Moderne CPUs fuehren Instruktionen nicht sequenziell aus, sondern in einer <strong>Pipeline</strong> — mehrere Instruktionen gleichzeitig in verschiedenen Stufen:</p>
+
+<div class="process-chain">
+  <div class="pc-step"><strong>Fetch</strong><p>Instruktion aus Speicher holen</p></div><div class="pc-arrow">&rarr;</div>
+  <div class="pc-step"><strong>Decode</strong><p>Instruktion in Mikro-OPs uebersetzen</p></div><div class="pc-arrow">&rarr;</div>
+  <div class="pc-step"><strong>Execute</strong><p>Operation ausfuehren (ALU)</p></div><div class="pc-arrow">&rarr;</div>
+  <div class="pc-step"><strong>Memory</strong><p>Speicherzugriff (Load/Store)</p></div><div class="pc-arrow">&rarr;</div>
+  <div class="pc-step"><strong>Write-Back</strong><p>Ergebnis in Register schreiben</p></div>
+</div>
+
+<ul>
+<li><strong>Superskalar:</strong> Mehrere Pipelines parallel → mehrere Instruktionen pro Taktzyklus</li>
+<li><strong>Out-of-Order Execution:</strong> CPU ordnet Instruktionen fuer optimale Auslastung um → forensisch relevant: Zeitstempel von Instruktionen entsprechen nicht der Programmreihenfolge</li>
+<li><strong>Branch Prediction:</strong> CPU errät, welcher Code-Pfad als naechstes kommt → Spectre (CVE-2017-5753) nutzt falsche Vorhersagen zum Auslesen von Kernel-Speicher</li>
+<li><strong>Speculative Execution:</strong> CPU fuehrt Instruktionen SPEKULATIV aus, bevor sicher ist, dass sie gebraucht werden → Meltdown (CVE-2017-5754) liest geschuetzten Speicher ueber spekulative Ausfuehrung</li>
+</ul>
+
+<div class="callout warning"><strong>Spectre/Meltdown (2018):</strong> Hardware-Schwachstellen, die die Isolation zwischen User-Mode und Kernel-Mode aufheben. Forensisch: Ein Angreifer kann ueber JavaScript sensible Daten aus dem Browser-Prozess auslesen. Patch-Status ueber <code>/sys/devices/system/cpu/vulnerabilities/</code> pruefen.</div>
 
 <h2 id="hierarchie">Speicher-Hierarchie und fluechtige Spuren</h2>
 
 <div class="mem-hierarchy">
-  <div class="dh-box dh-reg"><strong>Register</strong><small>~Bytes</small></div><div class="dh-arrow"></div>
-  <div class="dh-box dh-cache"><strong>L1-Cache</strong><small>~32 KB</small></div><div class="dh-arrow"></div>
-  <div class="dh-box dh-cache"><strong>L2-Cache</strong><small>~256 KB</small></div><div class="dh-arrow"></div>
-  <div class="dh-box dh-cache"><strong>L3-Cache</strong><small>~8 MB</small></div><div class="dh-arrow"></div>
-  <div class="dh-box dh-ram"><strong>RAM</strong><small>~16 GB</small></div><div class="dh-arrow"></div>
-  <div class="dh-box dh-disk"><strong>SSD / HDD</strong><small>~1 TB</small></div>
+  <div class="dh-box dh-reg"><strong>Register</strong><small>~1 KB, &lt;1 ns</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-cache"><strong>L1-Cache</strong><small>~64 KB, ~1 ns</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-cache"><strong>L2-Cache</strong><small>~512 KB, ~4 ns</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-cache"><strong>L3-Cache</strong><small>~16 MB, ~12 ns</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-ram"><strong>RAM</strong><small>~16 GB, ~100 ns</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-disk"><strong>SSD / NVMe</strong><small>~1 TB, ~100 us</small></div>
 </div>
 <div class="diagram-labels">
   <span>zunehmende Groesse, abnehmende Geschwindigkeit &rarr;</span>
@@ -39,17 +227,89 @@
   <span class="persistent">&larr; persistent &rarr;</span>
 </div>
 
-<div class="callout tip"><strong>Forensisch relevant:</strong> Cache-Spuren koennen temporaere Daten enthalten, die nie auf die Platte geschrieben wurden. Cold-Boot-Attacke: RAM ueberlebt kurzen Neustart — Verschluesselungsschluessel extrahierbar!</div>
+<div class="callout danger"><strong>Cold-Boot-Attacke:</strong> RAM-Inhalte ueberleben einen kurzen Stromausfall (2-5 Sekunden ohne Kuehlung, Minuten mit Kuehlspray). Angreifer kann RAM aus einem laufenden System ausbauen und in einem anderen Rechner auslesen → Verschluesselungsschluessel (BitLocker, FileVault) koennen extrahiert werden. Gegenmassnahme: TPM + Secure Boot + RAM-Verschluesselung (Intel TME, AMD SME).</div>
 
-<h2 id="arm">ARM vs. x86</h2>
-<table><thead><tr><th>Aspekt</th><th>x86-64</th><th>ARM</th></tr></thead><tbody>
-<tr><td>Endianness</td><td>Little-Endian</td><td>Bi-Endian (meist Little)</td></tr>
-<tr><td>Register</td><td>16 GP (RAX, RBX)</td><td>31 GP (X0-X30)</td></tr>
-<tr><td>Instruktionen</td><td>CISC (variabel)</td><td>RISC (4 Byte fix)</td></tr>
-<tr><td>RAM-Dump</td><td>WinPMEM</td><td>LiME, spezielle ARM-Profile</td></tr>
+<h2 id="isa">Befehlssatzarchitektur: CISC vs RISC</h2>
+
+<table>
+<thead><tr><th>Aspekt</th><th>CISC (x86-64)</th><th>RISC (ARM, RISC-V)</th></tr></thead><tbody>
+<tr><td>Instruktionsgroesse</td><td>Variabel (1-15 Bytes)</td><td>Fest (4 Bytes, ARM Thumb: 2)</td></tr>
+<tr><td>Instruktionsanzahl</td><td>~1000+ (viele Spezialbefehle)</td><td>~50-200 (einfach, orthogonal)</td></tr>
+<tr><td>Speicherzugriff</td><td>Jede Instruktion darf auf RAM zugreifen</td><td>Nur LOAD/STORE-Instruktionen</td></tr>
+<tr><td>Disassemblierung</td><td>Aufwaendig (variable Laenge)</td><td>Einfach (feste Laenge, Alignment)</td></tr>
+<tr><td>Typische CPUs</td><td>Intel Core, AMD Ryzen</td><td>Apple M1/M2/M3, ARM Cortex, Qualcomm Snapdragon</td></tr>
+<tr><td>Malware-Analyse</td><td>Ghidra/IDA mit x86-64 Plugin</td><td>ARM-spezifische Disassembler noetig</td></tr>
 </tbody></table>
 
-<div class="callout warning"><strong>Warnung:</strong> RAM-Dump von ARM braucht andere Volatility-Profile. Falsches Profil = falsche Ergebnisse!</div>
+<h2 id="arm">ARM vs x86 — Forensische Unterschiede</h2>
+
+<table>
+<thead><tr><th>Aspekt</th><th>x86-64 (Intel/AMD)</th><th>ARM64 (Apple Mx, Qualcomm)</th></tr></thead><tbody>
+<tr><td>Endianness</td><td>Little-Endian</td><td>Bi-Endian (Little-Endian im User-Mode, konfigurierbar)</td></tr>
+<tr><td>Register</td><td>16 GP (RAX, RBX, RCX...) + 16 SIMD (XMM0-15)</td><td>31 GP (X0-X30) + 32 SIMD (V0-V31)</td></tr>
+<tr><td>Page Table Format</td><td>4-Level Paging (PML4 → PDPT → PD → PT)</td><td>3- oder 4-Level (TTBR0/TTBR1)</td></tr>
+<tr><td>RAM-Dump-Tool</td><td>WinPMEM, DumpIt, Magnet RAM Capture</td><td>LiME (Linux), spezielle ARM-Profile in Volatility</td></tr>
+<tr><td>Volatility-Profil</td><td>Win10x64, Win11x64</td><td>Linux-ARM64, Mac-ARM64 (Apple Silicon)</td></tr>
+<tr><td>Cache-Hierarchie</td><td>L1i/L1d + L2 (per Core) + L3 (Shared)</td><td>L1i/L1d + L2 (per Cluster) + SLC (System Level Cache)</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Warnung:</strong> RAM-Dump-Analyse auf ARM benoetigt zwingend das richtige Volatility-Profil und eine ARM-spezifische Symboltabelle. Ein x86-Profil auf einem ARM-Dump liefert strukturell falsche Ergebnisse — nicht nur unvollstaendig, sondern aktiv irrefuehrend!</div>
+
+<h2 id="bios">Bootprozess: BIOS vs UEFI</h2>
+
+<p>Der Bootprozess ist forensisch relevant, weil er bestimmt, welche Sicherheitsmechanismen (Secure Boot, TPM) aktiv sind und wo sich Angreifer in der Boot-Kette einnisten koennen (Bootkits).</p>
+
+<table>
+<thead><tr><th>Phase</th><th>Legacy BIOS</th><th>UEFI (Modern)</th></tr></thead><tbody>
+<tr><td>Firmware</td><td>16-Bit Real Mode, MBR-basiert</td><td>32/64-Bit, GPT-basiert, EFI-Partition</td></tr>
+<tr><td>Bootloader</td><td>Erste 446 Bytes des MBR</td><td><code>/EFI/BOOT/BOOTX64.EFI</code></td></tr>
+<tr><td>Secure Boot</td><td>Nicht vorhanden</td><td>Validiert Signatur jedes Boot-Schrittes</td></tr>
+<tr><td>Forensik</td><td>MBR leicht manipulierbar (Bootkits)</td><td>Signaturpruefung via TPM, Boot-Logs in EFI-Variablen</td></tr>
+<tr><td>Integritaetspruefung</td><td>Keine (ausser TPM PCR)</td><td>Measured Boot: jeder Schritt liefert Hash an TPM</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Forensische Artefakte im UEFI:</strong> EFI-Variablen enthalten Boot-Order, Secure-Boot-Konfiguration und Boot-Logs. Auslesen via <code>efivarfs</code> unter Linux oder <code>Get-FirmwareEnvironmentVariable</code> unter Windows. Manipulierte Boot-Order ist ein starkes Indiz fuer ein Bootkit.</div>
+
+<h2 id="forensik">Forensische Relevanz — Zusammenfassung</h2>
+
+<ul>
+<li><strong>RAM ist fluessig aber entscheidend:</strong> Prozesse, Netzwerkverbindungen, Entschluesselungsschluessel existieren NUR im RAM. RAM-Dump vor System-Shutdown hat hoechste Prioritaet (Order of Volatility)</li>
+<li><strong>Cache als versteckte Quelle:</strong> L1/L2/L3-Caches enthalten Daten, die nie auf die Festplatte geschrieben wurden. Forensisch extrem schwer zu extrahieren, aber theoretisch moeglich (Cold-Boot, JTAG-Debugging)</li>
+<li><strong>DMA als Angriffsvektor:</strong> Thunderbolt, FireWire, PCIe — Geraete mit DMA-Zugriff umgehen die CPU und koennen direkt RAM lesen/schreiben. Forensisch: Pruefen, ob DMA-faehige Geraete angeschlossen waren</li>
+<li><strong>Spectre/Meltdown-Klasse:</strong> CPU-Seitenkanalangriffe, die Prozess-Isolation unterlaufen. Erkennung nur ueber Mikrocode-Patch-Level und ungewoehnliche Cache-Zugriffsmuster (extrem schwer forensisch nachweisbar)</li>
+<li><strong>ARM-Forensik im Kommen:</strong> Apple Silicon Macs, Smartphones, IoT, Embedded Systems — alle ARM-basiert. Forensische Tools muessen ARM-Profile unterstuetzen</li>
+</ul>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+
+<ul>
+<li>Tanenbaum, A.S.: Computerarchitektur — Strukturen, Konzepte, Grundlagen</li>
+<li>Hennessy, J.L., Patterson, D.A.: Computer Architecture — A Quantitative Approach</li>
+<li>Yarom, Y., Falkner, K.: FLUSH+RELOAD — A High Resolution, Low Noise, L3 Cache Side-Channel Attack</li>
+<li>Lipp, M. et al: Meltdown — Reading Kernel Memory from User Space</li>
+<li>Kocher, P. et al: Spectre Attacks — Exploiting Speculative Execution</li>
+<li><a href="https://developer.arm.com/documentation">ARM Architecture Reference Manual</a></li>
+</ul>
 </article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

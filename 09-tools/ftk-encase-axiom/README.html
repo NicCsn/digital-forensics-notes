@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FTK, EnCase, AXIOM — Tool-Vergleich — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../index.html">Startseite</a></li>
+    <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details open><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../09-tools/kape/README.html">KAPE</a></li>
+      <li><a href="../../09-tools/velociraptor/README.html">Velociraptor</a></li>
+      <li><a href="../../09-tools/autopsy/README.html">Autopsy</a></li>
+      <li><a href="../../09-tools/ftk-encase-axiom/README.html">FTK / EnCase / AXIOM</a></li>
+      <li><a href="../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-tools">Tools</a> / FTK / EnCase / AXIOM</span>
+</nav>
+<main><article>
+<h1>FTK, EnCase, AXIOM — Tool-Vergleich <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#vergleich">Vergleichstabelle</a></li>
+<li><a href="#ftk">FTK — Forensic Toolkit</a></li>
+<li><a href="#encase">EnCase — OpenText EnCase Forensic</a></li>
+<li><a href="#axiom">AXIOM — Magnet AXIOM</a></li>
+<li><a href="#einsatz">Einsatzempfehlung nach Use-Case</a></li>
+<li><a href="#opensource">Open-Source-Alternativen</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>FTK, EnCase und AXIOM sind die drei dominierenden kommerziellen Forensik-Suiten. Sie werden von Strafverfolgungsbehoerden, Unternehmen und privaten Forensik-Dienstleistern eingesetzt. Dieses Dokument vergleicht die drei Tools hinsichtlich Features, Lizenzmodell, Preis und Einsatzszenarien.</p>
+
+<div class="callout info"><strong>Vorab:</strong> Keines dieser Tools ist "das Beste" — die Wahl haengt vom konkreten Use-Case, Budget und der vorhandenen Infrastruktur ab. In der Praxis setzen viele Labs mehrere Tools parallel ein.</div>
+
+<h2 id="vergleich">Vergleichstabelle</h2>
+
+<table>
+<thead><tr><th>Feature</th><th>FTK (Exterro)</th><th>EnCase (OpenText)</th><th>AXIOM (Magnet)</th></tr></thead><tbody>
+<tr><td><strong>Imaging</strong></td><td>FTK Imager (kostenlos) — E01, dd, SMART, AFF, Logical</td><td>EnCase Imager (enthalten) — E01, Lx01, dd</td><td>AXIOM Process (nur Parsing, kein Imager) — externes Image benoetigt</td></tr>
+<tr><td><strong>Dateisysteme</strong></td><td>NTFS, FAT, exFAT, ext2/3/4, HFS+, APFS, XFS, Btrfs</td><td>NTFS, FAT, exFAT, ext2/3/4, HFS+, APFS, ReFS</td><td>NTFS, FAT, exFAT, ext2/3/4, HFS+, APFS</td></tr>
+<tr><td><strong>Analyse</strong></td><td>Index-Suche (dtSearch), Registry Viewer, File Carving, Timeline</td><td>Evidence Processor, Conditions, EnScript, Timeline</td><td>Connections-View, Timeline, Magnet.AI, Cloud-Acquisition</td></tr>
+<tr><td><strong>Cloud-Forensik</strong></td><td>Begrenzt (via Drittanbieter-Module)</td><td>Begrenzt (via EnCase App Central)</td><td>✅ Stark: Google, Microsoft 365, iCloud, Facebook, Instagram</td></tr>
+<tr><td><strong>Mobile-Forensik</strong></td><td>Begrenzt (FTK + UFED-Integration moeglich)</td><td>EnCase Mobile Investigator (separates Produkt)</td><td>✅ Stark: iOS, Android (inkl. GrayKey/Cellebrite-Import)</td></tr>
+<tr><td><strong>Memory-Analyse</strong></td><td>FTK Memory Analysis (Volatility-Integration, ab FTK 7+)</td><td>Extern (Volatility muss separat genutzt werden)</td><td>AXIOM kann Memory Dumps importieren und parsen</td></tr>
+<tr><td><strong>Automatisierung</strong></td><td>KFF (Known File Filter), Jobs, Filter</td><td>EnScript (proprietaere Skriptsprache)</td><td>AXIOM Process-Automatisierung, CLI-Processing</td></tr>
+<tr><td><strong>Datenbank</strong></td><td>PostgreSQL (Server), SQLite (Einzelplatz)</td><td>Eigenes Format (.Ex01/.Lx01 Evidence Files)</td><td>PostgreSQL (Server), SQLite (Einzelplatz) — Case-DB ist SQLite</td></tr>
+<tr><td><strong>Preis</strong></td><td>$$$$ (ca. 3.000–6.000 USD/Jahr)</td><td>$$$$ (ca. 4.000–8.000 USD/Jahr), oft Perpetual</td><td>$$$ (ca. 2.500–5.000 USD/Jahr), zzgl. Cloud-Module</td></tr>
+<tr><td><strong>Lizenzmodell</strong></td><td>Jahres-Abonnement (Subscription)</td><td>Perpetual-Lizenz + jaehrlicher Maintenance-Vertrag (Dongle)</td><td>Jahres-Abonnement (Subscription)</td></tr>
+<tr><td><strong>Plattform</strong></td><td>✅ Windows</td><td>✅ Windows</td><td>✅ Windows</td></tr>
+<tr><td><strong>Gerichtsfest</strong></td><td>✅ Ja (weltweit akzeptiert)</td><td>✅ Ja (seit 1998, Goldstandard)</td><td>✅ Ja (zunehmend akzeptiert)</td></tr>
+</tbody></table>
+
+<h2 id="ftk">FTK — Forensic Toolkit (Exterro)</h2>
+<p>FTK ist eine der aeltesten und etabliertesten Forensik-Suiten. Besonders stark ist die <strong>Index-basierte Volltextsuche</strong> (dtSearch-Engine), die selbst auf mehreren Terabytes innerhalb von Sekunden Ergebnisse liefert.</p>
+
+<h3>FTK Imager (kostenlos)</h3>
+<p>FTK Imager ist das kostenlose Imaging-Tool von Exterro — ein Standardwerkzeug fuer jeden Forensiker.</p>
+
+<pre><code># FTK Imager — Funktionen (kostenlos)
+✅ Physische Images (E01, dd/raw) von Laufwerken und Partitionen
+✅ Logische Images (einzelne Dateien/Ordner)
+✅ Memory Dump von Live-Systemen (Windows, Linux)
+✅ Mount von Images als virtuelles Laufwerk
+✅ Export von Files/Hashes (Hash-Liste als CSV)
+✅ Preview-Modus (Live-System browsen, ohne Imaging)</code></pre>
+
+<h3>FTK Suite (kostenpflichtig)</h3>
+<table>
+<thead><tr><th>Staerken</th><th>Schwaechen</th></tr></thead><tbody>
+<tr><td><strong>Index-Suche:</strong> Instant-Volltextsuche ueber TB-grosse Images — unschlagbar fuer Keyword-Hunts</td><td><strong>Langsame UI bei grossen Cases</strong> (5+ TB) — FTK 7 hat verbessert, bleibt aber ein Thema</td></tr>
+<tr><td><strong>Registry Viewer:</strong> Integrierter Registry-Parser mit Timeline und Reporting</td><td><strong>Keine native Cloud-Unterstuetzung</strong> — Cloud-Daten muessen separat extrahiert werden</td></tr>
+<tr><td><strong>KFF (Known File Filter):</strong> Hash-Datenbanken (NSRL, Project VIC) integriert — sortiert known-good/known-bad</td><td><strong>Nur Windows</strong> — kein Linux-/macOS-Analyse-Rechner</td></tr>
+<tr><td><strong>File Carving:</strong> Starkes Carving-Modul (Signature- und Header-basiert)</td><td><strong>Teuer</strong> — Lizenzkosten im oberen Bereich</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>FTK Stichwort:</strong> Der dtSearch-Index macht FTK zur ersten Wahl, wenn in grossen Datenmengen nach Schluesselwoertern, E-Mail-Adressen oder Mustern gesucht werden muss. Kein anderes Tool indiziert und durchsucht so schnell.</div>
+
+<h2 id="encase">EnCase — OpenText EnCase Forensic</h2>
+<p>EnCase ist der Urvater der digitalen Forensik (Markteinfuehrung 1998) und gilt in vielen Gerichtsbarkeiten als <strong>Goldstandard</strong> fuer gerichtsfeste Analysen. EnCase verwendet das proprietaere <strong>EnCase Evidence File Format (.E01 / .Ex01)</strong>.</p>
+
+<table>
+<thead><tr><th>Staerken</th><th>Schwaechen</th></tr></thead><tbody>
+<tr><td><strong>Evidence Processor:</strong> Automatisiertes Vorverarbeiten von Images (File Carving, Hash, Index, Thumbnails)</td><td><strong>Steile Lernkurve:</strong> UI ist komplex und wenig intuitiv</td></tr>
+<tr><td><strong>EnScript:</strong> Proprietaere Skriptsprache — extrem maechtig fuer wiederkehrende Analysen und Automation</td><td><strong>Kein echter Cloud-Support:</strong> Cloud-Extraction muss extern erfolgen</td></tr>
+<tr><td><strong>Conditions:</strong> Bedingungsbasierte Filter, die live auf das Image angewendet werden (kein Index noetig)</td><td><strong>Dongle-Zwang:</strong> Lizenz laeuft ueber Hardware-Dongle — Aerger bei Dongle-Verlust</td></tr>
+<tr><td><strong>Enterprise:</strong> EnCase Enterprise ermoeglicht Remote-Collection im gesamten Firmennetz</td><td><strong>Performance:</strong> Bei grossen Cases (10+ TB) langsamer als FTK</td></tr>
+<tr><td><strong>Gerichtsverwertbarkeit:</strong> Hoch — weltweit vor Gericht etabliert</td><td><strong>Nur Windows</strong> fuer Analyse-Rechner</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>EnScript-Kompetenz:</strong> EnScript ist eine der groessten Staerken, aber auch die groesste Einstiegshuerde. Custom EnScripts zu schreiben erfordert Zeit und Training. Wer EnScript beherrscht, kann nahezu jede Analyse automatisieren.</div>
+
+<h2 id="axiom">AXIOM — Magnet AXIOM</h2>
+<p>AXIOM ist der juengste der drei grossen Suiten und hat sich besonders durch <strong>Cloud-Acquisition</strong> und die <strong>Connections-View</strong> (visuelle Verknuepfung von Artefakten) einen Namen gemacht.</p>
+
+<table>
+<thead><tr><th>Staerken</th><th>Schwaechen</th></tr></thead><tbody>
+<tr><td><strong>Cloud-Acquisition:</strong> Kein anderes Tool extrahiert Cloud-Daten so umfassend (Google Takeout, Microsoft 365, iCloud, Social Media)</td><td><strong>Kein eigener Imager:</strong> Image muss mit externem Tool (z.B. FTK Imager) erstellt werden</td></tr>
+<tr><td><strong>Connections-View:</strong> Visuelle Darstellung von Beziehungen zwischen Dateien, Benutzern, Kommunikation (Graph-basiert)</td><td><strong>Index-Suche:</strong> Schwaechere Volltextsuche als FTK (kein dtSearch)</td></tr>
+<tr><td><strong>Modernes UI:</strong> Intuitiv, modern, schnelle Einarbeitung — niedrigste Lernkurve der drei Tools</td><td><strong>Premium-Preis fuer Cloud-Module:</strong> Cloud-Acquisition kostet extra</td></tr>
+<tr><td><strong>Mobile-Forensik:</strong> Nahtlose Integration von iOS/Android-Extractions</td><td><strong>Kein EnScript-Aequivalent:</strong> Wenig Spielraum fuer tiefe Custom-Automatisierung</td></tr>
+<tr><td><strong>Magnet.AI:</strong> KI-gestuetzte Bilderkennung (Nacktheit, Waffen, Drogen, etc.)</td><td><strong>Nur Windows</strong></td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>AXIOM Stichwort:</strong> "Cloud-Forensik". Wenn ein Fall Cloud-Daten (Google, Microsoft 365, Social Media) enthaelt, fuehrt kaum ein Weg an AXIOM vorbei. EnCase und FTK decken diesen Bereich nicht in vergleichbarem Umfang ab.</div>
+
+<h2 id="einsatz">Einsatzempfehlung nach Use-Case</h2>
+
+<table>
+<thead><tr><th>Use-Case / Nutzer</th><th>Empfohlenes Tool</th><th>Begruendung</th></tr></thead><tbody>
+<tr><td><strong>Strafverfolgung (LE)</strong></td><td>EnCase + AXIOM</td><td>EnCase fuer gerichtsfeste Grundanalyse (bekannter Standard), AXIOM fuer Cloud + Mobile</td></tr>
+<tr><td><strong>Corporate IR / SOC</strong></td><td>FTK + AXIOM</td><td>FTK fuer schnelle Keyword-Suche auf Images, AXIOM fuer Cloud- und Mobile-Extractions. KAPE fuer Live-Triage.</td></tr>
+<tr><td><strong>Solo-Forensiker / Kleines Budget</strong></td><td>Autopsy + FTK Imager (beide kostenlos) + ggf. AXIOM</td><td>Autopsy deckt 80% der Standard-Analyse kostenlos ab. FTK Imager fuer Imaging. AXIOM bei Cloud-Faellen als Ergaenzung.</td></tr>
+<tr><td><strong>Cloud-Forensik-Schwerpunkt</strong></td><td>AXIOM</td><td>Unschlagbar bei Cloud-Acquisition (Google, Microsoft 365, etc.)</td></tr>
+<tr><td><strong>Grossverfahren (mehrere TB)</strong></td><td>FTK</td><td>Index-Suche ueber grosse Datenmengen; Multi-Case-Management</td></tr>
+<tr><td><strong>Forensik-Schulung / Studium</strong></td><td>Autopsy (Open Source)</td><td>Kostenlos, deckt alle Grundlagen ab, Community-Dokumentation</td></tr>
+</tbody></table>
+
+<h2 id="opensource">Open-Source-Alternativen</h2>
+<p>Nicht jedes Budget erlaubt kommerzielle Forensik-Suiten. Diese Open-Source-Tools decken viele Analyse-Beduerfnisse ab:</p>
+
+<table>
+<thead><tr><th>Tool</th><th>Typ</th><th>Einsatzzweck</th></tr></thead><tbody>
+<tr><td><strong>Autopsy</strong></td><td>GUI-Forensik-Plattform</td><td>Vollstaendige Case-Analyse (auf Sleuth Kit basierend)</td></tr>
+<tr><td><strong>Sleuth Kit (TSK)</strong></td><td>CLI-Forensik-Toolkit</td><td>Dateisystem-Analyse, File Carving, Timeline</td></tr>
+<tr><td><strong>Plaso / log2timeline</strong></td><td>Timeline-Generator</td><td>Super-Timeline aus allen verfuegbaren Zeitstempeln erstellen</td></tr>
+<tr><td><strong>FTK Imager</strong></td><td>Imager (Freeware)</td><td>Forensische Images erstellen, mounten, preview</td></tr>
+<tr><td><strong>Volatility</strong></td><td>Memory-Forensik</td><td>Analyse von RAM-Dumps (Prozesse, Netzwerk, Malware)</td></tr>
+<tr><td><strong>KAPE</strong></td><td>Collector + Parser</td><td>Gezielte Artefakt-Sammlung und -Parsing (Windows)</td></tr>
+<tr><td><strong>Velociraptor</strong></td><td>Live-Response + Hunting</td><td>Agentenbasierte DFIR auf Live-Systemen</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Open-Source-Stack:</strong> Ein bewaehrter Stack ist: <em>FTK Imager fuer Imaging → Autopsy fuer Case-Management und Analyse → Plaso fuer Timeline → Volatility fuer Memory → KAPE fuer Triage</em>. Dieser Stack kostet nichts und deckt >90% aller forensischen Aufgaben ab.</div>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://www.exterro.com/forensic-toolkit/">FTK — Exterro Forensic Toolkit</a></li>
+<li><a href="https://www.opentext.com/products/encase-forensic">EnCase — OpenText EnCase Forensic</a></li>
+<li><a href="https://www.magnetforensics.com/products/magnet-axiom/">AXIOM — Magnet AXIOM</a></li>
+<li><a href="https://www.sleuthkit.org/autopsy/">Autopsy (Open-Source-Alternative)</a></li>
+<li><a href="https://github.com/sleuthkit/sleuthkit">Sleuth Kit GitHub</a></li>
+<li><a href="https://github.com/EricZimmerman/KapeFiles">KAPE GitHub</a></li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../nav-order.js"></script>
+<script src="../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

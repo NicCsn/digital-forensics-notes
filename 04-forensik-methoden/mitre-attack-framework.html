@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MITRE ATT&amp;CK — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header"><a href="../index.html" class="logo">DF <span>Field Notes</span></a></div>
+  <div class="search-box"><input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off"><div class="sb-search-results" id="sidebarSearchResults"></div></div>
+  <ul class="nav-list nav-home"><li><a href="../index.html">Startseite</a></li><li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li></ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul><li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li><li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li><li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li><li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li><li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li><li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li><li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP</a></li><li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li></ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul><li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li><li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li><li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li><li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li><li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li><li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li><li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li><li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li><li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li><li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li><li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li><li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li><li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li><li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li><li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li></ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul><li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li><li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li><li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li><li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li><li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li><li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li><li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li><li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li><li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li><li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li><li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li><li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li></ul></details></li>
+    <li><details open><summary>Forensik-Methoden (14)</summary><ul><li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li><li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li><li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li><li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li><li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher</a></li><li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li><li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li><li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li><li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li><li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li><li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li><li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li><li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li><li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li></ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul><li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li><li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li><li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li><li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li><li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li><li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li><li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li><li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li></ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul><li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li><li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li><li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li><li><a href="../06-osint/social-media-analyse.html">Social Media</a></li><li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li></ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul><li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li><li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li><li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li><li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li><li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li><li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li><li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht</a></li><li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li><li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li></ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul><li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li><li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li><li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li><li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li><li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li></ul></details></li>
+  </ul>
+  <ul class="nav-list"><li><details><summary>Tools &amp; Referenzen</summary><ul><li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li><li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li><li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li><li><a href="../INDEX.html">Themen-Index</a></li><li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li></ul></details></li></ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / MITRE ATT&amp;CK</span>
+</nav>
+<main><article>
+<h1>MITRE ATT&amp;CK Framework <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#struktur">Matrix-Struktur</a></li>
+<li><a href="#tactics">Tactics (14)</a></li>
+<li><a href="#techniques">Techniques und Sub-Techniques</a></li>
+<li><a href="#navigator">ATT&amp;CK Navigator</a></li>
+<li><a href="#mapping">Log-Quellen auf ATT&amp;CK mappen</a></li>
+<li><a href="#detection">Detection Gap Analysis</a></li>
+<li><a href="#praxis">Praktische Anwendung</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>MITRE ATT&amp;CK (Adversarial Tactics, Techniques, and Common Knowledge) ist das weltweit genutzte Framework zur Beschreibung von Angreiferverhalten. Es katalogisiert reale TTPs (Tactics, Techniques, Procedures), die von APT-Gruppen und Cyberkriminellen eingesetzt werden. Fuer die Digitale Forensik ist ATT&amp;CK das zentrale Werkzeug, um Spuren anhand der Angreifer-Methodik zu erkennen und zu klassifizieren.</p>
+<p><strong>Version:</strong> ATT&amp;CK v16 (Januar 2026). Es gibt Matrizen fuer Enterprise (Windows, macOS, Linux, Cloud, Network, Container), Mobile (Android, iOS) und ICS.</p>
+
+<h2 id="struktur">Matrix-Struktur: Tactics x Techniques</h2>
+<p>Die ATT&amp;CK-Matrix organisiert Angriffsverhalten in zwei Dimensionen: <strong>Tactics (Taktiken, Spalten)</strong> — das WAS (Ziel des Angreifers) — und <strong>Techniques (Techniken, Zellen)</strong> — das WIE (konkrete Methode). Jede Technik kann Sub-Techniques haben, die Varianten oder spezifische Implementierungen beschreiben.</p>
+
+<h2 id="tactics">Die 14 Tactics (Enterprise)</h2>
+<table>
+<thead><tr><th>#</th><th>Tactic</th><th>Beschreibung</th><th>Forensische Artefakte</th></tr></thead><tbody>
+<tr><td>1</td><td><strong>Reconnaissance</strong></td><td>Informationssammlung ueber das Ziel</td><td>Webserver-Logs (Scanning), DNS-Anfragen</td></tr>
+<tr><td>2</td><td><strong>Resource Development</strong></td><td>Infrastruktur aufbauen, Accounts erstellen</td><td>Domain-Registrierungsdaten, WHOIS</td></tr>
+<tr><td>3</td><td><strong>Initial Access</strong></td><td>Eindringen ins Netzwerk</td><td>Phishing-Emails, Exploit-Logs, RDP-Logs (4624)</td></tr>
+<tr><td>4</td><td><strong>Execution</strong></td><td>Schadcode ausfuehren</td><td>PowerShell-Logs (4104), Prefetch, Command-Line (4688)</td></tr>
+<tr><td>5</td><td><strong>Persistence</strong></td><td>Dauerhaften Zugriff sichern</td><td>Registry-Run-Keys, Scheduled Tasks, Services</td></tr>
+<tr><td>6</td><td><strong>Privilege Escalation</strong></td><td>Hoehere Rechte erlangen</td><td>EventLog 4672 (Admin-Login), Token-Manipulation</td></tr>
+<tr><td>7</td><td><strong>Defense Evasion</strong></td><td>Erkennung umgehen</td><td>Log-Luecken, deaktivierte AV, Timestomping</td></tr>
+<tr><td>8</td><td><strong>Credential Access</strong></td><td>Passwoerter/Tokens stehlen</td><td>LSASS-Dump, SAM-Zugriff, Kerberos-TGT</td></tr>
+<tr><td>9</td><td><strong>Discovery</strong></td><td>Netzwerk/Systeme erkunden</td><td><code>net view</code>, <code>whoami</code>, LDAP-Queries</td></tr>
+<tr><td>10</td><td><strong>Lateral Movement</strong></td><td>Seitwaerts durchs Netzwerk bewegen</td><td>RDP-Logs, SMB-Sessions, WinRM, PSRemoting</td></tr>
+<tr><td>11</td><td><strong>Collection</strong></td><td>Zieldaten sammeln</td><td>Zugriff auf File-Shares, Email-Exports, Clipboard</td></tr>
+<tr><td>12</td><td><strong>Command and Control</strong></td><td>Kommunikation mit Angreifer-Server</td><td>DNS-Anomalien, HTTPS-Beaconing, ungewoehnliche Ports</td></tr>
+<tr><td>13</td><td><strong>Exfiltration</strong></td><td>Daten abfliessen</td><td>Grosse Uploads, ungewoehnliche Protokolle, DNS-Tunnel</td></tr>
+<tr><td>14</td><td><strong>Impact</strong></td><td>Systeme zerstoeren/verschluesseln</td><td>Ransomware-Spuren, Volume Shadow Copies geloescht</td></tr>
+</tbody></table>
+
+<h2 id="techniques">Techniques und Sub-Techniques</h2>
+<p>Jede Technik hat eine ID im Format <code>TXXXX</code> (z.B. <code>T1059</code> = Command and Scripting Interpreter). Sub-Techniques erweitern: <code>T1059.001</code> = PowerShell, <code>T1059.003</code> = Windows Command Shell.</p>
+
+<h3>Beispiel: T1059 — Command and Scripting Interpreter</h3>
+<table>
+<thead><tr><th>ID</th><th>Sub-Technique</th><th>Erkennung (Sysmon/EventLog)</th></tr></thead><tbody>
+<tr><td>T1059.001</td><td>PowerShell</td><td>EventID 4104 (Script Block Logging), 400 (Engine-Start)</td></tr>
+<tr><td>T1059.003</td><td>Windows Command Shell</td><td>EventID 4688 (Process Creation) mit <code>cmd.exe</code></td></tr>
+<tr><td>T1059.005</td><td>Visual Basic</td><td><code>cscript.exe</code>, <code>wscript.exe</code>, Office-Makros</td></tr>
+<tr><td>T1059.007</td><td>JavaScript</td><td><code>jscript.dll</code>, <code>mshta.exe</code></td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Technique vs Procedure:</strong> <code>T1059.001</code> ist die TECHNIK (PowerShell). Die PROCEDURE ist, WIE eine bestimmte APT-Gruppe PowerShell nutzt — z.B. "APT29 nutzt PowerShell mit Base64-codierten Commands und <code>-WindowStyle Hidden</code>". Procedures findest du in ATT&amp;CK Groups und Threat-Intelligence-Reports.</div>
+
+<h2 id="navigator">ATT&amp;CK Navigator</h2>
+<p>Der <a href="https://mitre-attack.github.io/attack-navigator/">ATT&amp;CK Navigator</a> ist eine interaktive Web-App zur Visualisierung. Du erstellst <strong>Layers</strong>, die die Matrix farblich kodieren:</p>
+<ul>
+<li><strong>Gruen = Erkannt:</strong> Du hast Logs/Detection fuer diese Technik</li>
+<li><strong>Gelb = Teilweise:</strong> Du kannst diese Technik bedingt erkennen</li>
+<li><strong>Rot = Blind Spot:</strong> Keine Erkennung fuer diese Technik</li>
+</ul>
+<p>Navigator Layers koennen als JSON exportiert und mit anderen Teams geteilt werden. <strong>Forensischer Use-Case:</strong> Erstelle einen Layer, der zeigt, welche Techniken du in einem konkreten Incident NACHWEISEN konntest. Gruen = Beweis gefunden.</p>
+
+<h2 id="mapping">Log-Quellen auf ATT&amp;CK mappen</h2>
+<p>Der forensische Mehrwert von ATT&amp;CK liegt im <strong>Mapping von Log-Quellen zu Techniken</strong>. Jede Technik-Detailseite auf attack.mitre.org listet "Data Sources", die zur Erkennung genutzt werden koennen:</p>
+
+<table>
+<thead><tr><th>Log-Quelle</th><th>Abdeckbare Tactics</th><th>Beispielhafte Techniken</th></tr></thead><tbody>
+<tr><td><strong>Sysmon</strong> (EventID 1)</td><td>Execution, Persistence, Privilege Escalation</td><td>T1059, T1547, T1543</td></tr>
+<tr><td><strong>Windows EventLog 4688</strong></td><td>Execution, Discovery</td><td>T1059, T1083, T1018</td></tr>
+<tr><td><strong>PowerShell Logging (4104)</strong></td><td>Execution, Defense Evasion</td><td>T1059.001, T1562</td></tr>
+<tr><td><strong>DNS-Logs</strong></td><td>C2, Exfiltration</td><td>T1071.004, T1048.001</td></tr>
+<tr><td><strong>Firewall-Logs</strong></td><td>C2, Exfiltration, Initial Access</td><td>T1071, T1048, T1190</td></tr>
+<tr><td><strong>Registry-Auditing</strong></td><td>Persistence, Defense Evasion</td><td>T1547.001, T1112</td></tr>
+</tbody></table>
+
+<h2 id="detection">Detection Gap Analysis</h2>
+<p>Erstelle eine ATT&amp;CK-Navigator-Layer fuer deine Org:</p>
+<ol>
+<li>Markiere ALLE Techniken, die du erkennen KANNST (Log-Quellen vorhanden + Detection Rules)</li>
+<li>Markiere Techniken, die fuer DEINE Branche/threat-model relevant sind</li>
+<li>Die Schnittmenge "relevant aber nicht erkennbar" = <strong>Detection Gap</strong></li>
+<li>Priorisiere Schliessung dieser Gaps nach Risiko (Kritikalitaet der Technik × Wahrscheinlichkeit)</li>
+</ol>
+
+<h2 id="praxis">Praktische Anwendung</h2>
+<ul>
+<li><strong>Incident-Analyse:</strong> Welche ATT&amp;CK-Taktiken wurden eingesetzt? Initial Access (T1566 Phishing) → Execution (T1059.001 PowerShell) → Persistence (T1547.001 Registry Run) → C2 (T1071.001 HTTP)</li>
+<li><strong>Reporting:</strong> "Der Angreifer nutzte T1059.001 (PowerShell) fuer lateral movement und T1003.001 (LSASS-Dump) fuer Credential Access" — standardisierte, weltweit verstaendliche Sprache</li>
+<li><strong>Sigma-Regeln schreiben:</strong> Tags in Sigma-Regeln enthalten oft ATT&amp;CK-IDs: <code>tags: attack.t1059, attack.t1059.001</code></li>
+<li><strong>Threat Intelligence:</strong> ATT&amp;CK Groups (z.B. APT29, FIN7) zeigen, welche Techniken bestimmte Akteure bevorzugen</li>
+</ul>
+<div class="callout warning"><strong>ATT&amp;CK ist KEIN Audit-Checkliste:</strong> Nicht alle Techniken sind fuer jedes Unternehmen relevant. Ein KMU ohne Kubernetes braucht kein Container-Escape zu detektieren. Immer threat-model-basiert priorisieren.</div>
+
+<h2 id="quellen">Quellen</h2>
+<ul>
+<li><a href="https://attack.mitre.org/">attack.mitre.org</a> — Offizielle ATT&amp;CK Matrix</li>
+<li><a href="https://mitre-attack.github.io/attack-navigator/">ATT&amp;CK Navigator</a></li>
+<li>MITRE ATT&amp;CK for DFIR (CISA)</li>
+<li>SigmaHQ: Detection Rules mit ATT&amp;CK-Mapping</li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer"><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a></footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>(function(){var btn=document.getElementById('back-to-top');if(!btn)return;window.addEventListener('scroll',function(){btn.classList.toggle('show',window.scrollY>400);});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();</script>
+</body>
+</html>

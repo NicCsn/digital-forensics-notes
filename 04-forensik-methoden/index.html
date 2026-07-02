@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forensik-Methoden — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details open><summary>Forensik-Methoden (17)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Übersicht</span>
+</nav>
+<main><article>
+<h1>Forensik-Methoden <span class="diff-badge diff-beginner">Kategorie</span></h1>
+<p>Der Kern der Digitalen Forensik: Prozessmodelle, Imaging, Memory Forensics, Malware-Analyse, Timeline-Analyse, Threat Hunting und Cloud-Forensik. Diese Methoden bilden das Handwerkszeug fuer jede forensische Untersuchung — von der Beweismittelsicherung bis zur gerichtsfesten Dokumentation.</p>
+
+<h2>Warum diese Kategorie?</h2>
+<p>Forensik-Methoden sind der Werkzeugkasten jedes digitalen Ermittlers. Hier lernst du den strukturierten Prozess von der Beweissicherung (Imaging, Write-Blocker, Chain of Custody) ueber die Analyse (Memory Forensics, Logfile-Analyse, Timeline) bis zur Dokumentation. Das MITRE ATT&amp;CK Framework bietet dabei eine gemeinsame Sprache zur Klassifikation von Angreiferverhalten — essenziell fuer Threat Hunting und Incident Response.</p>
+<p>Diese Kategorie ist das Herzstueck des gesamten Wiki. Jede andere Kategorie liefert Grundlagenwissen, das hier praktisch angewendet wird: Betriebssystem-Artefakte auswerten, Netzwerkverkehr analysieren, Kryptografie brechen, rechtliche Vorgaben einhalten. Der empfohlene Lernpfad fuehrt dich schrittweise vom Einsteiger zum fortgeschrittenen Forensiker.</p>
+
+<div class="quick-links">
+  <a href="forensischer-prozess-chain-of-custody.html" class="quick-card"><strong>Forensischer Prozess &amp; Chain of Custody</strong><span>Der systematische Ablauf einer forensischen Untersuchung und die lueckenlose Beweismittelkette.</span></a>
+  <a href="arbeitsspeicher-forensik.html" class="quick-card"><strong>Arbeitsspeicher-Forensik</strong><span>Memory Dumps analysieren: laufende Prozesse, Netzwerkverbindungen, Malware im RAM.</span></a>
+  <a href="triage-erstanalyse.html" class="quick-card"><strong>Triage &amp; Erstanalyse</strong><span>Schnelle Priorisierung und erste Bewertung von Sicherheitsvorfaellen.</span></a>
+</div>
+
+<h2>Alle Notizen in dieser Kategorie</h2>
+<div class="card-grid">
+  <a href="forensischer-prozess-chain-of-custody.html" class="quick-card"><strong>Forensischer Prozess &amp; Chain of Custody</strong><span>NIST, ACPO-Prinzipien, Beweismittelkette — der strukturierte forensische Workflow.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="forensisches-imaging.html" class="quick-card"><strong>Forensisches Imaging</strong><span>dd, FTK Imager, EWF/AFF-Formate — bitgenaue Abbilder fuer die Beweissicherung.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="write-blocker.html" class="quick-card"><strong>Write-Blocker</strong><span>Hardware- und Software-Write-Blocker — warum sie unverzichtbar sind und wie sie funktionieren.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="datentraeger-forensik.html" class="quick-card"><strong>Datentraeger-Forensik</strong><span>Partitionstabellen, geloeschte Dateien, Slack Space — systematische Datentraegeranalyse.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="arbeitsspeicher-forensik.html" class="quick-card"><strong>Arbeitsspeicher-Forensik</strong><span>Volatility, Rekall — Prozesse, Netzwerkverbindungen, Injection-Techniken im RAM erkennen.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="logfile-analyse.html" class="quick-card"><strong>Logfile-Analyse</strong><span>Syslog, Windows Event Logs, Webserver-Logs — Logs als chronologische Spurenquelle.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="triage-erstanalyse.html" class="quick-card"><strong>Triage &amp; Erstanalyse</strong><span>Schnelle Bewertung von Systemen und Vorfällen — Priorisierung im Incident-Response-Kontext.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="malware-analyse-statisch.html" class="quick-card"><strong>Malware-Analyse: Statisch</strong><span>Strings, PE-Header, Import-Tabellen — Malware ohne Ausfuehrung analysieren.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="malware-analyse-dynamisch.html" class="quick-card"><strong>Malware-Analyse: Dynamisch</strong><span>Sandboxing, Cuckoo, Process Monitor — Malware in kontrollierter Umgebung beobachten.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="forensische-dokumentation.html" class="quick-card"><strong>Forensische Dokumentation</strong><span>Berichtswesen, Screenshots, Hashes — gerichtsfeste Dokumentation forensischer Ergebnisse.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="datenbanken-forensik.html" class="quick-card"><strong>Datenbanken-Forensik</strong><span>SQLite, MySQL, Postgres — forensische Analyse von Datenbanken und deren Artefakten.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="forensische-live-sicherung.html" class="quick-card"><strong>Forensische Live-Sicherung</strong><span>Live Response, fluechtige Daten — Beweise von laufenden Systemen sichern.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="cloud-forensik.html" class="quick-card"><strong>Cloud-Forensik</strong><span>AWS, Azure, GCP — Herausforderungen und Methoden der Forensik in Cloud-Umgebungen.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="email-forensik.html" class="quick-card"><strong>Email-Forensik</strong><span>Header-Analyse, SPF, DKIM, DMARC — Emails auf Echtheit und Manipulation pruefen.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="mitre-attack-framework.html" class="quick-card"><strong>MITRE ATT&amp;CK Framework</strong><span>Tactics, Techniques, Procedures — Angreiferverhalten systematisch klassifizieren.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="timeline-analysis.html" class="quick-card"><strong>Timeline-Analyse</strong><span>Super-Timelines mit Plaso/log2timeline — Ereignisse zeitlich rekonstruieren.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="threat-hunting.html" class="quick-card"><strong>Threat Hunting</strong><span>Proaktive Suche nach Bedrohungen — Hypothesen-basierte Jagd nach Angreifern im Netzwerk.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+</div>
+
+<h2>Zentrale Werkzeuge</h2>
+<table>
+<thead><tr><th>Werkzeug</th><th>Einsatzbereich</th></tr></thead><tbody>
+<tr><td><strong>Volatility 3</strong></td><td>Memory Forensics — Prozesse, Netzwerkverbindungen, Malware im RAM</td></tr>
+<tr><td><strong>Autopsy / TSK</strong></td><td>Datentraegeranalyse — Filesystem, geloeschte Dateien, Timeline</td></tr>
+<tr><td><strong>Plaso / log2timeline</strong></td><td>Super-Timeline-Erstellung aus verschiedenen Artefakt-Quellen</td></tr>
+<tr><td><strong>Cuckoo Sandbox</strong></td><td>Automatisierte dynamische Malware-Analyse in isolierter Umgebung</td></tr>
+</tbody></table>
+
+<h2>Empfohlener Lernpfad</h2>
+<p>Fuer den Einstieg in die forensischen Methoden empfiehlt sich diese Reihenfolge:</p>
+<ol>
+<li><strong>Forensischer Prozess &amp; Chain of Custody</strong> — Bevor du ein Tool oeffnest, musst du den Prozess verstehen: ACPO-Prinzipien, NIST-Modell, Beweismittelkette.</li>
+<li><strong>Forensisches Imaging</strong> — Bitgenaue Abbilder mit dd, FTK Imager, Guymager — die Grundlage jeder Analyse.</li>
+<li><strong>Write-Blocker</strong> — Hardware- und Software-Write-Blocker verhindern, dass du Beweise veraenderst — absolut essenziell.</li>
+<li><strong>Arbeitsspeicher-Forensik</strong> — Mit Volatility fluechtige Daten analysieren: Prozesse, Netzwerkverbindungen, Malware-Injection.</li>
+<li><strong>Triage &amp; Erstanalyse</strong> — Schnelle Bewertung von VORfaellen und Priorisierung im Incident-Response-Kontext.</li>
+<li><strong>Logfile-Analyse</strong> — Windows Event Logs, Syslog, Webserver-Logs systematisch auswerten.</li>
+<li><strong>Malware-Analyse (Statisch + Dynamisch)</strong> — Strings, PE-Header, Sandboxing — Malware verstehen, ohne und mit Ausfuehrung.</li>
+<li><strong>Spezialthemen</strong> — Cloud-Forensik, Datenbanken-Forensik, Email-Forensik, MITRE ATT&amp;CK, Timeline-Analyse, Threat Hunting — jeder Bereich vertieft spezifische Methoden.</li>
+</ol>
+
+<h2>Verwandte Kategorien</h2>
+<ul>
+<li><a href="../02-betriebssysteme/index.html">Betriebssysteme</a> — Dateisysteme, Registry, Anti-Forensik</li>
+<li><a href="../03-netzwerke/index.html">Netzwerke</a> — Netzwerkforensik, Browser-Forensik, TLS-Analyse</li>
+<li><a href="../05-it-security/index.html">IT-Security</a> — Incident Management, SIEM, Threat Modeling</li>
+<li><a href="../07-recht-kriminalistik/index.html">Recht &amp; Kriminalistik</a> — Beweismittel, Dokumentation, Chain of Custody</li>
+</ul>
+
+<h2>Haeufige Fragen</h2>
+<details class="fold"><summary>Was ist der Unterschied zwischen Incident Response und Digitaler Forensik?</summary>
+<p>Incident Response zielt auf schnelle Eindaemmung und Wiederherstellung — die Frage ist: "Wie kriegen wir das System wieder sicher?" Digitale Forensik zielt auf Beweissicherung und Ursachenforschung — die Frage ist: "Was ist passiert und wer war es?" In der Praxis ueberschneiden sich beide: Ein guter Incident Responder sichert fluechtige Beweise (Live Response), ein guter Forensiker liefert Erkenntnisse fuer die Eindaemmung.</p></details>
+<details class="fold"><summary>Brauche ich immer einen Hardware-Write-Blocker?</summary>
+<p>Fuer gerichtsfeste Untersuchungen: ja, ein Hardware-Write-Blocker ist der Goldstandard. Software-Write-Blocker (z.B. ueber Mount-Optionen oder Registry-Keys) sind akzeptabel fuer Triage und erste Analysen, aber weniger robust. Bei modernen NVMe-SSDs beachten: TRIM und Garbage Collection koennen Daten auch ohne Schreibzugriff veraendern — ein Write-Blocker schuetzt nicht vor SSD-internen Prozessen.</p></details>
+<details class="fold"><summary>Wie dokumentiere ich forensische Ergebnisse gerichtsfest?</summary>
+<p>Die Dokumentation muss nachvollziehbar, wiederholbar und unveraenderlich sein. Kernelemente: (1) Hash-Werte aller Images und extrahierten Dateien, (2) Screenshots mit Zeitstempel, (3) Kommandozeilen-History jeder Analyseaktion, (4) Chain-of-Custody-Protokoll fuer alle Beweismittel, (5) Abschliessender Untersuchungsbericht mit Executive Summary, Methodik, Ergebnissen und Anhaengen. Tools wie CyberChef und Notepad++ mit Plugins koennen helfen, Scripting-Automation ist aber langfristig effizienter.</p></details>
+
+<div style="margin-top:32px"></div>
+</article></main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

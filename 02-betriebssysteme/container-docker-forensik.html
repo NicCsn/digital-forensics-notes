@@ -7,113 +7,465 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Container- und Docker-Forensik</span>
+  <span class="nav-crumb">/ <a href="../02-betriebssysteme/index.html">Betriebssysteme</a> / Container- und Docker-Forensik</span>
 </nav>
 <main>
 <article>
 <h1>Container- und Docker-Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzueberblick</a></li><li><a href="#container-vs-vm">Container vs. VM</a></li><li><a href="#docker-architektur">Docker-Architektur</a></li><li><a href="#storage-treiber">Docker-Storage-Treiber</a></li><li><a href="#forensische-artefakte">Forensische Artefakte</a></li><li><a href="#image-layer-analyse">Image Layer Analyse</a></li><li><a href="#container-escape">Container-Escape</a></li><li><a href="#kubernetes-forensik">Kubernetes-Forensik</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</a></li></ol></details>
 
-<h2 id="kurz-berblick">Kurzüberblick</h2>
-
+<h2 id="kurz-berblick">Kurzueberblick</h2>
 <p>Container (Docker, Podman) sind keine VMs — sie nutzen den Host-Kernel und sind per Namespaces isoliert. Forensisch bedeutet das: Container-Prozesse sind Host-Prozesse, Container-Dateisysteme sind Host-Dateien, und ein Container-Escape macht aus einem kompromittierten Container ein kompromittiertes Host-System.</p>
 
-<h2 id="details">Details</h2>
+<h2 id="container-vs-vm">Container vs. VM — Technische Unterschiede und forensische Implikationen</h2>
 
-<h3>Container-Architektur — forensisch verstanden</h3>
-
-<pre><code>├── Docker Daemon (dockerd)
-├── containerd / runc
-├── Overlay2 / OverlayFS (Dateisystem-Layer)
-├── Namespaces (PID, NET, MNT, UTS, IPC, User, Cgroup)
-├── CGroups (Ressourcen-Limitierung)
-└── Container-Prozess → läuft als normaler Host-Prozess!</code></pre>
-
-<h3>Docker-Forensik: Layer und Overlay2</h3>
-
-<p>Ein Docker-Image besteht aus mehreren schreibgeschützten Layern:</p>
-
-<pre><code># IMAGE          CREATED       CREATED BY                              SIZE
-# abc123def     3 weeks ago   /bin/sh -c #(nop) CMD [&quot;nginx&quot;...]      0B
-# bcd234efg     3 weeks ago   /bin/sh -c #(nop) EXPOSE 80             0B
-# cde345fgh     3 weeks ago   COPY index.html /usr/share/nginx/html/  612B</code></pre>
-
-<p>Jeder Befehl im Dockerfile erzeugt einen neuen Layer. Die unteren Layer sind unveränderlich.</p>
-
-<p>Forensische Fundorte auf dem Host:</p>
-<ul><li><strong>Layer-Daten:</strong> <code>/var/lib/docker/overlay2/<layer-id>/diff/</code> — das Container-Dateisystem</li>
-<li><strong>Container-Logs:</strong> <code>/var/lib/docker/containers/<container-id>/<container-id>-json.log</code></li>
-<li><strong>Docker-Konfiguration:</strong> <code>/var/lib/docker/containers/<container-id>/config.v2.json</code> — Enthält Environment-Variablen (inkl. Secrets!), Port-Mappings, Mounts</li></ul>
-
-<h3>Forensische Analyse eines Containers</h3>
-
-<pre><code>docker logs &lt;container-id&gt;
-
-# In einen laufenden Container einsteigen
-docker exec -it &lt;container-id&gt; /bin/bash
-
-# Container als Image speichern (forensisches &quot;Image&quot;)
-docker commit &lt;container-id&gt; forensic-snapshot
-docker save forensic-snapshot -o container.tar
-
-# Dateisystem direkt vom Host aus analysieren
-ls /var/lib/docker/overlay2/&lt;layer-id&gt;/diff/
-
-# Gelöschte Dateien im Container?
-# OverlayFS erstellt beim Löschen eine &quot;whiteout&quot;-Datei (character device 0:0)
-# Diese zeigt: &quot;Diese Datei wurde gelöscht&quot;
-find /var/lib/docker/overlay2/ -name &quot;.wh.*&quot;</code></pre>
-
-<h3>Container-Escape — wenn die Isolation bricht</h3>
-
-<p>Angreifer, die einen Container übernehmen, versuchen auf den Host auszubrechen:</p>
-
-<table class="styled-table">
-<thead><tr><th>Escape-Methode</th><th>Wie es funktioniert</th><th>Forensische Spur</th></tr></thead><tbody>
-<tr><td>**Privileged Container**</td><td>Container startet mit `--privileged` → Host-Devices zugreifbar</td><td>Host-Prozesse mit Namespace des Containers</td></tr>
-<tr><td>**Docker Socket Mount**</td><td>`/var/run/docker.sock` ist im Container gemountet → neuer Container starten mit Host-Zugriff</td><td>Container-Logs zeigen `docker run`</td></tr>
-<tr><td>**Kernel-Exploit (Dirty Cow)**</td><td>Alte Kernel-Version erlaubt Container-Escape</td><td>Kernel-Version prüfen!</td></tr>
-<tr><td>**Capabilities Abuse**</td><td>`CAP_SYS_ADMIN` erlaubt Mount-Operationen</td><td>`docker inspect` → "CapAdd": ["SYS_ADMIN"]</td></tr>
+<table>
+<thead><tr><th>Merkmal</th><th>Container (Docker, Podman, LXC)</th><th>Virtuelle Maschine (VMware, KVM, Hyper-V)</th></tr></thead><tbody>
+<tr><td><strong>Isolation</strong></td><td>Linux Namespaces (PID, NET, MNT, UTS, IPC, User, Cgroup)</td><td>Hypervisor (Ring -1) — vollstaendige virtuelle Hardware</td></tr>
+<tr><td><strong>Kernel</strong></td><td>Teilt Host-Kernel — kein eigener Kernel</td><td>Eigener Kernel (Gast-OS), eigener Treiber-Stack</td></tr>
+<tr><td><strong>Startzeit</strong></td><td>&lt; 1 Sekunde (nur Prozess-Start)</td><td>10–60 Sekunden (Boot-Prozess)</td></tr>
+<tr><td><strong>Disk-Groesse</strong></td><td>Image-Layer (meist MB bis wenige GB)</td><td>Vollstaendiges Disk-Image (GB bis TB)</td></tr>
+<tr><td><strong>Angriffsvektor</strong></td><td>Container-Escape → Host-Kernel-Kompromittierung</td><td>VM-Escape → Hypervisor-Kompromittierung</td></tr>
+<tr><td><strong>Forensik-Ansatz</strong></td><td>Host-Forensik: <code>/var/lib/docker/</code>, <code>ps aux</code>, Kernel-Logs</td><td>Image-Forensik: VMDK/VHDX mit TSK/Autopsy analysieren</td></tr>
+<tr><td><strong>Fluechtige Daten</strong></td><td>RAM nur im Host-Kontext analysierbar</td><td>VM-RAM als separates Dump-File analysierbar (VMEM, vmsn)</td></tr>
+<tr><td><strong>Forensische Goldgrube</strong></td><td>Container-Logs, Config-JSON, Layer-Diffs</td><td>Snapshots, Memory-Dumps, Hypervisor-Logs</td></tr>
 </tbody></table>
 
-<h3>Kubernetes-Forensik</h3>
+<div class="callout tip"><strong>Forensische Faustregel:</strong> Container = Host-Forensik mit einer zusaetzlichen Abstraktionsschicht. VM = komplette Gast-Forensik plus Hypervisor-Forensik. VM ermoeglicht tiefere Isolation und damit mehr forensische Spuren auf Gast-Ebene, Container ermoeglicht direkte Einsicht vom Host aus.</div>
 
-<p>Kubernetes (K8s) orchestriert Container über mehrere Hosts (Nodes):</p>
+<h2 id="docker-architektur">Docker-Architektur</h2>
 
-<table class="styled-table">
+<pre><code>┌────────────────────────────────────────────────────────────────┐
+│ User                           Docker CLI (docker build/run)    │
+├────────────────────────────────────────────────────────────────┤
+│ Docker Daemon (dockerd)                                         │
+│   - Image-Management (build, pull, push)                        │
+│   - Container-Lifecycle (create, start, stop, rm)              │
+│   - Netzwerk-Management (bridge, overlay, macvlan)              │
+│   - Volume-Management                                           │
+├────────────────────────────────────────────────────────────────┤
+│ containerd (Container Runtime, OCI-kompatibel)                   │
+│   - Image-Transfer (push/pull)                                  │
+│   - Container-Supervision                                       │
+├────────────────────────────────────────────────────────────────┤
+│ containerd-shim → runc                                          │
+│   - Erzeugt Container-Prozess via Linux Namespaces + Cgroups    │
+│   - runc ist der OCI-Runtime-Referenzstandard                   │
+├────────────────────────────────────────────────────────────────┤
+│ Host-Kernel (Linux)                                             │
+│   - pid_namespaces, net_namespaces, mount_namespaces            │
+│   - cgroups (cpu, memory, blkio, devices)                       │
+│   - OverlayFS / Device Mapper / Btrfs (Storage-Treiber)        │
+└────────────────────────────────────────────────────────────────┘</code></pre>
+
+<h3>Die Container-Runtime-Kette</h3>
+
+<table>
+<thead><tr><th>Komponente</th><th>Rolle</th><th>Forensische Spur</th></tr></thead><tbody>
+<tr><td><strong>dockerd</strong></td><td>API, Build, Netzwerk</td><td>Logs: <code>journalctl -u docker</code> oder <code>/var/log/docker.log</code></td></tr>
+<tr><td><strong>containerd</strong></td><td>Container-Lifecycle, Image-Transfer</td><td>Logs: <code>/var/log/containerd.log</code>; Snapshots unter <code>/var/lib/containerd/</code></td></tr>
+<tr><td><strong>runc</strong></td><td>OCI-Runtime: Namespace-Erstellung, Prozess-Start</td><td>Config in <code>/run/containerd/io.containerd.runtime.v2.task/&lt;NS&gt;/&lt;ID&gt;/config.json</code></td></tr>
+<tr><td><strong>containerd-shim</strong></td><td>Entkoppelt Container-Prozess von containerd</td><td>Bleibt nach Daemon-Neustart aktiv; PID auf Host sichtbar</td></tr>
+</tbody></table>
+
+<h2 id="storage-treiber">Docker-Storage-Treiber: overlay2 im Detail</h2>
+
+<h3>Funktionsweise</h3>
+
+<pre><code># overlay2 = Standard-Treiber (seit Docker 18.06)
+# Arbeitet mit Verzeichnis-Overlay:
+
+/var/lib/docker/overlay2/
+├── &lt;layer-id&gt;/
+│   ├── diff/          ← Dateien dieses Layers (Inhalt)
+│   ├── link           ← Kurzer Link-Name (z.B. "ABC123")
+│   ├── lower          ← Liste der unteren Layer-ID-Links
+│   ├── merged/        ← Zusammengefuehrte Sicht (alle Layer uebereinander)
+│   ├── work/          ← Arbeitsverzeichnis des OverlayFS
+│   └── committed      ← Markierungsdatei: Layer ist committed
+
+# Ein laufender Container hat als obersten Layer:
+#   UpperDir = /var/lib/docker/overlay2/&lt;container-layer&gt;/diff/
+#   LowerDir = Alle Image-Layer (read-only)
+#   Merged   = Zusammengefuehrte Sicht = das, was der Container als "/" sieht
+#   WorkDir  = OverlayFS-Arbeitsverzeichnis</code></pre>
+
+<div class="callout info"><strong>Forensisch wichtig:</strong> <code>UpperDir/diff/</code> enthaelt ALLE Aenderungen, die der Container am Dateisystem vorgenommen hat. Das ist der forensisch wertvollste Ordner — hier sind Malware-Downloads, modifizierte Konfigurationsdateien und geloeschte Dateien (als Whiteout-Character-Devices) zu finden.</div>
+
+<h3>OverlayFS-Whiteouts</h3>
+
+<pre><code># Wenn eine Datei im Container geloescht wird, die aus einem Lower-Layer stammt:
+# - OverlayFS erstellt eine Whiteout-Datei im UpperDir:
+#   char device 0:0 mit Namen ".wh.&lt;originaler_dateiname&gt;"
+# - Das Merged-Ergebnis zeigt die Datei nicht mehr an
+# - Forensisch: Whiteout-Dateien im UpperDir/diff/ zeigen, WAS geloescht wurde!
+
+# Finde alle geloeschten Dateien:
+find /var/lib/docker/overlay2/*/diff/ -name ".wh.*" -type c</code></pre>
+
+<h3>Vergleich der Storage-Treiber</h3>
+
+<table>
+<thead><tr><th>Treiber</th><th>Forensische Eignung</th><th>Anmerkung</th></tr></thead><tbody>
+<tr><td><strong>overlay2</strong></td><td><span class="severity low">Hervorragend</span></td><td>Alle Layer als Verzeichnisse direkt lesbar. Whiteouts zeigen Loeschvorgaenge. Standard-Treiber — den wirst du in 99% der Faelle antreffen.</td></tr>
+<tr><td><strong>aufs</strong></td><td><span class="severity low">Gut</span></td><td>Aehnlich overlay2. Vorgaenger. Verzeichnisse unter <code>/var/lib/docker/aufs/</code>.</td></tr>
+<tr><td><strong>devicemapper</strong></td><td><span class="severity medium">Mittel</span></td><td>Block-Device-basiert. Thin-pool Snapshots. Braucht <code>thin_check</code>/<code>thin_dump</code> zum Auslesen. Aeltere Docker-Versionen.</td></tr>
+<tr><td><strong>btrfs</strong></td><td><span class="severity medium">Mittel</span></td><td>Subvolumes + Snapshots. Btrfs-Tools noetig. Selten in Produktion (meist nur SuSE).</td></tr>
+</tbody></table>
+
+<h2 id="forensische-artefakte">Forensische Artefakte — Fundorte und Analyse</h2>
+
+<h3>/var/lib/docker/ — die zentrale Fundgrube</h3>
+
+<table>
+<thead><tr><th>Pfad</th><th>Inhalt</th><th>Forensische Bedeutung</th></tr></thead><tbody>
+<tr><td><code>/var/lib/docker/containers/&lt;ID&gt;/&lt;ID&gt;-json.log</code></td><td>stdout/stderr des Containers</td><td>Applikations-Logs — persistiert auch nach <code>docker rm</code>!</td></tr>
+<tr><td><code>/var/lib/docker/containers/&lt;ID&gt;/config.v2.json</code></td><td>Container-Konfiguration</td><td><strong>Goldgrube:</strong> Env-Vars (inkl. Secrets!), CMD, Entrypoint, Mounts, Ports, Networks</td></tr>
+<tr><td><code>/var/lib/docker/containers/&lt;ID&gt;/hostconfig.json</code></td><td>Host-Konfiguration</td><td>Privileged-Flag, Capabilities, Memory-Limits, Restart-Policy</td></tr>
+<tr><td><code>/var/lib/docker/containers/&lt;ID&gt;/mounts/</code></td><td>Volume-Mounts (alte Docker-Versionen)</td><td>Gemountete Volumes — Schattenkopie?</td></tr>
+<tr><td><code>/var/lib/docker/overlay2/&lt;layer-id&gt;/diff/</code></td><td>Dateisystem-Layer</td><td>Container-Dateisystem — Malware-Downloads, modifizierte Configs</td></tr>
+<tr><td><code>/var/lib/docker/image/overlay2/layerdb/</code></td><td>Image-Layer-Metadaten</td><td>Layer-ID-Mapping, Cache-IDs, Parent-Beziehungen</td></tr>
+<tr><td><code>/var/lib/docker/volumes/</code></td><td>Docker-Volumes</td><td>Persistente Daten — ueberleben <code>docker rm</code></td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Achtung:</strong> Container-Logs (<code>*-json.log</code>) werden NIE automatisch geloescht — auch <code>docker rm</code> entfernt nur den Container, nicht das Log-Verzeichnis! Erst <code>docker system prune</code> oder manuelles Loeschen der Container-ID-Verzeichnisse entfernt sie. Das bedeutet: Logs von vor Wochen geloeschten Containern koennen noch existieren.</div>
+
+<h3>Live-Forensik — Container-Prozesse auf dem Host</h3>
+
+<pre><code># Container-Prozesse sind normale Host-Prozesse!
+ps aux | grep nginx       # Container-Nginx erscheint als Host-Prozess
+ls /proc/&lt;PID&gt;/ns/        # Namespace-Zuordnung eines Container-Prozesses
+
+# PID-Mapping: Container-PID → Host-PID
+docker inspect --format '{{.State.Pid}}' &lt;container&gt;
+ls /proc/&lt;Host-PID&gt;/root/  # Container-Dateisystem vom Host aus erreichen!
+
+# Netzwerk: iptables-Regeln fuer Port-Mappings
+iptables -t nat -L -n -v    # DNAT-Regeln zeigen Host-Port → Container-Port
+ip netns list                # Docker-Netzwerk-Namespaces</code></pre>
+
+<h2 id="image-layer-analyse">Image Layer Analyse</h2>
+
+<h3>Docker-Image-Historie und Inspektion</h3>
+
+<pre><code># Layer-Historie eines Images anzeigen:
+docker history nginx:latest
+docker history --no-trunc nginx:latest     # Voller Befehl pro Layer
+docker image inspect nginx:latest | jq '.[0].RootFS.Layers'
+
+# Container-Aenderungen anzeigen (vor stop/rm):
+docker diff &lt;container&gt;                    # C=Created, A=Added, D=Deleted
+
+# Image als Tar exportieren (forensisches Image):
+docker save nginx:latest -o nginx_forensic.tar
+tar -xf nginx_forensic.tar
+# Enthaelt: layer.tar pro Layer + manifest.json + Config
+
+# Layer einzeln analysieren:
+mkdir layer_analysis
+for f in */layer.tar; do
+  id=$(dirname "$f")
+  mkdir "layer_analysis/$id"
+  tar -xf "$f" -C "layer_analysis/$id"
+done
+
+# Container als Image sichern (vor shutdown):
+docker commit &lt;container&gt; forensic-snapshot:$(date +%Y%m%d-%H%M%S)
+docker save forensic-snapshot:$(date +%Y%m%d-%H%M%S) -o forensic.tar</code></pre>
+
+<h3>Tools fuer Image-Analyse</h3>
+
+<table>
+<thead><tr><th>Tool</th><th>Zweck</th></tr></thead><tbody>
+<tr><td><strong>dive</strong></td><td>Interaktive Layer-Analyse: Layer-Groesse, Dateiaenderungen, Effizienz</td></tr>
+<tr><td><strong>docker-squash</strong></td><td>Layer-Reduktion (nicht forensich, aber nuetzlich zum Verstaendnis)</td></tr>
+<tr><td><strong>trivy / grype</strong></td><td>Vulnerability-Scanning aller Layer (CVEs in installierten Paketen)</td></tr>
+<tr><td><strong>syft</strong></td><td>SBOM (Software Bill of Materials) — welche Pakete sind in welchem Layer?</td></tr>
+</tbody></table>
+
+<h2 id="container-escape">Container-Escape — Erkennung und Analyse</h2>
+
+<table>
+<thead><tr><th>Escape-Methode</th><th>Technik</th><th>Erkennung in Artefakten</th></tr></thead><tbody>
+<tr><td><strong>Privileged Container</strong></td><td><code>docker run --privileged</code> — alle Devices und Capabilities</td><td><code>hostconfig.json</code>: <code>"Privileged": true</code><br>Container hat <code>/dev/sda</code>, <code>/dev/mem</code>, alle Capabilities</td></tr>
+<tr><td><strong>Docker Socket Mount</strong></td><td><code>-v /var/run/docker.sock:/var/run/docker.sock</code></td><td><code>config.v2.json:</code> Mount-Eintrag auf <code>/var/run/docker.sock</code><br>Container-Logs: <code>docker run</code>-Befehle vom Container aus</td></tr>
+<tr><td><strong>CAP_SYS_ADMIN</strong></td><td>Erlaubt Mount-Operationen im Container</td><td><code>hostconfig.json:</code> <code>"CapAdd": ["SYS_ADMIN"]</code><br>Kernel-Log: ungewoehnliche Mounts im NS-Kontext</td></tr>
+<tr><td><strong>CVE-2019-5736</strong> (runc)</td><td>Ueberschreibt runc-Binary vom Container aus</td><td>Hash von <code>/usr/sbin/runc</code> pruefen; Container mit <code>/proc/self/exe</code>-Zugriff</td></tr>
+<tr><td><strong>CVE-2022-0847</strong> (Dirty Pipe)</td><td>Schreibt in beliebige Page Cache Seiten (Kernel &gt;= 5.8)</td><td>Kernel-Version pruefen; ungewoehnliche <code>splice()</code>-Syscalls</td></tr>
+<tr><td><strong>CVE-2024-21626</strong> (runc)</td><td>File-Descriptor-Leak via <code>WORKDIR /proc/self/fd/</code></td><td>Dockerfile-Inspektion; Host-Dateisystem-Spuren; runc-Version pruefen</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Escape-Indikatoren (Host-basierte Erkennung):</strong>
+<ul>
+<li>Ungewoehnliche Prozesse ausserhalb des erwarteten Namespace</li>
+<li><code>/proc/&lt;PID&gt;/root</code>-Symlinks, die auf Host-Root zeigen</li>
+<li>Neue Netzwerk-Sockets mit Quell-IP des Containers aber Ziel-IP ausserhalb der Docker-Bridge</li>
+<li>Unerwartete Kernel-Module geladen</li>
+<li>Mount-Operationen im Container, die Host-Geraete einbinden (<code>/dev/sda</code>)</li>
+</ul></div>
+
+<h2 id="kubernetes-forensik">Kubernetes-Forensik</h2>
+
+<h3>Control Plane — Artefakte</h3>
+
+<table>
 <thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
-<tr><td>**Pod-Logs**</td><td>`kubectl logs <pod-name>`</td><td>Was hat die Anwendung ausgegeben?</td></tr>
-<tr><td>**Pod-Definition**</td><td>`kubectl describe pod <pod>`</td><td>Welches Image? Welche Env-Vars? Welche Mounts?</td></tr>
-<tr><td>**Events**</td><td>`kubectl get events`</td><td>Pod-Starts/-Stopps, Image-Pulls, Fehler</td></tr>
-<tr><td>**Secrets**</td><td>`kubectl get secrets -o yaml`</td><td>Base64-codierte Secrets (einfach dekodierbar!)</td></tr>
-<tr><td>**Audit-Logs**</td><td>`/var/log/kubernetes/audit.log`</td><td>Wer hat `kubectl exec` ausgeführt? Von welcher IP?</td></tr>
+<tr><td><strong>etcd</strong></td><td><code>/var/lib/etcd/</code> auf Control-Plane-Nodes</td><td>Kompletter Cluster-Zustand — alle Objects (Pods, Secrets, ConfigMaps) als Key-Value-Store. <code>etcdctl get / --prefix --keys-only</code></td></tr>
+<tr><td><strong>Audit Logs</strong></td><td><code>/var/log/kubernetes/audit.log</code> (falls konfiguriert)</td><td>Wer hat wann welchen API-Aufruf getaetigt? <code>kubectl exec</code>, <code>kubectl apply</code>, <code>kubectl delete</code></td></tr>
+<tr><td><strong>kube-apiserver Logs</strong></td><td><code>/var/log/pods/kube-system_kube-apiserver-*/</code></td><td>API-Aufrufe — Request-Bodies enthalten Secrets!</td></tr>
+<tr><td><strong>kubelet Logs</strong></td><td><code>journalctl -u kubelet</code></td><td>Pod-Starts/-Stopps, Container-Neustarts, Image-Pulls</td></tr>
 </tbody></table>
 
-<h3>Forensische Best Practices für Container</h3>
+<h3>Workload — Artefakte</h3>
 
-<ul><li><strong>Container NICHT stoppen</strong> — RAM ist flüchtig! Zuerst <code>docker commit</code> oder <code>docker export</code></li>
-<li><strong>Host-System analysieren:</strong> Container-Prozesse sind normale Host-Prozesse (<code>ps aux</code>)</li>
-<li><strong>Image-Layer inspizieren:</strong> <code>docker image history</code>, <code>docker save</code></li>
-<li><strong>Netzwerk analysieren:</strong> Docker-Netzwerk-Treiber (bridge, overlay) → iptables-Regeln auf dem Host zeigen Port-Mappings</li>
-<li><strong>Logs sichern:</strong> Container-Logs werden im JSON-File-Logging-Treiber gespeichert, auch nach <code>docker rm</code></li></ul>
+<table>
+<thead><tr><th>Artefakt</th><th>Zugriff</th><th>Aussage</th></tr></thead><tbody>
+<tr><td><strong>Pod-Definition</strong></td><td><code>kubectl describe pod &lt;pod&gt; -o yaml</code></td><td>Image, Env-Vars, Mounts, SecurityContext, Capabilities</td></tr>
+<tr><td><strong>Pod-Logs</strong></td><td><code>kubectl logs &lt;pod&gt; --previous</code></td><td>Logs des VORHERIGEN Containers (nach Crash/Restart)!</td></tr>
+<tr><td><strong>Events</strong></td><td><code>kubectl get events --all-namespaces</code></td><td>Pod-Starts, Image-Pulls, OOM-Kills, Schedule-Fehler</td></tr>
+<tr><td><strong>Secrets</strong></td><td><code>kubectl get secrets -o yaml</code></td><td>Base64-codierte Secrets (einfach dekodierbar: <code>echo &lt;base64&gt; | base64 -d</code>)</td></tr>
+<tr><td><strong>ConfigMaps</strong></td><td><code>kubectl get configmaps -o yaml</code></td><td>Umgebungsvariablen, Config-Dateien</td></tr>
+</tbody></table>
 
-<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+<div class="callout tip"><strong>Kubernetes-Forensik-Best-Practices:</strong>
+<ol>
+<li><strong>etcd-Dump</strong> als erste Massnahme — enthaelt den gesamten Cluster-Zustand.</li>
+<li><strong>Audit-Logs</strong> aktivieren (muss vorher konfiguriert sein, Feature: Audit-Policy).</li>
+<li><strong>--previous</strong> nicht vergessen! Restartende Container haben oft die interessanteren Logs.</li>
+<li>Node-Ebene nicht vergessen: Container-Dateisysteme liegen auf den Worker-Nodes wie normale Docker-Container unter <code>/var/lib/containerd/</code> oder <code>/var/lib/docker/</code>.</li>
+</ol></div>
 
-<ul><li><code>docker inspect <container></code> — vollständige Konfiguration (Env, Mounts, Netzwerk)</li>
-<li><code>docker diff <container></code> — welche Dateien wurden verändert?</li>
-<li><code>docker cp <container>:/etc/passwd /tmp/</code> — Datei aus Container extrahieren</li>
-<li><code>kubectl get pods -o wide</code> — alle Pods mit Node-IP</li>
-<li><code>kubectl exec -it <pod> -- /bin/sh</code> — Shell im Pod</li></ul>
+<h3>Kubernetes-Architektur forensisch</h3>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│ Control Plane Node(s)                                            │
+│  ┌───────────────┐  ┌───────────────┐  ┌───────────────┐         │
+│  │ kube-         │  │ kube-         │  │ kube-         │         │
+│  │ apiserver     │  │ controller-   │  │ scheduler     │         │
+│  └───────────────┘  └───────────────┘  └───────────────┘         │
+│  ┌───────────────────────────────────────────────────────────┐   │
+│  │ etcd (Key-Value-Store — kompletter Cluster-Zustand)       │   │
+│  └───────────────────────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────────────────────┤
+│ Worker Node                                                      │
+│  ┌───────────────┐  ┌───────────────────────────────────────┐   │
+│  │ kubelet       │  │ Container Runtime (containerd/docker) │   │
+│  │ (Node Agent)  │  │  ┌─────────┐  ┌─────────┐            │   │
+│  └───────────────┘  │  │ Pod A   │  │ Pod B   │            │   │
+│                     │  └─────────┘  └─────────┘            │   │
+│                     └───────────────────────────────────────┘   │
+│  ┌───────────────────────────────────────────────────────────┐   │
+│  │ kube-proxy (iptables/IPVS-Regeln fuer Services)           │   │
+│  └───────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
 
-<ul><li><a href="https://www.sans.org/blog/docker-forensics/">Docker Forensics Guide (SANS)</a></li>
+<h2 id="praktische-anwendung">Praktische Anwendung — Docker/K8s-Forensik-Toolkit</h2>
+
+<pre><code># ---- Docker-Forensik-Kommandos ----
+
+# Alle Container (auch gestoppte) anzeigen
+docker ps -a
+
+# Container-Konfiguration komplett ausgeben
+docker inspect &lt;container&gt; | jq .
+
+# Container-Logs sichern (JSON-File-Treiber)
+cp /var/lib/docker/containers/&lt;ID&gt;/&lt;ID&gt;-json.log /evidence/
+
+# Container-Dateisystem vom Host sichern
+docker export &lt;container&gt; -o container_filesystem.tar
+# ODER: direkt vom Host-Dateisystem:
+tar -czf /evidence/layer_diff.tar.gz /var/lib/docker/overlay2/&lt;layer-id&gt;/diff/
+
+# Image-Layer inspizieren (dive Tool)
+dive &lt;image:tag&gt;
+
+# Docker-Diff vor Container-Stopp:
+docker diff &lt;container&gt; > /evidence/diff.txt
+
+# Alle Docker-Logs sammeln (Skript):
+for dir in /var/lib/docker/containers/*/; do
+  id=$(basename "$dir")
+  cp "$dir/$id-json.log" "/evidence/containers/$id-json.log"
+  cp "$dir/config.v2.json" "/evidence/containers/$id-config.json"
+  cp "$dir/hostconfig.json" "/evidence/containers/$id-hostconfig.json"
+done
+
+# ---- Kubernetes-Forensik-Kommandos ----
+
+# Kompletten Cluster-Zustand sichern
+kubectl get all --all-namespaces -o yaml > /evidence/cluster-state.yaml
+
+# Alle Secrets und ConfigMaps sichern
+kubectl get secrets --all-namespaces -o yaml > /evidence/secrets.yaml
+kubectl get configmaps --all-namespaces -o yaml > /evidence/configmaps.yaml
+
+# Pod-Logs (inkl. vorheriger Container) sammeln
+for ns in $(kubectl get ns -o name | cut -d/ -f2); do
+  for pod in $(kubectl get pods -n $ns -o name | cut -d/ -f2); do
+    kubectl logs -n $ns $pod --all-containers > "/evidence/logs/${ns}_${pod}.log"
+    kubectl logs -n $ns $pod --all-containers --previous > "/evidence/logs/${ns}_${pod}_previous.log"
+  done
+done
+
+# etcd-Dump (braucht Zugriff auf Control Plane Node)
+ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+  --cert=/etc/kubernetes/pki/etcd/server.crt \
+  --key=/etc/kubernetes/pki/etcd/server.key \
+  get / --prefix --keys-only
+
+# Audit-Log auf verdaechtige Events durchsuchen
+grep -E "(exec|create|delete)" /var/log/kubernetes/audit.log | jq '.user.username, .requestURI'</code></pre>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://www.sans.org/blog/docker-forensics/">Docker Forensics Guide (SANS)</a></li>
+<li><a href="https://github.com/wagoodman/dive">dive — Docker Image Layer Analyzer</a></li>
 <li><a href="https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/">Kubernetes Auditing</a></li>
-<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html">OWASP Docker Security</a></li></ul>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html">OWASP Docker Security Cheatsheet</a></li>
+<li>Grasso, A. et al.: <em>Kubernetes Forensics and Incident Response</em> (SANS Institute)</li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

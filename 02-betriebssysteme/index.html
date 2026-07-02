@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betriebssysteme — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details open><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (17)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../02-betriebssysteme/index.html">Betriebssysteme</a> / Übersicht</span>
+</nav>
+<main><article>
+<h1>Betriebssysteme <span class="diff-badge diff-beginner">Kategorie</span></h1>
+<p>Betriebssystem-Architekturen, Dateisysteme, Prozessmanagement und forensische Artefakte unter Windows, Linux, macOS, Android und iOS. Das Betriebssystem ist die zentrale Komponente, auf der jede forensische Untersuchung aufbaut — hier finden sich die meisten Spuren.</p>
+
+<h2>Warum diese Kategorie?</h2>
+<p>Betriebssysteme hinterlassen bei jeder Benutzeraktion Spuren: geoeffnete Dateien, ausgefuhrte Programme, eingesteckte USB-Geraete, besuchte Webseiten. Die Kunst der forensischen Analyse besteht darin, diese fragmentierten Artefakte zu einem kohaerenten Bild zusammenzusetzen. Die Windows Registry allein enthaelt tausende forensisch relevanter Schluessel — von der UserAssist (welche Programme wurden wie oft gestartet?) bis zu USBSTOR (welche Geraete waren wann angeschlossen?).</p>
+<p>Diese Kategorie deckt alle drei grossen Desktop-Plattformen ab (Windows, Linux, macOS) sowie mobile Betriebssysteme (Android, iOS) und Spezialbereiche wie Container-Forensik und IoT. Ein besonderer Schwerpunkt liegt auf Anti-Forensik-Techniken — denn nur wer weiss, wie Spuren verwischt werden, kann sie zuverlaessig erkennen.</p>
+
+<div class="quick-links">
+  <a href="windows-registry-forensik.html" class="quick-card"><strong>Windows Registry Forensik</strong><span>Die Registry als forensische Goldgrube: Benutzeraktivitaeten, installierte Software, USB-Geraete und mehr.</span></a>
+  <a href="dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html" class="quick-card"><strong>Dateisysteme: FAT, NTFS, ext4, APFS</strong><span>Metadaten, Zeitstempel und geloeschte Dateien verstehen — das Fundament der Datentraegerforensik.</span></a>
+  <a href="betriebssystem-forensik-spurensuche.html" class="quick-card"><strong>Spurensuche im Betriebssystem</strong><span>Systematische Suche nach forensischen Artefakten in Windows, Linux und macOS.</span></a>
+</div>
+
+<h2>Alle Notizen in dieser Kategorie</h2>
+<div class="card-grid">
+  <a href="dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html" class="quick-card"><strong>Dateisysteme: FAT, NTFS, ext4, APFS</strong><span>Aufbau, Metadaten, Journaling und forensische Relevanz der wichtigsten Dateisysteme.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="betriebssystem-architekturen.html" class="quick-card"><strong>Betriebssystem-Architekturen</strong><span>Monolithisch vs. Mikrokernel, Ring-Modell, User Mode vs. Kernel Mode.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="prozessmanagement-threads.html" class="quick-card"><strong>Prozessmanagement und Threads</strong><span>Prozesslebenszyklus, Scheduling, IPC — wie laufende Programme forensisch sichtbar sind.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="memory-management.html" class="quick-card"><strong>Memory Management</strong><span>Virtueller Speicher, Paging, Swapping — Grundlage fuer die Arbeitsspeicher-Forensik.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="linux-administration.html" class="quick-card"><strong>Linux-Administration</strong><span>Kommandozeile, Berechtigungen, Systemdienste — Linux fuer forensische Untersuchungen beherrschen.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="windows-administration.html" class="quick-card"><strong>Windows-Administration</strong><span>PowerShell, Event Logs, Benutzerverwaltung — Windows aus forensischer Perspektive verstehen.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="datentraeger-verschluesselung.html" class="quick-card"><strong>Datentraeger-Verschluesselung</strong><span>BitLocker, FileVault, LUKS, VeraCrypt — verschluesselte Datentraeger in der Forensik.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="windows-registry-forensik.html" class="quick-card"><strong>Windows Registry Forensik</strong><span>Registry-Hives, Schlüssel, Zeitstempel — Benutzeraktivitaeten aus der Registry rekonstruieren.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="betriebssystem-forensik-spurensuche.html" class="quick-card"><strong>Betriebssystem-Forensik: Spurensuche</strong><span>Prefetch, Shellbags, LNK-Dateien, Jump Lists — klassische Windows-Artefakte.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="file-carving.html" class="quick-card"><strong>File Carving</strong><span>Geloeschte Dateien ohne Dateisystem-Metadaten wiederherstellen — Header/Footer-basiertes Carving.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="embedded-systems-iot-forensik.html" class="quick-card"><strong>Embedded Systems &amp; IoT-Forensik</strong><span>Firmware-Extraktion, JTAG, UART — forensische Herausforderungen bei Embedded-Geraeten.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="anti-forensik-betriebssystem.html" class="quick-card"><strong>Anti-Forensik auf Betriebssystem-Ebene</strong><span>Timestomping, Log-Wiping, Verschleierungstechniken und wie man sie erkennt.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="mobile-forensik-android-ios.html" class="quick-card"><strong>Mobile Forensik: Android &amp; iOS</strong><span>Datenextraktion, Backup-Analyse, App-Artefakte — mobile Geraete forensisch untersuchen.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="macos-forensik.html" class="quick-card"><strong>macOS-Forensik</strong><span>FSEvents, Spotlight, KnowledgeC, Quarantäne-Datenbank — forensische Artefakte unter macOS.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="container-docker-forensik.html" class="quick-card"><strong>Container &amp; Docker-Forensik</strong><span>Container-Images, Layer, fluechtige Daten — forensische Analyse von Docker-Umgebungen.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="iot-security-grundlagen.html" class="quick-card"><strong>IoT-Security Grundlagen</strong><span>Sicherheitsarchitektur von IoT-Geraeten, Kommunikationsprotokolle und Angriffsvektoren.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+</div>
+
+<h2>Zentrale Werkzeuge</h2>
+<table>
+<thead><tr><th>Werkzeug</th><th>Einsatzbereich</th></tr></thead><tbody>
+<tr><td><strong>Registry Explorer</strong></td><td>Forensische Analyse von Windows-Registry-Hives</td></tr>
+<tr><td><strong>Autopsy / The Sleuth Kit</strong></td><td>Datentraegeranalyse: geloeschte Dateien, Metadaten, Timeline</td></tr>
+<tr><td><strong>FTK Imager</strong></td><td>Forensisches Imaging und Vorschau von Datentraegern</td></tr>
+<tr><td><strong>Volatility 3</strong></td><td>Arbeitsspeicher-Analyse fuer Windows, Linux und macOS</td></tr>
+</tbody></table>
+
+<h2>Empfohlener Lernpfad</h2>
+<p>Fuer den Einstieg in die Betriebssystem-Forensik empfiehlt sich diese Reihenfolge:</p>
+<ol>
+<li><strong>Betriebssystem-Architekturen</strong> — Verstehe Kernel, User Mode und Systemaufrufe, bevor du Artefakte analysierst.</li>
+<li><strong>Dateisysteme</strong> — FAT, NTFS, ext4 und APFS sind die Datenstrukturen, in denen alle forensischen Spuren gespeichert sind.</li>
+<li><strong>Windows Registry Forensik</strong> — Die Registry ist die ergiebigste Spurenquelle unter Windows und ein idealer Einstieg in die praktische Forensik.</li>
+<li><strong>Betriebssystem-Forensik: Spurensuche</strong> — Prefetch, Shellbags, LNK-Dateien und Jump Lists zeigen, was ein Benutzer wann getan hat.</li>
+<li><strong>Memory Management</strong> — Wer Arbeitsspeicher-Forensik betreiben will, muss Paging und virtuellen Speicher verstehen.</li>
+<li><strong>Datentraeger-Verschluesselung</strong> — BitLocker, FileVault und LUKS sind Huerden, die jeder Forensiker ueberwinden koennen muss.</li>
+<li><strong>Linux- und Windows-Administration</strong> — Beherrsche beide Welten, denn Angreifer nutzen haeufig plattformuebergreifende Techniken.</li>
+<li><strong>Fortgeschrittene Themen</strong> — File Carving, Anti-Forensik, Mobile Forensik, macOS-Forensik, Container und IoT bauen auf den Grundlagen auf.</li>
+</ol>
+
+<h2>Verwandte Kategorien</h2>
+<ul>
+<li><a href="../01-grundlagen/index.html">Grundlagen der Informatik</a> — Rechnerarchitektur und Speicherkonzepte</li>
+<li><a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> — Arbeitsspeicher-Forensik, Imaging, File Carving</li>
+<li><a href="../03-netzwerke/index.html">Netzwerke</a> — Browser-Forensik und Netzwerkspuren</li>
+</ul>
+
+<h2>Haeufige Fragen</h2>
+<details class="fold"><summary>Muss ich alle Betriebssysteme gleich gut beherrschen?</summary>
+<p>Nein, aber du solltest die Grundlagen aller Plattformen kennen. Windows dominiert die Unternehmens-IT und damit auch die meisten forensischen Untersuchungen — starte hier. Linux ist als Angreifer-Plattform und fuer Server-Forensik wichtig. macOS wird im Enterprise-Umfeld zunehmend relevant. Mobile Betriebssysteme (Android/iOS) sind ein eigenes Spezialgebiet.</p></details>
+<details class="fold"><summary>Was ist der Unterschied zwischen Dateisystem-Forensik und File Carving?</summary>
+<p>Dateisystem-Forensik nutzt die Metadaten des Dateisystems (MFT bei NTFS, Inodes bei ext4), um geloeschte Dateien zu finden und zu rekonstruieren. File Carving hingegen ignoriert das Dateisystem und sucht direkt in den Rohdaten nach Dateisignaturen (Magic Bytes) — das funktioniert auch dann, wenn das Dateisystem beschaedigt oder formatiert wurde. Beide Methoden ergaenzen sich.</p></details>
+<details class="fold"><summary>Welches Betriebssystem eignet sich am besten als forensische Workstation?</summary>
+<p>Linux (insbesondere Kali, SIFT Workstation oder Tsurugi) ist der Standard fuer forensische Workstations. Es bietet native Unterstuetzung fuer die gaengigen Tools (Sleuth Kit, Volatility, dd), laesst sich leicht anpassen und hat volle Kontrolle ueber das Mount-Verhalten (wichtig: niemals ein Beweismittel-Dateisystem automatisch mounten!). Windows kann als sekundaere Plattform fuer spezifische Tools wie Registry Explorer oder FTK Imager dienen.</p></details>
+
+<div style="margin-top:32px"></div>
+</article></main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

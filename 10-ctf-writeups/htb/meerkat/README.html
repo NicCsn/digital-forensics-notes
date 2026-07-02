@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meerkat (HTB Sherlock) — DF Field Notes</title>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../../index.html">Startseite</a></li>
+    <li><a href="../../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+    <li><details open><summary>CTF-Writeups</summary><ul>
+      <li><a href="../../../10-ctf-writeups/htb/meerkat/README.html">HTB — Meerkat</a></li>
+      <li><a href="../../../10-ctf-writeups/htb/campfire-1/README.html">HTB — Campfire-1</a></li>
+      <li><a href="../../../10-ctf-writeups/misc-ctf/memlabs-1/README.html">Misc — MemLabs-1</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../index.html">CTF-Writeups</a> / Meerkat</span>
+</nav>
+<main><article>
+<h1>Meerkat — Windows Event Log Analyse <span class="diff-badge diff-intermediate">Mittel</span></h1>
+
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#info">Challenge-Info</a></li>
+<li><a href="#szenario">Szenario</a></li>
+<li><a href="#tools">Eingesetzte Tools</a></li>
+<li><a href="#fragen">Key Questions</a></li>
+<li><a href="#walkthrough">Walkthrough</a></li>
+<li><a href="#lessons">Lessons Learned</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="info">Challenge-Info</h2>
+
+<table>
+<thead><tr><th>Eigenschaft</th><th>Wert</th></tr></thead><tbody>
+<tr><td><strong>Plattform</strong></td><td>Hack The Box (HTB)</td></tr>
+<tr><td><strong>Typ</strong></td><td>Sherlock</td></tr>
+<tr><td><strong>Name</strong></td><td>Meerkat</td></tr>
+<tr><td><strong>Kategorie</strong></td><td>Windows Event Log Analyse, Incident Response</td></tr>
+<tr><td><strong>Schwierigkeit</strong></td><td>Mittel</td></tr>
+<tr><td><strong>Datenformat</strong></td><td>Windows Event Log (.evtx)</td></tr>
+</tbody></table>
+
+<h2 id="szenario">Szenario</h2>
+<p>Dein Team wurde gerufen, um eine verdächtige Aktivität auf einem Windows-System zu analysieren. Ein Mitarbeiter bemerkte ungewöhnliches Verhalten auf seinem Rechner — verlangsamte Performance, unerwartete Pop-ups und neue Prozesse, die er nicht gestartet hatte. Die IT-Abteilung hat daraufhin die Windows-Event-Logs des betroffenen Systems gesichert und zur Analyse bereitgestellt.</p>
+
+<p>Deine Aufgabe als forensischer Analyst: Rekonstruiere den Angriff anhand der Event-Logs. Identifiziere den kompromittierten Account, die Angreifer-IP, den genutzten Attack-Vektor und die Aktionen, die der Angreifer auf dem System durchgeführt hat. Die Analyse stützt sich ausschliesslich auf die Event-Logs — es gibt keinen RAM-Dump und kein Disk-Image.</p>
+
+<div class="callout info"><strong>Hinweis:</strong> Windows-Event-Logs sind eine Goldmine für forensische Untersuchungen. Sie dokumentieren Anmeldungen, Prozessstarts, Netzwerkverbindungen und administrative Aktionen. Wer weiss, welche Event-IDs relevant sind, kann einen Angriff nahezu lückenlos rekonstruieren.</div>
+
+<h2 id="tools">Eingesetzte Tools</h2>
+
+<table>
+<thead><tr><th>Tool</th><th>Zweck</th></tr></thead><tbody>
+<tr><td><strong>Windows Event Viewer</strong></td><td>GUI-basierte Analyse der Event-Logs</td></tr>
+<tr><td><strong>PowerShell / Get-WinEvent</strong></td><td>Kommandozeilen-basierte Filterung und Analyse der Events</td></tr>
+<tr><td><strong>EvtxEcmd (Eric Zimmerman)</strong></td><td>EVTX-Dateien parsen und in CSV/JSON exportieren</td></tr>
+<tr><td><strong>Chainsaw (Sigma)</strong></td><td>Sigma-Rules auf EVTX-Dateien anwenden zur schnellen Erkennung von IoCs</td></tr>
+<tr><td><strong>Timeline Explorer</strong></td><td>Zeitstrahl-basierte Analyse exportierter Events</td></tr>
+</tbody></table>
+
+<h2 id="fragen">Key Questions — Übersicht</h2>
+
+<table>
+<thead><tr><th>#</th><th>Fragestellung</th><th>Relevante Event-IDs</th></tr></thead><tbody>
+<tr><td>1</td><td>Welcher Benutzeraccount wurde kompromittiert?</td><td>4624, 4625</td></tr>
+<tr><td>2</td><td>Um welche Uhrzeit begann der Angriff?</td><td>4624, 4625, 4688</td></tr>
+<tr><td>3</td><td>Welche IP-Adresse wurde vom Angreifer verwendet?</td><td>4624 (Network Logon), 5156</td></tr>
+<tr><td>4</td><td>Welches Tool wurde für Lateral Movement verwendet?</td><td>4688, 4104 (PowerShell), 7045</td></tr>
+<tr><td>5</td><td>Welche Datei wurde exfiltriert?</td><td>4663, 4656</td></tr>
+<tr><td>6</td><td>Wie hat der Angreifer Persistenz eingerichtet?</td><td>4697, 7045, 13</td></tr>
+</tbody></table>
+
+<h2 id="walkthrough">Walkthrough — Schritt für Schritt</h2>
+
+<h3>Schritt 1: Event-Logs laden und verschaffen eines Überblicks</h3>
+
+<p>Zunächst laden wir die EVTX-Dateien in PowerShell oder exportieren sie mit EvtxEcmd:</p>
+
+<pre><code># Alle verfügbaren Event-Logs auflisten
+Get-WinEvent -ListLog *
+
+# Sicherheits-Log analysieren (enthält Logon/Logoff-Events)
+Get-WinEvent -LogName Security -MaxEvents 100 | Format-Table TimeCreated, Id, Message -Wrap
+
+# Alternative: Alle Events in CSV exportieren mit EvtxEcmd
+EvtxEcmd.exe -f Security.evtx --csv C:\Export\</code></pre>
+
+<h3>Schritt 2: Kompromittierten Account identifizieren</h3>
+
+<p>Wir suchen nach fehlgeschlagenen Anmeldungen (Event-ID 4625), gefolgt von einer erfolgreichen Anmeldung (Event-ID 4624) — dies ist ein klassisches Brute-Force-Muster. Brute-Force-Angriffe erzeugen viele 4625-Events in kurzer Zeit.</p>
+
+<pre><code># Fehlgeschlagene Logins (Event-ID 4625)
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625} `
+  | Select-Object -First 50 TimeCreated, @{n='User';e={$_.Properties[5].Value}}, @{n='IP';e={$_.Properties[18].Value}} `
+  | Format-Table -AutoSize
+
+# Erfolgreiche Logins (Event-ID 4624)
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4624} `
+  | Select-Object -First 30 TimeCreated, @{n='User';e={$_.Properties[5].Value}}, @{n='LogonType';e={$_.Properties[8].Value}}, @{n='IP';e={$_.Properties[18].Value}} `
+  | Format-Table -AutoSize</code></pre>
+
+<div class="callout tip"><strong>Logon-Typen nach Event-ID 4624:</strong> Typ 3 = Network Logon (RDP, SMB), Typ 10 = RemoteInteractive (RDP). Ist der Logon-Typ 10 und die Quell-IP extern, handelt es sich höchstwahrscheinlich um RDP-Brute-Force.</div>
+
+<table>
+<thead><tr><th>Logon-Typ</th><th>Beschreibung</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td>2</td><td>Interactive (lokale Konsole)</td><td>Nutzer physisch am Gerät</td></tr>
+<tr><td>3</td><td>Network (Netzlaufwerk, SMB, WinRM)</td><td>Remote-Zugriff ohne Desktop</td></tr>
+<tr><td>4</td><td>Batch (geplante Tasks)</td><td>Automatisierte Anmeldung</td></tr>
+<tr><td>5</td><td>Service</td><td>Windows-Dienst-Account</td></tr>
+<tr><td>7</td><td>Unlock</td><td>Entsperrung nach Sperrbildschirm</td></tr>
+<tr><td>10</td><td>RemoteInteractive (RDP)</td><td>KRITISCH: Externer RDP-Zugriff!</td></tr>
+</tbody></table>
+
+<h3>Schritt 3: Erste verdächtige Aktivität — Angriffsbeginn</h3>
+
+<p>Nachdem der kompromittierte Account identifiziert wurde, grenzen wir den Zeitraum ein. Wir suchen nach der ersten fehlgeschlagenen Anmeldung (Event-ID 4625) für diesen Account:</p>
+
+<pre><code># Alle 4625-Events für den kompromittierten Account
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625} `
+  | Where-Object { $_.Properties[5].Value -eq "Zielaccount" } `
+  | Sort-Object TimeCreated `
+  | Select-Object -First 1 TimeCreated, @{n='User';e={$_.Properties[5].Value}}, @{n='IP';e={$_.Properties[18].Value}}</code></pre>
+
+<p>Der Zeitstempel des ersten 4625-Events markiert den Beginn des Angriffs. Direkt im Anschluss (oft innerhalb von Sekunden/Minuten) folgt Event-ID 4624 mit erfolgreichem Logon — der Angreifer hat das Passwort erraten oder gecrackt.</p>
+
+<h3>Schritt 4: Angreifer-IP identifizieren</h3>
+
+<p>Die Quell-IP des Angreifers finden wir in den Logon-Events (4624/4625) und in den Windows-Firewall-Logs:</p>
+
+<pre><code># IP aus Logon-Events extrahieren
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4624} `
+  | Where-Object { $_.Properties[5].Value -eq "Zielaccount" } `
+  | Select-Object TimeCreated, @{n='SourceIP';e={$_.Properties[18].Value}}, @{n='LogonType';e={$_.Properties[8].Value}} `
+  | Format-Table -AutoSize
+
+# Netzwerkverbindungen (Event-ID 5156 - Windows Filtering Platform)
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=5156} -MaxEvents 200 `
+  | Select-Object TimeCreated, @{n='SrcIP';e={$_.Properties[2].Value}}, @{n='DstIP';e={$_.Properties[3].Value}}, @{n='Port';e={$_.Properties[16].Value}} `
+  | Format-Table -AutoSize</code></pre>
+
+<div class="callout warning"><strong>IP-Spoofing:</strong> Die IP in Event-Logs kann gefälscht sein (z. B. via Proxy oder VPN). Für eine gerichtsfeste Zuordnung benötigt man zusätzlich Netzwerk-Flow-Daten oder Firewall-Logs des Perimeter-Routers.</div>
+
+<h3>Schritt 5: Lateral Movement und ausgeführte Prozesse</h3>
+
+<p>Event-ID 4688 protokolliert jeden gestarteten Prozess auf dem System. Wir filtern nach dem kompromittierten Account und suchen nach ungewöhnlichen Prozessen:</p>
+
+<pre><code># Prozessstarts durch den kompromittierten Account
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4688} `
+  | Where-Object { $_.Properties[1].Value -like "*verdaechtiger_prozess*" -or $_.Properties[1].Value -like "*powershell*" } `
+  | Select-Object TimeCreated, @{n='Parent';e={$_.Properties[12].Value}}, @{n='NewProcess';e={$_.Properties[5].Value}}, @{n='CmdLine';e={$_.Properties[8].Value}} `
+  | Format-List
+
+# PowerShell-Befehle (Event-ID 4104 - Scriptblock-Logging, wenn aktiviert)
+Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-PowerShell/Operational'; Id=4104} -MaxEvents 50 `
+  | ForEach-Object { [regex]::Unescape($_.Properties[2].Value) } `
+  | Select-String -Pattern "Invoke-Command|Enter-PSSession|Invoke-WmiMethod|Invoke-Expression"</code></pre>
+
+<table>
+<thead><tr><th>Event-ID</th><th>Beschreibung</th><th>Forensischer Wert</th></tr></thead><tbody>
+<tr><td><strong>4688</strong></td><td>Process Creation</td><td>Zeigt welcher Prozess von wem, wann gestartet wurde. Command Line enthalten!</td></tr>
+<tr><td><strong>1 (Sysmon)</strong></td><td>Process Creation (Sysmon)</td><td>Detaillierter als 4688. Enthält Hashes, Parent Process, User, Command Line</td></tr>
+<tr><td><strong>4104</strong></td><td>PowerShell Scriptblock</td><td>Komplette PowerShell-Scriptblöcke im Klartext</td></tr>
+<tr><td><strong>7045</strong></td><td>New Service Installed</td><td>Wurde ein neuer Dienst installiert? (Persistenz!)</td></tr>
+<tr><td><strong>4697</strong></td><td>Security-Event: Service installed</td><td>Analog zu 7045, aber im Security-Log</td></tr>
+<tr><td><strong>5140</strong></td><td>Network Share Access</td><td>Zugriff auf Freigaben — Lateral Movement!</td></tr>
+<tr><td><strong>5145</strong></td><td>Detailed File Share Access</td><td>Welche Datei auf welcher Freigabe wurde abgerufen?</td></tr>
+</tbody></table>
+
+<h3>Schritt 6: Exfiltrierte Dateien identifizieren</h3>
+
+<p>Dateizugriffe werden mit Event-ID 4663 protokolliert (nur wenn die Audit-Policy korrekt konfiguriert ist). Wir suchen nach Zugriffen auf sensitive Dateien:</p>
+
+<pre><code># Dateizugriffe prüfen (Event-ID 4663)
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4663} -MaxEvents 500 `
+  | Where-Object { $_.Properties[6].Value -like "*.pdf" -or $_.Properties[6].Value -like "*.docx" -or $_.Properties[6].Value -like "*.xlsx" } `
+  | Select-Object TimeCreated, @{n='File';e={$_.Properties[6].Value}}, @{n='AccessMask';e={$_.Properties[7].Value}} `
+  | Format-Table -AutoSize
+
+# Event-ID 4656 — Handle Request für Objekte
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4656} -MaxEvents 200 `
+  | Where-Object { $_.Properties[6].Value -like "*vertraulich*" } `
+  | Select-Object TimeCreated, @{n='File';e={$_.Properties[6].Value}}, @{n='User';e={$_.Properties[1].Value}}</code></pre>
+
+<div class="callout danger"><strong>Wichtig:</strong> Event-ID 4663 wird nur protokolliert, wenn die SACL (System Access Control List) auf den entsprechenden Ordnern gesetzt ist. In einer typischen Windows-Umgebung ist dies nicht der Fall, es sei denn, die Administratoren haben die Object-Access-Auditing-Policy aktiviert.</div>
+
+<h3>Schritt 7: Persistenz-Mechanismen erkennen</h3>
+
+<p>Angreifer etablieren fast immer Persistenz. Gängige Methoden und die dazugehörigen Event-IDs:</p>
+
+<pre><code># Neu installierte Dienste (Event-ID 7045 im System-Log)
+Get-WinEvent -FilterHashtable @{LogName='System'; Id=7045} -MaxEvents 20 `
+  | Select-Object TimeCreated, @{n='ServiceName';e={$_.Properties[0].Value}}, @{n='ImagePath';e={$_.Properties[1].Value}} `
+  | Format-List
+
+# Registry-Modifikationen (Event-ID 4657)
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4657} `
+  | Where-Object { $_.Properties[5].Value -like "*Run*" -or $_.Properties[5].Value -like "*RunOnce*" } `
+  | Select-Object TimeCreated, @{n='Key';e={$_.Properties[5].Value}}, @{n='Value';e={$_.Properties[6].Value}}
+
+# Geplante Tasks (Event-ID 4698)
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4698} -MaxEvents 10 `
+  | Select-Object TimeCreated, @{n='TaskName';e={$_.Properties[0].Value}}, @{n='Command';e={$_.Properties[1].Value}}</code></pre>
+
+<table>
+<thead><tr><th>Persistenz-Mechanismus</th><th>Event-ID</th><th>Wo zu finden</th></tr></thead><tbody>
+<tr><td>Geplante Tasks</td><td>4698</td><td>Security-Log</td></tr>
+<tr><td>Neue Windows-Dienste</td><td>7045 / 4697</td><td>System / Security</td></tr>
+<tr><td>Registry-Run-Schlüssel</td><td>4657</td><td>Security-Log (Audit Registry)</td></tr>
+<tr><td>WMI-Event-Subscription</td><td>5861</td><td>WMI-Activity/Operational</td></tr>
+<tr><td>Startup-Ordner</td><td>4663</td><td>Security-Log (Audit File Access)</td></tr>
+</tbody></table>
+
+<h2 id="lessons">Lessons Learned</h2>
+
+<ul>
+<li><strong>Audit-Policy ist essentiell:</strong> Ohne korrekt konfigurierte Audit-Policies fehlen kritische Events (insbesondere 4663, 4657, 4698). Vor einem Incident muss die Logging-Strategie stehen.</li>
+<li><strong>Event-ID-Katalog auswendig lernen:</strong> Die wichtigsten Event-IDs (4624, 4625, 4688, 5140, 7045, 4104) sollten jedem IR-Analysten geläufig sein.</li>
+<li><strong>Zeitkorrelation ist der Schlüssel:</strong> Events über verschiedene Logs hinweg müssen anhand des Zeitstempels korreliert werden. Tools wie Timeline Explorer helfen enorm.</li>
+<li><strong>PowerShell-Logging aktivieren:</strong> Ohne Scriptblock-Logging (Event-ID 4104) bleiben PowerShell-Angriffe unsichtbar. Module Logging und Scriptblock Logging sind absolute Pflicht.</li>
+<li><strong>Sysmon installieren:</strong> Sysmon liefert wesentlich detailliertere Events (Netzwerkverbindungen, Process Creation mit Hashes, File Creation Events) und sollte auf jedem kritischen System laufen.</li>
+<li><strong>RDP-Logs nie ignorieren:</strong> Logon-Typ 10 in Event-ID 4624 ist ein starker Indikator für externe Angreifer — sofort untersuchen.</li>
+</ul>
+
+<h2 id="quellen">Quellen / Weiterführendes</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624">Microsoft Docs: Event-ID 4624</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4688">Microsoft Docs: Event-ID 4688</a></li>
+<li><a href="https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/">Ultimate Windows Security Log Encyclopedia</a></li>
+<li><a href="https://blog.palantir.com/tampering-with-windows-event-tracing-1964d0920fa">Palantir: Windows Event Log Tampering Detection</a></li>
+<li><a href="https://github.com/EricZimmerman/evtx">Eric Zimmerman's EvtxEcmd</a></li>
+<li><a href="https://github.com/WithSecureLabs/chainsaw">Chainsaw — Sigma-basierte EVTX-Analyse</a></li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../../nav-order.js"></script>
+<script src="../../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

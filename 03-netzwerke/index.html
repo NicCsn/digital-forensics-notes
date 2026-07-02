@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netzwerke — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details open><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (17)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../03-netzwerke/index.html">Netzwerke</a> / Übersicht</span>
+</nav>
+<main><article>
+<h1>Netzwerke <span class="diff-badge diff-beginner">Kategorie</span></h1>
+<p>Protokolle, Paketanalyse, Netzwerkforensik und Sicherheit von Netzwerken — von TCP/IP-Grundlagen bis zu Darknet und Wireless-Forensik. Netzwerke sind der primäre Kommunikationskanal fuer Angriffe und damit eine zentrale Spurenquelle in der digitalen Forensik.</p>
+
+<h2>Warum diese Kategorie?</h2>
+<p>Jeder Cyberangriff hinterlaesst Netzwerkspuren: Command-and-Control-Traffic, Datenexfiltration, Laterale Bewegung. Die Netzwerkforensik rekonstruiert diese Kommunikation aus PCAPs, Flow-Daten und Firewall-Logs. Wireshark ist dabei das unverzichtbare Werkzeug — es dekomprimiert und interpretiert hunderte Protokolle und macht unsichtbaren Datenverkehr sichtbar.</p>
+<p>Diese Kategorie beginnt bei den Protokollgrundlagen (TCP/IP, DNS, DHCP, ARP) und fuehrt ueber Routing und Switching zu fortgeschrittenen Themen wie TLS-Entschluesselung, Darknet-Analyse und Wireless-Forensik. Ein besonderer Schwerpunkt liegt auf der Browser-Forensik, die Netzwerkspuren mit Benutzeraktivitaeten verknuupft.</p>
+
+<div class="quick-links">
+  <a href="wireshark-basics-paketanalyse.html" class="quick-card"><strong>Wireshark Basics</strong><span>Paketanalyse mit Wireshark: Filter, Statistiken und Protokoll-Dissection beherrschen.</span></a>
+  <a href="tcp-ip-protokollfamilie.html" class="quick-card"><strong>TCP/IP-Protokollfamilie</strong><span>Die Saeulen des Internets: IP, TCP, UDP, ICMP — jedes Layer im Detail.</span></a>
+  <a href="netzwerkforensik-methoden.html" class="quick-card"><strong>Netzwerkforensik-Methoden</strong><span>PCAP-Analyse, Flow-Daten, IDS-Logs — systematische Untersuchung von Netzwerkverkehr.</span></a>
+</div>
+
+<h2>Alle Notizen in dieser Kategorie</h2>
+<div class="card-grid">
+  <a href="wireshark-basics-paketanalyse.html" class="quick-card"><strong>Wireshark Basics: Paketanalyse</strong><span>Anzeigefilter, Capture-Filter, Follow Stream, Statistiken — der Einstieg in die Paketanalyse.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="tcp-ip-protokollfamilie.html" class="quick-card"><strong>TCP/IP-Protokollfamilie</strong><span>OSI-Modell, IP-Header, TCP-Handshake, UDP — das Rueckgrat der Netzwerkkommunikation.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="ip-adressierung-subnetting.html" class="quick-card"><strong>IP-Adressierung und Subnetting</strong><span>IPv4, IPv6, CIDR, Subnetzmasken — Adressierung verstehen fuer die Spurenverfolgung.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="routing-switching-vlans.html" class="quick-card"><strong>Routing, Switching und VLANs</strong><span>Router, Switches, VLAN-Tagging — wie Datenpakete ihren Weg durchs Netz finden.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="dhcp-dns-arp.html" class="quick-card"><strong>DHCP, DNS, ARP</strong><span>Namensaufloesung und Adressvergabe — Protokolle mit hohem forensischen Wert.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="vpn-und-firewalls.html" class="quick-card"><strong>VPN und Firewalls</strong><span>Tunnel-Protokolle, Paketfilter, Stateful Inspection — Sicherheitsarchitektur verstehen.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="netzwerkforensik-methoden.html" class="quick-card"><strong>Netzwerkforensik-Methoden</strong><span>Full-Packet-Capture, NetFlow, IDS/IPS — Methodik und Werkzeuge der Netzwerkforensik.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="darknet-tor-i2p.html" class="quick-card"><strong>Darknet, Tor und I2P</strong><span>Anonymisierungsnetzwerke verstehen — wie Ermittler mit verschleiertem Verkehr umgehen.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="web-sicherheit-owasp.html" class="quick-card"><strong>Web-Sicherheit und OWASP</strong><span>SQL-Injection, XSS, CSRF — die OWASP Top 10 aus forensischer Sicht.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="browser-forensik.html" class="quick-card"><strong>Browser-Forensik</strong><span>Chrome, Firefox, Edge — History, Cookies, Downloads und Cache forensisch auswerten.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="tls-ssl-forensik.html" class="quick-card"><strong>TLS/SSL-Forensik</strong><span>Verschluesseleten Verkehr analysieren: Certificate Transparency, JA3-Hashes, Key-Logging.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+  <a href="wireless-forensik.html" class="quick-card"><strong>Wireless-Forensik</strong><span>WLAN-Forensik, Bluetooth-Tracking, Signalanalyse — drahtlose Spuren sichern.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+</div>
+
+<h2>Zentrale Werkzeuge</h2>
+<table>
+<thead><tr><th>Werkzeug</th><th>Einsatzbereich</th></tr></thead><tbody>
+<tr><td><strong>Wireshark</strong></td><td>GUI-basierte Paketanalyse mit tiefem Protokoll-Dissection</td></tr>
+<tr><td><strong>tshark / tcpdump</strong></td><td>Kommandozeilen-Paketanalyse fuer automatisierte Auswertungen</td></tr>
+<tr><td><strong>Zeek (ehem. Bro)</strong></td><td>Netzwerk-Security-Monitor mit protokolluebergreifender Analyse</td></tr>
+<tr><td><strong>Nmap</strong></td><td>Port-Scanning und Service-Erkennung fuer Netzwerkrecherche</td></tr>
+</tbody></table>
+
+<h2>Empfohlener Lernpfad</h2>
+<p>Fuer den Einstieg in die Netzwerkforensik empfiehlt sich diese Reihenfolge:</p>
+<ol>
+<li><strong>TCP/IP-Protokollfamilie</strong> — Das OSI-Modell und die TCP/IP-Stack sind die Grundlage. Ohne Protokollverstaendnis ist jede PCAP-Analyse ratlos.</li>
+<li><strong>Wireshark Basics</strong> — Lerne Capture- und Anzeigefilter, Follow Stream und Statistiken — Wireshark ist das Auge in den Datenverkehr.</li>
+<li><strong>IP-Adressierung &amp; Subnetting</strong> — Wer IP-Adressen in Logs und PCAPs sieht, muss Subnetze und CIDR-Notation lesen koennen.</li>
+<li><strong>DHCP, DNS, ARP</strong> — Diese drei Protokolle liefern die meisten Zuordnungen (IP zu MAC, IP zu Hostname) und sind Gold fuer die Spurenverfolgung.</li>
+<li><strong>Netzwerkforensik-Methoden</strong> — Full-Packet-Capture, NetFlow, IDS/IPS-Logs — die systematische Methodik der Netzwerkuntersuchung.</li>
+<li><strong>VPN &amp; Firewalls</strong> — Verstehe Sicherheitsarchitekturen, um zu wissen, welche Spuren wo anfallen.</li>
+<li><strong>Browser-Forensik</strong> — Browser-History, Cookies und Cache verbinden Netzwerkaktivitaet mit Benutzerhandlungen.</li>
+<li><strong>Fortgeschrittene Themen</strong> — TLS/SSL-Forensik, Darknet, Wireless-Forensik bauen auf den Grundlagen auf.</li>
+</ol>
+
+<h2>Verwandte Kategorien</h2>
+<ul>
+<li><a href="../01-grundlagen/index.html">Grundlagen der Informatik</a> — Zahlensysteme fuer IP-Adressen, Algorithmen fuer Paketanalyse</li>
+<li><a href="../02-betriebssysteme/index.html">Betriebssysteme</a> — Browser-Forensik und Netzwerk-Artefakte im OS</li>
+<li><a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> — Logfile-Analyse, Threat Hunting, Incident Response</li>
+</ul>
+
+<h2>Haeufige Fragen</h2>
+<details class="fold"><summary>Was ist der Unterschied zwischen PCAP und NetFlow?</summary>
+<p>PCAP (Packet Capture) enthaelt den kompletten Netzwerkverkehr — jeden Header und Payload — und ermoeglicht tiefste Analysen, erzeugt aber riesige Datenmengen. NetFlow (bzw. IPFIX) ist ein Aggregationsprotokoll, das nur Metadaten speichert (Quell-IP, Ziel-IP, Ports, Byte-Zaehler) — kompakter, aber weniger Details. In der Praxis kombiniert man beides: NetFlow fuer den Ueberblick, PCAP fuer die Detailanalyse.</p></details>
+<details class="fold"><summary>Kann ich verschluesselten TLS-Verkehr analysieren?</summary>
+<p>Direkt mitlesen nicht — das ist der Zweck von TLS. Es gibt jedoch mehrere Ansaetze: (1) SSLKEYLOGFILE — der Client schreibt die Session-Keys mit, Wireshark entschluesselt; (2) Certificate Transparency Logs zeigen, welche Zertifikate fuer welche Domains ausgestellt wurden; (3) JA3/JA4-Hashes fingerprinten den TLS-Handshake, ohne ihn zu entschluesseln; (4) In Unternehmensumgebungen mit SSL-Interception-Proxies liegen die Daten oft unverschluesselt vor.</p></details>
+<details class="fold"><summary>Wie finde ich Command-and-Control-Traffic in einem PCAP?</summary>
+<p>C2-Traffic zeigt oft charakteristische Muster: regelmaessige Heartbeats (kurze Verbindungen alle X Minuten), ungewoehnliche Ports (DNS over Port 443, HTTP over Port 8080), Traffic zu Laendern ohne Geschaeftsbeziehung, auffaellige DNS-Abfragen (DGA-Domains mit hoher Entropie), oder Protokoll-Anomalien (HTTP GET mit POST-aehnlichem Payload). Tools wie RITA (Real Intelligence Threat Analytics) automatisieren diese Analyse.</p></details>
+
+<div style="margin-top:32px"></div>
+</article></main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

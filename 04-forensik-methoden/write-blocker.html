@@ -7,79 +7,380 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Write-Blocker: Schreibschutz für Asservate</span>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Write-Blocker: Schreibschutz für Asservate</span>
 </nav>
 <main>
 <article>
 <h1>Write-Blocker: Schreibschutz für Asservate <span class="diff-badge diff-beginner">Grundlagen</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#hardware-write-blocker">Hardware-Write-Blocker</a></li><li><a href="#software-write-blocker">Software-Write-Blocker</a></li><li><a href="#write-blocker-test">Write-Blocker-Validierungstest</a></li><li><a href="#bridge-vs-forensic">Bridge vs. Forensic Bridge</a></li><li><a href="#schnittstellen">USB vs. SATA/SAS vs. NVMe</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
 
 <h2 id="kurz-berblick">Kurzüberblick</h2>
 
-<p>Ein Write-Blocker verhindert jeglichen schreibenden Zugriff auf ein Speichermedium. Er ist DAS entscheidende Werkzeug, um die Integrität des Originalbeweismittels zu wahren — und damit die gerichtliche Verwertbarkeit der Analyse sicherzustellen.</p>
+<p>Ein Write-Blocker verhindert <strong>jeglichen schreibenden Zugriff</strong> auf ein Speichermedium. Er ist das entscheidende Werkzeug, um die Integrität des Originalbeweismittels zu wahren — und damit die gerichtliche Verwertbarkeit der gesamten Analyse sicherzustellen.</p>
 
-<h2 id="details">Details</h2>
+<div class="callout danger"><strong>Niemals ohne!</strong> Das Anschließen eines Asservats ohne Write-Blocker ist ein fataler Fehler. Windows mountet automatisch und schreibt <code>System Volume Information</code>. Linux aktualisiert Mount-Zeitstempel und ext4-Journals. Jeder Schreibzugriff macht das Originalbeweismittel angreifbar vor Gericht.</div>
 
-<h3>Hardware-Write-Blocker</h3>
+<h2 id="hardware-write-blocker">Hardware-Write-Blocker</h2>
 
-<ul><li>Physisches Gerät zwischen Asservat und Analyse-Rechner</li>
-<li>Fängt Schreibbefehle ab und blockiert sie, während Lese-Befehle durchgeleitet werden</li>
-<li><strong>Hersteller:</strong> Tableau (Forensic Bridge), WiebeTech, Logicube, CRU</li>
-<li>Für verschiedene Schnittstellen: SATA, IDE, USB, NVMe, SAS</li></ul>
+<h3>Wie sie funktionieren</h3>
 
-<p><strong>Vorteile:</strong></p>
-<ul><li>Unabhängig vom Betriebssystem</li>
-<li>Praktisch nicht umgehbar (außer durch Firmware-Manipulation)</li>
-<li>Standard vor Gericht akzeptiert</li></ul>
+<p>Hardware-Write-Blocker sitzen <strong>physisch</strong> zwischen Asservat und Analyse-Rechner. Sie operieren auf der <strong>ATA/SCSI-Protokollebene</strong> und blockieren Schreib-Kommandos, bevor sie das Gerät erreichen:</p>
 
-<h3>Software-Write-Blocker</h3>
+<ol>
+  <li>Analyse-Rechner sendet einen ATA/SCSI-Befehl an den Write-Blocker</li>
+  <li>Write-Blocker prüft den Opcode: Ist es READ (0x20, 0x08)? Ist es WRITE (0x30, 0x0A)?</li>
+  <li><strong>READ-Befehl:</strong> Wird transparent an das Asservat weitergeleitet, Daten fließen zurück</li>
+  <li><strong>WRITE-Befehl:</strong> Wird <strong>blockiert</strong>. Der Write-Blocker sendet eine Erfolgsmeldung (ACK) zurück, damit das OS keinen Fehler meldet. Der Schreibbefehl erreicht nie das Gerät.</li>
+  <li>Einige Modelle blockieren auch TRIM/DISCARD, SECURITY ERASE, SANITIZE — also Kommandos, die Daten zerstören könnten</li>
+</ol>
 
-<ul><li>Betriebssystem- oder Kernel-Ebene</li>
-<li><strong>Linux:</strong> <code>blockdev --setro /dev/sdb</code> (setzt Device auf read-only)</li>
-<li><strong>Windows:</strong> Registry-Key <code>WriteProtect</code> setzen, aber weniger zuverlässig</li>
-<li><strong>Forensik-Distributionen</strong> (Kali, Paladin, CAINE) mounten Devices standardmäßig read-only</li></ul>
+<table class="styled-table">
+<thead><tr><th>Hersteller</th><th>Modell</th><th>Schnittstelle</th><th>Besonderheit</th></tr></thead><tbody>
+<tr><td>Tableau (OpenText)</td><td>T8u Forensic USB 3.0 Bridge</td><td>USB 3.0 zu SATA/IDE</td><td>LCD-Display zeigt Status, TRIM-Blocking</td></tr>
+<tr><td>Tableau</td><td>T35689iu Forensic SATA Bridge</td><td>SATA zu SATA</td><td>Native SATA, kein USB-Overhead</td></tr>
+<tr><td>WiebeTech (CRU)</td><td>Forensic ComboDock v5.5</td><td>USB-C zu SATA/IDE/mSATA</td><td>Lüfterlos, robustes Metallgehäuse</td></tr>
+<tr><td>WiebeTech</td><td>USB WriteBlocker</td><td>USB 3.0 zu USB</td><td>Für USB-Sticks und externe Platten</td></tr>
+<tr><td>CRU</td><td>WiebeTech NVMe Forensic Bridge</td><td>USB-C zu NVMe M.2</td><td>NVMe-spezifisch, blockiert Admin-Queue-Kommandos</td></tr>
+<tr><td>Logicube</td><td>Forensic Falcon Neo</td><td>Multi (SATA/SAS/USB/NVMe)</td><td>Imaging + Write-Blocking in einem Gerät</td></tr>
+</tbody></table>
 
-<p><strong>Nachteile:</strong> OS könnte trotzdem schreiben (z.B. Mount-Timestamp), abhängig von Korrektheit des Kernels</p>
+<div class="callout tip"><strong>Empfehlung:</strong> Tableau-Bridges sind der Goldstandard in der Strafverfolgung. Sie sind NIST-CFTT-getestet und bieten eine gerichtsfeste Dokumentation der Blocking-Funktion.</div>
 
-<h3>Wie ein Write-Blocker funktioniert</h3>
+<h3>Vorteile von Hardware-Write-Blockern</h3>
+<ul>
+  <li><strong>Betriebssystem-unabhängig:</strong> Funktioniert mit Windows, Linux, macOS — der Rechner "sieht" ein normales Laufwerk, weiss aber nicht, dass ein Blocker dazwischen sitzt</li>
+  <li><strong>Praktisch nicht umgehbar:</strong> Kein Userspace-Tool und kein Kernel-Modul kann den Blocker überwinden (ausser Firmware-Angriffe)</li>
+  <li><strong>Forensisch anerkannt:</strong> Gerichte akzeptieren Hardware-Write-Blocker als verlässlichen Schutz. Software-Write-Blocker werden oft kritischer hinterfragt</li>
+  <li><strong>TRIM/Garbage-Collection-Schutz:</strong> Moderne Blocker blockieren auch ATA-TRIM und NVMe-Deallocate — kritisch für SSDs</li>
+</ul>
 
-<ul><li>Rechner sendet ATA/SCSI-Befehl (z.B. READ, WRITE)</li>
-<li>Write-Blocker prüft: Ist es ein Schreibbefehl?</li>
-<li>Lese-Befehl → an Gerät weitergeleitet</li>
-<li>Schreibbefehl → blockiert, ggf. wird "Erfolg" vorgetäuscht (damit OS nicht abstürzt)</li></ul>
+<h2 id="software-write-blocker">Software-Write-Blocker</h2>
 
-<h3>Prüfung: Funktioniert der Write-Blocker?</h3>
+<h3>Linux: udev-Regeln für forensischen Schreibschutz</h3>
 
-<pre><code>dd if=/dev/zero of=/dev/sdb bs=512 count=1
-# Erwartung: &quot;Operation not permitted&quot; oder ähnlich</code></pre>
+<p>Linux kann Block-Devices zuverlässig auf Read-Only setzen — auf Kernel-Ebene. Die beste Methode ist eine udev-Regel:</p>
 
-<h3>Forensische Praxis</h3>
+<pre><code># /etc/udev/rules.d/99-forensic-writeblock.rules
+# Alle neu angeschlossenen SCSI/USB-Geräte automatisch auf RO setzen
 
-<ul><li><strong>Immer zuerst Write-Blocker anschließen</strong></li>
-<li>Funktionsprüfung (Schreibversuch)</li>
-<li>Hash des Originals berechnen (durch Write-Blocker hindurch)</li>
-<li>Imaging (durch Write-Blocker hindurch)</li>
-<li>Hash des Images berechnen und vergleichen</li></ul>
+ACTION=="add", SUBSYSTEM=="block", KERNEL=="sd[a-z]*", ATTR{ro}="1"
+ACTION=="add", SUBSYSTEM=="block", KERNEL=="sd[a-z]*", RUN+="/usr/bin/logger Forensic: %k auf read-only gesetzt"</code></pre>
 
-<h3>Sonderfälle</h3>
+<p>Prüfen nach dem Anschließen:</p>
+<pre><code>cat /sys/block/sdb/ro        # → 1 (read-only aktiv)
+blockdev --getro /dev/sdb    # → 1
+blockdev --setro /dev/sdb    # Manuelles setzen falls udev nicht griff</code></pre>
 
-<ul><li><strong>Live-Systeme</strong> (eingeschaltet vorgefunden): Kein Write-Blocker möglich — RAM-Dump und Live-Forensik nach ACPO-Prinzipien dokumentiert</li>
-<li><strong>NVMe-SSDs:</strong> Brauchen spezielle NVMe-Write-Blocker (nicht kompatibel mit SATA-Blockern)</li>
-<li><strong>Handys / Tablets:</strong> Spezielle Write-Blocker für UFED, XRY, Cellebrite</li></ul>
+<div class="callout warning"><strong>udev allein reicht nicht:</strong> Die udev-Regel schützt nur vor <em>nachfolgenden</em> Schreibzugriffen, nicht vor dem Mount-Vorgang selbst. Zusätzlich muss <code>mount -o ro,noexec,noatime</code> verwendet werden. Empfehlung: Forensik-Distribution (CAINE, Paladin, Kali) nutzen, die bereits vollständig vorkonfiguriert ist.</div>
 
-<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+<h3>Windows: Registry-Write-Protect</h3>
 
-<ul><li>Tableau T8u Forensic USB 3.0 Bridge — ca. 400-500 €</li>
-<li>Software: <code>blockdev --setro /dev/sdb</code> + <code>cat /sys/block/sdb/ro</code> → muss <code>1</code> sein</li></ul>
+<pre><code>; Registry-Pfad:
+; HKLM\SYSTEM\CurrentControlSet\Control\StorageDevicePolicies
+; DWORD-Wert: WriteProtect = 1
+
+# Per PowerShell setzen:
+New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\StorageDevicePolicies" -Force
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\StorageDevicePolicies" `
+    -Name "WriteProtect" -Value 1 -PropertyType DWORD -Force</code></pre>
+
+<div class="callout danger"><strong>Windows-Software-Write-Blocker unsicher:</strong> Der Windows-Registry-Write-Protect funktioniert nur für USB-Massenspeicher und nur auf Usermode-Ebene. Kernel-Treiber, direkte ATA-Kommandos und SATA-Geräte sind nicht geschützt. <strong>Für forensische Zwecke unzureichend.</strong> Immer Hardware-Write-Blocker bevorzugen.</div>
+
+<h3>Software-vs-Hardware-Vergleich</h3>
+
+<table class="styled-table">
+<thead><tr><th>Kriterium</th><th>Hardware-Write-Blocker</th><th>Software-Write-Blocker</th></tr></thead><tbody>
+<tr><td>Schutzebene</td><td>ATA/SCSI-Protokoll (unterhalb OS)</td><td>OS-Kernel (Linux zuverlässig, Windows eingeschränkt)</td></tr>
+<tr><td>TRIM-Blocking</td><td>Ja (moderne Modelle)</td><td>Nein — TRIM geht am Block-Layer vorbei</td></tr>
+<tr><td>Gerichtsfest</td><td>Ja (NIST-getestet)</td><td>Eingeschränkt (muss dokumentiert und begründet werden)</td></tr>
+<tr><td>Kosten</td><td>300–1000 € pro Bridge</td><td>Kostenlos (Linux udev)</td></tr>
+<tr><td>Fehlerquelle</td><td>Firmware-Bug, defekte Hardware</td><td>OS-Fehlkonfiguration, Kernel-Bug, Rootkit</td></tr>
+<tr><td>USB-Geräte</td><td>USB-Write-Blocker nötig</td><td>Linux blockiert USB wie SATA</td></tr>
+</tbody></table>
+
+<h2 id="write-blocker-test">Write-Blocker-Validierungstest</h2>
+
+<p>Jeder Write-Blocker muss vor dem Einsatz getestet werden — und das Ergebnis dokumentiert. Der Testablauf:</p>
+
+<pre><code># ===== SCHRITT 1: Test-Datei auf Test-Datenträger schreiben =====
+# (Ohne Write-Blocker, Test-Datenträger direkt angeschlossen)
+echo "forensischer-test" | dd of=/dev/sdc bs=512 count=1
+
+# Hash berechnen
+sha256sum /dev/sdc > hash_vorher.txt
+# Ausgabe: a1b2c3d4... /dev/sdc
+
+# ===== SCHRITT 2: Write-Blocker dazwischenschalten =====
+# Physisch: Write-Blocker zwischen /dev/sdc und Rechner
+# Software: blockdev --setro /dev/sdc
+# Test-Datenträger aus- und wieder einstecken
+
+# ===== SCHRITT 3: Schreibversuch =====
+dd if=/dev/zero of=/dev/sdc bs=512 count=1 2>&1
+# Erwartung: "Operation not permitted" oder "Read-only file system"
+
+# ===== SCHRITT 4: Hash erneut berechnen =====
+sha256sum /dev/sdc > hash_nachher.txt
+
+# ===== SCHRITT 5: Hash-Vergleich =====
+diff hash_vorher.txt hash_nachher.txt
+echo $?
+# 0 = Hashes identisch → Write-Blocker funktioniert
+# ≠ 0 = Hash verändert → WRITE-BLOCKER DEFEKT! NICHT einsetzen!</code></pre>
+
+<div class="callout info"><strong>NIST-CFTT-Verfahren:</strong> Das NIST Computer Forensics Tool Testing Program hat einen formalisierten Testprozess für Write-Blocker. Jeder Blocker muss: 1. Alle Schreibkommandos blockieren, 2. Alle Lesekommandos korrekt durchleiten, 3. Keine Daten verändern (selbst nicht schreiben).</div>
+
+<h2 id="bridge-vs-forensic">Bridge vs. Forensic Bridge — der Unterschied</h2>
+
+<table class="styled-table">
+<thead><tr><th>Merkmal</th><th>Normale SATA-USB-Bridge</th><th>Forensic Bridge</th></tr></thead><tbody>
+<tr><td>Preis</td><td>15–40 €</td><td>300–700 €</td></tr>
+<tr><td>Write-Blocking</td><td>Keines — schreibt ganz normal</td><td>Hardware-seitig auf ATA-Ebene blockiert</td></tr>
+<tr><td>TRIM-Weitergabe</td><td>Ja (zerstört SSD-Daten)</td><td>Blockiert</td></tr>
+<tr><td>HPA/DCO-Erkennung</td><td>Nein</td><td>Erkennt und meldet Host Protected Area</td></tr>
+<tr><td>Fehlerbehandlung</td><td>Unbekannte Kommandos = Crash</td><td>Fängt Sonderfälle ab, simuliert ACK</td></tr>
+<tr><td>NIST-Zertifizierung</td><td>Keine</td><td>Ja (Tableau-Modelle)</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Kein Ersatz:</strong> Eine 15-Euro-SATA-USB-Bridge ist KEIN Write-Blocker. Sie ist nur ein Adapter. Ohne Write-Blocker verändert jedes moderne OS das Beweismittel beim Anschließen.</div>
+
+<h2 id="schnittstellen">USB vs. SATA/SAS vs. NVMe Write-Blocker</h2>
+
+<p>Nicht jeder Write-Blocker funktioniert mit jeder Schnittstelle:</p>
+
+<table class="styled-table">
+<thead><tr><th>Asservat-Schnittstelle</th><th>Benötigter Blocker</th><th>Typische Modelle</th><th>Max. Geschwindigkeit</th></tr></thead><tbody>
+<tr><td><strong>USB-Stick / ext. HDD</strong></td><td>USB Write-Blocker</td><td>WiebeTech USB WriteBlocker, Tableau T8u (USB zu SATA)</td><td>USB 3.0 = 5 Gbit/s</td></tr>
+<tr><td><strong>SATA HDD/SSD (2.5"/3.5")</strong></td><td>SATA Forensic Bridge</td><td>Tableau T35689iu, WiebeTech ComboDock</td><td>SATA III = 6 Gbit/s</td></tr>
+<tr><td><strong>IDE (alte Platten)</strong></td><td>IDE Forensic Bridge</td><td>Tableau T35es, WiebeTech ComboDock (mit IDE-Adapter)</td><td>ATA-6 = 100 MB/s</td></tr>
+<tr><td><strong>NVMe M.2 SSD</strong></td><td>NVMe Forensic Bridge</td><td>WiebeTech NVMe Bridge, Tableau PCIe Forensic Bridge</td><td>PCIe Gen3 x4 = ~3.5 GB/s</td></tr>
+<tr><td><strong>SAS (Server)</strong></td><td>SAS Forensic Bridge</td><td>Tableau TD3, Logicube Falcon</td><td>SAS-3 = 12 Gbit/s</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>NVMe-Falle:</strong> NVMe hat ein komplett anderes Kommandoprotokoll als SATA. Ein SATA-Write-Blocker kann NVMe-Geräte nicht schützen, weil er die NVMe-Kommandos gar nicht versteht. Für M.2-NVMe-SSDs brauchst du zwingend einen NVMe-Write-Blocker (500–1000 €).</div>
+
+<h2 id="praktische-anwendung">Praktische Anwendung: Linux-Write-Blocker via udev</h2>
+
+<pre><code># ===== 1. STATISCHE UDEV-REGEL EINRICHTEN =====
+sudo tee /etc/udev/rules.d/99-forensic-writeblock.rules << 'EOF'
+# Alle Block-Devices automatisch auf Read-Only setzen
+# Gilt für alle neu angeschlossenen Geräte (Hotplug)
+
+ACTION=="add", SUBSYSTEM=="block", KERNEL=="sd[a-z]", \
+  ATTR{ro}="1", \
+  RUN+="/usr/bin/logger 'Forensic Write-Block: %k auf Read-Only'"
+
+# Wenn du nur bestimmte Ports blocken willst:
+# ACTION=="add", SUBSYSTEM=="block", KERNEL=="sd[b-z]", ATTR{ro}="1"
+EOF
+
+# ===== 2. UDEV NEU LADEN =====
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
+# ===== 3. MOUNT-OPTIONEN (für gemountete Images) =====
+# /etc/fstab-Eintrag oder manuell:
+mount -o ro,noexec,noatime,noauto /dev/sdb1 /mnt/evidence/
+
+# ===== 4. VERIFIKATIONSSKRIPT =====
+cat << 'SCRIPT' > ~/verify-writeblock.sh
+#!/bin/bash
+DEVICE="$1"
+if [ -z "$DEVICE" ]; then
+  echo "Usage: $0 /dev/sdX"
+  exit 1
+fi
+
+# Read-Only-Status prüfen
+RO=$(cat /sys/block/$(basename $DEVICE)/ro 2>/dev/null)
+if [ "$RO" != "1" ]; then
+  echo "WARNUNG: $DEVICE ist NICHT read-only! (ro=$RO)"
+  echo "Setze manuell: sudo blockdev --setro $DEVICE"
+  exit 1
+fi
+
+# Schreibtest
+dd if=/dev/zero of="$DEVICE" bs=512 count=1 2>&1
+if [ $? -ne 0 ]; then
+  echo "OK: Schreibtest fehlgeschlagen (write-blocking aktiv)"
+else
+  echo "FEHLER: Schreibtest erfolgreich - Write-Blocker defekt!"
+  exit 1
+fi
+
+# Hash berechnen
+echo "Berechne SHA-256 von $DEVICE..."
+HASH=$(sha256sum "$DEVICE" | cut -d' ' -f1)
+echo "SHA-256: $HASH"
+echo "Write-Blocker-Test bestanden."
+SCRIPT
+chmod +x ~/verify-writeblock.sh</code></pre>
+
+<h3>Hardware-Write-Blocker-Validierung (ausführlich)</h3>
+
+<ol>
+  <li><strong>Test-Datenträger vorbereiten:</strong> Einen bekannten, unwichtigen Datenträger mit Testdaten beschreiben. Hash berechnen und notieren.</li>
+  <li><strong>Blocker anschließen:</strong> Write-Blocker an den Analyse-Rechner anschließen. Test-Datenträger an den Write-Blocker anschließen. Stromversorgung sicherstellen.</li>
+  <li><strong>Identifikation prüfen:</strong> Wird das Gerät korrekt erkannt? Stimmen Modell, Seriennummer und Kapazität?</li>
+  <li><strong>Schreibversuch 1:</strong> <code>dd if=/dev/zero of=/dev/sdX bs=4096 count=1024</code> — muss fehlschlagen</li>
+  <li><strong>Hash 1:</strong> <code>sha256sum /dev/sdX</code> und mit dem bekannten Hash vergleichen — muss identisch sein</li>
+  <li><strong>Schreibversuch 2:</strong> Verschiedene Block-Größen testen (512, 4096, 65536, 1048576 Bytes) — alle müssen fehlschlagen</li>
+  <li><strong>Hash 2:</strong> Erneut Hashen und vergleichen — muss identisch sein</li>
+  <li><strong>Read-Test:</strong> Alle Sektoren auslesen: <code>dd if=/dev/sdX of=/dev/null bs=1M</code> — muss ohne Fehler durchlaufen</li>
+  <li><strong>Hash 3:</strong> Nach dem vollständigen Read-Test erneut Hashen — muss immer noch identisch sein</li>
+  <li><strong>Dokumentation:</strong> Alle Testergebnisse mit Zeitstempel, Hash-Werten und Fehlermeldungen protokollieren</li>
+</ol>
+
+<div class="callout tip"><strong>Praxis-Tipp:</strong> Führe den Validierungstest vor JEDEM neuen Fall durch und bewahre das Testprotokoll auf. Vor Gericht kann die Frage kommen: "Woher wissen Sie, dass der Write-Blocker an DIESEM Tag funktionierte?" — Das Testprotokoll ist die Antwort.</div>
 
 <h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
 
-<ul><li>NIST SP 800-86</li>
-<li><a href="https://www.nist.gov/itl/ssd/software-quality-group/computer-forensics-tool-testing-program-cftt/hardware-write-block">NIST Write Blocker Testing</a></li></ul>
+<ul>
+  <li>NIST SP 800-86: Guide to Integrating Forensic Techniques into Incident Response</li>
+  <li><a href="https://www.nist.gov/itl/ssd/software-quality-group/computer-forensics-tool-testing-program-cftt/hardware-write-block">NIST CFTT: Hardware Write Blocker Testing</a></li>
+  <li><a href="https://www.guidancesoftware.com/tableau">Guidance Software / Tableau Forensic Bridges</a></li>
+  <li><a href="https://www.cru-inc.com/products/wiebetech/">WiebeTech / CRU Forensic Products</a></li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

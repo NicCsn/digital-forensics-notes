@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velociraptor — IR and Forensics — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../index.html">Startseite</a></li>
+    <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details open><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../09-tools/kape/README.html">KAPE</a></li>
+      <li><a href="../../09-tools/velociraptor/README.html">Velociraptor</a></li>
+      <li><a href="../../09-tools/autopsy/README.html">Autopsy</a></li>
+      <li><a href="../../09-tools/ftk-encase-axiom/README.html">FTK / EnCase / AXIOM</a></li>
+      <li><a href="../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-tools">Tools</a> / Velociraptor</span>
+</nav>
+<main><article>
+<h1>Velociraptor — IR and Forensics <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#architektur">Architektur</a></li>
+<li><a href="#deployment">Deployment</a></li>
+<li><a href="#artifacts">Artifacts</a></li>
+<li><a href="#vql">VQL — Velociraptor Query Language</a></li>
+<li><a href="#offline">Offline-Kollektor</a></li>
+<li><a href="#hunting">Hunting-Notebooks</a></li>
+<li><a href="#praxis">Praktische Anwendung: Offline-Collection</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Velociraptor ist eine <strong>agentenbasierte Open-Source-DFIR-Plattform</strong>, entwickelt von Mike Cohen und dem Velociraptor-Team. Anders als klassische Forensik-Tools, die ein statisches Image analysieren, arbeitet Velociraptor <strong>live auf Endpoints</strong> und kann zeitgleich hunderte oder tausende Systeme durchsuchen (Threat Hunting, IR-Triage, Compliance-Checks).</p>
+
+<table>
+<thead><tr><th>Eigenschaft</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>Entwickler</strong></td><td>Mike Cohen / Velociraptor (CNCF Sandbox Projekt)</td></tr>
+<tr><td><strong>Lizenz</strong></td><td>AGPLv3 (Open Source)</td></tr>
+<tr><td><strong>Sprache</strong></td><td>Go (Server/Client), VQL (Query Language), Vue.js (Frontend)</td></tr>
+<tr><td><strong>Plattform</strong></td><td>Windows, Linux, macOS</td></tr>
+<tr><td><strong>Architektur</strong></td><td>Server — Client — Web-Frontend</td></tr>
+<tr><td><strong>Offline-Modus</strong></td><td>Ja (Offline Collector)</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Abgrenzung:</strong> Velociraptor ersetzt KEIN klassisches Forensik-Image. Es ist ein <strong>Live-Response- und Threat-Hunting-Werkzeug</strong>, das auf laufenden Systemen arbeitet. Fuer die gerichtsfeste Analyse wird zusaetzlich ein forensisches Image benoetigt.</div>
+
+<h2 id="architektur">Architektur</h2>
+<p>Velociraptor besteht aus drei Kernkomponenten:</p>
+
+<table>
+<thead><tr><th>Komponente</th><th>Rolle</th><th>Technologie</th></tr></thead><tbody>
+<tr><td><strong>Server</strong></td><td>Zentraler Knoten: Empfaengt Client-Verbindungen, speichert Ergebnisse, stellt GUI bereit</td><td>Go-Binary, eingebettete Datenbank</td></tr>
+<tr><td><strong>Client</strong></td><td>Agent auf jedem Endpoint: Fuehrt VQL-Queries aus, sammelt Artefakte, sendet Ergebnisse</td><td>Go-Binary (Windows-Service, Linux/macOS-Daemon)</td></tr>
+<tr><td><strong>Frontend</strong></td><td>Web-GUI: Queries schreiben, Ergebnisse visualisieren, Notebooks, Admin-Funktionen</td><td>Vue.js SPA, im Server integriert</td></tr>
+</tbody></table>
+
+<p>Die Kommunikation laeuft ueber einen <strong>einzigen HTTPS-Port</strong> (Default: 8000). Clients initiieren die Verbindung zum Server (Outbound), Firewall-Regeln muessen also nur server-seitig eingerichtet werden. Das Protokoll ist verschluesselt und TLS-secured.</p>
+
+<pre><code># Vereinfachte Architektur
+[Clients]  ---HTTPS:8000---&gt;  [Velociraptor Server]
+                                  |
+                                  +--- Web-GUI (Port 8889)
+                                  +--- Interne DB (File- oder MySQL)</code></pre>
+
+<div class="callout warning"><strong>Port-Konfiguration:</strong> Port 8000 = Client-Server-Kommunikation (muss von Clients erreichbar sein). Port 8889 = GUI (sollte nur intern/durch Admin erreichbar sein, nicht oeffentlich).</div>
+
+<h2 id="deployment">Deployment</h2>
+
+<h3>Server-Setup (Linux/macOS/Windows)</h3>
+<pre><code># 1. Binary herunterladen
+wget https://github.com/Velocidex/velociraptor/releases/latest/download/velociraptor-linux-amd64
+
+# 2. Config generieren (interaktiv)
+./velociraptor config generate -i
+
+# 3. Server starten (Frontend + Listener)
+./velociraptor --config server.config.yaml frontend -v
+
+# 4. Als systemd-Service (optional)
+sudo ./velociraptor --config server.config.yaml service install</code></pre>
+
+<h3>Client-Installation (Windows)</h3>
+<pre><code># Client-Binary per Gruppenrichtlinie, SCCM oder manuell verteilen
+velociraptor.exe --config client.config.yaml service install
+
+# Service starten
+velociraptor.exe service start
+
+# Pruefen, ob Client verbunden ist
+velociraptor.exe --config client.config.yaml query "select * from info()"</code></pre>
+
+<h3>Client-Installation (Linux/macOS)</h3>
+<pre><code># Linux
+sudo ./velociraptor --config client.config.yaml service install
+sudo systemctl start velociraptor
+
+# macOS
+sudo ./velociraptor --config client.config.yaml service install
+sudo launchctl load /Library/LaunchDaemons/org.velociraptor.plist</code></pre>
+
+<div class="callout tip"><strong>Client-Konfiguration:</strong> Die client.config.yaml enthaelt die Server-Adresse und den CA-Pin. Sie wird beim ersten <code>config generate</code> automatisch erstellt. Ohne gueltige Config kann der Client keine Verbindung zum Server aufbauen.</div>
+
+<h2 id="artifacts">Artifacts</h2>
+<p>Artifacts sind vordefinierte Sammlungen von VQL-Queries, die eine bestimmte forensische Frage beantworten. Velociraptor bringt ueber <strong>200 Built-in Artifacts</strong> mit, deckt Windows, Linux und macOS ab.</p>
+
+<table>
+<thead><tr><th>Artifact-Name</th><th>Beschreibung</th><th>Plattform</th></tr></thead><tbody>
+<tr><td><code>Windows.Forensics.Prefetch</code></td><td>Prefetch-Dateien parsen und Timeline erstellen</td><td>Windows</td></tr>
+<tr><td><code>Windows.Detection.Yara.Process</code></td><td>YARA-Scan der laufenden Prozesse</td><td>Windows</td></tr>
+<tr><td><code>Windows.EventLogs.Powershell</code></td><td>PowerShell-EventLogs extrahieren</td><td>Windows</td></tr>
+<tr><td><code>Windows.Sys.Users</code></td><td>Lokale Benutzer auflisten</td><td>Windows</td></tr>
+<tr><td><code>Windows.Forensics.Usn</code></td><td>USN-Journal parsen</td><td>Windows</td></tr>
+<tr><td><code>Linux.Sys.Users</code></td><td>Benutzer aus /etc/passwd</td><td>Linux</td></tr>
+<tr><td><code>Linux.Syslog.SSHLogin</code></td><td>SSH-Logins aus Syslog</td><td>Linux</td></tr>
+<tr><td><code>MacOS.Forensics.AppleDouble</code></td><td>AppleDouble-Dateien analysieren</td><td>macOS</td></tr>
+<tr><td><code>Generic.Client.Info</code></td><td>Basis-Info ueber den Client (OS, Hostname, IP)</td><td>Alle</td></tr>
+</tbody></table>
+
+<h3>Custom VQL Artifacts</h3>
+<p>Eigene Artifacts werden als YAML definiert und koennen per GUI oder CLI importiert werden. Die Community pflegt eine grosse Sammlung unter der <strong>Artifact Exchange</strong> (<a href="https://docs.velociraptor.app/exchange/">docs.velociraptor.app/exchange</a>).</p>
+
+<pre><code># Custom Artifact Definition (vereinfacht)
+name: Custom.ProcessList
+description: Listet alle Prozesse mit Binary-Pfad
+type: CLIENT
+parameters:
+  - name: ProcessFilter
+    default: .
+sources:
+  - query: |
+      SELECT Name, Pid, Exe, CommandLine
+      FROM pslist()
+      WHERE Name =~ ProcessFilter</code></pre>
+
+<h2 id="vql">VQL — Velociraptor Query Language</h2>
+<p>VQL ist die Abfragesprache von Velociraptor. Sie aehnelt SQL, ist aber speziell fuer forensische Abfragen auf Betriebssystem-Daten konzipiert. VQL kann Dateien lesen, Registry-Schluessel auswerten, Prozesse auflisten und Netzwerkverbindungen analysieren.</p>
+
+<pre><code># Basis-VQL — alle laufenden Prozesse
+SELECT Name, Pid, Exe FROM pslist() WHERE Name =~ "cmd|powershell"
+
+# Event-Logs parsen (letzte 24 Stunden)
+SELECT System.TimeCreated, System.EventID, System.Computer
+FROM parse_evtx(filename="C:\\Windows\\System32\\winevt\\Logs\\Security.evtx")
+WHERE System.TimeCreated > now() - 86400
+
+# Registry auslesen
+SELECT Key, Value FROM read_reg_key(
+  globs="HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\**")
+
+# Dateien mit Pfad-Filter suchen
+SELECT FullPath, Size, Mtime FROM glob(
+  globs="C:\\Users\\*\\AppData\\Local\\Google\\Chrome\\**\\History")
+
+# MFT parsen
+SELECT FileName, ParentPath, Created0x10, LastModified0x10
+FROM parse_mft(filename="C:\\$MFT")
+WHERE FileName =~ "\.exe$"</code></pre>
+
+<table>
+<thead><tr><th>VQL-Plugin</th><th>Funktion</th></tr></thead><tbody>
+<tr><td><code>pslist()</code></td><td>Laufende Prozesse auflisten</td></tr>
+<tr><td><code>glob()</code></td><td>Dateien per Pfad-Pattern suchen</td></tr>
+<tr><td><code>parse_evtx()</code></td><td>Windows-EventLogs parsen</td></tr>
+<tr><td><code>parse_mft()</code></td><td>MFT (Master File Table) parsen</td></tr>
+<tr><td><code>read_reg_key()</code></td><td>Registry-Keys auslesen</td></tr>
+<tr><td><code>yara()</code></td><td>YARA-Scan auf Dateien/Speicher</td></tr>
+<tr><td><code>parse_csv()</code></td><td>CSV-Dateien einlesen</td></tr>
+<tr><td><code>chain()</code></td><td>Mehrere Queries verketten</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>VQL lernen:</strong> Die Velociraptor-GUI hat einen eingebauten VQL-Editor mit Autovervollstaendigung. Das offizielle VQL-Reference-Handbuch (<a href="https://docs.velociraptor.app/vql_reference/">docs.velociraptor.app/vql_reference/</a>) dokumentiert alle Plugins und Funktionen.</div>
+
+<h2 id="offline">Offline-Kollektor</h2>
+<p>Der Offline Collector ist ein stand-alone Binary, das <strong>ohne Server-Verbindung</strong> auf einem Zielsystem laeuft. Ideal fuer Incident Response vor Ort, wenn kein Velociraptor-Server verfuegbar ist oder das System isoliert werden muss.</p>
+
+<pre><code># 1. Collector Binary erstellen (auf dem Server)
+velociraptor --config server.config.yaml tools collector \
+  --artifacts "Windows.Forensics.Prefetch,Windows.Sys.Users" \
+  --output collector.exe
+
+# 2. collector.exe auf Zielsystem kopieren und ausfuehren
+collector.exe
+
+# 3. Ergebnis ist eine ZIP-Datei, die auf dem Server importiert wird
+velociraptor --config server.config.yaml imports collector_results.zip</code></pre>
+
+<p>Der Offline-Kollektor ist der <strong>wichtigste Use-Case fuer Incident Responder</strong>: Er sammelt alle definierten Artefakte, speichert sie in einem ZIP-Archiv, und hinterlaesst minimale Spuren auf dem Zielsystem (keine Installation, kein persistenter Service).</p>
+
+<h2 id="hunting">Hunting-Notebooks</h2>
+<p>Hunting-Notebooks sind interaktive Analyse-Dokumente in der Velociraptor-GUI, die VQL-Queries, Ergebnisse und Notizen in einem Dokument vereinen. Sie sind vergleichbar mit Jupyter-Notebooks, aber speziell fuer DFIR konzipiert.</p>
+
+<table>
+<thead><tr><th>Notebook-Typ</th><th>Zweck</th></tr></thead><tbody>
+<tr><td><strong>Hunt</strong></td><td>Vordefinierte Query auf vielen Clients ausfuehren (z.B. "Suche auf allen 500 Endpoints nach dieser IOC-Liste")</td></tr>
+<tr><td><strong>Collection</strong></td><td>Einmalige Collection von Artefakten auf einem bestimmten Client</td></tr>
+<tr><td><strong>Event Monitoring</strong></td><td>Dauerhafte Ueberwachung von Events (z.B. neue Prozesse, Registry-Aenderungen)</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Vorsicht bei Hunts:</strong> Ein Hunt auf 1000+ Clients mit einer teuren Query (z.B. YARA-Scan aller EXE-Dateien) kann die Endpoints stark belasten. Immer zuerst auf einem einzelnen Client testen und CPU/IO-Limits in VQL setzen.</div>
+
+<h2 id="praxis">Praktische Anwendung: Offline-Collection von Windows-Artefakten</h2>
+
+<p><strong>Szenario:</strong> Ein Windows-Server zeigt verdaechtige Netzwerkverbindungen. Du sollst eine forensische Collection durchfuehren, ohne einen Velociraptor-Server im Netzwerk zu haben.</p>
+
+<ol>
+<li><strong>Collector vorbereiten</strong> (auf deinem Analyse-Rechner mit Velociraptor-Server):
+<pre><code>velociraptor --config server.config.yaml tools collector \
+  --artifacts Windows.Forensics.Prefetch,\
+Windows.Sys.Users,\
+Windows.EventLogs.Powershell,\
+Windows.Network.NetstatEnriched,\
+Windows.Detection.Yara.Process,\
+Windows.Forensics.Usn \
+  --output win_collector.exe</code></pre>
+</li>
+<li><strong>win_collector.exe auf USB-Stick kopieren</strong> und zum Zielserver bringen.</li>
+<li><strong>Als Administrator ausfuehren:</strong> <code>win_collector.exe</code></li>
+<li><strong>Ergebnis-ZIP</strong> wird im aktuellen Verzeichnis erstellt, z.B. <code>Collection-2026-07-02.zip</code></li>
+<li><strong>ZIP auf deinen Analyse-Rechner uebertragen</strong> und importieren:
+<pre><code>velociraptor --config server.config.yaml imports Collection-2026-07-02.zip</code></pre>
+</li>
+<li><strong>In der GUI analysieren:</strong> Unter "Collected Artifacts" die Ergebnisse einsehen, filtern und in Notebooks pivotieren.</li>
+</ol>
+
+<div class="callout warning"><strong>Admin-Rechte:</strong> Fuer den Zugriff auf viele Artefakte (MFT, bestimmte Registry-Hives, raw disk access) sind Admin-Rechte auf dem Zielsystem erforderlich. Der Collector meldet bei fehlenden Rechten eine Warnung, fuehrt aber die restlichen Queries trotzdem aus.</div>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://docs.velociraptor.app/">Velociraptor Offizielle Dokumentation</a></li>
+<li><a href="https://github.com/Velocidex/velociraptor">Velociraptor GitHub Repository</a></li>
+<li><a href="https://docs.velociraptor.app/vql_reference/">VQL Reference Handbuch</a></li>
+<li><a href="https://docs.velociraptor.app/exchange/">Artifact Exchange</a></li>
+<li><a href="https://www.youtube.com/@VelociraptorDFIR">Velociraptor YouTube Channel</a></li>
+<li><a href="https://docs.velociraptor.app/training/">Velociraptor Training (kostenlos)</a></li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../nav-order.js"></script>
+<script src="../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI &amp; Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (17)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details open><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-ki">KI &amp; Forensik</a> / Uebersicht</span>
+</nav>
+<main><article>
+<h1>KI &amp; Forensik <span class="diff-badge diff-beginner">Kategorie</span></h1>
+<p>Einsatz von Kuenstlicher Intelligenz in der Digitalen Forensik: Machine Learning, LLMs, Neuronale Netze, Decision Trees und Bildforensik. KI automatisiert und beschleunigt forensische Analysen — von der Malware-Klassifikation bis zur Gesichtserkennung in Beweismitteln.</p>
+
+<h2>Warum diese Kategorie?</h2>
+<p>Kuenstliche Intelligenz revolutioniert die Digitale Forensik. Machine-Learning-Modelle klassifizieren Malware in Sekunden, fuer die ein menschlicher Analyst Stunden braeuchte. Neuronale Netze erkennen Deepfakes und Bildmanipulationen, die mit blossem Auge unsichtbar sind. Large Language Models (LLMs) fassen hunderte Seiten Logfiles zu praegnanten Zusammenfassungen zusammen — ein enormer Zeitgewinn bei Incident-Response-Einsaetzen.</p>
+<p>Diese Kategorie fuehrt von den Grundlagen des Machine Learning (supervised, unsupervised, reinforcement) ueber konkrete Algorithmen (Decision Trees, Random Forest, CNNs) bis zu praktischen Anwendungen in der Forensik. Kein Vorwissen in Mathematik oder Statistik erforderlich — die Konzepte werden anhand forensischer Beispiele erklaert.</p>
+
+<div class="quick-links">
+  <a href="llms-in-der-forensischen-analyse.html" class="quick-card"><strong>LLMs in der forensischen Analyse</strong><span>Wie Large Language Models Logfiles, Code und forensische Artefakte interpretieren und zusammenfassen.</span></a>
+  <a href="ki-grundlagen-ml-overview.html" class="quick-card"><strong>KI-Grundlagen: ML Overview</strong><span>Supervised, Unsupervised, Reinforcement Learning — die Paradigmen des maschinellen Lernens.</span></a>
+  <a href="bildforensik-objekterkennung.html" class="quick-card"><strong>Bildforensik &amp; Objekterkennung</strong><span>YOLO, CNNs — automatische Erkennung von Objekten und Manipulationen in Bildmaterial.</span></a>
+</div>
+
+<h2>Alle Notizen in dieser Kategorie</h2>
+<div class="card-grid">
+  <a href="llms-in-der-forensischen-analyse.html" class="quick-card"><strong>LLMs in der forensischen Analyse</strong><span>Prompt Engineering, Halluzinationen, Retrieval-Augmented Generation — LLMs als Analysewerkzeug.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="ki-grundlagen-ml-overview.html" class="quick-card"><strong>KI-Grundlagen: ML Overview</strong><span>Trainingsdaten, Features, Modelle — wie Machine Learning funktioniert und evaluiert wird.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="neuronale-netze-deep-learning.html" class="quick-card"><strong>Neuronale Netze &amp; Deep Learning</strong><span>CNNs, RNNs, Transformer — Architekturen und ihre Anwendung in der Forensik.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="decision-trees-klassifikation.html" class="quick-card"><strong>Decision Trees &amp; Klassifikation</strong><span>Random Forest, XGBoost — interpretierbare Modelle fuer Malware-Klassifikation und Anomalieerkennung.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="bildforensik-objekterkennung.html" class="quick-card"><strong>Bildforensik &amp; Objekterkennung</strong><span>Error Level Analysis, Metadata Extraction, YOLO — Bilder forensisch untersuchen mit KI.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+</div>
+
+<h2>Zentrale Werkzeuge</h2>
+<table>
+<thead><tr><th>Werkzeug</th><th>Einsatzbereich</th></tr></thead><tbody>
+<tr><td><strong>scikit-learn</strong></td><td>Python-Bibliothek fuer ML-Klassifikation und Clustering</td></tr>
+<tr><td><strong>TensorFlow / PyTorch</strong></td><td>Deep-Learning-Frameworks fuer Neuronale Netze und CNNs</td></tr>
+<tr><td><strong>YOLO (Ultralytics)</strong></td><td>Echtzeit-Objekterkennung in Bildern und Videos</td></tr>
+<tr><td><strong>Ollama / LM Studio</strong></td><td>Lokale LLMs fuer forensische Analyse ohne Cloud-Abhaengigkeit</td></tr>
+</tbody></table>
+
+<h2>Empfohlener Lernpfad</h2>
+<p>Fuer den Einstieg in KI und Forensik empfiehlt sich diese Reihenfolge:</p>
+<ol>
+<li><strong>KI-Grundlagen: ML Overview</strong> — Supervised, Unsupervised, Reinforcement Learning — die drei Paradigmen des maschinellen Lernens verstehen.</li>
+<li><strong>Decision Trees &amp; Klassifikation</strong> — Random Forest, XGBoost — interpretierbare Modelle, die in der Malware-Klassifikation und Anomalieerkennung eingesetzt werden.</li>
+<li><strong>Neuronale Netze &amp; Deep Learning</strong> — CNNs fuer Bildforensik, RNNs fuer Sequenzanalyse — die Architekturen hinter modernen KI-Anwendungen.</li>
+<li><strong>LLMs in der forensischen Analyse</strong> — Prompt Engineering, RAG, Halluzinationen — wie Sprachmodelle Logfiles interpretieren und Berichte zusammenfassen.</li>
+<li><strong>Bildforensik &amp; Objekterkennung</strong> — Error Level Analysis, YOLO, Metadata Extraction — KI-gestuetzte Analyse von Bildbeweisen.</li>
+</ol>
+
+<h2>Verwandte Kategorien</h2>
+<ul>
+<li><a href="../01-grundlagen/index.html">Grundlagen der Informatik</a> — Algorithmen, Datenstrukturen, Python</li>
+<li><a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> — Malware-Analyse, Logfile-Analyse, Timeline-Analysis</li>
+<li><a href="../03-netzwerke/index.html">Netzwerke</a> — Anomalieerkennung im Netzwerkverkehr</li>
+<li><a href="../05-it-security/index.html">IT-Security</a> — Kryptoanalyse, SIEM, Threat Detection</li>
+</ul>
+
+<h2>Haeufige Fragen</h2>
+<details class="fold"><summary>Brauche ich Mathematik-Kenntnisse fuer KI in der Forensik?</summary>
+<p>Fuer die Anwendung von KI-Tools: nein. Fertige Modelle wie YOLO zur Objekterkennung oder vortrainierte Malware-Klassifikatoren kannst du ohne mathematisches Tiefenwissen einsetzen. Fuer das Verstaendnis, WARUM ein Modell eine bestimmte Entscheidung trifft, sind Grundkenntnisse in Statistik und linearer Algebra hilfreich. Die Notizen in dieser Kategorie erklaeren alle mathematischen Konzepte auf einem fuer Informatiker zugaenglichen Niveau — es wird kein Mathematik-Studium vorausgesetzt.</p></details>
+<details class="fold"><summary>Sind LLMs vertrauenswuerdig fuer forensische Analysen?</summary>
+<p>LLMs sind leistungsfaehige Werkzeuge, aber keine Orakel. Sie koennen Halluzinationen produzieren — Antworten, die ueberzeugend klingen, aber falsch sind. Fuer forensische Zwecke gilt: LLMs eignen sich hervorragend fuer die Voranalyse (Logfile-Zusammenfassungen, Anomalieerkennung, Code-Erklaerungen), aber JEDE LLM-Aussage muss durch einen menschlichen Analysten verifiziert werden. Retrieval-Augmented Generation (RAG), bei der das LLM nur auf Basis konkreter Dokumente antwortet, reduziert das Halluzinationsrisiko erheblich.</p></details>
+<details class="fold"><summary>Was ist Explainable AI (XAI) und warum ist sie forensisch relevant?</summary>
+<p>Explainable AI beschaeftigt sich mit der Frage, WARUM ein KI-Modell eine bestimmte Entscheidung getroffen hat. Viele Modelle (insbesondere Deep Learning) sind Black Boxes — sie liefern ein Ergebnis, aber der Entscheidungsweg ist nicht nachvollziehbar. Das ist forensisch inakzeptabel: Vor Gericht musst du erklaeren koennen, warum dein Tool eine Datei als Malware klassifiziert hat. Decision Trees und Random Forests sind von Natur aus interpretierbarer als Neuronale Netze. Tools wie SHAP und LIME helfen, auch komplexe Modelle zu erklaeren.</p></details>
+
+<div style="margin-top:32px"></div>
+</article></main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">&#x2191;</button>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

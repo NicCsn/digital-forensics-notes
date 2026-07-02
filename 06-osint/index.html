@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Source Intelligence — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (17)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details open><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../06-osint/index.html">OSINT</a> / Übersicht</span>
+</nav>
+<main><article>
+<h1>Open Source Intelligence <span class="diff-badge diff-beginner">Kategorie</span></h1>
+<p>Methoden, Werkzeuge und rechtliche Rahmenbedingungen der Recherche aus oeffentlich zugaenglichen Quellen. OSINT ist ein unverzichtbarer Bestandteil moderner Ermittlungen — von der Identifikation Verdaechtiger bis zur Analyse von Cybercrime-Infrastrukturen.</p>
+
+<h2>Warum diese Kategorie?</h2>
+<p>Open Source Intelligence nutzt frei verfuegbare Informationen aus dem Internet fuer Ermittlungszwecke. Das Spektrum reicht von einfachen Google-Suchen ueber Domain-WHOIS-Recherchen bis zur Analyse von Social-Media-Profilen und Darknet-Marktplaetzen. OSINT ist oft der erste Schritt einer Untersuchung — bevor ueberhaupt ein forensisches Image erstellt wird, werden online verfuegbare Informationen zusammengetragen.</p>
+<p>Ein kritischer Aspekt ist die Operational Security (OPSEC): Wer selbst recherchiert, hinterlaesst Spuren. Diese Kategorie behandelt daher auch, wie du dich bei Recherchen schuetzt — durch VPNs, Tor, Sock-Puppets und sauber getrennte Recherche-Identitaeten.</p>
+
+<div class="quick-links">
+  <a href="osint-lifecycle-und-tooling.html" class="quick-card"><strong>OSINT-Lifecycle &amp; Tooling</strong><span>Der Recherche-Zyklus und die wichtigsten Werkzeuge — von SpiderFoot bis Maltego.</span></a>
+  <a href="osint-recherche-methodik.html" class="quick-card"><strong>Recherche-Methodik</strong><span>Systematische Recherche: Suchoperatoren, Pivoting und Datenaggregation.</span></a>
+  <a href="osint-anonymisierung-opsec.html" class="quick-card"><strong>Anonymisierung &amp; OPSEC</strong><span>Sichere Recherche: VPN, Tor, Sock-Puppets — wie man bei OSINT-Recherchen anonym bleibt.</span></a>
+</div>
+
+<h2>Alle Notizen in dieser Kategorie</h2>
+<div class="card-grid">
+  <a href="osint-lifecycle-und-tooling.html" class="quick-card"><strong>OSINT-Lifecycle &amp; Tooling</strong><span>Planung, Sammlung, Verarbeitung, Analyse — der strukturierte OSINT-Prozess und zentrale Werkzeuge.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="osint-recherche-methodik.html" class="quick-card"><strong>OSINT-Recherche-Methodik</strong><span>Google-Dorking, Reverse Image Search, Domain-Recherche — Methoden der offenen Recherche.</span><span class="diff-badge diff-beginner">Anfaenger</span></a>
+  <a href="osint-anonymisierung-opsec.html" class="quick-card"><strong>Anonymisierung &amp; OPSEC</strong><span>Operational Security bei Recherchen: Sock-Puppets, Burner-Accounts, sicheres Setup.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="social-media-analyse.html" class="quick-card"><strong>Social Media Analyse</strong><span>Twitter, Instagram, TikTok — Profilanalyse und Netzwerk-Mapping auf sozialen Plattformen.</span><span class="diff-badge diff-intermediate">Mittel</span></a>
+  <a href="cybercrime-oekonomie.html" class="quick-card"><strong>Cybercrime-Oekonomie</strong><span>Darknet-Marktplaetze, RaaS, Kryptowaehrungen — die Geschaeftsmodelle der Cyberkriminalitaet.</span><span class="diff-badge diff-advanced">Fortgeschritten</span></a>
+</div>
+
+<h2>Zentrale Werkzeuge</h2>
+<table>
+<thead><tr><th>Werkzeug</th><th>Einsatzbereich</th></tr></thead><tbody>
+<tr><td><strong>SpiderFoot</strong></td><td>Automatisierte OSINT-Recherche — von IPs ueber Domains zu Social Media</td></tr>
+<tr><td><strong>Maltego</strong></td><td>Grafische Link-Analyse — Beziehungen zwischen Entitaeten visualisieren</td></tr>
+<tr><td><strong>theHarvester</strong></td><td>Email-Adressen, Subdomains und Namen aus oeffentlichen Quellen sammeln</td></tr>
+<tr><td><strong>Shodan</strong></td><td>Suchmaschine fuer mit dem Internet verbundene Geraete und Dienste</td></tr>
+</tbody></table>
+
+<h2>Empfohlener Lernpfad</h2>
+<p>Fuer den Einstieg in Open Source Intelligence empfiehlt sich diese Reihenfolge:</p>
+<ol>
+<li><strong>OSINT-Lifecycle &amp; Tooling</strong> — Lerne den strukturierten Recherche-Prozess kennen: Planung, Sammlung, Verarbeitung, Analyse, Bericht. Mache dich mit SpiderFoot, Maltego und theHarvester vertraut.</li>
+<li><strong>OSINT-Recherche-Methodik</strong> — Google-Dorking, Reverse Image Search, Domain-Recherche — die Basismethoden jeder OSINT-Recherche.</li>
+<li><strong>OSINT-Anonymisierung &amp; OPSEC</strong> — Bevor du recherchierst, schuetze dich selbst: VPN, Tor, Sock-Puppets, Burner-Accounts und saubere Trennung von Recherche-Identitaeten.</li>
+<li><strong>Social Media Analyse</strong> — Profile, Netzwerke und Posting-Muster auf Twitter, Instagram, TikTok und LinkedIn analysieren.</li>
+<li><strong>Cybercrime-Oekonomie</strong> — Darknet-Marktplaetze, RaaS, Kryptowaehrungen — verstehe die Geschaeftsmodelle hinter Cyberangriffen.</li>
+</ol>
+
+<h2>Verwandte Kategorien</h2>
+<ul>
+<li><a href="../03-netzwerke/index.html">Netzwerke</a> — Darknet, Tor, I2P, Domain-Recherche</li>
+<li><a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> — Triage, Threat Hunting, Incident Response</li>
+<li><a href="../07-recht-kriminalistik/index.html">Recht &amp; Kriminalistik</a> — DSGVO, Grundrechte, Eingriffsrecht bei Recherchen</li>
+</ul>
+
+<h2>Haeufige Fragen</h2>
+<details class="fold"><summary>Ist OSINT legal?</summary>
+<p>Grundsaetzlich ja — Open Source Intelligence nutzt oeffentlich zugaengliche Quellen. Die Legalitaet haengt jedoch vom Kontext ab: Wer recherchiert (Privatperson, Unternehmen, Behoerde)? Zu welchem Zweck (Journalismus, Ermittlung, Stalking)? Welche Methoden (automatisiertes Scraping kann gegen AGB verstossen)? In Deutschland ist insbesondere die DSGVO relevant: Auch oeffentliche Daten koennen personenbezogen sein und unterliegen dann dem Datenschutz. Im Zweifel: Rechtsberatung einholen.</p></details>
+<details class="fold"><summary>Warum ist OPSEC bei OSINT so kritisch?</summary>
+<p>Jede deiner Recherchen hinterlaesst Spuren: Deine IP-Adresse in Webserver-Logs, dein Browser-Fingerprint, deine Suchanfragen bei Google. Wenn du einen Angreifer recherchierst, koennte dieser deine Rechercheaktivitaeten bemerken — mit potenziell gefaehrlichen Konsequenzen. Ausserdem: Wenn deine eigene Identitaet mit der Recherche verknuepfbar ist, kann das vor Gericht problematisch werden (Warum hat genau DIESE Person recherchiert? Voreingenommenheit?). Sock-Puppets und saubere Trennung der Identitaeten schuetzen dich.</p></details>
+<details class="fold"><summary>Welche OSINT-Tools sollte ich zuerst lernen?</h2>
+<p>Starte mit Google-Dorking — es kostet nichts und ist erstaunlich maechtig. Danach theHarvester fuer Email- und Domain-Recherchen. SpiderFoot automatisiert viele Standard-Recherchen und gibt dir einen guten Ueberblick. Maltego ist der Goldstandard fuer Link-Analysen, hat aber eine steile Lernkurve. Shodan ist unverzichtbar fuer die Recherche nach exponierten Geraeten und Diensten. Tipp: Baue dir ein eigenes Toolkit aus Bookmarklets und Scripts, statt dich auf ein einzelnes Tool zu verlassen.</p></details>
+
+<div style="margin-top:32px"></div>
+</article></main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

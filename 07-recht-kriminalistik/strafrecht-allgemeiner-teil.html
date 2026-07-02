@@ -7,6 +7,122 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
   <span class="nav-crumb">/ <a href="../index.html">Recht &amp; Kriminalistik</a> / Strafrecht AT</span>
@@ -14,37 +130,195 @@
 <main><article>
 <h1>Strafrecht Allgemeiner Teil <span class="diff-badge diff-intermediate">Mittel</span></h1>
 
-<div class="callout warning"><strong>Disclaimer:</strong> Keine Rechtsberatung. Allgemeine, beispielhafte Darstellung. Die konkrete Rechtslage haengt von der jeweiligen Jurisdiktion ab.</div>
+<div class="callout warning"><strong>Disclaimer:</strong> Keine Rechtsberatung. Allgemeine, beispielhafte Darstellung. Die konkrete Rechtslage haengt von der jeweiligen Jurisdiktion ab. Angaben zum deutschen StGB dienen ausschliesslich Lehrzwecken.</div>
 
 <details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
-<li><a href="#kurz">Kurzueberblick</a></li><li><a href="#deliktsaufbau">Deliktsaufbau</a></li><li><a href="#vorsatz">Vorsatz</a></li><li><a href="#it-delikte">IT-Delikte</a></li></ol></details>
+  <li><a href="#kurz">Kurzueberblick</a></li>
+  <li><a href="#deliktsaufbau">Deliktsaufbau: Tatbestand → Rechtswidrigkeit → Schuld</a></li>
+  <li><a href="#objektiver-tb">Objektiver Tatbestand</a></li>
+  <li><a href="#subjektiver-tb">Subjektiver Tatbestand: Vorsatz und Fahrlaessigkeit</a></li>
+  <li><a href="#rechtswidrigkeit">Rechtswidrigkeit</a></li>
+  <li><a href="#schuld">Schuld</a></li>
+  <li><a href="#taeterschaft">Taeterschaftsformen</a></li>
+  <li><a href="#irrtumslehre">Irrtumslehre</a></li>
+  <li><a href="#it-delikte">IT-relevante Delikte (StGB)</a></li>
+  <li><a href="#gutachtenstil">Gutachtenstil-Fallloesung (IT-Delikt)</a></li>
+</ol></details>
 
 <h2 id="kurz">Kurzueberblick</h2>
-<p>Das Strafrecht definiert, welches Verhalten strafbar ist und welche Rechtsfolgen es hat. Der dreistufige Deliktsaufbau (Tatbestand, Rechtswidrigkeit, Schuld) ist zentral fuer jeden Cyber-Forensiker, weil forensische Funde genau auf diese Ebenen einzahlen.</p>
+<p>Das Strafrecht definiert, welches Verhalten strafbar ist und welche Rechtsfolgen es hat. Der <strong>dreistufige Deliktsaufbau</strong> (Tatbestand, Rechtswidrigkeit, Schuld) ist zentral fuer jeden Cyber-Forensiker, weil forensische Funde genau auf diese Ebenen einzahlen: Wurde eine Tathandlung begangen? War sie rechtswidrig? Ist der Taeter schuldhaft?</p>
 
-<h2 id="deliktsaufbau">Der dreistufige Deliktsaufbau</h2>
+<h2 id="deliktsaufbau">Deliktsaufbau: Tatbestand → Rechtswidrigkeit → Schuld</h2>
 <div class="layer-diagram">
-<div class="ld-layer"><strong>I. Tatbestand</strong><br><small>Objektiv: Tathandlung, Taterfolg, Kausalitaet | Subjektiv: Vorsatz, Fahrlaessigkeit</small></div>
-<div class="ld-layer"><strong>II. Rechtswidrigkeit</strong><br><small>Durch Tatbestand indiziert. Ausnahmen: Rechtfertigungsgruende (Notwehr, Einwilligung)</small></div>
-<div class="ld-layer"><strong>III. Schuld</strong><br><small>Schuldfaehigkeit, Unrechtsbewusstsein, Entschuldigungsgruende</small></div>
+<div class="ld-layer"><strong>I. Tatbestand</strong><br><small>Objektiv: Tathandlung, Taterfolg, Kausalitaet, objektive Zurechnung | Subjektiv: Vorsatz, Fahrlaessigkeit</small></div>
+<div class="ld-layer"><strong>II. Rechtswidrigkeit</strong><br><small>Durch Tatbestand indiziert. Ausnahmen: Rechtfertigungsgruende (Notwehr §32, Notstand §34, Einwilligung)</small></div>
+<div class="ld-layer"><strong>III. Schuld</strong><br><small>Schuldfaehigkeit (§§19-21), Unrechtsbewusstsein (Verbotsirrtum §17), Entschuldigungsgruende (§§33, 35)</small></div>
 </div>
 <p style="text-align:center;margin-top:8px"><strong>= Strafbarkeit (+/-)</strong></p>
 
-<h2 id="vorsatz">Vorsatz und Fahrlaessigkeit</h2>
-<table><thead><tr><th>Form</th><th>Beschreibung</th><th>Cyber-Beispiel</th></tr></thead><tbody>
-<tr><td><strong>Absicht</strong></td><td>Taeter WILL den Erfolg</td><td>"Ich WILL die Daten stehlen"</td></tr>
-<tr><td><strong>Direkter Vorsatz</strong></td><td>WEISS dass Erfolg eintritt</td><td>"Ich installiere Keylogger"</td></tr>
-<tr><td><strong>Eventualvorsatz</strong></td><td>Haelt fuer moeglich, nimmt in Kauf</td><td>"Ich scanne das Netz — wenn ich Daten finde, nehm ich sie"</td></tr>
+<div class="callout tip"><strong>Pruefreihenfolge:</strong> Die drei Stufen muessen in dieser Reihenfolge geprueft werden. Fehlt bereits der Tatbestand, wird nicht weitergeprueft. Fehlt die Rechtswidrigkeit, liegt keine Straftat vor — egal wie schuldhaft gehandelt wurde.</div>
+
+<h2 id="objektiver-tb">Objektiver Tatbestand</h2>
+
+<h3>Tathandlung und Taterfolg</h3>
+<table class="styled-table">
+<thead><tr><th>Element</th><th>Beschreibung</th><th>Cyber-Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Tathandlung</strong></td><td>Das aeusere Verhalten des Taeters (Tun oder Unterlassen)</td><td>Eingabe eines SQL-Injection-Strings in ein Login-Formular</td></tr>
+<tr><td><strong>Taterfolg</strong></td><td>Die durch die Handlung bewirkte Rechtsgutsverletzung</td><td>Auslesen saemtlicher Kundendaten aus der Datenbank</td></tr>
+<tr><td><strong>Kausalitaet</strong></td><td>Ursachenzusammenhang zwischen Handlung und Erfolg (conditio-sine-qua-non-Formel)</td><td>Ohne die SQLi haette der Angreifer die Daten nicht ausgelesen</td></tr>
 </tbody></table>
 
-<h2 id="it-delikte">IT-spezifische Delikte (Deutsches StGB, exemplarisch)</h2>
-<table><thead><tr><th>Norm</th><th>Delikt</th><th>Cyber-Interpretation</th></tr></thead><tbody>
-<tr><td>202a StGB</td><td>Ausspaehen von Daten</td><td>Zugriff auf fremde, gesicherte Daten</td></tr>
-<tr><td>202b StGB</td><td>Abfangen von Daten</td><td>Mitlesen von Netzwerkverkehr</td></tr>
-<tr><td>263a StGB</td><td>Computerbetrug</td><td>Manipulation von Datenverarbeitungsvorgaengen</td></tr>
-<tr><td>303a StGB</td><td>Datenveraenderung</td><td>Loeschen/Veraendern fremder Daten</td></tr>
-<tr><td>303b StGB</td><td>Computersabotage</td><td>DDoS-Angriff, Ransomware</td></tr>
+<h3>Objektive Zurechnung (Adaequanztheorie)</h3>
+<p>Nicht alles, was kausal ist, ist auch strafrechtlich zurechenbar. Die <strong>Adaequanztheorie</strong> fragt: Liegt der Erfolg noch im Bereich des allgemein Vorhersehbaren?</p>
+<ul>
+  <li><strong>Formel:</strong> Hat der Taeter eine <em>rechtlich relevante Gefahr</em> geschaffen, die sich im konkreten Erfolg realisiert hat?</li>
+  <li><strong>Gegenbeispiel (keine Zurechnung):</strong> Hacker sendet Phishing-Mail → Opfer klickt nicht auf Link, sondern stoesst vor Schreck die Kaffeetasse um → Kurzschluss im Rechner → Datenverlust. Kaffee-Schaden ist nicht mehr adaequat-kausal zur Phishing-Mail.</li>
+</ul>
+
+<h2 id="subjektiver-tb">Subjektiver Tatbestand: Vorsatz und Fahrlaessigkeit</h2>
+
+<table class="styled-table">
+<thead><tr><th>Form</th><th>Beschreibung</th><th>Lateinische Bezeichnung</th><th>Cyber-Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Absicht</strong></td><td>Taeter WILL den Erfolg. Es kommt ihm gerade darauf an.</td><td><em>dolus directus 1. Grades</em></td><td>"Ich WILL die Daten aus der Datenbank stehlen, um sie zu verkaufen."</td></tr>
+<tr><td><strong>Direkter Vorsatz</strong></td><td>Taeter WEISS, dass der Erfolg eintreten wird.</td><td><em>dolus directus 2. Grades</em></td><td>"Ich installiere einen Keylogger. Ich weiss, dass er Passwoerter mitschneidet."</td></tr>
+<tr><td><strong>Eventualvorsatz</strong> (bedingter Vorsatz)</td><td>Taeter haelt den Erfolg fuer MOEGLICH und nimmt ihn billigend in Kauf.</td><td><em>dolus eventualis</em></td><td>"Ich scanne das gesamte Firmennetz. Falls ich dabei zufaellig Daten finde, nehm ich sie mit."</td></tr>
+<tr><td><strong>Bewusste Fahrlaessigkeit</strong></td><td>Taeter erkennt die Moeglichkeit des Erfolgs, vertraut aber auf sein Ausbleiben.</td><td><em>luxuria</em></td><td>Admin laesst Default-Passwort auf Produktivserver — "wird schon keiner finden".</td></tr>
+<tr><td><strong>Unbewusste Fahrlaessigkeit</strong></td><td>Taeter erkennt die Moeglichkeit des Erfolgs nicht, haette sie aber erkennen koennen.</td><td><em>negligentia</em></td><td>Entwickler deployed Code ohne Input-Validierung — "hab nicht dran gedacht, dass das jemand ausnutzt".</td></tr>
 </tbody></table>
+
+<div class="callout warning"><strong>Forensische Relevanz:</strong> Die Vorsatzform beeinflusst die Strafzumessung massiv. Aus forensischen Spuren kann die Vorsatzform abgeleitet werden: Wurde das Tool gezielt konfiguriert (Absicht) oder wahllos eingesetzt (Eventualvorsatz)? Wiederholte Zugriffe deuten auf Absicht, einmaliger Zugriff kann Eventualvorsatz sein.</div>
+
+<h2 id="rechtswidrigkeit">Rechtswidrigkeit</h2>
+
+<p>Eine tatbestandsmaessige Handlung ist <strong>in der Regel rechtswidrig</strong> (Indizwirkung des Tatbestands). Ausnahme: Es greift ein <strong>Rechtfertigungsgrund</strong>.</p>
+
+<table class="styled-table">
+<thead><tr><th>Rechtfertigungsgrund</th><th>Norm</th><th>Voraussetzungen</th><th>IT-Kontext</th></tr></thead><tbody>
+<tr><td><strong>Notwehr</strong></td><td>§32 StGB</td><td>Gegenwaertiger, rechtswidriger Angriff + erforderliche Verteidigung</td><td>Aktiver Hacking-Angriff auf das eigene Netz → "Hackback"? <strong>In Deutschland NICHT erlaubt!</strong> (Selbstjustiz-Verbot)</td></tr>
+<tr><td><strong>Rechtfertigender Notstand</strong></td><td>§34 StGB</td><td>Gegenwaertige Gefahr + wesentlich ueberwiegendes Interesse + Angemessenheit</td><td>IT-Notfall: Admin umgeht Zugriffskontrolle eines Kollegen, um dessen Rechner vom Netz zu trennen und Ransomware-Ausbreitung zu verhindern</td></tr>
+<tr><td><strong>Einwilligung</strong></td><td>ungeschrieben</td><td>Freiwillige, informierte Einwilligung des Rechtsgutstraegers</td><td>Penetrationstest mit schriftlichem Auftrag. <strong>Entscheidend:</strong> Scope exakt definiert — ausserhalb des Scopes = rechtswidrig!</td></tr>
+<tr><td><strong>Amtliche Befugnis</strong></td><td>z.B. §100a StPO</td><td>Richterliche Anordnung + gesetzliche Grundlage</td><td>TKUE durch Strafverfolgungsbehoerde mit Beschluss</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Wichtig fuer Penetrationstester:</strong> Der Auftrag muss SCHRIFTLICH vorliegen und den Scope (IPs, Ports, Zeitraum, Methoden) genau definieren. Ein muendliches "mach mal" reicht nicht. Jenseits des Scopes ist jedes Hacken eine Straftat.</div>
+
+<h2 id="schuld">Schuld</h2>
+
+<table class="styled-table">
+<thead><tr><th>Schuldelement</th><th>Norm</th><th>Bedeutung</th><th>IT-Relevanz</th></tr></thead><tbody>
+<tr><td><strong>Schuldfaehigkeit</strong></td><td>§§19-21 StGB</td><td>Kinder (&lt;14) = schuldunfaehig. Jugendliche (14-17) = bedingt. Ab 18 = voll schuldfaehig. Ausnahme: tiefgreifende Bewusstseinsstoerung.</td><td>Alter bei Tatzeit massgeblich. Viele Cyber-Straftaeter sind Jugendliche (Skript-Kiddies).</td></tr>
+<tr><td><strong>Unrechtsbewusstsein</strong></td><td>§17 StGB</td><td>Taeter wusste oder haette wissen muessen, dass sein Handeln Unrecht ist. Fehlt es → Verbotsirrtum.</td><td>"Ich wusste nicht, dass Portscanning strafbar ist" = Verbotsirrtum (vermeidbar/nicht vermeidbar).</td></tr>
+<tr><td><strong>Entschuldigender Notstand</strong></td><td>§35 StGB</td><td>Gefahr fuer Leben, Leib oder Freiheit. Betrifft Taeter selbst oder nahestehende Person.</td><td>Hacker wird mit Waffe gezwungen, einen Einbruch durchzufuehren.</td></tr>
+<tr><td><strong>Notwehrexzess</strong></td><td>§33 StGB</td><td>Ueberschreitung der Notwehr aus Verwirrung, Furcht oder Schrecken.</td><td>Ransomware-Angriff → Admin loescht in Panik saemtliche Daten, auch nicht betroffene. (Theoretisch denkbar. Praktisch irrelevant.)</td></tr>
+</tbody></table>
+
+<h2 id="taeterschaft">Taeterschaftsformen</h2>
+
+<table class="styled-table">
+<thead><tr><th>Form</th><th>Norm</th><th>Beschreibung</th><th>Cyber-Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Alleintaeterschaft</strong></td><td>§25 I Var. 1</td><td>Eine Person fuehrt die Tat allein aus</td><td>Ein einzelner Hacker fuehrt SQL-Injection durch</td></tr>
+<tr><td><strong>Mittelbare Taeterschaft</strong></td><td>§25 I Var. 2</td><td>Taeter nutzt einen anderen als "Werkzeug" (z.B. Kind, Irrender, Nötigungsopfer)</td><td>Angreifer ueberredet ahnungslosen Mitarbeiter, einen "Test" durchzufuehren, der in Wahrheit Daten exfiltriert</td></tr>
+<tr><td><strong>Mittaeterschaft</strong></td><td>§25 II</td><td>Mehrere fuehren Tat gemeinschaftlich aus (arbeitsteilig, jeder will die Tat als eigene)</td><td>Gruppe: Einer macht Recon, einer schreibt Exploit, einer exfiltriert Daten. Alle = Mittaeter.</td></tr>
+<tr><td><strong>Anstiftung</strong></td><td>§26</td><td>Vorsaetzliches Bestimmen eines anderen zu dessen vorsaetzlich begangener rechtswidriger Tat</td><td>"Kannst du mir die Datenbank von Firma X besorgen? Ich zahl dir 5.000 EUR."</td></tr>
+<tr><td><strong>Beihilfe</strong></td><td>§27</td><td>Vorsaetzliche Hilfeleistung zu einer vorsaetzlich begangenen rechtswidrigen Tat</td><td>Bereitstellen eines C2-Servers, Betreiben eines Botnet-Control-Panels fuer andere Hacker</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Forensisch relevante Unterscheidung:</strong> Taeter vs. Teilnehmer. Der forensische Befund muss klären: Wer fuehrte selbst aus? Wer gab nur Hilfe? Dies beeinflusst die Strafzumessung (§27 II: Strafe des Gehilfen ist zwingend zu mildern).</div>
+
+<h2 id="irrtumslehre">Irrtumslehre</h2>
+
+<table class="styled-table">
+<thead><tr><th>Irrtumstyp</th><th>Norm</th><th>Beschreibung</th><th>IT-Beispiel</th><th>Rechtsfolge</th></tr></thead><tbody>
+<tr><td><strong>Tatbestandsirrtum</strong></td><td>§16 I</td><td>Taeter kennt Umstaende nicht, die zum Tatbestand gehoeren</td><td>Admin denkt, er loescht eigene Dateien, loescht aber fremde → kein Vorsatz bzgl. Fremdheit</td><td>Vorsatz entfaellt. Ggf. Fahrlaessigkeit prüfen (wenn fahrlaessige Begehung strafbar).</td></tr>
+<tr><td><strong>Verbotsirrtum</strong></td><td>§17</td><td>Taeter weiss, was er tut, haelt es aber fuer erlaubt</td><td>"Ich dachte, Portscans sind immer legal"</td><td>Vermeidbar = Strafmilderung moeglich. Unvermeidbar = Schuld entfaellt.</td></tr>
+<tr><td><strong>Erlaubnistatbestandsirrtum</strong></td><td>§16 analog</td><td>Taeter irrt ueber Voraussetzungen eines Rechtfertigungsgrundes</td><td>Admin denkt, er werde angegriffen (ist aber Fehlalarm) und hackt "zurueck"</td><td>Str. Umstritten. H.L.: Vorsatzschuld entfaellt, ggf. Fahrlaessigkeit.</td></tr>
+</tbody></table>
+
+<h2 id="it-delikte">IT-relevante Delikte (StGB, exemplarisch)</h2>
+
+<table class="styled-table">
+<thead><tr><th>Norm</th><th>Delikt</th><th>Tatobjekt / Tathandlung</th><th>Strafrahmen</th><th>Cyber-Interpretation</th></tr></thead><tbody>
+<tr><td><strong>§202a</strong></td><td>Ausspaehen von Daten</td><td>Verschafft sich unbefugt Zugang zu Daten, die nicht fuer ihn bestimmt und gegen unberechtigten Zugang besonders gesichert sind</td><td>Freiheitsstrafe bis 3 Jahre oder Geldstrafe</td><td>"Hacking" im engeren Sinne. Zugang zu einem System mit Login-Schutz. <em>Besonders gesichert</em> = jedes Zugangshindernis (auch einfaches Passwort).</td></tr>
+<tr><td><strong>§202b</strong></td><td>Abfangen von Daten</td><td>Verschafft sich unbefugt Daten aus einer nichtoeffentlichen UEbermittlung oder elektromagnetischen Abstrahlung</td><td>Freiheitsstrafe bis 2 Jahre oder Geldstrafe</td><td>Packet Sniffing, MitM-Angriffe, Abhoeren von WLAN-Verkehr. <strong>Nichtoeffentlich</strong> = nicht fuer beliebige Dritte bestimmt.</td></tr>
+<tr><td><strong>§202c</strong></td><td>Vorbereiten des Ausspaehens/Abfangens</td><td>Herstellen, Verschaffen, Verkaufen, Ueberlassen von Passwoertern/Sicherheitscodes oder Software zu §202a/b-Zwecken</td><td>Freiheitsstrafe bis 2 Jahre oder Geldstrafe</td><td><strong>Achtung:</strong> Strafbarkeit von Hacking-Tools! Betrifft auch Besitz von Kali Linux, wenn zur Begehung einer §202a/b-Tat bestimmt. Umstritten: Berufsausuebung von Pentestern.</td></tr>
+<tr><td><strong>§263a</strong></td><td>Computerbetrug</td><td>Beeinflusst Ergebnis eines Datenverarbeitungsvorgangs durch unrichtige Gestaltung des Programms, unberechtigte Verwendung von Daten oder sonstige unbefugte Einwirkung → vermoegensschaedigend</td><td>Freiheitsstrafe bis 5 Jahre oder Geldstrafe</td><td>Manipulation von Bankautomaten, Manipulation von E-Commerce-Preisen, missbraeuchliche Nutzung fremder Zugangsdaten fuer Bestellungen</td></tr>
+<tr><td><strong>§303a</strong></td><td>Datenveraenderung</td><td>Loescht, unterdrueckt, unbrauchbar macht oder veraendert rechtswidrig Daten</td><td>Freiheitsstrafe bis 2 Jahre oder Geldstrafe</td><td>Manipulation von Log-Dateien, Loeschen von Beweismitteln, Veraenderung von Datenbank-Inhalten</td></tr>
+<tr><td><strong>§303b</strong></td><td>Computersabotage</td><td>Stoert Datenverarbeitung von besonderer Bedeutung durch §303a-Handlung oder Eingeben/Uebermitteln von Daten in nachteil-szufuegender Absicht</td><td>Freiheitsstrafe bis 3 Jahre (bis 10 bei KRITIS)</td><td>DDoS-Angriff, Ransomware, zerstoererische Malware. Qualifikationen: §303b IV (KRITIS, bis 10 Jahre), §303b V (bes. schwerer Fall).</td></tr>
+<tr><td><strong>§263</strong></td><td>Betrug (klassisch)</td><td>Vermögensschädigung durch Taeuschung ueber Tatsachen → Irrtumserregung → Vermoegensverfuegung → Vermoegensschaden</td><td>Freiheitsstrafe bis 5 Jahre</td><td>Phishing-E-Mail, die Opfer zu Ueberweisungen verleitet. CEO-Fraud: Angreifer taeuscht Buchhalter ueber Identitaet des CEOs.</td></tr>
+</tbody></table>
+
+<h2 id="gutachtenstil">Gutachtenstil-Fallloesung: IT-Delikt</h2>
+
+<h3>Beispiel-Sachverhalt</h3>
+<p><em>A verschafft sich durch Erraten des Passworts "admin123" Zugang zum Webserver der X-GmbH und loescht saemtliche Log-Dateien, um seine Spuren zu verwischen.</em></p>
+
+<h3>Gutachtenstil (vereinfacht)</h3>
+<pre><code>I. TATBESTAND
+  1. Objektiver Tatbestand (§202a StGB — Ausspaehen von Daten)
+     a) Daten: Log-Dateien auf dem Webserver sind Daten i.S.d. §202a II.
+     b) Nicht fuer A bestimmt: (+) Server gehoert der X-GmbH.
+     c) Besonders gesichert: (+) Passwortschutz = Zugangssicherung. Dass
+        das Passwort schwach ist, aendert nichts am Sicherungscharakter.
+     d) Verschaffen (= Kenntnisnahme): A hat auf dem Server navigiert,
+        damit zwangsweise Kenntnis vom Dateisystem erlangt. (+)
+     e) Unbefugt: Kein Einverstaendnis der X-GmbH. (+)
+
+  2. Subjektiver Tatbestand
+     a) Vorsatz bzgl. aller obj. TB-Merkmale: A wusste, dass der Server
+        fremd und passwortgeschuetzt ist → dolus directus 1. Grades (+)
+
+  3. Zwischenergebnis: Tatbestand des §202a (+) gegeben.
+
+  === Sowie: §303a StGB (Datenveraenderung) ===
+  1. Obj. TB: Loeschen der Log-Dateien = Datenveraenderung i.S.d. §303a I. (+)
+     Rechtswidrigkeit der Datenveraenderung: Keine Einwilligung der X-GmbH. (+)
+  2. Subj. TB: Vorsatz (+) — A wollte Spuren beseitigen.
+  3. Zwischenergebnis: Tatbestand des §303a (+) gegeben.
+
+II. RECHTSWIDRIGKEIT
+  Keine Rechtfertigungsgründe ersichtlich (keine Notwehr, kein Notstand,
+  keine Einwilligung). → Rechtswidrigkeit (+)
+
+III. SCHULD
+  1. Schuldfaehigkeit: A ist 35 Jahre alt → §19 (-), §20 (-). (+)
+  2. Unrechtsbewusstsein: A wusste, dass sein Handeln verboten ist
+     (sonst haette er nicht die Logs geloescht!). (+)
+  3. Keine Entschuldigungsgründe (§§33, 35). (+)
+
+IV. ERGEBNIS
+  A hat sich strafbar gemacht nach §202a I StGB (Ausspaehen von Daten)
+  UND §303a I StGB (Datenveraenderung). Tateinheit (§52) oder Tatmehrheit
+  (§53)? Hier wohl Tatmehrheit: Erst Zugang verschafft (§202a), dann
+  als neue Tat die Logs geloescht (§303a).</code></pre>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</h2>
+<ul>
+  <li>Wessels/Beulke/Satzger: Strafrecht Allgemeiner Teil. 53. Auflage, C.F. Mueller</li>
+  <li>Fischer, T.: Strafgesetzbuch mit Nebengesetzen. Kommentar. 71. Auflage, C.H. Beck</li>
+  <li>Schönke/Schröder: Strafgesetzbuch Kommentar. 30. Auflage, C.H. Beck</li>
+  <li><a href="https://www.gesetze-im-internet.de/stgb/">StGB im Internet (BMJ)</a></li>
+  <li><a href="https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Strafrecht/strafrecht_node.html">BSI: Strafrechtliche Aspekte der IT-Sicherheit</a></li>
+</ul>
 </article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

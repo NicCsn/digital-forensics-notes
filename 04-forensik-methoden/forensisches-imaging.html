@@ -7,76 +7,372 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Forensisches Imaging: Datenträger sicher kopieren</span>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Forensisches Imaging: Datenträger sicher kopieren</span>
 </nav>
 <main>
 <article>
 <h1>Forensisches Imaging: Datenträger sicher kopieren <span class="diff-badge diff-beginner">Grundlagen</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#image-formate">Image-Formate im Detail</a></li><li><a href="#hash-verifikation">Hash-Verifikation</a></li><li><a href="#guymager">Guymager GUI Workflow</a></li><li><a href="#logical-vs-physical">Logical vs. Physical Imaging</a></li><li><a href="#ssd-probleme">SSD-spezifische Probleme</a></li><li><a href="#e01-features">Image-Splitting, Kompression, Verschlüsselung (E01)</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
 
 <h2 id="kurz-berblick">Kurzüberblick</h2>
 
-<p>Forensisches Imaging ist der erste Schritt jeder Untersuchung: eine bit-genaue Kopie des Original-Datenträgers. Jeder Fehler hier kann die gesamte Untersuchung gefährden. Das Image ist der Standard: alles andere sind Abweichungen, die begründet werden müssen.</p>
+<p>Forensisches Imaging ist der erste Schritt jeder Untersuchung: eine <strong>bit-genaue Kopie</strong> des Original-Datenträgers. Jeder Fehler hier kann die gesamte Untersuchung gefährden. Das forensische Image ist der Goldstandard — jede Abweichung muss explizit dokumentiert und begründet werden (ACPO Prinzip 2).</p>
 
-<h2 id="details">Details</h2>
+<div class="callout danger"><strong>Goldene Regel:</strong> Niemals am Original arbeiten. Das Original-Image wird einmal erstellt und dann versiegelt. Alle Analysen laufen auf Kopien der Kopie.</div>
 
-<h3>Image-Formate</h3>
+<h2 id="image-formate">Image-Formate im Detail</h2>
 
+<h3>RAW / DD-Format</h3>
 <table class="styled-table">
-<thead><tr><th>Format</th><th>Beschreibung</th><th>Vorteil</th></tr></thead><tbody>
-<tr><td>**DD / Raw**</td><td>Bit-für-Bit-Kopie ohne Metadaten</td><td>Einfach, universell lesbar</td></tr>
-<tr><td>**E01 (EWF)**</td><td>EnCase-Format, komprimiert + Metadaten (Fallnummer, Prüfer, Hash)</td><td>Integrität eingebaut, platzsparend</td></tr>
-<tr><td>**AFF (Advanced Forensic Format)**</td><td>Open-Source (Brian Carrier), Metadaten, Kompression</td><td>Flexibel, erweiterbar</td></tr>
-<tr><td>**VMDK / VHD**</td><td>Virtuelle Maschinen-Images</td><td>Direkt bootbar für dynamische Analyse</td></tr>
+<thead><tr><th>Eigenschaft</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td>Struktur</td><td>Bit-für-Bit-Kopie, keine Metadaten, keine Kompression. Das Image enthält exakt jeden Sektor in linearer Reihenfolge.</td></tr>
+<tr><td>Endungen</td><td><code>.dd</code>, <code>.raw</code>, <code>.img</code>, <code>.bin</code>, <code>.001</code></td></tr>
+<tr><td>Vorteile</td><td>Universell von allen Tools lesbar, kein Overhead, direkt als Loop-Device mountbar</td></tr>
+<tr><td>Nachteile</td><td>Keine eingebetteten Metadaten (Fallnummer, Prüfer), keine Integritätsprüfung, keine Kompression</td></tr>
+<tr><td>Größe</td><td>Exakt gleich der Quell-Disk — 1 TB Disk = 1 TB Image</td></tr>
 </tbody></table>
 
-<h3>Der Imaging-Prozess</h3>
+<h3>E01 / Expert Witness Format (EWF)</h3>
+<p>Von EnCase (Guidance Software) entwickelt, heute De-facto-Standard in der Strafverfolgung:</p>
 
-<ul><li><strong>Write-Blocker</strong> anschließen (Hardware oder Software) — nie ohne!</li>
-<li><strong>Identifikation:</strong> <code>fdisk -l</code>, <code>lsblk</code> → Welches Device ist das Asservat? Nicht das eigene System überschreiben!</li>
-<li><strong>Hash des Originals:</strong> <code>sha256sum /dev/sdb</code> (Linux), <code>Get-FileHash</code> (Windows)</li>
-<li><strong>Imaging:</strong> <code>dd</code>, <code>dcfldd</code>, <code>guymager</code>, FTK Imager</li>
-<li><strong>Hash des Images:</strong> Muss mit Original-Hash identisch sein</li></ul>
+<table class="styled-table">
+<thead><tr><th>Eigenschaft</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td>Struktur</td><td>Header + Daten-Chunks + CRC-Prüfsumme pro Chunk. Jeder Chunk kann komprimiert sein.</td></tr>
+<tr><td>Endungen</td><td><code>.E01</code>, <code>.E02</code>, <code>.E03</code> … (gesplittet nach Größe, z.B. 2 GB pro File)</td></tr>
+<tr><td>Metadaten</td><td>Fallnummer, Ermittler, Gerätemodell, Seriennummer, Hash (MD5 + SHA-1 im Header), Zeitstempel der Erstellung, Erfassungs-Software</td></tr>
+<tr><td>Kompression</td><td>Deflate (zlib) — typisch 30–50 % Platzersparnis, abhängig vom Datentyp</td></tr>
+<tr><td>Verschlüsselung</td><td>AES-256 möglich (Passwort-basiert), dann Endung <code>.Ex01</code> statt <code>.E01</code></td></tr>
+<tr><td>Integrität</td><td>CRC pro Chunk + MD5/SHA-1 des Gesamt-Images im Header. Jeder Chunk-Fehler wird sofort erkannt.</td></tr>
+</tbody></table>
 
-<h3>dd vs. dcfldd</h3>
+<div class="callout info"><strong>E01-Chunk-Struktur:</strong> Ein E01-Image besteht aus: Header-Sektion (Case-Info, Hash) → Volume-Sektion → Table-Sektion → Chunk 1 (64 Sektoren) → Chunk 2 → … → letzter Chunk. Jeder Chunk hat einen eigenen CRC.</div>
 
-<pre><code>dd if=/dev/sdb of=/mnt/forensics/case001/image.dd bs=4M status=progress
+<h3>AFF4 (Advanced Forensic Format 4)</h3>
+<ul>
+  <li>Nachfolger von AFF, entwickelt mit Fokus auf <strong>Cloud-Forensik und Big Data</strong></li>
+  <li>Stream-basierte Architektur: Ein Image kann aus vielen Streams bestehen (z.B. Partition 1, Partition 2, MFT-Extrakt, Registry-Extrakt)</li>
+  <li>Unterstützt Dedupulierung, Verschlüsselung (AES), Signierung (RSA/ECDSA)</li>
+  <li>Container-Format: ZIP-basiert (.aff4 = .zip mit spezifischen Streams)</li>
+  <li>Tool-Support: <code>pmem</code>, <code>Velociraptor</code>, <code>rekall</code></li>
+</ul>
 
-# dcfldd: Forensik-Variante — Hashing während des Kopierens
+<h3>SMART (ASR Data)</h3>
+<ul>
+  <li>Proprietäres Format für sehr große Datensätze (Firmen-RAIDs, Server)</li>
+  <li>Unterstützt paralleles Imaging (mehrere Worker schreiben gleichzeitig)</li>
+  <li>Integrierte Remote-Fähigkeit (Image über Netzwerk streamen)</li>
+  <li>Selten außerhalb von Enterprise-DFIR</li>
+</ul>
+
+<h2 id="hash-verifikation">Hash-Verifikation</h2>
+
+<div class="callout warning"><strong>MD5 ist tot — fast.</strong> MD5 hat bekannte Kollisionen (zwei verschiedene Inputs ergeben denselben Hash) und ist für forensische Zwecke nicht mehr als alleiniger Hash ausreichend. <strong>ABER:</strong> MD5 reicht als <em>Filter</em> (bekannte gute/böse Dateien), weil die Angriffe gezielt und nicht zufällig sind.</div>
+
+<table class="styled-table">
+<thead><tr><th>Algorithmus</th><th>Bits</th><th>Einsatz in der Forensik</th><th>Status</th></tr></thead><tbody>
+<tr><td><strong>MD5</strong></td><td>128</td><td>NSRL-Datenbank, Hash-Set-Filtering, bekanntes-Malware-Matching</td><td>Als Filter OK, nicht für Integrität</td></tr>
+<tr><td><strong>SHA-1</strong></td><td>160</td><td>E01-Header (Legacy), Git-Commits</td><td>Übergangsweise, SHAttered-Angriff existiert</td></tr>
+<tr><td><strong>SHA-256</strong></td><td>256</td><td>Standard für forensische Integrität. Gerichtsverwertbar.</td><td>Empfohlen, kein praktischer Angriff</td></tr>
+<tr><td><strong>SHA-512</strong></td><td>512</td><td>Für hochsensible Fälle, zusätzliche Sicherheitsmarge</td><td>Zukunftssicher</td></tr>
+</tbody></table>
+
+<pre><code># Hash des Originals (VOR dem Imaging, durch Write-Blocker)
+sha256sum /dev/sdb > original.sha256
+
+# Imaging durchführen (dd, dcfldd, guymager...)
+
+# Hash des Images
+sha256sum image.dd > image.sha256
+
+# Vergleich (muss identisch sein!)
+diff original.sha256 image.sha256 && echo "Hashes stimmen überein"
+
+# Alternative: dcfldd hasht während des Kopierens
 dcfldd if=/dev/sdb hash=sha256 hashlog=hash.log of=image.dd</code></pre>
 
-<h3>Fehlerbehandlung</h3>
+<div class="callout danger"><strong>Achtung:</strong> Der Hash des Originals MUSS durch den Write-Blocker hindurch berechnet werden. Direktes Anschließen des Asservats ohne Write-Blocker verändert den Hash (Mount-Zeitstempel, Journal-Updates).</div>
 
-<ul><li><strong>Lesefehler (Bad Sectors):</strong> <code>dd conv=noerror,sync</code> — Fehler überspringen, Lücken mit Nullen füllen</li>
-<li>Dokumentation: Jeder Lesefehler muss im Bericht vermerkt werden</li></ul>
+<h2 id="guymager">Guymager GUI Workflow</h2>
 
-<h3>Checksummen / Hashing</h3>
+<p>Guymager ist das grafische Imaging-Tool für Linux, speziell für forensische Workflows entwickelt:</p>
 
-<ul><li>Algorithmus: SHA-256 (aktueller Standard), nicht MD5 (Kollisionen)</li>
-<li>Original vorher hashen → kopieren → Image hashen → Hashvergleich</li>
-<li>Bei E01: Hash im Format integriert, <code>ewfinfo</code> zeigt ihn an</li></ul>
+<ol>
+  <li><strong>Guymager starten:</strong> <code>sudo guymager</code> (benötigt Root-Rechte für Block-Devices)</li>
+  <li><strong>Device auswählen:</strong> Links erscheint die Liste aller erkannten Geräte (Modell, Größe, Seriennummer)</li>
+  <li><strong>Rechtsklick → "Acquire Image":</strong> Öffnet den Konfigurationsdialog</li>
+  <li><strong>Format wählen:</strong> DD (Raw) oder E01 (Expert Witness)</li>
+  <li><strong>Fall-Metadaten eingeben:</strong> Case Number, Evidence Number, Examiner Name, Description, Notes</li>
+  <li><strong>Zielpfad setzen:</strong> Wohin wird das Image geschrieben? (Muss genügend freien Speicher haben)</li>
+  <li><strong>Hash-Algorithmen wählen:</strong> SHA-256 (empfohlen) + optional SHA-1 / MD5</li>
+  <li><strong>Split-Größe:</strong> Bei E01 z.B. 2 GB (zwei .E01/.E02/.E03…) oder 0 für ein File</li>
+  <li><strong>Start:</strong> Guymager zeigt Fortschrittsbalken, Geschwindigkeit (MB/s), geschätzte Restzeit</li>
+  <li><strong>Nach Abschluss:</strong> Verifikation läuft automatisch (Image wird zurückgelesen und Hash mit Original verglichen)</li>
+  <li><strong>Info-Datei prüfen:</strong> Guymager schreibt eine <code>.info</code>-Datei mit allen Metadaten und Hash-Werten</li>
+</ol>
 
-<h3>Wichtige Prinzipien</h3>
+<div class="callout tip"><strong>Guymager-Feature:</strong> Im Gegensatz zu <code>dd</code> hasht Guymager <em>während</em> des Kopierens und verifiziert <em>nach</em> dem Kopieren automatisch. Der Verifikations-Pass liest das Image zurück und vergleicht — Fehler werden sofort gemeldet.</div>
 
-<ul><li>Arbeite <strong>nie</strong> am Original, immer am Image</li>
-<li>Falls du gezwungen bist, das Original anzufassen: Jeden Schritt dokumentieren und begründen (ACPO Prinzip 2)</li>
-<li>Zwei Kopien: eine Arbeitskopie, eine unberührte Original-Kopie als Referenz</li></ul>
+<h2 id="logical-vs-physical">Logical vs. Physical Imaging</h2>
 
-<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+<table class="styled-table">
+<thead><tr><th>Merkmal</th><th>Physical Imaging</th><th>Logical Imaging</th></tr></thead><tbody>
+<tr><td>Was wird kopiert?</td><td>Jeder Sektor (inkl. Bootsektor, Partitionstabelle, Slack Space, unallociert)</td><td>Nur aktive Dateien innerhalb einer Partition</td></tr>
+<tr><td>Volständigkeit</td><td>Vollständig — alle Daten, auch gelöschte</td><td>Unvollständig — nur das, was der Datei-Explorer sieht</td></tr>
+<tr><td>Einsatz</td><td>Strafverfolgung, Gerichtsverwertung</td><td>Schnelle Triage, eDiscovery, Unternehmens-DFIR</td></tr>
+<tr><td>Geschwindigkeit</td><td>Langsamer (ganze Disk)</td><td>Schneller (nur belegte Dateien)</td></tr>
+<tr><td>Größe</td><td>Exakt Disk-Größe</td><td>Nur belegter Speicher (oft 30-70 % der Disk-Größe)</td></tr>
+<tr><td>Gelöschte Dateien</td><td>Enthalten (in unallocierten Bereichen)</td><td>Nicht enthalten</td></tr>
+</tbody></table>
 
-<ul><li><code>guymager</code> — grafisches Imaging-Tool (Linux)</li>
-<li><code>FTK Imager</code> (Windows) — Export als DD oder E01</li>
-<li><code>ewfinfo image.E01</code> — Metadaten eines E01-Images anzeigen</li>
-<li><code>sha256sum image.dd > image.sha256 && sha256sum -c image.sha256</code> — Hash-Verifikation</li></ul>
+<div class="callout warning"><strong>Wann Logical Imaging?</strong> Nur wenn Zeit oder Speicherplatz extrem knapp ist und gelöschte Daten nicht relevant sind — z.B. eDiscovery mit Fokus auf aktive Dokumente. Für kriminalistische Ermittlungen immer Physical Imaging.</div>
+
+<h2 id="ssd-probleme">SSD-spezifische Probleme</h2>
+
+<h3>TRIM / UNMAP</h3>
+<p>TRIM ist ein ATA-Befehl, mit dem das OS der SSD mitteilt, welche Blöcke nicht mehr benötigt werden. Die SSD löscht diese Blöcke dann im Hintergrund — die Daten sind <strong>unwiederbringlich verloren</strong>.</p>
+
+<h3>Wear Leveling</h3>
+<p>SSDs verteilen Schreibzugriffe gleichmäßig über alle Flash-Zellen (Wear Leveling). Das bedeutet:</p>
+<ul>
+  <li>Logische Blockadresse (LBA) ≠ physischer Flash-Speicherort</li>
+  <li>Der Flash Translation Layer (FTL) übersetzt Adressen dynamisch</li>
+  <li>Alte Versionen eines logischen Blocks können in anderen physischen Zellen noch existieren</li>
+  <li>Aber: Diese "Overprovisioning"-Bereiche sind für forensische Tools nicht direkt zugänglich</li>
+</ul>
+
+<h3>Garbage Collection</h3>
+<p>Der SSD-Controller löscht im Leerlauf Blöcke, die per TRIM markiert oder nicht mehr referenziert sind. Dies geschieht <strong>ohne Zutun des Betriebssystems</strong> — einfach durch das Anschließen der SSD an Strom.</p>
+
+<div class="callout danger"><strong>SSD-Falle:</strong> Eine SSD, die als Beweismittel sichergestellt wird und nur 30 Minuten an Strom hängt (auch ohne Datenzugriff!), kann bereits Garbage Collection ausführen und Beweisdaten vernichten. <strong>Maßnahmen:</strong> SSD sofort vom Strom trennen oder spezielle Forensik-Bridges mit ATA-Pass-Through verwenden, die TRIM blockieren.</div>
+
+<h2 id="e01-features">Image-Splitting, Kompression, Verschlüsselung (E01)</h2>
+
+<h3>Image-Splitting</h3>
+<p>E01-Images können automatisch in Segmente fester Größe aufgeteilt werden:</p>
+<pre><code># ftkimager (Windows)
+ftkimager \\.\PhysicalDrive1 C:\evidence --e01 --frag 2GB
+
+# guymager: Split-Größe im GUI einstellen (default: 2GB)
+# libewf (Linux):
+ewfacquire -t evidence -S 2G /dev/sdb</code></pre>
+<p>Sinnvoll für: FAT32-Ziele (max. 4 GB pro Datei), Netzwerkübertragung, Backup-Tapes.</p>
+
+<h3>Kompression (Deflate)</h3>
+<table class="styled-table">
+<thead><tr><th>Stufe</th><th>Geschwindigkeit</th><th>Platzersparnis</th><th>Einsatz</th></tr></thead><tbody>
+<tr><td>Keine (0 / fast)</td><td>Maximal</td><td>Keine</td><td>Bereits komprimierte Daten (ZIP, JPEG, Video)</td></tr>
+<tr><td>Mittel (1–5)</td><td>Gut</td><td>~30 %</td><td>Standard-Workstation</td></tr>
+<tr><td>Maximal (6–9 / best)</td><td>Langsam (CPU-gebunden)</td><td>~50 %</td><td>Textlastige Datenträger, Langzeitarchivierung</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Tipp:</strong> Kompression ist doppelt sinnvoll: Sie spart Platz UND beschleunigt das Imaging, weil weniger Daten auf das Ziel-Laufwerk geschrieben werden. Moderne CPUs komprimieren schneller, als die meisten USB-3-Ziellaufwerke schreiben können.</div>
+
+<h3>Verschlüsselung (AES-256)</h3>
+<pre><code># E01 verschlüsselt erstellen (Endung .Ex01)
+ewfacquire -t evidence -E password123 /dev/sdb
+
+# Verschlüsseltes Image öffnen
+ewfmount -p password123 evidence.Ex01 /mnt/ewf/</code></pre>
+<p>Einsatz: Transport von Images über unsichere Kanäle, Speicherung in Cloud-Umgebungen, Compliance-Vorgaben.</p>
+
+<h2 id="praktische-anwendung">Praktische Anwendung: Vollständiger Imaging-Workflow</h2>
+
+<p>Kompletter Ablauf von der Asservatannahme bis zum versiegelten Image:</p>
+
+<pre><code># ===== 1. ASSERVAT IDENTIFIZIEREN =====
+lsblk -o NAME,SIZE,TYPE,MOUNTPOINT,MODEL,SERIAL
+fdisk -l /dev/sdb
+
+# ===== 2. WRITE-BLOCKER PRÜFEN =====
+blockdev --getro /dev/sdb          # muss 1 sein
+dd if=/dev/zero of=/dev/sdb bs=512 count=1 2>&1 | grep "Operation not permitted"
+
+# ===== 3. HASH DES ORIGINALS =====
+sha256sum /dev/sdb | tee original_sha256.txt
+
+# ===== 4. IMAGING =====
+# Variante A: dcfldd
+dcfldd if=/dev/sdb hash=sha256 hashlog=hash_dcfldd.log \
+       of=/mnt/evidence/Fall001_Asservat01.dd bs=4M status=on
+
+# Variante B: ddrescue (bei fehlerhaften Medien)
+ddrescue -d -r3 /dev/sdb /mnt/evidence/Fall001_Asservat01.dd \
+         /mnt/evidence/Fall001_Asservat01.map
+
+# Variante C: ewfacquire (E01 mit Metadaten)
+ewfacquire -c best -S 2G -t Fall001 \
+           -m removable -M physical \
+           -E "Name des Ermittlers" \
+           -N "Notizen: Asservat sichergestellt am 15.03.2025" \
+           /dev/sdb
+
+# ===== 5. HASH-VERIFIKATION =====
+sha256sum /mnt/evidence/Fall001_Asservat01.dd | tee image_sha256.txt
+diff original_sha256.txt image_sha256.txt && echo "=== VERIFIKATION BESTANDEN ==="
+
+# Bei E01:
+ewfverify Fall001.E01
+
+# ===== 6. IMAGE SICHERN (ZWEITE KOPIE) =====
+cp /mnt/evidence/Fall001_Asservat01.dd /mnt/backup/Fall001_Asservat01.dd
+sha256sum /mnt/backup/Fall001_Asservat01.dd | tee backup_sha256.txt
+diff image_sha256.txt backup_sha256.txt && echo "=== BACKUP VERIFIZIERT ==="
+
+# ===== 7. ORIGINAL VERSIEGELN =====
+# Asservat in antistatische Tüte, Siegel aufkleben,
+# Siegelnummer im Chain-of-Custody-Formular vermerken</code></pre>
+
+<div class="callout info"><strong>Dokumentations-Checkliste:</strong> 1. Device-Identifikation (Modell, Seriennummer, Größe), 2. Write-Blocker-Modell + Testprotokoll, 3. Hash-Algorithmus + Werte, 4. Imaging-Tool + Version, 5. Start-/Endzeitpunkt, 6. Lesefehler (Anzahl, Position), 7. Zielpfad, 8. Hash-Vergleich bestanden/fehlgeschlagen.</div>
 
 <h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
 
-<ul><li>NIST SP 800-86</li>
-<li>Carrier, B.: File System Forensic Analysis</li></ul>
+<ul>
+  <li>NIST SP 800-86: Guide to Integrating Forensic Techniques into Incident Response</li>
+  <li>Carrier, B.: <em>File System Forensic Analysis</em>, Addison-Wesley, 2005</li>
+  <li><a href="https://github.com/libyal/libewf">libewf — Open-Source EWF-Bibliothek</a></li>
+  <li><a href="https://guymager.sourceforge.io/">Guymager — Forensic Imaging Tool</a></li>
+  <li><a href="https://aff4.org/">AFF4 Specification</a></li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAPE — Kroll Artifact Parser and Extractor — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../index.html">Startseite</a></li>
+    <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details open><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../09-tools/kape/README.html">KAPE</a></li>
+      <li><a href="../../09-tools/velociraptor/README.html">Velociraptor</a></li>
+      <li><a href="../../09-tools/autopsy/README.html">Autopsy</a></li>
+      <li><a href="../../09-tools/ftk-encase-axiom/README.html">FTK / EnCase / AXIOM</a></li>
+      <li><a href="../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-tools">Tools</a> / KAPE</span>
+</nav>
+<main><article>
+<h1>KAPE — Kroll Artifact Parser and Extractor <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#gkape">gkape — Grafische Oberflaeche</a></li>
+<li><a href="#cli">CLI-Modus</a></li>
+<li><a href="#targets-modules">Targets vs. Modules</a></li>
+<li><a href="#compound">Compound Targets</a></li>
+<li><a href="#triage">KAPE-Triage-Target</a></li>
+<li><a href="#module-beispiele">Module-Beispiele</a></li>
+<li><a href="#praxis">Praktische Anwendung: Windows-Triage in 5 Minuten</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>KAPE (Kroll Artifact Parser and Extractor) ist ein Open-Source-Tool von <strong>Eric Zimmerman</strong>, das gezielt forensisch relevante Dateien von einem Live-System oder einem Image sammelt (<strong>Targets</strong>) und anschliessend mit Parsern verarbeitet (<strong>Modules</strong>). KAPE liest keine Dateien via RAW-Disk-Zugriff, sondern ueber das Betriebssystem — es ist also <strong>kein Imager</strong>, sondern ein gezielter Collector und Parser.</p>
+
+<div class="callout info"><strong>Zwei Modi:</strong> KAPE arbeitet in zwei Phasen: (1) <strong>Target-Modus</strong> = Dateien sammeln (collect), (2) <strong>Module-Modus</strong> = gesammelte Dateien parsen und analysieren. Beide Phasen koennen einzeln oder kombiniert (mit <code>!Local</code>) ausgefuehrt werden.</div>
+
+<table>
+<thead><tr><th>Eigenschaft</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>Entwickler</strong></td><td>Eric Zimmerman / Kroll</td></tr>
+<tr><td><strong>Lizenz</strong></td><td>MIT (Open Source)</td></tr>
+<tr><td><strong>Plattform</strong></td><td>Windows (primär), Linux via WINE moeglich</td></tr>
+<tr><td><strong>GUI</strong></td><td>gkape.exe (grafische Konfiguration)</td></tr>
+<tr><td><strong>CLI</strong></td><td>kape.exe (komplette Steuerung per Kommandozeile)</td></tr>
+<tr><td><strong>Typ</strong></td><td>Collector + Parser, kein Imager</td></tr>
+</tbody></table>
+
+<h2 id="gkape">gkape — Grafische Oberflaeche</h2>
+<p>gkape.exe ist eine GUI, die den gesamten KAPE-Workflow konfigurierbar macht, ohne dass man sich CLI-Befehle merken muss. Der Workflow in gkape:</p>
+
+<ol>
+<li><strong>gkape.exe starten</strong> (liegt im KAPE-Verzeichnis)</li>
+<li>Im Tab <strong>Targets</strong> auswaehlen, welche Artefakt-Typen gesammelt werden sollen (z.B. Registry, Event Logs, Prefetch, LNK-Dateien, Browser-Daten)</li>
+<li>Im Tab <strong>Modules</strong> auswaehlen, welche Parser auf die gesammelten Dateien angewendet werden sollen (z.B. MFT-Parser, Registry-Parser, EventLog-Parser)</li>
+<li><strong>Source Directory</strong> angeben: Das Quelllaufwerk oder den Mount-Point des Images (z.B. <code>C:\</code> oder <code>F:\</code>)</li>
+<li><strong>Destination Directory</strong> angeben: Wo die Ergebnisse gespeichert werden (z.B. <code>D:\KAPE_Output</code>)</li>
+<li><strong>Zusaetzlich</strong> kann ein zweites Ziel fuer die geparsten Output-Dateien angegeben werden (Module Destination)</li>
+<li>Auf <strong>Execute</strong> klicken — KAPE fuehrt zuerst alle Targets aus, dann automatisch die Module</li>
+<li>Ergebnisse nach Target-Name sortiert im Output-Verzeichnis einsehen</li>
+</ol>
+
+<div class="callout tip"><strong>Empfehlung:</strong> Fuer den Einstieg reichen die Default-Targets <code>KapeTriage</code> und die Default-Modules <code>!Local</code>. Zusammen sammeln und parsen sie automatisch die gaengigsten Windows-Artefakte (Prefetch, EventLogs, Registry, Browser, USB, etc.).</div>
+
+<h2 id="cli">CLI-Modus</h2>
+<p>Fuer Automatisierung oder Skripte wird <code>kape.exe</code> direkt verwendet. Die wichtigsten Parameter:</p>
+
+<pre><code>kape.exe --tsource &lt;Quellpfad&gt; --tdest &lt;Zielpfad&gt; --target &lt;TargetName&gt; --module &lt;ModuleName&gt;
+
+# Nur Targets ausfuehren (Sammeln)
+kape.exe --tsource C:\ --tdest D:\Output --target KapeTriage
+
+# Nur Modules auf bereits gesammelte Dateien anwenden
+kape.exe --msource D:\Output --mdest D:\Parsed --module !Local
+
+# Beides kombiniert in einem Schritt
+kape.exe --tsource C:\ --tdest D:\Output --target KapeTriage --mdest D:\Parsed --module !Local
+
+# Debug-Modus mit zusaetzlichen Infos
+kape.exe --tsource C:\ --tdest D:\Output --target KapeTriage --debug
+
+# Nur auflisten, welche Targets/Modules verfuegbar sind
+kape.exe --tlist
+kape.exe --mlist</code></pre>
+
+<table>
+<thead><tr><th>Parameter</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td><code>--tsource</code></td><td>Quellverzeichnis fuer Targets (z.B. Laufwerk C:\)</td></tr>
+<tr><td><code>--tdest</code></td><td>Zielverzeichnis fuer gesammelte Dateien</td></tr>
+<tr><td><code>--target</code></td><td>Target-Definition auswaehlen (Name der .tkape-Datei)</td></tr>
+<tr><td><code>--msource</code></td><td>Quellverzeichnis fuer Modules (meist = --tdest Verzeichnis)</td></tr>
+<tr><td><code>--mdest</code></td><td>Zielverzeichnis fuer geparste Ergebnisse</td></tr>
+<tr><td><code>--module</code></td><td>Module-Definition auswaehlen (Name der .mkape-Datei)</td></tr>
+<tr><td><code>--tlist</code></td><td>Liste aller verfuegbaren Targets ausgeben</td></tr>
+<tr><td><code>--mlist</code></td><td>Liste aller verfuegbaren Modules ausgeben</td></tr>
+<tr><td><code>--debug</code></td><td>Debug-Ausgabe aktivieren (zeigt jeden Datei-Kopiervorgang)</td></tr>
+</tbody></table>
+
+<h2 id="targets-modules">Targets vs. Modules</h2>
+
+<table>
+<thead><tr><th></th><th>Targets (.tkape)</th><th>Modules (.mkape)</th></tr></thead><tbody>
+<tr><td><strong>Zweck</strong></td><td>Dateien kopieren / sammeln</td><td>Dateien parsen / analysieren</td></tr>
+<tr><td><strong>Input</strong></td><td>Live-System oder gemountetes Image</td><td>Von Targets gesammelte Dateien</td></tr>
+<tr><td><strong>Output</strong></td><td>1:1 Kopien der Quelldateien</td><td>CSV, TXT, JSON — aufbereitete Ergebnisse</td></tr>
+<tr><td><strong>Beispiel</strong></td><td><code>SAM</code>, <code>SYSTEM</code>, <code>NTUSER.DAT</code> kopieren</td><td>Registry-Hives parsen → Benutzerliste, letzte Logins</td></tr>
+<tr><td><strong>Definition</strong></td><td>Dateiname endet auf <code>.tkape</code></td><td>Dateiname endet auf <code>.mkape</code></td></tr>
+<tr><td><strong>Speicherort</strong></td><td><code>KAPE\Targets\</code> Verzeichnis</td><td><code>KAPE\Modules\</code> Verzeichnis</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Wichtig:</strong> Ein Module kann NICHT direkt auf ein Live-System zugreifen — es benoetigt IMMER vorher gesammelte Dateien aus einer Target-Ausfuehrung. Oder du verwendest <code>!Local</code>-Modules, die KAPE-Interna nutzen.</div>
+
+<h2 id="compound">Compound Targets</h2>
+<p>Compound Targets sind vordefinierte Sets, die mehrere einzelne Targets zu einem Paket buendeln. Statt 20 Targets einzeln anzugeben, reicht ein Compound-Target-Name. Beispiele:</p>
+
+<table>
+<thead><tr><th>Compound Target</th><th>Enthaltene Einzel-Targets</th><th>Einsatzzweck</th></tr></thead><tbody>
+<tr><td><code>KapeTriage</code></td><td>Registry, EventLogs, Prefetch, LNK, JumpLists, Browser, USB, etc.</td><td>Komplette Windows-Triage</td></tr>
+<tr><td><code>KapeQuick</code></td><td>Registry, EventLogs, Prefetch (reduzierter Umfang)</td><td>Schnelle Erstanalyse (~60 Sekunden)</td></tr>
+<tr><td><code>_SANS_Triage</code></td><td>SANS-empfohlene Triage-Artefakte</td><td>Nach SANS-Vorgaben</td></tr>
+<tr><td><code>Antivirus</code></td><td>Windows Defender Logs, AV-Logs</td><td>Malware-Vorfaelle</td></tr>
+</tbody></table>
+
+<h2 id="triage">KAPE-Triage-Target — Was wird gesammelt?</h2>
+<p>Das <code>KapeTriage</code>-Compound-Target sammelt unter anderem:</p>
+
+<ul>
+<li><strong>Registry-Hives:</strong> SAM, SECURITY, SOFTWARE, SYSTEM, NTUSER.DAT, UsrClass.dat</li>
+<li><strong>Event Logs:</strong> Security.evtx, System.evtx, Application.evtx, PowerShell-Operational.evtx, TerminalServices*.evtx</li>
+<li><strong>Prefetch-Dateien:</strong> <code>C:\Windows\Prefetch\*.pf</code> — zeigt Programmausfuehrungen mit Timestamps und Run Count</li>
+<li><strong>LNK-Dateien:</strong> Recent, Quick Launch, Start Menu — Shortcut-Dateien mit Zielpfad und MAC-Zeiten</li>
+<li><strong>Jump Lists:</strong> <code>*.automaticDestinations-ms</code>, <code>*.customDestinations-ms</code></li>
+<li><strong>Browser-Daten:</strong> Chrome, Edge, Firefox — History, Cookies, Downloads, Bookmarks</li>
+<li><strong>USB-Devices:</strong> <code>SYSTEM\CurrentControlSet\Enum\USB</code>, <code>setupapi.dev.log</code></li>
+<li><strong>SRUM-Datenbank:</strong> <code>SRUDB.dat</code> — Netzwerk- und Anwendungsnutzung (Windows 8+)</li>
+<li><strong>Amcache:</strong> <code>Amcache.hve</code> — Programmausfuehrungen mit SHA1-Hashes</li>
+<li><strong>Shellbags:</strong> Ordnerzugriffe im Explorer</li>
+<li><strong>RecentDocs:</strong> Zuletzt geoeffnete Dokumente</li>
+<li><strong>MFT:</strong> <code>$MFT</code> — Master File Table (NTFS-Kern)</li>
+</ul>
+
+<div class="callout danger"><strong>Vorsicht:</strong> KAPE sammelt NICHT den gesamten Festplatteninhalt, sondern nur die in den Targets definierten Dateien. Fuer ein vollstaendiges Forensik-Image wird ein Imager wie FTK Imager, dd oder Guymager benoetigt. KAPE ist ein <strong>Ergaenzungswerkzeug</strong>, kein Ersatz fuer Imaging.</div>
+
+<h2 id="module-beispiele">Module-Beispiele</h2>
+
+<h3>MFT-Extract</h3>
+<pre><code># Modul: MFTECmd (parst $MFT in CSV)
+# Input: $MFT (von Target gesammelt)
+# Output: MFT.csv mit allen Datei-Eintraegen, Timestamps, Pfaden
+
+kape.exe --msource D:\Output --mdest D:\Parsed --module MFTECmd</code></pre>
+
+<table>
+<thead><tr><th>Feld in MFT.csv</th><th>Forensische Bedeutung</th></tr></thead><tbody>
+<tr><td><code>FileName</code></td><td>Dateiname auf dem System</td></tr>
+<tr><td><code>ParentPath</code></td><td>Vollstaendiger Verzeichnispfad</td></tr>
+<tr><td><code>Created0x10</code></td><td>Erstellungszeit (MACE — Modified, Accessed, Created, Entry Modified)</td></tr>
+<tr><td><code>LastModified0x10</code></td><td>Letzte Modifikation</td></tr>
+<tr><td><code>IsDirectory</code></td><td>Datei oder Verzeichnis?</td></tr>
+</tbody></table>
+
+<h3>Registry-Parse</h3>
+<pre><code># Modul: REGRipper (parst Registry-Hives)
+# Input: SAM, SYSTEM, SOFTWARE, NTUSER.DAT (von Target gesammelt)
+# Output: pro Hive eine Text-Datei mit relevanten Keys
+
+kape.exe --msource D:\Output --mdest D:\Parsed --module REGRipper</code></pre>
+
+<p>Typische Ergebnisse aus Registry-Parsern:</p>
+<ul>
+<li><strong>Benutzerliste:</strong> Alle lokalen Benutzer aus SAM</li>
+<li><strong>Letzter Login:</strong> Letzter Anmeldezeitpunkt pro Benutzer</li>
+<li><strong>Autostart-Eintraege:</strong> Run/RunOnce-Keys (Persistenz)</li>
+<li><strong>Netzwerkkonfiguration:</strong> IP, DNS, Interfaces</li>
+<li><strong>USB-Historie:</strong> Angeschlossene USB-Geraete mit Seriennummer und letztem Verbindungszeitpunkt</li>
+<li><strong>Mounted Devices:</strong> Welche Laufwerksbuchstaben wurden wann zugewiesen?</li>
+</ul>
+
+<h3>EventLog-Parse</h3>
+<pre><code># Modul: EvtxECmd (parst .evtx-Dateien)
+# Input: Security.evtx, System.evtx, etc. (von Target gesammelt)
+# Output: CSV-Datei mit allen Event-Eintraegen
+
+kape.exe --msource D:\Output --mdest D:\Parsed --module EvtxECmd</code></pre>
+
+<p>Kritische Event-IDs fuer die Analyse:</p>
+
+<table>
+<thead><tr><th>Event ID</th><th>Log</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td>4624</td><td>Security</td><td>Erfolgreiche Anmeldung</td></tr>
+<tr><td>4625</td><td>Security</td><td>Fehlgeschlagene Anmeldung (Brute-Force?)</td></tr>
+<tr><td>4648</td><td>Security</td><td>Anmeldung mit expliziten Credentials (RunAs, PSExec)</td></tr>
+<tr><td>4672</td><td>Security</td><td>Admin-Rechte zugewiesen</td></tr>
+<tr><td>4688</td><td>Security</td><td>Prozess gestartet (mit Kommandozeile)</td></tr>
+<tr><td>7045</td><td>System</td><td>Neuer Dienst installiert (Persistenz)</td></tr>
+<tr><td>4104</td><td>PowerShell Operational</td><td>PowerShell-Skriptblock ausgefuehrt</td></tr>
+</tbody></table>
+
+<h2 id="praxis">Praktische Anwendung: Windows-Triage in 5 Minuten</h2>
+
+<p><strong>Szenario:</strong> Ein Windows-Client verhaelt sich verdaechtig (langsam, Pop-ups, unbekannte Prozesse). Du hast 5 Minuten vor Ort und willst eine forensische Momentaufnahme erstellen.</p>
+
+<ol>
+<li><strong>KAPE herunterladen und entpacken:</strong> <code>Get-ZimmermanTools</code> PowerShell-Skript oder manuell von <a href="https://ericzimmerman.github.io/">ericzimmerman.github.io</a>. Auf USB-Stick kopieren.</li>
+<li><strong>USB-Stick in den Zielrechner einstecken.</strong> KAPE laeuft portabel, keine Installation noetig.</li>
+<li><strong>gkape.exe starten</strong> (ggf. als Administrator — empfohlen fuer Zugriff auf alle Dateien).</li>
+<li><strong>Targets konfigurieren:</strong> <code>KapeTriage</code> auswaehlen (sammelt alle Standard-Artefakte).</li>
+<li><strong>Source:</strong> <code>C:\</code></li>
+<li><strong>Target-Destination:</strong> Einen Ordner auf deinem USB-Stick auswaehlen, z.B. <code>E:\KAPE_Output</code></li>
+<li><strong>Modules:</strong> <code>!Local</code> auswaehlen (fuehrt automatisch alle passenden Parser aus).</li>
+<li><strong>Module-Destination:</strong> <code>E:\KAPE_Parsed</code></li>
+<li><strong>Execute</strong> — KAPE laeuft und sammelt + parst automatisch alle konfigurierten Artefakte.</li>
+<li><strong>USB-Stick sicher entfernen</strong> und mit der Analyse im Labor fortfahren.</li>
+</ol>
+
+<div class="callout tip"><strong>Zeit sparen:</strong> Die reine Collection mit <code>KapeTriage</code> dauert je nach Systemlast und Datenmenge oft nur <strong>30—90 Sekunden</strong>. Das Parsen mit <code>!Local</code> kann 2—5 Minuten dauern, ist aber auch offline moeglich.</div>
+
+<h3>CLI-Variante (skriptfaehig)</h3>
+<pre><code>kape.exe --tsource C:\ --tdest E:\KAPE_Output --target KapeTriage --mdest E:\KAPE_Parsed --module !Local</code></pre>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://ericzimmerman.github.io/">Eric Zimmerman Tools (Offizielle Seite)</a></li>
+<li><a href="https://github.com/EricZimmerman/KapeFiles">KapeFiles GitHub — Community Targets &amp; Modules</a></li>
+<li><a href="https://www.kroll.com/en/insights/publications/cyber/kape">Kroll: KAPE Documentation</a></li>
+<li><a href="https://github.com/EricZimmerman/KapeFiles/blob/master/Get-ZimmermanTools.ps1">Get-ZimmermanTools PowerShell Script</a></li>
+<li><a href="https://www.sans.org/posters/hunt-evil/">SANS: Hunt Evil Poster (passende Event IDs)</a></li>
+<li><a href="https://github.com/EricZimmerman/MFTECmd">MFTECmd GitHub</a></li>
+<li><a href="https://github.com/EricZimmerman/EvtxECmd">EvtxECmd GitHub</a></li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../nav-order.js"></script>
+<script src="../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

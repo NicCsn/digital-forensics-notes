@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab: RAM-Forensik mit Volatility — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../index.html">Startseite</a></li>
+    <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../09-tools/wireshark-dissector/README.html">Wireshark DFP-Dissector</a></li>
+      <li><a href="../../09-tools/log-parser/README.html">Apache Log Parser</a></li>
+      <li><a href="../../09-tools/plaso-plugin/README.html">Plaso Parser Plugin</a></li>
+      <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../11-labs-projekte/">Labs &amp; Projekte</a> / RAM-Forensik</span>
+</nav>
+<main>
+<article>
+
+<h1>Lab: RAM-Forensik mit Volatility 3 <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#lab-ziel">Lab-Ziel</a></li>
+<li><a href="#voraussetzungen">Voraussetzungen</a></li>
+<li><a href="#schritt-1">Schritt 1: RAM-Dump erstellen</a></li>
+<li><a href="#schritt-2">Schritt 2: Volatility imageinfo / windows.info</a></li>
+<li><a href="#schritt-3">Schritt 3: Prozessanalyse</a></li>
+<li><a href="#schritt-4">Schritt 4: Netzwerkanalyse</a></li>
+<li><a href="#schritt-5">Schritt 5: DLL-Liste und Malfind</a></li>
+<li><a href="#schritt-6">Schritt 6: Strings-Extraktion und YARA-Scan</a></li>
+<li><a href="#schritt-7">Schritt 7: Abschlussbericht</a></li>
+<li><a href="#musterloesung">Musterloesung</a></li>
+<li><a href="#bewertungskriterien">Bewertungskriterien</a></li>
+</ol></details>
+
+<h2 id="lab-ziel">Lab-Ziel</h2>
+
+<p>In diesem Lab fuehrst du eine vollstaendige <strong>RAM-Forensik-Analyse</strong> mit Volatility 3 durch. Du lernst, einen Arbeitsspeicher-Dump zu erstellen, das Betriebssystemprofil zu identifizieren, laufende Prozesse und Netzwerkverbindungen zu analysieren und verdaechtige Code-Injektionen zu erkennen. Abschliessend extrahierst du Strings aus dem Dump und fuehrst einen YARA-Scan auf bekannte Malware-Signaturen durch.</p>
+
+<p>Das Szenario: Auf einem Windows-10-System laeuft eine Schadsoftware im Hintergrund — ein Prozess hat sich in einen legitimen Systemprozess injiziert, kommuniziert mit einem Command-and-Control-Server und versucht, Anmeldeinformationen aus dem LSASS-Speicher zu extrahieren. Deine Aufgabe: Finde die Malware und dokumentiere alle Indikatoren.</p>
+
+<div class="callout info"><strong>Lernziele</strong><p>Nach Abschluss dieses Labs kannst du: (1) RAM-Dumps mit DumpIt oder LiME erstellen, (2) das Betriebssystemprofil eines RAM-Dumps mit Volatility 3 identifizieren, (3) Prozesslisten, Netzwerkverbindungen und geladene DLLs analysieren, (4) Code-Injektionen mit malfind erkennen, (5) Strings und YARA-Regeln zur Malware-Suche einsetzen und (6) einen strukturierten Memory-Forensik-Bericht verfassen.</p></div>
+
+<h2 id="voraussetzungen">Voraussetzungen</h2>
+
+<h3>Hardware / Software</h3>
+
+<table>
+<thead><tr><th>Komponente</th><th>Mindestanforderung</th><th>Empfohlen</th></tr></thead>
+<tbody>
+<tr><td>Analysesystem</td><td>Linux oder macOS, 8 GB RAM</td><td>Linux (Ubuntu 22.04+), 16 GB RAM</td></tr>
+<tr><td>Python</td><td>Python 3.8+</td><td>Python 3.11+</td></tr>
+<tr><td>Volatility 3</td><td>v2.5.0+ (<code>pip install volatility3</code>)</td><td>v2.7.0+ (neueste Version)</td></tr>
+<tr><td>Analysespeicher</td><td>10 GB frei</td><td>20 GB frei (RAM-Dump + Extraktionen)</td></tr>
+</tbody>
+</table>
+
+<h3>Volatility 3 Installation</h3>
+
+<pre><code># Volatility 3 via pip installieren:
+pip install volatility3
+
+# Oder aus dem Git-Repository:
+git clone https://github.com/volatilityfoundation/volatility3.git
+cd volatility3
+pip install -r requirements.txt
+python3 setup.py install
+
+# Installation pruefen:
+vol -h
+vol -f memory.dump windows.info</code></pre>
+
+<h3>RAM-Dump-Beschaffung</h3>
+
+<p>Du hast zwei Optionen fuer einen RAM-Dump:</p>
+
+<ol>
+<li><strong>MemLabs-Dumps (empfohlen fuer Einsteiger):</strong> <a href="https://github.com/stuxnet999/MemLabs">github.com/stuxnet999/MemLabs</a> — Enthaelt vorgefertigte Dumps mit Loesungen</li>
+<li><strong>Eigener RAM-Dump:</strong> Von einem Windows-10/11-System (physisch oder VM) — siehe Schritt 1</li>
+<li><strong>DFIR Madness / Cado Security challenges:</strong> <a href="https://github.com/christophetd/dfir-madness">DFIR Madness</a></li>
+</ol>
+
+<div class="callout warning"><strong>Vorsicht bei eigenen Dumps</strong><p>Bei der Erstellung eines RAM-Dumps von einem Produktivsystem koennen sensible Daten (Passwoerter, Schluessel, persoenliche Daten) im Dump enthalten sein. Behandle den Dump wie ein forensisches Beweismittel — verschluesselt speichern und nach der Analyse sicher loeschen.</p></div>
+
+<h2 id="schritt-1">Schritt 1: RAM-Dump erstellen</h2>
+
+<p>Die RAM-Dump-Erstellung unterscheidet sich je nach Betriebssystem. Waehle die fuer dein Zielsystem passende Methode:</p>
+
+<h3>Windows — DumpIt</h3>
+
+<pre><code># DumpIt von Magnet Forensics herunterladen:
+# https://www.magnetforensics.com/resources/magnet-dumpit-for-windows/
+
+# Ausfuehrung (als Administrator):
+DumpIt.exe
+
+# Interaktiver Modus: "y" druecken, dann Pfad fuer Dump angeben
+# Ausgabe: C:\MemoryDump\WIN-XXXXX-YYYYMMDD-HHMMSS.raw</code></pre>
+
+<h3>Windows — WinPMEM (Rekall)</h3>
+
+<pre><code># WinPMEM herunterladen und ausfuehren:
+winpmem_mini_x64_rc2.exe memory.raw
+
+# Ausgabe: memory.raw im aktuellen Verzeichnis</code></pre>
+
+<h3>Linux — LiME (Linux Memory Extractor)</h3>
+
+<pre><code># LiME Kernel-Modul bauen:
+git clone https://github.com/504ensicsLabs/LiME.git
+cd LiME/src
+make
+
+# Kernel-Modul laden (Root-Rechte erforderlich):
+sudo insmod lime-*.ko "path=/tmp/memory.dump format=lime"
+
+# Format-Optionen: lime (Volatility-kompatibel), raw, padded
+# Ausgabe: /tmp/memory.dump</code></pre>
+
+<h3>VM-basierte Dumps</h3>
+
+<ul>
+<li><strong>VirtualBox:</strong> <code>VBoxManage debugvm "VM-Name" dumpvmcore --filename memory.dump</code></li>
+<li><strong>VMware:</strong> Snapshot erstellen → <code>*.vmem</code>-Datei = RAM-Dump (direkt in Volatility verwendbar)</li>
+<li><strong>Hyper-V:</strong> Pruefpunkt erstellen → <code>*.bin</code>-Datei = RAM-Dump</li>
+</ul>
+
+<div class="callout tip"><strong>Tipp: VM-Snapshot als Dump</strong><p>Die einfachste Methode fuer Lernzwecke: Starte eine Windows-VM, fuehre verdaechtige Aktivitaeten aus, erstelle einen Snapshot (die <code>.vmem</code>-Datei ist der RAM-Dump) und analysiere ihn. Keine zusaetzlichen Tools noetig.</p></div>
+
+<h2 id="schritt-2">Schritt 2: imageinfo / windows.info</h2>
+
+<p>Der erste Schritt jeder Volatility-Analyse: Welches Betriebssystem und welche Architektur hat der Dump?</p>
+
+<h3>Volatility 3</h3>
+
+<pre><code># Grundlegende Systeminformationen:
+vol -f memory.dump windows.info
+
+# Alternative: Automatische Profil-Erkennung (ISF-Suche):
+vol -f memory.dump windows.info.Info
+
+# Zeigt: OS-Version, Build-Nummer, Kernel-Zeitstempel, Architektur (x86/x64)</code></pre>
+
+<h3>Zu notierende Informationen</h3>
+
+<table>
+<thead><tr><th>Attribut</th><th>Beispielwert</th><th>Forensische Bedeutung</th></tr></thead>
+<tbody>
+<tr><td>NT BuildLab</td><td>19041.1.amd64fre.vb_release...</td><td>Exakte Windows-Version (hier: 10 2004)</td></tr>
+<tr><td>Kernel Base</td><td>0xf8067a000000</td><td>Startadresse des ntoskrnl im virtuellen Speicher</td></tr>
+<tr><td>SystemTime</td><td>2026-07-02 12:34:56</td><td>Zeitpunkt der Dump-Erstellung</td></tr>
+<tr><td>Is64Bit</td><td>True</td><td>Bestimmt die zu verwendenden Volatility-Plugins</td></tr>
+</tbody>
+</table>
+
+<div class="callout info"><strong>Volatility 2 vs. 3</strong><p>Volatility 3 verwendet <strong>keine Profile</strong> mehr (wie <code>--profile=Win10x64</code>). Es analysiert den Dump automatisch und erstellt ein Symbol-File (ISF) on-the-fly. Volatility 2 (<code>imageinfo</code>) wird in diesem Lab <strong>nicht</strong> verwendet — wir arbeiten ausschliesslich mit Volatility 3.</p></div>
+
+<h2 id="schritt-3">Schritt 3: Prozessanalyse</h2>
+
+<p>Die Prozessliste ist die zentrale Informationsquelle fuer die Malware-Erkennung im RAM. Volatility bietet mehrere Perspektiven auf dieselben Daten.</p>
+
+<pre><code># Alle laufenden Prozesse:
+vol -f memory.dump windows.pslist
+
+# Prozessliste als Baum (Eltern-Kind-Beziehungen):
+vol -f memory.dump windows.pstree
+
+# Nur aktive/versteckte Prozesse (Direct Kernel Object Manipulation):
+vol -f memory.dump windows.psscan
+
+# Kommandozeilen aller Prozesse:
+vol -f memory.dump windows.cmdline</code></pre>
+
+<h3>Analyse-Schritte (pslist)</h3>
+
+<ol>
+<li><strong>Gesamtzahl der Prozesse ermitteln:</strong> <code>vol ... windows.pslist | wc -l</code></li>
+<li><strong>PID 4 (System)</strong> und <strong>PID 0 (Idle)</strong> identifizieren — sind sie vorhanden?</li>
+<li><strong>Auffaellige Prozessnamen suchen:</strong> <code>svchost.exe</code>, <code>rundll32.exe</code>, <code>powershell.exe</code>, <code>cmd.exe</code></li>
+<li><strong>Eltern-Kind-Anomalien erkennen:</strong> PowerShell als Kindprozess von <code>winword.exe</code>? <code>cmd.exe</code> mit Kindprozess <code>lsass.exe</code>?</li>
+<li><strong>Kommandozeilen-Analyse:</strong> <code>vol ... windows.cmdline --pid <PID></code> — Sind Base64-codierte PowerShell-Befehle erkennbar?</li>
+</ol>
+
+<h3>Zu beantwortende Fragen</h3>
+
+<ol>
+<li><strong>Wie viele Prozesse laufen insgesamt?</strong> (pslist)</li>
+<li><strong>Welcher Prozess hat das LSASS-Handle geoeffnet?</strong> (Suche in pslist nach Prozessen mit Zugriff auf lsass.exe)</li>
+<li><strong>Gibt es Prozesse ohne zugehoerigen Disk-Image-Pfad?</strong> (Indikator fuer Fileless-Malware)</li>
+<li><strong>Welche Prozesse haben ungewoehnliche Kommandozeilen?</strong> (z.B. Base64 in PowerShell)</li>
+<li><strong>Ist der smss.exe-Prozess korrekt?</strong> (Muss PID-bei-Session-0 haben und von System kommen)</li>
+</ol>
+
+<h2 id="schritt-4">Schritt 4: Netzwerkanalyse</h2>
+
+<p>Netzwerkverbindungen im RAM zeigen aktive Kommunikation — oft das entscheidende Indiz fuer Command-and-Control-Aktivitaet.</p>
+
+<pre><code># Alle aktiven Netzwerkverbindungen (TCP und UDP):
+vol -f memory.dump windows.netscan
+
+# Nur etablierte TCP-Verbindungen (ESTABLISHED):
+vol -f memory.dump windows.netscan | grep ESTABLISHED
+
+# Verbindungen eines bestimmten Prozesses:
+vol -f memory.dump windows.netscan | grep <PID>
+
+# NetStat-aehnliche Ausgabe (nur TCP, nur etabliert):
+vol -f memory.dump windows.netstat | grep ESTAB</code></pre>
+
+<h3>Analyse-Schritte</h3>
+
+<ol>
+<li><strong>Gesamtzahl etablierter Verbindungen:</strong> Wie viele offene Sockets?</li>
+<li><strong>Externe Ziele identifizieren:</strong> Welche Verbindungen gehen ins Internet (nicht 127.0.0.1, 0.0.0.0, private RFC1918)?</li>
+<li><strong>Ungewoehnliche Ports finden:</strong> Port 4444 (Metasploit), Port 8080/8443 (C2-Webpanels), Port 53 (DNS-Tunneling)</li>
+<li><strong>Listener identifizieren:</strong> Ports im Status LISTENING (auf eingehende Verbindungen wartend)</li>
+<li><strong>Prozess-Zuordnung:</strong> Welche PID ist mit welcher IP:Port-Kombination verbunden? Ist der Prozess legitim?</li>
+</ol>
+
+<h3>Zu beantwortende Fragen</h3>
+
+<ol>
+<li><strong>Zu welchen externen IPs bestehen ESTABLISHED-Verbindungen?</strong></li>
+<li><strong>Welcher Prozess hoert auf aussergewoehnlichen Ports?</strong></li>
+<li><strong>Gibt es Verbindungen zu Tor-Knoten oder bekannten C2-IPs?</strong> (Abgleich mit Threat Intel — optional)</li>
+<li><strong>Welche Verbindungen verwenden Port 3389 (RDP) oder 22 (SSH)?</strong></li>
+</ol>
+
+<h2 id="schritt-5">Schritt 5: DLL-Liste und Malfind</h2>
+
+<p>Code-Injektion ist eine der haeufigsten Malware-Techniken. Volatilitys <code>malfind</code> sucht nach Speicherbereichen mit Ausfuehrungsrechten, die nicht zu einer geladenen DLL gehoeren — starker Indikator fuer injizierten Code.</p>
+
+<pre><code># Geladene DLLs aller Prozesse (sehr viel Output):
+vol -f memory.dump windows.dlllist
+
+# DLL-Liste auf ungewoehnliche Pfade durchsuchen:
+vol -f memory.dump windows.dlllist | grep -E "(Temp|AppData|Users)" | head -20
+
+# Malfind — erkennt injizierten Code (VAD-Tags: MZ, PE):
+vol -f memory.dump windows.malfind
+
+# Malfind fuer einen spezifischen Prozess:
+vol -f memory.dump windows.malfind --pid <verdaechtige_PID>
+
+# DLL-Dump einer verdaechtigen DLL (fuer spaetere Hash-Analyse):
+vol -f memory.dump windows.dllist --pid <PID> --dump</code></pre>
+
+<h3>Malfind-Indikatoren</h3>
+
+<table>
+<thead><tr><th>Indikator</th><th>Bedeutung</th><th>Schweregrad</th></tr></thead>
+<tbody>
+<tr><td>MZ-Header im VAD</td><td>PE-Datei im Speicher ohne Disk-Backing</td><td><span class="severity high">Hoch</span></td></tr>
+<tr><td>VAD-Tag: VadS</td><td>Privater Speicher mit PAGE_EXECUTE_READWRITE</td><td><span class="severity high">Hoch</span></td></tr>
+<tr><td>Protection: RWX</td><td>Read-Write-Execute — selten legitim</td><td><span class="severity critical">Kritisch</span></td></tr>
+<tr><td>Process: svchost.exe mit Injektion</td><td>Injizierter Code in Systemprozess</td><td><span class="severity critical">Kritisch</span></td></tr>
+<tr><td>DLL aus Temp-Ordner</td><td>DLL aus untypischem Pfad geladen</td><td><span class="severity medium">Mittel</span></td></tr>
+</tbody>
+</table>
+
+<h3>Zu beantwortende Fragen</h3>
+
+<ol>
+<li><strong>Zeigt malfind Treffer an?</strong> Wenn ja: In welchen Prozessen?</li>
+<li><strong>Welche DLLs werden aus <code>C:\Users\...\AppData\Local\Temp\</code> geladen?</strong></li>
+<li><strong>Gibt es Prozesse mit RWX-Speicherbereichen?</strong> (malfind Protection-Feld)</li>
+<li><strong>Welche DLLs haben ein ungueltiges digitales Signaturzertifikat?</strong></li>
+</ol>
+
+<h2 id="schritt-6">Schritt 6: Strings-Extraktion und YARA-Scan</h2>
+
+<p>Waehrend Volatility strukturierte Daten analysiert, findet eine <code>strings</code>-Extraktion <strong>unstrukturierte</strong> Daten wie Passwoerter, URLs, E-Mail-Adressen und Malware-Konfigurationen im Raw-Dump.</p>
+
+<pre><code># Strings aus dem RAM-Dump extrahieren (Linux/macOS):
+strings -n 6 memory.dump > strings.txt
+
+# Strings durchsuchen — Passwoerter:
+grep -i "password" strings.txt | head -30
+
+# Strings durchsuchen — URLs und IPs:
+grep -oE "https?://[a-zA-Z0-9./?=_-]*" strings.txt | sort -u | head -20
+grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" strings.txt | sort -u | head -20
+
+# Strings durchsuchen — E-Mail-Adressen:
+grep -oE "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" strings.txt | sort -u | head -20
+
+# Base64-codierte Strings identifizieren:
+grep -oE "[A-Za-z0-9+/=]{40,}" strings.txt | head -20</code></pre>
+
+<h3>YARA-Scan ueber den RAM-Dump</h3>
+
+<p>YARA ist das Standardwerkzeug zur signaturbasierten Malware-Suche. Mit vordefinierten Regeln lassen sich bekannte Malware-Familien im RAM-Dump identifizieren.</p>
+
+<pre><code># YARA installieren (falls nicht vorhanden):
+pip install yara-python
+
+# Volatility YARA-Scan Plugin ausfuehren:
+vol -f memory.dump windows.vadyarascan --yara-file /pfad/zu/malware_rules.yar
+
+# Oder eigenes YARA-Rule-File erstellen und scannen:
+vol -f memory.dump windows.vadyarascan --yara-file my_custom_rules.yar
+
+# Beispiel-YARA-Regel (eigene my_rules.yar):
+cat > my_rules.yar << 'EOF'
+rule Mimikatz_Detection {
+    strings:
+        $s1 = "mimikatz" nocase
+        $s2 = "sekurlsa" nocase
+        $s3 = "logonpasswords" nocase
+    condition:
+        any of them
+}
+EOF</code></pre>
+
+<h3>Zu beantwortende Fragen</h3>
+
+<ol>
+<li><strong>Welche URLs finden sich im Strings-Output?</strong> Notiere alle externen Domains.</li>
+<li><strong>Gibt es Klartext-Passwoerter im Dump?</strong> (Hinweis: Bei Windows 10+ sind LSASS-Passwoerter meist nicht mehr im Klartext)</li>
+<li><strong>Welche IP-Adressen tauchen auf, die nicht zum lokalen Netzwerk gehoeren?</strong></li>
+<li><strong>Hat der YARA-Scan Treffer ergeben?</strong> Wenn ja: Welche Regel hat ausgeloest und in welchem Prozess?</li>
+</ol>
+
+<h2 id="schritt-7">Schritt 7: Abschlussbericht</h2>
+
+<h3>Report-Struktur</h3>
+
+<h4>1. Case Summary (1 Absatz)</h4>
+<ul>
+<li>Zusammenfassung der Analyseergebnisse</li>
+<li>Wurde Malware gefunden? (Ja/Nein/Moeglicherweise)</li>
+<li>Falls ja: Malware-Familie, C2-Server, Auswirkungen</li>
+</ul>
+
+<h4>2. Evidence (Quellen und Integritaet)</h4>
+<ul>
+<li>Herkunft des RAM-Dumps (Selbst erstellt / MemLabs / andere Quelle)</li>
+<li>SHA-256-Hash des Dumps (<code>sha256sum memory.dump</code>)</li>
+<li>Datum/Zeit der Dump-Erstellung (aus windows.info)</li>
+<li>Verwendete Tools und Versionen (Volatility 3.x, YARA x.x)</li>
+</ul>
+
+<h4>3. Analyseergebnisse (tabellarisch)</h4>
+
+<table>
+<thead><tr><th>Bereich</th><th>Plugin</th><th>Befunde</th></tr></thead>
+<tbody>
+<tr><td>Systeminfo</td><td>windows.info</td><td>OS-Version, Architektur, Kernel-Time</td></tr>
+<tr><td>Prozesse</td><td>windows.pslist/pstree</td><td>Anzahl Prozesse, verdaechtige Prozesse</td></tr>
+<tr><td>CmdLines</td><td>windows.cmdline</td><td>Verdaechtige Kommandozeilen-Argumente</td></tr>
+<tr><td>Netzwerk</td><td>windows.netscan</td><td>Externe IPs, ungewoehnliche Ports</td></tr>
+<tr><td>DLLs</td><td>windows.dlllist</td><td>DLLs aus untypischen Pfaden</td></tr>
+<tr><td>Injection</td><td>windows.malfind</td><td>Treffer mit PID und Speicherbereich</td></tr>
+<tr><td>Strings</td><td>strings + grep</td><td>URLs, IPs, E-Mails, Passwoerter</td></tr>
+<tr><td>YARA</td><td>windows.vadyarascan</td><td>Regel-Treffer und betroffene Prozesse</td></tr>
+</tbody>
+</table>
+
+<h4>4. Timeline (chronologisch)</h4>
+<ul>
+<li>Relevante Ereignisse in Reihenfolge: Prozessstart → Netzwerkverbindung → DLL-Ladung → Injektion</li>
+</ul>
+
+<h4>5. Indicators of Compromise (IOCs)</h4>
+<ul>
+<li>Verdaechtige Dateinamen und Pfade</li>
+<li>Verdaechtige IPs und Domains (mit Ports)</li>
+<li>Prozessnamen und PIDs</li>
+<li>Registry-Keys (falls vorhanden)</li>
+<li>Malware-Hashes (MD5, SHA-256)</li>
+</ul>
+
+<h4>6. Empfehlungen</h4>
+<ul>
+<li>Betroffene Systeme isolieren</li>
+<li>C2-Kommunikation blockieren (Firewall-Regeln)</li>
+<li>Passwoerter aendern (wenn LSASS-Kompromittierung vermutet)</li>
+<li>Weitergehende Disk-Forensik empfohlen</li>
+</ul>
+
+<h2 id="musterloesung">Musterloesung — Was soll erkannt werden?</h2>
+
+<p>Fuer das Lab-Szenario (MemLabs oder eigener Dump) sollten folgende Funde dokumentiert werden:</p>
+
+<h3>Erwartete Analyseergebnisse</h3>
+
+<ol>
+<li><strong>windows.info:</strong> Windows 10 / Build 19041+, x64</li>
+<li><strong>windows.pslist:</strong> Verdaechtiger Prozess (z.B. <code>srv.exe</code>, <code>payload.exe</code> oder aehnlich), laeuft mit Benutzerrechten</li>
+<li><strong>windows.pstree:</strong> Ungewoehnliche Eltern-Kind-Beziehung (z.B. <code>explorer.exe → cmd.exe → powershell.exe</code>)</li>
+<li><strong>windows.cmdline:</strong> PowerShell mit Base64-codiertem Befehl oder ungewoehnlichem Script-Pfad</li>
+<li><strong>windows.netscan:</strong> Verbindung zu externer IP auf untypischem Port (z.B. <code>10.0.0.100:4444 ESTABLISHED</code>)</li>
+<li><strong>windows.malfind:</strong> Positiv-Treffer in einem oder mehreren Prozessen (MZ-Header, PAGE_EXECUTE_READWRITE)</li>
+<li><strong>strings:</strong> Enthaelt URL <code>http://evil-c2.local/beacon</code>, User-Agent-Strings, Powershell-Befehle</li>
+<li><strong>YARA:</strong> Mindestens ein Regel-Treffer, z.B. "Mimikatz_Detection"</li>
+</ol>
+
+<h3>Malware-Erkennung — Typische Indikatoren</h3>
+
+<table>
+<thead><tr><th>Phase</th><th>Indikator</th><th>Volatility-Plugin</th></tr></thead>
+<tbody>
+<tr><td>Initial Access</td><td>cmd.exe von MS Office gestartet</td><td>pstree, cmdline</td></tr>
+<tr><td>Execution</td><td>PowerShell.exe mit -enc Base64</td><td>cmdline, malfind</td></tr>
+<tr><td>Persistence</td><td>svchost.exe mit injizierter DLL</td><td>malfind, dlllist</td></tr>
+<tr><td>C2 Communication</td><td>ESTABLISHED zu 10.x.x.x:4444</td><td>netscan</td></tr>
+<tr><td>Credential Access</td><td>Zugriff auf lsass.exe-Handle</td><td>handles, strings</td></tr>
+</tbody>
+</table>
+
+<h2 id="bewertungskriterien">Bewertungskriterien</h2>
+
+<table>
+<thead><tr><th>Kriterium</th><th>Max. Punkte</th><th>Erwartung</th></tr></thead>
+<tbody>
+<tr><td>RAM-Dump-Erstellung</td><td>10</td><td>Dump erstellt + SHA-256 dokumentiert</td></tr>
+<tr><td>Systemidentifikation</td><td>10</td><td>windows.info korrekt interpretiert (OS, Arch)</td></tr>
+<tr><td>Prozessanalyse</td><td>20</td><td>Pslist, pstree, cmdline analysiert; mind. 1 verdaechtiger Prozess identifiziert</td></tr>
+<tr><td>Netzwerkanalyse</td><td>15</td><td>netscan: mind. 1 externe Verbindung identifiziert und PID zugeordnet</td></tr>
+<tr><td>DLL/Malfind</td><td>15</td><td>malfind-Treffer dokumentiert; ungewoehnliche DLL-Pfade erkannt</td></tr>
+<tr><td>Strings / YARA</td><td>10</td><td>Strings extrahiert + relevante Strings dokumentiert; YARA-Scan durchgefuehrt</td></tr>
+<tr><td>Bericht</td><td>20</td><td>Vollstaendiger Bericht mit Summary, IOCs, Timeline und Empfehlungen</td></tr>
+<tr><td><strong>Gesamt</strong></td><td><strong>100</strong></td><td></td></tr>
+</tbody>
+</table>
+
+<h3>Abgabeformat</h3>
+<ul>
+<li><strong>PDF- oder Markdown-Bericht</strong> (max. 12 Seiten)</li>
+<li>YARA-Regel-Datei als Anhang (falls eigene Regeln geschrieben wurden)</li>
+<li>IOC-Liste als separate CSV- oder TXT-Datei</li>
+<li>Dateiname: <code>ram-forensik_NACHNAME_VORNAME_YYYY-MM-DD.pdf</code></li>
+</ul>
+
+<h3>Zusaetzliche Herausforderungen (freiwillig, fuer Fortgeschrittene)</h3>
+
+<ul>
+<li><strong>Volshell</strong> verwenden, um interaktiv einen verdaechtigen Speicherbereich zu inspizieren</li>
+<li><strong>Eigene YARA-Regeln</strong> schreiben, die spezifisch auf die gefundene Malware zugeschnitten sind</li>
+<li><strong>Prozess-Dump</strong> eines verdaechtigen Prozesses mit <code>windows.dumpfiles --pid <PID></code> durchfuehren und den Dump mit PE-Bear/PEStudio statisch analysieren</li>
+<li><strong>Vergleichsanalyse:</strong> Den gleichen Dump mit Volatility 2 analysieren und die Unterschiede zu Volatility 3 dokumentieren</li>
+<li><strong>MFT-Parsing</strong> des Dumps: <code>windows.mftscan</code> verwenden und mit den Prozessen korrelieren</li>
+</ul>
+
+</article>
+</main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../nav-order.js"></script>
+<script src="../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MemLabs-1 — DF Field Notes</title>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../../index.html">Startseite</a></li>
+    <li><a href="../../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+    <li><details open><summary>CTF-Writeups</summary><ul>
+      <li><a href="../../../10-ctf-writeups/htb/meerkat/README.html">HTB — Meerkat</a></li>
+      <li><a href="../../../10-ctf-writeups/htb/campfire-1/README.html">HTB — Campfire-1</a></li>
+      <li><a href="../../../10-ctf-writeups/misc-ctf/memlabs-1/README.html">Misc — MemLabs-1</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../index.html">CTF-Writeups</a> / MemLabs-1</span>
+</nav>
+<main><article>
+<h1>MemLabs-1 — Memory Forensics Grundlagen <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#info">Challenge-Info</a></li>
+<li><a href="#szenario">Szenario</a></li>
+<li><a href="#tools">Eingesetzte Tools</a></li>
+<li><a href="#walkthrough">Walkthrough</a></li>
+<li><a href="#flag">Flag und Erklärung</a></li>
+<li><a href="#lessons">Lessons Learned</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="info">Challenge-Info</h2>
+
+<table>
+<thead><tr><th>Eigenschaft</th><th>Wert</th></tr></thead><tbody>
+<tr><td><strong>Plattform</strong></td><td>MemLabs (GitHub: stuxnet-crisis/memlabs)</td></tr>
+<tr><td><strong>Typ</strong></td><td>Memory Forensics CTF Challenge</td></tr>
+<tr><td><strong>Name</strong></td><td>Lab 1 — Beginner's Luck</td></tr>
+<tr><td><strong>Kategorie</strong></td><td>Memory Forensics, Einsteiger-Challenge</td></tr>
+<tr><td><strong>Schwierigkeit</strong></td><td>Grundlagen</td></tr>
+<tr><td><strong>Datenformat</strong></td><td>RAM-Dump (.raw)</td></tr>
+<tr><td><strong>Ziel</strong></td><td>Finde die versteckte Flag im RAM-Dump</td></tr>
+</tbody></table>
+
+<h2 id="szenario">Szenario</h2>
+<p>Ein Forensik-Anfänger hat einen RAM-Dump eines Windows-Systems erhalten. Darin ist eine Flag versteckt. Die Herausforderung ist einfach: Finde die Flag mit grundlegenden Memory-Forensik-Techniken. Es gibt keine komplexe Malware, keine obfuskierten Daten — nur einen sauberen Einstieg in die Welt der Speicheranalyse mit Volatility.</p>
+
+<p>Diese Challenge ist ideal, um die wichtigsten Volatility-Befehle zu erlernen und ein Gefühl für die Struktur von RAM-Dumps zu entwickeln. Ziel ist es, den gesamten Workflow einer Memory-Analyse einmal von Anfang bis Ende durchzugehen: Profilbestimmung, Prozessanalyse, Dateiextraktion und String-Suche.</p>
+
+<div class="callout tip"><strong>Perfekt für Einsteiger:</strong> MemLabs ist eine der beliebtesten Memory-Forensics-CTF-Reihen auf GitHub. Die Challenges sind didaktisch aufgebaut und decken alle wichtigen Techniken ab — von einfachen Flag-Suchen bis zu komplexer Malware-Analyse.</div>
+
+<h2 id="tools">Eingesetzte Tools</h2>
+
+<table>
+<thead><tr><th>Tool</th><th>Zweck</th></tr></thead><tbody>
+<tr><td><strong>Volatility 3</strong></td><td>Modernes Framework für Memory-Forensik (Python-basiert)</td></tr>
+<tr><td><strong>strings</strong></td><td>Rohdaten-Scan nach Klartext-Strings (eingebaut in Linux/Unix)</td></tr>
+<tr><td><strong>xxd / hexdump</strong></td><td>Hexadezimale Analyse extrahierter Dateien</td></tr>
+<tr><td><strong>file</strong></td><td>Dateityp-Erkennung (magic bytes)</td></tr>
+</tbody></table>
+
+<h2 id="walkthrough">Walkthrough — Schritt für Schritt</h2>
+
+<h3>Schritt 1: OS-Profil mit imageinfo / windows.info bestimmen</h3>
+
+<p>Jede Memory-Analyse beginnt mit der Bestimmung des Betriebssystem-Profils. Volatility muss wissen, welche Windows-Version und Architektur vorliegt, um die Kernel-Datenstrukturen korrekt zu interpretieren:</p>
+
+<pre><code># Volatility 3 — System-Informationen
+vol -f memdump.raw windows.info
+
+# Ausgabe interpretieren:
+# - NT Build: z. B. 7601 → Windows 7 / Server 2008 R2
+# - NtMajorVersion / NtMinorVersion: 6.1 = Windows 7
+# - SystemRoot: C:\Windows
+# - Anzahl der Prozessoren, RAM-Grösse usw.</code></pre>
+
+<table>
+<thead><tr><th>NT Build</th><th>Windows-Version</th></tr></thead><tbody>
+<tr><td>7600 / 7601</td><td>Windows 7 / Server 2008 R2</td></tr>
+<tr><td>9200</td><td>Windows 8 / Server 2012</td></tr>
+<tr><td>9600</td><td>Windows 8.1 / Server 2012 R2</td></tr>
+<tr><td>10240</td><td>Windows 10 (1507)</td></tr>
+<tr><td>14393</td><td>Windows 10 1607 / Server 2016</td></tr>
+<tr><td>17763</td><td>Windows 10 1809 / Server 2019</td></tr>
+</tbody></table>
+
+<h3>Schritt 2: Prozessliste analysieren (pslist)</h3>
+
+<p>Der nächste logische Schritt: Welche Prozesse liefen zum Zeitpunkt der Dump-Erstellung? Wir suchen nach ungewöhnlichen Prozessen, die nicht zum normalen Windows-Start gehören:</p>
+
+<pre><code># Alle laufenden Prozesse auflisten
+vol -f memdump.raw windows.pslist
+
+# Prozessbaum für Parent-Child-Beziehungen
+vol -f memdump.raw windows.pstree
+
+# Achten auf:
+# - cmd.exe, powershell.exe → Was wurde hier gestartet?
+# - notepad.exe, mspaint.exe → Enthalten möglicherweise die Flag!
+# - Unbekannte Prozesse mit kryptischen Namen</code></pre>
+
+<div class="callout info"><strong>Worauf achten?</strong> Notepad.exe im Speicher = jemand hat eine Textdatei geöffnet. Paint.exe = jemand hat ein Bild bearbeitet. Browser-Prozesse = mögliche Downloads oder gespeicherte Passwörter. All diese Prozesse können Hinweise auf die Flag enthalten.</div>
+
+<h3>Schritt 3: Command-Line-Argumente prüfen (cmdline)</h3>
+
+<p>Die Command-Line eines Prozesses verrät, wie und mit welchen Argumenten er gestartet wurde. Hier finden sich oft direkte Hinweise auf die Flag oder den Dateipfad:</p>
+
+<pre><code># Command-Line aller Prozesse
+vol -f memdump.raw windows.cmdline
+
+# Oder spezifisch filtern
+vol -f memdump.raw windows.cmdline | grep -iE "notepad|cmd|powershell|flag|hint"
+
+# Beispiel-Ausgabe:
+# notepad.exe pid: 1234
+# CommandLine: "C:\Windows\system32\NOTEPAD.EXE" C:\Users\User\Desktop\important.txt</code></pre>
+
+<p>In MemLabs-1 findet man typischerweise einen <code>cmd.exe</code>-Prozess oder ein <code>notepad.exe</code>, das eine Datei mit einem Hinweis oder der Flag selbst geöffnet hat. Die Command-Line enthält den Dateipfad.</p>
+
+<h3>Schritt 4: Filescan und Dumpfiles — Dateien aus dem RAM extrahieren</h3>
+
+<p>Volatility kann Dateien, die zum Zeitpunkt des Dumps im Speicher waren (weil sie von einem Prozess verwendet wurden), identifizieren und extrahieren:</p>
+
+<pre><code># Alle im Speicher referenzierten Dateien auflisten
+vol -f memdump.raw windows.filescan
+
+# Nach interessanten Dateien filtern
+vol -f memdump.raw windows.filescan | grep -iE "\.txt$|flag|hint|secret|important|desktop"
+
+# Datei anhand der Offset-Adresse dumpen
+vol -f memdump.raw -o ./extracted/ windows.dumpfiles --virtaddr 0x1234567890
+
+# Alternativ: Alle .txt- und .png-Dateien dumpen
+vol -f memdump.raw windows.filescan | grep -E "\.txt|\.png|\.jpg" > interesting_files.txt
+# Dann jede Offset-Adresse manuell dumpen</code></pre>
+
+<table>
+<thead><tr><th>Dateityp</th><th>Warum relevant?</th></tr></thead><tbody>
+<tr><td><code>.txt</code></td><td>Enthält möglicherweise die Flag im Klartext.</td></tr>
+<tr><td><code>.png / .jpg</code></td><td>Flag könnte in ein Bild eingebettet (Steganografie) oder als Text im Bild dargestellt sein.</td></tr>
+<tr><td><code>.zip / .rar</code></td><td>Passwortgeschützte Archive — Flag könnte darin sein.</td></tr>
+<tr><td><code>.exe</code> (unbekannt)</td><td>Malware? Könnte die Flag als String eingebettet haben.</td></tr>
+</tbody></table>
+
+<h3>Schritt 5: Strings-Suche — Die letzte Eskalation</h3>
+
+<p>Wenn <code>filescan</code> keine klaren Hinweise liefert, durchsuchen wir den gesamten RAM-Dump nach Klartext-Strings. Dies ist die umfassendste, aber auch rechenintensivste Methode:</p>
+
+<pre><code># Alle ASCII-Strings mit Mindestlänge 6 extrahieren
+strings -n 6 memdump.raw > all_strings.txt
+
+# Nach Flag-Format suchen (typische CTF-Formate)
+grep -iE "flag\{|ctf\{|insec\{|htb\{|memlabs\{|FLAG:" all_strings.txt
+
+# Oder mit Volatility 3
+vol -f memdump.raw windows.strings | grep -iE "flag\{|ctf\{"
+
+# Auch nach Base64-encodierten Strings suchen
+strings memdump.raw | grep -E "^[A-Za-z0-9+/]{20,}={0,2}$" > b64_strings.txt</code></pre>
+
+<div class="callout tip"><strong>Flag-Formate in CTFs:</strong> Übliche Formate sind <code>flag{...}</code>, <code>CTF{...}</code>, <code>insec{...}</code>, <code>HTB{...}</code> oder einfach <code>FLAG:</code> gefolgt vom eigentlichen Text. Kennt man das Format, kann man gezielt danach suchen.</div>
+
+<h3>Schritt 6: Versteckte Daten in Prozess-Memory-Bereichen</h3>
+
+<p>Manchmal ist die Flag nicht als Datei, sondern direkt im Speicher eines Prozesses versteckt — z. B. in einem offenen Notepad-Fenster oder in der Kommandozeile eines Terminals:</p>
+
+<pre><code># Prozess-Speicher dumpen
+vol -f memdump.raw -o ./procdump/ windows.memmap --pid 1234 --dump
+
+# Strings auf dem Prozess-Dump
+strings ./procdump/pid.1234.dmp | grep -iE "flag|ctf|hint"
+
+# Alternativ: Alle Prozesse dumpen und batchweise nach Flag suchen
+for pid in $(vol -f memdump.raw windows.pslist --quiet); do
+  vol -f memdump.raw -o ./procdump/ windows.memmap --pid $pid --dump
+  strings ./procdump/pid.$pid.dmp | grep -i "flag"
+done</code></pre>
+
+<h3>Zusammenfassung des Analyse-Workflows</h3>
+
+<table>
+<thead><tr><th>Schritt</th><th>Befehl</th><th>Was wir suchen</th></tr></thead><tbody>
+<tr><td>1. Profil</td><td><code>windows.info</code></td><td>OS-Version, Architektur, Build</td></tr>
+<tr><td>2. Prozesse</td><td><code>windows.pslist</code> / <code>windows.pstree</code></td><td>Verdächtige Prozesse, cmd, notepad, paint</td></tr>
+<tr><td>3. Command-Lines</td><td><code>windows.cmdline</code></td><td>Mit welchen Argumenten wurden Prozesse gestartet?</td></tr>
+<tr><td>4. Dateien</td><td><code>windows.filescan</code> + <code>windows.dumpfiles</code></td><td>Interessante Dateien extrahieren</td></tr>
+<tr><td>5. Strings</td><td><code>strings</code> / <code>windows.strings</code></td><td>Flag im Klartext finden</td></tr>
+<tr><td>6. Prozess-Memory</td><td><code>windows.memmap</code></td><td>Speicher einzelner Prozesse nach Flag durchsuchen</td></tr>
+</tbody></table>
+
+<h2 id="flag">Flag und Erklärung</h2>
+
+<p>Die Flag in MemLabs-1 findet sich typischerweise auf einem der folgenden Wege:</p>
+
+<ol>
+<li><strong>Variante A — Flag in Command-Line:</strong> Ein <code>cmd.exe</code>-Prozess wurde mit einem <code>echo</code>-Befehl gestartet, der die Flag ausgibt. Die Command-Line in <code>windows.cmdline</code> enthält die Flag direkt.</li>
+<li><strong>Variante B — Flag in Notepad:</strong> Notepad.exe hat eine Textdatei mit der Flag geöffnet. Über <code>windows.memmap</code> den Notepad-Speicher dumpen und mit <code>strings</code> durchsuchen.</li>
+<li><strong>Variante C — Flag in Datei:</strong> Eine <code>.txt</code>-Datei auf dem Desktop enthält die Flag. Mit <code>windows.filescan</code> finden und mit <code>windows.dumpfiles</code> extrahieren.</li>
+<li><strong>Variante D — Flag in Bild:</strong> Eine PNG-Datei zeigt die Flag als Text im Bild. Mit <code>filescan</code> finden, dumpen und öffnen.</li>
+</ol>
+
+<div class="callout info"><strong>Erklärung des Lösungswegs:</strong> Memory-Forensik funktioniert, weil das Betriebssystem ALLE Daten im RAM hält — auch solche, die nie auf die Festplatte geschrieben wurden. Ein offenes Notepad-Fenster, ein laufender Befehl in cmd.exe, ein angezeigtes Bild — all das existiert als Klartext (oder in dekodierbarer Form) im Arbeitsspeicher. Volatility ermöglicht es, diese flüchtigen Daten zu extrahieren und zu analysieren.</div>
+
+<h2 id="lessons">Lessons Learned</h2>
+
+<ul>
+<li><strong>Der RAM vergisst nie — solange der Strom an ist:</strong> Selbst Daten, die nie auf Disk gespeichert wurden, sind im RAM-Dump vollständig vorhanden. Das macht Memory-Forensik so mächtig.</li>
+<li><strong>Strings sind dein bester Freund:</strong> Der Befehl <code>strings</code> ist das Schweizer Taschenmesser der Memory-Forensik. Er findet Klartext-Daten, die in keinem strukturierten Tool auftauchen.</li>
+<li><strong>Command-Lines sind Gold wert:</strong> <code>windows.cmdline</code> zeigt exakt, wie ein Prozess gestartet wurde — oft inklusive Passwörtern, Dateipfaden und Flags.</li>
+<li><strong>Volatility 3 ist der Standard:</strong> Für alle grundlegenden Analysen reicht Volatility 3 völlig aus. Es ist schneller, besser dokumentiert und aktiv entwickelt.</li>
+<li><strong>Der Analyse-Workflow ist immer gleich:</strong> Profil → Prozesse → Command-Lines → Dateien → Strings → Prozess-Memory. Dieses Schema funktioniert für 90 % aller Memory-Forensik-Aufgaben.</li>
+<li><strong>CTFs lehren echte Forensik:</strong> MemLabs bildet realistische Szenarien ab. Die Techniken, die du hier lernst, sind direkt auf echte Incident-Response-Fälle übertragbar.</li>
+</ul>
+
+<h2 id="quellen">Quellen / Weiterführendes</h2>
+<ul>
+<li><a href="https://github.com/stuxnet-crisis/memlabs">MemLabs — GitHub Repository (alle Challenges)</a></li>
+<li><a href="https://github.com/volatilityfoundation/volatility3">Volatility 3 — Offizielles GitHub Repository</a></li>
+<li><a href="https://volatility3.readthedocs.io/">Volatility 3 Dokumentation</a></li>
+<li><a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference">Volatility 2 — Command Reference (Wiki)</a></li>
+<li><a href="https://book.volatility.org/">The Art of Memory Forensics (kostenloses PDF)</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLW5y1tjAOzKoyArjp7Wb_GU52jHuGlY7a">13Cubed — Memory Forensics YouTube-Serie</a></li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../../nav-order.js"></script>
+<script src="../../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

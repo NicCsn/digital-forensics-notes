@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email-Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details open><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Email-Forensik</span>
+</nav>
+<main><article>
+<h1>Email-Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#header">Email-Header-Anatomie</a></li>
+<li><a href="#dkim">DKIM — DomainKeys Identified Mail</a></li>
+<li><a href="#spf">SPF — Sender Policy Framework</a></li>
+<li><a href="#dmarc">DMARC — Domain-based Message Authentication</a></li>
+<li><a href="#phishing">Phishing-Indikatoren</a></li>
+<li><a href="#praxis">Praktische Analyse</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Email-Forensik analysiert die Metadaten und den Inhalt von Emails, um Absender zu verifizieren, Faelschungen zu erkennen und Kommunikationswege zu rekonstruieren. Die drei Saeulen der Email-Authentifizierung — <strong>SPF, DKIM, DMARC</strong> — helfen, Spoofing zu erkennen, sind aber kein Allheilmittel.</p>
+
+<h2 id="header">Email-Header-Anatomie</h2>
+<p>Der Email-Header enthaelt die gesamte Routing-Information. Von unten nach oben lesen — die unterste <code>Received</code>-Zeile ist der Urspungsserver, die oberste der letzte Hop vor deinem Posteingang.</p>
+
+<table>
+<thead><tr><th>Header-Feld</th><th>Bedeutung</th><th>Forensischer Wert</th></tr></thead><tbody>
+<tr><td><strong>Received</strong></td><td>Jeder SMTP-Server fuegt diese Zeile hinzu (von, von-IP, fuer, Zeitstempel)</td><td>KRITISCH: Zeigt den kompletten Mail-Pfad. Faelschungen erkennt man an inkonsistenten Received-Ketten</td></tr>
+<tr><td><strong>Message-ID</strong></td><td>Eindeutige ID, vom ersten sendenden Server generiert</td><td>Domain in Message-ID zeigt den Urspungsserver (auch wenn From gefaelscht ist)</td></tr>
+<tr><td><strong>Return-Path</strong></td><td>Wohin gehen Bounces? (Envelope-From, MAIL FROM)</td><td>Muss mit SPF uebereinstimmen — Abweichungen deuten auf Spoofing</td></tr>
+<tr><td><strong>From</strong></td><td>Angezeigter Absender (Header-From)</td><td>KANN GEFAELSCHT SEIN! Darf NIE ohne DKIM/SPF-Prüfung vertraut werden</td></tr>
+<tr><td><strong>Reply-To</strong></td><td>Wohin gehen Antworten?</td><td>Abweichung von From = Phishing-Indikator</td></tr>
+<tr><td><strong>DKIM-Signature</strong></td><td>Kryptografische Signatur des Email-Inhalts</td><td>Beweist, dass die Email von der signierenden Domain autorisiert wurde</td></tr>
+<tr><td><strong>Authentication-Results</strong></td><td>Ergebnis der SPF/DKIM/DMARC-Prüfung durch empfangenden Server</td><td>Wichtigste Zeile fuer schnelle Verifikation</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Received-Kette lesen:</strong> Von UNTEN nach OBEN. <code>Received: from mail.example.com (mail.example.com [1.2.3.4]) by mx.target.com ...</code> — die IP <code>1.2.3.4</code> ist der Absender-Server. Mit WHOIS und GeoIP pruefen: Passt die IP zur behaupteten Domain?</div>
+
+<h2 id="dkim">DKIM — DomainKeys Identified Mail</h2>
+<p>DKIM signiert den Email-Inhalt (Body + ausgewaehlte Header) mit einem Private Key der Absender-Domain. Der empfangende Server verifiziert die Signatur mit dem Public Key aus dem DNS der Domain.</p>
+
+<table>
+<thead><tr><th>Feld in DKIM-Signature</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td><code>d=</code></td><td>Signierende Domain (z.B. <code>d=example.com</code>)</td></tr>
+<tr><td><code>s=</code></td><td>Selector — welcher DNS-Key? (z.B. <code>s=202406</code>)</td></tr>
+<tr><td><code>h=</code></td><td>Signierte Header (z.B. <code>h=from:to:subject:date</code>)</td></tr>
+<tr><td><code>bh=</code></td><td>Body-Hash (SHA256)</td></tr>
+<tr><td><code>b=</code></td><td>Die eigentliche Signatur</td></tr>
+</tbody></table>
+
+<p><strong>Forensisch:</strong> DKIM-Signatur validieren = <code>dig -t txt [selector]._domainkey.[domain]</code>. Stimmt die Signatur, kam die Email definitiv von dieser Domain. Stimmt sie nicht, kann die Email manipuliert oder gefaelscht sein.</p>
+
+<div class="callout warning"><strong>DKIM sagt NICHTS ueber den From-Header:</strong> DKIM prueft nur, OB die Signatur gueltig ist und von WELCHER Domain sie stammt. Die signierende Domain (<code>d=</code>) kann eine andere sein als die im From-Header! Nur DMARC erzwingt die Uebereinstimmung.</div>
+
+<h2 id="spf">SPF — Sender Policy Framework</h2>
+<p>SPF ist ein DNS-TXT-Record, der festlegt, welche Server fuer eine Domain Emails senden duerfen. SPF validiert den <strong>Return-Path (Envelope-From)</strong>, NICHT den sichtbaren From-Header.</p>
+
+<pre><code># SPF-Record abfragen
+dig -t txt example.com | grep spf
+
+# Beispiel: "v=spf1 ip4:192.0.2.0/24 include:_spf.google.com -all"</code></pre>
+
+<table>
+<thead><tr><th>SPF-Mechanismus</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td><code>+all</code></td><td>JEDER Server darf senden — SPF wirkungslos!</td></tr>
+<tr><td><code>-all</code></td><td>NUR gelistete Server duerfen senden (HARDFAIL)</td></tr>
+<tr><td><code>~all</code></td><td>Andere Server duerfen senden, aber mit Warnung (SOFTFAIL)</td></tr>
+<tr><td><code>?all</code></td><td>Neutral — keine Aussage</td></tr>
+<tr><td><code>include:</code></td><td>Bezieht SPF einer anderen Domain ein (z.B. Google Workspace)</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>SPF-Grenzen:</strong> SPF schuetzt NUR den Return-Path, NICHT den From-Header. SPF bricht bei mehr als 10 DNS-Lookups ab (= Angriffsvektor). SPF validiert nicht, ob der Inhalt manipuliert wurde — dafuer braucht es DKIM.</div>
+
+<h2 id="dmarc">DMARC — Domain-based Message Authentication, Reporting and Conformance</h2>
+<p>DMARC verbindet SPF und DKIM und erzwingt, dass die <strong>Domain im From-Header</strong> mit SPF oder DKIM uebereinstimmt (Alignment). DMARC definiert, was bei Fehlschlag passiert.</p>
+
+<pre><code># DMARC-Record abfragen
+dig -t txt _dmarc.example.com
+
+# Beispiel: "v=DMARC1; p=reject; rua=mailto:dmarc@example.com; pct=100"</code></pre>
+
+<table>
+<thead><tr><th>DMARC-Policy</th><th>Wirkung bei Fehlschlag</th></tr></thead><tbody>
+<tr><td><code>p=none</code></td><td>Nur Report, keine Aktion (Monitoring-Modus)</td></tr>
+<tr><td><code>p=quarantine</code></td><td>Email in Spam-Ordner verschieben</td></tr>
+<tr><td><code>p=reject</code></td><td>Email NICHT zustellen (vollstaendiger Schutz)</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Forensische DMARC-Prüfung:</strong> <code>Authentication-Results</code>-Header zeigt <code>dmarc=pass</code> oder <code>dmarc=fail</code>. Bei <code>fail</code>: Entweder ist die Email gefaelscht, ODER die sendende Domain hat DMARC falsch konfiguriert. Beides relevant fuer die Analyse.</div>
+
+<h2 id="phishing">Phishing-Indikatoren</h2>
+
+<table>
+<thead><tr><th>Indikator</th><th>Was pruefen?</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Display-Name-Spoofing</strong></td><td>Der angezeigte Name sieht echt aus, aber die Email-Adresse ist falsch</td><td><code>From: "PayPal Security" &lt;phish@evil.com&gt;</code></td></tr>
+<tr><td><strong>Cousin-Domain</strong></td><td>Domain sieht auf den ersten Blick richtig aus</td><td><code>paypaI.com</code> (grosses i statt L) oder <code>rnicrosoft.com</code> (rn statt m)</td></tr>
+<tr><td><strong>Reply-To-Mismatch</strong></td><td>Reply-To weicht von From ab</td><td><code>From: support@bank.com</code> aber <code>Reply-To: hacker@evil.com</code></td></tr>
+<tr><td><strong>Urgency/Pressure</strong></td><td>Sprachmuster: "IHR KONTO WIRD GESPERRT!"</td><td>Dringlichkeit, Drohung, ungewoehnliche Grossschreibung</td></tr>
+<tr><td><strong>Fehlende DKIM/SPF</strong></td><td>Serioese Firmen haben DKIM+SPF+DMARC konfiguriert</td><td>Email von "@paypal.com" ohne DKIM = hoechst verdaechtig</td></tr>
+<tr><td><strong>Ungewoehnliche Links</strong></td><td>Anzeigetext != tatsaechlicher Link</td><td><code>&lt;a href="http://evil.com"&gt;https://paypal.com/login&lt;/a&gt;</code></td></tr>
+<tr><td><strong>Anhang-Typ</strong></td><td>Ausfuehrbare Dateien, Office-Makros, ISO/IMG</td><td><code>.exe</code>, <code>.docm</code>, <code>.iso</code>, <code>.img</code>, passwortgeschuetzte ZIPs</td></tr>
+</tbody></table>
+
+<h2 id="praxis">Praktische Analyse — Workflow</h2>
+
+<h3>Email-Header analysieren (manuell)</h3>
+<ol>
+<li>Header aus Email-Client extrahieren (bei Gmail: "Original anzeigen", bei Outlook: "Nachrichtendetails")</li>
+<li>Received-Kette von UNTEN nach OBEN lesen — Ursprungs-IP identifizieren</li>
+<li>Ursprungs-IP via WHOIS + GeoIP pruefen: Passt die IP zur behaupteten Domain?</li>
+<li><code>Authentication-Results</code> pruefen: SPF/DKIM/DMARC = pass oder fail?</li>
+<li>DKIM-Signatur manuell verifizieren: Public Key via DNS abrufen und vergleichen</li>
+<li>Bei Phishing-Verdacht: Links extrahieren, Attachments auf Malware scannen, Domain-Reputation pruefen</li>
+</ol>
+
+<h3>Tools</h3>
+<ul>
+<li><code>eml_parser</code> (Python): Extrahiert Header, Body, Attachments aus .eml-Dateien</li>
+<li><a href="https://mxtoolbox.com/EmailHeaders.aspx">MXToolBox Email Header Analyzer</a> — visuelle Header-Analyse</li>
+<li><a href="https://toolbox.googleapps.com/apps/messageheader/">Google Message Header Analyzer</a></li>
+<li><code>swaks</code> (Swiss Army Knife SMTP): Test-Emails fuer SPF/DKIM/DMARC-Validierung senden</li>
+<li><code>mutt</code> oder <code>neomutt</code>: Terminal-Email-Client, zeigt volle Header an</li>
+<li>Virustotal: URLs und Attachments auf Malware scannen</li>
+</ul>
+
+<div class="callout warning"><strong>Gerichtsfest dokumentieren:</strong> Screenshots von Headern, DKIM-Validierung, WHOIS-Ergebnissen. Datum und Uhrzeit jeder Prüfung notieren. DNS-Ergebnisse koennen sich aendern — deshalb IMMER auch die DNS-Antwort als Text speichern.</div>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li>RFC 5321 (SMTP), RFC 5322 (Internet Message Format)</li>
+<li>RFC 7208 (SPF), RFC 6376 (DKIM), RFC 7489 (DMARC)</li>
+<li><a href="https://mxtoolbox.com/">MXToolBox</a> — SPF/DKIM/DMARC/DNS-Prüfung</li>
+<li><a href="https://www.dmarcanalyzer.com/">DMARC Analyzer</a></li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

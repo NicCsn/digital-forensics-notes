@@ -7,46 +7,479 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Dateisysteme</span>
+  <span class="nav-crumb">/ <a href="../02-betriebssysteme/index.html">Betriebssysteme</a> / Dateisysteme</span>
 </nav>
 <main><article>
 <h1>Dateisysteme im Ueberblick <span class="diff-badge diff-beginner">Grundlagen</span></h1>
 
 <h2 id="kurz">Kurzueberblick</h2>
-<p>Ein Dateisystem organisiert, wie Daten auf einem Speichermedium abgelegt, gefunden und verwaltet werden. Jedes hat eigene Metadaten, Zeitstempel und Strukturen — forensisch entscheidend.</p>
+<p>Ein Dateisystem organisiert, wie Daten auf einem Speichermedium abgelegt, gefunden und verwaltet werden. Jedes hat eigene Metadaten, Zeitstempel und Strukturen — forensisch entscheidend. Diese Seite ist die <strong>wichtigste Grundlage fuer alle Datentraeger-Forensik</strong>.</p>
 
-<h2 id="details">Die wichtigsten Dateisysteme</h2>
-<table><thead><tr><th>Dateisystem</th><th>Plattform</th><th>Struktur</th><th>Forensische Goldgrube</th></tr></thead><tbody>
-<tr><td><strong>FAT</strong></td><td>USB, SD</td><td>FAT-Tabelle</td><td>E5-Marker bei geloeschten Dateien</td></tr>
-<tr><td><strong>NTFS</strong></td><td>Windows</td><td>MFT (1024 B/Eintrag)</td><td>$MFT, $LogFile, $UsnJrnl</td></tr>
-<tr><td><strong>ext4</strong></td><td>Linux</td><td>Inodes + Journal</td><td>Inodes geloeschter Dateien, Journal-Wiederholung</td></tr>
-<tr><td><strong>APFS</strong></td><td>macOS, iOS</td><td>Container + Snapshots</td><td>Snapshots = alte Versionen rueckholbar</td></tr>
-<tr><td><strong>ZFS</strong></td><td>Linux, Solaris</td><td>Copy-on-Write + RAID-Z</td><td>Snapshots, Dedup, Kompression</td></tr>
+<h2 id="fat32">FAT32 — das einfachste (und aelteste) Dateisystem</h2>
+
+<h3>Aufbau</h3>
+
+<pre><code>┌────────────┬───────────┬───────────┬──────────────────────────────────────┐
+│ Bootsector │  FAT1     │  FAT2     │  Data Area                           │
+│ (Sektor 0) │ (Kopie 1) │ (Kopie 2) │ Root-Dir + Dateien + Unterverz.      │
+└────────────┴───────────┴───────────┴──────────────────────────────────────┘</code></pre>
+
+<h3>FAT-Eintrags-Zustaende</h3>
+
+<table>
+<thead><tr><th>Wert (32-Bit)</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td><code>0x00000000</code></td><td>Cluster ist frei</td></tr>
+<tr><td><code>0x00000002</code> – <code>0x0FFFFFEF</code></td><td>Naechster Cluster in der Kette (Zeiger)</td></tr>
+<tr><td><code>0x0FFFFFF0</code> – <code>0x0FFFFFF6</code></td><td>Reservierte Cluster</td></tr>
+<tr><td><code>0x0FFFFFF7</code></td><td>Bad Cluster (defekt)</td></tr>
+<tr><td><code>0x0FFFFFF8</code> – <code>0x0FFFFFFF</code></td><td>End-of-File (EOF) — letzter Cluster einer Datei</td></tr>
 </tbody></table>
 
-<h2 id="vergleich">Forensischer Vergleich</h2>
-<table><thead><tr><th>Feature</th><th>FAT</th><th>NTFS</th><th>ext4</th><th>APFS</th><th>ZFS</th></tr></thead><tbody>
-<tr><td>Journaling</td><td><span class="severity critical">Nein</span></td><td><span class="severity low">LogFile + USN</span></td><td><span class="severity low">3 Modi</span></td><td><span class="severity low">CoW</span></td><td><span class="severity low">ZIL</span></td></tr>
-<tr><td>Zeitstempel</td><td>2</td><td>4 (MACE)</td><td>4</td><td>Nanosek.</td><td>Nanosek.</td></tr>
-<tr><td>Verschluesselung</td><td><span class="severity critical">Nein</span></td><td><span class="severity medium">EFS</span></td><td><span class="severity medium">LUKS</span></td><td><span class="severity low">Nativ</span></td><td><span class="severity low">Nativ</span></td></tr>
-<tr><td>Snapshots</td><td><span class="severity critical">Nein</span></td><td><span class="severity medium">VSS</span></td><td><span class="severity critical">Nein</span></td><td><span class="severity low">Ja</span></td><td><span class="severity low">Ja</span></td></tr>
+<h3>Geloeschte Dateien unter FAT32</h3>
+
+<pre><code># FAT32-Eintrag einer geloeschten Datei:
+# 1. Erstes Zeichen des Dateinamens wird auf 0xE5 gesetzt
+#    "REPORT .DOC" → "0xE5PORT .DOC"
+# 2. FAT-Cluster-Eintraege werden auf 0x00 gesetzt (Kette zerstört!)
+# 3. Daten-Cluster bleiben physisch erhalten — Carving möglich!
+#
+# Wiederherstellung:
+# - Kurzer Dateiname: 0xE5 ersetzen
+# - Fragmentierte Datei: Cluster-Kette nicht mehr rekonstruierbar</code></pre>
+
+<div class="callout warning"><strong>FAT32-Schwaeche:</strong> Bei Loeschung werden die FAT-Eintraege genullt — die Cluster-Kette ist <strong>unwiederbringlich verloren</strong>. Fragmentierte Dateien sind daher nach Loeschung nicht mehr per FAT rekonstruierbar. Nur File-Carving (Header/Footer-Suche) kann helfen.</div>
+
+<table>
+<thead><tr><th>Limitierung</th><th>Wert</th></tr></thead><tbody>
+<tr><td>Maximale Dateigroesse</td><td>4 GB (minus 1 Byte)</td></tr>
+<tr><td>Maximale Volumegroesse</td><td>2 TB (32 KB Clustergroesse)</td></tr>
+<tr><td>Maximale Pfadlaenge</td><td>260 Zeichen (8.3-Format: 12 Zeichen)</td></tr>
+<tr><td>Journaling</td><td><span class="severity critical">Keines</span></td></tr>
+<tr><td>Berechtigungen</td><td><span class="severity critical">Keine</span></td></tr>
+<tr><td>Zeitstempel</td><td>Nur Creation und Modified (2 Sekunden Aufloesung)</td></tr>
 </tbody></table>
 
-<details class="fold"><summary>Sleuth Kit Befehle</summary>
-<pre><code># Partition-Layout
-mmls image.dd
+<h2 id="ntfs">NTFS — das Windows-Arbeitspferd</h2>
 
-# Dateisystem-Info
-fsstat -o 2048 image.dd
+<h3>Master File Table (MFT)</h3>
 
-# Rekursives File Listing (auch geloeschte!)
-fls -r -o 2048 image.dd
+<p>Jede Datei und jedes Verzeichnis hat einen MFT-Eintrag (1024 Bytes). Die ersten 16 Eintraege sind reservierte Metadaten:</p>
 
-# Datei per Inode extrahieren
-icat -o 2048 image.dd 5</code></pre>
-</details>
+<table>
+<thead><tr><th>Eintrag</th><th>Name</th><th>Beschreibung</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td>0</td><td><strong>$MFT</strong></td><td>Die MFT selbst</td><td>Basis fuer jede Dateisystem-Analyse</td></tr>
+<tr><td>1</td><td><strong>$MFTMirr</strong></td><td>Backup der ersten 4 MFT-Eintraege</td><td>Vergleich mit $MFT bei Manipulation</td></tr>
+<tr><td>2</td><td><strong>$LogFile</strong></td><td>Transaktions-Journal (4 KB-Seiten)</td><td><strong>Forensisches Gold:</strong> Zeichnet alle Transaktionen auf. Redo/Undo-Operationen rekonstruierbar.</td></tr>
+<tr><td>3</td><td><strong>$Volume</strong></td><td>Volume-Informationen (Label, Version)</td><td>Erstellungsdatum des Volumes</td></tr>
+<tr><td>4</td><td><strong>$AttrDef</strong></td><td>Attribut-Definitionen</td><td>Hilft beim Parsen unbekannter Attribute</td></tr>
+<tr><td>5</td><td><strong>.</strong></td><td>Root-Verzeichnis</td><td>Startpunkt der Verzeichnisstruktur</td></tr>
+<tr><td>6</td><td><strong>$Bitmap</strong></td><td>Belegungs-Bitmap (1 Bit pro Cluster)</td><td>Zeigt, welche Cluster frei/belegt sind — Loeschvorgaenge nachvollziehbar</td></tr>
+<tr><td>7</td><td><strong>$Boot</strong></td><td>Bootsektor und Bootcode</td><td>Bootkit-Erkennung: mit sauberer Kopie vergleichen</td></tr>
+<tr><td>8</td><td><strong>$BadClus</strong></td><td>Bad-Cluster-Liste</td><td>Speicherorte von absichtlich markierten "defekten" Clustern (Datenversteck)</td></tr>
+<tr><td>9</td><td><strong>$Secure</strong></td><td>Sicherheits-Deskriptoren (ACLs)</td><td>Datei-Berechtigungen, Ownership</td></tr>
+<tr><td>10</td><td><strong>$UpCase</strong></td><td>Unicode-Uppercase-Tabelle</td><td>Keine forensiche Relevanz</td></tr>
+<tr><td>11</td><td><strong>$Extend</strong></td><td>Erweiterungen-Verzeichnis</td><td>Enthaelt $UsnJrnl, $ObjId, $Quota, $Reparse</td></tr>
+</tbody></table>
+
+<h3>MFT-Eintrag-Struktur (1024 Bytes)</h3>
+
+<pre><code>Offset  Inhalt
+0x00    "FILE" (Magic Number)
+0x14    Flag: 0x0000 = geloescht, 0x0001 = belegt, 0x0002 = Verzeichnis
+0x18    File Reference to Parent Directory
+0x20-0x38 $STANDARD_INFORMATION (Erstellt, Geaendert, MFT-geaendert, Zugriff)
+0x38-0x50 $FILE_NAME (+ weitere four-CC-Attribute)
+...
+        $DATA (resident: Daten im MFT-Eintrag; non-resident: Cluster-Runs)</code></pre>
+
+<h3>$STANDARD_INFORMATION vs $FILE_NAME — forensisches Gold</h3>
+
+<div class="callout tip"><strong>Timestomp-Erkennung:</strong> Malware manipuliert haeufig die Zeitstempel in <code>$STANDARD_INFORMATION</code> ("SI"), vergisst aber die vier Zeitstempel in <code>$FILE_NAME</code> ("FN"). <strong>Abweichung zwischen SI und FN = Manipulations-Indikator!</strong> Windows selbst aktualisiert FN nicht immer synchron — leichte Differenzen sind normal, extreme Abweichungen sind verdaechtig.</div>
+
+<table>
+<thead><tr><th>Attribut</th><th>Enthaltene Zeitstempel</th><th>Kann normaler Nutzer aendern?</th></tr></thead><tbody>
+<tr><td><strong>$STANDARD_INFORMATION</strong></td><td>Created, Modified, MFT-Modified, Accessed</td><td>Ja (Timestomp-Tools, <code>SetFileTime</code>)</td></tr>
+<tr><td><strong>$FILE_NAME</strong></td><td>Created, Modified, MFT-Modified, Accessed</td><td>Nicht direkt via API (nur NTFS-Treiber)</td></tr>
+</tbody></table>
+
+<h3>$LogFile — NTFS-Transaktionsjournal</h3>
+
+<p>Das <code>$LogFile</code> zeichnet alle NTFS-Metadaten-Aenderungen auf. Struktur:</p>
+<ul>
+<li>4 KB-Seiten, aufgeteilt in Log-Sequenzen (LSN)</li>
+<li><strong>Redo-Operationen:</strong> Wiederholbare Aenderungen (z.B. "schreibe Wert X an Offset Y")</li>
+<li><strong>Undo-Operationen:</strong> Rueckgaengigmachung bei Abbruch (z.B. "vorheriger Wert war Z")</li>
+<li>Zirkulaerer Puffer — aeltere Eintraege werden ueberschrieben</li>
+</ul>
+
+<div class="callout info"><strong>Forensisch:</strong> $LogFile enthaelt eine zeitlich begrenzte Historie aller Dateioperationen. Bei geloeschten Dateien koennen die Redo-Operationen zeigen, wann sie existiert haben und was ihr letzter Pfad war. Tools: <code>NTFS Log Tracker</code> oder manuelle Analyse mit Hex-Editor.</div>
+
+<h3>$UsnJrnl — USN Change Journal</h3>
+
+<pre><code>Datei: \$Extend\$UsnJrnl
+Stream: \$Extend\$UsnJrnl:$J (Daten)
+Stream: \$Extend\$UsnJrnl:$Max (Konfiguration)
+
+# Jeder Eintrag enthaelt:
+# - USN (Update Sequence Number — monoton steigend)
+# - Timestamp
+# - Change Reason (Flags: FILE_CREATE, FILE_DELETE, DATA_OVERWRITE, ...)
+# - MFT Reference (File ID)
+# - Parent MFT Reference</code></pre>
+
+<div class="callout tip"><strong>USN vs. $LogFile:</strong> $UsnJrnl persistiert laenger als $LogFile, enthaelt aber weniger Details. Beide zusammen geben ein umfassendes Bild der Dateisystem-Aktivitaet. Tools: <code>usncarve.py</code>, <code>usnjrnl</code> (Velociraptor).</div>
+
+<h3>ADS — Alternate Data Streams (NTFS-only)</h3>
+
+<pre><code># Jede NTFS-Datei kann mehrere Daten-Streams haben:
+Dateiname.txt                  ← Haupt-Stream (benannt: ::$DATA)
+Dateiname.txt:geheimer.exe     ← Alternativer Stream (unsichtbar im Explorer!)
+
+# Stream anhaengen:
+echo "versteckt" > datei.txt:geheim
+
+# Stream auslesen:
+more &lt; datei.txt:geheim
+
+# Forensich alle ADS finden:
+dir /r                              # Windows: zeigt ADS-Tag
+fls -r -o 2048 image.dd | grep :   # TSK: zeigt alle Streams</code></pre>
+
+<div class="callout danger"><strong>ADS als Malware-Versteck:</strong> Angreifer nutzen ADS, um Payloads vor dem Explorer zu verstecken. <code>dir</code> ohne <code>/r</code> zeigt nichts. Der IIS-Wurm "Sadmind/IIS" (2001) legte <code>exploit.exe</code> als <code>index.asp::$DATA</code> ab — der IIS fuehrte das Binary aus, der Explorer zeigte nur die harmlose ASP-Datei.</div>
+
+<h2 id="ext4">ext4 — das Linux-Dateisystem</h2>
+
+<h3>Struktur</h3>
+
+<pre><code>┌─────────────────────────────────────────────────────────────────────────┐
+│ Boot-   │           Block Groups (0 ... N)                              │
+│ sektor  │                                                               │
+│ (1024 B)│ ┌──────────┬──────────┬────────┬──────────┬────────────────┐  │
+│         │ │ Super-   │ Group    │ Data   │ Inode    │ Inode Table    │  │
+│         │ │ block    │ Descrip- │ Block  │ Bitmap   │ (je 256 Bytes) │  │
+│         │ │ (Kopie)  │ tors     │ Bitmap │          │                │  │
+│         │ └──────────┴──────────┴────────┴──────────┴────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────┘</code></pre>
+
+<h3>Superblock (Offset 1024)</h3>
+<table>
+<thead><tr><th>Feld</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td>Magic: <code>0xEF53</code></td><td>ext4-Erkennungssignatur</td></tr>
+<tr><td>Inode Count</td><td>Anzahl Inodes im Dateisystem</td></tr>
+<tr><td>Block Count</td><td>Anzahl Bloecke</td></tr>
+<tr><td>Block Size</td><td>1024, 2048, oder 4096 Bytes (meist 4096)</td></tr>
+<tr><td>Last Mounted</td><td>Letzter Mount-Zeitpunkt (forensich wertvoll!)</td></tr>
+<tr><td>Last Written</td><td>Letzter Schreibzugriff</td></tr>
+</tbody></table>
+
+<h3>Inodes</h3>
+<table>
+<thead><tr><th>Feld</th><th>Forensische Bedeutung</th></tr></thead><tbody>
+<tr><td><strong>i_mode</strong></td><td>Dateityp (regulaer, Verzeichnis, Symlink) + Berechtigungen</td></tr>
+<tr><td><strong>i_uid / i_gid</strong></td><td>Besitzer und Gruppe</td></tr>
+<tr><td><strong>i_size</strong></td><td>Dateigroesse in Bytes</td></tr>
+<tr><td><strong>i_atime / i_mtime / i_ctime</strong></td><td>Access, Modified, Changed (inode-Aenderungen)</td></tr>
+<tr><td><strong>i_dtime</strong></td><td>Deletion-Time — wann wurde die Datei geloescht?</td></tr>
+<tr><td><strong>i_links_count</strong></td><td>0 = geloescht (aber Inode noch nicht freigegeben?)</td></tr>
+<tr><td><strong>i_block[]</strong></td><td>Extent Tree Root (60 Bytes im Inode selbst)</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>dtime — forensische Goldgrube:</strong> Das <code>i_dtime</code>-Feld bleibt auch nach Loeschung erhalten (wenn der Inode nicht ueberschrieben wurde). Es gibt die genaue Loeschzeit an — ein seltenes Detail, das z.B. NTFS nicht direkt speichert.</div>
+
+<h3>Journal-Modi</h3>
+
+<table>
+<thead><tr><th>Modus</th><th>Was wird protokolliert?</th><th>Forensiche Relevanz</th></tr></thead><tbody>
+<tr><td><strong>journal</strong></td><td>Alle Daten + Metadaten (langsam, sicher)</td><td>Maximale Spuren: Dateiinhalte im Journal!</td></tr>
+<tr><td><strong>ordered</strong> (Standard)</td><td>Nur Metadaten; Daten vor Metadaten auf Disk</td><td>Gute Spurenlage: Metadaten-Aenderungen protokolliert</td></tr>
+<tr><td><strong>writeback</strong></td><td>Nur Metadaten; keine Reihenfolge-Garantie</td><td>Wenigste Spuren; moeglicherweise inkonsistent</td></tr>
+</tbody></table>
+
+<h3>Extent Tree</h3>
+
+<p>Ext4 verwendet <strong>Extents</strong> statt Block-Zeiger, um Fragmentierung zu reduzieren:</p>
+<pre><code># Ein Extent beschreibt: "Logische Bloecke 0-99 = Physische Bloecke 5000-5099"
+# Header (12 Bytes): magic=0xF30A, entries, depth, max_entries
+# Extent Entry (12 Bytes): logischer Block, Laenge, physischer Start-Block
+
+# Forensiche Relevanz:
+# - Extent Tree ist kompakt und im Inode/i_block gespeichert
+# - Kann mit fls und istat von TSK gelesen werden</code></pre>
+
+<h3>Orphaned Inode List</h3>
+
+<p>Ext4 fuehrt eine Liste "verwaister" Inodes: Dateien, die geoeffnet, aber deren Verzeichnis-Eintrag geloescht wurde. Solange ein Prozess die Datei offen haelt, bleibt sie ueber die Orphan-Liste erreichbar und kann forensich wiederhergestellt werden.</p>
+
+<h2 id="apfs">APFS — Apple File System</h2>
+
+<h3>Container-Modell</h3>
+
+<pre><code>┌─────────────────────────────────────────────────────────────────────┐
+│ APFS Container                                                      │
+│ ┌───────────────────┬───────────────────┬─────────────────────────┐ │
+│ │ Volume "Macintosh │ Volume "Data"     │ Volume "VM"             │ │
+│ │ HD" (System, RO)  │ (Benutzerdaten)   │ (Swap, Sleep-Image)    │ │
+│ └───────────────────┴───────────────────┴─────────────────────────┘ │
+│                               ↑                                     │
+│                   Space Sharing: Alle Volumes teilen sich            │
+│                   denselben freien Speicherplatz                    │
+└─────────────────────────────────────────────────────────────────────┘</code></pre>
+
+<table>
+<thead><tr><th>Feature</th><th>Beschreibung</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td><strong>Copy-on-Write (CoW)</strong></td><td>Geaenderte Bloecke werden an neue Stelle geschrieben, alte bleiben erhalten</td><td><strong>Forensisches Gold:</strong> Alte Dateiversionen koennen auf Disk existieren, solange die Bloecke nicht ueberschrieben werden</td></tr>
+<tr><td><strong>Snapshots</strong></td><td>Eingefrorener Volume-Zustand zu einem Zeitpunkt</td><td><strong>Zeitreise!</strong> Geloschte Dateien sind im Snapshot noch vorhanden. macOS erstellt automatisch Snapshots vor Updates. <code>tmutil listlocalsnapshots /</code></td></tr>
+<tr><td><strong>Space Sharing</strong></td><td>Alle Volumes eines Containers teilen den Speicher</td><td>Schwierige Partitionierung — ein Snapshot kann mehr Platz belegen als zu erwarten</td></tr>
+<tr><td><strong>Encryption</strong></td><td>Per-Volume-Schluessel; nativ und verpflichtend auf iOS</td><td>Ohne Schluessel = keine forensische Analyse moeglich</td></tr>
+<tr><td><strong>Fusion Drive</strong></td><td>SSD + HHD als logisches Volume; APFS managed den Tier-Abgleich</td><td>Dateien koennen auf zwei physischen Medien liegen — Imaging beider Laufwerke noetig!</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>APFS-Snapshot-Forensik in der Praxis:</strong> Auf einem Mac mit APFS gilt: <code>sudo tmutil listlocalsnapshots /</code> listet alle lokalen Snapshots. Mit <code>sudo mount -t apfs -r -o snapname=com.apple.TimeMachine.2025-01-01-120000 /dev/disk1s1 /mnt/snapshot</code> kann ein Snapshot als read-only eingebunden und mit Standard-Forensik-Tools analysiert werden. <strong>Geloeschte Dateien existieren oft noch in aelteren Snapshots!</strong></div>
+
+<h3>APFS-Dateistruktur</h3>
+
+<p>APFS verwendet <strong>B-Trees</strong> (speziell B*-Trees) fuer alle Metadaten — kein statisches Inode-Konzept wie ext4. Das erhoeht die forensische Komplexitaet, da die Struktur selbst erst in RAM/Storage aufgebaut werden muss.</p>
+
+<h2 id="zfs">ZFS — das Enterprise-Dateisystem</h2>
+
+<h3>Architektur</h3>
+
+<pre><code>┌───────────────────────────────────────────────┐
+│ ZFS Storage Pool (zpool)                       │
+│ ┌─────────┬─────────┬─────────┬─────────────┐ │
+│ │  vdev1  │  vdev2  │  vdev3  │  Cache/Log  │ │
+│ │ (mirror)│ (RAID-Z)│ (RAID-Z2)│ (ZIL/L2ARC) │ │
+│ └─────────┴─────────┴─────────┴─────────────┘ │
+│                       ↑                        │
+│  Alle vdevs bilden einen logischen Pool        │
+│  ┌─────────────────────────────────────────┐   │
+│  │ Datasets (Dateisysteme)                  │   │
+│  │ tank/home   tank/data   tank/vms         │   │
+│  └─────────────────────────────────────────┘   │
+└───────────────────────────────────────────────┘</code></pre>
+
+<h3>ZFS-Features mit forensischer Relevanz</h3>
+
+<table>
+<thead><tr><th>Feature</th><th>Beschreibung</th><th>Forensische Implikation</th></tr></thead><tbody>
+<tr><td><strong>Copy-on-Write</strong></td><td>Nie Daten am Original-Ort ueberschreiben</td><td>Alte Versionen bleiben auf Disk bis TRIM/GC</td></tr>
+<tr><td><strong>Snapshots</strong></td><td>Eingefrorene Dataset-Zustaende</td><td><code>zfs list -t snapshot</code> — komplette Zeitreise</td></tr>
+<tr><td><strong>Checksums (Merkle-Baum)</strong></td><td>Jeder Block mit SHA-256 geprueft</td><td>Datenmanipulation wird erkannt; Bit-Rot-Schutz</td></tr>
+<tr><td><strong>ZFS Intent Log (ZIL)</strong></td><td>Schreibt Sync-Operationen in persistenten Log</td><td>Letzte Schreibvorgaenge vor Crash nachvollziehbar</td></tr>
+<tr><td><strong>Deduplication</strong></td><td>Gleiche Bloecke werden nur einmal gespeichert</td><td>Geloeschte Referenz = Block kann noch durch andere Datei referenziert sein</td></tr>
+<tr><td><strong>Komprimierung</strong></td><td>Transparente LZ4/GZIP per Dataset</td><td>Carving nach Magic-Bytes funktioniert nicht ohne Dekompression</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>ZFS-Forensik-Herausforderung:</strong> ZFS ist ein <strong>128-Bit-Dateisystem</strong> — unvorstellbar grosse Adressraeume. Tools wie TSK haben nur begrenzten ZFS-Support. Die beste Forensik-Strategie: Snapshots nutzen und auf Dataset-Ebene mit nativen ZFS-Tools arbeiten, bevor ein dd-Image erstellt wird.</div>
+
+<h2 id="vergleichstabelle">Umfassende Vergleichstabelle</h2>
+
+<table>
+<thead><tr><th>Feature</th><th>FAT32</th><th>NTFS</th><th>ext4</th><th>APFS</th><th>ZFS</th></tr></thead><tbody>
+<tr><td><strong>Max. Dateigroesse</strong></td><td>4 GB</td><td>16 EB</td><td>16 TB</td><td>8 EB</td><td>16 EB</td></tr>
+<tr><td><strong>Max. Volumegroesse</strong></td><td>2 TB</td><td>256 TB (Standard)</td><td>1 EB</td><td>8 EB</td><td>256 ZB</td></tr>
+<tr><td><strong>Journaling</strong></td><td><span class="severity critical">Nein</span></td><td><span class="severity low">$LogFile + $UsnJrnl</span></td><td><span class="severity low">3 Modi</span></td><td><span class="severity low">CoW (kein klassisches Journal)</span></td><td><span class="severity low">ZIL + CoW</span></td></tr>
+<tr><td><strong>Zeitstempel</strong></td><td>2 (C, M)</td><td>4 (MACE) x2 (SI+FN)</td><td>4 (m, a, c, crtime)</td><td>Nanosekunden</td><td>Nanosekunden</td></tr>
+<tr><td><strong>Komprimierung</strong></td><td><span class="severity critical">Nein</span></td><td><span class="severity medium">LZNT1 (selten genutzt)</span></td><td><span class="severity critical">Nein</span></td><td><span class="severity low">Nativ</span></td><td><span class="severity low">LZ4, GZIP, ZLE</span></td></tr>
+<tr><td><strong>Verschluesselung</strong></td><td><span class="severity critical">Nein</span></td><td><span class="severity medium">EFS</span></td><td><span class="severity medium">fscrypt + LUKS</span></td><td><span class="severity low">Nativ, per Volume</span></td><td><span class="severity low">Nativ</span></td></tr>
+<tr><td><strong>Snapshots</strong></td><td><span class="severity critical">Nein</span></td><td><span class="severity medium">VSS (Schattenkopien)</span></td><td><span class="severity critical">Nein</span></td><td><span class="severity low">Nativ</span></td><td><span class="severity low">Nativ</span></td></tr>
+<tr><td><strong>Deduplizierung</strong></td><td><span class="severity critical">Nein</span></td><td><span class="severity critical">Nein</span></td><td><span class="severity critical">Nein</span></td><td><span class="severity medium">Space Sharing</span></td><td><span class="severity low">Nativ</span></td></tr>
+<tr><td><strong>Alternate Data Streams</strong></td><td><span class="severity critical">Nein</span></td><td><span class="severity low">Ja ($DATA)</span></td><td><span class="severity critical">Nein</span></td><td><span class="severity medium">xattr / Resource Forks</span></td><td><span class="severity critical">Nein</span></td></tr>
+<tr><td><strong>Forensische Tools</strong></td><td>The Sleuth Kit (TSK), Autopsy, FTK Imager</td><td>TSK, Autopsy, analyzeMFT, MFTECmd, NTFS-3G</td><td>TSK, Autopsy, ext4magic (Recovery), debugfs</td><td>macOS-eigene Tools, BlackLight, APFS-Fuse</td><td>ZFS-native Tools, zfs-fuse</td></tr>
+<tr><td><strong>Carving-Eignung</strong></td><td><span class="severity low">Gut (einfache Struktur)</span></td><td><span class="severity medium">Mittel (Fragmentierung wahrscheinlich)</span></td><td><span class="severity medium">Mittel</span></td><td><span class="severity critical">Schlecht (CoW + Verschl.</span></td><td><span class="severity critical">Schlecht (CoW + Komp.<br>+ RAID-Z)</span></td></tr>
+</tbody></table>
+
+<h2 id="tsk">Praktische Anwendung: The Sleuth Kit (TSK) Befehle</h2>
+
+<pre><code># ---- Partition-Layout analysieren ----
+mmls image.dd                    # Partitionstabelle (DOS, GPT, etc.) anzeigen
+mmstat image.dd                  # Typ der Partitionstabelle bestimmen
+
+# ---- Dateisystem-Informationen (alle FS-Typen) ----
+fsstat -o 2048 image.dd          # Superblock/Metadaten des Dateisystems
+fsstat -o 2048 image.ntfs        # NTFS: $MFT-Lage, Clustergroesse, Version
+fsstat -o 0 image.apfs           # APFS: Container-Info
+
+# ---- Datei-Listing (rekursiv, inkl. geloeschter/verwaister Dateien) ----
+fls -r -o 2048 image.dd          # Rekursives Listing ab Root-Verzeichnis
+fls -r -o 2048 -d image.dd       # Nur geloeschte Dateien
+fls -r -o 2048 -m / image.dd     # Bodyfile-Format (fuer mactime-Timeline)
+fls -r -o 2048 -z UTC image.dd   # Zeitzone setzen
+
+# ---- NTFS-spezifisch ----
+fls -r -o 2048 image.ntfs | grep :  # Alternate Data Streams finden
+fls -o 2048 image.ntfs 0            # $MFT-Eintraege direkt listen
+istat -o 2048 image.ntfs 35         # MFT-Eintrag 35 (File Reference) inspizieren
+
+# ---- Inode-Analyse (ext4, UFS) ----
+istat -o 2048 image.ext4 5           # Inode 5 inspizieren
+ils -o 2048 image.ext4               # Alle Inodes auflisten (frei + belegt)
+ifind -o 2048 image.ext4 -d 12345    # Welcher Inode ist an Block 12345?
+
+# ---- Datei-Extraktion ----
+icat -o 2048 image.dd 5            # Datei per Inode/MFT-Eintrag extrahieren
+icat -o 2048 image.ntfs 35-128-1   # NTFS: $DATA-Attribut extrahieren
+
+# ---- Timeline-Erstellung (alle Zeitstempel) ----
+fls -r -o 2048 -m / image.dd > bodyfile.txt
+mactime -b bodyfile.txt -z UTC > timeline.csv
+
+# ---- NTFS $LogFile und $UsnJrnl (externe Tools) ----
+# analyzeMFT -f \$MFT -o mft_output.csv
+# MFTECmd.exe -f \$MFT --csv ./
+# usncarve.py -f \$Extend\$UsnJrnl --csv output.csv
+
+# ---- ext4: Geloschte Dateien wiederherstellen ----
+# ext4magic image.dd -f /pfad/zur/datei -d /ausgabe/
+# debugfs -R "ls -d /" image.ext4</code></pre>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li>Carrier, B.: <em>File System Forensic Analysis</em> (Addison-Wesley, 2005) — das Standardwerk</li>
+<li>Windows NTFS Documentation: <a href="https://flatcap.org/ntfs/">NTFS.com / Linux NTFS Project</a></li>
+<li>APFS Reference: <a href="https://developer.apple.com/support/downloads/Apple-File-System-Reference.pdf">Apple File System Reference (PDF)</a></li>
+<li>ext4 Wiki: <a href="https://ext4.wiki.kernel.org/">kernel.org ext4 Documentation</a></li>
+<li>ZFS Documentation: <a href="https://openzfs.org/wiki/Documentation">OpenZFS Wiki</a></li>
+<li>Sleuth Kit: <a href="https://www.sleuthkit.org/">sleuthkit.org</a></li>
+</ul>
 </article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

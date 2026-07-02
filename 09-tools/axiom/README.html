@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnet AXIOM — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../index.html">Startseite</a></li>
+    <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (16)</summary><ul>
+      <li><a href="../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+      <li><a href="../../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details open><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../09-tools/axiom/README.html">Magnet AXIOM</a></li>
+      <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../index.html#cat-tools">Tools</a> / Magnet AXIOM</span>
+</nav>
+<main><article>
+<h1>Magnet AXIOM — Workflow und Grundlagen <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#workflow">Workflow: Case → Evidence → Process → Examine</a></li>
+<li><a href="#cloud">Cloud-Acquisition</a></li>
+<li><a href="#mobile">Mobile-Acquisition</a></li>
+<li><a href="#connections">Connections-Ansicht (Beziehungsgraph)</a></li>
+<li><a href="#vergleich">AXIOM im Tool-Vergleich</a></li>
+<li><a href="#praxis">Praktische Anwendung: Beispiel-Case</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p><strong>Magnet AXIOM</strong> ist eine kommerzielle forensische Analyseplattform von Magnet Forensics. Anders als klassische Tools (FTK, EnCase, X-Ways), die sich primae(r) auf Dateisystem-Forensik konzentrieren, verfolgt AXIOM einen <strong>artefakt-zentrierten Ansatz</strong>: Es extrahiert automatisch strukturierte Artefakte (Chats, Emails, Browser-Verlaeufe, Cloud-Daten, Mobile-Daten) ueber hunderte Quellen hinweg und stellt sie in einer einheitlichen, durchsuchbaren Oberflaeche dar. AXIOM existiert in zwei Varianten: <strong>AXIOM Cyber</strong> (fokussiert auf Unternehmens-IR, Cloud, Netzwerk) und <strong>AXIOM Process</strong> (klassische forensische Imaging- und Analysefunktion).</p>
+
+<table>
+<thead><tr><th>Merkmal</th><th>AXIOM Cyber</th><th>AXIOM Process</th></tr></thead><tbody>
+<tr><td><strong>Zielgruppe</strong></td><td>Incident Responder, Corporate Security, DFIR-Teams</td><td>Strafverfolgung, Labore, klassische Forensik</td></tr>
+<tr><td><strong>Quellen</strong></td><td>Cloud (M365, Google, iCloud), Endpunkte (live/remote), RAM, Netzwerk</td><td>Forensische Images (E01, DD, AFF4), mobile Geraete, physische Datentraeger</td></tr>
+<tr><td><strong>Cloud-Acquisition</strong></td><td>Integriert: M365, Google Workspace, iCloud, Box, Dropbox, Slack, Facebook, Instagram</td><td>Nicht enthalten</td></tr>
+<tr><td><strong>Remote-Collection</strong></td><td>Agent-basierte Live-Sammlung ueber Netzwerk</td><td>Nur ueber physisch angeschlossene Geraete/Images</td></tr>
+<tr><td><strong>Artefakt-Parser</strong></td><td>Ueber 800 (Cyber-exklusiv: Teams, SharePoint, Exchange Online)</td><td>Ueber 650 (klassische Desktop-Artefakte, Mobile)</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>AXIOM ist ein "Artifact-First"-Tool:</strong> Statt eine Ordnerstruktur durchzusehen (wie in EnCase/FTK), arbeitet AXIOM mit Artefakt-Kategorien wie "Chats", "Web History", "Mail", "Documents", "Cloud Storage". Das Tool decodiert automatisch SQLite-Datenbanken, plist-Dateien, Registry-Hives und Cloud-APIs in lesbare Artefaktlisten.</div>
+
+<h2 id="workflow">Workflow: Case → Evidence → Process → Examine</h2>
+<p>Der AXIOM-Workflow besteht aus vier Hauptschritten, die linear durchlaufen werden, aber innerhalb einer Case-Datei persistent bleiben — man kann Evidence jederzeit hinzufuegen und erneut verarbeiten.</p>
+
+<h3>Step 1: Case erstellen</h3>
+<p>Jede Untersuchung beginnt mit einem Case. Der Case bestimmt den Speicherort, den Namen und das Basis-Profil (z.B. "Windows Computer", "Mac Computer", "Mobile Device", "Cloud"). Das Profil beeinflusst, welche Artefakt-Kategorien gescannt werden.</p>
+
+<pre><code># AXIOM-Case-Datei (Windows-Pfad)
+C:\Cases\2024-001_InsiderThreat\2024-001.axcase
+
+# Enthaelt: Evidence-Liste, Processing-Einstellungen, Ergebnisse
+# Achtung: .axcase-Dateien koennen mehrere 100 GB gross werden</code></pre>
+
+<h3>Step 2: Evidence laden</h3>
+<table>
+<thead><tr><th>Evidence-Typ</th><th>AXIOM Cyber</th><th>AXIOM Process</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>Forensisches Image</strong></td><td>Ja</td><td>Ja</td><td>E01, DD, AFF4, VMDK, VHD(X)</td></tr>
+<tr><td><strong>Physischer Datentraeger</strong></td><td>Ja</td><td>Ja</td><td>Direkt angeschlossene Festplatten (mit Write-Blocker!)</td></tr>
+<tr><td><strong>Ordner / Einzeldateien</strong></td><td>Ja</td><td>Ja</td><td>Log-Dateien, Memory-Dumps, Triage-Collections</td></tr>
+<tr><td><strong>Cloud-Tenant</strong></td><td>Ja (M365, Google)</td><td>Nein</td><td>OAuth-basierte Cloud-Acquisition</td></tr>
+<tr><td><strong>Mobiles Geraet</strong></td><td>Ja</td><td>Ja</td><td>iOS (iTunes-Backup, Checkm8), Android (ADB, MTK)</td></tr>
+<tr><td><strong>RAM-Dump</strong></td><td>Ja</td><td>Ja</td><td>Volatility-kompatible .raw/.mem-Dateien</td></tr>
+</tbody></table>
+
+<h3>Step 3: Processing (Verarbeitung)</h3>
+<p>AXIOM verarbeitet die geladenen Evidences in mehreren Phasen. Dies ist der rechenintensivste Schritt und kann Stunden bis Tage dauern. Die Phasen:</p>
+<ol>
+<li><strong>Carving:</strong> Dateien aus dem Image wiederherstellen (geloeschte, fragmentierte, unallokierte) — basierend auf File-Headern/Footern und Filesystem-Restdaten</li>
+<li><strong>Parsing:</strong> Erkannte Dateien durch die passenden Parser schicken — SQLite-DBs, Registry, plist, EXIF, EML, PST, LNK, Prefetch etc. AXIOM hat ueber 800 Parser</li>
+<li><strong>Indexing:</strong> Alle extrahierten Textinhalte in Elasticsearch (eingebettet) indizieren — ermoeglicht Volltextsuche ueber alle Artefakte</li>
+<li><strong>Deduplication:</strong> Identische Artefakte aus verschiedenen Quellen (z.B. gleicher Anhang in PST und auf Dateisystem) deduplizieren</li>
+<li><strong>Classification:</strong> Artefakte nach Kategorien klassifizieren — Chats, Mails, Documents, Media, Web, etc.</li>
+</ol>
+
+<div class="callout warning"><strong>Processing-Ressourcenbedarf:</strong> AXIOM skaliert mit CPU-Kernen, aber nicht linear. Empfehlung: 8+ physische Kerne, 32+ GB RAM, NVMe-SSD fuer Case-Datei. Ein 500 GB Image kann mit Indexing 8-24 Stunden Processing-Zeit benoetigen. Processing-Parameter (welche Artefakt-Typen?) VOR dem Start sorgfaeltig waehlen — Nachbearbeitung ist teuer.</div>
+
+<h3>Step 4: Examine (Analyse)</h3>
+<p>Nach dem Processing steht die volle Analyse-Oberflaeche zur Verfuegung:</p>
+<ul>
+<li><strong>Artifact Explorer:</strong> Kategorisierte Artefakte durchsuchen (Chats, Mails, Web History, Documents...)</li>
+<li><strong>File System Explorer:</strong> Klassische Ordnerstruktur-Ansicht (fuer EnCase/FTK-Umsteiger)</li>
+<li><strong>Timeline:</strong> Chronologische Ansicht aller Artefakt-Timestamps</li>
+<li><strong>Connections:</strong> Beziehungsgraph (siehe naechster Abschnitt)</li>
+<li><strong>Global Search:</strong> Volltextsuche mit Keyword-, Regex-, und Datumsfiltern</li>
+</ul>
+
+<h2 id="cloud">Cloud-Acquisition (AXIOM Cyber only)</h2>
+<p>Die Cloud-Acquisition ist eine der Staerksten Funktionen von AXIOM Cyber. Statt manuelle API-Calls oder Exporte, authentifiziert sich AXIOM via OAuth gegen die jeweilige Cloud-Plattform und laedt alle verfuegbaren Daten automatisch herunter.</p>
+
+<table>
+<thead><tr><th>Cloud-Dienst</th><th>Unterstuetzte Daten</th><th>Auth-Methode</th></tr></thead><tbody>
+<tr><td><strong>Microsoft 365</strong></td><td>Exchange Online (E-Mails, Kontakte, Kalender), OneDrive, SharePoint, Teams (Chats + Dateien), Entra ID (Azure AD) Logs</td><td>OAuth mit Global Admin Consent oder App-Registration</td></tr>
+<tr><td><strong>Google Workspace</strong></td><td>Gmail, Google Drive, Google Chat, Google Calendar</td><td>OAuth mit Domain-wide Delegation</td></tr>
+<tr><td><strong>iCloud</strong></td><td>iCloud Drive, Fotos, Kontakte, Notizen, Safari-Daten, iMessages (wenn Sync aktiv)</td><td>Apple-ID + 2FA oder iCloud-Token (vom Geraet)</td></tr>
+<tr><td><strong>Facebook / Instagram</strong></td><td>Posts, Nachrichten, Freunde, Profil-Infos</td><td>Social-Media-Login (credentials oder Token)</td></tr>
+<tr><td><strong>Box / Dropbox</strong></td><td>Dateien, Ordnerstruktur, Sharing-Links, Version-History</td><td>OAuth</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>M365-Acquisition — was du brauchst:</strong> Global Admin in Entra ID, damit AXIOM die App-Registration durchfuehren kann. Fuer E-Discovery-Faelle: Die M365-Suche muss mit den Compliance-Richtlinien des Unternehmens uebereinstimmen. AXIOM holt NUR Daten, auf die die OAuth-Berechtigungen Zugriff geben — es umgeht keine MFA oder Conditional-Access-Policies.</div>
+
+<h2 id="mobile">Mobile-Acquisition</h2>
+<p>AXIOM unterstuetzt sowohl iOS- als auch Android-Acquisition, allerdings nicht auf Root-/Jailbreak-Ebene (dafuer sind Cellebrite oder GrayKey spezialisiert). AXIOMs Staerke liegt in der <strong>Integration</strong> der Mobile-Daten mit Desktop- und Cloud-Artefakten.</p>
+
+<table>
+<thead><tr><th>Plattform</th><th>Acquisition-Methoden</th><th>Typische Artefakte</th></tr></thead><tbody>
+<tr><td><strong>iOS</strong></td><td>iTunes/Finder-Backup (verschluesselt moeglich), Checkm8-Exploit (Full File System auf A11 und aelter, kein PW noetig)</td><td>iMessages/SMS, WhatsApp, Anrufliste, Kontakte, Fotos, Safari-Verlauf, App-Daten (SQLite-DBs), Standortdaten</td></tr>
+<tr><td><strong>Android</strong></td><td>ADB-Backup, MTK-Chipset-Exploit (MediaTek), physische Extraktion ueber EDL-Modus (Qualcomm)</td><td>SMS/MMS, WhatsApp, Telegram, Signal (wenn entschluesselbar), Chrome-Verlauf, Anrufliste, Standortdaten, geloeschte Dateien</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Mobile-Forensik rechtlich komplex:</strong> Die Checkm8-Methode (iOS) und MTK/EDL (Android) extrahieren ein vollstaendiges Dateisystem-Image. In vielen Rechtsordnungen ist dies ein Eingriff, der eine richterliche Anordnung erfordert. Logische Backups (iTunes/ADB) sind weniger invasiv, extrahieren aber auch weniger Daten.</div>
+
+<h2 id="connections">Connections-Ansicht (Beziehungsgraph)</h2>
+<p>Die Connections-Funktion ist AXIOMs visuelles Analyse-Tool fuer Beziehungen zwischen Artefakten. Sie generiert einen interaktiven Graphen, der Verbindungen zwischen Personen, Kommunikation, Geraeten, Dateien und Zeitpunkten visualisiert.</p>
+
+<h3>Was Connections zeigt</h3>
+<table>
+<thead><tr><th>Knoten-Typ</th><th>Wird zu</th><th>Beispiele</th></tr></thead><tbody>
+<tr><td><strong>Person / Identity</strong></td><td>Email-Adresse, Social-Media-Profil, Username</td><td>"john@company.com", "@johndoe"</td></tr>
+<tr><td><strong>Kommunikation</strong></td><td>Emails, Chats, SMS, Anrufe</td><td>Email-Thread zwischen A und B, WhatsApp-Chat-Gruppe</td></tr>
+<tr><td><strong>Dateien</strong></td><td>Dokumente, Bilder, exfiltrierte Daten</td><td>"geheim.pdf" an 3 Empfaenger</td></tr>
+<tr><td><strong>URLs / Domains</strong></td><td>Besuchte Webseiten, Cloud-Links</td><td>Shared-Links, Phishing-Ziele</td></tr>
+<tr><td><strong>Geraete</strong></td><td>Computer, Handys, externe Medien</td><td>USB-Sticks, externe Festplatten, verbundene Handys</td></tr>
+</tbody></table>
+
+<p>Der Graph ermoeglicht:
+- <strong>Zeitleisten-Filterung:</strong> Nur Verbindungen in einem bestimmten Zeitraum anzeigen
+- <strong>Springen zwischen Artefakten:</strong> Klick auf Knoten oeffnet das Artefakt im Artifact Explorer
+- <strong>Export als PDF/Bild:</strong> Fuer Berichte und Praesentationen vor Gericht</li>
+
+<div class="callout tip"><strong>Connections-Tipp fuer Insider-Threat-Faelle:</strong> Suche nach dem Verdaechtigen (Email-Adresse) → zeige alle ausgehenden Verbindungen zu externen Domains → filtere nach grossen Dateianhaengen (> 10 MB) → identifiziere Datenexfiltration innerhalb weniger Minuten.</div>
+
+<h2 id="vergleich">AXIOM im Tool-Vergleich</h2>
+
+<table>
+<thead><tr><th>Kriterium</th><th>Magnet AXIOM</th><th>FTK (Forensic Toolkit)</th><th>EnCase Forensic</th><th>Open-Source (Plaso+Autopsy+TSK)</th></tr></thead><tbody>
+<tr><td><strong>Ansatz</strong></td><td>Artifakt-zentriert (Kategorien)</td><td>Dateisystem-zentriert (Ordneransicht)</td><td>Dateisystem-zentriert, stark skriptbar (EnScript)</td><td>Modular: TSK (Dateisystem), Autopsy (GUI), Plaso (Timeline)</td></tr>
+<tr><td><strong>Cloud-Acquisition</strong></td><td>Integriert (M365, Google, iCloud, Social Media)</td><td>Nicht nativ (nur ueber Dritt-Tools)</td><td>Nicht nativ</td><td>Nicht nativ (manuelle API-Calls noetig)</td></tr>
+<tr><td><strong>Mobile</strong></td><td>iOS + Android (logisch + physisch via Checkm8/MTK)</td><td>Basic (nur logisch)</td><td>Keine native Mobile-Unterstuetzung</td><td>Keine integrierte Mobile-Unterstuetzung</td></tr>
+<tr><td><strong>Connections / Graph</strong></td><td>Integriert, interaktiv</td><td>Kein Graph</td><td>Kein Graph</td><td>Keine integrierte Loesung</td></tr>
+<tr><td><strong>Processing-Speed</strong></td><td>Schnell (Multithreaded, Indexing in Echtzeit)</td><td>Moderat (DB-basiert, PostgreSQL)</td><td>Langsam (parallele Verarbeitung begrenzt)</td><td>Variabel, abhaengig von Einzel-Tools</td></tr>
+<tr><td><strong>Reporting</strong></td><td>HTML/PDF-Reports, Vorlagen, anpassbar</td><td>HTML/PDF, sehr detailliert</td><td>EnCase-Report-Templates, PDF</td><td>Manuell (kein integriertes Reporting)</td></tr>
+<tr><td><strong>Lizenzmodell</strong></td><td>Jahreslizenz (~$5K-$15K/Jahr je nach Edition)</td><td>Jahreslizenz (~$3K-$8K/Jahr)</td><td>Jahreslizenz (~$4K-$10K/Jahr)</td><td>Kostenlos (Open Source)</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Wann AXIOM, wann Open-Source?</strong> AXIOM ist unschlagbar, wenn du Cloud-Daten (M365/Google) mit Desktop-Artefakten korrelieren musst und der Fall schnell abgeschlossen werden muss. Open-Source ist besser, wenn du detaillierte Kontrolle ueber jeden Verarbeitungsschritt brauchst, die Methodik gerichtsfest dokumentieren musst oder ungewoehnliche Dateisysteme/Artefakte analysierst, fuer die AXIOM (noch) keinen Parser hat.</div>
+
+<h2 id="praxis">Praktische Anwendung: Beispiel-Case</h2>
+
+<h3>Szenario: Insider Threat mit M365-Datenexfiltration</h3>
+<p>Ein Mitarbeiter kuendigt, HR vermutet Datenabfluss. Der Rechner wurde forensisch gesichert (E01-Image), plus M365-Cloud-Daten muessen analysiert werden.</p>
+
+<h3>Schritt-fuer-Schritt in AXIOM Cyber</h3>
+<ol>
+<li><strong>Case anlegen:</strong> "2024-Internal-001.axcase" mit Profil "Windows Computer + Cloud"</li>
+<li><strong>Evidence laden:</strong>
+  <ul>
+    <li>Desktop-Image: suspect_laptop.E01</li>
+    <li>M365-Tenant: OAuth-Login mit Admin-Account, Scope: Exchange Online + OneDrive + Teams</li>
+  </ul>
+</li>
+<li><strong>Processing konfigurieren:</strong>
+  <ul>
+    <li>Alle Artefakt-Kategorien aktivieren (AXIOM waehlt die passenden Parser automatisch)</li>
+    <li>Indexierung: ja (Volltextsuche benoetigt)</li>
+    <li>Keyword-Liste: Firmenname, Projektcodewoerter, "CV", "Gehalt", "Kundenliste"</li>
+    <li>Zeitraum-Einschraenkung: 3 Monate vor Kuendigung bis 1 Woche danach</li>
+  </ul>
+</li>
+<li><strong>Processing starten:</strong> AXIOM verarbeitet beide Evidences parallel. Nach 4 Stunden (250 GB E01 + M365 Mailbox) ist die Analyse abgeschlossen.</li>
+<li><strong>Analyse:</strong>
+  <ul>
+    <li>Global Search: "Kundenliste" → 12 Treffer, darunter 3 Emails an externe Adresse</li>
+    <li>Connections: Verdaechtigen-Email → externe Empfaenger → Anhang "kunden_export.xlsx" (45 MB)</li>
+    <li>Timeline: 2 Tage vor Kuendigung: USB-Stick verbunden (Registry: USBSTOR), Firma-SharePoint-Ordner via Browser durchsucht, grosse ZIP-Datei erstellt</li>
+    <li>Cloud: OneDrive-Sync-Log zeigt Upload von "Export.zip" an persoenliches OneDrive</li>
+  </ul>
+</li>
+<li><strong>Report erstellen:</strong> Connections-Ansicht als PDF exportieren, Artefaktliste (alle exfiltrierten Dateien) als HTML-Report, Timeline als CSV fuer Gericht.</li>
+</ol>
+
+<div class="callout danger"><strong>Triage nicht ueberspringen:</strong> AXIOM kann schnell viele Daten liefern, aber ohne eine klare Untersuchungshypothese (= Worauf willst du genau schauen?) ertrinkst du in Artefakten. Definiere Keywords, Zeitraum und relevante Personen VOR dem Processing. Nutze die "Tagging"-Funktion: Verdaechtige Artefakte markieren, Notizen hinzufuegen, Tags exportieren.</div>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://www.magnetforensics.com/products/magnet-axiom/">Magnet AXIOM Produktseite</a></li>
+<li><a href="https://www.magnetforensics.com/docs/axiom/">AXIOM Official Documentation</a></li>
+<li><a href="https://www.magnetforensics.com/blog/">Magnet Forensics Blog</a> — Fallstudien und Tutorials</li>
+<li><a href="https://training.magnetforensics.com/">Magnet Forensics Training</a> — Zertifizierungskurse (AX100, AX200)</li>
+<li><a href="https://www.sleuthkit.org/autopsy/">Autopsy</a> — Open-Source-Alternative</li>
+<li><a href="https://github.com/log2timeline/plaso">Plaso (log2timeline)</a> — Open-Source Timelining</li>
+</ul>
+
+</article></main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

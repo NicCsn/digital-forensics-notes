@@ -7,89 +7,437 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">IT-Security</a> / Security Incident Management</span>
+  <span class="nav-crumb">/ <a href="../05-it-security/index.html">IT-Security</a> / Security Incident Management</span>
 </nav>
 <main>
 <article>
 <h1>Security Incident Management <span class="diff-badge diff-intermediate">Mittel</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzueberblick</a></li>
+  <li><a href="#ir-phasen">Incident-Response-Phasen (NIST SP 800-61)</a></li>
+  <li><a href="#ir-team">IR-Team-Struktur: SOC, CSIRT, CISO</a></li>
+  <li><a href="#playbooks">Playbook-Detail: Ransomware, Phishing, Data-Exfiltration</a></li>
+  <li><a href="#thehive">TheHive + Cortex + MISP: Open-Source IR-Stack</a></li>
+  <li><a href="#war-room">Kommunikation: War Room, Stakeholder-Template</a></li>
+  <li><a href="#beweissicherung">Beweissicherung im IR</a></li>
+  <li><a href="#dsgvo-meldepflicht">DSGVO-Meldepflicht: 72h-Frist</a></li>
+  <li><a href="#ir-plan-vorlage">Praktische Anwendung: IR-Plan-Vorlage</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</a></li>
+</ol></details>
 
-<h2 id="kurz-berblick">Kurzüberblick</h2>
+<h2 id="kurz-berblick">Kurzueberblick</h2>
 
-<p>Security Incident Management ist der strukturierte Prozess zur Erkennung, Reaktion und Nachbereitung von Sicherheitsvorfällen. Ziel: Schaden minimieren, Betrieb wiederherstellen und aus dem Vorfall lernen, um zukünftige Angriffe zu verhindern.</p>
+<p>Security Incident Management ist der strukturierte Prozess zur Erkennung, Reaktion und Nachbereitung von Sicherheitsvorfaellen. Ziel: Schaden minimieren, Betrieb wiederherstellen und aus dem Vorfall lernen, um zukuenftige Angriffe zu verhindern. Es ist die operative Umsetzung des Security Operations Center (SOC).</p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>Abgrenzung:</strong> Incident <em>Management</em> = Prozess &amp; Governance (ISO 27035), Incident <em>Response</em> = operative technische Reaktion (NIST SP 800-61), <em>Forensik</em> = beweissichere Analyse innerhalb des IR-Prozesses.</div>
 
-<h3>Incident-Response-Phasen (NIST / SANS)</h3>
+<h2 id="ir-phasen">Incident-Response-Phasen (NIST SP 800-61)</h2>
 
-<ul><li><strong>Preparation (Vorbereitung):</strong> IR-Plan, Rollen festlegen, Kontaktdaten, Werkzeuge bereithalten</li>
-<li><strong>Identification (Erkennung):</strong> Ist es ein Incident? Oder nur eine Anomalie?</li>
-<li><strong>Containment (Eindämmung):</strong> Kurzfristig (Netzwerk trennen) + Langfristig (Patches, Neuaufbau)</li>
-<li><strong>Eradication (Beseitigung):</strong> Root Cause beseitigen, Malware entfernen</li>
-<li><strong>Recovery (Wiederherstellung):</strong> Systeme aus Backups wiederherstellen, Monitoring intensivieren</li>
-<li><strong>Lessons Learned (Nachbereitung):</strong> Was lief gut? Was nicht? IR-Plan aktualisieren</li></ul>
+<h3>Phase 1: Preparation (Vorbereitung)</h3>
 
-<h3>Rollen und Verantwortlichkeiten</h3>
-
-<table class="styled-table">
-<thead><tr><th>Rolle</th><th>Aufgabe</th></tr></thead><tbody>
-<tr><td>**Incident Commander**</td><td>Gesamtkoordination, Entscheidungen</td></tr>
-<tr><td>**Technischer Lead**</td><td>Forensische Analyse, Eindämmung</td></tr>
-<tr><td>**Kommunikationsbeauftragter**</td><td>Internes/Externes Reporting, Presse</td></tr>
-<tr><td>**Legal / Compliance**</td><td>DSGVO-Meldepflicht, Beweissicherung</td></tr>
-<tr><td>**Management-Liaison**</td><td>Business-Entscheidungen, Ressourcen</td></tr>
-</tbody></table>
-
-<h3>Eskalationsstufen</h3>
+<p>Die wichtigste Phase — ohne Vorbereitung ist jede Reaktion chaotisch und ineffektiv.</p>
 
 <table class="styled-table">
-<thead><tr><th>Stufe</th><th>Beschreibung</th><th>Beispiel</th></tr></thead><tbody>
-<tr><td>**Level 1 (Helpdesk)**</td><td>Erste Meldung, Triage</td><td>"Mein Rechner ist langsam"</td></tr>
-<tr><td>**Level 2 (Security-Analyst)**</td><td>Technische Erstanalyse</td><td>SIEM-Alert, Log-Analyse</td></tr>
-<tr><td>**Level 3 (IR-Team)**</td><td>Schwerer Vorfall, Eskalation</td><td>Ransomware-Ausbruch, Datenabfluss</td></tr>
-<tr><td>**War Room**</td><td>Krisenstab aller Stakeholder</td><td>Großangriff mit Business-Impact</td></tr>
+<thead><tr><th>Element</th><th>Beschreibung</th><th>Konkrete Massnahmen</th></tr></thead><tbody>
+<tr><td><strong>IR-Plan</strong></td><td>Schriftliches Dokument mit Rollen, Eskalationswegen, Kommunikationsmatrix</td><td>Jaehrlich pruefen, Tischuebung (Tabletop Exercise) durchfuehren</td></tr>
+<tr><td><strong>IR-Playbooks</strong></td><td>Spezifische Ablaufplaene je Incident-Typ</td><td>Ransomware, Phishing, DDoS, Insider Threat, Data Breach — mind. 5 Playbooks</td></tr>
+<tr><td><strong>IR-Team</strong></td><td>Benannte Personen mit Vertreterregelung, 24/7-Erreichbarkeit</td><td>Rollen: Incident Commander, Tech Lead, Communications, Legal, Mgmt Liaison</td></tr>
+<tr><td><strong>Tools &amp; Infrastruktur</strong></td><td>Bereitgestellte Werkzeuge vor dem Incident</td><td>Forensik-Workstations (air-gapped), Write-Blocker, Kabel, USB-Sticks, RAM-Capture-Tools, ausgedruckte Kontaktlisten (falls Systeme down)</td></tr>
+<tr><td><strong>Jump Bag</strong></td><td>Physischer Koffer mit allem Notwendigen</td><td>Laptops, externe Festplatten, Write-Blocker, USB-Boot-Medien, Netzwerkkabel, YubiKeys, Dokumentationsformulare</td></tr>
+<tr><td><strong>Kommunikationsplaene</strong></td><td>Wer kommuniziert wann mit wem?</td><td>Interne Eskalation, externe Kommunikation (Kunden, Presse, Aufsichtsbehoerde), Krisen-Hotline</td></tr>
 </tbody></table>
 
-<h3>Incident-Response-Plan / Playbooks</h3>
+<h3>Phase 2: Detection &amp; Analysis (Erkennung &amp; Analyse)</h3>
 
-<p>Ein <strong>Playbook</strong> ist ein spezifisches Ablaufdokument für einen bestimmten Vorfalltyp:</p>
+<p>Die kritischste Frage: <strong>Ist es wirklich ein Security Incident?</strong></p>
 
-<pre><code>1. Betroffene Systeme identifizieren
-2. Netzwerkverbindung trennen (Isolation!)
-3. Ransomware-Note dokumentieren (Foto machen)
-4. Hash der Malware an Threat-Intel melden
-5. Backup-Status prüfen
-6. KEIN Lösegeld zahlen (außer von Management autorisiert)
-7. Entschlüsselungs-Tools suchen (nomoreransom.org)
-8. Lessons Learned durchführen</code></pre>
+<table class="styled-table">
+<thead><tr><th>Erkennungskanal</th><th>Beispiele fuer Alerts</th><th>Tooling</th></tr></thead><tbody>
+<tr><td><strong>SIEM-Alerts</strong></td><td>Ungewoehnliche Login-Muster, Lateral Movement, Privilegieneskalation</td><td>Splunk, Elastic Security, Wazuh</td></tr>
+<tr><td><strong>EDR/XDR-Telemetrie</strong></td><td>Mimikatz-Detektion, PowerShell-Empire, C2-Beaconing</td><td>CrowdStrike, SentinelOne, Microsoft Defender for Endpoint</td></tr>
+<tr><td><strong>User-Meldungen</strong></td><td>"Mein Rechner ist langsam", "Verdaechtige E-Mail", "Dateien verschluesselt"</td><td>Ticketsystem (Jira, ServiceNow, TheHive)</td></tr>
+<tr><td><strong>Threat Intelligence Feeds</strong></td><td>IOC-Matches, C2-Domain-Blacklists, kompromittierte Credentials</td><td>MISP, VirusTotal, AlienVault OTX</td></tr>
+<tr><td><strong>Netzwerk-Anomalien</strong></td><td>DNS-Tunneling, Beaconing in 4h-Intervallen, unerklaerte ausgehende Verbindungen</td><td>Zeek, Suricata, Darktrace</td></tr>
+</tbody></table>
 
-<h3>Compliance und Meldepflichten</h3>
+<h4>Triage-Schritte (Erstanalyse)</h4>
 
-<ul><li><strong>DSGVO Art. 33:</strong> Datenpanne → Meldung an Aufsichtsbehörde innerhalb 72 Stunden</li>
-<li><strong>DSGVO Art. 34:</strong> Wenn hohes Risiko für Betroffene → Benachrichtigung der Betroffenen</li>
-<li><strong>ISO 27035:</strong> Internationaler Standard für Incident Management</li>
-<li><strong>NIS-2:</strong> Betreiber kritischer Infrastrukturen haben erweiterte Meldepflichten</li></ul>
+<ol>
+  <li><strong>Scope bestimmen:</strong> Wie viele Systeme sind betroffen? Nur Workstations oder auch Server? Cloud-Ressourcen?</li>
+  <li><strong>Impact bewerten:</strong> Welche Geschaeftsprozesse sind beeintraechtigt? Datenabfluss? Produktionsstillstand?</li>
+  <li><strong>Incident-Typ klassifizieren:</strong> Malware? Data Breach? Insider? DDoS? Defacement?</li>
+  <li><strong>Schweregrad zuweisen:</strong> P1 (kritisch/sofort) bis P4 (niedrig/planbar). Nur P1+P2 loesen volles IR-Team aus.</li>
+  <li><strong>Zeitstrahl erstellen:</strong> Erste IOC-Spur, erste Entdeckung, erste Reaktion — Dokumentation ab Minute 0.</li>
+</ol>
 
-<h3>Forensische Aspekte im IR-Prozess</h3>
+<div class="callout warning"><strong>False Positive vs. True Positive:</strong> Ein einzelner SIEM-Alert ist KEIN Incident. Erst die <em>Korrelation mehrerer Indikatoren</em> (Alert + ungewoehnlicher Netzwerkverkehr + User-Meldung) macht einen Incident aus. Triage heisst: Hypothesen bilden und durch Daten falsifizieren.</div>
 
-<ul><li><strong>Beweissicherung während Eindämmung nicht vergessen:</strong> RAM-Dump, Festplatten-Image VOR der Bereinigung</li>
-<li><strong>Zeitstempel kritisch:</strong> Wann begann der Vorfall? (Erste IOC-Spur vs. Entdeckung)</li>
-<li><strong>Logs sichern bevor sie rotieren/überschrieben werden</strong></li></ul>
+<h3>Phase 3: Containment (Eindaemmung)</h3>
 
-<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+<p><strong>Ziel:</strong> Ausbreitung stoppen, ohne Beweise zu zerstoeren. Unterscheide:</p>
 
-<ul><li>IR-Plan-Vorlage: <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf">NIST Computer Security Incident Handling Guide (SP 800-61)</a></li>
-<li>Ticket-System: Jira, ServiceNow, TheHive (Open-Source IR-Platform)</li>
-<li>Kommunikation: Eigener, isolierter Chat-Kanal (Angreifer könnten sonst mitlesen)</li></ul>
+<table class="styled-table">
+<thead><tr><th>Containment-Typ</th><th>Beschreibung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Short-Term Containment</strong></td><td>Sofortmassnahme innerhalb der ersten Stunde</td><td>Betroffenen Server vom Netzwerk trennen (VLAN isolieren, Switchport deaktivieren). Account sperren.</td></tr>
+<tr><td><strong>Long-Term Containment</strong></td><td>Nachhaltige Sicherung, die forensische Analyse erlaubt</td><td>Forensisches Image erstellen, dann gesaeuberten Ersatzserver bereitstellen. Firewall-Regeln verschaerfen.</td></tr>
+</tbody></table>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<p><strong>Containment-Strategien nach Incident-Typ:</strong></p>
+<ul>
+  <li><strong>Ransomware:</strong> SOFORT Netzwerk trennen (physisch oder VLAN)! Ransomware scannt und verschluesselt Shares in Sekunden. Admin-Shares (C$, ADMIN$) im LAN sperren.</li>
+  <li><strong>Data Exfiltration:</strong> Ausgehenden Traffic blockieren (Firewall Rule). ABER: Angreifer darf nicht merken, dass er entdeckt wurde → Gefahr der Beweisloeschung oder "Scorched Earth".</li>
+  <li><strong>DDoS:</strong> Traffic-Filter upstream (Cloudflare, Akamai). Null-Route nur als letztes Mittel.</li>
+</ul>
 
-<ul><li>NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide</li>
-<li>ISO 27035: Information Security Incident Management</li></ul>
+<div class="callout danger"><strong>Kritische Abwaegung:</strong> Soll man den Server vom Netz trennen und Beweise sichern (forensisch korrekt) — oder den Angreifer beobachten, um seinen Modus Operandi zu verstehen (Threat Intelligence)? Das IR-Team muss diese Entscheidung bewusst treffen und dokumentieren.</div>
+
+<h3>Phase 4: Eradication (Beseitigung)</h3>
+
+<p><strong>Root Cause beseitigen — nicht nur Symptome!</strong></p>
+
+<ol>
+  <li><strong>Entry Point identifizieren:</strong> Wie kam der Angreifer rein? Phishing-Mail? Ungeschuetztes RDP? SQLi? Log4Shell?</li>
+  <li><strong>Malware entfernen:</strong> Vollstaendig, inkl. Persistenzmechanismen (Registry-Run-Keys, Scheduled Tasks, Services, WMI-Event-Subscriptions).</li>
+  <li><strong>Vulnerabilitaet patchen:</strong> Die ausgenutzte Schwachstelle schliessen — sonst kommt der Angreifer zurueck.</li>
+  <li><strong>Kompromittierte Accounts deaktivieren:</strong> Passwoerter zuruecksetzen (mind. betroffene User + KRBTGT bei AD-Kompromittierung).</li>
+  <li><strong>Backdoors schliessen:</strong> Vom Angreifer angelegte Admin-Accounts, SSH-Keys, VPN-Profile, Firewall-Luecken.</li>
+</ol>
+
+<h3>Phase 5: Recovery (Wiederherstellung)</h3>
+
+<ul>
+  <li><strong>Backups validieren:</strong> Backup auf Malware pruefen (liegt der Angreifer schon laenger im System?). Geprueftes Backup einspielen.</li>
+  <li><strong>Systeme staffeln:</strong> Erst Dev/Test, dann UAT, dann Produktion</li>
+  <li><strong>Monitoring intensivieren:</strong> 24/7 Ueberwachung fuer mind. 2 Wochen nach Recovery</li>
+  <li><strong>RTO/RPO ueberpruefen:</strong> Wurden die vereinbarten Wiederherstellungszeiten eingehalten? (Recovery Time Objective / Recovery Point Objective)</li>
+</ul>
+
+<h3>Phase 6: Post-Incident Activity (Lessons Learned)</h3>
+
+<ul>
+  <li><strong>Post-Mortem-Meeting:</strong> Alle Beteiligten im Raum + Blameless Culture (keine Schuldzuweisungen!)</li>
+  <li><strong>Timeline finalisieren:</strong> Was geschah wann? Was uebersahen wir?</li>
+  <li><strong>IR-Plan aktualisieren:</strong> Welche Playbooks brauchen Anpassung?</li>
+  <li><strong>Metrics erfassen:</strong> MTTD (Mean Time to Detect), MTTR (Mean Time to Respond), MTTC (Mean Time to Contain)</li>
+</ul>
+
+<h2 id="ir-team">IR-Team-Struktur: SOC, CSIRT, CISO</h2>
+
+<table class="styled-table">
+<thead><tr><th>Organisationseinheit</th><th>Rolle</th><th>Aufgaben</th></tr></thead><tbody>
+<tr><td><strong>SOC Tier 1</strong></td><td>Security Analyst (Junior)</td><td>24/7 Alert-Monitoring, erste Triage, Tickets erstellen, False Positives aussortieren</td></tr>
+<tr><td><strong>SOC Tier 2</strong></td><td>Security Analyst (Senior)</td><td>Technische Detailanalyse, Correlation-Engineering, IOC-Suche, Playbook-Entwicklung</td></tr>
+<tr><td><strong>SOC Tier 3</strong></td><td>Security Engineer / Threat Hunter</td><td>Malware-Analyse, Reverse Engineering, Threat Hunting, komplexe Incident Response</td></tr>
+<tr><td><strong>CSIRT</strong> (Computer Security Incident Response Team)</td><td>Dediziertes IR-Team</td><td>Bekaempfung aktiver Incidents, Koordination, forensische Analyse, Crisis Management</td></tr>
+<tr><td><strong>CISO</strong> (Chief Information Security Officer)</td><td>Gesamtverantwortung Informationssicherheit</td><td>Strategie, Budget, Governance, Management-Reporting, Compliance</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Realitaet in KMU:</strong> SOC Tier 1-3 existiert meist nur in grossen Unternehmen. Im Mittelstand ist der IT-Admin oft SOC Tier 1, 2, 3 UND CSIRT in Personalunion. Deshalb: Externen IR-Retainer bereithalten (z.B. CrowdStrike OverWatch, Mandiant, lokale DFIR-Firma).</div>
+
+<h2 id="playbooks">Playbook-Detail: Ransomware, Phishing, Data-Exfiltration</h2>
+
+<h3>Ransomware-Playbook (Kurzform)</h3>
+
+<pre><code>1. ALERT: User meldet verschluesselte Dateien / Ransom Note sichtbar
+2. ISOLATION (Sofort!):
+   - Betroffene Geraete physisch oder per VLAN von Netz trennen
+   - NICHT herunterfahren! (RAM enthaelt Schluessel / Malware-Strings)
+   - Admin-Shares (C$, ADMIN$) auf allen nahegelegenen Systemen deaktivieren
+3. SCOPING:
+   - Welche User/Geraete sind betroffen? (Lateral Movement?)
+   - Welche Shares sind verschluesselt? (Netzwerkfreigaben?)
+   - Gibt es Hinweise auf Datenabfluss (Doppel-Erpressung)?
+4. EVIDENCE PRESERVATION:
+   - RAM-Dump der betroffenen Geraete (WIN: DumpIt, Magnet RAM Capture)
+   - Festplatten-Image (VOR Bereinigung!)
+   - Ransom-Note fotografieren/dokumentieren
+   - Malware-Sample sichern (Hash an VirusTotal / MISP melden)
+5. ANALYSIS:
+   - Ransomware-Familie identifizieren (Hash, Extensions, Note-Inhalt)
+   - Entschluesselungs-Tools auf nomoreransom.org suchen
+   - Angriffsvektor ermitteln (Phishing-Mail, RDP-Brute-Force, Exploit)
+6. DECISION: Loesegeld zahlen? (Entscheidung durch Management + Legal)
+7. ERADICATION + RECOVERY: Backup einspielen (nach Pruefung auf Malware!)
+8. LESSONS LEARNED: Warum waren Admin-Shares offen? Warum kein MFA?</code></pre>
+
+<div class="callout warning"><strong>Wichtig:</strong> NIEMALS laufende Ransomware-Prozesse killen! Erst RAM-Dump machen. Der Encryption-Key liegt oft unverschluesselt im Speicher.</div>
+
+<h3>Phishing-Playbook (Kurzform)</h3>
+
+<pre><code>1. ALERT: User meldet verdaechtige E-Mail oder hat Link/Anhang geoeffnet
+2. TRIAGE:
+   - E-Mail-Header analysieren (From, Return-Path, SPF/DKIM/DMARC)
+   - Absender-Domain pruefen (Domain-Alter, TLD, Reputation)
+   - War der Empfaenger ein gezieltes Ziel (Spear-Phishing) oder Massenversand?
+3. CONTAINMENT:
+   - Betroffene Mailbox: Phishing-Mail loeschen (Admin-seitig)
+   - URL in Proxy/Webfilter blockieren
+   - Anhang-Hash in EDR/AV blockieren
+   - Falls User Anmeldedaten eingegeben hat: SOFORT Passwort aendern + MFA-Session invalidieren
+4. SCOPE ERMITTELN:
+   - Wem wurde die Mail noch zugestellt? (Message Trace in Exchange/M365)
+   - Wer hat den Link geklickt? (Proxy-Logs, EDR-Telemetrie)
+5. EVIDENCE:
+   - E-Mail als .eml exportieren (Header + Body + Anhaenge)
+   - Phishing-URL screenshotieren (in VM/ThreatBox!)
+6. POST-INCIDENT: Phishing-Simulation fuer alle User durchfuehren</code></pre>
+
+<h3>Data-Exfiltration-Playbook (Kurzform)</h3>
+
+<pre><code>1. ALERT: DLP-Alarm, Firewall-Log zeigt grosse ausgehende Datenmenge, oder Threat-Intel meldet Daten auf Pastebin
+2. BESTAETIGUNG:
+   - Welche Daten? (Personenbezogen? Geistiges Eigentum? Login-Daten?)
+   - Wohin? (IP-Adresse, Land, bekannte C2-Infrastruktur?)
+   - Wann? (Zeitraum der Exfiltration)
+   - Welches Protokoll? (HTTPS, DNS-Tunneling, ICMP, FTP, Cloud-Upload?)
+3. CONTAINMENT:
+   - Ausgehenden Traffic blockieren (VORSICHT: Angreifer merkt Blockade)
+   - Betroffene Systeme isolieren
+4. BEWEISSICHERUNG:
+   - Firewall-Logs, Proxy-Logs, DNS-Logs, DLP-Logs extrahieren
+   - RAM-Dump der betroffenen Systeme (zeigt laufende Exfil-Prozesse)
+5. DSGVO-CHECK:
+   - Waren personenbezogene Daten betroffen? → Art. 33/34 DSGVO!
+   - 72h-Frist ab Kenntnis: Meldung an Aufsichtsbehoerde vorbereiten
+   - Betroffene Personen benachrichtigen (Art. 34)
+6. STAKEHOLDER: Legal, PR, CISO, Vorstand informieren</code></pre>
+
+<h2 id="thehive">TheHive + Cortex + MIPS: Open-Source IR-Stack</h2>
+
+<p>Diese drei Tools bilden zusammen eine vollstaendige Open-Source-IR-Plattform:</p>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Funktion</th><th>Integration</th></tr></thead><tbody>
+<tr><td><strong>TheHive</strong></td><td>IR-Case-Management. Tickets, Tasks, Observables, Timeline, Case-Templates (Playbooks)</td><td>REST-API, Webhooks, MISP-Sync, Cortex-Anbindung</td></tr>
+<tr><td><strong>Cortex</strong></td><td>Observable-Analyse-Engine. IPs, Domains, Hashes, URLs automatisch an 100+ Analyser senden (VirusTotal, Shodan, Passive DNS, etc.)</td><td>Receives Jobs von TheHive, antwortet mit Analyseergebnissen</td></tr>
+<tr><td><strong>MISP</strong> (Malware Information Sharing Platform)</td><td>Threat-Intelligence-Plattform. IOCs sammeln, korrelieren, teilen (intern + mit Community)</td><td>Sync mit TheHive: Cases → MISP-Events. MISP-Feeds → TheHive Alerts</td></tr>
+</tbody></table>
+
+<pre><code>Workflow:
+  Alert (SIEM, Email, User) → TheHive Case
+  → Cortex analysiert Observables (IP, Hash, Domain) automatisch
+  → Cortex-Ergebnisse im Case sichtbar
+  → Relevante IOCs an MISP senden (Threat Intel anreichern)
+  → MISP-Feeds erzeugen neue Alerts in TheHive</code></pre>
+
+<h2 id="war-room">Kommunikation: War Room, Stakeholder-Template</h2>
+
+<h3>War Room</h3>
+
+<ul>
+  <li><strong>Definition:</strong> Physischer oder virtueller Raum, in dem das IR-Team waehrend eines kritischen Incidents zusammenarbeitet.</li>
+  <li><strong>Regeln:</strong> Nur autorisierte Personen. Keine Smartphones (Angreifer koennte mithoeren). Out-of-Band-Kommunikation (Signal, eigener Slack-Workspace, Telefonkonferenz), da firmeninterne Chatsysteme kompromittiert sein koennen.</li>
+  <li><strong>Status-Updates:</strong> Alle 30-60 Minuten. Nicht warten bis jemand fragt.</li>
+</ul>
+
+<h3>Stakeholder-Update-Template</h3>
+
+<pre><code>=== INCIDENT STATUS UPDATE — [DATUM ZEIT UTC] ===
+SCHWEREGRAD:    P1 / Kritisch
+STATUS:         Containment laeuft
+BETROFFEN:      [X] Server, [Y] Workstations, [Z] Cloud-Ressourcen
+BUSINESS IMPACT: CRM-System offline seit 14:30 UTC. ~300 Mitarbeiter betroffen.
+URSACHE:        Ransomware via Phishing-Mail (Ermittlung laeuft)
+
+MASSNAHMEN:
+  - Ergriffen:  Server vom Netz getrennt, Admin-Shares deaktiviert
+  - In Arbeit:  Forensisches Imaging von 5 Servern
+  - Geplant:    Backup-Restore nach Abschluss Forensik
+
+NAECHSTES UPDATE: In 60 Minuten
+KONTAKT:        [Name], [Telefon (Out-of-Band!)], [Signal-Nummer]</code></pre>
+
+<h2 id="beweissicherung">Beweissicherung im IR</h2>
+
+<div class="callout danger"><strong>Reihenfolge beachten!</strong> Beweise fluechtig nach Bestaendigkeit sichern: 1. RAM (fluechtigste Daten), 2. Netzwerkverbindungen/Prozesse, 3. Festplatten-Image, 4. Logs. Ein Neustart zerstoert Reihenfolge 1-2 unwiderruflich.</div>
+
+<h3>Was MUSS vor der Bereinigung gesichert werden?</h3>
+
+<table class="styled-table">
+<thead><tr><th>Beweismittel</th><th>Tool (Windows)</th><th>Tool (Linux)</th></tr></thead><tbody>
+<tr><td><strong>RAM-Dump</strong></td><td>Magnet RAM Capture, DumpIt, WinPmem</td><td>LiME, AVML, fmem</td></tr>
+<tr><td><strong>Festplatten-Image</strong></td><td>FTK Imager, dd (mit Write-Blocker)</td><td>dd, dc3dd, guymager</td></tr>
+<tr><td><strong>Prozessliste + Netzwerkverbindungen</strong></td><td><code>netstat -anob</code>, Sysinternals (TCPView, Process Explorer)</td><td><code>netstat -tulpn</code>, <code>lsof -i</code>, <code>ss -tulpn</code></td></tr>
+<tr><td><strong>EventLogs</strong></td><td>wevtutil, KAPE (Kroll Artifact Parser)</td><td><code>/var/log/*</code>, journalctl-Export</td></tr>
+<tr><td><strong>Registry-Hives</strong></td><td>KAPE, RegRipper, FTK Imager</td><td>N/A (Linux hat keine Registry)</td></tr>
+<tr><td><strong>Prefetch / Amcache</strong></td><td>KAPE, PECmd (Eric Zimmerman)</td><td>N/A</td></tr>
+</tbody></table>
+
+<h2 id="dsgvo-meldepflicht">DSGVO-Meldepflicht: 72h-Frist</h2>
+
+<table class="styled-table">
+<thead><tr><th>Artikel</th><th>Pflicht</th><th>Details</th></tr></thead><tbody>
+<tr><td><strong>Art. 33 (1)</strong></td><td>Meldung an Aufsichtsbehoerde</td><td><strong>Innerhalb von 72 Stunden</strong> nach Kenntnis der Verletzung. Fristueberschreitung muss begruendet werden.</td></tr>
+<tr><td><strong>Art. 33 (3)</strong></td><td>Inhalt der Meldung</td><td>Art der Verletzung, Kategorien + Anzahl Betroffener, Kategorien + Anzahl Datensaetze, Kontaktdaten DSB, wahrscheinliche Folgen, ergriffene Massnahmen.</td></tr>
+<tr><td><strong>Art. 33 (4)</strong></td><td>Schrittweise Meldung</td><td>Nicht alle Infos auf einmal? → Erstmeldung mit verfuegbaren Infos, dann schrittweise ergaenzen.</td></tr>
+<tr><td><strong>Art. 34</strong></td><td>Benachrichtigung Betroffener</td><td>Wenn <strong>hohes Risiko</strong> fuer persoenliche Rechte und Freiheiten → Betroffene unverzueglich informieren (Klartext, nicht Juristendeutsch).</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>72h-Falle:</strong> Die Frist beginnt mit Kenntnis der <em>Verletzung des Schutzes personenbezogener Daten</em>, nicht erst wenn der volle Umfang klar ist. Lieber zu frueh melden und nachreichen als zu spaet. Dokumentiere, WER wann von der Verletzung erfuhr.</div>
+
+<h2 id="ir-plan-vorlage">Praktische Anwendung: IR-Plan-Vorlage</h2>
+
+<p>Referenz: <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf">NIST SP 800-61 Rev. 2</a> — der De-facto-Standard fuer Incident Response.</p>
+
+<h3>Minimal-IR-Plan (1 Seite)</h3>
+
+<ol>
+  <li><strong>Kontaktliste:</strong> Incident Commander, Tech Lead, Legal, PR, externe IR-Firma (Retainer-Vertrag?)</li>
+  <li><strong>Eskalationsmatrix:</strong> Wer wird ab welchem Schweregrad informiert (P1 = CISO + Vorstand, P2 = CISO + IT-Leiter, P3 = IT-Leiter, P4 = Team)</li>
+  <li><strong>Kommunikationskanaele:</strong> Primaer (Telefonkonferenz), Sekundaer (Signal-Gruppe), Tertiaer (E-Mail). Out-of-Band: Nicht das ggf. kompromittierte Firmen-Chatsystem.</li>
+  <li><strong>Externe Meldewege:</strong> Aufsichtsbehoerde (DSGVO), Strafverfolgungsbehoerde (LKA/BKA), Cyber-Versicherung (muss fruehzeitig einbezogen werden!)</li>
+  <li><strong>Dokumentationspflicht:</strong> Jede Entscheidung, jeden Schritt dokumentieren (wann + wer + was + warum). Wird fuer DSGVO-Nachweis und Lessons Learned benoetigt.</li>
+</ol>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</h2>
+
+<ul>
+  <li><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf">NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide</a></li>
+  <li><a href="https://www.iso.org/standard/78973.html">ISO/IEC 27035: Information Security Incident Management</a></li>
+  <li><a href="https://thehive-project.org/">TheHive Project</a> — Open-Source Security Incident Response Platform</li>
+  <li><a href="https://github.com/MISP/MISP">MISP — Open Source Threat Intelligence Platform</a></li>
+  <li><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-184.pdf">NIST SP 800-184: Guide for Cybersecurity Event Recovery</a></li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

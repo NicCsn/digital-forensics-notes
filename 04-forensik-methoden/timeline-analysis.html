@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline-Analyse mit Plaso und log2timeline — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details open><summary>Forensik-Methoden (16)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Timeline-Analyse</span>
+</nav>
+<main><article>
+<h1>Timeline-Analyse mit Plaso und log2timeline <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#plaso">Plaso/log2timeline Installation</a></li>
+<li><a href="#datenquellen">Datenquellen fuer Timelines</a></li>
+<li><a href="#mactime">Mactime-Format und MACB-Timestamps</a></li>
+<li><a href="#workflow">Super-Timeline Workflow</a></li>
+<li><a href="#timesketch">Timesketch-Integration</a></li>
+<li><a href="#elasticsearch">Elasticsearch Backend</a></li>
+<li><a href="#praxis">Praktische Anwendung</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Die Timeline-Analyse ist eine der maechtigsten forensischen Methoden. Sie aggregiert <strong>samtliche Zeitstempel aus allen verfuegbaren Artefakten</strong> eines Systems in einer einzigen, chronologisch sortierten Liste — der <strong>Super-Timeline</strong>. Entwickelt von Kristinn Gudjonsson, ist <strong>Plaso</strong> (Plaso Langar Að Safna Öllu — "Plaso moechte alles sammeln") das Open-Source-Standardwerkzeug fuer diese Aufgabe. Es extrahiert Timestamps aus Dateisystemen, Registry, EventLogs, Prefetch, Browser-History, Logdateien und ueber 50 weiteren Artefakttypen und normalisiert sie in ein einheitliches Format.</p>
+
+<div class="callout info"><strong>Super-Timeline vs. einfache Timeline:</strong> Eine einfache Timeline zeigt nur Dateisystem-Zeitstempel (MACTIME). Eine Super-Timeline kombiniert Dateisystem-, Registry-, Log-, Netzwerk- und Browser-Artefakte in einer Ansicht. Das ermoeglicht Korrelationen wie: "Datei wurde um 14:03 erstellt, um 14:04 in der Registry referenziert und um 14:07 via Browser heruntergeladen."</div>
+
+<h2 id="plaso">Plaso/log2timeline Installation und Grundbefehle</h2>
+<p>Plaso ist in Python geschrieben und wird als Python-Paket installiert. Es stellt drei Kern-Tools bereit: <code>log2timeline.py</code> (Extraktion), <code>psort.py</code> (Sortierung/Ausgabe) und <code>psteal.py</code> (beides in einem Durchlauf).</p>
+
+<h3>Installation</h3>
+<pre><code># Via pip (empfohlen)
+pip install plaso
+
+# Via Docker (isoliert, keine Abhaengigkeitsprobleme)
+docker pull log2timeline/plaso
+
+# Auf Debian/Ubuntu (oft veraltet)
+sudo apt install plaso-tools</code></pre>
+
+<h3>Kernbefehle</h3>
+
+<table>
+<thead><tr><th>Werkzeug</th><th>Funktion</th><th>Typische Verwendung</th></tr></thead><tbody>
+<tr><td><code>log2timeline.py</code></td><td>Extrahiert Timestamps aus einem Quell-Image/Verzeichnis und schreibt eine <code>.plaso</code>-Storage-Datei</td><td><code>log2timeline.py timeline.plaso image.dd</code></td></tr>
+<tr><td><code>psort.py</code></td><td>Liest eine <code>.plaso</code>-Datei und gibt die Events sortiert in verschiedenen Formaten aus</td><td><code>psort.py timeline.plaso "date > '2024-01-01'"</code></td></tr>
+<tr><td><code>psteal.py</code></td><td>Kombination aus log2timeline und psort — Extraktion und Ausgabe in einem Befehl</td><td><code>psteal.py --source image.dd -o l2tcsv -w output.csv</code></td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Plaso-Storage-Dateien sind binaer:</strong> Die <code>.plaso</code>-Datei ist kein Textformat, sondern eine SQLite-Datenbank mit serialisierten Protobuf-Objekten. Sie kann nur mit Plaso-Tools gelesen werden. Fuer den Export in lesbare Formate (CSV, L2TCSV, TLN, etc.) wird <code>psort.py</code> verwendet.</div>
+
+<h2 id="datenquellen">Datenquellen fuer Timelines</h2>
+<p>Plaso unterstuetzt ueber 50 Parser. Die wichtigsten Datenquellen und ihre forensische Relevanz:</p>
+
+<table>
+<thead><tr><th>Datenquelle</th><th>Parser in Plaso</th><th>Relevante Artefakte</th></tr></thead><tbody>
+<tr><td><strong>NTFS-Dateisystem</strong></td><td><code>mft</code>, <code>filestat</code></td><td>$MFT (Master File Table) mit $STANDARD_INFO (4 MACB-Zeitstempel) und $FILE_NAME (4 zusaetzliche MACB)</td></tr>
+<tr><td><strong>Windows Registry</strong></td><td><code>winreg</code></td><td>SAM, SECURITY, SOFTWARE, SYSTEM, NTUSER.DAT — UserAssist, RunMRU, ShimCache, AmCache, USB-Historie</td></tr>
+<tr><td><strong>Windows EventLog</strong></td><td><code>winevt</code>, <code>winevtx</code></td><td>Security.evtx (4624/4625 Login), System.evtx (7036 Dienststart), Application.evtx</td></tr>
+<tr><td><strong>Prefetch</strong></td><td><code>prefetch</code></td><td>Ausfuehrungszeitpunkte von Programmen, Run-Count, zuletzt geladene DLLs</td></tr>
+<tr><td><strong>Browser-History</strong></td><td><code>chrome_history</code>, <code>firefox_history</code></td><td>Chronik-Timestamps, Download-Zeiten, Cookie-Erstellungsdaten</td></tr>
+<tr><td><strong>LNK-Dateien</strong></td><td><code>lnk</code></td><td>Erstellungs-/Modifikations-/Zugriffszeit der Verknuepfung sowie der Zieldatei, NetBIOS-Name des Ursprungsrechners</td></tr>
+<tr><td><strong>RAM-Dump (Volatility)</strong></td><td>Nicht direkt — via <code>mactime</code>-Plugin</td><td>Prozess-Startzeiten, Netzwerkverbindungen mit Timestamps</td></tr>
+<tr><td><strong>Linux-Dateisystem</strong></td><td><code>filestat</code></td><td>inode-Timestamps (atime, mtime, ctime, crtime auf ext4/XFS)</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>$STANDARD_INFO vs. $FILE_NAME:</strong> Auf NTFS hat jede Datei zwei Sets von MACB-Timestamps. $STANDARD_INFO kann vom Benutzer manipuliert werden (Timestomping). $FILE_NAME wird nur vom Kernel aktualisiert und ist schwerer zu faelschen. Diskrepanzen zwischen beiden sind ein starker Indikator fuer Anti-Forensik.</div>
+
+<h2 id="mactime">Mactime-Format und MACB-Timestamps</h2>
+<p>Das Mactime-Format (auch als <code>bodyfile</code>-Format bekannt) ist der Urvater aller forensischen Timeline-Formate, urspruenglich vom <strong>Sleuth Kit</strong> (<code>fls -m</code>). Es listet Dateien mit ihren vier Zeitstempeln auf.</p>
+
+<h3>MACB — Die vier Zeitstempel</h3>
+<table>
+<thead><tr><th>Kuerzel</th><th>Name</th><th>Windows-Entsprechung</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td><strong>m</strong></td><td>Modified</td><td>LastWriteTime</td><td>Wann wurde der <em>Inhalt</em> zuletzt geaendert?</td></tr>
+<tr><td><strong>a</strong></td><td>Accessed</td><td>LastAccessTime</td><td>Wann wurde die Datei zuletzt gelesen? (Seit Win 8 oft deaktiviert)</td></tr>
+<tr><td><strong>c</strong></td><td>Changed</td><td>ChangeTime (MFT Entry Modified)</td><td>Wann wurden die <em>Metadaten</em> (nicht Inhalt) geaendert?</td></tr>
+<tr><td><strong>b</strong></td><td>Birth</td><td>CreationTime</td><td>Wann wurde die Datei auf DIESEM Datentraeger erstellt?</td></tr>
+</tbody></table>
+
+<pre><code># Mactime/Bodyfile-Beispielzeile
+# MD5|Name|Inode|Mode|UID|GID|Size|atime|mtime|ctime|btime
+0|/Users/jon/secret.docx|53849|-rw-r--r--|0|0|284672|1706119800|1706119740|1706119740|1706119200</code></pre>
+
+<p>Ein typischer Plaso-Export ins Mactime-Format mit psort:</p>
+<pre><code>psort.py -o l2tcsv timeline.plaso > timeline.csv</code></pre>
+
+<p>Die CSV enthaelt dann Spalten wie <code>datetime, timestamp_desc, source, sourcetype, message</code> — jede Zeile ein einzelnes Event, chronologisch sortiert.</p>
+
+<h2 id="workflow">Super-Timeline Workflow — Schritt fuer Schritt</h2>
+
+<div class="callout info"><strong>Workflow-Uebersicht:</strong> Der klassische Plaso-Workflow besteht aus drei Phasen: (1) Extraktion aller Timestamps in eine Storage-Datei, (2) Filtern und Sortieren der relevanten Events, (3) Analyse und Korrelation in Timesketch oder manuell.</div>
+
+<h3>Phase 1: Extraktion</h3>
+<pre><code># Vollstaendige Extraktion aus einem Image
+log2timeline.py --status_view window \
+  --storage_file case001.plaso \
+  /mnt/evidence/disk_image.E01
+
+# Nur bestimmte Parser verwenden (schneller, gezielter)
+log2timeline.py --parsers "winreg,prefetch,winevtx" \
+  --storage_file registry_events.plaso \
+  /mnt/evidence/disk_image.E01</code></pre>
+
+<h3>Phase 2: Filtern und Sortieren</h3>
+<pre><code># Alle Events nach Datum filtern
+psort.py -o dynamic \
+  -q "date >= '2024-06-01 00:00:00' AND date <= '2024-06-15 23:59:59'" \
+  timeline.plaso
+
+# Nur Events von bestimmten Parsern
+psort.py -o l2tcsv \
+  -q "parser == 'prefetch' OR parser == 'winevtx'" \
+  timeline.plaso > filtered.csv
+
+# Nach Source-Typ filtern (z.B. nur Registry-Events)
+psort.py -o l2tcsv \
+  -q "source_short == 'REG'" \
+  timeline.plaso</code></pre>
+
+<h3>Phase 3: Analyse</h3>
+<p>Die exportierte CSV kann in Tools wie <strong>Timeline Explorer</strong> (Eric Zimmerman) oder <strong>Timesketch</strong> geladen werden. Manuell werden Events korreliert:</p>
+<ul>
+<li>Welche Programme wurden vor/nach einem verdaechtigen Event ausgefuehrt?</li>
+<li>Gibt es Dateisystem-Aktivitaet die mit Registry-Aenderungen korreliert?</li>
+<li>Welche Prefetch-Eintraege tauchen zeitgleich mit Login-Events auf?</li>
+</ul>
+
+<h2 id="timesketch">Timesketch-Integration</h2>
+<p><strong>Timesketch</strong> ist eine von Google entwickelte Webanwendung zur kollaborativen forensischen Timeline-Analyse. Es baut auf Elasticsearch und Plaso auf und bietet eine grafische Oberflaeche mit Sketch-basierter Analyse.</p>
+
+<h3>Timesketch-Architektur</h3>
+<table>
+<thead><tr><th>Komponente</th><th>Funktion</th></tr></thead><tbody>
+<tr><td><strong>Timesketch Web UI</strong></td><td>Web-Frontend (Flask), in dem Analysten Sketches erstellen, Events durchsuchen, Tags vergeben und Stories (Plots) anlegen</td></tr>
+<tr><td><strong>Plaso</strong></td><td>Extrahiert Timestamps aus Images und schreibt sie als <code>.plaso</code>-Datei</td></tr>
+<tr><td><strong>Timesketch Importer (<code>tsctl</code>)</strong></td><td>Importiert <code>.plaso</code> oder CSV-Dateien in Elasticsearch</td></tr>
+<tr><td><strong>Elasticsearch</strong></td><td>Speichert und indiziert alle Events, ermoeglicht Volltextsuche und Aggregationen</td></tr>
+</tbody></table>
+
+<pre><code># Workflow: Plaso → Timesketch
+# 1. Timeline mit Plaso extrahieren (wie oben)
+# 2. In Timesketch importieren
+tsctl import timeline.plaso
+
+# 3. In Timesketch Web-UI: Sketch anlegen, Timeline zuweisen
+# 4. Analyse: Suchabfragen, Tags ("suspicious", "malware"), Plots erstellen</code></pre>
+
+<div class="callout tip"><strong>Timesketch-Analysepunkte:</strong> Analysiere Events mit <strong>aggregierten Ansichten</strong> (Haeufigkeitsdiagramme), suche nach <strong>Ausreissern</strong> (einzelne Events in sonst inaktiven Zeitraeumen) und nutze <strong>Sigma-Regeln</strong>, die Timesketch nativ als Analyzer unterstuetzt.</div>
+
+<h2 id="elasticsearch">Elasticsearch Backend</h2>
+<p>Elasticsearch bildet das Rueckgrat von Timesketch. Jedes Plaso-Event wird als JSON-Dokument indiziert. Die Elasticsearch-Datenstruktur ermoeglicht komplexe Suchabfragen und Zeitreihenanalysen.</p>
+
+<table>
+<thead><tr><th>Feld</th><th>Typ</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>datetime</code></td><td>date</td><td>Zeitstempel des Events (ISO 8601)</td></tr>
+<tr><td><code>timestamp_desc</code></td><td>keyword</td><td>Bedeutung des Timestamps (z.B. "Creation Time", "Last Written")</td></tr>
+<tr><td><code>message</code></td><td>text</td><td>Freitext-Beschreibung des Events</td></tr>
+<tr><td><code>parser</code></td><td>keyword</td><td>Welcher Plaso-Parser hat das Event erzeugt? (z.B. "winevtx", "mft")</td></tr>
+<tr><td><code>source_short</code></td><td>keyword</td><td>Kurzes Quell-Kuerzel ("FILE", "REG", "LOG", "WEBHIST")</td></tr>
+<tr><td><code>source_long</code></td><td>text</td><td>Vollstaendiger Quellpfad</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Performance:</strong> Eine vollstaendige Super-Timeline eines 500-GB-Images kann mehrere Millionen Events enthalten. Elasticsearch braucht ausreichend RAM (mind. 8 GB, besser 16 GB) und Speicherplatz. Fuer grosse Cases: Elasticsearch-Cluster mit mehreren Nodes verwenden.</div>
+
+<h2 id="praxis">Praktische Anwendung — Befehle und Workflow</h2>
+
+<h3>Fallbeispiel: Verdacht auf Datendiebstahl</h3>
+<p><strong>Szenario:</strong> Mitarbeiter verlaesst das Unternehmen am 15.06.2024. Es besteht Verdacht, dass vor dem Austritt grosse Mengen an Firmendaten auf einen USB-Stick kopiert wurden. Image des Rechners liegt als <code>suspect.E01</code> vor.</p>
+
+<pre><code># Schritt 1: Komplette Super-Timeline extrahieren
+log2timeline.py --status_view window \
+  --hashers md5,sha256 \
+  --storage_file /cases/data-theft/timeline.plaso \
+  /cases/data-theft/suspect.E01
+
+# Schritt 2: Auf den relevanten Zeitraum filtern (01.06.–15.06.2024)
+psort.py -o l2tcsv \
+  -q "date >= '2024-06-01 00:00:00' AND date <= '2024-06-15 23:59:59'" \
+  /cases/data-theft/timeline.plaso \
+  -w /cases/data-theft/timeline_juni.csv
+
+# Schritt 3: Nur Datei-Events extrahieren, die auf USB hindeuten
+psort.py -o l2tcsv \
+  -q "source_short == 'FILE' AND message CONTAINS 'USB'" \
+  /cases/data-theft/timeline.plaso \
+  -w /cases/data-theft/usb_events.csv
+
+# Schritt 4: Prefetch analysieren — welche Programme liefen?
+psort.py -o l2tcsv \
+  -q "parser == 'prefetch'" \
+  /cases/data-theft/timeline.plaso \
+  -w /cases/data-theft/prefetch.csv
+
+# Schritt 5: LNK-Dateien auf USB-Bezug
+psort.py -o l2tcsv \
+  -q "parser == 'lnk'" \
+  /cases/data-theft/timeline.plaso \
+  -w /cases/data-theft/lnk.csv</code></pre>
+
+<h3>Analyse in Timeline Explorer</h3>
+<p>Die exportierten CSV-Dateien werden in <strong>Timeline Explorer</strong> (Eric Zimmerman) geladen. Sortiere nach <code>datetime</code> und markiere auffaellige Muster:</p>
+<ol>
+<li>Grosse Dateimengen kurz hintereinander kopiert?</li>
+<li>USB-Laufwerksbuchstabe (D:\, E:\) in LNK-Dateien oder Registry?</li>
+<li>Programm <code>robocopy.exe</code> oder <code>7z.exe</code> in Prefetch? (typische Tools fuer Massenkopie)</li>
+<li>Zeitgleiche Registry-Eintraege in <code>USBSTOR</code>?</li>
+</ol>
+
+<h3>Alternativen zu Plaso</h3>
+<table>
+<thead><tr><th>Tool</th><th>Plattform</th><th>Staerken</th></tr></thead><tbody>
+<tr><td><strong>Plaso/log2timeline</strong></td><td>Linux, macOS, Windows</td><td>Groesste Parser-Abdeckung (50+), Super-Timeline, Timesketch-Integration</td></tr>
+<tr><td><strong>MFTECmd</strong> (Eric Zimmerman)</td><td>Windows</td><td>Sehr schnell fuer reine $MFT-Analyse, CSV-Export</td></tr>
+<tr><td><strong>Timeline Explorer</strong></td><td>Windows</td><td>GUI zur CSV-Analyse, Filterung, Markierung — ideal fuer manuelle Sichtung</td></tr>
+<tr><td><strong>Autopsy Timeline</strong></td><td>Linux, Windows</td><td>In Autopsy integrierte Timeline-Ansicht fuer einfache Faelle</td></tr>
+<tr><td><strong>Velociraptor</strong></td><td>Linux, Windows, macOS</td><td>Live-Timeline-Erstellung via VQL (Artifact-basiertes Hunting)</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Zeitzonen-Hoelle:</strong> Der haeufigste Fehler bei Timeline-Analysen sind inkonsistente Zeitzonen. NTFS speichert alle Timestamps in <strong>UTC</strong>, aber Plaso kann sie in lokale Zeit konvertieren. Immer dokumentieren, welche Zeitzone verwendet wurde und ob UTC oder lokal. Der Parameter <code>--timezone</code> in Plaso ist dein Freund.</div>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://github.com/log2timeline/plaso">Plaso GitHub Repository</a> — Quellcode und Dokumentation</li>
+<li><a href="https://github.com/google/timesketch">Timesketch GitHub Repository</a></li>
+<li><a href="https://plaso.readthedocs.io/">Plaso Official Documentation (ReadTheDocs)</a></li>
+<li><a href="https://ericzimmerman.github.io/">Eric Zimmerman Tools</a> — Timeline Explorer, MFTECmd</li>
+<li><a href="https://forensics.wiki/timeline-analysis/">Forensics Wiki — Timeline Analysis</a></li>
+<li>Carvey, H. (2019): <em>Windows Forensic Analysis Toolkit</em>, 3. Auflage</li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

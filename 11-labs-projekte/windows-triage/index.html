@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab: Windows-Triage — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../index.html">Startseite</a></li>
+    <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK</a></li>
+      <li><a href="../../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../09-tools/wireshark-dissector/README.html">Wireshark DFP-Dissector</a></li>
+      <li><a href="../../09-tools/log-parser/README.html">Apache Log Parser</a></li>
+      <li><a href="../../09-tools/plaso-plugin/README.html">Plaso Parser Plugin</a></li>
+      <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../11-labs-projekte/">Labs &amp; Projekte</a> / Windows-Triage</span>
+</nav>
+<main>
+<article>
+
+<h1>Lab: Eigenstaendige Windows-Triage <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#lab-ziel">Lab-Ziel</a></li>
+<li><a href="#voraussetzungen">Voraussetzungen</a></li>
+<li><a href="#setup">Setup: Windows-VM mit Aktivitaeten</a></li>
+<li><a href="#schritt-1">Schritt 1: KAPE-Triage-Target ausfuehren</a></li>
+<li><a href="#schritt-2">Schritt 2: Prefetch-Dateien analysieren</a></li>
+<li><a href="#schritt-3">Schritt 3: EventLogs auswerten</a></li>
+<li><a href="#schritt-4">Schritt 4: Registry-Artefakte untersuchen</a></li>
+<li><a href="#schritt-5">Schritt 5: Zusammenfassung und Report</a></li>
+<li><a href="#musterloesung">Musterloesung</a></li>
+<li><a href="#bewertungskriterien">Bewertungskriterien</a></li>
+</ol></details>
+
+<h2 id="lab-ziel">Lab-Ziel</h2>
+
+<p>In diesem Lab fuehrst du eine eigenstaendige <strong>Windows-Triage</strong> durch — die schnelle Ersteinschaetzung eines potenziell kompromittierten Windows-Systems. Du lernst den Umgang mit forensischen Standardwerkzeugen (KAPE, Sysinternals), interpretierst Windows-Artefakte (Prefetch, EventLogs, Registry) und erstellst einen strukturierten forensischen Bericht.</p>
+
+<p>Das Szenario: Auf einer Windows-10-VM wurden verschiedene "verdaechtige" Aktivitaeten durchgefuehrt — von harmlosen Administrator-Taetigkeiten bis hin zu simulierten Angriffshandlungen. Deine Aufgabe ist es, die Spuren dieser Aktivitaeten zu identifizieren, zeitlich einzuordnen und ihre Bedeutung zu bewerten.</p>
+
+<div class="callout info"><strong>Lernziele</strong><p>Nach Abschluss dieses Labs kannst du: (1) KAPE zur automatisierten Artefakt-Sammlung einsetzen, (2) Windows-Prefetch-Dateien forensisch interpretieren, (3) Sicherheitsrelevante EventLog-Ereignisse identifizieren und filtern, (4) Registry-Artefakte auf Kompromittierungsindikatoren pruefen und (5) Einen strukturierten Triage-Bericht mit Zeitstrahl erstellen.</p></div>
+
+<h2 id="voraussetzungen">Voraussetzungen</h2>
+
+<h3>Hardware / Software</h3>
+
+<table>
+<thead><tr><th>Komponente</th><th>Mindestanforderung</th><th>Empfohlen</th></tr></thead>
+<tbody>
+<tr><td>Host-Betriebssystem</td><td>Windows 10/11, Linux oder macOS</td><td>Windows 10/11 Pro (fuer Hyper-V)</td></tr>
+<tr><td>Virtualisierung</td><td>VirtualBox 7.0+ oder VMware Workstation 17+</td><td>VMware Workstation Pro</td></tr>
+<tr><td>Windows-VM</td><td>Windows 10 22H2, 4 GB RAM, 40 GB HDD</td><td>Windows 11 23H2, 8 GB RAM, 60 GB HDD</td></tr>
+<tr><td>Plattenspeicher</td><td>20 GB frei (fuer VM und Triage-Output)</td><td>50 GB frei</td></tr>
+</tbody>
+</table>
+
+<h3>Benutzerkonto und Rechte</h3>
+
+<ul>
+<li>Administrator-Konto auf der Windows-VM (Lokale Admin-Rechte)</li>
+<li>UAC deaktiviert oder auf niedrigster Stufe (erleichtert Tool-Ausfuehrung)</li>
+<li>PowerShell Execution Policy: mindestens <code>RemoteSigned</code></li>
+</ul>
+
+<h3>Erforderliche Tools (vorab herunterladen)</h3>
+
+<table>
+<thead><tr><th>Tool</th><th>Download-Link</th><th>Zweck</th></tr></thead>
+<tbody>
+<tr><td><strong>KAPE</strong></td><td><a href="https://www.kroll.com/en/insights/publications/cyber/kroll-artifact-parser-extractor-kape">Kroll KAPE</a></td><td>Automatisierte forensische Artefakt-Sammlung</td></tr>
+<tr><td><strong>Sysinternals Suite</strong></td><td><a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite">Microsoft Sysinternals</a></td><td>Autoruns, Process Explorer, TCPView</td></tr>
+<tr><td><strong>PECmd</strong></td><td><a href="https://ericzimmerman.github.io/">Eric Zimmerman Tools</a></td><td>Prefetch-Datei-Analyse</td></tr>
+<tr><td><strong>EvtxECmd</strong></td><td><a href="https://ericzimmerman.github.io/">Eric Zimmerman Tools</a></td><td>EventLog-Parsing und CSV-Export</td></tr>
+<tr><td><strong>Registry Explorer</strong></td><td><a href="https://ericzimmerman.github.io/">Eric Zimmerman Tools</a></td><td>Registry-Hive-Analyse</td></tr>
+<tr><td><strong>Timeline Explorer</strong></td><td><a href="https://ericzimmerman.github.io/">Eric Zimmerman Tools</a></td><td>Zeitleisten-Darstellung und Filterung</td></tr>
+</tbody>
+</table>
+
+<div class="callout tip"><strong>Tipp</strong><p>Lade alle Tools auf einen USB-Stick oder eine geteilte VM-Freigabedatei und entpacke sie in <code>C:\Tools\</code>. Deaktiviere Windows Defender vor der Analyse, da einige Tools als potenzielle Bedrohung erkannt werden koennen.</p></div>
+
+<h2 id="setup">Setup: Windows-VM mit Aktivitaeten</h2>
+
+<h3>VM einrichten</h3>
+
+<ol>
+<li><strong>Windows 10/11-VM</strong> in VirtualBox oder VMware erstellen (min. 4 GB RAM, 2 vCPUs)</li>
+<li><strong>Snapshot anlegen:</strong> Vor allen Aktivitaeten einen VM-Snapshot erstellen (Clean State)</li>
+<li><strong>Lokales Admin-Konto anlegen:</strong> <code>forensik_user</code> mit Passwort <code>Lab2026!</code></li>
+<li><strong>Netzwerk: NAT</strong> (fuer Internetzugriff waehrend der Vorbereitung)</li>
+<li><strong>Windows-Updates deaktiviert</strong> lassen, um ungewollte Artefakte zu vermeiden</li>
+</ol>
+
+<h3>Verdaechtige Aktivitaeten simulieren</h3>
+
+<p>Folgende Aktivitaeten werden <strong>vor der Analyse</strong> vom Administrator (dir selbst) durchgefuehrt. Dokumentiere jeden Schritt mit Zeitstempel — du wirst spaeter ueberpruefen, ob du alles wiederfindest.</p>
+
+<table>
+<thead><tr><th>#</th><th>Aktivitaet</th><th>Relevantes Artefakt</th><th>Zeitstempel notiert?</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Browser (Edge) oeffnen und <code>http://evil-demo.local/login</code> aufrufen</td><td>Browser-History, DNS-Cache</td><td></td></tr>
+<tr><td>2</td><td><code>net user backdoor P@ssw0rd! /add</code> — Neuen Benutzer anlegen</td><td>EventLog 4720, SAM-Registry</td><td></td></tr>
+<tr><td>3</td><td><code>net localgroup Administratoren backdoor /add</code> — Benutzer Admin machen</td><td>EventLog 4732, SAM</td><td></td></tr>
+<tr><td>4</td><td>PowerShell-Script <code>Invoke-Mimikatz.ps1</code> herunterladen und ausfuehren</td><td>PowerShell-Operational Log (4104), Prefetch</td><td></td></tr>
+<tr><td>5</td><td><code>schtasks /create /tn "SystemCheck" /tr "C:\\Windows\\Temp\\srv.exe" /sc ONLOGON</code></td><td>Scheduled Tasks, EventLog 4698</td><td></td></tr>
+<tr><td>6</td><td><code>C:\\Windows\\Temp\\srv.exe</code> — harmlose Dummy-EXE ablegen</td><td>MFT-$STANDARD_INFO, Prefetch</td><td></td></tr>
+<tr><td>7</td><td><code>reg add "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run" /v Update /t REG_SZ /d "C:\\Windows\\Temp\\srv.exe"</code></td><td>Registry Run-Key, NTUSER.DAT</td><td></td></tr>
+<tr><td>8</td><td>RDP-Sitzung von einem anderen Rechner (oder <code>127.0.0.1</code>) initiieren</td><td>EventLog 4624 (LogonType 10), RDP-Cache</td><td></td></tr>
+<tr><td>9</td><td>Fehlgeschlagenen Anmeldeversuch simulieren (falsches Passwort 5x)</td><td>EventLog 4625, Account Lockout</td><td></td></tr>
+</tbody>
+</table>
+
+<h3>Vor der Analyse</h3>
+
+<ul>
+<li><strong>Snapshot anlegen:</strong> Nach den Aktivitaeten einen zweiten Snapshot — dies ist dein Analyse-Snapshot</li>
+<li><strong>Tools platzieren:</strong> Stelle sicher, dass <code>C:\Tools\</code> alle benoetigten Programme enthaelt</li>
+<li><strong>Zeit registrieren:</strong> Den genauen Zeitpunkt der Aktivitaet #9 notieren — dies dient als Ankerpunkt</li>
+</ul>
+
+<h2 id="schritt-1">Schritt 1: KAPE-Triage-Target ausfuehren</h2>
+
+<p>KAPE (Kroll Artifact Parser and Extractor) sammelt automatisiert forensische Artefakte vom Zielsystem. Das <strong>Triage-Target</strong> deckt die wichtigsten Quellen ab.</p>
+
+<h3>Durchfuehrung</h3>
+
+<pre><code># KAPE mit Triage-Target ausfuehren (als Administrator):
+C:\Tools\KAPE\kape.exe --tsource C: --target KapeTriage --tdest C:\Triage\Output --debug
+
+# Zusaetzlich das Sammelverzeichnis als ZIP archivieren:
+C:\Tools\KAPE\kape.exe --tsource C: --target KapeTriage --tdest C:\Triage\Output --zip Triage.zip</code></pre>
+
+<h3>Zu analysierende Fragen</h3>
+
+<ol>
+<li><strong>Welche Dateien wurden gesammelt?</strong> Ueberpruefe die Ausgabe-Ordnerstruktur. Welche Ordner sind am groessten?</li>
+<li><strong>Welche Prefetch-Dateien (*.pf) wurden kopiert?</strong> Notiere die Dateinamen.</li>
+<li><strong>Welche Registry-Hives wurden gesichert?</strong> (SAM, SYSTEM, SOFTWARE, NTUSER.DAT, AmCache.hve)</li>
+<li><strong>Welche EventLogs (.evtx) wurden exportiert?</strong> Welches Log ist das groesste?</li>
+<li><strong>Sind LNK-Dateien (Verknuepfungen) vorhanden?</strong> Aus welchen Verzeichnissen?</li>
+</ol>
+
+<div class="callout warning"><strong>Achtung</strong><p>KAPE fuehrt standardmaessig keine Parser (Module) aus, nur die Target-Sammlung. Fuer die Analyse der gesammelten Dateien werden die Eric-Zimmerman-Tools (PECmd, EvtxECmd etc.) separat benoetigt.</p></div>
+
+<h2 id="schritt-2">Schritt 2: Prefetch-Dateien analysieren</h2>
+
+<p>Windows-Prefetch-Dateien (<code>C:\Windows\Prefetch\*.pf</code>) enthalten Metadaten ueber ausgefuehrte Programme: Name, Ausfuehrungsanzahl und bis zu 8 Zeitstempel der letzten Ausfuehrungen. Sie sind <strong>unverzichtbar</strong> fuer die Rekonstruktion von Programmausfuehrungen.</p>
+
+<h3>Analyse mit PECmd</h3>
+
+<pre><code># Alle Prefetch-Dateien analysieren und als CSV exportieren:
+C:\Tools\PECmd.exe -d C:\Triage\Output\C\Windows\Prefetch --csv C:\Triage\Analysis\Prefetch
+
+# Einzelne Prefetch-Datei analysieren (Detailansicht):
+C:\Tools\PECmd.exe -f C:\Triage\Output\C\Windows\Prefetch\POWERSHELL.EXE-XXXXX.pf</code></pre>
+
+<h3>Zu beantwortende Fragen</h3>
+
+<ol>
+<li><strong>Welche Programme wurden in den letzten 24 Stunden ausgefuehrt?</strong> Sortiere die CSV nach dem letzten Ausfuehrungszeitstempel.</li>
+<li><strong>Wurde PowerShell.exe ausgefuehrt?</strong> Wie oft? Welche Prefetch-Hash passt dazu?</li>
+<li><strong>Gibt es unbekannte oder ungewoehnliche EXE-Dateien?</strong> (z.B. <code>srv.exe</code>, <code>p.exe</code>, <code>mimikatz</code>)</li>
+<li><strong>Welche Programme wurden nur EINMAL ausgefuehrt?</strong> (Run Count = 1) — oft ein Indikator fuer Dropper oder einmalige Tools</li>
+<li><strong>Korreliert die Ausfuehrungszeit von PowerShell.exe mit anderen Tools?</strong></li>
+</ol>
+
+<h3>Erwartete Funde</h3>
+
+<p>Du solltest mindestens folgende Eintraege im Prefetch finden:</p>
+<ul>
+<li><code>POWERSHELL.EXE-*.pf</code> — fuer das Mimikatz-Script</li>
+<li><code>SRV.EXE-*.pf</code> — das abgelegte Dummy-Tool</li>
+<li><code>MSEDGE.EXE-*.pf</code> — fuer den Browser-Aufruf</li>
+<li><code>NET.EXE-*.pf</code> und <code>NET1.EXE-*.pf</code> — fuer die <code>net user</code>-Befehle</li>
+<li><code>SCHTASKS.EXE-*.pf</code> — fuer die Task-Erstellung</li>
+<li><code>REG.EXE-*.pf</code> — fuer den Registry-Eintrag</li>
+</ul>
+
+<h2 id="schritt-3">Schritt 3: EventLogs auswerten</h2>
+
+<p>Die Windows-Ereignisprotokolle sind die umfangreichste Quelle fuer sicherheitsrelevante Ereignisse. Fokus-Logs:</p>
+
+<table>
+<thead><tr><th>Log-Datei</th><th>Pfad</th><th>Relevante Ereignis-IDs</th></tr></thead>
+<tbody>
+<tr><td>Security.evtx</td><td><code>%SystemRoot%\System32\winevt\Logs\</code></td><td>4624, 4625, 4672, 4688, 4720, 4732, 4698</td></tr>
+<tr><td>System.evtx</td><td><code>%SystemRoot%\System32\winevt\Logs\</code></td><td>7045 (Dienstinstallation), 7031 (Dienstabsturz)</td></tr>
+<tr><td>PowerShell-Operational.evtx</td><td><code>%SystemRoot%\...\Windows PowerShell\</code></td><td>4104 (Scriptblock-Logging), 4103 (Pipeline)</td></tr>
+</tbody>
+</table>
+
+<h3>Analyse mit EvtxECmd und PowerShell</h3>
+
+<pre><code># Security.evtx mit EvtxECmd parsen:
+C:\Tools\EvtxECmd.exe -f C:\Triage\Output\C\Windows\System32\winevt\Logs\Security.evtx --csv C:\Triage\Analysis\EventLogs
+
+# Alternativ direkt auf der VM per PowerShell filtern:
+# Erfolgreiche Logins (4624) der letzten 48h:
+Get-WinEvent -FilterHashTable @{LogName='Security'; ID=4624} -MaxEvents 100 | Format-Table TimeCreated, @{n='User';e={$_.Properties[5].Value}}, @{n='LogonType';e={$_.Properties[8].Value}}
+
+# Fehlgeschlagene Logins (4625):
+Get-WinEvent -FilterHashTable @{LogName='Security'; ID=4625} -MaxEvents 50 | Format-Table TimeCreated, @{n='User';e={$_.Properties[5].Value}}, @{n='Status';e={$_.Properties[7].Value}}
+
+# Prozess-Erstellung (4688):
+Get-WinEvent -FilterHashTable @{LogName='Security'; ID=4688} -MaxEvents 100 | Format-Table TimeCreated, @{n='Process';e={$_.Properties[5].Value}}, @{n='CmdLine';e={$_.Properties[8].Value}}
+
+# PowerShell-Scriptblocks (4104):
+Get-WinEvent -FilterHashTable @{LogName='Microsoft-Windows-PowerShell/Operational'; ID=4104} -MaxEvents 20 | Format-List</code></pre>
+
+<h3>LogonType-Referenz (Event-ID 4624)</h3>
+
+<table>
+<thead><tr><th>LogonType</th><th>Bedeutung</th><th>Forensische Relevanz</th></tr></thead>
+<tbody>
+<tr><td>2</td><td>Interaktiv (Konsole)</td><td>Jemand war physisch an der Maschine</td></tr>
+<tr><td>3</td><td>Netzwerk (SMB, Netlogon)</td><td>Zugriff ueber Freigaben</td></tr>
+<tr><td>5</td><td>Dienst</td><td>Dienstkonto-Anmeldung</td></tr>
+<tr><td>7</td><td>Entsperren</td><td>Bildschirmsperre aufgehoben</td></tr>
+<tr><td>10</td><td>RemoteInteractive (RDP)</td><td><strong>Remote-Zugriff — besonders kritisch!</strong></td></tr>
+</tbody>
+</table>
+
+<h3>Zu beantwortende Fragen</h3>
+
+<ol>
+<li><strong>Welche Benutzerkonten wurden erstellt?</strong> (Event-ID 4720) Zu welchem Zeitpunkt?</li>
+<li><strong>Welche Benutzer wurden zu Administratoren gemacht?</strong> (Event-ID 4732)</li>
+<li><strong>Gibt es Event-ID 4625?</strong> Wie viele? Welche Konten waren betroffen?</li>
+<li><strong>Welcher LogonType wurde fuer die RDP-Verbindung verwendet?</strong></li>
+<li><strong>Enthaelt das PowerShell-Log (4104) das Mimikatz-Script?</strong> Durchsuche den Output nach "mimikatz" oder "sekurlsa".</li>
+<li><strong>Wurde ein neuer Scheduled Task erstellt?</strong> (Event-ID 4698 in Security, oder TaskScheduler 106)</li>
+</ol>
+
+<h2 id="schritt-4">Schritt 4: Registry-Artefakte untersuchen</h2>
+
+<p>Die Windows-Registry ist eine Goldgrube fuer forensische Informationen — von Persistenz-Mechanismen ueber Benutzeraktivitaeten bis hin zu USB-Geraeten.</p>
+
+<h3>Relevante Registry-Keys</h3>
+
+<table>
+<thead><tr><th>Registry-Key</th><th>Hive</th><th>Was es zeigt</th></tr></thead>
+<tbody>
+<tr><td><code>SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></td><td>SOFTWARE</td><td>Shell-Persistenz (Userinit, Shell)</td></tr>
+<tr><td><code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Run</code></td><td>NTUSER.DAT</td><td><strong>Autostart-Programme</strong> (Persistenz!)</td></tr>
+<tr><td><code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\RunOnce</code></td><td>NTUSER.DAT</td><td>Einmal-Start-Programme</td></tr>
+<tr><td><code>SAM\Domains\Account\Users</code></td><td>SAM</td><td>Lokale Benutzerkonten und RID-Zuordnung</td></tr>
+<tr><td><code>SAM\Domains\Builtin\Aliases\Members</code></td><td>SAM</td><td>Lokale Gruppenmitgliedschaften (Admins!)</td></tr>
+</tbody>
+</table>
+
+<h3>Analyse mit Registry Explorer</h3>
+
+<pre><code># Registry Explorer oeffnen und Hives laden:
+File → Open Hive → C:\Triage\Output\C\Windows\System32\config\SOFTWARE
+File → Open Hive → C:\Triage\Output\C\Users\forensik_user\NTUSER.DAT
+
+# Autostart-Suche:
+Gehe zu: NTUSER.DAT → Software → Microsoft → Windows → CurrentVersion → Run
+Pruefe die Werte in der rechten Panel-Ansicht.
+
+# SAM manuell analysieren:
+cmd.exe → reg query HKLM\SAM\SAM\Domains\Account\Users
+# (Admin-Rechte erforderlich)</code></pre>
+
+<h3>Zu beantwortende Fragen</h3>
+
+<ol>
+<li><strong>Ist ein Wert "Update" unter <code>...\Run</code> zu finden?</strong> Welcher Pfad ist hinterlegt?</li>
+<li><strong>Welche weiteren Autostart-Eintraege existieren?</strong> Pruefe auch <code>RunOnce</code> und <code>Policies\Explorer\Run</code>.</li>
+<li><strong>Welche Benutzer sind in der SAM registriert?</strong> Gibt es unerwartete Konten?</li>
+<li><strong>Welche Benutzer sind Mitglieder der lokalen Administratorengruppe?</strong></li>
+<li><strong>Gibt es Eintraege unter <code>AppCompatFlags</code> (AmCache)?</strong> (Zeigt Programmausfuehrungen)</li>
+</ol>
+
+<h2 id="schritt-5">Schritt 5: Zusammenfassung und Report</h2>
+
+<h3>Report-Struktur</h3>
+
+<p>Erstelle einen forensischen Bericht mit folgender Gliederung:</p>
+
+<h4>1. Executive Summary (1 Absatz)</h4>
+<ul>
+<li>Wurde das System kompromittiert? (Ja/Nein/Moeglicherweise)</li>
+<li>Wenn ja: Welcher Angriffsvektor, welche Auswirkungen?</li>
+</ul>
+
+<h4>2. Analysierte Artefakte (Tabelle)</h4>
+<table>
+<thead><tr><th>Artefakt</th><th>Tool</th><th>Anzahl Funde</th><th>Relevante Funde</th></tr></thead>
+<tbody>
+<tr><td>Prefetch</td><td>PECmd</td><td></td><td></td></tr>
+<tr><td>EventLog Security</td><td>EvtxECmd</td><td></td><td></td></tr>
+<tr><td>EventLog PowerShell</td><td>EvtxECmd</td><td></td><td></td></tr>
+<tr><td>Registry</td><td>Registry Explorer</td><td></td><td></td></tr>
+<tr><td>Scheduled Tasks</td><td>schtasks /query</td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<h4>3. Zeitstrahl (Timeline)</h4>
+<ul>
+<li>Chronologische Liste aller relevanten Ereignisse mit Zeitstempel, Ereignis-ID und Beschreibung</li>
+<li>Von der ersten Aktivitaet (Browser-Aufruf) bis zur letzten (Fehlgeschlagener Login)</li>
+</ul>
+
+<h4>4. Indikatoren (IOCs)</h4>
+<ul>
+<li>Konten: <code>backdoor</code></li>
+<li>Dateien: <code>C:\Windows\Temp\srv.exe</code></li>
+<li>Persistence: Registry-Run-Key <code>Update</code></li>
+<li>Persistence: Scheduled Task <code>SystemCheck</code></li>
+<li>Tools: PowerShell-Scriptblock mit Mimikatz-Referenz</li>
+</ul>
+
+<h4>5. Empfehlungen</h4>
+<ul>
+<li>Betroffenes Konto deaktivieren</li>
+<li>Persistence-Mechanismen entfernen</li>
+<li>Root-Cause-Analyse des initialen Zugriffs</li>
+<li>Betroffene Maschine neu aufsetzen oder forensisch saubern</li>
+</ul>
+
+<h2 id="musterloesung">Musterloesung — Was sollte gefunden werden?</h2>
+
+<p>Nachfolgend die erwarteten Funde, die bei vollstaendiger Analyse identifiziert werden sollten:</p>
+
+<h3>Chronologie der Ereignisse (erwartet)</h3>
+
+<ol>
+<li><strong>MSEDGE.EXE</strong> gestartet (Prefetch) — Browser-Aktivitaet</li>
+<li><strong>NET.EXE / NET1.EXE</strong> ausgefuehrt (Prefetch) — <code>net user backdoor ... /add</code></li>
+<li><strong>Event-ID 4720</strong> — Benutzerkonto "backdoor" erstellt</li>
+<li><strong>Event-ID 4732</strong> — "backdoor" zur Gruppe "Administratoren" hinzugefuegt</li>
+<li><strong>POWERSHELL.EXE</strong> ausgefuehrt (Prefetch) mit ungewoehnlicher Kommandozeile</li>
+<li><strong>Event-ID 4104</strong> (PowerShell-Operational) — Scriptblock mit Mimikatz-Code</li>
+<li><strong>SCHTASKS.EXE</strong> ausgefuehrt (Prefetch) — Task-Erstellung</li>
+<li><strong>Event-ID 4698</strong> — Scheduled Task "SystemCheck" erstellt</li>
+<li><strong>REG.EXE</strong> ausgefuehrt (Prefetch) — Registry-Modifikation</li>
+<li><strong>Run-Key</strong> "Update" unter <code>...\CurrentVersion\Run</code> (NTUSER.DAT)</li>
+<li><strong>Event-ID 4624 (LogonType 10)</strong> — RDP-Login</li>
+<li><strong>Event-ID 4625</strong> — Mehrfache fehlgeschlagene Logins (5x)</li>
+</ol>
+
+<h3>Bewertung des Systems</h3>
+
+<p>Das System ist <strong>kompromittiert</strong>. Es wurde ein neuer Administrator-Account angelegt, ein Scheduled Task und ein Registry-Run-Key fuer Persistenz eingerichtet, und PowerShell fuer die Ausfuehrung eines Mimikatz-aehnlichen Tools verwendet. Die Kombination aus unerlaubtem Admin-Konto, Persistenz-Mechanismen und PowerShell-Scripting ist ein klassisches Post-Exploitation-Muster.</p>
+
+<h2 id="bewertungskriterien">Bewertungskriterien</h2>
+
+<table>
+<thead><tr><th>Kriterium</th><th>Max. Punkte</th><th>Erwartung</th></tr></thead>
+<tbody>
+<tr><td>KAPE-Ausfuehrung</td><td>10</td><td>Korrekte Target-Auswahl, Output-Ordner dokumentiert</td></tr>
+<tr><td>Prefetch-Analyse</td><td>20</td><td>Alle 6 relevanten EXE-Dateien identifiziert, Run-Counts ausgewertet</td></tr>
+<tr><td>EventLog Security</td><td>25</td><td>IDs 4624, 4625, 4720, 4732, 4698 identifizi4t und korrekt interpretiert</td></tr>
+<tr><td>EventLog PowerShell</td><td>10</td><td>Scriptblock (4104) gefunden, Mimikatz-Referenz erkannt</td></tr>
+<tr><td>Registry-Analyse</td><td>15</td><td>Run-Key gefunden, SAM-Konten und Gruppenmitglieder ueberprueft</td></tr>
+<tr><td>Timeline-Korrelation</td><td>10</td><td>Chronologische Reihenfolge korrekt rekonstruiert</td></tr>
+<tr><td>Bericht</td><td>10</td><td>Struktur, Vollstaendigkeit, Nachvollziehbarkeit, IOC-Liste</td></tr>
+<tr><td><strong>Gesamt</strong></td><td><strong>100</strong></td><td></td></tr>
+</tbody>
+</table>
+
+<h3>Abgabeformat</h3>
+<ul>
+<li><strong>PDF oder Markdown</strong> (max. 10 Seiten)</li>
+<li>Zeitstrahl als separate CSV-Datei (optional)</li>
+<li>Dateiname: <code>windows-triage_NACHNAME_VORNAME_YYYY-MM-DD.pdf</code></li>
+</ul>
+
+</article>
+</main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../nav-order.js"></script>
+<script src="../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

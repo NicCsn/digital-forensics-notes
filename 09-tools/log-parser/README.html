@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apache Log Parser — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../index.html">Tools</a> / Apache Log Parser</span>
+</nav>
+<main><article>
+
+<h1>Apache Log Parser <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+
+<h2>Was macht das Tool?</h2>
+
+<p>Der <strong>Apache Log Parser</strong> extrahiert strukturierte Daten aus Apache-Webserver-Logs im <strong>Combined Log Format</strong> und gibt sie als CSV-Datei aus. Zusaetzlich werden Statistiken ueber eindeutige IP-Adressen, Top-URLs und HTTP-Fehlercodes (404, 5xx) berechnet — ideal fuer die forensische Ersteinschaetzung eines Webserver-Angriffs oder fuer Incident-Response-Triage.</p>
+
+<h3>Parsbare Felder (Combined Log Format)</h3>
+
+<table>
+<thead><tr><th>Feld</th><th>Beschreibung</th><th>Beispiel</th></tr></thead>
+<tbody>
+<tr><td>IP</td><td>Client-IP-Adresse</td><td><code>192.168.1.100</code></td></tr>
+<tr><td>Timestamp</td><td>Zeitstempel des Requests</td><td><code>02/Jul/2026:12:34:56 +0200</code></td></tr>
+<tr><td>Method</td><td>HTTP-Methode</td><td><code>GET</code>, <code>POST</code>, <code>PUT</code></td></tr>
+<tr><td>URL</td><td>Angefragter Pfad</td><td><code>/admin/login.php</code></td></tr>
+<tr><td>Status</td><td>HTTP-Statuscode</td><td><code>200</code>, <code>404</code>, <code>500</code></td></tr>
+<tr><td>Size</td><td>Response-Groesse in Bytes</td><td><code>1234</code> oder <code>-</code></td></tr>
+<tr><td>User-Agent</td><td>Client-Browser/String</td><td><code>Mozilla/5.0...</code></td></tr>
+</tbody>
+</table>
+
+<div class="callout info"><strong>Apache Combined Log Format</strong><p>Das Combined Log Format ist das Standard-Logformat von Apache und kombiniert das Common Log Format mit Referrer- und User-Agent-Informationen. Zeilenbeispiel:</p>
+<pre>192.168.1.1 - - [02/Jul/2026:12:34:56 +0200] "GET /index.html HTTP/1.1" 200 2326 "http://example.com" "Mozilla/5.0..."</pre></div>
+
+<h2>Abhaengigkeiten</h2>
+
+<ul>
+<li><strong>Python 3.9+</strong> (es werden nur Standardbibliotheken verwendet: <code>argparse</code>, <code>csv</code>, <code>re</code>, <code>collections</code>, <code>pathlib</code>)</li>
+<li>Keine externen Pakete (<code>pip install</code> nicht erforderlich)</li>
+<li>Plattformunabhaengig (Linux, macOS, Windows)</li>
+</ul>
+
+<h2>Installation</h2>
+
+<pre><code># Ausfuehrbar machen (Linux/macOS):
+chmod +x log_parser.py
+
+# Python-Version pruefen:
+python3 --version
+# Benoetigt: Python 3.9 oder hoeher</code></pre>
+
+<h2>Verwendung</h2>
+
+<h3>Grundlegende Nutzung</h3>
+
+<pre><code># Apache-Log parsen, CSV auf stdout ausgeben:
+./log_parser.py /var/log/apache2/access.log
+
+# CSV in Datei speichern:
+./log_parser.py access.log -o output.csv
+
+# Mit Statistiken (auf stderr):
+./log_parser.py access.log -o output.csv -s</code></pre>
+
+<h3>Ausgabeformate</h3>
+
+<pre><code># Standard: CSV mit Komma-Trennzeichen
+./log_parser.py access.log
+
+# TSV (Tab-getrennt) fuer bessere Lesbarkeit:
+./log_parser.py access.log --tsv
+
+# Nur Statistiken ohne CSV (nach /dev/null umleiten):
+./log_parser.py access.log -o /dev/null -s</code></pre>
+
+<h3>Statistik-Beispielausgabe</h3>
+
+<pre>--- Statistics ---
+Total entries:     12453
+Unique IPs:        487
+404 errors:        23
+5xx errors:        5
+
+Top 10 IPs:
+  192.168.1.100      2341
+  10.0.0.5           1872
+  172.16.0.42          891
+  ...
+
+Top 10 URLs:
+  /index.html                  4501
+  /api/v1/status               2103
+  /wp-admin/admin-ajax.php      892
+  ...</pre>
+
+<h2>Forensischer Mehrwert</h2>
+
+<p>Die vom Tool generierten CSV-Dateien lassen sich direkt in Analysewerkzeuge wie Excel, Splunk oder Python-Pandas importieren. Typische forensische Fragestellungen, die mit diesem Tool beantwortet werden koennen:</p>
+
+<ul>
+<li><strong>Brute-Force-Erkennung:</strong> IPs mit auffaellig vielen POST-Requests auf <code>/login</code> und Status 401/403</li>
+<li><strong>Verzeichnis-Scanning:</strong> IPs mit vielen 404-Fehlern auf ungewoehnlichen Pfaden</li>
+<li><strong>SQL-Injection:</strong> URLs mit verdaechtigen Query-Parametern (z.B. <code>?id=1' OR '1'='1</code>)</li>
+<li><strong>Datenexfiltration:</strong> Auffaellig grosse Responses (Feld Size) fuer bestimmte URLs</li>
+<li><strong>Webshell-Nutzung:</strong> POST-Requests auf <code>.php</code>-Dateien mit untypischen Statuscodes</li>
+<li><strong>Bot-Erkennung:</strong> User-Agents die zu bekannten Scannern oder Crawlern gehoeren</li>
+</ul>
+
+<h2>Code-Struktur</h2>
+
+<p>Das Script <code>log_parser.py</code> besteht aus folgenden Komponenten:</p>
+
+<ol>
+<li><strong>LOG_PATTERN</strong> — Regex fuer das Apache Combined Log Format</li>
+<li><strong>parse_log_line()</strong> — Extrahiert die 7 CSV-Felder aus einer einzelnen Log-Zeile</li>
+<li><strong>format_timestamp()</strong> — Konvertiert Apache-Zeitstempel in ISO-8601</li>
+<li><strong>main()</strong> — Argument-Parsing, Datei-I/O, CSV-Ausgabe, Statistik-Berechnung</li>
+</ol>
+
+<h2>Einschraenkungen</h2>
+
+<ul>
+<li>Nur Combined Log Format (kein Common Log Format, kein JSON-Logging, kein Custom LogFormat)</li>
+<li>Regex-basiert — sehr ungewoehnliche Zeilen mit Sonderzeichen koennen unerkannt bleiben</li>
+<li>Keine Streaming-Verarbeitung — die gesamte Logdatei wird in den Arbeitsspeicher geladen</li>
+<li>Keine GeoIP-Anreicherung (laesst sich aber einfach durch Einbindung einer GeoIP-Datenbank ergaenzen)</li>
+<li>Keine Echtzeitueberwachung (Tail-Mode)</li>
+<li>Timestamp-Konvertierung ignoriert Zeitzonen-Offset (wird als UTC behandelt)</li>
+</ul>
+
+</article></main>
+</body>
+</html>

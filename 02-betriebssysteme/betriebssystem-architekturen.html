@@ -7,9 +7,125 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / BS-Architekturen</span>
+  <span class="nav-crumb">/ <a href="../02-betriebssysteme/index.html">Betriebssysteme</a> / BS-Architekturen</span>
 </nav>
 <main><article>
 <h1>Betriebssystem-Architekturen <span class="diff-badge diff-beginner">Grundlagen</span></h1>
@@ -17,26 +133,259 @@
 <h2 id="kurz">Kurzueberblick</h2>
 <p>Jedes Betriebssystem hat eine Architektur, die bestimmt, wie Kernel und Userspace interagieren. Das Verstaendnis ist essenziell, um forensische Artefakte zu finden und Malware-Verstecke zu verstehen.</p>
 
-<h2 id="ringe">Protection Rings (x86)</h2>
+<h2 id="kernel-architekturen">Kernel-Architekturen im Detail</h2>
+
+<table>
+<thead><tr><th>Typ</th><th>Beispiele</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td><strong>Monolithisch</strong></td><td>Linux, FreeBSD</td><td>Alles laeuft im Kernel-Mode — ein kompromittiertes Kernel-Modul gefaehrdet das gesamte System. Rootkits koennen sys_call_table manipulieren. Module-Liste unter <code>lsmod</code>/<code>/proc/modules</code> pruefen.</td></tr>
+<tr><td><strong>Mikrokernel</strong></td><td>MINIX, QNX, L4, seL4</td><td>Nur IPC, Scheduling, Speicherverwaltung im Kernel. Treiber und Dienste als Userspace-Prozesse — ein gecrasheter Treiber legt nicht das System lahm. Forensisch: Jeder Dienst hat eigene Prozessartefakte.</td></tr>
+<tr><td><strong>Hybrid</strong></td><td>Windows NT, macOS (XNU)</td><td>Performance-Kritisches im Kernel (Scheduler, Speicher, I/O), andere Dienste im Userspace. Windows: Executive + Kernel + HAL. macOS: Mach-Mikrokernel + BSD-Schicht.</td></tr>
+<tr><td><strong>Unikernel</strong></td><td>MirageOS, IncludeOS, OSv</td><td>Anwendung + OS als ein einziges Binary. Kein Userspace/Kernel-Split. Forensisch schwierig: kein traditionelles Dateisystem, keine Shell, nur Netzwerk-Debugging.</td></tr>
+<tr><td><strong>Exokernel</strong></td><td>MIT Exokernel, Nemesis</td><td>Kernel stellt nur Hardware-Multiplexing bereit. Anwendungen verwalten Ressourcen selbst (eigene Page-Tables, Disk-Blocks). Forensisch: extreme Fragmentierung der Systemlogik — Spuren sind app-spezifisch.</td></tr>
+</tbody></table>
+
+<h2 id="ringe">Protection Rings und User-Mode vs. Kernel-Mode</h2>
+
 <div class="layer-diagram">
 <div class="ld-layer"><strong>Ring 3 — User-Mode</strong><br><small>Alle Anwendungen, Browser, Malware (vor Escalation). Kein Hardware-Zugriff.</small></div>
 <div class="ld-layer"><strong>Ring 2 — (ungenutzt)</strong></div>
 <div class="ld-layer"><strong>Ring 1 — (ungenutzt)</strong></div>
 <div class="ld-layer"><strong>Ring 0 — Kernel-Mode</strong><br><small>OS-Kernel, Geraetetreiber. Voller Hardware-Zugriff. Syscall = kontrollierter Uebergang.</small></div>
 <div class="ld-layer"><strong>Ring -1 — Hypervisor</strong><br><small>Virtualisierungsschicht unter dem OS. Verwaltet Gast-VMs.</small></div>
+<div class="ld-layer"><strong>Ring -2 — Intel ME / AMD PSP</strong><br><small>Management Engine / Platform Security Processor — eigener Mikrocontroller im Chipsatz. Unsichtbar fuer das Haupt-OS.</small></div>
+<div class="ld-layer"><strong>Ring -3 — Intel SMM / AMD SMU</strong><br><small>System Management Mode — laeuft in isoliertem RAM (SMRAM). Code kann weder vom Kernel noch vom Hypervisor eingesehen werden.</small></div>
 </div>
 
-<div class="callout danger"><strong>Rootkit-Warnung:</strong> Kernel-Rootkits manipulieren die Syscall-Tabelle (SSDT unter Windows, sys_call_table unter Linux), um sich vor Userspace-Tools zu verstecken.</div>
+<div class="callout danger"><strong>Rootkit-Warnung:</strong> Kernel-Rootkits manipulieren die Syscall-Tabelle (SSDT unter Windows, <code>sys_call_table</code> unter Linux), um sich vor Userspace-Tools zu verstecken. <strong>SMM-Rootkits</strong> sind die gefaehrlichste Klasse — sie operieren in Ring -3 und sind selbst fuer den Kernel unsichtbar. Erkennung nur durch Analyse von SPI-Flash-Inhalten oder Zeitmessungen auf Instruktionsebene.</div>
 
-<h2 id="kernel">Kernel-Typen</h2>
-<div class="side-by-side">
-<div><h3>Monolithisch</h3><p>Alles im Kernel-Mode. Schnell, grosser Angriffsvektor.</p><small>Linux, FreeBSD</small></div>
-<div><h3>Mikrokernel</h3><p>Minimal (IPC, Scheduling). Rest im Userspace. Sicherer, langsamer.</p><small>Minix, QNX, L4, seL4</small></div>
-</div>
-<div class="side-by-side">
-<div><h3>Hybrid</h3><p>Performance-Kritisches im Kernel, Dienste im Userspace.</p><small>Windows NT, macOS (XNU)</small></div>
-<div><h3>Container</h3><p>Kein eigener Kernel. Namespace-Isolation. Container-Prozesse = Host-Prozesse.</p><small>Docker, Podman, LXC</small></div>
-</div>
+<div class="callout info"><strong>Forensiche Notiz zu Intel ME:</strong> Die Management Engine hat vollen Zugriff auf RAM und Netzwerk, laeuft aber auf einem eigenen Mikrokernel (ThreadX/minix-artig). Sie ist eine Blackbox und kann nicht vom Haupt-OS deaktiviert werden. In fortgeschrittenen APT-Faellen wurde ME-Code als Persistenzmechanismus missbraucht.</div>
+
+<h2 id="syscalls">Systemaufrufe — der kontrollierte Uebergang von Ring 3 nach Ring 0</h2>
+
+<h3>Wie funktioniert ein Syscall?</h3>
+
+<pre><code>; x86 (32-bit): int 0x80 — langsam, durch IDT (Interrupt Descriptor Table)
+mov eax, 1       ; Syscall-Nummer: sys_exit
+int 0x80         ; Trigger Software-Interrupt → Kontextwechsel nach Ring 0
+
+; x86 (32-bit): sysenter/sysexit — schnelle Variante (Intel)
+; Ruft Kernel-Code direkt auf, ohne Interrupt-Overhead
+
+; x86-64: syscall/sysret — 64-bit Fast-Syscall (AMD)
+mov rax, 1       ; Syscall-Nummer
+syscall          ; Springt direkt zum in LSTAR-MS-Register hinterlegten Handler</code></pre>
+
+<h3>Ablauf eines Syscalls</h3>
+<ol>
+<li>Anwendung ruft Library-Funktion auf (z.B. <code>write(fd, buf, len)</code> in libc)</li>
+<li>libc packt Syscall-Nummer in <code>rax/eax</code> und Argumente in <code>rdi, rsi, rdx, r10, r8, r9</code></li>
+<li><code>syscall</code>-Instruktion: CPU wechselt nach Ring 0, speichert <code>rip</code> in <code>rcx</code>, <code>rflags</code> in <code>r11</code></li>
+<li>Kernel-Syscall-Handler (<code>entry_SYSCALL_64</code> in Linux) dispatcht anhand der Nummer</li>
+<li>Kernel fuehrt Operation aus (z.B. Daten aus Kernel-Buffer in Userspace kopieren)</li>
+<li><code>sysret</code>-Instruktion: CPU wechselt zurueck nach Ring 3</li>
+</ol>
+
+<h3>Context-Switch-Overhead</h3>
+
+<table>
+<thead><tr><th>Operation</th><th>Groessenordnung (x86-64)</th><th>Forensische Spur</th></tr></thead><tbody>
+<tr><td>Syscall (Ring 3 → 0)</td><td>~100-200 CPU-Zyklen</td><td><code>strace</code>/<code>perf</code> protokollieren Aufrufe</td></tr>
+<tr><td>User-Level-Context-Switch (Thread-Wechsel)</td><td>~1-2 μs</td><td><code>sched_switch</code> Trace-Events in <code>perf.data</code></td></tr>
+<tr><td>Kernel-Level-Context-Switch (Prozess-Wechsel)</td><td>~3-5 μs</td><td>Process Accounting (<code>/proc/PID/stat</code>), Linux Auditd-Logs</td></tr>
+<tr><td>Vollstaendiger VM-Exit (Gast → Hypervisor)</td><td>~10-50 μs</td><td>Hypervisor-Logs, rekordierte VM-Exits per <code>perf kvm stat</code></td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Forensischer Tipp:</strong> Der Syscall <code>ptrace</code> (Nr. 101) wird haeufig von Malware genutzt, um sich in andere Prozesse zu injizieren. <code>memfd_create</code> (Nr. 319) ermoeglicht ausfuehrbare, dateilose Payloads im RAM. Beide sollten in Forensik-Logs besonders beachtet werden.</div>
+
+<h2 id="windows-architektur">Windows NT Architektur</h2>
+
+<h3>Schichtenmodell</h3>
+
+<pre><code>┌─────────────────────────────────────────────┐
+│  User-Mode                                  │
+│  ┌──────────┬───────┬──────────┬──────────┐ │
+│  │ Win32    │ POSIX │ OS/2     │ Services │ │
+│  │ Subsystem│       │(veraltet)│(svchost) │ │
+│  └──────────┴───────┴──────────┴──────────┘ │
+│  ┌──────────────────────────────────────┐    │
+│  │         ntdll.dll                     │    │
+│  └──────────────────────────────────────┘    │
+├─────────────────────────────────────────────┤
+│  Kernel-Mode (ntoskrnl.exe)                  │
+│  ┌──────────────────────────────────────┐    │
+│  │  Executive (Objekt-Manager, I/O,     │    │
+│  │  Prozess-Manager, Security Reference │    │
+│  │  Monitor, Memory Manager, PnP, Power)│    │
+│  ├──────────────────────────────────────┤    │
+│  │  Kernel (Scheduling, Interrupts,     │    │
+│  │  Synchronisation)                    │    │
+│  ├──────────────────────────────────────┤    │
+│  │  HAL (Hardware Abstraction Layer)    │    │
+│  └──────────────────────────────────────┘    │
+│  ┌──────────────────────────────────────┐    │
+│  │  Geraetetreiber, Netzwerk-Stack,     │    │
+│  │  Dateisystem-Treiber (NTFS.sys, ...) │    │
+│  └──────────────────────────────────────┘    │
+├─────────────────────────────────────────────┤
+│  Hardware                                    │
+└─────────────────────────────────────────────┘</code></pre>
+
+<table>
+<thead><tr><th>Komponente</th><th>Datei</th><th>Funktion</th></tr></thead><tbody>
+<tr><td><strong>ntoskrnl.exe</strong></td><td><code>C:\Windows\System32\ntoskrnl.exe</code></td><td>Kernel + Executive — das Herz von Windows NT</td></tr>
+<tr><td><strong>HAL.dll</strong></td><td><code>C:\Windows\System32\hal.dll</code></td><td>Hardware-Abstraktion — isoliert den Kernel von Mainboard-Unterschieden</td></tr>
+<tr><td><strong>Win32k.sys</strong></td><td><code>C:\Windows\System32\win32k.sys</code></td><td>Grafik-Subsystem (GDI, Fenster-Management) — im Kernel-Mode!</td></tr>
+<tr><td><strong>ntdll.dll</strong></td><td><code>C:\Windows\System32\ntdll.dll</code></td><td>User-Mode-Syscall-Stub — jede <code>kernel32.dll</code>-Funktion geht hier durch</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Win32k.sys als Angriffsvektor:</strong> Seit NT 4.0 laeuft die GUI im Kernel-Mode (Performance-Gruende). Dies ist eine der groessten Angriffsflaechen von Windows. Font-Parsing-Bugs in win32k.sys waren ein Haupteinfallstor fuer Kernel-Exploits. <strong>Forensisch:</strong> win32k.sys-Syscalls aus ungewoehnlichen Prozessen (z.B. cmd.exe) = Alarmzeichen.</div>
+
+<h2 id="linux-kernel-map">Linux Kernel Map</h2>
+
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                  Userspace                               │
+│    ┌──────┐  ┌──────┐  ┌──────┐  ┌──────────┐          │
+│    │bash  │  │nginx │  │vim   │  │firefox   │          │
+│    └──┬───┘  └──┬───┘  └──┬───┘  └────┬─────┘          │
+│       │         │         │            │                 │
+│       └─────────┴────┬────┴────────────┘                 │
+│                      │ libc (glibc/musl)                  │
+├──────────────────────┼───────────────────────────────────┤
+│                  Kernel Space                            │
+│  ┌──────────────────┴─────────────────────────────────┐  │
+│  │            System Call Interface (SCI)              │  │
+│  ├──────┬──────────┬──────────┬───────────┬───────────┤  │
+│  │ VFS  │Process   │Memory    │Network    │Device     │  │
+│  │      │Scheduler │Manager   │Stack      │Drivers    │  │
+│  │ ext4 │CFS/RT    │Buddy     │TCP/UDP    │Block      │  │
+│  │ NTFS │Preemption│Allocator │IP/ICMP    │Char       │  │
+│  │ NFS  │Affinity  │SLUB/SLAB │Netfilter  │USB        │  │
+│  │ proc │Cgroups   │KSM       │BPF        │PCI        │  │
+│  └──────┴──────────┴──────────┴───────────┴───────────┘  │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │  Architecture-Dependent Code (arch/x86/, arch/arm/) │  │
+│  └────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────┘</code></pre>
+
+<table>
+<thead><tr><th>Subsystem</th><th>Forensische Relevanz</th><th>Wichtige Dateien/Pfade</th></tr></thead><tbody>
+<tr><td><strong>VFS</strong></td><td>Abstrahiert Dateisysteme — mount-Informationen, geoeffnete Dateien</td><td><code>/proc/mounts</code>, <code>/proc/PID/fd/</code></td></tr>
+<tr><td><strong>Process Scheduler</strong></td><td>Prozess-Historie, CPU-Zeit pro Prozess</td><td><code>/proc/PID/sched</code>, <code>/proc/PID/stat</code></td></tr>
+<tr><td><strong>Memory Manager</strong></td><td>Swap-Analyse, Memory-Mapping, geladene Libraries</td><td><code>/proc/PID/maps</code>, <code>/proc/PID/smaps</code>, Swap-Partition</td></tr>
+<tr><td><strong>Network Stack</strong></td><td>Offene Sockets, Routing-Tabelle, ARP-Cache</td><td><code>/proc/net/tcp</code>, <code>/proc/net/arp</code></td></tr>
+<tr><td><strong>Device Drivers</strong></td><td>Geladene Kernel-Module, Hardware-Interaktion</td><td><code>/proc/modules</code>, <code>lsmod</code>, <code>/sys/</code></td></tr>
+</tbody></table>
+
+<h2 id="hypervisor">Hypervisor-Typen</h2>
+
+<table>
+<thead><tr><th>Merkmal</th><th>Type 1 (Bare Metal)</th><th>Type 2 (Hosted)</th></tr></thead><tbody>
+<tr><td><strong>Installation</strong></td><td>Direkt auf Hardware</td><td>Auf Host-Betriebssystem</td></tr>
+<tr><td><strong>Beispiele</strong></td><td>VMware ESXi, Microsoft Hyper-V, Xen, KVM</td><td>VMware Workstation, VirtualBox, QEMU (ohne KVM)</td></tr>
+<tr><td><strong>Performance</strong></td><td>Hoch (kein Host-OS-Overhead)</td><td>Mittel (Host-OS-Scheduler dazwischen)</td></tr>
+<tr><td><strong>Forensische Spuren</strong></td><td>VMFS-Dateisystem (ESXi), VHDX (Hyper-V) — Image auf Hypervisor-Ebene</td><td>VMDK/VDI-Dateien auf Host-Dateisystem — einfacher Zugriff</td></tr>
+</tbody></table>
+
+<h3>Forensische Relevanz von VM-Snapshots</h3>
+
+<div class="callout info"><strong>VM-Snapshots als Beweismittel:</strong> Ein Snapshot friert den gesamten Zustand einer VM ein — RAM, CPU-Register, Disk. Forensisch ist dies eine <strong>Momentaufnahme ersten Ranges</strong>. In Incident-Response-Faellen wird daher empfohlen, vor der Analyse einen Snapshot zu erstellen. Achtung: Snapshots enthalten auch fluechtige Daten (RAM) und koennen aktive Malware-C2-Verbindungen dokumentieren.</div>
+
+<table>
+<thead><tr><th>Snapshot-Typ</th><th>Gespeichert in</th><th>Forensische Analyse</th></tr></thead><tbody>
+<tr><td><strong>VMware Snapshot</strong></td><td><code>*-000001.vmdk</code> (Delta-Disk) + <code>*.vmsn</code> (RAM)</td><td><code>*.vmsn</code> mit Volatility analysieren; Delta-Disk zeigt Aenderungen seit Snapshot</td></tr>
+<tr><td><strong>Hyper-V Checkpoint</strong></td><td><code>*.avhdx</code> (Differencing Disk)</td><td>AVHDX enthaelt nur geaenderte Bloecke — mit Powershell mergen oder direkt analysieren</td></tr>
+<tr><td><strong>VirtualBox Snapshot</strong></td><td><code>Snapshots/{UUID}.vdi</code></td><td>Snapshot-VDI als separates Image mit TSK/Autopsy analysieren</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Achtung:</strong> Snapshots sind kein Ersatz fuer ein forensisches Image nach Chain-of-Custody! Sie liegen auf dem Hypervisor-Dateisystem und unterliegen nicht den gleichen Integritaetsschutzmassnahmen wie ein Write-Blocker-Image. Fuer gerichtsfeste Beweise immer ein separates dd/EWF-Image erstellen.</div>
+
+<h2 id="container-vs-vm">Container vs. VM — technische Unterschiede und forensische Implikationen</h2>
+
+<table>
+<thead><tr><th>Merkmal</th><th>Container (Docker, Podman, LXC)</th><th>Virtuelle Maschine (VMware, KVM, Hyper-V)</th></tr></thead><tbody>
+<tr><td><strong>Isolation</strong></td><td>Linux Namespaces (PID, NET, MNT, UTS, IPC, User, Cgroup)</td><td>Hypervisor (Ring -1) — vollstaendige virtuelle Hardware</td></tr>
+<tr><td><strong>Kernel</strong></td><td>Teilt Host-Kernel</td><td>Eigener Kernel (Gast-OS)</td></tr>
+<tr><td><strong>Startzeit</strong></td><td>&lt; 1 Sekunde</td><td>10-60 Sekunden</td></tr>
+<tr><td><strong>Angriffsvektor</strong></td><td>Container-Escape —&gt; Host-Kernel-Kompromittierung</td><td>VM-Escape —&gt; Hypervisor-Kompromittierung</td></tr>
+<tr><td><strong>Forensische Spuren</strong></td><td>Container-Prozesse = Host-Prozesse (<code>ps aux</code>); Layer-Dateien unter <code>/var/lib/docker/</code></td><td>Separate Disk-Images; RAM-Memory-Dump pro VM; Hypervisor-Logs</td></tr>
+<tr><td><strong>Disk</strong></td><td>OverlayFS-Layer (read-only + writable)</td><td>Disk-Image (VMDK, VHDX, qcow2)</td></tr>
+</tbody></table>
+
+<h3>Namespace-Isolation (Container-Grundlage)</h3>
+
+<table>
+<thead><tr><th>Namespace</th><th>Isoliert</th><th>Forensische Spur auf dem Host</th></tr></thead><tbody>
+<tr><td><strong>PID</strong></td><td>Prozess-IDs (Container sieht PID 1, Host sieht PID 12345)</td><td><code>/proc/PID/ns/pid</code> — verlinkt Container-PID mit Host-PID</td></tr>
+<tr><td><strong>NET</strong></td><td>Netzwerk-Interfaces</td><td><code>ip netns list</code>; iptables-Regeln fuer DNAT von Host-Ports</td></tr>
+<tr><td><strong>MNT</strong></td><td>Mount-Points (Dateisystem)</td><td><code>/proc/PID/mountinfo</code> zeigt OverlayFS-Konstruktion</td></tr>
+<tr><td><strong>UTS</strong></td><td>Hostname</td><td>Container-spezifischer Hostname in Logs</td></tr>
+<tr><td><strong>IPC</strong></td><td>Interprozess-Kommunikation</td><td>Geteilte Semaphoren/Message-Queues zwischen Containern</td></tr>
+<tr><td><strong>Cgroup</strong></td><td>Ressourcen-Limits (CPU, RAM, I/O)</td><td><code>/sys/fs/cgroup/</code> — Limit-Statistiken pro Container</td></tr>
+</tbody></table>
+
+<h2 id="forensische-relevanz">Forensische Relevanz-Tabelle</h2>
+
+<table>
+<thead><tr><th>Architektur-Entscheidung</th><th>Beeinflusstes forensisches Artefakt</th><th>Warum relevant?</th></tr></thead><tbody>
+<tr><td><strong>Monolithischer Kernel</strong></td><td>Kernel-Module (<code>lsmod</code>, <code>/proc/modules</code>)</td><td>Rootkit-Erkennung: Jedes geladene Modul ist im Kernel-RAM und in <code>/proc/modules</code> gelistet. Manipulation der Liste = Rootkit-Indikator.</td></tr>
+<tr><td><strong>Windows HAL</strong></td><td>HAL.dll Hash, Registry <code>HKLM\SYSTEM\CurrentControlSet\Enum</code></td><td>Aenderungen an HAL.dll deuten auf Bootkit hin. HAL table Hooks sind ein APT-Indikator.</td></tr>
+<tr><td><strong>Type 1 Hypervisor</strong></td><td>VMFS/VMFSL (ESXi), VM-Logs auf Datastore</td><td>VMFS ist ein proprietaeres Dateisystem — braucht spezielle Tools (<code>vmfs-tools</code>). VMFSL enthaelt Syslog der ESXi-Hosts.</td></tr>
+<tr><td><strong>Type 2 Hypervisor</strong></td><td>VMDK/VDI-Dateien auf Host-NTFS/ext4</td><td>Host-Forensik: VMDK-Zugriffszeiten zeigen, wann die VM gestartet wurde. Host-Prefetch enthaelt vmware.exe.</td></tr>
+<tr><td><strong>Container (Namespace)</strong></td><td><code>/var/lib/docker/containers/&lt;ID&gt;/</code> — Logs, Config</td><td>Container-Logs persistieren nach <code>docker rm</code>! Enthalten stdout/stderr, Env-Vars (inkl. Secrets).</td></tr>
+<tr><td><strong>Syscall-Mechanismus</strong></td><td>ETW/Sysmon-Events, Linux Auditd</td><td>Syscall-Tracing (Sysmon Event ID 1, Auditd <code>-S execve</code>) ist die zuverlaessigste Methode zur Malware-Erkennung — kann nicht von Userspace-Rootkits umgangen werden.</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Goldene Regel der Architektur-Forensik:</strong> Je tiefer die Verteidigung, desto schwerer die Manipulation. Ring 3 kann Ring 0 beluegen. Ring 0 kann Ring -1 (Hypervisor) nicht beluegen. Ring -1 kann SMM (Ring -2) nicht beluegen. Die tiefste verfuegbare Analyseebene nutzen!</div>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<pre><code># Linux: Geladene Kernel-Module auf Rootkit-Hooks pruefen
+lsmod | sort
+cat /proc/modules
+
+# Linux: Syscall-Tabelle auf Manipulation pruefen (braucht Kernel-Symbol-Map)
+cat /proc/kallsyms | grep sys_call_table
+
+# Windows: Boot-Konfiguration auf Hypervisor-Start pruefen
+bcdedit /enum
+
+# Windows: HAL-Version und Hash ermitteln
+Get-FileHash C:\Windows\System32\hal.dll
+
+# Linux: Namespace-Zugehoerigkeit eines Prozesses ermitteln
+ls -la /proc/$(pgrep nginx)/ns/
+
+# Volatility: Kernel-Module aus RAM-Dump extrahieren
+volatility3 -f memory.dmp linux.lsmod
+volatility3 -f memory.dmp linux.check_syscall</code></pre>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li>Tanenbaum, A. &amp; Bos, H.: Modern Operating Systems (5th Ed.) — Kapitel 1 (Architektur) und 7 (Virtualisierung)</li>
+<li>Russinovich, M. et al.: Windows Internals, Part 1 (7th Ed.) — Kapitel 2 (System Architecture)</li>
+<li>Linux Kernel Map: <a href="https://makelinux.github.io/kernel/map/">Interactive Linux Kernel Map</a></li>
+<li>Intel 64 and IA-32 Architectures Software Developer's Manual, Vol. 3A — Kapitel 6.5 (SMM)</li>
+</ul>
 </article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

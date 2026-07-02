@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireshark DFP-Dissector — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../index.html">Tools</a> / Wireshark DFP-Dissector</span>
+</nav>
+<main><article>
+
+<h1>Wireshark DFP-Dissector <span class="diff-badge diff-intermediate">Mittel</span></h1>
+
+<h2>Was ist ein Wireshark-Dissector?</h2>
+
+<p>Ein <strong>Dissector</strong> ist ein Lua-basiertes Plugin fuer Wireshark, das ein benutzerdefiniertes Netzwerkprotokoll entschluesselt und dessen Felder in der grafischen Oberflaeche darstellt. Wireshark erkennt standardmaessig hunderte Protokolle (HTTP, DNS, TLS, SMB usw.). Fuer eigene oder weniger verbreitete Protokolle kann ein Dissector geschrieben werden, der das Protokoll in seine einzelnen Felder zerlegt und lesbar macht.</p>
+
+<h2>DFP — Digital Forensics Protocol</h2>
+
+<p>Dieser Dissector implementiert das fiktive <strong>DFP (Digital Forensics Protocol)</strong> — ein einfaches binaeres Protokoll, das zu Demonstrations- und Lernzwecken erstellt wurde. Es laeuft standardmaessig auf <strong>TCP-Port 9191</strong> und besteht aus einem festen 6-Byte-Header gefolgt von variablen Payload-Daten.</p>
+
+<h3>Protokollstruktur (DFP-Header)</h3>
+
+<table>
+<thead><tr><th>Offset</th><th>Feld</th><th>Groesse</th><th>Beschreibung</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>Version</td><td>1 Byte</td><td>Protokollversion (immer 0x01)</td></tr>
+<tr><td>1</td><td>Typ</td><td>1 Byte</td><td>Nachrichtentyp (01=DATA, 02=ACK, 03=NACK, 04=HELLO, 05=RESET, 06=EVIDENCE, 07=CHECKSUM)</td></tr>
+<tr><td>2</td><td>Laenge</td><td>2 Bytes</td><td>Laenge der Payload in Bytes (uint16, Big Endian)</td></tr>
+<tr><td>4</td><td>Checksumme</td><td>2 Bytes</td><td>CRC-16-Pruefsumme ueber den Header</td></tr>
+<tr><td>6</td><td>Payload</td><td>variabel</td><td>Nutzdaten (Laenge aus Feld 2)</td></tr>
+</tbody>
+</table>
+
+<h3>Nachrichtentypen</h3>
+
+<ul>
+<li><code>0x01 DATA</code> — Allgemeine Datennachricht</li>
+<li><code>0x02 ACK</code> — BEstStigung einer empfangenen Nachricht</li>
+<li><code>0x03 NACK</code> — Fehlerhafte oder abgelehnte Nachricht</li>
+<li><code>0x04 HELLO</code> — Initialer Handshake zwischen Client und Server</li>
+<li><code>0x05 RESET</code> — Verbindung zuruecksetzen</li>
+<li><code>0x06 EVIDENCE</code> — Forensische Beweisdaten (wird in Wireshark farblich markiert)</li>
+<li><code>0x07 CHECKSUM</code> — Checksummen-Austausch</li>
+</ul>
+
+<h2>Felder des Dissectors</h2>
+
+<table>
+<thead><tr><th>Feldname</th><th>Typ</th><th>Beschreibung</th></tr></thead>
+<tbody>
+<tr><td><code>dfp.version</code></td><td>uint8</td><td>Protokollversion (0x01)</td></tr>
+<tr><td><code>dfp.type</code></td><td>uint8</td><td>Nachrichtentyp mit benannten Werten (Wireshark zeigt z.B. "EVIDENCE" statt 0x06)</td></tr>
+<tr><td><code>dfp.length</code></td><td>uint16</td><td>Laenge der Nutzdaten in Bytes</td></tr>
+<tr><td><code>dfp.payload</code></td><td>bytes</td><td>Rohdaten der Payload</td></tr>
+<tr><td><code>dfp.checksum</code></td><td>uint16</td><td>Pruefsumme (hexadezimale Darstellung)</td></tr>
+</tbody>
+</table>
+
+<h2>Installation</h2>
+
+<ol>
+<li><strong>Plugins-Verzeichnis finden:</strong> Wireshark oeffnen → <em>Hilfe → Ueber Wireshark → Ordner</em> → <em>Persoenliche Lua Plugins</em></li>
+<li><strong>Datei kopieren:</strong> <code>cp dissector.lua ~/.local/lib/wireshark/plugins/</code> (Linux/macOS) oder <code>%APPDATA%\Wireshark\plugins\</code> (Windows)</li>
+<li><strong>Wireshark neu starten:</strong> Nach dem Neustart erscheint DFP unter <em>Analysieren → Aktivierte Protokolle...</em></li>
+<li><strong>Testen:</strong> Mit <code>netcat</code> oder einem Python-Script Testdaten an Port 9191 senden und in Wireshark mitschneiden.</li>
+</ol>
+
+<h2>Verwendung nach der Installation</h2>
+
+<pre><code># Testpaket mit netcat senden (hexadezimale Rohdaten):
+echo -ne '\x01\x06\x00\x0b\x00\x00Hallo Welt!' | nc localhost 9191
+
+# Oder mit Python testen:
+python3 -c "
+import socket
+s = socket.socket()
+s.connect(('localhost', 9191))
+# Version=1, Type=EVIDENCE(6), Length=13, Checksum=0
+s.send(b'\x01\x06\x00\x0d\x00\x00pcap-evidence')
+s.close()
+"</code></pre>
+
+<div class="callout info"><strong>Hinweis</strong><p>Dieser Dissector ist ein Lehrbeispiel. In der Praxis wuerde ein forensisches Protokoll zusaetzliche Felder wie Timestamps, Sequenznummern und Ende-zu-Ende-Verschluesselung enthalten. Der Dissector demonstriert jedoch alle wesentlichen Bausteine: Protokolldefinition, Felddefinitionen, die Dissector-Funktion und die Registrierung bei Wiresharks TCP-Tabelle.</p></div>
+
+<h2>Dissector-Funktionsweise (Code-Uebersicht)</h2>
+
+<p>Der Dissector ist in <code>dissector.lua</code> als Lua-Script implementiert und umfasst folgende Schritte:</p>
+
+<ol>
+<li><strong>Protocol-Objekt</strong> — Definiert das Protokoll mit Namen und Kurzbeschreibung</li>
+<li><strong>Felder (ProtoField)</strong> — Fuenf Felder: Version, Typ, Laenge, Payload und Checksumme</li>
+<li><strong>Dissector-Funktion</strong> — Zerlegt jedes eingehende Paket, extrahiert die Header-Felder und zeigt sie im Wireshark-Paketbaum an</li>
+<li><strong>Port-Registrierung</strong> — Bindet den Dissector an TCP-Port 9191 (<code>tcp_table:add(9191, dfp_proto)</code>)</li>
+<li><strong>Heuristische Erkennung</strong> — Optional: Erkennt DFP-Pakete auch auf anderen Ports anhand des Typ-Bytes 0x01</li>
+</ol>
+
+<h2>Einschraenkungen</h2>
+
+<ul>
+<li>Nur TCP — keine UDP-Unterstuetzung (laesst sich aber leicht ergaenzen)</li>
+<li>Keine Fragmentierung/Reassembly von grossen Payloads</li>
+<li>Keine Entschluesselung (selbst bei EVIDENCE-Nachrichten werden Daten im Klartext erwartet)</li>
+<li>Statische Port-Registrierung — lauscht nur auf Port 9191</li>
+<li>Checksumme wird nur angezeigt, nicht validiert</li>
+</ul>
+
+</article></main>
+</body>
+</html>

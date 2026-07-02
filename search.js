@@ -75,11 +75,21 @@ var notes = [
   {t:"Neuronale Netze und Deep Learning",p:"08-ki-forensik/neuronale-netze-deep-learning.html",f:"KI-Forensik",g:["cnn","rnn","lstm","transfer-learning","transformer","deepfake"],d:"advanced"},
   {t:"Decision Trees und Klassifikation",p:"08-ki-forensik/decision-trees-klassifikation.html",f:"KI-Forensik",g:["decision-tree","random-forest","klassifikation","id3","log-analyse","entropie"],d:"intermediate"},
   {t:"Bildforensik und Objekterkennung",p:"08-ki-forensik/bildforensik-objekterkennung.html",f:"KI-Forensik",g:["bildforensik","yolo","error-level-analysis","deepfake","exif","manipulation"],d:"intermediate"},
+  {t:"Email-Forensik",p:"04-forensik-methoden/email-forensik.html",f:"Forensik",g:["email","dkim","spf","dmarc","phishing","header","smtp"],d:"intermediate"},
+  {t:"MITRE ATT&CK Framework",p:"04-forensik-methoden/mitre-attack-framework.html",f:"Forensik",g:["mitre","attack","ttps","tactics","techniques","navigator","detection-gap"],d:"intermediate"},
+  {t:"Timeline-Analyse mit Plaso",p:"04-forensik-methoden/timeline-analysis.html",f:"Forensik",g:["timeline","plaso","log2timeline","super-timeline","mactime","timesketch"],d:"intermediate"},
+  {t:"Threat Hunting",p:"04-forensik-methoden/threat-hunting.html",f:"Forensik",g:["threat-hunting","hypothesis","pyramid-of-pain","sigma","sysmon","kusto"],d:"advanced"},
+  {t:"macOS-Forensik",p:"02-betriebssysteme/macos-forensik.html",f:"Betriebssysteme",g:["macos","apfs","fsevents","knowledgec","plist","unified-logging","gatekeeper"],d:"intermediate"},
+  {t:"Magnet AXIOM",p:"09-tools/axiom/README.html",f:"Tools",g:["axiom","magnet","cloud-acquisition","mobile","connections","forensik-tool"],d:"intermediate"},
+  {t:"KAPE — Kroll Artifact Parser and Extractor",p:"09-tools/kape/README.html",f:"Tools",g:["kape","triage","eric-zimmerman","targets","modules","gkape"],d:"intermediate"},
+  {t:"Velociraptor — IR and Forensics",p:"09-tools/velociraptor/README.html",f:"Tools",g:["velociraptor","vql","agent","offline-collector","hunting"],d:"advanced"},
+  {t:"Autopsy — Digital Forensics Platform",p:"09-tools/autopsy/README.html",f:"Tools",g:["autopsy","sleuthkit","ingest","timeline","case-management"],d:"basics"},
+  {t:"FTK, EnCase, AXIOM — Tool-Vergleich",p:"09-tools/ftk-encase-axiom/README.html",f:"Tools",g:["ftk","encase","axiom","tool-vergleich","forensik","commercial"],d:"intermediate"},
   {t:"Glossar (A-Z)",p:"00-meta/glossary.html",f:"Meta",g:["glossar","referenz","begriffe"],d:"basics"}
 ];
 
 var searchInput = document.getElementById('searchInput');
-var searchResults = document.getElementById('searchResults');
+var searchResults = document.querySelector('#searchResults') || document.querySelector('.sb-search-results');
 
 function fuzzyScore(query, text) {
   query = query.toLowerCase();
@@ -159,3 +169,50 @@ document.addEventListener('click', function(e) {
 searchInput.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') { searchResults.classList.remove('show'); searchInput.blur(); }
 });
+
+// Sidebar search on note pages
+(function(){
+  var sInp = document.getElementById('sidebarSearch');
+  var sRes = document.getElementById('sidebarSearchResults');
+  if (!sInp || !sRes) return;
+
+  function findInNotes(q) {
+    q = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i], score = 0;
+      if (n.t.toLowerCase().indexOf(q) !== -1) score += 10;
+      if (n.f.toLowerCase().indexOf(q) !== -1) score += 5;
+      for (var j = 0; j < n.g.length; j++) {
+        if (n.g[j].toLowerCase().indexOf(q) !== -1) score += 3;
+      }
+      if (score > 0) out.push({n:n, s:score});
+    }
+    return out.sort(function(a,b){return b.s - a.s;});
+  }
+
+  sInp.addEventListener('input', function() {
+    var q = this.value.trim();
+    if (q.length < 1) { sRes.innerHTML = ''; sRes.classList.remove('show'); return; }
+    var matches = findInNotes(q);
+    if (matches.length === 0) {
+      sRes.innerHTML = '<div style="padding:10px;color:var(--text-muted);font-size:12px">Keine Ergebnisse</div>';
+    } else {
+      var html = '';
+      for (var k = 0; k < Math.min(matches.length, 12); k++) {
+        var m = matches[k];
+        html += '<a href="../' + m.n.p + '" class="sr-item"><div class="sr-title">' + m.n.t + '</div><div class="sr-meta">' + m.n.f + '</div></a>';
+      }
+      sRes.innerHTML = html;
+    }
+    sRes.classList.add('show');
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!sRes.contains(e.target) && e.target !== sInp) sRes.classList.remove('show');
+  });
+
+  sInp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { sRes.classList.remove('show'); sInp.blur(); }
+  });
+})();

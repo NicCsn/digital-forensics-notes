@@ -7,107 +7,445 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Mobile Forensik: Android und iOS</span>
+  <span class="nav-crumb">/ <a href="../02-betriebssysteme/index.html">Betriebssysteme</a> / Mobile Forensik: Android und iOS</span>
 </nav>
 <main>
 <article>
 <h1>Mobile Forensik: Android und iOS <span class="diff-badge diff-intermediate">Mittel</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzueberblick</a></li><li><a href="#android">Android-Forensik</a></li><li><a href="#ios">iOS-Forensik</a></li><li><a href="#sqlite">SQLite-Forensik</a></li><li><a href="#artefakte-quer">Mobile Artefakte quer</a></li><li><a href="#tool-uebersicht">Tool-Uebersicht</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</a></li></ol></details>
 
-<h2 id="kurz-berblick">Kurzüberblick</h2>
+<h2 id="kurz-berblick">Kurzueberblick</h2>
+<p>Smartphones sind persoenliche Tagebuecher mit GPS, Kommunikationshistorie und App-Daten. Android und iOS haben fundamental unterschiedliche Sicherheitsarchitekturen — und entsprechend verschiedene forensische Extraktionsmethoden.</p>
 
-<p>Smartphones sind persönliche Tagebücher mit GPS, Kommunikationshistorie und App-Daten. Android und iOS haben fundamental unterschiedliche Sicherheitsarchitekturen — und entsprechend verschiedene forensische Extraktionsmethoden.</p>
+<h2 id="android">Android-Forensik</h2>
 
-<h2 id="details">Details</h2>
+<h3>Sicherheitsarchitektur</h3>
 
-<h3>Android-Forensik</h3>
-
-<p>#### Sicherheitsarchitektur</p>
-<ul><li><strong>Full-Disk Encryption (FDE):</strong> Android 5-9, basierend auf Nutzer-Passwort/PIN</li>
-<li><strong>File-Based Encryption (FBE):</strong> Android 7+, Dateien separat verschlüsselt — Direct Boot ermöglicht eingeschränkte Funktionen vor der ersten Entsperrung</li>
-<li><strong>Keystore / Keymaster:</strong> Hardware-gestützte Schlüsselspeicherung im TEE (Trusted Execution Environment)</li></ul>
-
-<p>#### Extraktionsmethoden</p>
-
-<table class="styled-table">
-<thead><tr><th>Methode</th><th>Voraussetzung</th><th>Was du bekommst</th></tr></thead><tbody>
-<tr><td>**ADB Backup**</td><td>ADB-Debugging aktiviert, Gerät entsperrt</td><td>Apps und ihre Daten (nur Apps, die Backup erlauben)</td></tr>
-<tr><td>**Nandroid Backup**</td><td>Custom Recovery (TWRP) installiert</td><td>Vollständiges System-Image</td></tr>
-<tr><td>**chip-off**</td><td>Physischer Zugriff, Entlöten</td><td>Rohdaten des Flash-Speichers</td></tr>
-<tr><td>**JTAG**</td><td>Debug-Pins identifiziert</td><td>Speicherzugriff auf niedriger Ebene</td></tr>
-<tr><td>**Flasher-Box** (z.B. EDL-Mode)</td><td>Qualcomm-Gerät, Emergency Download Mode</td><td>Roh-Speicherabbild</td></tr>
+<table>
+<thead><tr><th>Feature</th><th>Beschreibung</th><th>Forensische Implikation</th></tr></thead><tbody>
+<tr><td><strong>Full-Disk Encryption (FDE)</strong></td><td>Android 5-9: gesamte Userdata-Partition verschluesselt mit dm-crypt</td><td>Ohne Passwort/PIN keine Entschluesselung. Brute-Force nur offline moeglich.</td></tr>
+<tr><td><strong>File-Based Encryption (FBE)</strong></td><td>Android 7+: Dateien separat verschluesselt. Direct Boot: eingeschraenkte Funktionen vor Erstentsperrung.</td><td>Device-Encrypted (DE) Storage bei Boot verfuegbar. Credential-Encrypted (CE) erst nach PIN-Eingabe.</td></tr>
+<tr><td><strong>Keystore / Keymaster</strong></td><td>Kryptographische Schluessel in Hardware-gestuetztem TEE (Trusted Execution Environment)</td><td>Private Keys koennen nicht extrahiert werden. Keymaster protokolliert Schluesselverwendung.</td></tr>
+<tr><td><strong>Verified Boot</strong></td><td>Android 7+: Prueft Bootchain-Integritaet (Bootloader → Kernel → System)</td><td>Manipulationen am Boot-Image werden erkannt. Modifiziertes System = moeglicher Angriff.</td></tr>
 </tbody></table>
 
-<p>#### Android-Dateisystem und Artefakte</p>
+<h3>Android-Applikationssandbox</h3>
 
-<p>Wichtige Fundorte (Root-Zugriff vorausgesetzt):</p>
-<ul><li><strong>SMS / Anrufliste:</strong> <code>/data/data/com.android.providers.telephony/databases/mmssms.db</code></li>
-<li><strong>Kontakte:</strong> <code>/data/data/com.android.providers.contacts/databases/contacts2.db</code></li>
-<li><strong>Chrome:</strong> <code>/data/data/com.android.chrome/app_chrome/Default/</code> (History, Cookies, Login Data)</li>
-<li><strong>WhatsApp:</strong> <code>/data/data/com.whatsapp/databases/msgstore.db</code> (verschlüsselt mit Key in <code>/data/data/com.whatsapp/files/key</code>)</li>
-<li><strong>GPS / Location:</strong> <code>/data/data/com.google.android.gms/databases/</code></li></ul>
+<pre><code># Jede Android-App hat:
+# - eigene Linux-UID/GID (UID = App-ID + 10000)
+# - eigenen Ordner unter /data/data/&lt;paketname&gt;/
+# - SELinux-Label (u:r:untrusted_app:s0:cXX,cYY)
+# - Kein Zugriff auf andere Apps (ausser ueber Content-Provider/Broadcast)
 
-<h3>iOS-Forensik</h3>
+# Forensische Fundorte:
+/data/data/&lt;paket&gt;/
+├── databases/       ← SQLite-DBs (sms, contacts, chats)
+├── shared_prefs/    ← XML-Key-Value-Paare (App-Einstellungen)
+├── files/           ← App-eigene Dateien
+├── cache/           ← App-Cache
+└── lib/             ← App-eigene native Libraries
 
-<p>#### Sicherheitsarchitektur</p>
-<ul><li><strong>Secure Enclave:</strong> Dedizierter Chip für Schlüsselverwaltung — vom Hauptprozessor isoliert</li>
-<li><strong>Data Protection:</strong> Jede Datei hat eine Schutzklasse (NSFileProtectionComplete, .completeUntilFirstUserAuthentication, .none)</li>
-<li><strong>Verschlüsselungshierarchie:</strong> Geräteschlüssel → Klassenschlüssel → Dateischlüssel</li></ul>
+# Wichtige System-UDIDs:
+/data/system/
+├── batterystats.bin       ← Batterie-Protokoll
+├── packages.xml           ← Installierte Apps + Berechtigungen
+├── users/0/               ← User-Profil 0 (Owner)
+│   ├── accounts.db         ← Synchronisierte Accounts
+│   └── settings_secure.xml ← System-Einstellungen</code></pre>
 
-<p>#### Extraktionsmethoden</p>
+<h3>Extraktionsmethoden</h3>
 
-<table class="styled-table">
-<thead><tr><th>Methode</th><th>Voraussetzung</th><th>Was du bekommst</th></tr></thead><tbody>
-<tr><td>**iTunes Backup**</td><td>Passwort bekannt (verschlüsseltes Backup)</td><td>Fast alle App-Daten</td></tr>
-<tr><td>**Checkm8 (bootrom-Exploit)**</td><td>iPhone 4s bis iPhone X</td><td>Vollzugriff auf Dateisystem (Checkra1n, checkm8-nonce-setter)</td></tr>
-<tr><td>**Advanced Logical (AFC)**</td><td>Gerät entsperrt, Pairing-Record vorhanden</td><td>Medien, App-Dateien (eingeschränkt)</td></tr>
-<tr><td>**GrayKey / Cellebrite UFED**</td><td>Kommerzielle Hardware</td><td>Tiefenextraktion, auch bei gesperrten Geräten</td></tr>
+<table>
+<thead><tr><th>Methode</th><th>Typ</th><th>Voraussetzung</th><th>Erhaltene Daten</th><th>Forensische Eignung</th></tr></thead><tbody>
+<tr><td><strong>ADB Backup</strong></td><td>Logical</td><td>ADB-Debugging aktiv, Geraet entsperrt</td><td>Apps mit <code>allowBackup=true</code>; keine System-Apps</td><td><span class="severity medium">Bedingt</span> — viele Apps (WhatsApp, Signal) erlauben kein Backup</td></tr>
+<tr><td><strong>ADB Pull (Root)</strong></td><td>Filesystem</td><td>Root-Zugriff oder engineering Build</td><td>Komplettes /data/data/ einsehbar</td><td><span class="severity low">Gut</span> — erfordert aber Root</td></tr>
+<tr><td><strong>Custom Recovery (TWRP)</strong></td><td>Physical</td><td>Entsperrter Bootloader, Custom Recovery</td><td>Vollstaendiges System-Image (dd/Nandroid)</td><td><span class="severity low">Hervorragend</span> — vollstaendiges Disk-Image</td></tr>
+<tr><td><strong>JTAG</strong></td><td>Physical</td><td>Debug-Pins identifiziert, geloetet</td><td>Roh-Speicherzugriff (via Test Access Port)</td><td><span class="severity low">Hervorragend</span> — aber invasiv und risikoreich</td></tr>
+<tr><td><strong>Chip-Off</strong></td><td>Physical</td><td>Flash-Chip ausgeloetet</td><td>Rohdaten des Flash-Speichers</td><td><span class="severity low">Bestmoeglich</span> — zerstoert aber das Geraet irreparabel</td></tr>
+<tr><td><strong>EDL-Mode (Qualcomm)</strong></td><td>Physical</td><td>Qualcomm-Chip, Emergency Download Mode</td><td>Roh-Speicherabbild ueber Firehose-Protokoll</td><td><span class="severity low">Hervorragend</span> — verfuegbar auf vielen Xiaomi, OnePlus, etc.</td></tr>
 </tbody></table>
 
-<p>#### iOS-Artefakte</p>
+<div class="callout warning"><strong>Gefahrenstufen bei Android-Acquisition:</strong>
+<ul>
+<li><strong>ADB Backup:</strong> Geringes Risiko, aber unvollstaendig. Wird von vielen Messengern explizit unterbunden.</li>
+<li><strong>Rooten:</strong> Modifiziert das System permanent. Xiaomi/Huawei loeschen bei Bootloader-Unlock alle Daten!</li>
+<li><strong>Chip-Off:</strong> Hoechstes Risiko — falsches Erhitzen zerstoert den Chip. Nur als letzte Option.</li>
+</ul></div>
 
-<ul><li><strong>SMS/iMessage:</strong> <code>~/Library/SMS/sms.db</code> (SQLite)</li>
-<li><strong>Anrufliste:</strong> <code>~/Library/CallHistoryDB/CallHistory.storedata</code></li>
-<li><strong>Safari:</strong> <code>~/Library/Safari/History.db</code>, <code>Cookies.binarycookies</code></li>
-<li><strong>GPS:</strong> <code>~/Library/Caches/locationd/consolidated.db</code> (Significant Locations)</li>
-<li><strong>KnowledgeC:</strong> <code>~/Library/Application Support/Knowledge/knowledgeC.db</code> — App-Nutzung, Web-Verlauf</li></ul>
+<h2 id="ios">iOS-Forensik</h2>
 
-<h3>SQLite — das universelle mobile Datenbankformat</h3>
+<h3>Sicherheitsarchitektur</h3>
 
-<p>Fast alle mobilen App-Daten sind SQLite-Datenbanken. Forensische Tools:</p>
+<table>
+<thead><tr><th>Feature</th><th>Beschreibung</th><th>Forensische Implikation</th></tr></thead><tbody>
+<tr><td><strong>Secure Enclave</strong></td><td>Dedizierter ARM-Coprozessor (separiert vom A-Series-Chip) fuer Schluesselverwaltung</td><td>Schluessel verlassen die Enclave nie. Kein Software-Extrakt moeglich. Brute-Force wird durch Enclave verzoegert.</td></tr>
+<tr><td><strong>Data Protection</strong></td><td>Jede Datei hat eine Schutzklasse. Hierarchie: Geraeteschluessel → Klassenschluessel → Dateischluessel</td><td>Dateien der Klasse <code>NSFileProtectionComplete</code> sind bei gesperrtem Geraet nicht lesbar.</td></tr>
+<tr><td><strong>Keychain</strong></td><td>Verschluesselter Key-Value-Store fuer Passwoerter, Tokens, Zertifikate</td><td>Keychain-Eintraege haben eigene Schutzklassen. Einige sind immer verfuegbar (kSecAttrAccessibleAlways).</td></tr>
+<tr><td><strong>App Sandbox</strong></td><td>Jede App hat eigenen Container-Ordner; kein Zugriff auf andere Apps</td><td>App-Daten sind strikt isoliert. Nur ueber iOS-eigene Erweiterungen (Share Sheets) werden Daten geteilt.</td></tr>
+</tbody></table>
 
-<pre><code>sqlitebrowser whatsapp.db
+<h3>iOS Data Protection Klassen</h3>
 
-# Freie Seiten analysieren (gelöschte Daten!)
-sqlite3 app.db &quot;PRAGMA freelist_count;&quot;
-sqlite3 app.db &quot;PRAGMA integrity_check;&quot;
+<table>
+<thead><tr><th>Klasse</th><th>Verfuegbar bei</th><th>Forensischer Zugriff nach Erstentsperrung?</th></tr></thead><tbody>
+<tr><td><strong>NSFileProtectionComplete</strong></td><td>Nur wenn Geraet entsperrt</td><td>Nicht bei gesperrtem/ausgeschaltetem Geraet</td></tr>
+<tr><td><strong>NSFileProtectionCompleteUnlessOpen</strong></td><td>Entsperrt + solange Datei offen</td><td>Ja (nach Erstentsperrung persistent lesbar)</td></tr>
+<tr><td><strong>NSFileProtectionCompleteUntilFirstUserAuthentication</strong></td><td>Nach erster Entsperrung nach Boot</td><td>Ja (Default fuer die meisten Apps)</td></tr>
+<tr><td><strong>NSFileProtectionNone</strong></td><td>Immer (nur per Geraeteschluessel)</td><td>Ja (immer lesbar)</td></tr>
+</tbody></table>
 
-# WAL-Datei prüfen
-sqlite3 app.db &quot;.recover&quot;  # Daten aus beschädigter DB + WAL wiederherstellen</code></pre>
+<div class="callout tip"><strong>Forensischer Trick:</strong> Nach einem Neustart sind alle <code>Complete</code>-geschuetzten Dateien unlesbar. <strong>Vor</strong> der forensischen Sicherung muss das Geraet <strong>einmal entsperrt</strong> werden (After First Unlock, AFU). Im AFU-Zustand sind die meisten Dateien zugaenglich, was die Erfolgschancen bei logischer Extraktion massiv erhoeht.</div>
 
-<h3>Gelöschte Daten in SQLite</h3>
+<h3>iOS-Extraktionsmethoden</h3>
 
-<ul><li><strong>Freelist:</strong> SQLite markiert gelöschte Zeilen für Wiederverwendung, überschreibt sie aber nicht sofort</li>
-<li><strong>WAL-Datei:</strong> Enthält die letzten Änderungen vor dem nächsten Checkpoint → gelöschte Daten können hier noch vorhanden sein</li>
-<li><strong>Journal:</strong> Rollback-Journal kann alte Versionen enthalten</li></ul>
+<table>
+<thead><tr><th>Methode</th><th>Typ</th><th>Voraussetzung</th><th>Erhaltene Daten</th></tr></thead><tbody>
+<tr><td><strong>iTunes Backup (unverschluesselt)</strong></td><td>Logical</td><td>Passcode bekannt, Geraet vertrauenswuerdig</td><td>App-Daten ohne Keychain, Health, Safari-Passwoerter</td></tr>
+<tr><td><strong>iTunes Backup (verschluesselt)</strong></td><td>Logical+</td><td>Passcode + Backup-Passwort bekannt</td><td>Komplette App-Daten <strong>inkl. Keychain</strong>, Health Data, gespeicherte Passwoerter</td></tr>
+<tr><td><strong>Checkm8 (bootrom-Exploit)</strong></td><td>Filesystem</td><td>iPhone 4s bis iPhone X (A5-A11), USB-Verbindung</td><td>Vollzugriff auf Dateisystem via SSH (Checkra1n)</td></tr>
+<tr><td><strong>Advanced Logical (AFC)</strong></td><td>Logical</td><td>Geraet entsperrt, Pairing-Record</td><td>Medienordner, eingeschraenkte App-Zugriffe</td></tr>
+<tr><td><strong>GrayKey / Cellebrite UFED</strong></td><td>Filesystem</td><td>Kommerzielle Hardware</td><td>Vollzugriff, auch bei gesperrten Geraeten (Brute-Force+Exploit-Kombination)</td></tr>
+<tr><td><strong>Cellebrite Premium / Magnet AXIOM</strong></td><td>Physical (iOS)</td><td>Kommerziell, Cellebrite Hardware</td><td>Agentenbasiert (iOS), tiefste Extraktionsebene</td></tr>
+</tbody></table>
 
-<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+<div class="callout info"><strong>iTunes-Backup-Verzeichnis (macOS):</strong> <code>~/Library/Application Support/MobileSync/Backup/&lt;UDID&gt;/</code> — jedes Backup ist ein Verzeichnis mit SHA1-gehashten Dateinamen. Die <code>Manifest.db</code> (SQLite) enthaelt die Abbildung Hash → Originalpfad. <strong>Verschluesseltes Backup:</strong> Keybag ist in der <code>Manifest.plist</code> gespeichert, Dateien sind AES-256 verschluesselt.</div>
 
-<ul><li><code>adb devices</code> — verbundene Android-Geräte anzeigen</li>
-<li><code>adb backup -apk -shared -all -system</code> — vollständiges Android-Backup</li>
-<li><code>ideviceinfo</code> / <code>idevicebackup2</code> (libimobildevice) — iOS-Backup erstellen</li>
-<li><code>sqlite3 sms.db "SELECT datetime(date/1000000000 + 978307200, 'unixepoch'), text, is_from_me FROM message"</code> — macOS/iOS-Zeitstempel</li></ul>
+<h3>iOS-Artefakte</h3>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<table>
+<thead><tr><th>Artefakt</th><th>iOS-Pfad (relativ zum App-Container)</th><th>Daten</th></tr></thead><tbody>
+<tr><td><strong>SMS/iMessage</strong></td><td><code>~/Library/SMS/sms.db</code> (SQLite)</td><td>Alle Nachrichten: <code>chat</code> + <code>message</code> + Anhaenge in <code>/Attachments/</code></td></tr>
+<tr><td><strong>Anrufliste</strong></td><td><code>~/Library/CallHistoryDB/CallHistory.storedata</code> (SQLite)</td><td>Eingehende, ausgehende, verpasste Anrufe</td></tr>
+<tr><td><strong>Safari</strong></td><td><code>~/Library/Safari/History.db</code>, <code>Cookies.binarycookies</code></td><td>Browser-Verlauf, Lesezeichen, Cookies</td></tr>
+<tr><td><strong>GPS/Locations</strong></td><td><code>~/Library/Caches/locationd/consolidated.db</code> (SQLite)</td><td>Significant Locations, WLAN-Erkennung, Cell-Tower</td></tr>
+<tr><td><strong>KnowledgeC</strong></td><td><code>~/Library/Application Support/Knowledge/knowledgeC.db</code></td><td>App-Nutzung, Web-Verlauf, angeschlossene Geraete, Medienwiedergabe</td></tr>
+<tr><td><strong>Gesundheitsdaten</strong></td><td><code>~/Library/Health/healthdb_secure.sqlite</code> (verschluesselt)</td><td>Nur mit verschluesseltem Backup zugreifbar</td></tr>
+<tr><td><strong>Spotlight</strong></td><td><code>~/Library/CoreSpotlight/</code></td><td>Volltext-Index — geloeschte Dateien koennen noch indiziert sein</td></tr>
+</tbody></table>
 
-<ul><li><a href="https://source.android.com/docs/security">Android Developers: Security</a></li>
+<h2 id="sqlite">SQLite-Forensik — das universelle mobile Datenbankformat</h2>
+
+<h3>Architektur einer SQLite-DB</h3>
+
+<pre><code>┌────────────────────────────────────────────────────────┐
+│ SQLite Database File                                    │
+│ ┌──────────────────────────────────────────────────────┐│
+│ │ Header (100 Bytes)                                   ││
+│ │ - Magic: "SQLite format 3\0"                         ││
+│ │ - Page Size (meist 4096)                              ││
+│ │ - Freelist Page Pointer: Zeiger auf erste freie Seite ││
+│ │ - Number of Pages in DB                               ││
+│ └──────────────────────────────────────────────────────┘│
+│ ┌──────────┬──────────┬──────────┬──────────────────┐   │
+│ │ Page 0   │ Page 1   │ ...      │ Page N           │   │
+│ │ (Header) │ (Data)   │          │ (Data)           │   │
+│ └──────────┴──────────┴──────────┴──────────────────┘   │
+│                                                          │
+│ Zugehoerige Dateien (im selben Verzeichnis):             │
+│ ├── app.db-wal       ← Write-Ahead Log                  │
+│ ├── app.db-shm       ← Shared-Memory (Index des WAL)    │
+│ └── app.db-journal   ← Rollback-Journal (DELETE mode)   │
+└──────────────────────────────────────────────────────────┘</code></pre>
+
+<h3>Write-Ahead Log (WAL) — forensische Goldgrube</h3>
+
+<p>Die <code>.db-wal</code>-Datei enthaelt <strong>die juengsten Aenderungen</strong>, die noch nicht in die Haupt-DB zurueckgeschrieben wurden (vor dem naechsten Checkpoint):</p>
+
+<ul>
+<li><strong>Eingefuegte Zeilen</strong>, die durch spaetere DELETE oder UPDATE "verschwunden" sind, existieren noch im WAL-Frame.</li>
+<li><strong>SQLite/WAL-Analyse:</strong> Das Tool <code>sqlite3 app.db ".recover"</code> versucht, Daten aus einer defekten DB + WAL wiederherzustellen.</li>
+<li><strong>Freelist:</strong> SQLite ueberschreibt geloeschte Zeilen nicht sofort, sondern markiert sie in der Freelist zur Wiederverwendung. <code>PRAGMA freelist_count;</code> zeigt die Anzahl freier Seiten.</li>
+</ul>
+
+<div class="callout tip"><strong>WAL-geloeschte Datensaetze finden:</strong> In der WAL-Datei sind auch Eintraege mit DELETE-Frames enthalten — der Frame selbst bleibt aber im WAL, bis er durch einen Checkpoint verdraengt wird. Tools wie <code>undark</code> oder kommerzielle Forensik-Software parsen die WAL-Frames direkt und extrahieren geloeschte Datensaetze.</div>
+
+<h3>SQLite-Forensik-Workflow</h3>
+
+<pre><code># 1. Datenbankstruktur analysieren
+sqlite3 app.db ".schema"
+
+# 2. Freelist und Integritaet pruefen
+sqlite3 app.db "PRAGMA freelist_count;"
+sqlite3 app.db "PRAGMA integrity_check;"
+sqlite3 app.db "PRAGMA quick_check;"
+
+# 3. WAL-Datei analysieren
+sqlite3 app.db ".recover" > recovered.sql   # Daten aus DB + WAL rekonstruieren
+
+# 4. Manual WAL-Parsing (Hex-Editor)
+# WAL-Frame-Struktur:
+#   - Frame Header (24 Bytes): Page Number, DB Size nach Commit
+#   - Page Data (Page Size Bytes): Die eigentlichen Zellen-Daten
+
+# 5. Nutze spezialisierte Forensik-Tools
+# - undark (https://github.com/inflex/undark): WAL/Journal Carver
+# - Sanderson Forensics SQLite Forensics Tool
+# - epilog (SQLite forensic tool, C-based)
+
+# 6. iOS: macOS-Zeitstempel konvertieren
+# Apple CFAbsoluteTime = Sekunden seit 01.01.2001 00:00:00 UTC
+sqlite3 sms.db "SELECT datetime(date/1000000000 + 978307200, 'unixepoch'), text FROM message;"
+
+# 7. Android: Unix-Timestamp in Millisekunden
+sqlite3 contacts2.db "SELECT datetime(last_time_contacted/1000, 'unixepoch'), display_name FROM contacts;"</code></pre>
+
+<h2 id="artefakte-quer">Mobile Artefakte quer — Betriebssystem-uebergreifend</h2>
+
+<table>
+<thead><tr><th>Artefakt</th><th>Android-Fundort</th><th>iOS-Fundort</th><th>Extraktion</th></tr></thead><tbody>
+<tr><td><strong>SMS</strong></td><td><code>/data/data/com.android.providers.telephony/databases/mmssms.db</code></td><td><code>HomeDomain/Library/SMS/sms.db</code></td><td>SQLite-Abfrage</td></tr>
+<tr><td><strong>Anrufliste</strong></td><td><code>/data/data/com.android.providers.contacts/databases/calllog.db</code></td><td><code>HomeDomain/Library/CallHistoryDB/CallHistory.storedata</code></td><td>SQLite-Abfrage</td></tr>
+<tr><td><strong>Kontakte</strong></td><td><code>/data/data/com.android.providers.contacts/databases/contacts2.db</code></td><td><code>HomeDomain/Library/AddressBook/AddressBook.sqlitedb</code></td><td>SQLite-Abfrage</td></tr>
+<tr><td><strong>Chrome</strong></td><td><code>/data/data/com.android.chrome/app_chrome/Default/</code> (History, Cookies, Login Data)</td><td>Nicht default (iOS verwendet Safari/WebKit); Chrome-iOS nutzt Safari-Engine</td><td>SQLite</td></tr>
+<tr><td><strong>WhatsApp</strong></td><td><code>/data/data/com.whatsapp/databases/msgstore.db</code> + <code>wa.db</code><br>Schluessel: <code>/data/data/com.whatsapp/files/key</code></td><td><code>group.net.whatsapp.WhatsApp.shared/Message/</code> (Crypt15/Crypt14, verschluesselt)</td><td>Entschluesselung noetig</td></tr>
+<tr><td><strong>Signal</strong></td><td><code>/data/data/org.thoughtcrime.securesms/databases/signal.db</code></td><td>— (iOS-DB anders aufgebaut)</td><td>SQLCipher (meist entschluesselt extrahierbar)</td></tr>
+<tr><td><strong>Telegram</strong></td><td><code>/data/data/org.telegram.messenger/files/cache4.db</code></td><td><code>/ph.telegra.Telegraph/</code></td><td>SQLite (Klartext, ausser Secret Chats)</td></tr>
+<tr><td><strong>GPS-KML</strong></td><td><code>/data/data/com.google.android.gms/databases/</code> (Location History)</td><td><code>HomeDomain/Library/Caches/locationd/consolidated.db</code></td><td>SQLite → KML-Export</td></tr>
+<tr><td><strong>Email</strong></td><td>Gmail: <code>/data/data/com.google.android.gm/databases/</code></td><td>Mail: <code>HomeDomain/Library/Mail/</code> (emlx-Format + Envelope-Index)</td><td>Native App-Extraktion</td></tr>
+</tbody></table>
+
+<h2 id="tool-uebersicht">Tool-Uebersicht</h2>
+
+<table>
+<thead><tr><th>Kategorie</th><th>Tool</th><th>Plattform</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td rowspan="4"><strong>Kommerziell</strong></td><td><strong>Cellebrite UFED</strong></td><td>Windows</td><td>Marktfuehrer: physische + logische Extraktion, Android + iOS, App-Parsing</td></tr>
+<tr><td><strong>Cellebrite Physical Analyzer</strong></td><td>Windows</td><td>Analyse und Reporting der UFED-Extraktionen. SQLite/WAL-Carving.</td></tr>
+<tr><td><strong>Magnet AXIOM</strong></td><td>Windows</td><td>All-in-One: Extraktion (FS/logisch) + Analyse + Timeline + Connections</td></tr>
+<tr><td><strong>Oxygen Forensics</strong></td><td>Windows</td><td>Cloud-Extraktion (Google, iCloud, WhatsApp-Cloud), physische Extraktion</td></tr>
+<tr><td rowspan="6"><strong>Open Source</strong></td><td><strong>Autopsy</strong></td><td>plattformunabhaengig</td><td>Android Analyzer Modul (Kontakte, SMS, Anrufe, Chrome, GPS)</td></tr>
+<tr><td><strong>iLEAPP</strong></td><td>Python (Win/Mac/Linux)</td><td>iOS Logs, Events, And Plists Parser — parst iTunes-Backups und FS-Extraktionen</td></tr>
+<tr><td><strong>ALEAPP</strong></td><td>Python (Win/Mac/Linux)</td><td>Android-Equivalent: ADB-Extraktionen + Filesystem analysieren</td></tr>
+<tr><td><strong>Andriller</strong></td><td>Windows</td><td>ADB-Backup-Automation + Analyse + Report-Generator</td></tr>
+<tr><td><strong>sqlitebrowser</strong></td><td>plattformunabhaengig</td><td>GUI: SQLite-DBs oeffnen, WAL anzeigen, freie Seiten inspizieren</td></tr>
+<tr><td><strong>undark</strong></td><td>Linux (C-Tool)</td><td>SQLite Freelist/WAL-Carver — extrahiert geloeschte Datensaetze</td></tr>
+<tr><td rowspan="3"><strong>Speziell</strong></td><td><strong>Checkra1n</strong> (checkm8)</td><td>macOS/Linux</td><td>iOS-Jailbreak via Bootrom-Exploit (A5-A11) — Filesystem-Zugriff</td></tr>
+<tr><td><strong>Frida</strong></td><td>plattformunabhaengig</td><td>Dynamic Instrumentation: Runtime-App-Daten auslesen, SSL-Pinning umgehen</td></tr>
+<tr><td><strong>Android Debug Bridge (ADB)</strong></td><td>plattformunabhaengig</td><td>Grundlage fuer jede Android-Extraktion (Backup, Pull, Logcat)</td></tr>
+</tbody></table>
+
+<h2 id="praktische-anwendung">Praktische Anwendung / Workflows</h2>
+
+<h3>Android ADB-Workflow</h3>
+
+<pre><code># 1. Geraet verbinden und identifizieren
+adb devices -l                              # Geraet auflisten + Details
+adb shell getprop ro.build.fingerprint      # Build-Fingerprint
+adb shell getprop ro.build.version.sdk      # API-Level
+
+# 2. Logische Extraktion (ADB Backup)
+adb backup -apk -shared -all -system -f android_backup.ab
+# ACHTUNG: Viele Apps (WhatsApp, Signal) blocken Backup!
+# Backupextraktion mit:
+( printf "\x1f\x8b\x08\x00\x00\x00\x00\x00" ; tail -c +25 android_backup.ab ) | tar -xzf -
+
+# 3. Root-Zugriff (falls vorhanden)
+adb root
+adb pull /data/data/com.android.providers.telephony/databases/mmssms.db ./sms.db
+adb pull /data/data/com.android.providers.contacts/databases/contacts2.db ./contacts.db
+adb pull /data/data/com.android.chrome/app_chrome/Default/History ./chrome_history.db
+
+# 4. Live-Sicherung (fluechtige Daten)
+adb shell dumpsys > dumpsys_full.txt        # Kompletter System-Zustand
+adb shell dumpsys package > packages.txt    # Alle installierten Apps
+adb logcat -d > logcat.txt                  # Aktuelle Logs
+adb shell ps > processes.txt                # Laufende Prozesse</code></pre>
+
+<h3>iOS-Backup-Analyse mit iLEAPP</h3>
+
+<pre><code># 1. Backup erstellen
+#    - Auf macOS: iTunes/Finder → Backup jetzt erstellen
+#    - Oder: idevicebackup2 backup /pfad/zum/backup (libimobiledevice)
+
+# 2. Backup-Verzeichnis identifizieren
+#    macOS: ~/Library/Application Support/MobileSync/Backup/<UDID>/
+
+# 3. iLEAPP ausfuehren
+git clone https://github.com/abrignoni/iLEAPP.git
+cd iLEAPP
+python3 ileapp.py -t filesystem -i /pfad/zum/backup/UDID/ -o /cases/ios/report
+
+# 4. Analyse-Schwerpunkte im Report:
+#    - sms.db → SMS/iMessage Extraktion
+#    - KnowledgeC → App-Nutzung, Web-Verlauf
+#    - locationd → GPS-Tracking
+#    - Safari → Browser History + Cookies
+#    - QuarantineEvents → Downloads aus dem Internet
+#    - Keychain (nur verschluesseltes Backup) → Passwoerter
+
+# 5. ALEAPP fuer Android (analog):
+python3 aleapp.py -t filesystem -i /pfad/zu/adb-pull -o /cases/android/report</code></pre>
+
+<h3>SQLite geloeschte Datensaetze extrahieren</h3>
+
+<pre><code># Freelist-Seiten als Hexdump ausgeben (jede freie Seite inspizieren)
+sqlite3 app.db "PRAGMA freelist_count;"
+sqlite3 app.db ".recover" | grep -i "geloescht"
+
+# WAL-Datei separat sichern und analysieren
+cp app.db-wal /evidence/wal_forensic/
+cp app.db-shm /evidence/wal_forensic/
+
+# undark zum Carven verwenden
+undark app.db > app_carved.sql
+# Ausgabe enthaelt: INSERT-Statements aus WAL + Freelist, inkl. geloeschter
+# Datensaetze, die nicht mehr in der Haupt-DB sichtbar sind
+
+# Manuelle Hex-Analyse des WAL (Frame-by-Frame)
+# WAL-Frame startet bei Offset 0, 4096, 8192, ...
+# Frame Header: [0-3] Page Number (Big End.), [4-7] DB Size, [8-23] Checksum
+hexdump -C app.db-wal | less</code></pre>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://source.android.com/docs/security">Android Developers: Security</a></li>
 <li><a href="https://support.apple.com/guide/security/welcome/web">Apple Platform Security</a></li>
-<li>Hoog, A.: Android Forensics</li>
-<li>Tamma, R. et al.: Learning Android Forensics</li></ul>
+<li>Hoog, A.: <em>Android Forensics</em> (Syngress)</li>
+<li>Tamma, R. et al.: <em>Learning Android Forensics</em> (Packt)</li>
+<li>iLEAPP: <a href="https://github.com/abrignoni/iLEAPP">github.com/abrignoni/iLEAPP</a></li>
+<li>ALEAPP: <a href="https://github.com/abrignoni/ALEAPP">github.com/abrignoni/ALEAPP</a></li>
+<li>undark: <a href="https://github.com/inflex/undark">github.com/inflex/undark</a></li>
+<li>SQLite File Format: <a href="https://www.sqlite.org/fileformat.html">sqlite.org/fileformat.html</a></li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

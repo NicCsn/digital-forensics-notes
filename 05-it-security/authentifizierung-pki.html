@@ -7,80 +7,456 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">IT-Security</a> / Authentifizierung und Public Key Infrastructure (PKI)</span>
+  <span class="nav-crumb">/ <a href="../05-it-security/index.html">IT-Security</a> / Authentifizierung und Public Key Infrastructure (PKI)</span>
 </nav>
 <main>
 <article>
 <h1>Authentifizierung und Public Key Infrastructure (PKI) <span class="diff-badge diff-intermediate">Mittel</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzueberblick</a></li>
+  <li><a href="#auth-faktoren">Authentifizierungsfaktoren im Detail</a></li>
+  <li><a href="#passwort-speicherung">Passwort-Speicherung: Hashing, Salting, Pepper</a></li>
+  <li><a href="#kerberos">Kerberos-Protokoll</a></li>
+  <li><a href="#kerberos-forensik">Kerberos-Tickets in RAM — Forensik</a></li>
+  <li><a href="#ldap-ad">LDAP / Active Directory</a></li>
+  <li><a href="#ntlm-vs-kerberos">NTLM vs. Kerberos</a></li>
+  <li><a href="#pki-detail">PKI im Detail</a></li>
+  <li><a href="#zertifikats-forensik">Zertifikats-Forensik</a></li>
+  <li><a href="#praktische-anwendung">Praktische Anwendung / Befehle</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</a></li>
+</ol></details>
 
-<h2 id="kurz-berblick">Kurzüberblick</h2>
+<h2 id="kurz-berblick">Kurzueberblick</h2>
 
-<p>Authentifizierung beantwortet: "Bist du wirklich der, für den du dich ausgibst?" PKI ist die Infrastruktur, die digitale Identitäten durch Zertifikate beweisbar macht. In der Forensik sind Authentifizierungs-Logs zentrale Beweismittel (wessen Account?).</p>
+<p>Authentifizierung beantwortet die Frage: <em>"Bist du wirklich der, fuer den du dich ausgibst?"</em> Die PKI (Public Key Infrastructure) ist die Infrastruktur, die digitale Identitaeten durch Zertifikate beweisbar macht. In der Forensik sind Authentifizierungs-Logs zentrale Beweismittel — sie beantworten: <em>"Wessen Account wurde wann von wo genutzt?"</em></p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>Kernunterscheidung:</strong> <em>Authentifizierung</em> = Identitaetsnachweis (Login). <em>Autorisierung</em> = Rechtepruefung (Was darf der Nutzer?). Beides muss forensisch getrennt untersucht werden.</div>
 
-<h3>Authentifizierungs-Faktoren</h3>
+<h2 id="auth-faktoren">Authentifizierungsfaktoren im Detail</h2>
+
+<h3>Die vier Faktor-Typen</h3>
 
 <table class="styled-table">
-<thead><tr><th>Faktor</th><th>Typ</th><th>Beispiel</th><th>Schwäche</th></tr></thead><tbody>
-<tr><td>Wissen (Type 1)</td><td>Etwas, was du weißt</td><td>Passwort, PIN</td><td>Kann vergessen/gestohlen werden</td></tr>
-<tr><td>Besitz (Type 2)</td><td>Etwas, was du hast</td><td>RSA-Token, Smartphone (TOTP)</td><td>Kann verloren/gestohlen werden</td></tr>
-<tr><td>Inhärenz (Type 3)</td><td>Etwas, was du bist</td><td>Fingerabdruck, Iris-Scan, Gesicht</td><td>Nicht änderbar, falsch-positiv/-negativ</td></tr>
-<tr><td>Verhalten (Type 4)</td><td>Etwas, was du tust</td><td>Tippverhalten, Gangart</td><td>Noch experimentell</td></tr>
+<thead><tr><th>Faktor</th><th>Typ</th><th>Beispiele</th><th>Schwaeche</th><th>Forensische Spur</th></tr></thead><tbody>
+<tr><td><strong>Wissen (Type 1)</strong></td><td>Etwas, was du weisst</td><td>Passwort, PIN, Sicherheitsfrage</td><td>Kann vergessen, erraten oder durch Phishing gestohlen werden</td><td>Passwort-Hash in SAM/SECURITY-Registry, Brute-Force-Spuren (viele 4625-Events)</td></tr>
+<tr><td><strong>Besitz (Type 2)</strong></td><td>Etwas, was du hast</td><td>RSA-Token, Smartphone (TOTP), YubiKey, Smartcard</td><td>Kann verloren oder gestohlen werden</td><td>TOTP-Seed bei Account-Erstellung (QR-Code), FIDO2-Registrierungs-Logs</td></tr>
+<tr><td><strong>Inhaerenz (Type 3)</strong></td><td>Etwas, was du bist</td><td>Fingerabdruck, Iris-Scan, Gesichtserkennung, Stimmerkennung</td><td>Nicht aenderbar nach Kompromittierung; falsch-positiv/-negativ</td><td>Biometrie-Template-Dateien, Windows Hello-Logs</td></tr>
+<tr><td><strong>Verhalten (Type 4)</strong></td><td>Etwas, was du tust</td><td>Tippverhalten, Mausbewegung, Gangart, Geolokation</td><td>Experimentell; hohe False-Positive-Rate</td><td>Keystroke-Dynamics-Logs, Geo-IP-Logs (untypischer Login-Standort)</td></tr>
 </tbody></table>
 
 <h3>Multi-Faktor-Authentifizierung (MFA)</h3>
 
-<ul><li>Kombination aus mind. 2 Faktoren (nicht 2× Wissen!)</li>
-<li><strong>TOTP (Time-Based One-Time Password):</strong> Code aus HMAC + Unix-Zeit, wechselt alle 30s (Google Authenticator, Authy)</li>
-<li><strong>FIDO2 / WebAuthn:</strong> Phishing-resistente Authentifizierung mit Hardware-Token (YubiKey)</li></ul>
+<p>MFA kombiniert mindestens <strong>zwei verschiedene Faktoren</strong> (nicht 2x Wissen, z.B. Passwort + Sicherheitsfrage!). Nur die Kombination verschiedener Typen erhoeht die Sicherheit signifikant.</p>
 
-<h3>Kerberos (Windows-AD-Authentifizierung)</h3>
+<table class="styled-table">
+<thead><tr><th>MFA-Verfahren</th><th>Kombination</th><th>Sicherheitsniveau</th><th>Phishing-resistent?</th></tr></thead><tbody>
+<tr><td><strong>TOTP</strong> (Google Authenticator, Authy)</td><td>Wissen + Besitz</td><td>Mittel</td><td>Nein (Angreifer kann TOTP-Code in Echtzeit abfangen)</td></tr>
+<tr><td><strong>Push-Benachrichtigung</strong></td><td>Wissen + Besitz</td><td>Mittel</td><td>Nein (MFA-Fatigue-Angriff: Angreifer spamt Push-Benachrichtigungen)</td></tr>
+<tr><td><strong>FIDO2 / WebAuthn</strong> (YubiKey, Passkeys)</td><td>Wissen (PIN) + Besitz + ggf. Inhaerenz</td><td>Hoch</td><td><strong>Ja</strong> (Origin-gebunden, kein Shared Secret)</td></tr>
+<tr><td><strong>Smartcard + PIN</strong></td><td>Wissen + Besitz</td><td>Hoch</td><td>Ja (privater Schluessel verlaesst Karte nicht)</td></tr>
+<tr><td><strong>Windows Hello for Business</strong></td><td>Inhaerenz + Besitz (TPM)</td><td>Hoch</td><td>Ja (asymmetrisches Schluesselpaar im TPM)</td></tr>
+</tbody></table>
 
-<ul><li>Client → KDC: "Ich bin <code>frank</code>, gib mir ein TGT"</li>
-<li>KDC prüft Passwort-Hash → gibt TGT (Ticket Granting Ticket, verschlüsselt mit User-Hash)</li>
-<li>Client → KDC: "Ich habe ein TGT, gib mir ein Service-Ticket für <code>fileserver01</code>"</li>
-<li>Client → Service: "Hier mein Service-Ticket"</li></ul>
+<div class="callout warning"><strong>Forensisch relevant:</strong> TOTP-Seeds werden bei der Einrichtung als QR-Code oder Text-String uebertragen. Ein Screenshot des QR-Codes = vollstaendige Kompromittierung des zweiten Faktors. Angreifer mit Zugriff auf den Seed koennen beliebige Codes generieren.</div>
 
-<p>Forensisch relevante EventLog-IDs:</p>
-<ul><li><strong>4768:</strong> TGT angefordert (Kerberos-Auth-Start)</li>
-<li><strong>4769:</strong> Service-Ticket angefordert</li>
-<li><strong>4771:</strong> Kerberos Pre-Auth fehlgeschlagen → möglicher Brute-Force-Versuch</li>
-<li><strong>4776:</strong> NTLM-Auth (schwächer als Kerberos)</li></ul>
+<h2 id="passwort-speicherung">Passwort-Speicherung: Hashing, Salting, Pepper</h2>
 
-<h3>LDAP / Active Directory</h3>
+<h3>Warum kein Klartext?</h3>
 
-<ul><li>LDAP ist das Abfrageprotokoll, AD ist Microsofts Implementierung</li>
-<li>Wichtige Forensik-Felder: <code>lastLogon</code>, <code>lastLogonTimestamp</code>, <code>pwdLastSet</code>, <code>userAccountControl</code></li>
-<li><strong>Golden Ticket:</strong> Angreifer kompromittiert KRBTGT-Hash → kann beliebige Kerberos-Tickets ausstellen (ultimative Persistenz!)</li></ul>
+<p>Passwoerter duerfen <strong>niemals</strong> im Klartext gespeichert werden. Stattdessen wird nur der kryptografische Hash gespeichert. Bei Login wird das eingegebene Passwort gehasht und mit dem gespeicherten Hash verglichen.</p>
 
-<h3>Public Key Infrastructure (PKI)</h3>
+<table class="styled-table">
+<thead><tr><th>Konzept</th><th>Beschreibung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Hashing (ohne Salt)</strong></td><td>Passwort → Hash. Gleiches PW = gleicher Hash → Rainbow-Table-Angriff moeglich</td><td><code>sha256("passwort123") → a1b2c3...</code></td></tr>
+<tr><td><strong>Salt</strong></td><td>Zufallswert pro Nutzer, wird vor dem Hashen an das Passwort angefuegt. Verhindert Rainbow-Table-Angriffe und identische Hashes bei gleichen Passwoertern.</td><td><code>sha256("passwort123" + "7kXq2...") → 8f3a...</code></td></tr>
+<tr><td><strong>Pepper</strong></td><td>Geheimer, anwendungsweiter Wert, der <em>nicht</em> in der DB gespeichert wird (z.B. im Quellcode, HSM oder Konfigurationsdatei). Erhoehung der Sicherheit bei DB-Leak.</td><td><code>sha256(pw + salt + "S3cretP3pper!")</code></td></tr>
+</tbody></table>
 
-<ul><li><strong>CA (Certificate Authority):</strong> Stellt Zertifikate aus, die Identitäten bestätigen</li>
-<li><strong>Zertifikat</strong> = Öffentlicher Schlüssel + Identität + Signatur der CA</li>
-<li><strong>Vertrauenskette:</strong> Root-CA → Intermediate-CA → End-Entity-Zertifikat</li></ul>
+<h3>Empfohlene Hash-Algorithmen (Stand 2026)</h3>
 
-<p>Forensisch wichtig:</p>
-<ul><li><strong>Abgelaufene/ungültige Zertifikate:</strong> Man-in-the-Middle-Hinweise</li>
-<li><strong>Selbst-signierte Zertifikate</strong> auf internen Systemen: Normale Admin-Praxis oder C2-Server?</li>
-<li><strong>Zertifikatstransparenz-Logs:</strong> Öffentliche Logs aller ausgestellten HTTPS-Zertifikate (crt.sh)</li></ul>
+<table class="styled-table">
+<thead><tr><th>Algorithmus</th><th>Empfehlung</th><th>Parameter-Beispiel</th><th>Besonderheit</th></tr></thead><tbody>
+<tr><td><strong>Argon2id</strong></td><td>Best Practice</td><td><code>t=3, m=65536, p=4</code></td><td>Gewinner der Password Hashing Competition (2015). Speicherhart + CPU-hart + Seitenkanal-resistent.</td></tr>
+<tr><td><strong>bcrypt</strong></td><td>Gut, bewaehrt</td><td><code>cost=12</code></td><td>Langsam (absichtlich). Automatisches Salt-Handling. Kein Pepper eingebaut.</td></tr>
+<tr><td><strong>scrypt</strong></td><td>Gut</td><td><code>N=16384, r=8, p=1</code></td><td>Speicherhart: Erschwert GPU-/FPGA-Angriffe durch hohen RAM-Verbrauch.</td></tr>
+<tr><td><strong>PBKDF2</strong></td><td>Akzeptabel</td><td><code>iterations=600000, HMAC-SHA256</code></td><td>NIST-Standard. Weniger speicherhart, daher anfaelliger fuer GPU-Angriffe.</td></tr>
+<tr><td><strong>MD5 / SHA-1</strong></td><td>UNSICHER</td><td>—</td><td>Niemals fuer Passwoerter verwenden! Kollisionsanfaellig, viel zu schnell berechenbar.</td></tr>
+</tbody></table>
 
-<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+<div class="callout danger"><strong>Forensischer Albtraum:</strong> Findest du eine Passwort-Datenbank mit MD5-Hashes ohne Salt, ist der Fall praktisch geloest. Mit einer Rainbow-Table (z.B. crackstation.net) lassen sich ueber 90% aller Hashes innerhalb von Sekunden knacken.</div>
 
-<ul><li><code>whoami /user</code> — SID des aktuellen Nutzers (Windows)</li>
-<li><code>klist</code> — Kerberos-Tickets anzeigen</li>
-<li><code>openssl x509 -in cert.pem -text -noout</code> — Zertifikats-Details</li>
-<li><code>crt.sh</code> → Suche nach Domain → alle jemals ausgestellten Zertifikate</li></ul>
+<h3>Rainbow-Table-Angriff — Funktionsweise</h3>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<ol>
+  <li>Angreifer erstellt vorberechnete Tabelle: <em>Hash → Passwort</em> fuer Milliarden gaengiger Passwoerter</li>
+  <li>Bei einem DB-Leak vergleicht er jeden gestohlenen Hash mit der Tabelle</li>
+  <li>Treffer → Passwort sofort bekannt (keine Berechnung noetig)</li>
+  <li><strong>Schutz:</strong> Salt (pro Nutzer einzigartig) macht jede Rainbow-Table unbrauchbar, weil Angreifer fuer jedes moegliche Passwort die Kombination mit dem spezifischen Salt neu hashen muesste.</li>
+</ol>
 
-<ul><li>Eckert, C.: IT-Sicherheit — Konzepte, Verfahren, Protokolle</li>
-<li><a href="https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview">Microsoft: Kerberos Authentication</a></li></ul>
+<div class="callout tip"><strong>Empfehlung:</strong> In jedem neuen Projekt <strong>Argon2id</strong> verwenden. Fuer Legacy-Systeme gilt: bcrypt mit cost >= 12 ist akzeptabel. NIST empfiehlt PBKDF2 mit mindestens 600.000 Iterationen (Update 2023).</div>
+
+<h2 id="kerberos">Kerberos-Protokoll</h2>
+
+<h3>Protokollablauf (vereinfacht)</h3>
+
+<p>Kerberos basiert auf symmetrischer Verschluesselung mit einem zentralen Key Distribution Center (KDC). Der KDC besteht aus zwei Diensten: <strong>Authentication Service (AS)</strong> und <strong>Ticket Granting Service (TGS)</strong>.</p>
+
+<table class="styled-table">
+<thead><tr><th>Schritt</th><th>Nachricht</th><th>Beschreibung</th><th>Forensische Spur</th></tr></thead><tbody>
+<tr><td><strong>1. AS-REQ</strong></td><td>Client → KDC</td><td>"Ich bin <code>frank</code>, gib mir ein TGT." Client sendet mit Timestamp verschluesselte Pre-Authentication-Daten.</td><td>EventID <strong>4768</strong> (TGT angefordert). Enthaelt: User, Quell-IP, Ticket-Verschluesselungstyp.</td></tr>
+<tr><td><strong>2. AS-REP</strong></td><td>KDC → Client</td><td>KDC prueft Passwort-Hash → gibt <strong>TGT</strong> (Ticket Granting Ticket), verschluesselt mit dem User-Hash. Enthaelt Session-Key.</td><td>Kein eigener EventLog-Eintrag. Erfolg implizit durch fehlendes 4771-Event.</td></tr>
+<tr><td><strong>3. TGS-REQ</strong></td><td>Client → KDC</td><td>"Ich habe ein TGT, gib mir ein Service-Ticket fuer <code>fileserver01</code>." Client sendet TGT + Authenticator.</td><td>EventID <strong>4769</strong> (Service-Ticket angefordert). Enthaelt: Zielservice, Ticketverschluesselung, User.</td></tr>
+<tr><td><strong>4. TGS-REP</strong></td><td>KDC → Client</td><td>KDC gibt Service-Ticket, verschluesselt mit Service-Schluessel. Client kann es nicht lesen, nur an den Service senden.</td><td>Erfolg ebenfalls implizit (kein Fehler-Event).</td></tr>
+<tr><td><strong>5. AP-REQ</strong></td><td>Client → Service</td><td>"Hier mein Service-Ticket." Service entschluesselt mit eigenem Schluessel → erhaelt Session-Key und PAC (Privilege Attribute Certificate) mit Gruppenmitgliedschaften.</td><td>EventID <strong>4624</strong> (Logon) auf dem Zielsystem. Logon Type 3 (Netzwerk).</td></tr>
+<tr><td><strong>6. AP-REP</strong> (optional)</td><td>Service → Client</td><td>Gegenseitige Authentifizierung: Service beweist seine Identitaet.</td><td>—</td></tr>
+</tbody></table>
+
+<h3>Kerberos EventLog-IDs im Ueberblick</h3>
+
+<table class="styled-table">
+<thead><tr><th>EventID</th><th>Bedeutung</th><th>Forensische Interpretation</th></tr></thead><tbody>
+<tr><td><strong>4768</strong></td><td>TGT angefordert (AS-REQ erfolgreich)</td><td>Kerberos-Authentifizierung gestartet. User-Account, Quell-IP, Zeitstempel.</td></tr>
+<tr><td><strong>4769</strong></td><td>Service-Ticket angefordert (TGS-REQ erfolgreich)</td><td>User greift auf konkreten Service zu. <strong>Wichtig:</strong> Enthaelt den Ziel-Service (z.B. <code>cifs/fileserver01</code>).</td></tr>
+<tr><td><strong>4771</strong></td><td>Kerberos Pre-Authentication fehlgeschlagen</td><td><strong>Alarmstufe Rot!</strong> Moeglicher Brute-Force- oder Password-Spraying-Angriff. Fehlercode 0x18 = falsches Passwort. Fehlercode 0x6 = Client nicht gefunden (Enumeration?).</td></tr>
+<tr><td><strong>4776</strong></td><td>NTLM-Authentifizierung</td><td>Fallback auf NTLM. <strong>Warnzeichen!</strong> Entweder Kerberos fehlgeschlagen oder Angreifer nutzt bewusst NTLM (z.B. Pass-the-Hash).</td></tr>
+<tr><td><strong>4624</strong></td><td>Erfolgreicher Logon</td><td>Logon Type 3 = Netzwerk (Kerberos/NTLM uebers Netz). Logon Type 10 = Remote-Desktop. Logon Type 2 = interaktiv (Konsole).</td></tr>
+<tr><td><strong>4625</strong></td><td>Fehlgeschlagener Logon</td><td>Statuscode und Substatus analysieren. 0xC0000064 = unbekannter User. 0xC000006A = falsches Passwort. 0xC0000234 = Account gesperrt.</td></tr>
+</tbody></table>
+
+<h2 id="kerberos-forensik">Kerberos-Tickets in RAM — Forensik</h2>
+
+<p>Kerberos-Tickets leben im Arbeitsspeicher des Clients (lsass.exe unter Windows). Ein Memory-Dump kann diese Tickets extrahieren — das ist <strong>zentral fuer die forensische Analyse von Lateral-Movement-Angriffen</strong>.</p>
+
+<h3>Angriffsarten auf Kerberos</h3>
+
+<table class="styled-table">
+<thead><tr><th>Angriff</th><th>Beschreibung</th><th>Erforderliche Rechte</th><th>Forensisches Indiz</th></tr></thead><tbody>
+<tr><td><strong>Pass-the-Ticket (PtT)</strong></td><td>Angreifer extrahiert Kerberos-Tickets aus lsass.exe und nutzt sie auf anderem System</td><td>Administrator (lsass-Zugriff)</td><td>EventID 4768/4769 zeigen gleichen User von ungewoehnlicher IP aus. EventID 4624 mit Logon Type 3 ohne vorheriges 4768.</td></tr>
+<tr><td><strong>Overpass-the-Hash</strong></td><td>Angreifer hat NTLM-Hash, wandelt ihn in Kerberos-TGT um (kein Klartext-PW noetig)</td><td>Administrator</td><td>EventID 4768 mit Encryption Type 0x17 (RC4-HMAC) statt AES256 (0x12) — potenzielles Downgrade.</td></tr>
+<tr><td><strong>Golden Ticket</strong></td><td>Angreifer kompromittiert KRBTGT-Account-Hash → kann beliebige TGTs ausstellen. Ultimative Domain-Persistenz.</td><td>Domain Admin (fuer KRBTGT-Hash)</td><td>TGT hat ungewoehnlich lange Gueltigkeitsdauer (z.B. 10 Jahre). Kein entsprechendes 4768-Event. PAC enthaelt SIDs, die der User nicht haben sollte (z.B. Domain Admin).</td></tr>
+<tr><td><strong>Silver Ticket</strong></td><td>Angreifer hat Service-Account-Hash → stellt gefaelschte Service-Tickets aus. Auf <em>einen</em> Service begrenzt.</td><td>Zugriff auf Service-Account-Hash</td><td>EventID 4769 ohne vorheriges 4768 (kein TGT angefordert). Schwer zu erkennen, da 4769 auf DC und Service-Logs auf Zielserver liegen.</td></tr>
+<tr><td><strong>Kerberoasting</strong></td><td>Angreifer fordert Service-Ticket fuer Service-Account an, extrahiert den verschluesselten Teil und crackt das Passwort offline.</td><td>Normaler Domain-User</td><td>EventID 4769 mit Encryption Type 0x17 (RC4) — offline crackbar. Viele 4769-Events von einem User zu vielen Services.</td></tr>
+</tbody></table>
+
+<h2 id="ldap-ad">LDAP / Active Directory</h2>
+
+<h3>Architektur</h3>
+
+<ul>
+  <li><strong>LDAP:</strong> Lightweight Directory Access Protocol — Standardisiertes Abfrageprotokoll fuer Verzeichnisdienste (RFC 4510 ff.)</li>
+  <li><strong>Active Directory:</strong> Microsofts Implementierung eines Verzeichnisdienstes. Basiert auf LDAP, erweitert um Kerberos, DNS, Gruppenrichtlinien (GPO)</li>
+  <li><strong>Domain Controller (DC):</strong> HaeLt die AD-Datenbank (<code>ntds.dit</code>), laeuft KDC, authentifiziert Benutzer</li>
+</ul>
+
+<h3>Wichtige AD-Forensik-Felder</h3>
+
+<table class="styled-table">
+<thead><tr><th>Attribut</th><th>Bedeutung</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td><code>lastLogon</code></td><td>Letzter Login-Zeitstempel (DC-spezifisch, wird nicht repliziert)</td><td>Muss auf ALLEN DCs geprueft werden! Zeigt, wann ein User zuletzt authentifiziert wurde.</td></tr>
+<tr><td><code>lastLogonTimestamp</code></td><td>Letzter Login (wird repliziert, aber nur alle 14 Tage aktualisiert)</td><td>Gut fuer schnelle Uebersicht, aber zeitlich ungenau. Nicht fuer forensische Praezision geeignet.</td></tr>
+<tr><td><code>pwdLastSet</code></td><td>Zeitpunkt der letzten Passwort-Aenderung</td><td>Wenn kurz vor einem Incident geaendert → Account-Compromise? Angreifer aendert oft PW, um Zugriff zu behalten.</td></tr>
+<tr><td><code>userAccountControl</code></td><td>Bitmaske mit Account-Status-Flags</td><td>Flag 512 = normal. Flag 514 = deaktiviert. Flag 66048 = PW laeuft nicht ab. <strong>Kritisch:</strong> Angreifer setzen oft "PW laeuft nicht ab" + entsperren gesperrte Accounts.</td></tr>
+<tr><td><code>servicePrincipalName</code></td><td>Liste der SPNs (Service Principal Names)</td><td>Accounts mit SPN sind Kerberoasting-Ziele. Jeder User kann SPNs abfragen → minimale Rechte fuer Angriff.</td></tr>
+<tr><td><code>adminCount</code></td><td>=1 wenn Account Mitglied einer geschuetzten Gruppe war</td><td>Zeigt historische Admin-Gruppen-Zugehoerigkeit, auch wenn Account inzwischen entfernt wurde.</td></tr>
+</tbody></table>
+
+<h3>AD-Authentifizierungsprozess</h3>
+
+<ol>
+  <li><strong>Lokale Anmeldung:</strong> Windows prueft lokale SAM-Datenbank → nicht in AD. Nur moeglich mit lokalem Account (<code>.\administrator</code>)</li>
+  <li><strong>Domain-Anmeldung:</strong> Client sendet Kerberos AS-REQ an DC oder faellt auf NTLM zurueck (z.B. bei IP-Adresse statt Hostname)</li>
+  <li><strong>NTLM-Fallback:</strong> Client → Server: Aushandlung. Server → Client: Challenge (Zufallszahl). Client → Server: Response (mit NTLM-Hash verschluesselt). Server → DC: Netlogon-Pruefung.</li>
+</ol>
+
+<h2 id="ntlm-vs-kerberos">NTLM vs. Kerberos</h2>
+
+<table class="styled-table">
+<thead><tr><th>Eigenschaft</th><th>NTLM</th><th>Kerberos</th></tr></thead><tbody>
+<tr><td><strong>Protokolltyp</strong></td><td>Challenge-Response</td><td>Ticket-basiert (Third-Party-Trust)</td></tr>
+<tr><td><strong>Gegenseitige Auth</strong></td><td>Nein (Server authentifiziert sich nicht gegenueber Client)</td><td>Ja (AP-REP, optional)</td></tr>
+<tr><td><strong>Delegierung</strong></td><td>Keine (Single-Hop)</td><td>Mittels Forwardable/Proxiable Tickets</td></tr>
+<tr><td><strong>Krypto</strong></td><td>MD4/MD5 (veraltet)</td><td>AES256-CTS-HMAC-SHA1-96 (modern)</td></tr>
+<tr><td><strong>Anfaellig fuer</strong></td><td>Pass-the-Hash, Relay-Angriffe, Brute-Force</td><td>Golden Ticket, Silver Ticket, Kerberoasting</td></tr>
+<tr><td><strong>Forensische EventID</strong></td><td>4776 (Auth), 4624/4625 (Logon)</td><td>4768/4769/4771 (Auth), 4624/4625 (Logon)</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Forensisches Warnsignal:</strong> Viele 4776-Events in einer Umgebung, die Kerberos verwenden sollte, deuten auf einen NTLM-Downgrade-Angriff hin. Angreifer nutzen dies, um Pass-the-Hash zu ermoeglichen. NTLM-Authentifizierung sollte per GPO auf ein Minimum beschraenkt werden.</div>
+
+<h2 id="pki-detail">PKI im Detail</h2>
+
+<h3>X.509 Zertifikataufbau</h3>
+
+<p>Ein X.509-Zertifikat (nach RFC 5280) ist ein standardisiertes digitales Identitaetsdokument:</p>
+
+<pre><code>Certificate:
+    Version: 3
+    Serial Number: 04:0a:3f:... (eindeutig pro CA)
+    Signature Algorithm: sha256WithRSAEncryption
+    Issuer: CN = Let's Encrypt R3, O = Let's Encrypt, C = US
+    Validity:
+        Not Before: Jan  1 00:00:00 2026 GMT
+        Not After : Mar 31 23:59:59 2026 GMT
+    Subject: CN = example.com
+    Subject Public Key Info:
+        Algorithm: RSA (2048 bit)
+        Public Key: 30:82:01:0a:...
+    Extensions:
+        subjectAltName: DNS:example.com, DNS:*.example.com
+        basicConstraints: CA:FALSE
+        keyUsage: Digital Signature, Key Encipherment
+        extendedKeyUsage: TLS Web Server Authentication
+        CT Pre-certificate SCTs: (Certificate Transparency)
+    Signature: 9f:4d:... (von CA ueber alles obige)</code></pre>
+
+<h3>Vertrauenskette (Chain of Trust)</h3>
+
+<ol>
+  <li><strong>Root-CA:</strong> Selbst-signiertes Zertifikat. Oberste Vertrauensinstanz. Private Key liegt <em>offline</em> im Tresor.</li>
+  <li><strong>Intermediate-CA:</strong> Von Root-CA signiert. Stellt End-Entity-Zertifikate aus. Private Key online (oder in HSM).</li>
+  <li><strong>End-Entity-Zertifikat:</strong> Von Intermediate-CA signiert. Gehoert zum Webserver, Mailserver, Client-Geraet.</li>
+</ol>
+
+<div class="callout info"><strong>Validierung:</strong> Browser prueft die Kette von unten nach oben. Jedes Zertifikat muss (a) von der naechsthoeheren CA signiert sein, (b) innerhalb der Gueltigkeitsdauer liegen und (c) nicht revoziert sein (CRL/OCSP).</div>
+
+<h3>CRL vs. OCSP: Zertifikatssperrung</h3>
+
+<table class="styled-table">
+<thead><tr><th>Verfahren</th><th>Funktionsweise</th><th>Vorteile</th><th>Nachteile</th></tr></thead><tbody>
+<tr><td><strong>CRL</strong> (Certificate Revocation List)</td><td>CA veroeffentlicht regelm. Liste aller gesperrten Seriennummern</td><td>Einfach zu cachen, keine Echtzeitverbindung noetig</td><td>Gross (kann MB sein), Update-Intervall (Stunden/Tage) = Window of Exposure</td></tr>
+<tr><td><strong>OCSP</strong> (Online Certificate Status Protocol)</td><td>Client fragt in Echtzeit: "Ist Seriennummer X gueltig?"</td><td>Echtzeit, kleine Antwort, kein CRL-Download</td><td>Datenschutzbedenken (CA sieht jede Anfrage). Single Point of Failure.</td></tr>
+<tr><td><strong>OCSP Stapling</strong></td><td>Server holt OCSP-Antwort und "tackert" sie ans TLS-Handshake</td><td>Privatsphaere + Echtzeit + Performant</td><td>Server muss es unterstuetzen. Nicht alle Clients validieren es.</td></tr>
+</tbody></table>
+
+<h3>Certificate Transparency (CT) Logs</h3>
+
+<p>Seit 2015 (Chromium) bzw. 2017 (Apple ATS) sind Certificate Transparency Logs verpflichtend fuer EV-Zertifikate. Ab 2018 fuer alle oeffentlichen TLS-Zertifikate.</p>
+
+<ul>
+  <li><strong>Prinzip:</strong> Jedes ausgestellte Zertifikat wird in ein oeffentliches, append-only Log eingetragen</li>
+  <li><strong>Monitore:</strong> Organisationen durchsuchen CT-Logs nach unautorisierten Zertifikaten fuer ihre Domains</li>
+  <li><strong>SCT (Signed Certificate Timestamp):</strong> Beweis, dass das Zertifikat in einem CT-Log eingetragen wurde. Wird im Zertifikat selbst oder via TLS-Extension uebermittelt.</li>
+  <li><strong>Forensische Nutzung:</strong> Suche auf <a href="https://crt.sh">crt.sh</a> zeigt ALLE jemals fuer eine Domain ausgestellten Zertifikate — auch abgelaufene, auch solche von kompromittierten CAs.</li>
+</ul>
+
+<h2 id="zertifikats-forensik">Zertifikats-Forensik</h2>
+
+<h3>Checkliste: Verdaechtige Zertifikate erkennen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Indikator</th><th>Bedeutung</th><th>Forensische Aktion</th></tr></thead><tbody>
+<tr><td><strong>Abgelaufenes Zertifikat</strong> auf produktivem System</td><td>Vernachlaessigtes System? Oder C2-Infrastruktur mit altem Zertifikat?</td><td>Registrar-Daten (whois), Ausstellungsdatum, CT-Log-Historie pruefen</td></tr>
+<tr><td><strong>Selbst-signiertes Zertifikat</strong></td><td>Normal auf internen Systemen. ABER: Angreifer nutzen selbst-signierte Certs haeufig fuer C2-Kommunikation.</td><td>Issuer == Subject? Wurde das Zertifikat jemals von einem legitimen System verwendet?</td></tr>
+<tr><td><strong>Wildcard-Zertifikat</strong> (<code>*.example.com</code>)</td><td>Legitim aber risikoreich: Ein Wildcard-Cert kompromittiert = alle Subdomains betroffen.</td><td>Wo wird das Wildcard-Cert deployed? Auf wie vielen Servern? Private Key Zugriff?</td></tr>
+<tr><td><strong>Ungewoehnliche TLD</strong> (<code>.xyz</code>, <code>.top</code>, <code>.tk</code>)</td><td>Guensitge TLDs sind bei Malware-Betreibern beliebt.</td><td>CT-Log-Suche: Wie viele Zertifikate hat dieser Aussteller insgesamt ausgestellt? Nur diese Domain oder Hunderte?</td></tr>
+<tr><td><strong>Domain-Alter &lt; 30 Tage + HTTPS</strong></td><td>Frisch registrierte Domain mit Zertifikat = typisches Phishing-Merkmal.</td><td>whois creation date, Domain-Reputation (VirusTotal, URLscan.io)</td></tr>
+<tr><td><strong>Zertifikat mit 100+ SANs</strong> (Subject Alternative Names)</td><td>Normal bei CDNs (Cloudflare). ABER: Auch bei Phishing-Kits beliebt (ein Zertifikat fuer viele Phishing-Domains).</td><td>SAN-Liste auslesen, Domains einzeln pruefen.</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>CT-Log-Recherche mit crt.sh:</strong> Einfach <code>example.com</code> eingeben. Die Ergebnisse zeigen: Aussteller, Gueltigkeitszeitraum, SANs. Mit einem Klick auf "Cert" siehst du den Rohdaten des Zertifikats. Ueber die API: <code>curl -s 'https://crt.sh/?q=example.com&amp;output=json' | jq .</code></div>
+
+<h2 id="praktische-anwendung">Praktische Anwendung / Befehle</h2>
+
+<h3>Zertifikatsanalyse mit OpenSSL</h3>
+
+<pre><code># Zertifikat einer Website herunterladen und analysieren
+openssl s_client -connect example.com:443 -servername example.com 2&gt;/dev/null | openssl x509 -text -noout
+
+# Nur bestimmte Felder extrahieren
+openssl x509 -in cert.pem -noout -subject -issuer -dates -fingerprint
+
+# CRL-Download und Pruefung
+curl -O http://crl.letsencrypt.org/r3.crl
+openssl crl -in r3.crl -text -noout
+
+# OCSP-Anfrage stellen
+openssl ocsp -issuer intermediate.pem -cert cert.pem -url http://ocsp.example.com -text</code></pre>
+
+<h3>Windows-Authentifizierungsforensik</h3>
+
+<pre><code># Kerberos-Tickets anzeigen (Windows)
+klist
+klist tgt    # Nur TGT anzeigen
+klist purge  # Tickets loeschen (Achtung!)
+
+# SID eines Nutzers ermitteln
+whoami /user
+
+# AD-Informationen abfragen (PowerShell)
+Get-ADUser -Identity frank -Properties lastLogon, lastLogonTimestamp, pwdLastSet, userAccountControl
+
+# EventLog nach Kerberos-Fehlschlags filtern
+Get-WinEvent -FilterHashtable @{LogName='Security'; ID=4771} -MaxEvents 100</code></pre>
+
+<h3>TOTP-Seed-Extraktion (Forensik)</h3>
+
+<pre><code># Google Authenticator: SQLite-DB auf Android-Root-Geraet
+# /data/data/com.google.android.apps.authenticator2/databases/database
+
+# Authy: API-Endpunkt zur Wiederherstellung (mit Master-Passwort)
+# Achtung: Rechtliche Rahmenbedingungen pruefen!</code></pre>
+
+<h3>CT-Log Suche</h3>
+
+<pre><code># crt.sh Web-GUI
+https://crt.sh/?q=example.com
+
+# crt.sh API (JSON)
+curl -s 'https://crt.sh/?q=example.com&amp;output=json' | jq '.[] | {issuer: .issuer_name, not_before: .not_before, not_after: .not_after}'
+
+# CertSpotter API (SSLMate)
+curl -s 'https://api.certspotter.com/v1/issuances?domain=example.com&amp;expand=dns_names'</code></pre>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</h2>
+
+<ul>
+  <li>Eckert, C.: <em>IT-Sicherheit — Konzepte, Verfahren, Protokolle</em>. 11. Auflage, De Gruyter, 2023</li>
+  <li><a href="https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview">Microsoft: Kerberos Authentication Overview</a></li>
+  <li><a href="https://datatracker.ietf.org/doc/html/rfc5280">RFC 5280: X.509 PKI Certificate and CRL Profile</a></li>
+  <li><a href="https://certificate.transparency.dev/">Certificate Transparency: How It Works</a></li>
+  <li><a href="https://github.com/GhostPack/Rubeus">Rubeus (GhostPack)</a> — Kerberos-Toolkit (Pentesting/Forensik)</li>
+  <li>OWASP: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">Password Storage Cheat Sheet</a></li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threat Hunting — Methodik und Vorgehen — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (16)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/macos-forensik.html">macOS-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details open><summary>Forensik-Methoden (16)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting</a></li>
+      <li><a href="../04-forensik-methoden/timeline-analysis.html">Timeline-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../04-forensik-methoden/index.html">Forensik-Methoden</a> / Threat Hunting</span>
+</nav>
+<main><article>
+<h1>Threat Hunting — Methodik und Vorgehen <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#peak">Hypothesis-Driven Hunting (PEAK Framework)</a></li>
+<li><a href="#hmm">Hunting Maturity Model (HMM0–HMM5)</a></li>
+<li><a href="#datenquellen">Datenquellen fuer Threat Hunting</a></li>
+<li><a href="#pyramid">Pyramid of Pain</a></li>
+<li><a href="#hypothesen">Praktische Hunting-Hypothesen</a></li>
+<li><a href="#sigma">Sigma-Regeln als Hunting-Logik</a></li>
+<li><a href="#werkzeuge">Werkzeuge und Query-Sprachen</a></li>
+<li><a href="#praxis">Praktische Anwendung</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p><strong>Threat Hunting</strong> ist der <em>proaktive</em> Prozess, unbekannte oder unerkannte Bedrohungen in einem Netzwerk zu suchen, bevor ein Alarm ausgeloest wird. Anders als <strong>Detection</strong> (reagiert auf bekannte Signaturen) oder <strong>Incident Response</strong> (reagiert auf bestaetigte Vorfälle), sucht Threat Hunting aktiv nach dem, was automatische Erkennungssysteme uebersehen haben — dem <strong>unknown unknown</strong>.</p>
+
+<table>
+<thead><tr><th>Disziplin</th><th>Ausloeser</th><th>Ziel</th><th>Zeitrahmen</th></tr></thead><tbody>
+<tr><td><strong>Detection Engineering</strong></td><td>Bekannte TTPs, Sigma-Regeln, IOC-Feeds</td><td>Automatisierte Alarmierung aufbauen</td><td>Kontinuierlich (Build-Phase)</td></tr>
+<tr><td><strong>Threat Hunting</strong></td><td>Hypothese, Anomalie, Intelligence-Trigger</td><td>Unentdeckte Kompromittierungen finden</td><td>Proaktiv, iterativ (Hunt-Phasen)</td></tr>
+<tr><td><strong>Incident Response</strong></td><td>Alarm oder gemeldeter Vorfall</td><td>Eindaemmen, Eradizieren, Wiederherstellen</td><td>Reaktiv, dringend</td></tr>
+<tr><td><strong>Forensische Analyse</strong></td><td>Nach dem Vorfall, Beweissicherung</td><td>Rekonstruktion, Ursachenanalyse, Gerichtsfestigkeit</td><td>Post-Incident, gruendlich</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Threat Hunting ist kein Ersatz fuer Detection:</strong> Es ergaenzt Detection-Luecken. Ein SOC ohne Hunting deckt nur bekannte Threats ab. Ein reifes SOC investiert ca. 20–30% seiner Zeit in Hunting, 70–80% in Detection und IR. Wer nur auf Alarme wartet, verpasst die Angreifer, die sich leise verhalten.</div>
+
+<h2 id="peak">Hypothesis-Driven Hunting (PEAK Framework)</h2>
+<p>Das <strong>PEAK Framework</strong> (von David Bianco, Mitentwickler des Threat Hunting Maturity Model) strukturiert den Hunting-Prozess in drei Phasen:</p>
+
+<h3>P — Prepare (Vorbereiten)</h3>
+<ul>
+<li><strong>Scope definieren:</strong> Welche Systeme, welcher Zeitraum, welche Datenquellen?</li>
+<li><strong>Hypothese formulieren:</strong> "Ich vermute, dass Angreifer <em>Technik X</em> nutzen, um <em>Ziel Y</em> zu erreichen. Wenn das stimmt, muesste ich <em>Artefakt Z</em> in den Logs sehen."</li>
+<li><strong>Datenquellen bereitstellen:</strong> Sysmon-Logs der letzten 30 Tage, DNS-Query-Logs, Proxy-Logs</li>
+<li><strong>Werkzeuge konfigurieren:</strong> Notebook (Jupyter), SIEM-Query, EDR-Hunt-Funktion</li>
+</ul>
+
+<h3>E — Execute (Ausfuehren)</h3>
+<ul>
+<li><strong>Hypothese testen:</strong> Abfragen formulieren, Daten visualisieren, Anomalien identifizieren</li>
+<li><strong>Iterativ verfeinern:</strong> Ergebnisse fuehren zu neuen Fragen — Scope anpassen</li>
+<li><strong>Dokumentieren:</strong> Jede Query, jedes Ergebnis, auch Negativ-Befunde (beweisen, dass gesucht wurde)</li>
+</ul>
+
+<h3>AK — Act upon findings (Auf Ergebnissen handeln)</h3>
+<ul>
+<li><strong>False positive?</strong> Query verfeinern, Hypothese verwerfen</li>
+<li><strong>Benign true positive?</strong> (z.B. legitimes Admin-Tool) — dokumentieren, Baseline anpassen</li>
+<li><strong>Malicious true positive?</strong> Sofort IR-Prozess starten, IOC extrahieren, neue Detection-Regel schreiben</li>
+</ul>
+
+<div class="callout tip"><strong>PEAK ist kein linearer Prozess:</strong> Aus einem "Act"-Ergebnis entspringen haeufig neue Hypothesen. Ein Fund in DNS-Logs fuehrt zur Frage: "Welche Prozesse haben diese Domains kontaktiert?" → Sysmon-Abfrage → "Welche Parent-Prozesse haben diese gestartet?" → weitere Query usw. Gutes Hunting ist ein Baum, keine Linie.</div>
+
+<h2 id="hmm">Hunting Maturity Model (HMM0–HMM5)</h2>
+<p>Das Hunting Maturity Model bewertet die Faehigkeit einer Organisation, Threat Hunting zu betreiben. Stufen 0–5 beschreiben zunehmende Reife.</p>
+
+<table>
+<thead><tr><th>Stufe</th><th>Bezeichnung</th><th>Merkmale</th></tr></thead><tbody>
+<tr><td><strong>HMM0</strong></td><td>Initial / Keine</td><td>Reagiert nur auf Alarme. Kein Hunting. Verlaesst sich ausschliesslich auf Antivirus und Firewall-Logs.</td></tr>
+<tr><td><strong>HMM1</strong></td><td>Minimal</td><td>Ad-hoc-IOC-Suche nach Vorfällen. Analysten suchen manuell nach Hash-Werten oder IPs aus Threat-Intel-Reports — aber nur, wenn sie dazu aufgefordert werden.</td></tr>
+<tr><td><strong>HMM2</strong></td><td>Prozedural</td><td>Routine-Hunts nach Plan (z.B. jeden Freitag). Feste Checklisten: "Suche nach PowerShell-Empire", "Pruefe Admin-Logins". Wiederholbar, aber nicht hypothesenbasiert.</td></tr>
+<tr><td><strong>HMM3</strong></td><td>Innovativ</td><td>Hypothesen-getriebenes Hunting. Analysten erstellen eigene Hypothesen basierend auf Threat Intel, TTPs und eigenem Netzwerk-Wissen. Nutzen verschiedene Datenquellen.</td></tr>
+<tr><td><strong>HMM4</strong></td><td>Leading</td><td>Automatisiertes Hunting (Machine Learning, UEBA). Hunting-Ergebnisse fliessen automatisiert in Detection-Rules zurueck. Eigene Hunting-Tools und Pipelines.</td></tr>
+<tr><td><strong>HMM5</strong></td><td>Predictive</td><td>Predictive Hunting — Mustererkennung bevor der Angriff stattfindet. Simulation von Angreiferverhalten (Baseline-Abweichungsmodelle), externe Threat-Landscape-Analyse integriert.</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Die meisten SOCs stecken bei HMM1–HMM2 fest:</strong> IOC-Matching ist kein echtes Hunting. Hunting beginnt bei HMM3 — wenn der Analyst aktiv fragt: "Was wuerde ein Angreifer tun, das meine Detection nicht abdeckt?"</div>
+
+<h2 id="datenquellen">Datenquellen fuer Threat Hunting</h2>
+<p>Ohne die richtigen Daten ist Hunting blinde Fleckarbeit. Hierarchie der Datenqualitaet fuer Hunting:</p>
+
+<table>
+<thead><tr><th>Datenquelle</th><th>Was sie liefert</th><th>Hunting-Wert</th><th>Typische Plattform</th></tr></thead><tbody>
+<tr><td><strong>Sysmon (Event ID 1–25)</strong></td><td>Prozess-Erstellung (Parent/Child), Netzwerkverbindungen, File-Creation, Registry-Änderungen, WMI-Ereignisse, Pipe-Events</td><td>SEHR HOCH — Sysmon ist die Grundlage fuer 80% aller Hunting-Hypothesen auf Windows</td><td>Windows EventLog → SIEM</td></tr>
+<tr><td><strong>EDR-Telemetrie</strong></td><td>Vollstaendige Prozess-Baeume, DLL-Loads, Speicher-Schutz, Netzwerk-Ereignisse, Verhaltensdaten</td><td>HOCH — Bietet tiefere Einblicke als Sysmon, aber oft herstellerspezifisch</td><td>CrowdStrike, SentinelOne, Defender for Endpoint</td></tr>
+<tr><td><strong>DNS-Logs (Internal Resolver)</strong></td><td>Jede Domain-Aufloesung, Quell-IP, Zeitstempel, Antworttyp (NXDOMAIN, A, CNAME)</td><td>HOCH — DNS ist der gemeinsame Nenner fast aller Malware. C2-Kommunikation, DGA-Domains, DNS-Tunneling</td><td>Windows DNS Server, BIND, Cisco Umbrella</td></tr>
+<tr><td><strong>Proxy / Web-Filter-Logs</strong></td><td>HTTP(S)-Verbindungen, User-Agent, URL, Bytes gesendet/empfangen</td><td>HOCH — User-Agent-Anomalien, ungewoehnliche Ziel-IPs, lange Sessions</td><td>Squid, Blue Coat, Zscaler, FortiGate</td></tr>
+<tr><td><strong>Authentication-Logs</strong></td><td>Login-Ereignisse (4624/4625/4768/4771), NTLM-vs-Kerberos, Anmeldezeit, Quell-IP, Logon-Typ</td><td>HOCH — Lateral Movement, Pass-the-Hash, Kerberoasting, Brute-Force, ungewoehnliche Logins</td><td>Windows Security.evtx, Azure AD Sign-In, Okta, Ping</td></tr>
+<tr><td><strong>Netzwerk-Flow-Daten</strong></td><td>NetFlow, IPFIX: SrcIP, DstIP, SrcPort, DstPort, Bytes, Protokoll</td><td>MITTEL — Zeigt Kommunikationsmuster, aber keine Payloads. Gut fuer Beaconing-Erkennung</td><td>Zeek (Bro), Cisco NetFlow, nProbe</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Ohne Sysmon oder EDR bist du blind:</strong> Ohne Process-Creation-Logs (Sysmon Event ID 1) kannst du nicht feststellen, ob <code>notepad.exe</code> wirklich Notepad war oder injizierte Malware. Sysmon-Konfiguration (SwiftOnSecurity, Olaf Hartong) ist der absolut erste Schritt fuer jede Hunting-Faehigkeit.</div>
+
+<h2 id="pyramid">Pyramid of Pain</h2>
+<p>Die <strong>Pyramid of Pain</strong> (David Bianco, 2014) beschreibt, wie schwer verschiedene Indikatoren fuer Angreifer zu aendern sind — und wie wertvoll sie deshalb fuer Hunting und Detection sind.</p>
+
+<div class="callout info"><strong>Das Prinzip:</strong> Je hoeher in der Pyramide, desto schmerzhafter ist der Indikator fuer den Angreifer zu aendern, und desto besser eignet er sich fuer Hunting. Hashes sind unten (trivial zu aendern), TTPs sind oben (MUeHSAM zu aendern — Angreifer muessen ihr gesamtes Verhalten neu lernen).</div>
+
+<h3>Schichten der Pyramid of Pain (unten nach oben)</h3>
+
+<table>
+<thead><tr><th>Ebene</th><th>Indikator-Typ</th><th>Schwierigkeit fuer Angreifer</th><th>Hunting-Qualitaet</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td>1 (unten)</td><td><strong>Hash-Werte</strong> (MD5, SHA256)</td><td>Trivial — eine Byte-aenderung generiert neuen Hash</td><td>SCHLECHT</td><td><code>d41d8cd9...</code></td></tr>
+<tr><td>2</td><td><strong>IP-Adressen</strong></td><td>Einfach — Neue Infrastruktur = neue IP</td><td>SCHLECHT</td><td><code>185.130.5.10</code></td></tr>
+<tr><td>3</td><td><strong>Domain-Namen</strong></td><td>Einfach — Neue Domain = 10 USD, DGA erzeugt taeglich neue</td><td>MAESSIG</td><td><code>evil-c2.malware.com</code></td></tr>
+<tr><td>4</td><td><strong>Netzwerk- / Host-Artefakte</strong></td><td>Mittel — User-Agent-Muster, Mutex-Namen, Registry-Keys</td><td>GUT</td><td>User-Agent: "Mozilla/4.0 (compatible; MSIE 8.0)" fuer Malware</td></tr>
+<tr><td>5</td><td><strong>Werkzeuge / Tools</strong></td><td>Hoch — Angreifer muessten neue Tools entwickeln oder portieren</td><td>SEHR GUT</td><td>Erkennung von Mimikatz, PsExec, BloodHound, Cobalt Strike Default-Profile</td></tr>
+<tr><td>6 (oben)</td><td><strong>TTPs (Taktiken, Techniken, Prozeduren)</strong></td><td>Extrem — Angreifer muessen komplett umlernen und neue Methoden entwickeln</td><td>EXZELLENT</td><td>DLL-Sideloading via WinSxS, Kerberoasting ohne RC4, Process Doppelgänging</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Fuer Hunting gilt:</strong> Konzentriere dich auf die oberen Ebenen (Werkzeuge und TTPs). Eine Detection auf Hash-Basis ist nach einer Stunde wertlos. Eine Detection auf "Suspicious Parent-Child Process Relationship" (z.B. winword.exe → cmd.exe → powershell.exe) funktioniert ueber Jahre und Angreiferfamilien hinweg.</div>
+
+<h2 id="hypothesen">Praktische Hunting-Hypothesen</h2>
+<p>Hier sind fuenf konkrete Hunting-Hypothesen mit Sysmon-Queries (Kusto/Advanced Hunting Syntax, anpassbar auf SPL/EQL):</p>
+
+<h3>Hypothese 1: Office-Makro → PowerShell-Command-and-Control</h3>
+<p><strong>Annahme:</strong> Ein Angreifer hat via Phishing ein Office-Dokument mit Makro eingeschleust, das PowerShell startet und eine ausgehende Netzwerkverbindung aufbaut.</p>
+<pre><code>// Sysmon: Suche nach winword.exe/excel.exe → cmd.exe/powershell.exe mit Netzwerkverbindung
+DeviceProcessEvents
+| where InitiatingProcessFileName in~ ("winword.exe", "excel.exe", "powerpnt.exe")
+| where FileName in~ ("powershell.exe", "cmd.exe", "wscript.exe", "cscript.exe", "mshta.exe")
+| where ProcessCommandLine contains "-enc" or ProcessCommandLine contains "-WindowStyle Hidden" or ProcessCommandLine contains "IEX"</code></pre>
+
+<h3>Hypothese 2: Lateral Movement via PsExec / WMI / WinRM</h3>
+<p><strong>Annahme:</strong> Ein Angreifer hat sich lateral durch das Netzwerk bewegt, indem er Remote-Dienste gestartet oder Remote-WMI genutzt hat.</p>
+<pre><code>// Sysmon Event ID 13/14: Registry-Änderungen an Diensten, Event ID 18: Pipe-Verbindungen
+DeviceRegistryEvents
+| where RegistryKey has_any ("SYSTEM\\CurrentControlSet\\Services", "\\PSEXESVC")
+| where ActionType == "RegistryValueSet"
+| join kind=inner (DeviceNetworkEvents | where RemotePort in (445, 135, 5985, 5986)) on DeviceId</code></pre>
+
+<h3>Hypothese 3: DNS-Tunneling oder DGA (Domain Generation Algorithm)</h3>
+<p><strong>Annahme:</strong> Malware nutzt DNS fuer C2, entweder via Tunneling (lange Subdomains) oder DGA (viele NXDOMAIN-Antworten).</p>
+<pre><code>// DNS-Logs: Ungewoehnlich lange Subdomains ODER viele NXDOMAIN pro Client
+DnsEvents
+| where QueryType == "A" or QueryType == "TXT"
+| extend SubdomainLen = strlen(extract(@"^(.+?)\.(?:[^.]+\.)+[^.]+$", 1, Name))
+| where SubdomainLen > 40 or Name matches regex @"[a-z0-9]{20,}\.[a-z]{2,}"
+| summarize Count = count() by ClientIP, bin(Timestamp, 1h)
+| where Count > 100</code></pre>
+
+<h3>Hypothese 4: Credential Dumping via LSASS oder SAM</h3>
+<p><strong>Annahme:</strong> Ein Angreifer hat versucht, Zugangsdaten aus dem LSASS-Prozess oder der SAM-Datenbank zu extrahieren.</p>
+<pre><code>// Sysmon Event ID 10: Process-Access auf lsass.exe mit verdaechtigen Zugriffsrechten
+DeviceProcessEvents
+| where FileName == "lsass.exe"
+| where ProcessCommandLine !contains "MsMpEng" and ProcessCommandLine !contains "MsSense"
+| join kind=inner (
+    DeviceProcessEvents
+    | where ProcessCommandLine has_any ("procdump", "mimikatz", "rundll32.exe", "comsvcs.dll", "MiniDump")
+) on DeviceId</code></pre>
+
+<h3>Hypothese 5: Persistenz via Run-Keys oder Scheduled Tasks</h3>
+<p><strong>Annahme:</strong> Ein Angreifer hat Persistenzmechanismen eingerichtet — Registry Run-Keys, Scheduled Tasks oder Startup-Ordner-Eintraege.</p>
+<pre><code>// Sysmon Event ID 13: Registry-Wert-Setzung unter Run/RunOnce
+DeviceRegistryEvents
+| where RegistryKey has_any (
+    @"Software\Microsoft\Windows\CurrentVersion\Run",
+    @"Software\Microsoft\Windows\CurrentVersion\RunOnce",
+    @"Software\Microsoft\Windows\CurrentVersion\RunOnceEx",
+    @"Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Run"
+)
+| where ActionType == "RegistryValueSet"
+| where InitiatingProcessFileName !in~ ("OneDriveSetup.exe", "Teams.exe", "msedge.exe")
+| project Timestamp, DeviceName, RegistryKey, RegistryValueName, RegistryValueData, InitiatingProcessCommandLine</code></pre>
+
+<div class="callout warning"><strong>Diese Queries sind Ausgangspunkte, keine fertigen Detection-Rules:</strong> Jede liefert potenziell False Positives. Hunting bedeutet, die Ergebnisse manuell zu pruefen, Anomalien zu erkennen und Queries iterativ zu verfeinern, bis sie als Detection-Regel uebernommen werden koennen.</div>
+
+<h2 id="sigma">Sigma-Regeln als Hunting-Logik</h2>
+<p><strong>Sigma</strong> ist ein generisches, SIEM-unabhaengiges Regelformat zur Beschreibung von Detection- und Hunting-Logik. Eine Sigma-Regel kann automatisch in Elasticsearch-Lucene, Splunk-SPL, Kusto, QRadar-AQL und andere Query-Sprachen uebersetzt werden.</p>
+
+<h3>Aufbau einer Sigma-Regel</h3>
+<pre><code>title: Verdaechtiger PowerShell-Download-Cradle
+id: 3b6a8e5f-2b1c-4d8a-9f3e-7c2a1b5d8f9e
+status: stable
+description: Erkennt PowerShell-Befehle, die Inhalte aus dem Internet herunterladen (Download-Cradle)
+author: Hunting-Team
+date: 2024-01-15
+tags:
+  - attack.t1059.001
+  - attack.execution
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - 'Net.WebClient'
+      - 'DownloadString'
+      - 'DownloadFile'
+      - 'Invoke-WebRequest'
+      - 'Invoke-RestMethod'
+      - 'IWR'
+      - 'IEX'
+      - 'FromBase64String'
+  condition: selection
+falsepositives:
+  - Legitime Softwareverteilung (SCCM, Ansible)
+  - Microsoft-Update-Prozesse
+level: high</code></pre>
+
+<h3>Sigma-Compiler: sigmac</h3>
+<pre><code># Sigma-Regel in verschiedene Backends uebersetzen
+sigmac -t splunk           rule.yml   # Splunk SPL
+sigmac -t es-qs            rule.yml   # Elasticsearch Query String
+sigmac -t elastalert       rule.yml   # ElastAlert
+sigmac -t kibana           rule.yml   # Kibana
+sigmac -t sentinel-rule    rule.yml   # Azure Sentinel
+sigmac --target graylog    rule.yml   # Graylog
+sigmac -t sql              rule.yml   # SQL WHERE-Clause</code></pre>
+
+<div class="callout info"><strong>Hunting mit Sigma:</strong> Sigma-Regeln koennen direkt als Hunting-Logik verwendet werden. Statt sie sofort als Alarm (Detection) zu konfigurieren, werden sie im Hunting-Modus genutzt (Output als CSV/Report, nicht als Alert). Erst validierte Regeln werden zu Alerts promoviert.</div>
+
+<h2 id="werkzeuge">Werkzeuge und Query-Sprachen</h2>
+
+<table>
+<thead><tr><th>Sprache / Tool</th><th>Plattform</th><th>Staerken fuer Hunting</th></tr></thead><tbody>
+<tr><td><strong>Kusto Query Language (KQL)</strong></td><td>Azure Sentinel, Microsoft Defender ATP, Azure Data Explorer</td><td>Pipe-basierte Syntax, extrem ausdrucksstark. <code>join</code>, <code>let</code>, <code>mv-expand</code>, Zeitfenster-Aggregationen. Defacto-Standard fuer Windows-Umgebungen.</td></tr>
+<tr><td><strong>SPL (Search Processing Language)</strong></td><td>Splunk</td><td>Riesige Community, tausende vorgefertigte Queries. <code>stats</code>, <code>eval</code>, <code>transaction</code>, <code>tstats</code> fuer grosse Datenmengen.</td></tr>
+<tr><td><strong>EQL (Event Query Language)</strong></td><td>Elastic Security, Elasticsearch</td><td>Sequenz-basierte Queries: <code>sequence by host [process where ...] [network where ...]</code> — ideal fuer mehrstufige Angriffsketten.</td></tr>
+<tr><td><strong>Jupyter Notebooks + Pandas</strong></td><td>Python (lokal oder via MSTICpy)</td><td>Flexible Datenexploration, Visualisierung, Machine Learning. MSTICpy-Bibliothek bietet Security-spezifische Funktionen.</td></tr>
+<tr><td><strong>Sysmon + Chainsaw/Hayabusa</strong></td><td>Lokale Sysmon-EVTX-Dateien</td><td>Sigma-Regeln offline gegen Sysmon-Logs ausfuehren — ideal fuer Threat Hunting auf einzelnen, nicht ins SIEM eingebundenen Systemen.</td></tr>
+</tbody></table>
+
+<h2 id="praxis">Praktische Anwendung — Hunting-Workflow</h2>
+
+<h3>Monatlicher Hunting-Zyklus</h3>
+<ol>
+<li><strong>Tag 1–3: Intel sammeln.</strong> Aktuelle Threat-Reports (Mandiant, CrowdStrike, MSRC, CISA), eigene Risikoanalyse: Was wurde in letzter Zeit in der Branche gesehen? Welche Kampagnen sind aktiv?</li>
+<li><strong>Tag 4–5: Hypothesen formulieren.</strong> 3–5 konkrete Hypothesen fuer naechste Hunt-Runde. Scope definieren: Zeitraum, Systeme, Datenquellen.</li>
+<li><strong>Tag 6–10: Hunt ausfuehren.</strong> Queries in SIEM/Kusto/Splunk ausfuehren, Ergebnisse in Notebook analysieren, Anomalien manuell verfolgen.</li>
+<li><strong>Tag 11: Ergebnisse dokumentieren.</strong> Hunt-Report: Welche Hypothesen wurden getestet? Welche Treffer? Welche neuen IOCs? Welche Detection-Luecken wurden identifiziert?</li>
+<li><strong>Tag 12: Detection verbessern.</strong> Validiere Treffer in neue Sigma-Regeln oder SIEM-Alerts umsetzen. False-Positive-Queries bereinigen.</li>
+</ol>
+
+<h3>Empfohlene Werkzeuge fuer den Einstieg</h3>
+<ul>
+<li><strong>Sysmon + Sysmon-modular</strong> (Olaf Hartong): Beste Sysmon-Konfiguration, die nur die hunting-relevanten Events erfasst (reduziert Rauschen)</li>
+<li><strong>Chainsaw</strong> (WithSecure): Sigma-Regeln offline gegen Sysmon-EVTX anwenden — ideal fuer Einzelsystem-Hunting</li>
+<li><strong>Hayabusa</strong> (Yamato Security): Gleiche Funktion wie Chainsaw, aber mit Timeline-Generierung — ideal fuer Timeline-basiertes Hunting (Windows-EventLogs)</li>
+<li><strong>MSTICpy / Kqlmagic</strong>: Jupyter-Notebooks mit SIEM-Anbindung (Azure Sentinel, Defender)</li>
+<li><strong>SigmaHQ/sigma</strong>: Das offizielle Sigma-Regel-Repository mit ueber 2500 Regeln</li>
+</ul>
+
+<div class="callout danger"><strong>Hunting ohne Baseline ist raten:</strong> Bevor du eine Anomalie erkennen kannst, musst du das Normale kennen. Wie viele PowerShell-Sessions hat eure IT-Abteilung pro Tag? Welche User-Agents sind in euren Proxy-Logs normal? Wer logged sich ueblicherweise um 2 Uhr nachts ein? Eine Woche Baselines sammeln, dann jagen.</div>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://github.com/SigmaHQ/sigma">SigmaHQ/sigma</a> — Offizielles Sigma-Regel-Repository</li>
+<li><a href="https://github.com/WithSecureLabs/chainsaw">Chainsaw</a> — Sigma-basierte Sysmon-Event-Analyse</li>
+<li><a href="https://github.com/Yamato-Security/hayabusa">Hayabusa</a> — Windows Event Log Fast Forensics Timeline</li>
+<li><a href="https://posts.specterops.io/the-peak-threat-hunting-framework-part-1-4e1e05e3a4c">PEAK Threat Hunting Framework</a> — David Bianco</li>
+<li><a href="https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html">Pyramid of Pain</a> — David Bianco (2014)</li>
+<li><a href="https://www.threathunting.net/">ThreatHunting.net</a> — Community-Repository mit Hunting-Techniken und Queries</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/">KQL Documentation (Microsoft)</a></li>
+<li><a href="https://github.com/olafhartong/sysmon-modular">Sysmon-modular</a> — Olaf Hartongs Sysmon-Konfiguration</li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

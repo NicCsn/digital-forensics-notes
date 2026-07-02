@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autopsy — Digital Forensics Platform — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../../index.html">Startseite</a></li>
+    <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+      <li><a href="../../04-forensik-methoden/email-forensik.html">Email-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details open><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../../09-tools/kape/README.html">KAPE</a></li>
+      <li><a href="../../09-tools/velociraptor/README.html">Velociraptor</a></li>
+      <li><a href="../../09-tools/autopsy/README.html">Autopsy</a></li>
+      <li><a href="../../09-tools/ftk-encase-axiom/README.html">FTK / EnCase / AXIOM</a></li>
+      <li><a href="../../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-tools">Tools</a> / Autopsy</span>
+</nav>
+<main><article>
+<h1>Autopsy — Digital Forensics Platform <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li>
+<li><a href="#case">Case-Erstellung</a></li>
+<li><a href="#evidence">Evidence hinzufuegen</a></li>
+<li><a href="#ingest">Ingest-Module</a></li>
+<li><a href="#analyse">Analyse-Werkzeuge</a></li>
+<li><a href="#reporting">Reporting</a></li>
+<li><a href="#praxis">Praktische Anwendung: Imaging importieren → Ingest → Analyse</a></li>
+<li><a href="#quellen">Quellen</a></li>
+</ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Autopsy ist eine <strong>grafische Open-Source-Forensik-Plattform</strong>, die auf dem <strong>Sleuth Kit (TSK)</strong> aufbaut. Sie ermoeglicht die Analyse von Festplatten-Images (E01, dd/raw, AFF), lokalen Laufwerken und logischen Dateisammlungen. Autopsy ist die GUI — das Sleuth Kit ist die darunterliegende Engine, die Dateisystem-Metadaten extrahiert.</p>
+
+<table>
+<thead><tr><th>Eigenschaft</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>Entwickler</strong></td><td>Basis Technology / Community</td></tr>
+<tr><td><strong>Lizenz</strong></td><td>Apache 2.0 (Open Source)</td></tr>
+<tr><td><strong>Plattform</strong></td><td>Windows, Linux, macOS</td></tr>
+<tr><td><strong>Basis</strong></td><td>Sleuth Kit (TSK) + integrierte Tools</td></tr>
+<tr><td><strong>Image-Formate</strong></td><td>dd/raw, E01 (EWF), AFF, VMDK, VHD</td></tr>
+<tr><td><strong>Datenbank</strong></td><td>SQLite (Case-Datenbank)</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Autopsy vs. Sleuth Kit:</strong> Das Sleuth Kit (TSK) ist die Commandline-Engine fuer Dateisystem-Analyse (fls, fsstat, mmls, icat, etc.). Autopsy ist die grafische Oberflaeche, die TSK + Keyword-Suche + Timeline + Hash-Datenbank + Reporting in einer Anwendung vereint.</div>
+
+<h2 id="case">Case-Erstellung</h2>
+<p>Jede Analyse in Autopsy beginnt mit einem Case. Ein Case buendelt alle Datenquellen, Analyseergebnisse und Reports in einer SQLite-Datenbank.</p>
+
+<pre><code># Case-Erstellung (GUI-Workflow)
+1. "New Case" klicken
+2. Case Name:     z.B. "2026-07-02_Mustermann_HDD"
+3. Base Directory: z.B. D:\Cases\  (hier werden alle Case-Daten gespeichert)
+4. Optional: Case-Nummer, Ermittler-Name, Organisation
+5. "Finish" → Case ist erstellt</code></pre>
+
+<table>
+<thead><tr><th>Feld</th><th>Bedeutung</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td><strong>Case Name</strong></td><td>Eindeutiger Name fuer diesen Fall</td><td>Konvention: Datum_Nachname_Medium (z.B. 2026-07-02_Schmidt_Laptop)</td></tr>
+<tr><td><strong>Base Directory</strong></td><td>Ordner, in dem Case-DB und Reports gespeichert werden</td><td>Auf schnellem Speicher ablegen (SSD), NICHT auf dem Beweismittel-Laufwerk!</td></tr>
+<tr><td><strong>Case Number</strong></td><td>Interne Fallnummer</td><td>Optional, aber hilfreich fuer Chain of Custody</td></tr>
+<tr><td><strong>Examiner</strong></td><td>Name des Untersuchers</td><td>Wird in Reports uebernommen, wichtig fuer Dokumentation</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Case-Verzeichnis:</strong> Autopsy erstellt im Base Directory einen Unterordner mit dem Case-Namen. Dieses Verzeichnis enthaelt die SQLite-DB und spaeter Reports. Nie auf dem Quell-Image speichern — immer auf einem separaten Analyse-Laufwerk.</div>
+
+<h2 id="evidence">Evidence hinzufuegen</h2>
+
+<table>
+<thead><tr><th>Datenquelle</th><th>Beschreibung</th><th>Wann verwenden?</th></tr></thead><tbody>
+<tr><td><strong>Disk Image or VM File</strong></td><td>Forensisches Image (E01, dd, AFF, VMDK)</td><td>Standardfall: Image wurde mit FTK Imager / Guymager / dd erstellt</td></tr>
+<tr><td><strong>Local Drive</strong></td><td>Physisches Laufwerk oder Partition des Analyse-Computers</td><td>Live-Analyse (nur mit Write-Blocker!)</td></tr>
+<tr><td><strong>Logical Files</strong></td><td>Einzelne Dateien oder Ordner</td><td>Logfile-Analyse, Email-PST, Browser-Cache-Ordner</td></tr>
+</tbody></table>
+
+<pre><code># Image hinzufuegen (Workflow)
+1. "Add Data Source" klicken
+2. "Disk Image or VM File" auswaehlen
+3. Pfad zum Image angeben (z.B. D:\Images\Verdaechtiger.E01)
+4. "Symantec" = Symlink zu Image (Standard, empfohlen)
+5. "Copy" = Image in Case-Verzeichnis kopieren (nur bei kleinen Images!)
+6. Timezone auswaehlen (fuer korrekte Timestamps)
+7. Ingest-Module auswaehlen (s. naechster Abschnitt)</code></pre>
+
+<div class="callout tip"><strong>Ingest-Module beim Hinzufuegen:</strong> Autopsy fragt direkt beim Hinzufuegen von Evidence, welche Ingest-Module ausgefuehrt werden sollen. Standardmaessig laufen die wichtigsten (File Type, Hash, EXIF), aber bei grossen Images besser selektiv aktivieren, um Zeit zu sparen.</div>
+
+<h2 id="ingest">Ingest-Module</h2>
+<p>Ingest-Module verarbeiten die Rohdaten des Images und extrahieren zusaetzliche Informationen. Sie laufen nach dem Hinzufuegen der Evidence automatisch durch.</p>
+
+<table>
+<thead><tr><th>Modul</th><th>Funktion</th><th>Output</th></tr></thead><tbody>
+<tr><td><strong>Recent Activity</strong></td><td>Extrahiert kuerzlich genutzte Dateien, Web-Verlauf, kuerzlich geoeffnete Docs</td><td>Timeline der Benutzeraktivitaet</td></tr>
+<tr><td><strong>Hash Lookup</strong></td><td>Berechnet Hashes (MD5/SHA) und gleicht mit NSRL (known-good) ab</td><td>Markiert "known bad" (auffaellig) und "known good" (Betriebssystem)</td></tr>
+<tr><td><strong>File Type ID</strong></td><td>Ermittelt Dateityp via Magic Bytes, nicht nur via Extension</td><td>Findet versteckte Dateien (z.B. .jpg ist eigentlich .exe)</td></tr>
+<tr><td><strong>Extension Mismatch</strong></td><td>Vergleicht Extension mit tatsaechlichem Dateityp</td><td>Liste aller Dateien mit falscher Endung</td></tr>
+<tr><td><strong>EXIF Parser</strong></td><td>Extrahiert Metadaten aus JPEG, TIFF, etc.</td><td>Kamera-Modell, GPS-Koordinaten, Aufnahmezeit</td></tr>
+<tr><td><strong>Keyword Search</strong></td><td>Indexiert Text-Inhalte fuer Volltextsuche</td><td>Suchindex (Regex und Literal)</td></tr>
+<tr><td><strong>Email Parser</strong></td><td>PST, OST, MBOX parsen</td><td>Emails, Kontakte, Kalender</td></tr>
+<tr><td><strong>Embedded File Extractor</strong></td><td>Extrahiert Dateien aus Archives (ZIP, 7z, RAR), Office-Docs, PDFs</td><td>Embedded files als separate Artefakte</td></tr>
+<tr><td><strong>Interesting Files</strong></td><td>Sucht nach Patterns wie Kreditkartennummern, IBAN, URLs, Email-Adressen</td><td>Liste mit Fundstellen</td></tr>
+<tr><td><strong>Plaso</strong></td><td>Erstellt eine Super-Timeline (alle Timestamps aus allen Quellen)</td><td>Chronologische Timeline aller Events</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Performance-Warnung:</strong> Keyword Search und Plaso koennen bei grossen Images (500 GB+) viele Stunden oder Tage benoetigen. Bei Triage-Situationen selektiv deaktivieren oder auf verdaechtige Ordner beschraenken.</div>
+
+<h2 id="analyse">Analyse-Werkzeuge</h2>
+
+<h3>File Browser (Datei-Explorer)</h3>
+<p>Der File Browser zeigt die Dateisystem-Hierarchie aus Sicht des Betriebssystems, inklusive geloeschter Dateien (als "Deleted" markiert). Er ist der Haupt-Einstiegspunkt fuer die Navigation im Image.</p>
+
+<ul>
+<li><strong>File Views:</strong> File Types (nach Typ gruppiert), Deleted Files (nur geloeschte), File Size (Top-100 groesste)</li>
+<li><strong>Views by Data Source:</strong> Alle Dateien aus einer bestimmten Quelle (bei mehreren Images in einem Case)</li>
+<li><strong>Hex Viewer:</strong> Integrierter Hex-Viewer fuer einzelne Dateien</li>
+</ul>
+
+<h3>Keyword Search</h3>
+<p>Autopsy unterstuetzt zwei Suchmodi:</p>
+
+<table>
+<thead><tr><th>Suchmodus</th><th>Beschreibung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Literal Search</strong></td><td>Exakte Zeichenkette (Case-Insensitive optional)</td><td><code>password</code>, <code>confidential</code>, <code>bitcoin</code></td></tr>
+<tr><td><strong>Regex Search</strong></td><td>Regulaere Ausdruecke</td><td><code>\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b</code> (Email-Adressen)</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Index-Suche:</strong> Wenn das Keyword-Search-Ingest-Modul beim Import aktiviert wurde, ist die Suche instant. Ohne Index durchsucht Autopsy die Dateien live — das kann bei grossen Images sehr langsam sein.</div>
+
+<h3>Timeline</h3>
+<p>Die Timeline-Ansicht zeigt alle Datei-Ereignisse chronologisch. Sie kann nach Datum (Kalender) oder als lineare Liste gefiltert werden. Besonders wertvoll: Zoom auf den Zeitraum des Vorfalls, dann analysieren, welche Dateien erstellt, modifiziert oder geloescht wurden.</p>
+
+<h3>Communications</h3>
+<p>Die Communications-Ansicht aggregiert Kommunikationsdaten aus verschiedenen Quellen:</p>
+<ul>
+<li><strong>Emails:</strong> PST/OST/MBOX-Parsing, sortiert nach Absender, Empfaenger, Datum</li>
+<li><strong>Chat:</strong> Skype, Slack, WhatsApp (aus Mobile-Extractions)</li>
+<li><strong>Web:</strong> Browser-History (Chrome, Firefox, Edge), Downloads, Cookies</li>
+</ul>
+
+<h3>Data Artifacts</h3>
+<p>Data Artifacts fassen Ergebnisse der Ingest-Module in strukturierten Listen zusammen:</p>
+<ul>
+<li><strong>Web Bookmarks, Cookies, History, Downloads</strong></li>
+<li><strong>Recent Documents</strong> (Windows Recent, macOS Recent Items)</li>
+<li><strong>USB Devices:</strong> Angeschlossene USB-Geraete mit Seriennummern</li>
+<li><strong>Installed Programs:</strong> Registry-basierte Software-Liste</li>
+<li><strong>Operating System Info:</strong> OS-Version, Hostname, Installationsdatum</li>
+<li><strong>Shellbags:</strong> Explorer-Ordnerzugriffe</li>
+</ul>
+
+<h2 id="reporting">Reporting</h2>
+<p>Autopsy bietet zwei Export-Formate fuer Reports:</p>
+
+<table>
+<thead><tr><th>Report-Typ</th><th>Inhalt</th><th>Format</th></tr></thead><tbody>
+<tr><td><strong>HTML Report</strong></td><td>Vollstaendiger Bericht mit Tabellen, Thumbnails, File Details</td><td>HTML + Assets (CSS, Bilder)</td></tr>
+<tr><td><strong>Excel Export</strong></td><td>Tabellen-Export fuer Excel mit Filter-Optionen</td><td>XLSX</td></tr>
+</tbody></table>
+
+<pre><code># Report erstellen
+1. "Generate Report" klicken
+2. Report-Typ auswaehlen (HTML oder Excel)
+3. Datenquellen auswaehlen (welche Images sollen enthalten sein?)
+4. Modul-Ergebnisse auswaehlen (alle oder selektiv)
+5. "Finish" — Report wird im Case-Verzeichnis gespeichert</code></pre>
+
+<div class="callout tip"><strong>Report als Arbeitsgrundlage:</strong> Der HTML-Report wird oft als strukturierte Uebersicht verwendet, aus der dann ein detaillierter, gerichtsfester Bericht in Word/LaTeX geschrieben wird. Der Autopsy-Report enthaelt bereits Screenshots, Timelines und Fundort-Referenzen.</div>
+
+<h2 id="praxis">Praktische Anwendung: Imaging importieren → Ingest → Analyse</h2>
+
+<p><strong>Szenario:</strong> Du hast mit FTK Imager ein E01-Image einer verdaechtigen 500 GB HDD erstellt. Jetzt soll das Image in Autopsy analysiert werden.</p>
+
+<ol>
+<li><strong>Autopsy starten</strong> und "New Case" anlegen:
+  <ul>
+    <li>Case Name: <code>2026-07-02_Verdaechtiger_HDD</code></li>
+    <li>Base Directory: <code>D:\Cases</code></li>
+  </ul>
+</li>
+<li><strong>Data Source hinzufuegen:</strong> "Disk Image or VM File" → <code>D:\Images\Verdaechtiger.E01</code> auswaehlen. Timezone auf "Europe/Berlin" setzen.</li>
+<li><strong>Ingest-Module konfigurieren (empfohlene Auswahl):</strong>
+  <ul>
+    <li>✅ Recent Activity</li>
+    <li>✅ Hash Lookup (NSRL-DB vorher herunterladen!)</li>
+    <li>✅ File Type ID</li>
+    <li>✅ Extension Mismatch</li>
+    <li>✅ EXIF Parser</li>
+    <li>❌ Keyword Search (erst spaeter aktivieren oder auf verdaechtige Ordner einschraenken)</li>
+    <li>✅ Email Parser (nur wenn PST/OST vorhanden)</li>
+  </ul>
+</li>
+<li><strong>Ingest laeuft</strong> — abwarten, bis alle Module durch sind.</li>
+<li><strong>Erste Analyse-Schritte:</strong>
+  <ul>
+    <li>"Data Artifacts" → "Recent Activity" checken: Welche Dateien wurden zuletzt verwendet?</li>
+    <li>"File Views" → "Deleted Files": Welche Dateien wurden geloescht?</li>
+    <li>"File Views" → "File Types" → "Executable": Unbekannte EXE-Dateien identifizieren</li>
+    <li>"Extension Mismatch": Dateien suchen, deren Endung nicht zum Typ passt</li>
+  </ul>
+</li>
+<li><strong>Verdaechtige Dateien prufen:</strong> Hex-Viewer oeffnen → Strings analysieren → Hash auf VirusTotal ueberpruefen</li>
+<li><strong>Report generieren</strong> → HTML-Report als Grundlage fuer die Dokumentation</li>
+</ol>
+
+<div class="callout warning"><strong>Write-Blocker nicht vergessen:</strong> Wenn du ein physisches Laufwerk ("Local Drive") an deinen Analyse-Rechner anschliesst, MUSS ein Hardware-Write-Blocker zwischen Laufwerk und Computer geschaltet sein. Ohne Write-Blocker koennen Metadaten durch das Betriebssystem veraendert werden — das Beweismittel ist dann moeglicherweise unbrauchbar.</div>
+
+<h2 id="quellen">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li><a href="https://www.sleuthkit.org/autopsy/">Autopsy Offizielle Website</a></li>
+<li><a href="https://github.com/sleuthkit/autopsy">Autopsy GitHub Repository</a></li>
+<li><a href="https://www.sleuthkit.org/sleuthkit/docs.php">Sleuth Kit (TSK) Dokumentation</a></li>
+<li><a href="https://wiki.sleuthkit.org/index.php?title=Autopsy_User_Documentation">Autopsy User Documentation (Wiki)</a></li>
+<li><a href="https://www.nist.gov/itl/ssd/software-quality-group/national-software-reference-library-nsrl">NSRL (National Software Reference Library)</a> — Known-Good Hashes</li>
+</ul>
+
+</article></main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../../00-meta/glossary.html">Glossar</a> &middot; <a href="../../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../../nav-order.js"></script>
+<script src="../../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

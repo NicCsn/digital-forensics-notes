@@ -7,69 +7,348 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">IT-Security</a> / Schutzziele der Informationssicherheit (CIA-Triade)</span>
+  <span class="nav-crumb">/ <a href="../05-it-security/index.html">IT-Security</a> / Schutzziele der Informationssicherheit (CIA-Triade)</span>
 </nav>
 <main>
 <article>
 <h1>Schutzziele der Informationssicherheit (CIA-Triade) <span class="diff-badge diff-beginner">Grundlagen</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzueberblick</a></li>
+  <li><a href="#cia-detail">Die klassische CIA-Triade im Detail</a></li>
+  <li><a href="#erweiterte-schutzziele">Erweiterte Schutzziele</a></li>
+  <li><a href="#schutzbedarfsanalyse">Schutzbedarfsanalyse (BSI-Grundschutz)</a></li>
+  <li><a href="#angriffsvektoren">Angriffsvektoren vs. Schutzziele — Matrix</a></li>
+  <li><a href="#iso27001">ISO 27001: Mapping Schutzziele zu Controls (Annex A)</a></li>
+  <li><a href="#forensische-relevanz">Forensische Relevanz</a></li>
+  <li><a href="#praktische-anwendung">Praktische Anwendung</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</a></li>
+</ol></details>
 
-<h2 id="kurz-berblick">Kurzüberblick</h2>
+<h2 id="kurz-berblick">Kurzueberblick</h2>
 
-<p>Die CIA-Triade ist das Fundament der Informationssicherheit. Jede Sicherheitsmaßnahme, jedes Forensik-Tool und jede Incident-Response-Entscheidung lässt sich auf diese drei (erweitert: fünf) Schutzziele zurückführen.</p>
+<p>Die <strong>CIA-Triade</strong> ist das Fundament der Informationssicherheit. Jede Sicherheitsmassnahme, jedes Forensik-Tool und jede Incident-Response-Entscheidung laesst sich auf diese drei (erweitert: fuenf) Schutzziele zurueckfuehren. Sie bilden die Grundlage fuer Risikobewertung, Bedrohungsmodellierung und forensische Fallanalyse.</p>
 
-<h2 id="details">Details</h2>
+<div class="callout info"><strong>Merksatz:</strong> Vertraulichkeit schuetzt vor unbefugtem <em>Lesen</em>, Integritaet vor unbefugtem <em>Schreiben/Aendern</em>, Verfuegbarkeit vor unbefugtem <em>Blockieren/Zerstoeren</em>.</div>
 
-<h3>Die klassische CIA-Triade</h3>
+<h2 id="cia-detail">Die klassische CIA-Triade im Detail</h2>
+
+<h3>1. Vertraulichkeit (Confidentiality)</h3>
+
+<p><strong>Definition:</strong> Informationen duerfen ausschliesslich von autorisierten Personen oder Systemen eingesehen werden. Kein unbefugter Lesezugriff.</p>
 
 <table class="styled-table">
-<thead><tr><th>Schutzziel</th><th>Englisch</th><th>Frage</th><th>Gegenmaßnahme</th></tr></thead><tbody>
-<tr><td>**Vertraulichkeit**</td><td>Confidentiality</td><td>Wer darf die Daten lesen?</td><td>Verschlüsselung, Zugriffskontrolle</td></tr>
-<tr><td>**Integrität**</td><td>Integrity</td><td>Sind die Daten unverändert?</td><td>Hashing, Signaturen, Write-Blocker</td></tr>
-<tr><td>**Verfügbarkeit**</td><td>Availability</td><td>Sind die Daten zugreifbar?</td><td>Redundanz, Backups, DDoS-Schutz</td></tr>
+<thead><tr><th>Aspekt</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>Technische Massnahmen</strong></td><td>Verschluesselung (AES, TLS), Zugriffskontrolllisten (ACLs), BSI-konforme Berechtigungskonzepte, Data Loss Prevention (DLP)</td></tr>
+<tr><td><strong>Organisatorische Massnahmen</strong></td><td>Need-to-Know-Prinzip, Geheimhaltungsvereinbarungen (NDA), Klassifizierung von Informationen (VS-NfD, GEHEIM)</td></tr>
+<tr><td><strong>Forensisches Beispiel</strong></td><td>Ein Angreifer exfiltriert Kundendaten aus einer Datenbank. Analyse: SQL-Logs zeigen <code>SELECT * FROM kunden</code> um 03:17 Uhr von IP 198.51.100.7. PCAP zeigt 2,3 GB ausgehenden Traffic auf Port 443 an unbekannten Endpunkt. <strong>Verletztes Schutzziel: Vertraulichkeit.</strong> Forensische Massnahme: Netzwerk-Flow-Analyse, DLP-Logs, Datenbank-Audit-Trail.</td></tr>
 </tbody></table>
 
-<h3>Erweiterte Schutzziele</h3>
+<h3>2. Integritaet (Integrity)</h3>
+
+<p><strong>Definition:</strong> Daten muessen vollstaendig, korrekt und unveraendert sein. Kein unbefugter Schreibzugriff oder Manipulation.</p>
 
 <table class="styled-table">
-<thead><tr><th>Schutzziel</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
-<tr><td>**Authentizität**</td><td>Ist die Identität eines Nutzers/Systems echt?</td><td>MFA, Zertifikate</td></tr>
-<tr><td>**Nicht-Abstreitbarkeit**</td><td>Kann eine Aktion glaubhaft abgestritten werden?</td><td>Digitale Signatur, Audit-Logs</td></tr>
-<tr><td>**Verbindlichkeit**</td><td>Ist eine Transaktion rechtlich bindend nachweisbar?</td><td>Qualifizierte elektronische Signatur</td></tr>
+<thead><tr><th>Aspekt</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>Technische Massnahmen</strong></td><td>Kryptografische Hashfunktionen (SHA-256, SHA-3), digitale Signaturen, Write-Blocker bei forensischen Sicherstellungen, Versionierung, WORM-Speicher</td></tr>
+<tr><td><strong>Organisatorische Massnahmen</strong></td><td>Vier-Augen-Prinzip, Aenderungsmanagement (Change Management), regelm. Integritaetspruefungen (File Integrity Monitoring)</td></tr>
+<tr><td><strong>Forensisches Beispiel</strong></td><td>Malware hat Log-Dateien manipuliert, um Spuren zu verwischen. Analyse: Vergleich der lokalen <code>/var/log/auth.log</code> mit dem Remote-Syslog-Server zeigt 47 fehlende Eintraege zwischen 22:00 und 23:45. SHA-256-Hash der lokalen Datei weicht vom Backup ab. <strong>Verletztes Schutzziel: Integritaet.</strong> Forensische Massnahme: Vergleich mit externen Log-Quellen, Timeline-Analyse auf Manipulationsspuren.</td></tr>
 </tbody></table>
 
-<h3>Schutzziele in der forensischen Praxis</h3>
+<h3>3. Verfuegbarkeit (Availability)</h3>
 
-<ul><li><strong>Vertraulichkeit verletzt:</strong> Jemand hat Daten entwendet → Was sagt PCAP über die übertragene Datenmenge?</li>
-<li><strong>Integrität verletzt:</strong> Malware hat Logs manipuliert → Vergleich mit Remote-Syslog-Server oder SIEM</li>
-<li><strong>Verfügbarkeit verletzt:</strong> Ransomware hat Daten verschlüsselt → Backup prüfen, Entschlüsselungs-Tools suchen</li>
-<li><strong>Authentizität verletzt:</strong> Angreifer loggte sich mit gestohlenen Credentials ein → EventLog 4624 mit Logon Type 3 oder 10</li></ul>
+<p><strong>Definition:</strong> Informationen und Systeme muessen bei Bedarf zur Verfuegung stehen. Keine unbefugte Dienstblockade.</p>
 
-<h3>Risiko und Abwägung</h3>
+<table class="styled-table">
+<thead><tr><th>Aspekt</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>Technische Massnahmen</strong></td><td>Redundanz (RAID, Cluster, Geo-Redundanz), Backups (3-2-1-Regel), DDoS-Mitigation (Cloudflare, Akamai), USV, Failover-Mechanismen</td></tr>
+<tr><td><strong>Organisatorische Massnahmen</strong></td><td>Business Continuity Management (BCM), Notfallplaene, SLAs mit Wiederherstellungszeiten (RTO/RPO)</td></tr>
+<tr><td><strong>Forensisches Beispiel</strong></td><td>Ransomware hat saemtliche Dateien eines Fileservers verschluesselt. Analyse: Backup-Status pruefen, Schadsoftware-Hash ermitteln (SHA-256: <code>d4e3...</code>), Entschluesselungs-Tools auf nomoreransom.org recherchieren. Angriffsvektor nachvollziehen (Phishing-Mail → Makro → Download). <strong>Verletztes Schutzziel: Verfuegbarkeit (und ggf. Vertraulichkeit bei Doppel-Erpressung).</strong></td></tr>
+</tbody></table>
 
-<p>Schutzziele stehen in Konflikt:</p>
-<ul><li><strong>Mehr Sicherheit = weniger Verfügbarkeit</strong> (Zweifaktor-Authentifizierung kostet Zeit)</li>
-<li><strong>Mehr Vertraulichkeit = weniger Analysierbarkeit</strong> (Ende-zu-Ende-Verschlüsselung macht Netzwerkforensik blind)</li></ul>
+<h2 id="erweiterte-schutzziele">Erweiterte Schutzziele</h2>
 
-<p>Risikobewertung: Welches Schutzziel hat für DIESES System Priorität?</p>
-<ul><li>Krankenhaus: Verfügbarkeit > Vertraulichkeit? (Patientendaten müssen im Notfall abrufbar sein)</li>
-<li>Geheimdienst: Vertraulichkeit > alles andere</li>
-<li>Börse: Integrität (falsche Transaktion = Katastrophe)</li></ul>
+<p>Neben der CIA-Triade existieren weitere Schutzziele, die in modernen Sicherheitsarchitekturen unverzichtbar sind:</p>
+
+<h3>Authentizitaet (Authenticity)</h3>
+<ul>
+  <li><strong>Definition:</strong> Die Echtheit einer Identitaet, eines Systems oder einer Nachricht ist nachweisbar.</li>
+  <li><strong>Technisch:</strong> Multi-Faktor-Authentifizierung (MFA), X.509-Zertifikate, Kerberos-Tickets, FIDO2/WebAuthn</li>
+  <li><strong>Forensisch:</strong> EventLog-ID 4624 (Windows Logon) mit Logon Type analysieren. War es ein interaktiver Login (Type 2), Netzwerk-Login (Type 3) oder Remote-Desktop (Type 10)? <em>Beachte:</em> Logon Type 3 mit ungewoehnlicher Quell-IP → moeglicher Pass-the-Hash-Angriff.</li>
+</ul>
+
+<h3>Verbindlichkeit / Nicht-Abstreitbarkeit (Non-Repudiation)</h3>
+<ul>
+  <li><strong>Definition:</strong> Eine durchgefuehrte Handlung kann dem Urheber zweifelsfrei zugeordnet werden und ist nicht glaubhaft abstreitbar.</li>
+  <li><strong>Technisch:</strong> Qualifizierte elektronische Signaturen (eIDAS-VO), Blockchain-basierte Audit-Trails, signierte Logs</li>
+  <li><strong>Forensisch:</strong> Digitale Signatur einer schadhaften E-Mail pruefen. DKIM-Signatur-Header analysieren: Wurde die Mail wirklich von der angegebenen Domain versandt? Zertifikatstransparenz-Logs als unwiderlegbare Beweiskette.</li>
+</ul>
+
+<h3>Anonymitaet und Pseudonymitaet</h3>
+<ul>
+  <li><strong>Anonymitaet:</strong> Keine Rueckfuehrbarkeit einer Aktion auf die handelnde Person (z.B. TOR-Nutzung, anonymes Whistleblowing).</li>
+  <li><strong>Pseudonymitaet:</strong> Verwendung eines Decknamens; Zuordnung nur unter bestimmten Umstaenden moeglich (z.B. Bitcoin-Adressen ohne KYC).</li>
+  <li><strong>Forensische Relevanz:</strong> Bei Darknet-Ermittlungen muss geklaert werden, ob eine Bitcoin-Transaktion ueber einen KYC-pflichtigen Exchange lief (→ Identitaet bekannt) oder ob Tumbler/Mixer verwendet wurden (→ Rueckverfolgung erschwert).</li>
+</ul>
+
+<h2 id="schutzbedarfsanalyse">Schutzbedarfsanalyse (BSI-Grundschutz)</h2>
+
+<p>Die <strong>Schutzbedarfsanalyse</strong> nach BSI IT-Grundschutz ist der erste und wichtigste Schritt jeder Sicherheitskonzeption. Sie bewertet fuer jedes Asset den Schaden bei Verlust der Schutzziele.</p>
+
+<h3>Schutzbedarfskategorien</h3>
+
+<table class="styled-table">
+<thead><tr><th>Kategorie</th><th>Definition</th><th>Beispiel-Schaden</th></tr></thead><tbody>
+<tr><td><strong>normal</strong></td><td>Schaden ist begrenzt und ueberschaubar</td><td>Kurzzeitiger Ausfall einer internen Wiki-Seite</td></tr>
+<tr><td><strong>hoch</strong></td><td>Schaden ist betraechtlich</td><td>Offenlegung von Personalakten, mehrtägiger Ausfall des CRM-Systems</td></tr>
+<tr><td><strong>sehr hoch</strong></td><td>Schaden ist existenziell, katastrophal</td><td>Ausfall des Stromnetzes, Offenlegung von Patientendaten eines ganzen Krankenhauses</td></tr>
+</tbody></table>
+
+<h3>Vorgehen Schutzbedarfsanalyse</h3>
+
+<ol>
+  <li><strong>Assets identifizieren:</strong> Server, Datenbanken, Anwendungen, Kommunikationswege, Raeume</li>
+  <li><strong>Schutzbedarf je Schutzziel bewerten:</strong> Fuer jedes Asset separat: Wie schwer wiegt ein Verlust von Vertraulichkeit / Integritaet / Verfuegbarkeit?</li>
+  <li><strong>Maximumprinzip:</strong> Der hoechste Einzelwert bestimmt den Gesamtschutzbedarf des Assets</li>
+  <li><strong>Vererbungsprinzip:</strong> Ein hoch schutzbeduerftiges Asset erhoeht den Schutzbedarf aller abhaengigen Komponenten</li>
+  <li><strong>Risikoanalyse:</strong> Eintrittswahrscheinlichkeit × Schadenshoehe = Risiko. Bei hohem/sehrem Schutzbedarf ist eine detaillierte Risikoanalyse nach BSI 200-3 erforderlich.</li>
+</ol>
+
+<div class="callout warning"><strong>Hinweis:</strong> Der BSI IT-Grundschutz unterscheidet zwischen <em>Basis-Anforderungen</em> (muss!), <em>Standard-Anforderungen</em> (sollte!) und <em>Anforderungen fuer erhoehten Schutzbedarf</em>. Die Einstufung als "sehr hoch" loest zusaetzliche, strengere Massnahmen aus.</div>
+
+<h2 id="angriffsvektoren">Angriffsvektoren vs. Schutzziele — Matrix</h2>
+
+<p>Die folgende Matrix zeigt typische Angriffsvektoren und welche Schutzziele sie primaer verletzen:</p>
+
+<table class="styled-table">
+<thead><tr><th>Angriffsvektor</th><th>V</th><th>I</th><th>W</th><th>Auth</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>DDoS (Distributed Denial of Service)</strong></td><td>–</td><td>–</td><td>&#10003;</td><td>–</td><td>Ueberflutung mit Traffic → Dienst nicht mehr erreichbar</td></tr>
+<tr><td><strong>Ransomware (Verschluesselung)</strong></td><td>&#10003;</td><td>–</td><td>&#10003;</td><td>–</td><td>Daten verschluesselt → unlesbar + unbenutzbar</td></tr>
+<tr><td><strong>Ransomware (Doppel-Erpressung)</strong></td><td>&#10003;</td><td>–</td><td>&#10003;</td><td>–</td><td>Zusaetzlich: Angreifer droht mit Veroeffentlichung gestohlener Daten</td></tr>
+<tr><td><strong>SQL Injection</strong></td><td>&#10003;</td><td>&#10003;</td><td>–</td><td>–</td><td>Unbefugtes Lesen (SELECT) oder Aendern (UPDATE/DELETE) von DB-Inhalten</td></tr>
+<tr><td><strong>Phishing / Credential Theft</strong></td><td>&#10003;</td><td>–</td><td>–</td><td>&#10003;</td><td>Gestohlene Zugangsdaten → fremder Zugriff + Identitaetsvortaeuschung</td></tr>
+<tr><td><strong>Man-in-the-Middle (MITM)</strong></td><td>&#10003;</td><td>&#10003;</td><td>–</td><td>&#10003;</td><td>Passives Mitlesen + aktives Manipulieren von Datenstroemen</td></tr>
+<tr><td><strong>Malware / Trojaner</strong></td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Je nach Payload alle Schutzziele betroffen</td></tr>
+<tr><td><strong>Insider Threat (boeswillig)</strong></td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>Berechtigter Nutzer missbraucht legitimen Zugang</td></tr>
+<tr><td><strong>Physischer Diebstahl / Sabotage</strong></td><td>&#10003;</td><td>–</td><td>&#10003;</td><td>–</td><td>Geraet gestohlen → Daten offengelegt + nicht mehr verfuegbar</td></tr>
+<tr><td><strong>Supply-Chain-Angriff</strong></td><td>&#10003;</td><td>&#10003;</td><td>–</td><td>&#10003;</td><td>Kompromittierte Software-Updates (z.B. SolarWinds 2020)</td></tr>
+</tbody></table>
+
+<p><small>Legende: V = Vertraulichkeit, I = Integritaet, W = Verfuegbarkeit, Auth = Authentizitaet</small></p>
+
+<h2 id="iso27001">ISO 27001: Mapping Schutzziele zu Controls (Annex A)</h2>
+
+<p>Die ISO 27001 ist der internationale Standard fuer Informationssicherheits-Managementsysteme (ISMS). Annex A enthaelt 93 Controls in 14 Kategorien, die den Schutzzielen zugeordnet werden koennen:</p>
+
+<table class="styled-table">
+<thead><tr><th>ISO 27001 Annex A</th><th>Primaeres Schutzziel</th><th>Beispiele fuer Controls</th></tr></thead><tbody>
+<tr><td><strong>A.5 Informationssicherheitsrichtlinien</strong></td><td>Alle</td><td>Top-Down-Verpflichtung der Geschaeftsfuehrung</td></tr>
+<tr><td><strong>A.6 Organisation</strong></td><td>Vertraulichkeit, Authentizitaet</td><td>Rollen, Vertraege, NDAs, Mobile-Device-Policy</td></tr>
+<tr><td><strong>A.7 Personalsicherheit</strong></td><td>Vertraulichkeit</td><td>Background-Checks, Schulungen, Austrittsprozess</td></tr>
+<tr><td><strong>A.8 Asset-Management</strong></td><td>Alle</td><td>Asset-Inventar, Klassifizierung, Datentraeger-Entsorgung</td></tr>
+<tr><td><strong>A.9 Zugriffssteuerung</strong></td><td>Vertraulichkeit, Authentizitaet</td><td>Need-to-Know, MFA, Passwort-Policy, Privileged Access Management</td></tr>
+<tr><td><strong>A.10 Kryptografie</strong></td><td>Vertraulichkeit, Integritaet</td><td>Verschluesselungsrichtlinie, Schluesselmanagement</td></tr>
+<tr><td><strong>A.11 Physische Sicherheit</strong></td><td>Verfuegbarkeit, Vertraulichkeit</td><td>Zutrittskontrolle, USV, Brandschutz, Klimatisierung</td></tr>
+<tr><td><strong>A.12 Betriebssicherheit</strong></td><td>Integritaet, Verfuegbarkeit</td><td>Change-Management, Malware-Schutz, Kapazitaetsmanagement</td></tr>
+<tr><td><strong>A.13 Kommunikationssicherheit</strong></td><td>Vertraulichkeit, Integritaet</td><td>Netzwerksegmentierung, TLS, VPN, E-Mail-Sicherheit</td></tr>
+<tr><td><strong>A.14 Anschaffung, Entwicklung</strong></td><td>Integritaet</td><td>Secure Development Lifecycle, Penetrationstests, Code-Review</td></tr>
+<tr><td><strong>A.15 Lieferantenbeziehungen</strong></td><td>Vertraulichkeit, Verfuegbarkeit</td><td>Lieferanten-Audits, SLA-Monitoring</td></tr>
+<tr><td><strong>A.16 Vorfallsmanagement</strong></td><td>Verfuegbarkeit</td><td>IR-Plan, Lessons Learned, interne/externe Kommunikation</td></tr>
+<tr><td><strong>A.17 Business Continuity</strong></td><td>Verfuegbarkeit</td><td>BCP, Notfallplaene, regelmaessige BCM-Uebungen</td></tr>
+<tr><td><strong>A.18 Compliance</strong></td><td>Alle</td><td>DSGVO, NIS-2, BSI-KritisV, Vertragsstrafen</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Praxis-Tipp:</strong> In einer ISO-27001-Zertifizierung wird oft gefragt: "Wie stellen Sie sicher, dass Ihre Massnahmen die Schutzziele abdecken?" — Der Nachweis erfolgt ueber die SOA (Statement of Applicability), in der jedes Annex-A-Control mit Begruendung aufgelistet wird.</div>
+
+<h2 id="forensische-relevanz">Forensische Relevanz: Welches Schutzziel wurde verletzt?</h2>
+
+<p>Die Bestimmung des verletzten Schutzziels ist der <strong>Ausgangspunkt jeder forensischen Analyse</strong>. Sie entscheidet darueber, welche Spurenkategorien relevant sind und welche Analysemethoden zum Einsatz kommen:</p>
+
+<table class="styled-table">
+<thead><tr><th>Verletztes Schutzziel</th><th>Leitfrage der Analyse</th><th>Relevante Spurenkategorien</th><th>Typische Tools</th></tr></thead><tbody>
+<tr><td><strong>Vertraulichkeit</strong></td><td>Welche Daten wurden von wem gelesen/exfiltriert?</td><td>Zugriffslogs, Firewall-Logs, PCAP, DNS-Exfil-Logs, DLP-Alerts, EDR-Telemetrie</td><td>Wireshark, Zeek, ELK-Stack, Velociraptor</td></tr>
+<tr><td><strong>Integritaet</strong></td><td>Welche Daten wurden wann und wie veraendert?</td><td>Datei-Hashes, MFT/$UsnJrnl-Journal, SIEM-Alerts, FIM-Logs, Versionierung</td><td>FTK Imager, Autopsy, sha256sum, Tripwire</td></tr>
+<tr><td><strong>Verfuegbarkeit</strong></td><td>Was verursachte den Ausfall? Wie lange? Welche Systeme?</td><td>Syslog, Anwendungs-Logs, Performance-Metriken, Netzwerk-Flow-Daten, Crash-Dumps</td><td>Grafana/Prometheus, EventLog-Explorer, Volatility</td></tr>
+<tr><td><strong>Authentizitaet</strong></td><td>Wer hat die Aktion tatsaechlich durchgefuehrt?</td><td>EventLog (4624/4625), Kerberos-Tickets, SSH-Auth-Logs, VPN-Logs, Browser-History</td><td>KAPE, EventLog-Analyzer, klist</td></tr>
+<tr><td><strong>Verbindlichkeit</strong></td><td>Kann die Urheberschaft zweifelsfrei bewiesen werden?</td><td>Digitale Signaturen, DKIM-Header, Blockchain-Transaktionen, CT-Logs, signierte Audit-Trails</td><td>openssl, crt.sh, Etherscan</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>Achtung:</strong> Ein Incident verletzt haeufig <strong>mehrere Schutzziele gleichzeitig</strong>. Ein Ransomware-Angriff mit vorherigem Datenabfluss verletzt Vertraulichkeit UND Verfuegbarkeit. Die forensische Analyse muss beide Dimensionen abdecken — sonst bleibt das Lagebild unvollstaendig.</div>
 
 <h2 id="praktische-anwendung">Praktische Anwendung</h2>
 
-<ul><li>Schutzbedarfsanalyse: Für jedes Asset bewerten (Schaden bei Verlust von C, I, A = niedrig/mittel/hoch)</li>
-<li>BSI IT-Grundschutz als Framework</li>
-<li>ISO 27001 für systematisches Informationssicherheits-Management</li></ul>
+<h3>Mini-Schutzbedarfsanalyse (Template)</h3>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<pre><code>Asset:                Kunden-Datenbank (PostgreSQL)
+Schutzbedarf:
+  Vertraulichkeit:    SEHR HOCH  (DSGVO, personenbezogene Daten)
+  Integritaet:        HOCH       (Korrekte Rechnungsstellung erforderlich)
+  Verfuegbarkeit:     HOCH       (Max. 4h Downtime laut SLA)
 
-<ul><li>Eckert, C.: IT-Sicherheit — Konzepte, Verfahren, Protokolle</li>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf">NIST FIPS 199: Standards for Security Categorization</a></li></ul>
+Massnahmen:
+  - TLS 1.3 fuer Client-Verbindungen (V)
+  - pgAudit-Extension fuer Zugriffsprotokollierung (I)
+  - Streaming-Replikation auf Standby-Server (W)
+  - Taegliches verschluesseltes Backup mit 30 Tagen Retention (W + V)
+  - Vier-Augen-Prinzip bei DB-Schema-Aenderungen (I)</code></pre>
+
+<h3>Schutzziel-Verletzung erkennen (Checkliste)</h3>
+
+<ul>
+  <li>Welches Schutzziel wurde verletzt? (oft mehrere)</li>
+  <li>Welche Spuren beweisen die Verletzung? (Konkrete Log-Eintraege, Hashes, Zeitstempel)</li>
+  <li>Welche Massnahmen haetten die Verletzung verhindern koennen? (Lessons Learned)</li>
+  <li>Welches Schutzziel hat fuer dieses Unternehmen hoechste Prioritaet? (Kontext)</li>
+</ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</h2>
+
+<ul>
+  <li>Eckert, C.: IT-Sicherheit — Konzepte, Verfahren, Protokolle. 11. Auflage, De Gruyter, 2023</li>
+  <li><a href="https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz_node.html">BSI IT-Grundschutz-Kompendium</a></li>
+  <li><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf">NIST FIPS 199: Standards for Security Categorization</a></li>
+  <li><a href="https://www.iso.org/standard/27001">ISO/IEC 27001:2022 — Information Security Management Systems</a></li>
+  <li><a href="https://www.nomoreansom.org">No More Ransom Project</a> — Entschluesselungs-Tools fuer Ransomware-Opfer</li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>

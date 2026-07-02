@@ -7,72 +7,401 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (8)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (15)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (12)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (13)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (9)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
 <nav class="top-nav">
   <a href="../index.html" class="home-link">DF Field Notes</a>
-  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Betriebssystem-Forensik: Spurensuche und Artefakte</span>
+  <span class="nav-crumb">/ <a href="../02-betriebssysteme/index.html">Betriebssysteme</a> / Betriebssystem-Forensik: Spurensuche und Artefakte</span>
 </nav>
 <main>
 <article>
 <h1>Betriebssystem-Forensik: Spurensuche und Artefakte <span class="diff-badge diff-intermediate">Mittel</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzueberblick</a></li><li><a href="#windows-artefakte">Windows-Artefakte</a></li><li><a href="#linux-artefakte">Linux-Artefakte</a></li><li><a href="#macos-artefakte">macOS-Artefakte</a></li><li><a href="#tool-uebersicht">Tool-Uebersicht</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</a></li></ol></details>
 
-<h2 id="kurz-berblick">Kurzüberblick</h2>
-
+<h2 id="kurz-berblick">Kurzueberblick</h2>
 <p>Betriebssysteme protokollieren mehr, als vielen Nutzern bewusst ist. Als Forensiker musst du die wichtigsten Artefakt-Fundorte in Windows, Linux und macOS kennen — und wissen, welche Tools sie auslesen.</p>
 
-<h2 id="details">Details</h2>
+<h2 id="windows-artefakte">Windows-Artefakte im Detail</h2>
 
-<h3>Windows-Artefakte</h3>
+<h3>Prefetch — Programmausfuehrung protokolliert</h3>
 
-<table class="styled-table">
-<thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
-<tr><td>**Prefetch**</td><td>`C:\Windows\Prefetch\*.pf`</td><td>Welche .exe wann (bis 8x) ausgeführt wurde</td></tr>
-<tr><td>**Jump Lists**</td><td>`%AppData%\Microsoft\Windows\Recent\AutomaticDestinations\`</td><td>Zuletzt geöffnete Dateien pro Anwendung</td></tr>
-<tr><td>**LNK-Files**</td><td>`%AppData%\Microsoft\Windows\Recent\`, `%AppData%\Microsoft\Office\Recent\`</td><td>Verknüpfungen: Zielpfad, MAC-Zeiten des Ziels</td></tr>
-<tr><td>**Recycle Bin**</td><td>`C:\$Recycle.Bin\<SID>\`</td><td>Gelöschte Dateien mit Originalpfad und Löschdatum</td></tr>
-<tr><td>**Thumbcache**</td><td>`%AppData%\Local\Microsoft\Windows\Explorer\`</td><td>Thumbnails auch nach Löschung des Originals</td></tr>
-<tr><td>**SRUDB.dat**</td><td>`C:\Windows\System32\sru\`</td><td>System Resource Usage — Datenverbrauch pro App</td></tr>
-<tr><td>**Event Logs**</td><td>`C:\Windows\System32\winevt\Logs\`</td><td>Security, System, Application, PowerShell</td></tr>
-<tr><td>**Browser Cache**</td><td>`%AppData%\Local\*\Cache\`</td><td>Chrome, Firefox, Edge — History, Cookies, Downloads</td></tr>
+<table>
+<thead><tr><th>Merkmal</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>Fundort</strong></td><td><code>C:\Windows\Prefetch\*.pf</code></td></tr>
+<tr><td><strong>Format</strong></td><td>Binär (Version 17 unter WinXP, Version 23/26/30 unter Win7-11)</td></tr>
+<tr><td><strong>Enthaltene Daten</strong></td><td>Exe-Name + Hash (8 Zeichen), Run Count (bis v26: 8x), letzte 8 Ausfuehrungszeitpunkte, Liste referenzierter Dateien (bis 100 Eintraege), geladene DLLs</td></tr>
+<tr><td><strong>Namensschema</strong></td><td><code>CMD.EXE-89305D01.pf</code> — Hash des Pfades (nicht der Datei!)</td></tr>
+<tr><td><strong>Tools</strong></td><td>PECmd.exe (Zimmerman), WinPrefetchView (Nirsoft)</td></tr>
 </tbody></table>
 
-<h3>Linux-Artefakte</h3>
+<div class="callout tip"><strong>Forensische Perle:</strong> Der Prefetch enthaelt die <strong>vollstaendigen Pfade referenzierter DLLs und Dateien</strong> — selbst wenn die Originaldateien geloescht wurden. Beispiel: <code>MALWARE.EXE-XXXXXXXX.pf</code> listet unter <code>DEVICE\HARDDISKVOLUME3\USERS\VICTIM\DESKTOP\MALWARE.EXE</code> — inklusive Vornutzername!</div>
 
-<table class="styled-table">
-<thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
-<tr><td>**Shell History**</td><td>`~/.bash_history`, `~/.zsh_history`</td><td>Alle eingegebenen Befehle</td></tr>
-<tr><td>**Auth Log**</td><td>`/var/log/auth.log`</td><td>Logins (erfolgreich/fehlgeschlagen), sudo-Nutzung</td></tr>
-<tr><td>**Cron Jobs**</td><td>`/var/spool/cron/crontabs/`, `/etc/crontab`</td><td>Automatisierte Aufgaben</td></tr>
-<tr><td>**SSH Known Hosts**</td><td>`~/.ssh/known_hosts`, `~/.ssh/authorized_keys`</td><td>Welche Server wurden kontaktiert?</td></tr>
-<tr><td>**APT Log**</td><td>`/var/log/apt/history.log`</td><td>Installierte/entfernte Pakete mit Zeitstempel</td></tr>
-<tr><td>**Systemd Journal**</td><td>`journalctl`</td><td>Nahezu alles: Boots, Dienste, Kernel-Events</td></tr>
-<tr><td>**Trash**</td><td>`~/.local/share/Trash/`</td><td>Gelöschte Dateien mit Wiederherstellungspfad</td></tr>
+<h3>Jump Lists — pro Anwendung zuletzt geoeffnete Dateien</h3>
+
+<table>
+<thead><tr><th>Typ</th><th>Fundort</th><th>Format</th></tr></thead><tbody>
+<tr><td><strong>AutomaticDestinations</strong></td><td><code>%AppData%\Microsoft\Windows\Recent\AutomaticDestinations\*.automaticDestinations-ms</code></td><td>OLE Compound File (strukturiertes Binary)</td></tr>
+<tr><td><strong>CustomDestinations</strong></td><td><code>%AppData%\Microsoft\Windows\Recent\CustomDestinations\*.customDestinations-ms</code></td><td>Sparsamer; von der App selbst gepflegt</td></tr>
 </tbody></table>
 
-<h3>macOS-Artefakte</h3>
+<ul>
+<li><strong>App-ID:</strong> Die Dateinamen sind AppUserModelIDs (z.B. <code>1b4dd67f29cb1962</code> = Notepad)</li>
+<li><strong>DestList-Stream:</strong> Sortierte Liste von MRU-Objekten (Most Recently Used) — Reihenfolge + MAC-Zeiten</li>
+<li><strong>LNK-Streams:</strong> Enthalten Serialisierte Shell-Links mit Zielpfad, Argumenten, Icon-Location</li>
+<li><strong>Tools:</strong> JLECmd.exe (Zimmerman), JumpLister</li>
+</ul>
 
-<table class="styled-table">
+<h3>LNK-Dateien — Shortcut als Beweismittel</h3>
+
+<pre><code># LNK = Windows Shell Link (Binary Format)
+# Fundort: %AppData%\Microsoft\Windows\Recent\*.lnk
+#           %AppData%\Microsoft\Office\Recent\*.lnk
+
+# Forensich relevante Felder:
+# ┌─────────────────────────────────────────────────────────────┐
+# │ NetBIOS-Name des Servers    │ Bei Netzwerkfreigaben!       │
+# │ MAC-Adresse des Hosts       │ Bei lokalen Dateien          │
+# │ Volume Serial Number        │ Identifiziert das Volume     │
+# │ Volume Label                │ Name des Laufwerks           │
+# │ MAC-Zeiten der Zieldatei    │ Creation, Access, Modified   │
+# │ Ziel-Pfad (langer+kurzer)   │ Absoluter Pfad zur Datei     │
+# │ Icon-Location + Hotkey      │ Welches Icon, welcher Shortcut│
+# │ Distributed Link Tracker    │ Objekt-ID + Birth Volume ID  │
+# └─────────────────────────────────────────────────────────────┘</code></pre>
+
+<div class="callout info"><strong>DLT (Distributed Link Tracker):</strong> Jede LNK-Datei enthaelt eine Object-ID und Birth-Volume-ID des Ziels. Selbst wenn die Zieldatei verschoben oder umbenannt wurde, kann ihre Herkunft ueber die Volume-ID zurueckverfolgt werden. Diese IDs finden sich auch im <code>$STANDARD_INFORMATION</code>-Attribut der MFT.</div>
+
+<p><strong>Tools:</strong> LECmd.exe (Zimmerman), lnk_parser.py</p>
+
+<h3>Shellbags — Fensterpositionen als Nutzungsbeweis</h3>
+
+<p>Shellbags speichern die Fenstereinstellungen (Groesse, Position, Sortierung) fuer jeden vom Explorer besuchten Ordner — <strong>auch nach Loeschung des Ordners</strong>.</p>
+
+<table>
+<thead><tr><th>Registry-Key</th><th>Inhalt</th></tr></thead><tbody>
+<tr><td><code>NTUSER.DAT\Software\Microsoft\Windows\Shell\BagMRU</code></td><td>Hierarchische Ordnerstruktur (Nested MRU)</td></tr>
+<tr><td><code>NTUSER.DAT\Software\Microsoft\Windows\Shell\Bags</code></td><td>Fenster-Parameter (Groesse, Ansicht, Spalten)</td></tr>
+<tr><td><code>USRCLASS.DAT\Local Settings\Software\Microsoft\Windows\Shell\BagMRU</code></td><td>Pro-App-Container-Variante (Win8+)</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Anti-Forensik-Hinweis:</strong> Shellbags persistieren auch nach Loeschung der Ordner und nach <strong>CCleaner-Durchlauf</strong>. Nur Tools wie <code>BagsMRU_Cleaner.bat</code> oder manuelles Loeschen der Registry-Keys entfernen sie. Sie sind eines der hartnaeckigsten Windows-Artefakte.</div>
+
+<p><strong>Tools:</strong> ShellBags Explorer (Zimmerman)</p>
+
+<h3>SRUM — System Resource Usage Monitor</h3>
+
+<table>
+<thead><tr><th>Aspekt</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><strong>Fundort</strong></td><td><code>C:\Windows\System32\sru\SRUDB.dat</code> (ESE-Datenbank)</td></tr>
+<tr><td><strong>Enthaltene Tabellen</strong></td><td><code>{973F5D5C-1D90-4944-BE8E-24B94231A174}</code> = Network Data Usage<br><code>{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}</code> = Application Resource Usage<br><code>{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}</code> = Energy Usage</td></tr>
+<tr><td><strong>Forensische Relevanz</strong></td><td>Pro Prozess: gesendete/empfangene Bytes, CPU-Zeit, Laufzeit. Bis zu 30-60 Tage Historie.</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>SRUM vs. Prefetch:</strong> Prefetch zeigt bis zu 8 letzte Ausfuehrungen. SRUM zeigt <strong>komplette Nutzungsdauer</strong> (wie viele Sekunden lief das Programm) und <strong>Netzwerkverkehr pro App</strong>. Beides zusammen = unschlagbare Kombination.</div>
+
+<p><strong>Tools:</strong> SrumECmd.exe (Zimmerman)</p>
+
+<h3>BAM und DAM — Background Activity Moderator</h3>
+
+<table>
+<thead><tr><th>Artefakt</th><th>Registry-Key</th><th>Inhalt</th></tr></thead><tbody>
+<tr><td><strong>BAM (v1709+)</strong></td><td><code>SYSTEM\CurrentControlSet\Services\bam\UserSettings\&lt;SID&gt;</code></td><td>Prozessname + Pfad + letzter Ausfuehrungszeitpunkt (64-Bit FILETIME)</td></tr>
+<tr><td><strong>DAM (v1809+)</strong></td><td><code>SYSTEM\CurrentControlSet\Services\dam\UserSettings\&lt;SID&gt;</code></td><td>Wie BAM, aber Desktop Activity-spezifisch</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Forensischer Vorteil:</strong> BAM/DAM werden vom Kernel gepflegt (nicht von Usermode-Tools) und sind daher schwerer zu manipulieren als Prefetch. Sie enthalten den <strong>vollstaendigen Pfad der ausgefuehrten Datei</strong> und den <strong>exakten Zeitpunkt</strong> in UTC.</div>
+
+<h3>AmCache vs. ShimCache — Programmausfuehrungs-Historie</h3>
+
+<table>
+<thead><tr><th>Merkmal</th><th>AmCache (Application Compatibility Cache)</th><th>ShimCache (AppCompatCache)</th></tr></thead><tbody>
+<tr><td><strong>Fundort</strong></td><td><code>C:\Windows\AppCompat\Programs\AmCache.hve</code> (Registry Hive)</td><td><code>SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache</code></td></tr>
+<tr><td><strong>Enthaltene Daten</strong></td><td>Pfad, Datei-Groesse, SHA1-Hash, Compile-Time, Publisher, Ausfuehrungszeit?</td><td>Pfad, Last-Modified-Zeit, File-Size, 64-Bit-Flag</td></tr>
+<tr><td><strong>Wann aktualisiert?</strong></td><td>Beim naechsten Systemstart (nach Ausfuehrung)</td><td>Direkt beim ersten Aufruf einer neuen .exe</td></tr>
+<tr><td><strong>Persistence</strong></td><td>Bleibt nach Deinstallation</td><td>Bleibt nach Loeschung der .exe</td></tr>
+<tr><td><strong>Tools</strong></td><td>AmcacheParser.exe (Zimmerman)</td><td>ShimCacheParser.py (Mandiant)</td></tr>
+</tbody></table>
+
+<h3>Weitere Windows-Artefakte</h3>
+
+<table>
 <thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
-<tr><td>**Unified Logs**</td><td>`log show`</td><td>Systemweites Logging</td></tr>
-<tr><td>**KnowledgeC.db**</td><td>`~/Library/Application Support/Knowledge/`</td><td>App-Nutzung, Web-Verlauf, angeschlossene Geräte</td></tr>
-<tr><td>**Quarantäne-DB**</td><td>`~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2`</td><td>Aus dem Internet heruntergeladene Dateien</td></tr>
-<tr><td>**plist-Dateien**</td><td>`~/Library/Preferences/`</td><td>App-Einstellungen, Fensterpositionen, letzte Datei</td></tr>
-<tr><td>**FSEvents**</td><td>`.fseventsd/` auf jedem Volume</td><td>Dateisystem-Änderungen protokolliert</td></tr>
+<tr><td><strong>UserAssist</strong></td><td><code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\Count</code></td><td>ROT13-decodierte Programmnamen, Run Count, letzter Ausfuehrungszeitpunkt</td></tr>
+<tr><td><strong>MuiCache</strong></td><td><code>USRCLASS.DAT\Local Settings\Software\Microsoft\Windows\Shell\MuiCache</code></td><td>Programm-Dateibeschreibung + FriendlyName — Nachweis, dass Programm ausgefuehrt wurde</td></tr>
+<tr><td><strong>AppCompatFlags</strong></td><td><code>NTUSER.DAT\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers</code></td><td>Kompatibilitaets-Flags pro Programm (z.B. RUNASADMIN)</td></tr>
+<tr><td><strong>Recycle Bin</strong></td><td><code>C:\$Recycle.Bin\&lt;SID&gt;\$I&lt;random&gt;.&lt;ext&gt;</code></td><td>$I = Metadaten (Originalpfad, Loeschdatum), $R = Dateiinhalt</td></tr>
+<tr><td><strong>Thumbcache</strong></td><td><code>%AppData%\Local\Microsoft\Windows\Explorer\thumbcache_*.db</code></td><td>Vorschaubilder geloeschter Fotos und Videos</td></tr>
+<tr><td><strong>Event Logs</strong></td><td><code>C:\Windows\System32\winevt\Logs\*.evtx</code></td><td>Security (4624/4625 Logins), System (7034 Services), PowerShell (4104 Scriptblock)</td></tr>
+<tr><td><strong>Browser-Cache</strong></td><td><code>%AppData%\Local\*\Cache\</code></td><td>Chrome, Firefox, Edge — History, Cookies, Downloads</td></tr>
+</tbody></table>
+
+<h3>UserAssist — ROT13-Decodierung</h3>
+
+<pre><code># UserAssist speichert Programmnamen ROT13-codiert:
+# chr(A-Z → N-ZA-M) für Großbuchstaben
+# chr(a-z → n-za-m) für Kleinbuchstaben
+# Zahlen und Symbole bleiben unveraendert
+
+# Beispiel:
+# CHQRE.PCZ → P U R E . P C M (ROT13-Abbildung) = CURE.PCM (noch falsch)
+# Tatsaechlich: jedes Zeichen + 13 im Alphabet:
+# {CEBFFVZ} → e v g v m E → "evgvmE" → umgekehrt?
+# Gemeint ist: URNQ → H E A D? Nein, der Algorithmus ist:
+# Jeder Buchstabe wird um 13 Positionen rotiert (ROT13):
+# Von "SyntFcbby.pbz" zu "FlagsCool.com" ... tatsaechliche Beispiele
+# {F7OPG6VQ} → Firefox, {6NQ7QNT7} → Notepad, etc.
+# Encoding: Base85 (nicht ROT13!) unter Windows 10+
+#
+# Tools: UserAssistView (Nirsoft), Registry Explorer</code></pre>
+
+<div class="callout tip"><strong>Korrektur:</strong> Unter Windows 7/8 ist es tatsaechlich ROT13. Unter Windows 10+ verwendet UserAssist eine Base85-Encoding. Tools wie Registry Explorer (Zimmerman) decodieren automatisch.</div>
+
+<h2 id="linux-artefakte">Linux-Artefakte</h2>
+
+<table>
+<thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
+<tr><td><strong>Shell History</strong></td><td><code>~/.bash_history</code>, <code>~/.zsh_history</code>, <code>~/.python_history</code></td><td>Alle eingegebenen Befehle + Zeitstempel (HISTTIMEFORMAT)</td></tr>
+<tr><td><strong>Lastlog / wtmp / btmp</strong></td><td><code>/var/log/lastlog</code>, <code>/var/log/wtmp</code>, <code>/var/log/btmp</code></td><td>Letzter Login, alle Logins, fehlgeschlagene Logins (letzter Befehl: <code>last -f /var/log/wtmp</code>)</td></tr>
+<tr><td><strong>Auth Log</strong></td><td><code>/var/log/auth.log</code></td><td>Logins (erfolgreich/fehlgeschlagen), sudo-Nutzung, su-Wechsel</td></tr>
+<tr><td><strong>Cron Jobs</strong></td><td><code>/var/spool/cron/crontabs/</code>, <code>/etc/crontab</code>, <code>/etc/cron.*/</code></td><td>Automatisierte Aufgaben — Persistenz-Mechanismus fuer Angreifer</td></tr>
+<tr><td><strong>SSH Known Hosts</strong></td><td><code>~/.ssh/known_hosts</code>, <code>~/.ssh/authorized_keys</code>, <code>~/.ssh/config</code></td><td>Kontaktierte Server, vom Angreifer platzierte Schluessel</td></tr>
+<tr><td><strong>APT Log</strong></td><td><code>/var/log/apt/history.log</code>, <code>/var/log/dpkg.log</code></td><td>Installierte/entfernte Pakete mit Zeitstempel</td></tr>
+<tr><td><strong>Systemd Journal</strong></td><td><code>/var/log/journal/</code> (persistent) oder <code>/run/log/journal/</code> (fluechtig)</td><td>Nahezu alles: Boots, Dienste, Kernel-Events. <code>journalctl -k</code> — Kernel-Messages</td></tr>
+<tr><td><strong>Trash</strong></td><td><code>~/.local/share/Trash/</code> (files/ + info/)</td><td>Geloeschte Dateien mit Originalpfad in .trashinfo</td></tr>
+<tr><td><strong>Vim/Yaourt History</strong></td><td><code>~/.viminfo</code>, <code>~/.lesshst</code></td><td>Vim: geoeffnete Dateien + Suchhistorie. less: zuletzt betrachtete Dateien</td></tr>
+</tbody></table>
+
+<h3>Linux-Forensik Commands</h3>
+
+<pre><code># Login-Historie
+last -F -f /var/log/wtmp           # Alle Logins mit vollem Zeitstempel
+lastb -f /var/log/btmp             # Fehlgeschlagene Logins
+
+# Systemd-Journal
+journalctl --since "2025-01-01" --until "2025-01-02"
+journalctl -u ssh.service          # Nur SSH-Logs
+journalctl --list-boots            # Alle Boots mit IDs
+journalctl -b -1                   # Vorheriger Boot
+
+# Prozess-Historie (falls auditd aktiv)
+ausearch -m EXECVE                 # Alle ausgefuehrten Programme
+ausearch -m SYSCALL -sc execve     # execve-Syscalls</code></pre>
+
+<h2 id="macos-artefakte">macOS-Artefakte</h2>
+
+<table>
+<thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
+<tr><td><strong>FSEvents</strong></td><td><code>.fseventsd/</code> auf jedem Volume (SQLite)</td><td>Dateisystem-Aenderungen: Created, Modified, Renamed, Deleted — mit UTC-Zeitstempel + Pfad</td></tr>
+<tr><td><strong>Quarantaene-DB</strong></td><td><code>~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2</code> (SQLite)</td><td>Aus dem Internet heruntergeladene Dateien: Agent (Browser, Mail), Download-URL, Quarantaene-Datum</td></tr>
+<tr><td><strong>plist-Dateien</strong></td><td><code>~/Library/Preferences/*.plist</code></td><td>App-Einstellungen, letzte geoeffnete Datei, Fensterposition, NSRecentDocuments</td></tr>
+<tr><td><strong>Unified Logs</strong></td><td><code>/var/db/diagnostics/</code> (tracev3-Format)</td><td>Systemweites Logging — <code>log show --predicate 'eventMessage contains "error"' --last 2d</code></td></tr>
+<tr><td><strong>KnowledgeC</strong></td><td><code>~/Library/Application Support/Knowledge/knowledgeC.db</code></td><td>App-Nutzung, Web-Verlauf, angeschlossene Geraete, Medienwiedergabe</td></tr>
+<tr><td><strong>Spotlight</strong></td><td><code>/.Spotlight-V100/</code></td><td>Volltext-Index — geloschte Dokumente koennen noch im Index referenziert sein</td></tr>
+<tr><td><strong>QuickLook</strong></td><td><code>~/Library/Caches/com.apple.QuickLookDaemon/</code></td><td>Vorschaubilder geloeschter Dateien</td></tr>
+<tr><td><strong>Recent Items</strong></td><td><code>~/Library/Preferences/com.apple.recentitems.plist</code></td><td>Zuletzt geoeffnete Dateien, Server, Applikationen</td></tr>
+</tbody></table>
+
+<h2 id="tool-uebersicht">Tool-Uebersicht</h2>
+
+<table>
+<thead><tr><th>Kategorie</th><th>Tool</th><th>Zweck</th><th>OS</th></tr></thead><tbody>
+<tr><td rowspan="6"><strong>Zimmerman Tools</strong></td><td><strong>PECmd.exe</strong></td><td>Prefetch-Parser</td><td>Windows</td></tr>
+<tr><td><strong>LECmd.exe</strong></td><td>LNK-Parser</td><td>Windows</td></tr>
+<tr><td><strong>JLECmd.exe</strong></td><td>Jump-List-Parser</td><td>Windows</td></tr>
+<tr><td><strong>ShellBags Explorer</strong></td><td>Shellbag-GUI (Registry)</td><td>Windows</td></tr>
+<tr><td><strong>SrumECmd.exe</strong></td><td>SRUM-Datenbank-Parser</td><td>Windows</td></tr>
+<tr><td><strong>MFTECmd.exe</strong></td><td>$MFT, $Boot, $J, $SDS Parser</td><td>Windows</td></tr>
+<tr><td rowspan="3"><strong>Registry</strong></td><td><strong>Registry Explorer</strong> (Zimmerman)</td><td>Registry-Hive Analyse (NTUSER.DAT, SYSTEM, etc.)</td><td>Windows</td></tr>
+<tr><td><strong>RegRipper</strong> (Harlan Carvey)</td><td>Registry-Plugin-Framework (CLI)</td><td>Windows/Linux</td></tr>
+<tr><td><strong>RECmd.exe</strong> (Zimmerman)</td><td>Batch-Registry-Analyse</td><td>Windows</td></tr>
+<tr><td rowspan="2"><strong>Linux</strong></td><td><strong>journalctl</strong></td><td>Systemd-Journal-Analyse</td><td>Linux</td></tr>
+<tr><td><strong>ausearch</strong></td><td>Auditd-Log-Analyse</td><td>Linux</td></tr>
+<tr><td rowspan="3"><strong>macOS</strong></td><td><strong>mac_apt</strong></td><td>macOS Artifact Parsing Toolkit (Open Source)</td><td>macOS/Linux</td></tr>
+<tr><td><strong>log</strong></td><td>Apple Unified Log Analyse</td><td>macOS</td></tr>
+<tr><td><strong>Sprunge</strong></td><td>FSEvents-Parser (Python)</td><td>plattformunabhaengig</td></tr>
+<tr><td rowspan="2"><strong>Quer</strong></td><td><strong>Autopsy</strong></td><td>GUI-Forensikplattform mit Artefakt-Modulen</td><td>plattformunabhaengig</td></tr>
+<tr><td><strong>Velociraptor</strong></td><td>Live-Forensik / Incident Response (Artefakt-Sammlung)</td><td>plattformunabhaengig</td></tr>
 </tbody></table>
 
 <h2 id="praktische-anwendung">Praktische Anwendung</h2>
 
-<ul><li><code>Prefetch</code> mit <code>PECmd.exe</code> (Eric Zimmerman Tools)</li>
-<li><code>LNK</code> mit <code>LECmd.exe</code> parsen</li>
-<li><code>journalctl --since "2025-01-01" --until "2025-01-02"</code> — Linux-Journal filtern</li>
-<li><code>log show --predicate 'eventMessage contains "error"' --last 2d</code> — macOS Unified Logs</li></ul>
+<pre><code># Windows: Prefetch analysieren
+PECmd.exe -d C:\Windows\Prefetch\ --csv C:\output\prefetch_out
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+# Windows: LNK analysieren
+LECmd.exe -d "C:\Users\victim\AppData\Roaming\Microsoft\Windows\Recent\" --csv C:\output\lnk_out
 
-<ul><li>Nikkel, B.: Practical Linux Forensics</li>
-<li><a href="https://www.sans.org/posters/">SANS DFIR Poster</a> — Artefakt-Übersicht</li></ul>
+# Windows: Jump Lists
+JLECmd.exe -d "C:\Users\victim\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\" --csv C:\output\jl_out
+
+# Windows: SRUM exportieren
+SrumECmd.exe -f C:\Windows\System32\sru\SRUDB.dat --csv C:\output\srum_out
+
+# Windows: Shellbags aus Registry-Hive
+# 1. NTUSER.DAT mit Registry Explorer laden
+# 2. Navigiere zu: Software\Microsoft\Windows\Shell\BagMRU
+# 3. ShellBags Explorer → File → Load NTUSER.DAT
+
+# Windows: AmCache analysieren
+AmcacheParser.exe -f C:\Windows\AppCompat\Programs\AmCache.hve --csv C:\output\amcache_out
+
+# Linux: Alle verfuegbaren Artefakte sammeln
+mkdir linux_forensics
+cp ~/.bash_history linux_forensics/
+cp /var/log/auth.log linux_forensics/
+cp /var/log/wtmp linux_forensics/
+journalctl --no-pager > linux_forensics/journal_full.txt
+last -F > linux_forensics/last_output.txt
+find /var/spool/cron/ -type f -exec cp {} linux_forensics/ \;
+
+# macOS: FSEvents aus Image extrahieren
+# (mac_apt kann FSEvents aus einem E01/dd/mount extrahieren)
+mac_apt --input /mnt/image --output /cases/mac/output</code></pre>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuehrendes</h2>
+<ul>
+<li>Zimmerman Tools: <a href="https://ericzimmerman.github.io/">ericzimmerman.github.io</a></li>
+<li>SANS DFIR Posters: <a href="https://www.sans.org/posters/">sans.org/posters</a> — "Windows Forensic Analysis" und "Find Evil"</li>
+<li>Carvey, H.: <em>Windows Forensic Analysis Toolkit</em> (Syngress)</li>
+<li>macOS Artifact Parsing Toolkit: <a href="https://github.com/ydkhatri/mac_apt">github.com/ydkhatri/mac_apt</a></li>
+<li>Nikkel, B.: <em>Practical Linux Forensics</em> (No Starch Press)</li>
+</ul>
 
 </article>
 </main>
+<nav class="prev-next" id="prevNextNav"></nav>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
 </body>
 </html>
