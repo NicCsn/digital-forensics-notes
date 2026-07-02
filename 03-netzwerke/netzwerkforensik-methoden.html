@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netzwerkforensik: Methoden und Vorgehen — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / Netzwerkforensik: Methoden und Vorgehen</span>
+</nav>
+<main>
+<article>
+<h1>Netzwerkforensik: Methoden und Vorgehen <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Netzwerkforensik ist die Untersuchung von Netzwerkverkehr zur Aufklärung von Sicherheitsvorfällen. Anders als bei der Datenträgerforensik arbeitest du mit flüchtigen, ständig strömenden Daten. Timing, Korrelation und Protokollwissen sind entscheidend.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Datenquellen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Quelle</th><th>Was sie liefert</th><th>Granularität</th></tr></thead><tbody>
+<tr><td>**PCAP** (Full Packet)</td><td>Jedes Bit des Netzwerkverkehrs</td><td>Vollständig</td></tr>
+<tr><td>**NetFlow / IPFIX / sFlow**</td><td>Metadaten: IPs, Ports, Bytes, Zeit</td><td>Statistisch (1:1000 Sampling)</td></tr>
+<tr><td>**Firewall-Logs**</td><td>Erlaubte/blockierte Verbindungen</td><td>Pro Session</td></tr>
+<tr><td>**IDS/IPS-Alerts**</td><td>Bekannte Angriffsmuster</td><td>Pro Event</td></tr>
+<tr><td>**DNS-Logs**</td><td>Welche Domains wurden aufgelöst</td><td>Pro Abfrage</td></tr>
+<tr><td>**DHCP-Logs**</td><td>MAC ↔ IP Zuordnung über Zeit</td><td>Pro Lease</td></tr>
+<tr><td>**Proxy-Logs**</td><td>HTTP(S)-Requests, User-Agents</td><td>Pro Request</td></tr>
+</tbody></table>
+
+<h3>Vorgehensmodell</h3>
+
+<ul><li><strong>Scoping:</strong> Welcher Zeitraum? Welche IPs/Hosts? Welche Protokolle?</li>
+<li><strong>Erfassung:</strong> PCAP am strategischen Punkt (Span-Port, TAP, Port-Mirroring) — rechtzeitig, bevor die Beweise weg sind</li>
+<li><strong>Erstanalyse (Triage):</strong> Top-Talker, GeoIP-Mapping, Protokollverteilung</li>
+<li><strong>Tiefenanalyse:</strong> TCP-Streams rekonstruieren, verdächtige Payloads extrahieren</li>
+<li><strong>Korrelation:</strong> PCAP + FW-Logs + IDS-Alerts + Endpoint-Daten verbinden</li></ul>
+
+<h3>Werkzeuge</h3>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Funktion</th></tr></thead><tbody>
+<tr><td>**Wireshark / tshark**</td><td>Manuelle Paketanalyse, Filter, Stream-Extraktion</td></tr>
+<tr><td>**Zeek (ehem. Bro)**</td><td>Protokoll-Parsing, automatisiertes Logging aller Verbindungen</td></tr>
+<tr><td>**Suricata**</td><td>IDS/IPS + Metadaten-Extraktion</td></tr>
+<tr><td>**NetworkMiner**</td><td>Datei-Extraktion aus PCAPs</td></tr>
+<tr><td>**Moloch / Arkime**</td><td>Large-Scale PCAP Indexierung und Suche</td></tr>
+<tr><td>**CapLoader**</td><td>Visualisierung und Triage großer PCAPs</td></tr>
+</tbody></table>
+
+<h3>Typische Analyse-Fragen</h3>
+
+<ul><li><strong>Wann begann der Angriff?</strong> TCP-Verbindung mit erstem SYN</li>
+<li><strong>Wer ist der Angreifer?</strong> Quell-IP → GeoIP, WHOIS, ISP-Auskunft</li>
+<li><strong>Was wurde übertragen?</strong> PCAP → <code>Follow TCP Stream</code> → Datei exportieren</li>
+<li><strong>War es ein automatisierter Angriff?</strong> Regelmäßige Intervalle? Viele Versuche pro Sekunde?</li>
+<li><strong>Gab es laterale Bewegung?</strong> Kommunikation von kompromittiertem Host zu internen IPs</li></ul>
+
+<h3>Anomalie-Erkennung</h3>
+
+<p>Verdächtige Patterns im Netzwerk-Traffic:</p>
+<ul><li><strong>Beaconing:</strong> Regelmäßige Verbindungen zu externer IP alle N Minuten → C2-Heartbeat</li>
+<li><strong>Port-Scan:</strong> Viele SYN-Pakete ohne ACK-Antwort von einer IP</li>
+<li><strong>DNS-Tunnel:</strong> Ungewöhnlich lange / base64-ähnliche DNS-Namen</li>
+<li><strong>Datenexfiltration:</strong> Großer Upload zu ungewöhnlicher Zeit (z.B. 3 Uhr nachts) oder zu ungewöhnlichem Ziel</li>
+<li><strong>RDP-Bruteforce:</strong> Viele Login-Fehlversuche auf Port 3389</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>zeek -r capture.pcap</code> → automatisch Protokoll-Logs generieren</li>
+<li><code>tshark -r capture.pcap -q -z conv,tcp</code> → TCP-Konversationen mit Dauer und Bytes</li>
+<li><code>tshark -r capture.pcap -Y "http.request.method == POST" -T fields -e http.host -e http.request.uri</code></li>
+<li><code>capinfos capture.pcap</code> — PCAP-Metadaten (Größe, Dauer, Paketzahl)</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://docs.zeek.org/">Zeek Documentation</a></li>
+<li>Bejtlich, R.: The Practice of Network Security Monitoring</li></ul>
+
+</article>
+</main>
+</body>
+</html>

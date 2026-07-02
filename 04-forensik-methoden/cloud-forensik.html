@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud-Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Cloud-Forensik</span>
+</nav>
+<main>
+<article>
+<h1>Cloud-Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Cloud-Forensik analysiert Sicherheitsvorfälle in Cloud-Umgebungen (AWS, Azure, GCP). Anders als bei On-Premise-Systemen hat der Forensiker keinen physischen Zugriff — alle Beweise sind Logs, Konfigurationen und Snapshots. Das Shared-Responsibility-Modell bestimmt, welche Spuren du überhaupt sehen darfst.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Shared Responsibility Model</h3>
+
+<table class="styled-table">
+<thead><tr><th>Verantwortung</th><th>Cloud-Anbieter</th><th>Kunde (du)</th></tr></thead><tbody>
+<tr><td>Physische Sicherheit (Rechenzentrum)</td><td>✅</td><td>❌</td></tr>
+<tr><td>Hypervisor, Netzwerk-Infrastruktur</td><td>✅</td><td>❌</td></tr>
+<tr><td>Betriebssystem (bei IaaS)</td><td>❌</td><td>✅</td></tr>
+<tr><td>Anwendungen, Daten</td><td>❌</td><td>✅</td></tr>
+<tr><td>Zugriffsmanagement (IAM)</td><td>❌</td><td>✅</td></tr>
+<tr><td>Logging, Monitoring</td><td>Werkzeuge bereitgestellt</td><td>✅ Konfiguration</td></tr>
+</tbody></table>
+
+<h3>AWS-Forensik</h3>
+
+<p>#### CloudTrail — das zentrale Audit-Log</p>
+
+<p>Jeder API-Aufruf in deinem AWS-Konto wird protokolliert:</p>
+<pre><code>  &quot;eventTime&quot;: &quot;2025-03-15T03:17:22Z&quot;,
+  &quot;eventName&quot;: &quot;DeleteBucket&quot;,
+  &quot;sourceIPAddress&quot;: &quot;203.0.113.42&quot;,
+  &quot;userAgent&quot;: &quot;aws-cli/2.0&quot;,
+  &quot;userIdentity&quot;: {&quot;arn&quot;: &quot;arn:aws:iam::123456789:user/frank&quot;}
+}</code></pre>
+
+<p>Forensische Fragen, die CloudTrail beantwortet:</p>
+<ul><li>Wer hat wann was getan? (<code>userIdentity</code>, <code>eventName</code>, <code>eventTime</code>)</li>
+<li>Von wo? (<code>sourceIPAddress</code>)</li>
+<li>Mit welchem Tool? (<code>userAgent</code>)</li></ul>
+
+<p>#### GuardDuty — KI-basierte Bedrohungserkennung</p>
+
+<p>Erkennt automatisch: EC2-Malware-Mining, unusual API calls, compromised IAM credentials, Tor-Exit-Node-Kontakte.</p>
+
+<p>#### EC2-Instanz-Forensik</p>
+
+<ul><li><strong>Snapshots:</strong> EBS-Volume-Snapshot erstellen → teilen → in separates Forensik-Konto kopieren → analysieren</li>
+<li><strong>Memory Dump:</strong> EC2 kann keinen RAM-Dump nativ — Workaround: <code>LiME</code> auf der Instanz ausführen oder Hibernation nutzen (RAM wird auf EBS geschrieben)</li>
+<li><strong>VPC Flow Logs:</strong> IP-Traffic-Metadaten — wer sprach mit wem? (keine Payloads)</li></ul>
+
+<h3>Azure-Forensik</h3>
+
+<table class="styled-table">
+<thead><tr><th>Service</th><th>Was es loggt</th></tr></thead><tbody>
+<tr><td>**Azure Activity Log**</td><td>Alle Management-Ebene-Operationen (VM erstellen, IAM ändern)</td></tr>
+<tr><td>**Azure Sentinel**</td><td>SIEM mit KI-gestützter Incident-Erkennung</td></tr>
+<tr><td>**NSG Flow Logs**</td><td>Netzwerk-Traffic-Metadaten (Network Security Group)</td></tr>
+<tr><td>**Azure Monitor**</td><td>Performance-Metriken, Diagnose-Logs</td></tr>
+</tbody></table>
+
+<h3>GCP-Forensik</h3>
+
+<table class="styled-table">
+<thead><tr><th>Service</th><th>Was es loggt</th></tr></thead><tbody>
+<tr><td>**Cloud Audit Logs**</td><td>Admin-Aktivitäten, Datenzugriff, System-Events</td></tr>
+<tr><td>**VPC Flow Logs**</td><td>Netzwerk-Traffic (wie AWS/Azure)</td></tr>
+<tr><td>**Security Command Center**</td><td>Threat Detection, Compliance-Verstöße</td></tr>
+</tbody></table>
+
+<h3>Cloud-spezifische Herausforderungen</h3>
+
+<ul><li><strong>Kein physischer Zugriff:</strong> RAM-Dump nur möglich, wenn das OS es unterstützt (LiME auf EC2). Kein Write-Blocker für EBS-Volumes — du arbeitest immer mit Snapshots</li>
+<li><strong>Multi-Tenancy:</strong> Logs eines anderen Kunden sind unsichtbar — aber ein "noisy neighbor" kann deine Performance beeinflussen</li>
+<li><strong>Geografische Verteilung:</strong> In welchem Land liegen die Daten? CloudTrail-Logs in us-east-1, S3-Bucket in eu-central-1, Prozessdaten in ap-southeast-1. Drei verschiedene Rechtsordnungen!</li>
+<li><strong>Serverless (Lambda, Azure Functions):</strong> Kein Betriebssystem, das du forensisch analysieren könntest — nur Logs und Code-Versionen</li>
+<li><strong>Datenlöschung:</strong> "Gelöscht" bedeutet in der Cloud wirklich gelöscht (nach NIST SP 800-88). Der Anbieter überschreibt Daten — kein File Carving möglich</li></ul>
+
+<h3>Forensisches Vorgehen in der Cloud</h3>
+
+<ul><li><strong>IAM-User und Rollen prüfen:</strong> Welcher User ist kompromittiert? (CloudTrail/Activity Log)</li>
+<li><strong>API-Calls analysieren:</strong> Timeline aller Aktionen im relevanten Zeitraum</li>
+<li><strong>Ressourcen isolieren:</strong> Snapshots erstellen, in isolierte Umgebung kopieren</li>
+<li><strong>Netzwerk analysieren:</strong> VPC/NSG Flow Logs — laterale Bewegung?</li>
+<li><strong>Datenabfluss prüfen:</strong> S3/Blob/Bucket-Zugriffs-Logs — große Downloads?</li>
+<li><strong>Keine Beweise verändern:</strong> IAM-Policy temporär auf Read-Only setzen, statt Root zu nutzen</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li>AWS: <code>aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=DeleteBucket</code></li>
+<li>Azure: <code>az monitor activity-log list --start-time 2025-03-15T00:00:00Z</code></li>
+<li>GCP: <code>gcloud logging read "timestamp >= \"2025-03-15T00:00:00Z\""</code></li>
+<li>Snapshot: AWS EC2 → "Create Snapshot" → Snapshot in Forensik-Account kopieren → als Volume mounten</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://docs.aws.amazon.com/whitepapers/latest/aws-security-incident-response-guide/welcome.html">AWS CloudForensics whitepaper</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/security/fundamentals/">Azure Forensics Documentation</a></li>
+<li><a href="https://cloud.google.com/architecture/incident-response">GCP: Best Practices for Incident Response</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

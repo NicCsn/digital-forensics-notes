@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenträger-Verschlüsselung — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Datenträger-Verschlüsselung</span>
+</nav>
+<main>
+<article>
+<h1>Datenträger-Verschlüsselung <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Verschlüsselung von Datenträgern schützt Daten bei physischem Zugriff. Für den Forensiker ist sie eine Hürde, aber keine unüberwindbare — Schwachstellen, RAM-Dumps und Implementierungsfehler bieten Angriffspunkte.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>BitLocker (Windows)</h3>
+
+<ul><li>Full-Disk- und Volume-Verschlüsselung, ab Windows Vista (Pro/Enterprise)</li>
+<li>Algorithmus: AES (128/256 Bit) + Diffuser</li>
+<li><strong>Schlüsselverwaltung:</strong> TPM (Transparent), USB-Stick, PIN, Recovery-Key (48-stellig)</li>
+<li>Forensischer Angriff: Recovery-Key in AD gespeichert? RAM-Dump (BitLocker-Schlüssel im RAM während Betrieb!)</li></ul>
+
+<h3>FileVault 2 (macOS)</h3>
+
+<ul><li>Full-Disk-Verschlüsselung mit XTS-AES-128</li>
+<li>Schlüsselableitung aus Benutzerpasswort + Recovery Key</li>
+<li>Forensischer Angriff: RAM-Dump bei laufendem System, Recovery-Key in iCloud? (Apple kann unter Umständen helfen)</li></ul>
+
+<h3>LUKS (Linux)</h3>
+
+<ul><li>Linux Unified Key Setup — Standard unter Linux</li>
+<li>Bis zu 8 Schlüssel-Slots (verschiedene Passphrasen oder Keyfiles)</li>
+<li>Header ist unverschlüsselt → Parameter (Algorithmus, Iterationen) bekannt</li>
+<li>Angriff: <code>cryptsetup luksDump</code>, Brute-Force mit <code>hashcat -m 14600</code></li></ul>
+
+<h3>VeraCrypt / TrueCrypt</h3>
+
+<ul><li>Open-Source, plattformübergreifend</li>
+<li>Container-basiert oder Full-Disk</li>
+<li>Plausible Deniability: Hidden Volumes — ein Passwort öffnet das "Decoy", ein anderes das echte Volume</li>
+<li>Angriff: RAM-Dump (Schlüssel im Speicher), Known-Plaintext, Brute-Force</li></ul>
+
+<h3>Angriffsvektoren in der Praxis</h3>
+
+<table class="styled-table">
+<thead><tr><th>Methode</th><th>Voraussetzung</th><th>Erfolgschance</th></tr></thead><tbody>
+<tr><td>RAM-Dump (Cold Boot)</td><td>System läuft oder frisch aus</td><td>Hoch — Schlüssel im RAM</td></tr>
+<tr><td>Brute-Force</td><td>Schwaches Passwort</td><td>Mittel (hashcat mit GPU)</td></tr>
+<tr><td>Recovery-Key</td><td>AD, Ausdruck, iCloud</td><td>Hoch — wenn auffindbar</td></tr>
+<tr><td>Exploit/Backdoor</td><td>Software-Schwachstelle</td><td>Mittel</td></tr>
+<tr><td>Hardware-Keylogger</td><td>Physischer Zugriff</td><td>Hoch — aber aufwändig</td></tr>
+</tbody></table>
+
+<h3>Forensisch sauberer Umgang</h3>
+
+<ul><li><strong>NIEMALS</strong> ein verschlüsseltes System herunterfahren, ohne vorher RAM zu dumpen</li>
+<li>Bei BitLocker: Recovery-Key in AD abfragen</li>
+<li>Verschlüsselte Images duplizieren, mit Image arbeiten — Original unverändert lassen</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>manage-bde -status</code> — BitLocker-Status (Windows)</li>
+<li><code>sudo fdesetup status</code> — FileVault-Status (macOS)</li>
+<li><code>cryptsetup luksDump /dev/sda2</code> — LUKS-Header analysieren</li>
+<li><code>hashcat -m 14600 luks_header.hash wordlist.txt</code> — LUKS-Brute-Force</li>
+<li><code>dd if=/dev/sda of=image.dd</code> — erst sichern, dann analysieren</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/">BitLocker Technical Overview (Microsoft)</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

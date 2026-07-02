@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darknet: Tor, I2P und Anonymisierung — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / Darknet: Tor, I2P und Anonymisierung</span>
+</nav>
+<main>
+<article>
+<h1>Darknet: Tor, I2P und Anonymisierung <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Das Darknet ist kein eigenes Netzwerk, sondern ein Teil des Internets, der mittels Anonymisierungssoftware (Tor, I2P) zugänglich ist. Cyberkriminelle nutzen Darknet-Marktplätze und Kommunikationskanäle. Als Forensiker musst du verstehen, wie Anonymisierung funktioniert — und wo sie angreifbar ist.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Tor (The Onion Router)</h3>
+
+<ul><li><strong>Funktionsweise:</strong> Onion Routing — mehrfache Verschlüsselung in Schichten, jede Node (Guard → Middle → Exit) entschlüsselt nur eine Schicht</li>
+<li><strong>Exit-Node</strong> sieht den Klartext-Traffic (wenn kein HTTPS/TLS)</li>
+<li><strong>Hidden Services (.onion):</strong> Server sind nur über das Tor-Netzwerk erreichbar, IP bleibt verborgen</li></ul>
+
+<p>#### Wer sieht was?</p>
+<table class="styled-table">
+<thead><tr><th>Akteur</th><th>Sieht</th></tr></thead><tbody>
+<tr><td>Guard-Node</td><td>IP des Nutzers, nächste Node</td></tr>
+<tr><td>Middle-Node</td><td>Vorgänger + Nachfolger, keine Inhalte</td></tr>
+<tr><td>Exit-Node</td><td>Zieldomain/-IP und ggf. Klartext, NICHT die IP des Nutzers</td></tr>
+<tr><td>Ziel-Website</td><td>IP der Exit-Node</td></tr>
+</tbody></table>
+
+<h3>I2P (Invisible Internet Project)</h3>
+
+<ul><li>Garlic Routing (mehrere Nachrichten gebündelt) statt Onion Routing</li>
+<li>Jeder Teilnehmer routet auch für andere (Peer-to-Peer)</li>
+<li>Eigene Dienste mit <code>.i2p</code>-Top-Level-Domain</li>
+<li>Keine Exit-Nodes ins Clearnet (anders als Tor)</li></ul>
+
+<h3>Deanonymisierungsmöglichkeiten</h3>
+
+<table class="styled-table">
+<thead><tr><th>Methode</th><th>Voraussetzung</th><th>Erfolgschance</th></tr></thead><tbody>
+<tr><td>**Traffic-Analyse / Korrelation**</td><td>Timing von Ein- und Ausgangspaketen vergleichen</td><td>Mittel (wenn Angreifer Guard und Exit kontrolliert)</td></tr>
+<tr><td>**Exit-Node-Überwachung**</td><td>Klartext-Traffic (kein HTTPS)</td><td>Hoch bei HTTP</td></tr>
+<tr><td>**Browser-Fingerprinting**</td><td>JavaScript, Canvas, Fonts → Wiedererkennung</td><td>Hoch, wenn aktiviert</td></tr>
+<tr><td>**Operational Security (OPSEC)-Fehler**</td><td>Gleicher Username in Darknet und Clearnet, selbe Bitcoin-Adresse</td><td>Sehr hoch</td></tr>
+<tr><td>**Kompromittierung des Servers**</td><td>Exploit gegen Hidden Service → reale IP</td><td>Hoch bei schlecht gehärteten Servern</td></tr>
+</tbody></table>
+
+<h3>Kriminelle Nutzung</h3>
+
+<ul><li><strong>Marktplätze:</strong> Drogen, Waffen, gestohlene Daten (Silk Road, AlphaBay, Hydra)</li>
+<li><strong>Kommunikation:</strong> Sichere Täter-Kommunikation, Ransomware-Verhandlungen</li>
+<li><strong>C2-Infrastruktur:</strong> Botnet-C2-Server als Hidden Service</li>
+<li><strong>Hosting:</strong> Phishing-Seiten als .onion</li></ul>
+
+<h3>Forensische Ansätze</h3>
+
+<ul><li><strong>Blockchain-Analyse:</strong> Bitcoin-Transaktionen sind öffentlich — Chainalysis, Crystal</li>
+<li><strong>Exit-Node-Logs?</strong> Theoretisch nicht vorhanden, aber: Manche Betreiber loggen wider Erwarten</li>
+<li><strong>Proxies vor Tor:</strong> Ein VPN vor Tor kann den Nutzer enttarnen, wenn der VPN-Anbieter loggt</li>
+<li><strong>Browser-Daten:</strong> Lokal gespeicherte Tor-History, Bookmarks für .onion-Seiten</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>torbrowser-launcher</code> — Tor-Browser starten</li>
+<li><code>torsocks curl http://check.torproject.org</code> — beliebigen Befehl über Tor ausführen</li>
+<li><code>nyx</code> (ehem. arm) — Tor-Status-Monitor</li>
+<li><a href="https://exonerator.torproject.org/">ExoneraTor</a> — War IP X zu Zeit Y eine Tor-Exit-Node?</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://2019.www.torproject.org/docs/documentation.html.en">Tor Project Documentation</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

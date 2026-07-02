@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IP Log Analyzer — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../index.html">Tools</a> / IP Log Analyzer</span>
+</nav>
+<main><article>
+<h1>IP Log Analyzer <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+
+<h2>IP Log Analyzer</h2>
+
+<h3>What It Does</h3>
+
+<p>Extracts and counts IPv4 addresses from log files. Designed for quick forensic triage of web server logs, authentication logs, firewall logs, and other ASCII-based log formats. Helps identify top talkers, brute-force sources, or anomalous IP patterns at a glance.</p>
+
+<h3>Installation</h3>
+
+<pre><code>
+<h2>No external dependencies required (stdlib only)</h2>
+<p>python3 --version  # requires Python 3.9+</p>
+<p>chmod +x main.py</p>
+<pre><code>
+
+<h3>Usage</h3>
+
+<pre><code>
+<h2>Show top 20 IPs in an Apache access log</h2>
+<p>./main.py /var/log/apache2/access.log</p>
+
+<h2>Show top 50 IPs, write to file</h2>
+<p>./main.py access.log -t 50 -o results.txt</p>
+
+<h2>Show unique IPs (appear only once)</h2>
+<p>./main.py auth.log --unique</p>
+
+<h2>Filter results for IPs containing "192.168"</h2>
+<p>./main.py firewall.log -f "192.168"</p>
+
+<h2>Pipe input via stdin</h2>
+<p>cat /var/log/syslog | ./main.py -</p>
+<pre><code>
+
+<h3>Limitations</h3>
+
+<li>IPv4 only (no IPv6 support)</li>
+<li>Regex-based extraction — may produce false positives on non-IP digit patterns (e.g., version strings like `1.2.3.4`)</li>
+<li>In-memory processing — not suitable for multi-GB log files</li>
+<li>No streaming/real-time tail mode</li>
+<li>No geolocation enrichment (can be added via `--geo` flag with MaxMind GeoIP database)</li>
+
+</article></main>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Analyse für OSINT — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">OSINT</a> / Social Media Analyse für OSINT</span>
+</nav>
+<main>
+<article>
+<h1>Social Media Analyse für OSINT <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Soziale Netzwerke sind die ergiebigsten Quellen für OSINT — und die gefährlichsten, wenn du OPSEC-Fehler machst. Jedes Netzwerk hat andere APIs, Einschränkungen und versteckte Datenquellen, die du kennen musst.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Recherche-Ansätze pro Plattform</h3>
+
+<table class="styled-table">
+<thead><tr><th>Plattform</th><th>Was du finden kannst</th><th>Wichtige Tools / Methoden</th></tr></thead><tbody>
+<tr><td>**Twitter/X**</td><td>Tweets, Likes, Follower, Standort-Daten</td><td>nitter.net (anonym), snscrape</td></tr>
+<tr><td>**Facebook**</td><td>Profilinfo, Freundesliste, Gruppen, Fotos</td><td>Facebook Graph Search (eingeschränkt), Sowdust Github</td></tr>
+<tr><td>**Instagram**</td><td>Posts, Stories, Standort-Tags, Markierungen</td><td>imginn.com, instaloader, dumpor</td></tr>
+<tr><td>**LinkedIn**</td><td>Berufserfahrung, Unternehmen, Kontakte</td><td>Google Dorks: `site:linkedin.com/in/ "Target Corp"`</td></tr>
+<tr><td>**TikTok**</td><td>Videos, Hashtags, Musik-Trends</td><td>tiktok.com/@username, tikrank, urlebird</td></tr>
+<tr><td>**Reddit**</td><td>Kommentare, Posts, votierte Beiträge</td><td>redditcommentsearch.com, reveddit</td></tr>
+</tbody></table>
+
+<h3>Hashtag- und Geotag-Analyse</h3>
+
+<ul><li><strong>Hashtags</strong> verknüpfen thematisch: <code>#MalwareAnalysis</code> → andere Analysten finden</li>
+<li><strong>Geotags</strong> zeigen, wo ein Foto aufgenommen wurde (Instagram, Snapchat Map)</li>
+<li><strong>Zeitstempel</strong> + Hashtags + Geotags = Bewegungsprofil</li></ul>
+
+<h3>Netzwerkanalyse (Social Network Analysis)</h3>
+
+<ul><li>Wer folgt wem? Wer kommentiert wessen Posts?</li>
+<li>Maltego: Visualisierung von Beziehungen zwischen Entitäten</li>
+<li>Wenn Person A nur mit Person B interagiert und umgekehrt → enge Verbindung</li>
+<li>Suspicious: Account mit 5000 Followern aber nur 5 Interaktionen → Bots?</li></ul>
+
+<h3>Gelöschte Inhalte wiederfinden</h3>
+
+<ul><li>Tweets: archive.org, Google Cache, politwoops</li>
+<li>Reddit-Posts/Kommentare: reveddit, unddit</li>
+<li>Instagram: archive.org (selten), Screenshots in anderen Quellen</li>
+<li>Allgemein: Je mehr Engagement ein Post hatte, desto wahrscheinlicher wurde er von jemandem archiviert</li></ul>
+
+<h3>Automatisierung und ethische Grenzen</h3>
+
+<ul><li><strong>Rate Limits beachten:</strong> Zu viele Requests = geblockt</li>
+<li><strong>Terms of Service:</strong> Viele Plattformen verbieten Scraping — rechtliche Grauzone</li>
+<li><strong>Zweckbindung:</strong> Recherche für legitime Zwecke (Journalismus, Strafverfolgung, Sicherheitsforschung) — nicht für Stalking/Doxxing</li>
+<li><strong>Datenschutz:</strong> Auch öffentliche Profile enthalten personenbezogene Daten (DSGVO)</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>python3 -m instaloader --login=MYUSER profile ziel_profil</code> — Instagram-Profil archivieren</li>
+<li><code>snscrape twitter-user elonmusk</code> — alle Tweets eines Users</li>
+<li>Google Dork: <code>site:linkedin.com/in/ "Security Analyst" "Berlin"</code> — Profilsuche</li>
+<li><code>holehe johndoe@gmail.com</code> — Wo ist diese E-Mail registriert?</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://whatsmyname.app/">Whatsmyname</a> — Username-Suche</li>
+<li><a href="https://www.osintcombine.com/">OSINT Combine</a> — Social-Media-Tools</li></ul>
+
+</article>
+</main>
+</body>
+</html>

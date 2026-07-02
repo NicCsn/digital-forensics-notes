@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenträger-Forensik: Partitionen und Dateisysteme — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Datenträger-Forensik: Partitionen und Dateisysteme</span>
+</nav>
+<main>
+<article>
+<h1>Datenträger-Forensik: Partitionen und Dateisysteme <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Die Datenträger-Forensik analysiert die Struktur von Festplatten, SSDs und USB-Sticks unterhalb der Dateiebene. Partitionstabellen, Bootsektoren, Cluster Chains, Slack Space — hier findest du Daten, die kein Dateibrowser zeigt.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Partitionstabellen</h3>
+
+<p>#### MBR (Master Boot Record)</p>
+<ul><li>Sektor 0: Bootloader-Code + Partitionstabelle (4 primäre Partitionen)</li>
+<li>Max. Adressierung: 2 TB (mit 512-Byte-Sektoren)</li>
+<li>Gelöschte Partition: Partitionstyp auf <code>00</code> gesetzt → Header rekonstruierbar</li></ul>
+
+<p>#### GPT (GUID Partition Table)</p>
+<ul><li>Teil des UEFI-Standards, moderner Ersatz für MBR</li>
+<li>Schütztabelle am Anfang UND Ende (Redundanz!)</li>
+<li>Max. 128 Partitionen, Adressierung bis 9.4 Zettabytes</li>
+<li>Sehr forensisch freundlich: GPT-Header am Ende als Backup</li></ul>
+
+<h3>Dateisystem-Analyse</h3>
+
+<table class="styled-table">
+<thead><tr><th>Dateisystem</th><th>Wichtige Strukturen</th><th>Forensische Goldgruben</th></tr></thead><tbody>
+<tr><td>**NTFS**</td><td>MFT, $Bitmap, $LogFile, $UsnJrnl</td><td>Gelöschte MFT-Einträge, USN-Journal (Historie)</td></tr>
+<tr><td>**FAT**</td><td>Bootsektor, FAT-Tabelle, Root-Verzeichnis</td><td>Als gelöscht markierte Einträge (`E5` im ersten Byte)</td></tr>
+<tr><td>**ext4**</td><td>Superblock, Inode-Tabelle, Journal</td><td>Inodes gelöschter Dateien, Journal-Wiederholung</td></tr>
+<tr><td>**APFS**</td><td>Container, Volumes, B-Trees, Snapshots</td><td>Snapshots = Zeitmaschine-Effekte</td></tr>
+</tbody></table>
+
+<h3>Slack Space — Daten in der Lücke</h3>
+
+<p><strong>File Slack:</strong></p>
+<ul><li>Ein File belegt ganze Cluster, auch wenn es kleiner ist</li>
+<li>Der Rest des letzten Clusters ist "Slack Space" — enthält Daten der Vorgänger-Datei</li></ul>
+
+<p><strong>RAM Slack:</strong></p>
+<ul><li>Bereich zwischen Dateiende und Sektor-Ende (Linux/Windows schreibt in 512-Byte-Blöcken)</li>
+<li>Die übrigen Bytes werden mit <code>00</code> oder Zufallsdaten aus dem RAM aufgefüllt — letztere können Beweise sein</li></ul>
+
+<h3>Unallocated Space</h3>
+
+<ul><li>Bereich, der keiner aktiven Datei zugeordnet ist</li>
+<li>Enthält gelöschte Dateien, alte Partitionen, temporäre Daten</li>
+<li>Hier arbeitet File Carving</li></ul>
+
+<h3>Sleuth Kit (TSK) — Standardwerkzeuge</h3>
+
+<pre><code>fsstat -o 2048 image.dd # Dateisystem-Info (Offset der Partition)
+fls -r -o 2048 image.dd # Rekursives File Listing (auch gelöschte!)
+icat -o 2048 image.dd 5  # Datei-Inhalt per Inode extrahieren</code></pre>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>mmls</code> → Offset der Hauptpartition finden (z.B. startet bei Sektor 2048)</li>
+<li>Mit Offset arbeiten: <code>fls -o 2048 image.dd</code></li>
+<li>Detaillierte Analyse: <code>fsstat -o 2048 image.dd</code> → Cluster-Größe, Block-Count, Journal-Info</li>
+<li>Alle gelöschten Dateien: <code>fls -d -r -o 2048 image.dd</code></li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Carrier, B.: File System Forensic Analysis</li>
+<li><a href="https://wiki.sleuthkit.org/">Sleuth Kit Wiki</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juristische Fallbearbeitung: Gutachten- und Urteilsstil — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Recht & Kriminalistik</a> / Juristische Fallbearbeitung: Gutachten- und Urteilsstil</span>
+</nav>
+<main>
+<article>
+<h1>Juristische Fallbearbeitung: Gutachten- und Urteilsstil <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurzueberblick">Kurzueberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterfuehrendes">Quellen / Weiterfuehrendes</a></li></ol></details>
+
+<h2 id="kurzueberblick">Kurzueberblick</h2>
+
+<p>Juristische Fallbearbeitung folgt einer standardisierten Methodik — ob in der Klausur, Hausarbeit oder im Gutachten. Der Gutachtenstil ist die Standardmethode zur Fallloesung. Der Urteilsstil ist die gerichtliche Darstellungsform. Beide zu kennen ist fuer Cyber-Forensiker relevant, weil forensische Berichte oft gutachterlichen Charakter haben.</p>
+
+<div class="callout warning"><strong>Disclaimer:</strong> Keine Rechtsberatung. Dies ist eine Einfuehrung in die Methodik, keine Fallsammlung.</div>
+
+<h2 id="details">Details</h2>
+
+<h3>Der Gutachtenstil — die Fallloesungsmethode</h3>
+
+<p>Der Gutachtenstil arbeitet sich vom Unbekannten zum Bekannten vor: Er stellt eine Hypothese auf (Obersatz), prueft sie anhand der Definition, subsumiert den Sachverhalt und zieht ein Ergebnis. JEDER Schritt wird begruendet.</p>
+
+<p><strong>Vierschritt-Aufbau:</strong></p>
+
+<pre><code>2. Definition     &quot;Unter X versteht man...&quot;
+3. Subsumtion     &quot;Im vorliegenden Fall...&quot;
+4. Ergebnis       &quot;Somit liegt X vor / nicht vor.&quot;</code></pre>
+
+<p><strong>Beispiel (Hausfriedensbruch, 123 StGB):</strong></p>
+
+<pre><code>Definition:  &quot;Eindringen setzt ein Betreten gegen oder ohne den Willen
+             des Berechtigten voraus.&quot;
+Subsumtion:  &quot;Im vorliegenden Fall oeffnete A die unverschlossene Tuer
+             und betrat die Wohnung des B. B hatte A nicht zum Betreten
+             aufgefordert und auch keine allgemeine Erlaubnis erteilt.&quot;
+Ergebnis:    &quot;A ist somit in die Wohnung des B eingedrungen.&quot;</code></pre>
+
+<h3>Subsumtion — das Herzstueck</h3>
+
+<p>Subsumtion bedeutet: Sachverhalt unter eine Rechtsnorm fassen. Drei Fragen:</p>
+
+<ul><li><strong>Was sagt die Norm?</strong> — Tatbestandsmerkmale herausarbeiten</li>
+<li><strong>Was ist passiert?</strong> — den konkreten Sachverhalt erfassen</li>
+<li><strong>Passt der Sachverhalt unter die Norm?</strong> — jedes Tatbestandsmerkmal einzeln abgleichen</li></ul>
+
+<p>Ein Fehler in der Subsumtion — z.B. ein uebersehenes Tatbestandsmerkmal — macht die gesamte Fallloesung angreifbar.</p>
+
+<h3>Gutachtenstil vs. Urteilsstil</h3>
+
+<table class="styled-table">
+<thead><tr><th>Aspekt</th><th>Gutachtenstil</th><th>Urteilsstil</th></tr></thead><tbody>
+<tr><td>**Reihenfolge**</td><td>Obersatz -> Definition -> Subsumtion -> Ergebnis</td><td>Ergebnis -> Begruendung</td></tr>
+<tr><td>**Hypothese zuerst?**</td><td>Ja ("Fraglich ist...")</td><td>Nein ("Der A hat sich wegen... strafbar gemacht")</td></tr>
+<tr><td>**Verwendung**</td><td>Klausuren, Hausarbeiten, wissenschaftliche Gutachten, forensische Berichte</td><td>Gerichtsurteile</td></tr>
+<tr><td>**Fuer Forensiker relevant?**</td><td>JA — forensische Berichte sind Gutachten</td><td>Nur zum Lesen von Gerichtsurteilen</td></tr>
+</tbody></table>
+
+<h3>Forensisches Gutachten — Anwendung des Gutachtenstils</h3>
+
+<p>Ein forensischer Bericht folgt derselben Logik:</p>
+
+<pre><code>1. Obersatz     = Fragestellung (&quot;War Nutzer X am 15.03. um 03:17 am System?&quot;)
+2. Definition   = Was waere ein Beweis? (&quot;Ein Login-Event mit Benutzername X, Zeitstempel
+                  03:17 und Logon-Type 2 (interaktiv) ist ein starker Indikator.&quot;)
+3. Subsumtion   = Was zeigen die forensischen Funde?
+                  &quot;Im Security-EventLog findet sich Event-ID 4624 mit TargetUserName=X,
+                  LogonType=2, Zeitstempel 2025-03-15T03:17:22Z.&quot;
+4. Ergebnis     = &quot;Die forensischen Funde sprechen dafuer, dass Nutzer X am
+                  15.03.2025 um 03:17 Uhr interaktiv am System angemeldet war.&quot;</code></pre>
+
+<h3>Der Deliktsaufbau im Strafrecht — passend zum Gutachtenstil</h3>
+
+<pre><code>    A. Objektiver Tatbestand
+       1. Tathandlung (was wurde getan?)
+       2. Taterfolg (was ist passiert?)
+       3. Kausalitaet (hat die Handlung den Erfolg bewirkt?)
+       4. Objektive Zurechnung (war der Erfolg vorhersehbar?)
+    B. Subjektiver Tatbestand
+       1. Vorsatz / Fahrlaessigkeit
+II. Rechtswidrigkeit
+    - Rechtfertigungsgruende? (Notwehr, Einwilligung...)
+III. Schuld
+    - Schuldfaehigkeit? Entschuldigungsgruende?
+
+Ergebnis: Strafbarkeit (+) oder (-)</code></pre>
+
+<h3>Praktische Tipps fuer die Fallbearbeitung</h3>
+
+<ul><li><strong>Sachverhalt genau lesen</strong> — jedes Wort kann ein Tatbestandsmerkmal sein (oder dessen Fehlen)</li>
+<li><strong>Normen im Gesetz nachschlagen</strong> — nicht aus dem Gedaechtnis zitieren</li>
+<li><strong>Meinungsstreit darstellen, dann entscheiden</strong> — "Eine Ansicht... die andere... Vorzugswuerdig ist..."</li>
+<li><strong>Keine Wertungen ohne Begruendung</strong> — "Das ist offensichtlich Diebstahl" zaehlt nicht</li>
+<li><strong>Erst denken, dann schreiben</strong> — die Subsumtion im Kopf durchspielen, bevor der Text entsteht</li></ul>
+
+<h3>Haeufige Fehler</h3>
+
+<ul><li><strong>Definition vergessen</strong> — direkt subsumiert, ohne zu sagen, was das Merkmal ueberhaupt bedeutet</li>
+<li><strong>Ergebnis vorweggenommen</strong> — Gutachtenstil heisst: erst pruefen, dann entscheiden. "A hat sich strafbar gemacht, weil..." ist Urteilsstil</li>
+<li><strong>Pauschalbegruendungen</strong> — "Das ist so, weil das Gesetz es sagt" reicht nicht</li>
+<li><strong>Sachverhalt ergaenzen</strong> — Zusaetzliche Fakten dazu erfinden, die nicht im Sachverhalt stehen</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Jede Fallloesung mit <strong>"Fraglich ist, ob..."</strong> beginnen</li>
+<li>Subsumtion: Norm-Tatbestandsmerkmal benennen -> Sachverhaltsdetail nennen -> Verkneupfen: "Im vorliegenden Fall..."</li>
+<li>Forensische Berichte implizit im Gutachtenstil verfassen: Frage -> Methodik -> Funde -> Bewertung</li>
+<li>Gerichtsurteile (z.B. bei openJur.de) lesen, um den Urteilsstil zu verstehen</li></ul>
+
+<h2 id="quellen-weiterfuehrendes">Quellen / Weiterfuehrendes</h2>
+
+<ul><li>Beulke, W.: Strafrecht Allgemeiner Teil (mit Fallbeispielen)</li>
+<li>Tettinger, P.: Einfuehrung in die juristische Arbeitstechnik</li>
+<li><a href="https://openjur.de/">openJur.de</a> — freie Gerichtsurteile zum Lesen und Analysieren</li></ul>
+
+</article>
+</main>
+</body>
+</html>

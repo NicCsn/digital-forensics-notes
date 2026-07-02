@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anti-Forensik im Betriebssystem — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Anti-Forensik im Betriebssystem</span>
+</nav>
+<main>
+<article>
+<h1>Anti-Forensik im Betriebssystem <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#checkliste-wurde-anti-forensik-eingesetzt-">Checkliste: Wurde Anti-Forensik eingesetzt?</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Anti-Forensik umfasst alle Techniken, mit denen Angreifer ihre Spuren verwischen. Du musst diese Techniken kennen, um zu erkennen, ob und wie jemand versucht hat, eine Analyse zu erschweren — denn das ist selbst ein Beweis.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Timestomping (Zeitstempel-Manipulation)</h3>
+
+<ul><li>Datei-Zeitstempel werden auf falsche Werte gesetzt (z.B. System-Installationsdatum), um Aktivität zu verschleiern</li>
+<li>Windows: <code>SetMACE</code>-Tools manipulieren <code>$STANDARD_INFORMATION</code> in der MFT</li>
+<li><strong>Erkennung:</strong> <code>$FILE_NAME</code>-Attribute in der MFT haben eigene Zeitstempel, die Windows nicht anzeigt — Abweichungen sind verdächtig</li></ul>
+
+<h3>Log-Wiping</h3>
+
+<ul><li>Löschen oder Manipulieren von Event-Logs</li>
+<li>Windows: EventLog-Dateien löschen oder Events einzeln mit <code>wevtutil</code> entfernen</li>
+<li>Linux: <code>history -c</code>, <code>/var/log/auth.log</code> editieren/löschen</li>
+<li><strong>Erkennung:</strong> Lücken in Log-Sequenzen, fehlende Login-Events nach Boots, SRUM-Daten unabhängig von EventLogs</li></ul>
+
+<h3>Alternate Data Streams (ADS)</h3>
+
+<ul><li>NTFS-Feature: Eine Datei kann mehrere Datenströme haben (unsichtbar für Explorer)</li>
+<li>Beispiel: <code>notepad.exe:hidden.txt</code> — Explorer zeigt nur Größe von <code>notepad.exe</code></li>
+<li>Malware versteckt Payloads in ADS</li>
+<li><strong>Erkennung:</strong> <code>dir /R</code> (Windows), <code>lads.exe</code>, <code>streams.exe</code> (Sysinternals)</li></ul>
+
+<h3>Rootkits</h3>
+
+<ul><li><strong>User-Mode:</strong> API-Hooking (IAT/EAT), DLL-Injection — verstecken Dateien/Prozesse durch manipulierte Systemaufrufe</li>
+<li><strong>Kernel-Mode:</strong> SSDT-Hooking, DKOM (Direct Kernel Object Manipulation) — EPROCESS-Blöcke aus der Prozessliste entfernen</li>
+<li><strong>Erkennung:</strong> Abgleich Userspace-Liste vs. Kernel-Datenstrukturen im RAM-Dump</li></ul>
+
+<h3>Verschlüsselung und Steganografie</h3>
+
+<ul><li>Container/Volumes verschlüsseln (VeraCrypt, BitLocker)</li>
+<li>Dateien in Bildern/Audiodateien verstecken (Steganografie)</li>
+<li><strong>Erkennung:</strong> Entropie-Analyse (hohe Entropie = verdächtig), Signatur-Scans</li></ul>
+
+<h3>Datei-Löschung (Sicheres Löschen)</h3>
+
+<ul><li>Tools wie <code>sdelete</code>, <code>shred</code>, <code>Eraser</code> überschreiben Daten mehrfach</li>
+<li><strong>Erkennung:</strong> Cluster mit hoher Entropie in unallocated space = möglicherweise gewiped</li></ul>
+
+<h2 id="checkliste-wurde-anti-forensik-eingesetzt-">Checkliste: Wurde Anti-Forensik eingesetzt?</h2>
+
+<ul><li>[ ] MFT <code>$STANDARD_INFORMATION</code> vs. <code>$FILE_NAME</code> Zeitstempel abgleichen</li>
+<li>[ ] EventLog-Lücken prüfen (z.B. keine Events nach einem bekannten Login)</li>
+<li>[ ] Alternate Data Streams scannen</li>
+<li>[ ] RAM-Dump auf versteckte Prozesse analysieren (Volatility <code>psxview</code>)</li>
+<li>[ ] Unallocated Space auf Reste von Wipe-Tools untersuchen</li>
+<li>[ ] Entropie-Analyse (hohe Entropie in "leeren" Bereichen)</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>volatility -f mem.dump psxview</code> — versteckte Prozesse finden</li>
+<li><code>volatility -f mem.dump mftparser</code> — MFT aus RAM extrahieren</li>
+<li><code>streams.exe -s C:\</code> — ADS rekursiv suchen (Sysinternals)</li>
+<li><code>fls -m / image.dd | mactime -b bodyfile</code> — Timeline mit allen Zeitstempeln</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Casey, E.: Digital Evidence and Computer Crime, Kapitel Anti-Forensics</li></ul>
+
+</article>
+</main>
+</body>
+</html>

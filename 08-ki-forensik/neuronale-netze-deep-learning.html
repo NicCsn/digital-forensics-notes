@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neuronale Netze und Deep Learning — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">KI & Forensik</a> / Neuronale Netze und Deep Learning</span>
+</nav>
+<main>
+<article>
+<h1>Neuronale Netze und Deep Learning <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Neuronale Netze sind das Rückgrat moderner KI. CNNs erkennen Bilder, RNNs/LSTMs verarbeiten Sequenzen, Transformer (die Basis aller LLMs) verarbeiten Text. In der Forensik setzt du sie ein, ohne selbst neue Architekturen designen zu müssen — du nutzt vortrainierte Modelle und passt sie an.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Das künstliche Neuron (Perceptron)</h3>
+
+<pre><code>
+Output = f(w1*x1 + w2*x2 + w3*x3 + bias)</code></pre>
+
+<p>Aktivierungsfunktionen: ReLU (modern), Sigmoid (historisch), Tanh</p>
+
+<h3>Von der Schicht zum Deep Learning</h3>
+
+<ul><li><strong>Input Layer:</strong> Rohdaten (Pixel, Log-Zeilen)</li>
+<li><strong>Hidden Layer(s):</strong> Merkmale extrahieren (Kanten → Formen → Objekte)</li>
+<li><strong>Output Layer:</strong> Klassifikation/Regression</li>
+<li><strong>"Deep":</strong> >3 Hidden Layers</li></ul>
+
+<h3>CNN (Convolutional Neural Network) — Bildforensik</h3>
+
+<ul><li>Spezialisiert auf räumliche Strukturen (Bild, Video)</li>
+<li><strong>Convolutional Layer:</strong> Filter (Kernel) gleitet über das Bild und erkennt lokale Muster</li>
+<li><strong>Pooling Layer:</strong> Reduziert Auflösung (max-pooling: nimm das stärkste Signal)</li>
+<li>Forensische Anwendungen:</li>
+<li><strong>Deepfake-Erkennung:</strong> CNN lernt feine Gesichts-Artefakte</li>
+<li><strong>Bildmanipulation:</strong> Erkennung von Copy-Move oder Splicing</li>
+<li><strong>Objekterkennung</strong> in Beweisbildern (Tatwerkzeuge, Kennzeichen)</li></ul>
+
+<h3>RNN / LSTM — Sequenzforensik</h3>
+
+<ul><li>Spezialisiert auf zeitliche Abfolgen (Logs, Tastatureingaben, Netzwerkpakete)</li>
+<li><strong>LSTM (Long Short-Term Memory):</strong> Merkt sich langfristige Abhängigkeiten</li>
+<li>Forensische Anwendungen:</li>
+<li>Anomalieerkennung in Zeitreihen (Netzwerk-Traffic)</li>
+<li>Benutzerverhaltensanalyse (Tippgeschwindigkeit, Mausbewegung)</li>
+<li>Log-Sequenz-Analyse ("nach Login kam 3 Minuten später ein Download" = normal, "nach Login kam sofort ein Download" = Bot)</li></ul>
+
+<h3>Transformer (seit 2017) — Textforensik</h3>
+
+<ul><li>Grundlage aller modernen LLMs</li>
+<li><strong>Self-Attention:</strong> Jedes Wort "schaut" auf alle anderen Wörter im Satz</li>
+<li>Parallelisierung → viel schneller trainierbar als RNNs</li>
+<li>Forensische Anwendungen:</li>
+<li>Textklassifikation (Phishing vs. legitime E-Mail)</li>
+<li>Named Entity Recognition (IPs, Domains, Personen aus Texten extrahieren)</li>
+<li>Stilometrie (Text-Autorenidentifikation in Erpresserbriefen)</li></ul>
+
+<h3>Transfer Learning — der praxisnahe Ansatz</h3>
+
+<ul><li>Nimm ein vortrainiertes Modell (z.B. ResNet50 für Bilder)</li>
+<li>Entferne die letzten Layer (die spezifischen Output)</li>
+<li>Friere die frühen Layer ein (die generellen Merkmale)</li>
+<li>Trainiere neue Output-Layer auf deinen forensischen Daten</li></ul>
+
+<p>Effekt: Statt Millionen von Bildern brauchst du nur hunderte, um gute Ergebnisse zu erzielen.</p>
+
+<h3>Forensischer Workflow mit Deep Learning</h3>
+
+<ul><li>Problem definieren: Was soll erkannt/klassifziert werden?</li>
+<li>Daten sammeln und labeln (der aufwändigste Schritt!)</li>
+<li>Modell auswählen (CNN, LSTM, Transformer → je nach Datentyp)</li>
+<li>Trainieren (GPU empfohlen, Google Colab mit kostenlosem GPU-Zugang)</li>
+<li>Evaluieren (Precision, Recall, F1-Score im forensischen Kontext)</li>
+<li>Als Beweismittel? <strong>Vorsicht:</strong> ML-Ergebnisse sind statistisch, nicht deterministisch — erklärbar machen!</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>pip install tensorflow torch</code> — Deep-Learning-Frameworks</li>
+<li>Google Colab: Kostenlose GPU für Training</li>
+<li>Vortrainierte Modelle: Hugging Face Model Hub, TensorFlow Hub, PyTorch Hub</li>
+<li>Transfer Learning Tutorial: "Fine-tune ResNet for custom images" (Keras)</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Goodfellow, Bengio, Courville: Deep Learning (Buch, online frei)</li>
+<li><a href="https://huggingface.co/learn/nlp-course/">Hugging Face Course</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

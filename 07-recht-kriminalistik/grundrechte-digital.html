@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grundrechte im digitalen Raum — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Recht & Kriminalistik</a> / Grundrechte im digitalen Raum</span>
+</nav>
+<main>
+<article>
+<h1>Grundrechte im digitalen Raum <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<div class="callout warning"><strong>Disclaimer:</strong> Keine Rechtsberatung. Dies ist eine allgemeine Einführung. Gesetze und Rechtsprechung ändern sich fortlaufend und sind jurisdiktionsabhängig.</div>
+
+<p>Grundrechte schützen Bürger vor staatlichen Eingriffen — auch und gerade im digitalen Raum. Für Forensiker sind sie die Leitplanken: Was du tun darfst und was nicht, hängt maßgeblich von der Abwägung zwischen Grundrechtseingriff und Ermittlungsinteresse ab.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Artikel 10 GG — Brief-, Post- und Fernmeldegeheimnis</h3>
+
+<ul><li>Schützt die private, nicht-öffentliche Kommunikation</li>
+<li><strong>Fernmeldegeheimnis</strong> umfasst: Telefonie, E-Mail, Messenger, Internettelefonie — alles, was über Telekommunikationsnetze läuft</li>
+<li>Die Kommunikation ist geschützt, solange sie "unterwegs" ist — auf dem Endgerät gespeicherte Nachrichten fallen NICHT unter Art. 10, sondern unter das IT-Grundrecht</li>
+<li>Eingriff nur durch Gesetz (z.B. §§ 100a ff. StPO für TKÜ)</li></ul>
+
+<h3>IT-Grundrecht (BVerfG 2008)</h3>
+
+<p>Das Bundesverfassungsgericht schuf 2008 das "Grundrecht auf Gewährleistung der Vertraulichkeit und Integrität informationstechnischer Systeme":</p>
+<ul><li>Schützt das "persönliche IT-System" als Ganzes (Laptop, Smartphone, Tablet)</li>
+<li>Staatliche Online-Durchsuchung ("Bundestrojaner") nur unter strengen Voraussetzungen</li>
+<li>Quellen-TKÜ (Abhören VOR der Verschlüsselung) erfordert besondere Rechtfertigung</li></ul>
+
+<h3>Verhältnismäßigkeitsgrundsatz</h3>
+
+<p>Jeder Grundrechtseingriff muss verhältnismäßig sein:</p>
+
+<ul><li><strong>Legitimer Zweck:</strong> Strafverfolgung, Gefahrenabwehr</li>
+<li><strong>Geeignetheit:</strong> Maßnahme muss den Zweck fördern</li>
+<li><strong>Erforderlichkeit:</strong> Gibt es kein milderes, gleich geeignetes Mittel?</li>
+<li><strong>Angemessenheit (Verhältnismäßigkeit i.e.S.):</strong> Schwere des Eingriffs vs. Bedeutung des verfolgten Zwecks</li></ul>
+
+<p>Forensik-Beispiel: Die pauschale, anlasslose Beschlagnahme aller Smartphones in einer Stadt wäre unverhältnismäßig; die gezielte Durchsuchung eines konkreten Tatverdächtigen nicht.</p>
+
+<h3>Einschlägige Grundrechte für Cyber-Forensiker</h3>
+
+<table class="styled-table">
+<thead><tr><th>Grundrecht</th><th>Artikel (GG)</th><th>Forensischer Bezug</th></tr></thead><tbody>
+<tr><td>Allgemeines Persönlichkeitsrecht</td><td>Art. 2 I + 1 I</td><td>Informationelle Selbstbestimmung</td></tr>
+<tr><td>Wohnungsfreiheit</td><td>Art. 13</td><td>Durchsuchung von Wohnung/Server-Räumen</td></tr>
+<tr><td>Fernmeldegeheimnis</td><td>Art. 10</td><td>Netzwerk-Traffic, E-Mail-Beschlagnahme</td></tr>
+<tr><td>IT-Grundrecht</td><td>Art. 2 I + 1 I (BVerfG)</td><td>Online-Durchsuchung, Quellen-TKÜ</td></tr>
+<tr><td>Meinungsfreiheit</td><td>Art. 5</td><td>Beschlagnahme von Publizisten-Daten</td></tr>
+<tr><td>Eigentum</td><td>Art. 14</td><td>Beschlagnahme und Einziehung von Hardware</td></tr>
+</tbody></table>
+
+<h3>Praxis-Probleme</h3>
+
+<ul><li><strong>Encryption-Dilemma:</strong> Art. 10 + IT-Grundrecht schützen Verschlüsselung — aber Ermittler brauchen Zugriff</li>
+<li><strong>Cloud-Daten:</strong> Auf welchem Hoheitsgebiet liegen die Daten? (US-Cloud, deutscher Nutzer → US-Recht?)</li>
+<li><strong>Staatliche Backdoors:</strong> Immer wieder politisch gefordert, kryptografisch problematisch</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Jeder forensische Eingriff benötigt eine Rechtsgrundlage (StPO, Polizeigesetze, BSI-Gesetz)</li>
+<li>Schwere des Eingriffs dokumentieren → Verhältnismäßigkeit belegbar machen</li>
+<li>Bei Grundrechtsverletzung: Beweisverwertungsverbot möglich</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>BVerfG, Urteil vom 27.02.2008 (Online-Durchsuchung / IT-Grundrecht)</li>
+<li>BVerfG, Urteil vom 20.04.2016 (BKAG-Urteil)</li></ul>
+
+</article>
+</main>
+</body>
+</html>

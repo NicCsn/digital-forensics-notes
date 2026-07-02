@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logfile-Analyse — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Logfile-Analyse</span>
+</nav>
+<main>
+<article>
+<h1>Logfile-Analyse <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Logs sind das Gedächtnis eines Systems — sie protokollieren Ereignisse mit Zeitstempel. In der Forensik sind sie oft der rote Faden, der eine Angriffskette rekonstruiert: von der initialen Infektion über laterale Bewegung bis zur Exfiltration.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Wichtige Log-Quellen</h3>
+
+<table class="styled-table">
+<thead><tr><th>System</th><th>Quelle</th><th>Inhalt</th></tr></thead><tbody>
+<tr><td>**Linux**</td><td>`/var/log/auth.log`</td><td>Login-Versuche, sudo, SSH-Sessions</td></tr>
+<tr><td>**Linux**</td><td>`/var/log/syslog`</td><td>Systemmeldungen, Kernel-Events</td></tr>
+<tr><td>**Linux**</td><td>`/var/log/apache2/access.log`</td><td>HTTP-Requests (Kombiniertes Log-Format)</td></tr>
+<tr><td>**Windows**</td><td>EventLog "Security"</td><td>Logins (4624/4625), Privilegien-Nutzung (4672)</td></tr>
+<tr><td>**Windows**</td><td>EventLog "System"</td><td>Dienst-Starts (7045/7036), System-Fehler</td></tr>
+<tr><td>**Windows**</td><td>EventLog "PowerShell Operational"</td><td>Ausgeführte PowerShell-Befehle (Event 4104)</td></tr>
+<tr><td>**Firewall**</td><td>Logs (varies)</td><td>Blockierte/erlaubte Verbindungen</td></tr>
+<tr><td>**Datenbank**</td><td>z.B. PostgreSQL `pg_log`</td><td>SQL-Statements, Connection-Versuche</td></tr>
+</tbody></table>
+
+<h3>Standard-Log-Formate</h3>
+
+<p><strong>Syslog (RFC 5424):</strong></p>
+<pre><code>&lt;134&gt;1 2025-03-15T03:17:22.000Z myhost sshd 1234 - - Failed password for root from 203.0.113.42 port 54321 ssh2</code></pre>
+<ul><li>PRI (Facility + Severity), Timestamp, Hostname, App-Name, Message</li></ul>
+
+<p><strong>Apache Combined Log Format:</strong></p>
+<pre><code>192.168.1.1 - frank [15/Mar/2025:03:17:22 +0200] &quot;GET /admin HTTP/1.1&quot; 403 1234 &quot;http://example.com&quot; &quot;Mozilla/5.0 ...&quot;</code></pre>
+<ul><li>IP, Ident, User, Timestamp, Request, Statuscode, Größe, Referer, User-Agent</li></ul>
+
+<h3>Zeitnormalisierung — das fundamentale Problem</h3>
+
+<ul><li>Logs aus verschiedenen Quellen haben verschiedene Zeitformate und Zeitzonen</li>
+<li><strong>Ohne Normalisierung ist keine Korrelation möglich</strong></li>
+<li>Lösung: Alle Zeitstempel auf UTC konvertieren, z.B. mit <code>dateutil.parser</code> + <code>pytz</code></li></ul>
+
+<h3>Analyse-Patterns</h3>
+
+<p><strong>Brute-Force-Erkennung:</strong></p>
+<pre><code>cat auth.log | grep &quot;Failed password&quot; | awk &#x27;{print $NF}&#x27; | sort | uniq -c | sort -rn</code></pre>
+<p>→ IPs mit den meisten fehlgeschlagenen Logins</p>
+
+<p><strong>Web-Angriffs-Erkennung:</strong></p>
+<pre><code>grep -E &quot;(UNION|SELECT|&lt;script|\.\./\.\./)&quot; access.log</code></pre>
+<p>→ SQLi, XSS, Path Traversal</p>
+
+<p><strong>Zeitfenster-Analyse:</strong></p>
+<pre><code>grep &quot;2025-03-15 03:&quot; auth.log</code></pre>
+<p>→ Was geschah in der fraglichen Stunde?</p>
+
+<h3>Log-Integrität</h3>
+
+<ul><li>Logs können manipuliert werden → Verschlüsselte/Remote-Logs bevorzugen (Syslog-Server, SIEM)</li>
+<li><strong>Lücken:</strong> Fehlen erwartbare Log-Einträge? (z.B. kein Login nach Boot) → Verdacht auf Log-Wiping</li>
+<li><strong>Korrelation:</strong> FW-Log sagt "Verbindung erlaubt" + kein entsprechender Server-Log → verdächtig</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>journalctl --since "2025-03-15 03:00" --until "2025-03-15 04:00"</code> — Linux-Journal filtern</li>
+<li><code>wevtutil qe Security /c:5 /rd:true /f:text</code> — letzte 5 EventLog-Einträge</li>
+<li><code>Get-WinEvent -LogName Security -MaxEvents 100 | Where-Object {$_.Id -eq 4625}</code> — PowerShell</li>
+<li><code>lnav /var/log/</code> — Terminal-basierter Log-Viewer mit Syntax-Highlighting</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://www.sans.org/security-resources/posters/dfir/20">SANS: Logging and Monitoring Cheat Sheet</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

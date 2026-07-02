@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authentifizierung und Public Key Infrastructure (PKI) — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">IT-Security</a> / Authentifizierung und Public Key Infrastructure (PKI)</span>
+</nav>
+<main>
+<article>
+<h1>Authentifizierung und Public Key Infrastructure (PKI) <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Authentifizierung beantwortet: "Bist du wirklich der, für den du dich ausgibst?" PKI ist die Infrastruktur, die digitale Identitäten durch Zertifikate beweisbar macht. In der Forensik sind Authentifizierungs-Logs zentrale Beweismittel (wessen Account?).</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Authentifizierungs-Faktoren</h3>
+
+<table class="styled-table">
+<thead><tr><th>Faktor</th><th>Typ</th><th>Beispiel</th><th>Schwäche</th></tr></thead><tbody>
+<tr><td>Wissen (Type 1)</td><td>Etwas, was du weißt</td><td>Passwort, PIN</td><td>Kann vergessen/gestohlen werden</td></tr>
+<tr><td>Besitz (Type 2)</td><td>Etwas, was du hast</td><td>RSA-Token, Smartphone (TOTP)</td><td>Kann verloren/gestohlen werden</td></tr>
+<tr><td>Inhärenz (Type 3)</td><td>Etwas, was du bist</td><td>Fingerabdruck, Iris-Scan, Gesicht</td><td>Nicht änderbar, falsch-positiv/-negativ</td></tr>
+<tr><td>Verhalten (Type 4)</td><td>Etwas, was du tust</td><td>Tippverhalten, Gangart</td><td>Noch experimentell</td></tr>
+</tbody></table>
+
+<h3>Multi-Faktor-Authentifizierung (MFA)</h3>
+
+<ul><li>Kombination aus mind. 2 Faktoren (nicht 2× Wissen!)</li>
+<li><strong>TOTP (Time-Based One-Time Password):</strong> Code aus HMAC + Unix-Zeit, wechselt alle 30s (Google Authenticator, Authy)</li>
+<li><strong>FIDO2 / WebAuthn:</strong> Phishing-resistente Authentifizierung mit Hardware-Token (YubiKey)</li></ul>
+
+<h3>Kerberos (Windows-AD-Authentifizierung)</h3>
+
+<ul><li>Client → KDC: "Ich bin <code>frank</code>, gib mir ein TGT"</li>
+<li>KDC prüft Passwort-Hash → gibt TGT (Ticket Granting Ticket, verschlüsselt mit User-Hash)</li>
+<li>Client → KDC: "Ich habe ein TGT, gib mir ein Service-Ticket für <code>fileserver01</code>"</li>
+<li>Client → Service: "Hier mein Service-Ticket"</li></ul>
+
+<p>Forensisch relevante EventLog-IDs:</p>
+<ul><li><strong>4768:</strong> TGT angefordert (Kerberos-Auth-Start)</li>
+<li><strong>4769:</strong> Service-Ticket angefordert</li>
+<li><strong>4771:</strong> Kerberos Pre-Auth fehlgeschlagen → möglicher Brute-Force-Versuch</li>
+<li><strong>4776:</strong> NTLM-Auth (schwächer als Kerberos)</li></ul>
+
+<h3>LDAP / Active Directory</h3>
+
+<ul><li>LDAP ist das Abfrageprotokoll, AD ist Microsofts Implementierung</li>
+<li>Wichtige Forensik-Felder: <code>lastLogon</code>, <code>lastLogonTimestamp</code>, <code>pwdLastSet</code>, <code>userAccountControl</code></li>
+<li><strong>Golden Ticket:</strong> Angreifer kompromittiert KRBTGT-Hash → kann beliebige Kerberos-Tickets ausstellen (ultimative Persistenz!)</li></ul>
+
+<h3>Public Key Infrastructure (PKI)</h3>
+
+<ul><li><strong>CA (Certificate Authority):</strong> Stellt Zertifikate aus, die Identitäten bestätigen</li>
+<li><strong>Zertifikat</strong> = Öffentlicher Schlüssel + Identität + Signatur der CA</li>
+<li><strong>Vertrauenskette:</strong> Root-CA → Intermediate-CA → End-Entity-Zertifikat</li></ul>
+
+<p>Forensisch wichtig:</p>
+<ul><li><strong>Abgelaufene/ungültige Zertifikate:</strong> Man-in-the-Middle-Hinweise</li>
+<li><strong>Selbst-signierte Zertifikate</strong> auf internen Systemen: Normale Admin-Praxis oder C2-Server?</li>
+<li><strong>Zertifikatstransparenz-Logs:</strong> Öffentliche Logs aller ausgestellten HTTPS-Zertifikate (crt.sh)</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>whoami /user</code> — SID des aktuellen Nutzers (Windows)</li>
+<li><code>klist</code> — Kerberos-Tickets anzeigen</li>
+<li><code>openssl x509 -in cert.pem -text -noout</code> — Zertifikats-Details</li>
+<li><code>crt.sh</code> → Suche nach Domain → alle jemals ausgestellten Zertifikate</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Eckert, C.: IT-Sicherheit — Konzepte, Verfahren, Protokolle</li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview">Microsoft: Kerberos Authentication</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

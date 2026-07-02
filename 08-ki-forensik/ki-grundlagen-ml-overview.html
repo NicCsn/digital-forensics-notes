@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Grundlagen für die Forensik (ML Overview) — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">KI & Forensik</a> / KI-Grundlagen für die Forensik (ML Overview)</span>
+</nav>
+<main>
+<article>
+<h1>KI-Grundlagen für die Forensik (ML Overview) <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Künstliche Intelligenz und Machine Learning halten Einzug in die forensische Praxis: automatische Malware-Klassifikation, Anomalieerkennung, Bildforensik. Du brauchst kein KI-Experte zu sein, aber du musst verstehen, was hinter den Ergebnissen steckt.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>KI-Begrifflichkeiten</h3>
+
+<table class="styled-table">
+<thead><tr><th>Begriff</th><th>Beschreibung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td>**KI (KI)**</td><td>Oberbegriff: Maschinen, die menschenähnliche Intelligenz simulieren</td><td>Frühe Expertensysteme</td></tr>
+<tr><td>**Machine Learning (ML)**</td><td>Computer lernen aus Daten, ohne explizit programmiert zu werden</td><td>Spam-Klassifikation</td></tr>
+<tr><td>**Deep Learning**</td><td>ML mit tiefen neuronalen Netzen (>3 Layer)</td><td>Bilderkennung, LLMs</td></tr>
+<tr><td>**Large Language Models (LLM)**</td><td>Sehr große neuronale Netze für Text</td><td>GPT, Claude, Llama</td></tr>
+</tbody></table>
+
+<h3>ML-Paradigmen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Typ</th><th>Beschreibung</th><th>Forensische Anwendung</th></tr></thead><tbody>
+<tr><td>**Supervised Learning**</td><td>Trainiert auf gelabelten Daten (Input → gewünschter Output)</td><td>Malware-Klassifikation ("diese EXE ist bösartig/legitim")</td></tr>
+<tr><td>**Unsupervised Learning**</td><td>Findet Muster ohne Labels</td><td>Clustering von Log-Einträgen, Anomalieerkennung</td></tr>
+<tr><td>**Reinforcement Learning**</td><td>Belohnung für gute Aktionen</td><td>Noch selten in der Forensik</td></tr>
+</tbody></table>
+
+<h3>Train-Test-Split und Overfitting</h3>
+
+<p>Jedes ML-Modell wird aufgeteilt:</p>
+<ul><li><strong>Trainingsdaten</strong> (70-80%): Modell lernt Muster</li>
+<li><strong>Testdaten</strong> (20-30%): Modell zeigt, ob es generalisiert</li></ul>
+
+<p><strong>Overfitting:</strong> Das Modell merkt sich die Trainingsdaten, statt Muster zu lernen → perfekt auf Trainingsdaten, miserabel auf neuen Daten.</p>
+
+<p><strong>Erkennung:</strong> Trainings-Genauigkeit > Test-Genauigkeit (große Diskrepanz = Overfitting)</p>
+
+<h3>Forensisch relevante Metriken</h3>
+
+<table class="styled-table">
+<thead><tr><th>Metrik</th><th>Formel</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td>**Accuracy**</td><td>(TP+TN) / Alle</td><td>Gesamte Korrektheit</td></tr>
+<tr><td>**Precision**</td><td>TP / (TP+FP)</td><td>Wie viele der als "positiv" klassifizierten sind wirklich positiv?</td></tr>
+<tr><td>**Recall**</td><td>TP / (TP+FN)</td><td>Wie viele der tatsächlich positiven Fälle wurden erkannt?</td></tr>
+</tbody></table>
+
+<blockquote>TP = True Positive, TN = True Negative, FP = False Positive, FN = False Negative</blockquote>
+
+<p>Forensisches Beispiel: Malware-Detection mit 99% Accuracy aber 50% Recall → bedeuten, jeder zweite echte Malware-Fall wird übersehen. Katastrophal.</p>
+
+<h3>Python-Stack für ML</h3>
+
+<pre><code>import numpy as np             # Numerische Operationen
+from sklearn.model_selection import train_test_split  # Train/Test Split
+from sklearn.ensemble import RandomForestClassifier   # ML-Algorithmus
+from sklearn.metrics import classification_report    # Metriken</code></pre>
+
+<h3>KI-Risiken in der Forensik</h3>
+
+<ul><li><strong>Bias:</strong> Trainingsdaten sind unausgewogen (z.B. nur Windows-Malware) → Modell versagt bei Linux-Malware</li>
+<li><strong>Black-Box-Problem:</strong> Deep Neural Networks liefern Ergebnisse ohne Begründung → vor Gericht schwer erklärbar</li>
+<li><strong>Adversarial Attacks:</strong> Eingaben werden manipuliert, um das Modell zu täuschen (z.B. ein Byte geändert → Malware wird plötzlich als legitim klassifiziert)</li>
+<li><strong>Data Poisoning:</strong> Angreifer manipulieren Trainingsdaten, um das Modell zu kompromittieren</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>pip install scikit-learn pandas numpy</code> — ML-Stack</li>
+<li>Jupyter Notebook für interaktive Experimente</li>
+<li>Beispiel-Datensätze: <a href="https://www.unb.ca/cic/datasets/ids-2017.html">CIC-IDS2017</a>, <a href="https://www.malware-traffic-analysis.net/">Malware-Traffic-Analysis.net</a>, <a href="https://mofit.secforens.com/">MOTIF</a></li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Géron, A.: Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</li>
+<li><a href="https://scikit-learn.org/">Scikit-Learn Documentation</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

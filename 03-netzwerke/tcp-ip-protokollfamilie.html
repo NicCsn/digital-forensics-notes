@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCP/IP — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / TCP/IP</span>
+</nav>
+<main><article>
+<h1>TCP/IP Protokollfamilie <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li><li><a href="#osi">OSI vs TCP/IP</a></li><li><a href="#handshake">TCP Handshake</a></li></ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Die TCP/IP-Protokollfamilie ist das Fundament des Internets. Als Forensiker musst du jedes Feld in TCP- und IP-Headern lesen koennen — darin stecken Zeitstempel, Routing-Informationen und Angreiferspuren.</p>
+
+<h2 id="osi">OSI-Modell vs. TCP/IP</h2>
+<div class="side-by-side">
+<div><h3>OSI (7 Schichten)</h3><div class="layer-diagram"><div class="ld-layer">7. Application</div><div class="ld-layer">6. Presentation</div><div class="ld-layer">5. Session</div><div class="ld-layer">4. Transport</div><div class="ld-layer">3. Network</div><div class="ld-layer">2. Data Link</div><div class="ld-layer">1. Physical</div></div></div>
+<div><h3>TCP/IP (4 Schichten)</h3><div class="layer-diagram"><div class="ld-layer">Application<br><small>HTTP, DNS, SMTP</small></div><div class="ld-layer">Transport<br><small>TCP, UDP</small></div><div class="ld-layer">Internet<br><small>IPv4, IPv6, ICMP</small></div><div class="ld-layer">Link<br><small>Ethernet, ARP</small></div></div></div>
+</div>
+
+<h2 id="handshake">TCP Three-Way-Handshake</h2>
+<div class="process-chain">
+<div class="pc-step"><strong>Client</strong><p>SYN Seq=X</p></div><div class="pc-arrow">&rarr;</div>
+<div class="pc-step"><strong>Server</strong><p>SYN-ACK Seq=Y, Ack=X+1</p></div><div class="pc-arrow">&larr;</div>
+<div class="pc-step"><strong>Client</strong><p>ACK Seq=X+1, Ack=Y+1</p></div><div class="pc-arrow">&rarr;</div>
+<div class="pc-step"><strong>Verbindung steht</strong><p>Datenuebertragung beginnt</p></div>
+</div>
+<div class="callout tip"><strong>Forensisch:</strong> SYN ohne ACK = Port-Scan oder Firewall-Block. Viele SYN von einer IP = Scan-Versuch.</div>
+</article></main>
+</body>
+</html>

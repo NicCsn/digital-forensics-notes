@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tatortarbeit und Spurenkunde — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Recht & Kriminalistik</a> / Tatortarbeit und Spurenkunde</span>
+</nav>
+<main>
+<article>
+<h1>Tatortarbeit und Spurenkunde <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Der Tatort ist die zentrale Fundstelle von Beweismitteln — physisch und digital. Spurenkunde klassifiziert und bewertet Spuren. Der digitale Tatort erweitert den klassischen Tatortbegriff: Ein Server in Frankfurt kann Tatort eines Angriffs sein, der von einem Laptop in Rio ausging.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Tatortbegriff: physisch vs. digital</h3>
+
+<table class="styled-table">
+<thead><tr><th>Typ</th><th>Beschreibung</th><th>Beispiele</th></tr></thead><tbody>
+<tr><td>**Kriminalistischer Tatort**</td><td>Jeder Ort, an dem der Täter gehandelt hat oder Spuren hinterlassen hat</td><td>Büroraum, Server-Rack, Cloud-Instanz</td></tr>
+<tr><td>**Juristischer Tatort**</td><td>Der Ort, an dem die Tat rechtlich begangen wurde (für Zuständigkeit)</td><td>Wo das Opfer saß? Wo der Server steht? Wo der Erfolg eintrat?</td></tr>
+<tr><td>**Digitaler Tatort**</td><td>IT-System, auf dem digitale Spuren liegen</td><td>Kompromittierter Server, C2-Infrastruktur, E-Mail-Server</td></tr>
+</tbody></table>
+
+<h3>Grundeinteilung der Spuren</h3>
+
+<table class="styled-table">
+<thead><tr><th>Kategorie</th><th>Beschreibung</th><th>Beispiele</th></tr></thead><tbody>
+<tr><td>**Gegenstandsspuren**</td><td>Physische Objekte</td><td>Fingerabdrücke, DNA, Fasern</td></tr>
+<tr><td>**Formspuren**</td><td>Abdrücke, Muster</td><td>Schuhabdrücke, Werkzeugspuren</td></tr>
+<tr><td>**Situationsspuren**</td><td>Zustand am Tatort</td><td>Möbelstellung, offene Fenster</td></tr>
+<tr><td>**Digitale Spuren**</td><td>Daten auf IT-Systemen</td><td>Logs, Timestamps, Dateien, Registry</td></tr>
+</tbody></table>
+
+<h3>Digitale Spuren im Detail</h3>
+
+<table class="styled-table">
+<thead><tr><th>Spur-Typ</th><th>Fundort</th><th>Forensische Aussage</th></tr></thead><tbody>
+<tr><td>MAC-Spuren (Modified, Accessed, Created)</td><td>Dateisystem</td><td>Wann wurde eine Datei erstellt/geändert/geöffnet?</td></tr>
+<tr><td>Log-Spuren</td><td>EventLog, Syslog, App-Logs</td><td>Wer hat sich wann eingeloggt? Was wurde ausgeführt?</td></tr>
+<tr><td>Registry-Spuren</td><td>Windows-Registry</td><td>Welche USB-Geräte waren verbunden? Welche Programme wurden ausgeführt?</td></tr>
+<tr><td>Netzwerk-Spuren</td><td>Firewall, DNS, DHCP, NetFlow</td><td>Wer hat mit wem wann kommuniziert?</td></tr>
+<tr><td>Browser-Spuren</td><td>History, Cookies, Cache</td><td>Welche Websites wurden wann besucht?</td></tr>
+<tr><td>Messenger-Spuren</td><td>WhatsApp-DB, Signal-Protokoll</td><td>Kommunikationsinhalte und -partner</td></tr>
+<tr><td>E-Mail-Spuren</td><td>PST/OST, EML, Mailserver-Logs</td><td>Nachrichteninhalt, Sende-/Empfangszeit</td></tr>
+</tbody></table>
+
+<h3>Spurensicherung am (digitalen) Tatort</h3>
+
+<ul><li><strong>Sichten:</strong> Verschaffe dir einen Überblick — was ist vorhanden? (Bildschirme an? Welche Geräte?)</li>
+<li><strong>Dokumentieren:</strong> Alles fotografieren, bevor du es anfasst! Verkabelung, laufende Programme auf Bildschirmen</li>
+<li><strong>Priorisieren:</strong> Was ist flüchtig? (RAM → Netzwerkverbindungen → laufende Prozesse → Festplatten)</li>
+<li><strong>Sichern:</strong> Order of Volatility beachten (flüchtigste Spuren zuerst)</li>
+<li><strong>Kennzeichnen:</strong> Jedes Asservat eindeutig labeln, Chain of Custody beginnen</li>
+<li><strong>Transportieren:</strong> Antistatische Verpackung, kein Magnetfeld, mechanischer Schutz</li></ul>
+
+<h3>Beweiskraft und Beweiswert</h3>
+
+<ul><li><strong>Beweiskraft:</strong> Ist die Spur formal verwertbar? (ordnungsgemäß gesichert, Chain of Custody intakt?)</li>
+<li><strong>Beweiswert:</strong> Wie überzeugend ist die Spur inhaltlich? (Ein Fingerabdruck am Tatwerkzeug > ein Fingerabdruck an der Eingangstür)</li></ul>
+
+<p><strong>Beispiel:</strong></p>
+<ul><li>Spur: Login-Event um 03:17 Uhr mit Account "frank"</li>
+<li>Beweiskraft: Ja (EventLog wurde forensisch korrekt extrahiert, Hash stimmt)</li>
+<li>Beweiswert: Hoch für "Account frank wurde genutzt", aber allein noch kein Beweis, dass Frank selbst es war (Account könnte gestohlen sein)</li></ul>
+
+<h3>Dokumentation der Tatortarbeit</h3>
+
+<ul><li>Fotos VOR jeder Veränderung</li>
+<li>Skizze mit Positionen aller Geräte</li>
+<li>Sicherungsprotokoll: Was wurde wie gesichert? Hash? Zeitstempel?</li>
+<li>Zeugen: Wer war während der Sicherung anwesend?</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Order of Volatility: RAM > Netzwerkverbindungen > Prozesse > Festplatten > Backups > Logs</li>
+<li>Jede Veränderung dokumentieren: "Ich habe das LAN-Kabel getrennt, um weitere C2-Kommunikation zu verhindern. Begründung: Gefahr der Datenlöschung"</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>ACPO Good Practice Guide for Digital Evidence</li>
+<li>Casey, E.: Digital Evidence and Computer Crime, Kapitel "Crime Scene Investigation"</li></ul>
+
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Write-Blocker: Schreibschutz für Asservate — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Write-Blocker: Schreibschutz für Asservate</span>
+</nav>
+<main>
+<article>
+<h1>Write-Blocker: Schreibschutz für Asservate <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Ein Write-Blocker verhindert jeglichen schreibenden Zugriff auf ein Speichermedium. Er ist DAS entscheidende Werkzeug, um die Integrität des Originalbeweismittels zu wahren — und damit die gerichtliche Verwertbarkeit der Analyse sicherzustellen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Hardware-Write-Blocker</h3>
+
+<ul><li>Physisches Gerät zwischen Asservat und Analyse-Rechner</li>
+<li>Fängt Schreibbefehle ab und blockiert sie, während Lese-Befehle durchgeleitet werden</li>
+<li><strong>Hersteller:</strong> Tableau (Forensic Bridge), WiebeTech, Logicube, CRU</li>
+<li>Für verschiedene Schnittstellen: SATA, IDE, USB, NVMe, SAS</li></ul>
+
+<p><strong>Vorteile:</strong></p>
+<ul><li>Unabhängig vom Betriebssystem</li>
+<li>Praktisch nicht umgehbar (außer durch Firmware-Manipulation)</li>
+<li>Standard vor Gericht akzeptiert</li></ul>
+
+<h3>Software-Write-Blocker</h3>
+
+<ul><li>Betriebssystem- oder Kernel-Ebene</li>
+<li><strong>Linux:</strong> <code>blockdev --setro /dev/sdb</code> (setzt Device auf read-only)</li>
+<li><strong>Windows:</strong> Registry-Key <code>WriteProtect</code> setzen, aber weniger zuverlässig</li>
+<li><strong>Forensik-Distributionen</strong> (Kali, Paladin, CAINE) mounten Devices standardmäßig read-only</li></ul>
+
+<p><strong>Nachteile:</strong> OS könnte trotzdem schreiben (z.B. Mount-Timestamp), abhängig von Korrektheit des Kernels</p>
+
+<h3>Wie ein Write-Blocker funktioniert</h3>
+
+<ul><li>Rechner sendet ATA/SCSI-Befehl (z.B. READ, WRITE)</li>
+<li>Write-Blocker prüft: Ist es ein Schreibbefehl?</li>
+<li>Lese-Befehl → an Gerät weitergeleitet</li>
+<li>Schreibbefehl → blockiert, ggf. wird "Erfolg" vorgetäuscht (damit OS nicht abstürzt)</li></ul>
+
+<h3>Prüfung: Funktioniert der Write-Blocker?</h3>
+
+<pre><code>dd if=/dev/zero of=/dev/sdb bs=512 count=1
+# Erwartung: &quot;Operation not permitted&quot; oder ähnlich</code></pre>
+
+<h3>Forensische Praxis</h3>
+
+<ul><li><strong>Immer zuerst Write-Blocker anschließen</strong></li>
+<li>Funktionsprüfung (Schreibversuch)</li>
+<li>Hash des Originals berechnen (durch Write-Blocker hindurch)</li>
+<li>Imaging (durch Write-Blocker hindurch)</li>
+<li>Hash des Images berechnen und vergleichen</li></ul>
+
+<h3>Sonderfälle</h3>
+
+<ul><li><strong>Live-Systeme</strong> (eingeschaltet vorgefunden): Kein Write-Blocker möglich — RAM-Dump und Live-Forensik nach ACPO-Prinzipien dokumentiert</li>
+<li><strong>NVMe-SSDs:</strong> Brauchen spezielle NVMe-Write-Blocker (nicht kompatibel mit SATA-Blockern)</li>
+<li><strong>Handys / Tablets:</strong> Spezielle Write-Blocker für UFED, XRY, Cellebrite</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Tableau T8u Forensic USB 3.0 Bridge — ca. 400-500 €</li>
+<li>Software: <code>blockdev --setro /dev/sdb</code> + <code>cat /sys/block/sdb/ro</code> → muss <code>1</code> sein</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>NIST SP 800-86</li>
+<li><a href="https://www.nist.gov/itl/ssd/software-quality-group/computer-forensics-tool-testing-program-cftt/hardware-write-block">NIST Write Blocker Testing</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

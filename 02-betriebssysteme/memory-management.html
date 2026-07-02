@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Management — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Memory Management</span>
+</nav>
+<main>
+<article>
+<h1>Memory Management <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Memory Management ist das Herzstück eines Betriebssystems. Es verwaltet die Zuweisung von physischem und virtuellem Speicher an Prozesse. In der Forensik ist RAM ein primäres Ziel: Er enthält flüchtige Beweise, die auf der Festplatte nie landen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Virtueller Speicher</h3>
+
+<ul><li>Jeder Prozess sieht seinen eigenen, zusammenhängenden Adressraum (z.B. 4 GB bei 32-Bit)</li>
+<li>Das OS mappt virtuelle Adressen auf physische Seiten (Pages) über die <strong>Page Table</strong></li>
+<li><strong>Page Fault:</strong> Zugriff auf nicht-eingelagerte Seite → OS lädt von Disk nach</li></ul>
+
+<h3>Paging</h3>
+
+<ul><li>Physischer RAM in <strong>Pages</strong> (typisch 4 KB) unterteilt</li>
+<li>Page Table Entry (PTE): Virtuelle → Physische Adresse + Flags (Present, Dirty, Accessed, R/W)</li>
+<li><strong>Swap/Paging File:</strong> Ausgelagerte Seiten auf Disk — forensisch wertvoll!</li></ul>
+
+<h3>Memory-Management unter Windows vs. Linux</h3>
+
+<table class="styled-table">
+<thead><tr><th>Aspekt</th><th>Windows</th><th>Linux</th></tr></thead><tbody>
+<tr><td>Paging File</td><td>`pagefile.sys` (C:\)</td><td>Swap-Partition oder `/swapfile`</td></tr>
+<tr><td>Hibernation</td><td>`hiberfil.sys` (komprimierter RAM-Dump)</td><td>Swap kann Hibernate-Daten enthalten</td></tr>
+<tr><td>Kernel-Daten</td><td>EPROCESS, VAD-Tree</td><td>task_struct, mm_struct</td></tr>
+<tr><td>Analyse-Tool</td><td>Volatility, Rekall</td><td>Volatility, LiME</td></tr>
+</tbody></table>
+
+<h3>Forensische Relevanz</h3>
+
+<ul><li><strong>RAM-Dump enthält:</strong> Laufende Prozesse, offene Netzwerkverbindungen, Klartext-Passwörter, unverschlüsselte Dateiinhalte, Malware (fileless!)</li>
+<li><strong>Hiberfil.sys:</strong> Windows speichert komprimierten RAM-Inhalt beim Ruhezustand — Goldgrube</li>
+<li><strong>Pagefile.sys:</strong> Ausgelagerte Seiten können alte Daten enthalten, die im RAM längst überschrieben sind</li>
+<li><strong>VAD-Tree (Windows):</strong> Zeigt alle Speicherbereiche eines Prozesses — auch injizierte DLLs</li></ul>
+
+<h3>Anti-Forensik im Memory-Bereich</h3>
+
+<ul><li><strong>Process Hollowing:</strong> Legitimer Prozess wird gestartet, Code wird durch Malware ersetzt — der Name in der Prozessliste ist unauffällig</li>
+<li><strong>DLL Injection:</strong> Malware injiziert eigenen Code in vertrauenswürdige Prozesse</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>volatility -f mem.dump malfind</code> — injizierten Code finden</li>
+<li><code>volatility -f mem.dump dlllist</code> — geladene DLLs pro Prozess</li>
+<li><code>volatility -f mem.dump netscan</code> — Netzwerkverbindungen aus RAM</li>
+<li><code>volatility -f mem.dump dumpfiles</code> — Dateien aus RAM extrahieren</li>
+<li><code>LiME</code> (Linux Memory Extractor): <code>insmod lime.ko path=/tmp/mem.dump format=lime</code></li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Ligh, Case, Levy, Walters: The Art of Memory Forensics</li></ul>
+
+</article>
+</main>
+</body>
+</html>

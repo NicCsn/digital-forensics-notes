@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betriebssystem-Architekturen — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / BS-Architekturen</span>
+</nav>
+<main><article>
+<h1>Betriebssystem-Architekturen <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Jedes Betriebssystem hat eine Architektur, die bestimmt, wie Kernel und Userspace interagieren. Das Verstaendnis ist essenziell, um forensische Artefakte zu finden und Malware-Verstecke zu verstehen.</p>
+
+<h2 id="ringe">Protection Rings (x86)</h2>
+<div class="layer-diagram">
+<div class="ld-layer"><strong>Ring 3 — User-Mode</strong><br><small>Alle Anwendungen, Browser, Malware (vor Escalation). Kein Hardware-Zugriff.</small></div>
+<div class="ld-layer"><strong>Ring 2 — (ungenutzt)</strong></div>
+<div class="ld-layer"><strong>Ring 1 — (ungenutzt)</strong></div>
+<div class="ld-layer"><strong>Ring 0 — Kernel-Mode</strong><br><small>OS-Kernel, Geraetetreiber. Voller Hardware-Zugriff. Syscall = kontrollierter Uebergang.</small></div>
+<div class="ld-layer"><strong>Ring -1 — Hypervisor</strong><br><small>Virtualisierungsschicht unter dem OS. Verwaltet Gast-VMs.</small></div>
+</div>
+
+<div class="callout danger"><strong>Rootkit-Warnung:</strong> Kernel-Rootkits manipulieren die Syscall-Tabelle (SSDT unter Windows, sys_call_table unter Linux), um sich vor Userspace-Tools zu verstecken.</div>
+
+<h2 id="kernel">Kernel-Typen</h2>
+<div class="side-by-side">
+<div><h3>Monolithisch</h3><p>Alles im Kernel-Mode. Schnell, grosser Angriffsvektor.</p><small>Linux, FreeBSD</small></div>
+<div><h3>Mikrokernel</h3><p>Minimal (IPC, Scheduling). Rest im Userspace. Sicherer, langsamer.</p><small>Minix, QNX, L4, seL4</small></div>
+</div>
+<div class="side-by-side">
+<div><h3>Hybrid</h3><p>Performance-Kritisches im Kernel, Dienste im Userspace.</p><small>Windows NT, macOS (XNU)</small></div>
+<div><h3>Container</h3><p>Kein eigener Kernel. Namespace-Isolation. Container-Prozesse = Host-Prozesse.</p><small>Docker, Podman, LXC</small></div>
+</div>
+</article></main>
+</body>
+</html>

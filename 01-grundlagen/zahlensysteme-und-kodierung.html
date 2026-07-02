@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahlensysteme und Kodierung — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Zahlensysteme und Kodierung</span>
+</nav>
+<main>
+<article>
+<h1>Zahlensysteme und Kodierung <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Computer speichern alle Daten als Bit-Folgen. Um Rohdaten forensisch zu interpretieren, muss man die zugrunde liegenden Zahlensysteme verstehen: Binär (Basis 2), Oktal (Basis 8), Dezimal (Basis 10) und Hexadezimal (Basis 16). Kodierungen wie ASCII, UTF-8 und Base64 übersetzen zwischen Bitmustern und menschenlesbaren Zeichen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Binärsystem</h3>
+
+<ul><li>Ein Bit hat zwei Zustände: 0 oder 1</li>
+<li><code>n</code> Bits können 2^n verschiedene Werte darstellen</li>
+<li>8 Bit = 1 Byte, das auf den meisten modernen Architekturen die kleinste adressierbare Einheit ist</li>
+<li>Ein Nibble sind 4 Bit, also eine halbe Byte (entspricht einer Hex-Ziffer)</li></ul>
+
+<h3>Hexadezimal und Oktal</h3>
+
+<ul><li>Hex: Ziffern 0-9 + A-F (Basis 16). Zwei Hex-Ziffern = 1 Byte. Präfix oft <code>0x</code> (z.B. <code>0x4A</code>)</li>
+<li>Oktal: Ziffern 0-7 (Basis 8). Präfix oft <code>0</code> in C/Unix (z.B. <code>0755</code>)</li>
+<li>Warum Hex dominierte: 1 Byte = genau 2 Hex-Ziffern, bei Oktal braucht man 3 Ziffern mit Überhang</li></ul>
+
+<h3>Endianness</h3>
+
+<ul><li><strong>Big-Endian:</strong> Höchstwertiges Byte zuerst (Netzwerk-Byte-Order)</li>
+<li><strong>Little-Endian:</strong> Niedrigstwertiges Byte zuerst (x86-Architektur)</li>
+<li>In der Forensik kritisch: Wenn man Rohdaten falsch interpretiert (falsche Endianness), liest man völlig falsche Werte</li></ul>
+
+<h3>Base64</h3>
+
+<ul><li>Kodierung, die Binärdaten in ASCII-Zeichen (A-Z, a-z, 0-9, +, /) umwandelt</li>
+<li>Wird häufig in E-Mails (MIME) und Web (Data-URIs, JSON) genutzt</li>
+<li>Endet oft mit <code>=</code> oder <code>==</code> als Padding</li>
+<li>Forensisch relevant: Base64-Blobs in Logdateien, Registry-Exports, Malware-Konfigurationen</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>xxd datei.bin | head</code> — Hex-Dump einer Datei</li>
+<li><code>echo -n "SGVsbG8=" | base64 -d</code> — Base64 dekodieren</li>
+<li><code>python3 -c "print(0x2A)"</code> — Hex zu Dezimal</li>
+<li>Hex-Editoren wie <code>HxD</code> (Windows) oder <code>hexedit</code> (Linux) für manuelle Inspektion</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://en.wikipedia.org/wiki/Computer_number_format">Wikipedia: Computer Number Format</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Endianness">Wikipedia: Endianness</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc4648">Base64 RFC 4648</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

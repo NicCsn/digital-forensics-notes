@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPN und Firewalls — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / VPN und Firewalls</span>
+</nav>
+<main>
+<article>
+<h1>VPN und Firewalls <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>VPNs schützen Daten auf dem Transportweg, Firewalls kontrollieren den Zugang. Beide sind zentrale Bausteine der Netzwerksicherheit — und beide sind forensische Datenquellen: VPN-Logs zeigen, wer sich von wo verbunden hat, Firewall-Logs zeigen blockierte Verbindungsversuche.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>VPN-Technologien</h3>
+
+<table class="styled-table">
+<thead><tr><th>Typ</th><th>Protokoll</th><th>Sicherheit</th><th>Typische Nutzung</th></tr></thead><tbody>
+<tr><td>IPSec</td><td>AH/ESP + IKEv2</td><td>Stark (mit aktuellen Ciphern)</td><td>Site-to-Site, Enterprise-Remote</td></tr>
+<tr><td>OpenVPN</td><td>SSL/TLS, eigener Stack</td><td>Stark, flexibel</td><td>Remote-Access, Anonymisierung</td></tr>
+<tr><td>WireGuard</td><td>Noise-Protokoll</td><td>Sehr stark, modern</td><td>Remote-Access, Performance</td></tr>
+<tr><td>PPTP</td><td>MPPE</td><td>**Unsicher!** (MSCHAPv2 geknackt)</td><td>Veraltet, nicht mehr nutzen</td></tr>
+<tr><td>SSTP</td><td>SSL/TLS über HTTPS</td><td>Stark</td><td>Windows-integriert</td></tr>
+</tbody></table>
+
+<h3>VPN-Tunnel-Typen</h3>
+
+<ul><li><strong>Full Tunnel:</strong> Der gesamte Traffic geht durch den VPN — sicher, aber langsamer</li>
+<li><strong>Split Tunnel:</strong> Nur bestimmter Traffic (z.B. Unternehmens-Daten) geht durch VPN — effizienter, aber Risk von Datenlecks</li></ul>
+
+<h3>Firewall-Typen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Typ</th><th>Layer</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td>Stateful Inspection</td><td>3/4</td><td>iptables, Cisco ASA, Windows Firewall</td></tr>
+<tr><td>Next-Gen (NGFW)</td><td>7 (Applikation)</td><td>Palo Alto, FortiGate</td></tr>
+<tr><td>Web Application (WAF)</td><td>7</td><td>ModSecurity, Cloudflare</td></tr>
+<tr><td>Host-Based</td><td>alle</td><td>iptables, Windows Defender Firewall</td></tr>
+</tbody></table>
+
+<h3>iptables/nftables (Linux)</h3>
+
+<pre><code>iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+# Alles andere blocken
+iptables -A INPUT -j DROP
+
+# NAT: 10.0.0.0/8 auf eine öffentliche IP masquerieren
+iptables -t nat -A POSTROUTING -s 10.0.0.0/8 -j MASQUERADE</code></pre>
+
+<h3>NAT (Network Address Translation)</h3>
+
+<ul><li>Private IPs werden auf öffentliche/r IP(s) abgebildet</li>
+<li><strong>SNAT/Masquerading:</strong> Quelle wird umgeschrieben (ausgehend)</li>
+<li><strong>DNAT/Port-Forwarding:</strong> Ziel wird umgeschrieben (eingehend)</li>
+<li>Forensisch: NAT-Tabelle des Routers ist essenziell, um interne Quell-IPs zu identifizieren</li></ul>
+
+<h3>Forensische Auswertung von Firewall-Logs</h3>
+
+<pre><code>2025-03-15 03:17:22 DENY TCP 203.0.113.42:54321 -&gt; 192.168.1.100:3389</code></pre>
+
+<p>Interpretation: Jemand von extern versuchte um 03:17 Uhr auf RDP (Port 3389) zuzugreifen — blockiert. Zeitstempel und Quell-IP sind die ersten Ermittlungsansätze.</p>
+
+<h3>IDS/IPS (Intrusion Detection/Prevention)</h3>
+
+<ul><li><strong>IDS:</strong> Erkennt Angriffe, alarmiert nur (Snort, Suricata, Zeek)</li>
+<li><strong>IPS:</strong> Erkennt UND blockiert (inline-Positionierung nötig)</li>
+<li>Forensisch: IDS-Alerts geben Kontext zu Angriffen in PCAPs (Snort-Rules → welche Exploits?)</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>iptables -L -v -n</code> — alle Regeln anzeigen</li>
+<li><code>wg show</code> — WireGuard-Status</li>
+<li>Snort/Suricata: <code>grep "1:2012345" /var/log/snort/alert</code> — bestimmte Rule-ID</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Eckert, C.: IT-Sicherheit</li></ul>
+
+</article>
+</main>
+</body>
+</html>

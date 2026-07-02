@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embedded Systems und IoT Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Embedded Systems und IoT Forensik</span>
+</nav>
+<main>
+<article>
+<h1>Embedded Systems und IoT Forensik <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Eingebettete Systeme (Embedded) und IoT-Geräte sind überall — Router, Smart-TVs, Armbanduhren, Alexa, Industriesteuerungen. Sie haben keine klassischen Festplatten, sondern Flash-Speicher und proprietäre Protokolle. Die forensische Sicherung und Analyse erfordert spezielle Hardware-Kenntnisse.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Klassifizierung</h3>
+
+<table class="styled-table">
+<thead><tr><th>Typ</th><th>Beschreibung</th><th>Beispiele</th></tr></thead><tbody>
+<tr><td>**Deeply Embedded**</td><td>Kein volles OS, Bare-Metal oder minimaler RTOS</td><td>Mikrocontroller (Arduino, ESP32), Sensoren</td></tr>
+<tr><td>**Open Embedded**</td><td>Linux-basiert (Buildroot, Yocto)</td><td>Router (OpenWRT), Smart-Home-Hub, Raspberry Pi</td></tr>
+</tbody></table>
+
+<h3>Zugriffsschnittstellen für die Forensik</h3>
+
+<table class="styled-table">
+<thead><tr><th>Schnittstelle</th><th>Funktion</th></tr></thead><tbody>
+<tr><td>**JTAG**</td><td>Debugging-Interface, erlaubt Lese-/Schreibzugriff auf Speicher und CPU-Register</td></tr>
+<tr><td>**UART**</td><td>Serielle Konsole — oft mit Root-Zugriff ohne Passwort!</td></tr>
+<tr><td>**SPI/I²C**</td><td>Kommunikationsbusse zwischen Chips — Flash-Speicher direkt auslesen</td></tr>
+<tr><td>**SWD** (Serial Wire Debug)</td><td>ARM-Äquivalent zu JTAG, 2-Draht-Debugging</td></tr>
+</tbody></table>
+
+<h3>Sicherstellung und Datenextraktion</h3>
+
+<ul><li><strong>Identifikation:</strong> Typenschild, FCC-ID → Datenblätter → Pinouts für JTAG/UART finden</li>
+<li><strong>Sicherung über JTAG/SWD:</strong> Flash-Inhalt auslesen (<code>openocd</code>, <code>jlink</code>)</li>
+<li><strong>Chip-Off:</strong> Flash-Chip physisch ablöten und in externem Reader auslesen (letzte Option, zerstörerisch)</li>
+<li><strong>Firmware-Analyse:</strong> <code>binwalk -e firmware.bin</code> → Dateisystem extrahieren</li></ul>
+
+<h3>Forensische Spuren in Embedded-Systemen</h3>
+
+<ul><li><strong>Logdateien:</strong> <code>/var/log/</code>, <code>/tmp/</code>, syslog</li>
+<li><strong>Konfigurationsdateien:</strong> <code>/etc/</code> — Netzwerkeinstellungen, Benutzerkonten</li>
+<li><strong>Flash-Speicher:</strong> Rohe Analyse nach Strings, Dateien, Partitionstabellen</li>
+<li><strong>NVRAM:</strong> Nicht-flüchtige Einstellungen (MAC-Adressen, Seriennummern)</li>
+<li><strong>Kommunikationsprotokolle:</strong> PCAP von MQTT, CoAP, LoRaWAN-Traffic</li></ul>
+
+<h3>IoT-spezifische Herausforderungen</h3>
+
+<ul><li><strong>Ressourcenbeschränkt:</strong> Kein Platz für Logging-Tools — weniger Spuren</li>
+<li><strong>Verschlüsselt:</strong> IoT-Geräte exportieren Daten in die Cloud; lokal oft nur minimale Reste</li>
+<li><strong>OTA-Updates:</strong> Firmware kann sich ändern — vor Analysestand dokumentieren</li>
+<li><strong>Rechtliche Grauzone:</strong> Wem gehören die Daten? (Nutzer, Hersteller, Cloud-Anbieter)</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>binwalk -e firmware.bin</code> — Firmware entpacken</li>
+<li><code>strings firmware.bin | grep -i password</code> — erste Analyse</li>
+<li><code>openocd -f interface/jlink.cfg -f target/stm32f4x.cfg</code> — JTAG-Verbindung herstellen</li>
+<li><code>minicom -D /dev/ttyUSB0</code> — UART-Konsole</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+
+</article>
+</main>
+</body>
+</html>

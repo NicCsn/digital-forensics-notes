@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Trees und Klassifikation in der Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">KI & Forensik</a> / Decision Trees und Klassifikation in der Forensik</span>
+</nav>
+<main>
+<article>
+<h1>Decision Trees und Klassifikation in der Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Decision Trees (Entscheidungsbäume) sind eines der transparentesten ML-Verfahren — und damit besonders gut für die Forensik geeignet, wo Nachvollziehbarkeit entscheidend ist. Du kannst den Entscheidungsbaum ausdrucken und genau zeigen, warum Modell X als "bösartig" klassifiziert wurde.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Wie ein Decision Tree funktioniert</h3>
+
+<ul><li>Der Baum teilt die Daten rekursiv nach dem informativsten Merkmal</li>
+<li>Jeder Knoten stellt eine Frage: "Ist die Dateigröße > 500 KB?"</li>
+<li>An den Blättern steht die Klasse: "Malware" oder "Legitim"</li></ul>
+
+<p><strong>Informationsgewinn (Information Gain):</strong></p>
+<ul><li>ID3-Algorithmus: Wähle das Merkmal, das die Entropie am stärksten reduziert</li>
+<li>Entropie = Maß für Unsicherheit ("Gemisch" aus Malware/Legitim vs. "Rein" nur Malware)</li></ul>
+
+<h3>Beispiel: Decision Tree für Logfile-Klassifikation</h3>
+
+<pre><code>                 /              \
+            &lt; 100                &gt;= 100
+            /                      \
+    [Tageszeit?]             [Status-Codes &gt; 50% 403?]
+     /        \                /                   \
+  Tag      Nacht            Ja                    Nein
+  /          \              /                       \
+Legitim   Verdächtig   [Verschiedene IPs?]     [Große Payload?]
+                         /           \           /           \
+                      &lt; 5         &gt;= 5       Ja           Nein
+                      /              \       /              \
+              Brute-Force        DDoS   Exfiltration    Hohe Last</code></pre>
+
+<h3>Random Forest — Bäume im Ensemble</h3>
+
+<ul><li>Trainiere 100 verschiedene Decision Trees auf zufälligen Teilmengen der Daten und Merkmale</li>
+<li>Klassifikation durch Mehrheitsentscheid ("Forest")</li>
+<li>Viel robuster als ein einzelner Baum, aber weniger interpretierbar</li></ul>
+
+<h3>Forensische Anwendung: Logfile-Klassifikation</h3>
+
+<pre><code>from sklearn.tree import DecisionTreeClassifier, export_text
+
+# Features: requests_per_min, unique_ips, error_ratio, avg_payload_size, is_weekend
+data = pd.read_csv(&quot;log_features.csv&quot;)
+X = data[[&quot;req_per_min&quot;, &quot;unique_ips&quot;, &quot;err_ratio&quot;, &quot;payload&quot;, &quot;weekend&quot;]]
+y = data[&quot;label&quot;]  # &quot;normal&quot; / &quot;attack&quot;
+
+tree = DecisionTreeClassifier(max_depth=4)
+tree.fit(X, y)
+
+# Baum ausgeben — nachvollziehbar!
+print(export_text(tree, feature_names=list(X.columns)))</code></pre>
+
+<h3>Warum Decision Trees für die Forensik?</h3>
+
+<table class="styled-table">
+<thead><tr><th>Vorteil</th><th>Erklärung</th></tr></thead><tbody>
+<tr><td>**Interpretierbar**</td><td>Jede Entscheidung ist eine einfache "wenn-dann"-Regel</td></tr>
+<tr><td>**Keine Normalisierung nötig**</td><td>Features müssen nicht skaliert werden</td></tr>
+<tr><td>**Mixed Data**</td><td>Numerische + kategorische Daten gleichzeitig</td></tr>
+<tr><td>**Feature-Importance**</td><td>Zeigt, welche Merkmale am wichtigsten sind (z.B. "Payload-Größe wichtiger als Anzahl IPs")</td></tr>
+<tr><td>**Vor Gericht erklärbar**</td><td>"Das Modell klassifizierte die Aktivität als Angriff, weil die Error-Ratio > 0.5 UND > 100 Anfragen/Minute UND es Nacht ist"</td></tr>
+</tbody></table>
+
+<h3>Grenzen</h3>
+
+<ul><li>Einzelne Bäume overfitten leicht → Random Forest bevorzugen</li>
+<li>Sehr tiefe Bäume = nicht mehr interpretierbar</li>
+<li>Bei sehr vielen Features können Bäume ineffizient werden → Feature Selection vorab</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>from sklearn.tree import DecisionTreeClassifier, plot_tree</code></li>
+<li><code>tree.feature_importances_</code> — Welche Merkmale waren entscheidend?</li>
+<li><code>export_graphviz(tree, out_file="tree.dot")</code> → Graphviz → Baum visualisieren</li>
+<li>"Baum in forensischen Bericht einfügen" = maximale Transparenz</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Quinlan, J.R.: C4.5: Programs for Machine Learning</li>
+<li><a href="https://scikit-learn.org/stable/modules/tree.html">Scikit-Learn: Decision Trees</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

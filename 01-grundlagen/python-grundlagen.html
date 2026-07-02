@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python-Grundlagen für die Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Python-Grundlagen für die Forensik</span>
+</nav>
+<main>
+<article>
+<h1>Python-Grundlagen für die Forensik <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Python ist die Lingua Franca der digitalen Forensik — einfach zu lernen, riesige Ökosystem an Bibliotheken, lesbarer Code. Mit Python automatisierst du repetitive Aufgaben, analysierst Logs und erstellst maßgeschneiderte Forensik-Tools.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Grundlegende Sprachkonzepte</h3>
+
+<pre><code>ip = &quot;192.168.1.1&quot;          # str
+port = 443                   # int
+flags = [&quot;SYN&quot;, &quot;ACK&quot;]       # list
+meta = {&quot;src&quot;: ip, &quot;dst&quot;: &quot;10.0.0.5&quot;}  # dict
+unique_ips = {&quot;192.168.1.1&quot;, &quot;10.0.0.1&quot;}  # set
+
+# Kontrollstrukturen
+for line in open(&quot;access.log&quot;):
+    if &quot; 403 &quot; in line:
+        print(line.split()[0])  # IP ausgeben
+
+# Funktionen
+def extract_ips(logfile: str) -&gt; list[str]:
+    import re
+    return re.findall(r&quot;\b(?:\d{1,3}\.){3}\d{1,3}\b&quot;, logfile)</code></pre>
+
+<h3>Wichtige Module für die Forensik</h3>
+
+<table class="styled-table">
+<thead><tr><th>Modul</th><th>Verwendung</th></tr></thead><tbody>
+<tr><td>`re`</td><td>Reguläre Ausdrücke für Log-Parsing, Pattern-Matching</td></tr>
+<tr><td>`os` / `pathlib`</td><td>Dateisystem-Operationen, rekursive Verzeichnisse durchsuchen</td></tr>
+<tr><td>`hashlib`</td><td>MD5, SHA1, SHA256 für Integritätsprüfung</td></tr>
+<tr><td>`struct`</td><td>Binärdaten parsen (z.B. MFT-Einträge, PE-Header)</td></tr>
+<tr><td>`sqlite3`</td><td>Browser-Datenbanken, Skype-Logs, Thumbs.db analysieren</td></tr>
+<tr><td>`csv` / `json` / `xml`</td><td>Strukturierte Daten exportieren/importieren</td></tr>
+<tr><td>`collections.Counter`</td><td>Häufigkeitsanalyse (z.B. IP-Zähler)</td></tr>
+<tr><td>`datetime`</td><td>Zeitstempel normalisieren, Zeitzonen-Umrechnung</td></tr>
+</tbody></table>
+
+<h3>Typische Forensik-Patterns</h3>
+
+<ul><li><strong>Log-Parsing:</strong> <code>open()</code> → <code>re.findall()</code> → <code>Counter()</code> → <code>print()</code> oder <code>json.dump()</code></li>
+<li><strong>Hash-Vergleich:</strong> <code>hashlib.sha256(open(f,'rb').read()).hexdigest()</code> → abgleichen mit Known-Good-Liste</li>
+<li><strong>Registry-Auswertung:</strong> <code>python-registry</code> / <code>Registry</code>-Modul für <code>.reg</code> / <code>NTUSER.DAT</code></li>
+<li><strong>CSV-Export:</strong> Ergebnisse als CSV für Excel/Autopsy-Import aufbereiten</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Siehe <a href="/09-tools/ip-log-analyzer/">ip-log-analyzer-Tool</a> als Minimalbeispiel</li>
+<li><code>pip install python-registry volatility3</code> — Forensik-Bibliotheken</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Hunt, J.: A Beginners Guide to Python 3 Programming</li>
+<li>Miller, P. / Bryce, C.: Learning Python for Forensics</li></ul>
+
+</article>
+</main>
+</body>
+</html>

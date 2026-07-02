@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Objektorientierte Programmierung: Klassen und Vererbung — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Objektorientierte Programmierung: Klassen und Vererbung</span>
+</nav>
+<main>
+<article>
+<h1>Objektorientierte Programmierung: Klassen und Vererbung <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>OOP strukturiert Programme als Sammlung von Objekten, die Daten (Attribute) und Verhalten (Methoden) kapseln. In der Forensik begegnet dir OOP in großen Frameworks (Volatility, Autopsy) und wenn du eigene modulare Analyse-Tools baust.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Grundkonzepte</h3>
+
+<p><strong>Klasse</strong> = Bauplan (z.B. "ForensicImage")</p>
+<p><strong>Objekt</strong> = Instanz (z.B. <code>image1 = ForensicImage("/dev/sda")</code>)</p>
+<p><strong>Attribut</strong> = Daten (z.B. <code>image1.hash</code>, <code>image1.size</code>)</p>
+<p><strong>Methode</strong> = Verhalten (z.B. <code>image1.verify()</code>, <code>image1.mount()</code>)</p>
+
+<h3>Die vier Säulen der OOP</h3>
+
+<ul><li><strong>Kapselung (Encapsulation):</strong> Interne Daten vor direktem Zugriff schützen — nur über definierte Methoden</li>
+<li><strong>Abstraktion:</strong> Komplexität verbergen, einfaches Interface anbieten — Nutzer muss nicht wissen, wie ein Write-Blocker intern arbeitet</li>
+<li><strong>Vererbung (Inheritance):</strong> Eine Klasse erbt Eigenschaften einer Elternklasse — z.B. <code>NTFSImage</code> erbt von <code>ForensicImage</code></li>
+<li><strong>Polymorphie:</strong> Gleiche Methode, unterschiedliches Verhalten je nach Objekttyp — <code>image.extract()</code> funktioniert für FAT, NTFS und ext4</li></ul>
+
+<h3>Praxis-Beispiel in Python</h3>
+
+<pre><code>    def __init__(self, path: str):
+        self.path = path
+        self._hash = None
+
+    def compute_hash(self) -&gt; str:
+        import hashlib
+        h = hashlib.sha256()
+        with open(self.path, &#x27;rb&#x27;) as f:
+            for block in iter(lambda: f.read(65536), b&#x27;&#x27;):
+                h.update(block)
+        self._hash = h.hexdigest()
+        return self._hash
+
+    def verify(self) -&gt; bool:
+        &quot;&quot;&quot;Re-hash and compare with stored hash&quot;&quot;&quot;
+        return self.compute_hash() == self._hash
+
+class E01Image(ForensicImage):
+    def __init__(self, path: str, case_number: str):
+        super().__init__(path)
+        self.case_number = case_number
+
+    def get_metadata(self) -&gt; dict:
+        return {&quot;case&quot;: self.case_number, &quot;hash&quot;: self._hash}</code></pre>
+
+<h3>UML für den Entwurf</h3>
+
+<ul><li><strong>Klassendiagramme</strong> zeigen Attribute, Methoden und Beziehungen (Vererbung = Pfeil mit leerer Spitze)</li>
+<li>Vor dem Coden: Welche Klassen? Welche Attribute? Wer erbt von wem?</li>
+<li>Beispiel: <code>ForensicImage</code> ← <code>E01Image</code>, <code>ForensicImage</code> ← <code>RawImage</code></li></ul>
+
+<h3>Wann OOP? Wann nicht?</h3>
+
+<table class="styled-table">
+<thead><tr><th>Aufgabe</th><th>Ansatz</th></tr></thead><tbody>
+<tr><td>Einmaliges Log-Parsing</td><td>Einfaches Skript (kein OOP nötig)</td></tr>
+<tr><td>Modulares Forensik-Tool</td><td>OOP (Wiederverwendbarkeit)</td></tr>
+<tr><td>Framework/Platform</td><td>OOP (zwingend)</td></tr>
+</tbody></table>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Balzert, H.: Lehrbuch der Objektmodellierung</li></ul>
+
+</article>
+</main>
+</body>
+</html>

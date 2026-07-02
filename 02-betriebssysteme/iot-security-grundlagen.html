@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IoT-Security: Angriffe und Schutzmassnahmen — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / IoT-Security: Angriffe und Schutzmassnahmen</span>
+</nav>
+<main>
+<article>
+<h1>IoT-Security: Angriffe und Schutzmassnahmen <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurzueberblick">Kurzueberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterfuehrendes">Quellen / Weiterfuehrendes</a></li></ol></details>
+
+<h2 id="kurzueberblick">Kurzueberblick</h2>
+
+<p>IoT-Geraete sind notorisch unsicher — nicht aus technischer Notwendigkeit, sondern aus Marktdruck (billig, schnell, "Security kommt spaeter"). Diese Notiz behandelt die Angreifer-Perspektive, nicht die forensische Analyse (dafuer siehe <code>embedded-systems-iot-forensik.md</code>).</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Die Top 5 IoT-Schwachstellen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Schwachstelle</th><th>Beschreibung</th><th>Echter Vorfall</th></tr></thead><tbody>
+<tr><td>**Default Credentials**</td><td>Geraet kommt mit `admin/admin` oder `root/12345` — viele werden nie geaendert</td><td>Mirai-Botnet (2016): Scannte nach Default-Credentials, infizierte >600.000 Geraete</td></tr>
+<tr><td>**Unverschluesselte Protokolle**</td><td>MQTT/CoAP/HTTP ohne TLS — Passwoerter und Sensordaten im Klartext</td><td>Smarte Steckdosen senden WLAN-Passwort im Klartext bei Pairing</td></tr>
+<tr><td>**Unsignierte Firmware-Updates**</td><td>Update-Server liefert neues Image ohne Signaturpruefung — Angreifer kann manipuliertes Image einspielen</td><td>Viele IP-Kameras akzeptieren modifizierte Firmware ohne Pruefung</td></tr>
+<tr><td>**Exponierte Debug-Schnittstellen**</td><td>UART/JTAG-Pins auf der Platine, nicht deaktiviert — voller Shell-Zugriff</td><td>Router mit Root-Shell ueber UART ohne Passwort</td></tr>
+<tr><td>**Fehlende Segmentierung**</td><td>IoT-Geraet haengt im selben VLAN wie der Firmen-Laptop — laterale Bewegung nach IoT-Kompromittierung</td><td>Casino-Hack ueber smartes Aquarium-Thermometer</td></tr>
+</tbody></table>
+
+<h3>Protokoll-Sicherheit im Detail</h3>
+
+<p>#### MQTT (Message Queue Telemetry Transport)</p>
+
+<ul><li>Leichtgewichtiges Publisher/Subscriber-Protokoll fuer IoT</li>
+<li><strong>Problem 1: Kein TLS?</strong> — Broker-Port 1883 (unverschluesselt) statt 8883 (TLS). Client-ID und Topic-Namen im Klartext</li>
+<li><strong>Problem 2: Keine Authentifizierung?</strong> — Beliebiger Client kann sich verbinden und Topics subscriben/publishen. Angreifer subscribed <code>#</code> (alle Topics) und liest saemtliche Sensordaten mit</li>
+<li><strong>Problem 3: Keine Autorisierung?</strong> — Client A (Temperatursensor) sollte nur in <code>sensors/temp</code> publishen duerfen, nicht in <code>actuators/lock</code></li></ul>
+
+<p>#### CoAP (Constrained Application Protocol)</p>
+
+<ul><li>UDP-basiertes REST-Protokoll fuer extrem ressourcenbeschraenkte Geraete</li>
+<li><strong>Problem:</strong> CoAP hat ein eigenes Sicherheitsmodell (DTLS), das oft weggelassen wird</li>
+<li>**GET / actuell — ohne Authentifizierung kann jeder Geraetezustand gelesen werden</li>
+<li>**POST / — ohne Authentifizierung kann jeder Befehle an Aktoren senden</li></ul>
+
+<h3>Secure Boot auf ARM Cortex-M</h3>
+
+<p>ARM Cortex-M (Mikrocontroller, z.B. STM32, nRF52) hat keinen MMU-basierten Speicherschutz. Secure Boot ist die einzige Verteidigung gegen Firmware-Manipulation:</p>
+
+<ul><li><strong>ROM-Bootloader</strong> (unveraenderlich, in Silizium gebrannt) verifiziert Signatur des ersten Boot-Stages</li>
+<li><strong>Chain of Trust</strong> — jede Stufe verifiziert die naechste</li>
+<li><strong>Public Key</strong> des Herstellers ist im ROM gespeichert — Angreifer kann kein modifiziertes Image signieren</li></ul>
+
+<p>Ohne Secure Boot: Angreifer mit physischem Zugang kann JTAG/SWD nutzen, modifizierte Firmware flashen und das gesamte Geraet uebernehmen.</p>
+
+<h3>Firmware-Extraktion als Angriffsvektor</h3>
+
+<p>Angreifer koennen Firmware aus Geraeten extrahieren und analysieren:</p>
+<ul><li><strong>JTAG/SWD:</strong> Flash auslesen im laufenden Betrieb</li>
+<li><strong>Update-Server:</strong> Firmware-Image direkt vom Update-Server herunterladen (oft oeffentlich, ohne Authentifizierung)</li>
+<li><strong>OTA-Sniffing:</strong> Over-the-Air-Update im WLAN mitschneiden (wenn unverschluesselt)</li></ul>
+
+<p>Aus extrahierter Firmware extrahierbar:</p>
+<ul><li><strong>Hard-coded Secrets:</strong> Passwoerter, API-Keys, Zertifikate (ja, das passiert staendig)</li>
+<li><strong>Private Keys:</strong> Fuer Firmware-Signierung? In der Firmware = kompromittiert</li>
+<li><strong>Backdoor-Accounts:</strong> Vom Hersteller fuer "Support" eingebaut, nie dokumentiert</li></ul>
+
+<h3>Angriffsbeispiel: Updater-Hijacking</h3>
+
+<pre><code>2. Geraet fragt alle 24h: GET http://updates.hersteller.de/firmware/latest.bin
+3. Kein HTTPS, keine Signaturpruefung
+4. Angreifer DNS-spooft &quot;updates.hersteller.de&quot; -&gt; eigener Server
+5. Geraet laedt modifizierte Firmware -&gt; Malware auf dem IoT-Geraet</code></pre>
+
+<h3>Gegenmassnahmen (Basis-Checkliste)</h3>
+
+<ul><li>[ ] Default-Passwoerter bei Erstinstallation zwingend aendern</li>
+<li>[ ] MQTT/CoAP NUR mit TLS (MQTT Port 8883, CoAP + DTLS)</li>
+<li>[ ] Firmware-Signierung mit asymmetrischer Kryptografie (Hersteller signiert, Geraet verifiziert)</li>
+<li>[ ] JTAG/SWD in Produktionsmodell deaktivieren (Fuses setzen)</li>
+<li>[ ] IoT-Geraete in eigenes, isoliertes VLAN (keine laterale Bewegung)</li>
+<li>[ ] Regelmaessige Firmware-Updates mit signiertem Rollback-Schutz</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li>Firmware extrahieren: <code>binwalk -Me firmware.bin</code></li>
+<li>Strings-Suche: <code>strings firmware.bin | grep -iE "(password|secret|key|token)"</code></li>
+<li>MQTT-Scan: <code>nmap -p 1883,8883 --script mqtt-subscribe <target></code></li>
+<li>CoAP-Discovery: <code>python3 -m coapthon.discover <target></code></li></ul>
+
+<h2 id="quellen-weiterfuehrendes">Quellen / Weiterfuehrendes</h2>
+
+<ul><li>OWASP IoT Top 10</li>
+<li><a href="https://www.cisa.gov/sites/default/files/publications/Mirai-Botnet-Threat-Profile-508.pdf">Mirai Botnet Analysis</a></li>
+<li><a href="https://developer.arm.com/documentation/100690/latest/">ARM TrustZone for Cortex-M</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

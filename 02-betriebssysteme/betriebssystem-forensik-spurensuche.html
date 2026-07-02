@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betriebssystem-Forensik: Spurensuche und Artefakte — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Betriebssystem-Forensik: Spurensuche und Artefakte</span>
+</nav>
+<main>
+<article>
+<h1>Betriebssystem-Forensik: Spurensuche und Artefakte <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Betriebssysteme protokollieren mehr, als vielen Nutzern bewusst ist. Als Forensiker musst du die wichtigsten Artefakt-Fundorte in Windows, Linux und macOS kennen — und wissen, welche Tools sie auslesen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Windows-Artefakte</h3>
+
+<table class="styled-table">
+<thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
+<tr><td>**Prefetch**</td><td>`C:\Windows\Prefetch\*.pf`</td><td>Welche .exe wann (bis 8x) ausgeführt wurde</td></tr>
+<tr><td>**Jump Lists**</td><td>`%AppData%\Microsoft\Windows\Recent\AutomaticDestinations\`</td><td>Zuletzt geöffnete Dateien pro Anwendung</td></tr>
+<tr><td>**LNK-Files**</td><td>`%AppData%\Microsoft\Windows\Recent\`, `%AppData%\Microsoft\Office\Recent\`</td><td>Verknüpfungen: Zielpfad, MAC-Zeiten des Ziels</td></tr>
+<tr><td>**Recycle Bin**</td><td>`C:\$Recycle.Bin\<SID>\`</td><td>Gelöschte Dateien mit Originalpfad und Löschdatum</td></tr>
+<tr><td>**Thumbcache**</td><td>`%AppData%\Local\Microsoft\Windows\Explorer\`</td><td>Thumbnails auch nach Löschung des Originals</td></tr>
+<tr><td>**SRUDB.dat**</td><td>`C:\Windows\System32\sru\`</td><td>System Resource Usage — Datenverbrauch pro App</td></tr>
+<tr><td>**Event Logs**</td><td>`C:\Windows\System32\winevt\Logs\`</td><td>Security, System, Application, PowerShell</td></tr>
+<tr><td>**Browser Cache**</td><td>`%AppData%\Local\*\Cache\`</td><td>Chrome, Firefox, Edge — History, Cookies, Downloads</td></tr>
+</tbody></table>
+
+<h3>Linux-Artefakte</h3>
+
+<table class="styled-table">
+<thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
+<tr><td>**Shell History**</td><td>`~/.bash_history`, `~/.zsh_history`</td><td>Alle eingegebenen Befehle</td></tr>
+<tr><td>**Auth Log**</td><td>`/var/log/auth.log`</td><td>Logins (erfolgreich/fehlgeschlagen), sudo-Nutzung</td></tr>
+<tr><td>**Cron Jobs**</td><td>`/var/spool/cron/crontabs/`, `/etc/crontab`</td><td>Automatisierte Aufgaben</td></tr>
+<tr><td>**SSH Known Hosts**</td><td>`~/.ssh/known_hosts`, `~/.ssh/authorized_keys`</td><td>Welche Server wurden kontaktiert?</td></tr>
+<tr><td>**APT Log**</td><td>`/var/log/apt/history.log`</td><td>Installierte/entfernte Pakete mit Zeitstempel</td></tr>
+<tr><td>**Systemd Journal**</td><td>`journalctl`</td><td>Nahezu alles: Boots, Dienste, Kernel-Events</td></tr>
+<tr><td>**Trash**</td><td>`~/.local/share/Trash/`</td><td>Gelöschte Dateien mit Wiederherstellungspfad</td></tr>
+</tbody></table>
+
+<h3>macOS-Artefakte</h3>
+
+<table class="styled-table">
+<thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
+<tr><td>**Unified Logs**</td><td>`log show`</td><td>Systemweites Logging</td></tr>
+<tr><td>**KnowledgeC.db**</td><td>`~/Library/Application Support/Knowledge/`</td><td>App-Nutzung, Web-Verlauf, angeschlossene Geräte</td></tr>
+<tr><td>**Quarantäne-DB**</td><td>`~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2`</td><td>Aus dem Internet heruntergeladene Dateien</td></tr>
+<tr><td>**plist-Dateien**</td><td>`~/Library/Preferences/`</td><td>App-Einstellungen, Fensterpositionen, letzte Datei</td></tr>
+<tr><td>**FSEvents**</td><td>`.fseventsd/` auf jedem Volume</td><td>Dateisystem-Änderungen protokolliert</td></tr>
+</tbody></table>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>Prefetch</code> mit <code>PECmd.exe</code> (Eric Zimmerman Tools)</li>
+<li><code>LNK</code> mit <code>LECmd.exe</code> parsen</li>
+<li><code>journalctl --since "2025-01-01" --until "2025-01-02"</code> — Linux-Journal filtern</li>
+<li><code>log show --predicate 'eventMessage contains "error"' --last 2d</code> — macOS Unified Logs</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Nikkel, B.: Practical Linux Forensics</li>
+<li><a href="https://www.sans.org/posters/">SANS DFIR Poster</a> — Artefakt-Übersicht</li></ul>
+
+</article>
+</main>
+</body>
+</html>

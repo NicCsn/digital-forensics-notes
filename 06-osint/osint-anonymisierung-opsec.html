@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSINT: Anonymisierung und OPSEC — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">OSINT</a> / OSINT: Anonymisierung und OPSEC</span>
+</nav>
+<main>
+<article>
+<h1>OSINT: Anonymisierung und OPSEC <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Bei OSINT-Recherchen willst du nicht selbst zum Ziel werden. Deine eigene Betriebssicherheit (OPSEC) muss gewährleistet sein: Du hinterlässt Spuren (Logs, Cookies, IP-Adressen) auf den Systemen, die du recherchierst — und auf den Plattformen, die du durchsuchst.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Deine Angriffsfläche</h3>
+
+<p>Bei jeder OSINT-Aktivität exponierst du:</p>
+
+<table class="styled-table">
+<thead><tr><th>Was</th><th>Wer kann es sehen?</th><th>Risiko</th></tr></thead><tbody>
+<tr><td>Deine echte IP</td><td>Ziel-Website, Suchmaschine, ISP</td><td>Identifizierung, Geo-Lokalisierung</td></tr>
+<tr><td>Browser-Fingerprint</td><td>Jede besuchte Website</td><td>Wiedererkennung über Sitzungen hinweg</td></tr>
+<tr><td>Cookies / Local Storage</td><td>Jede Website</td><td>Verknüpfung Recherche-Identität und private Identität</td></tr>
+<tr><td>Login-Status</td><td>Suchmaschinen, Social Media</td><td>Personalisierte Ergebnisse verfälschen Recherche</td></tr>
+<tr><td>User-Agent</td><td>Alle Websites</td><td>Betriebssystem, Browser-Version</td></tr>
+<tr><td>Tippverhalten, Mausbewegung</td><td>Websites mit Tracking-Skripten</td><td>Biometrischer Fingerabdruck</td></tr>
+</tbody></table>
+
+<h3>Sock Puppet — die separate Recherche-Persönlichkeit</h3>
+
+<p>Ein Sock Puppet ist eine fiktive Online-Identität, die ausschließlich für Recherchen genutzt wird:</p>
+<ul><li><strong>Eigene E-Mail-Adresse</strong> (ProtonMail, Tutanota — ohne Telefonnummer-Verifikation erstellbar)</li>
+<li><strong>Eigene Social-Media-Accounts</strong> mit künstlichem Profilbild (thispersondoesnotexist.com), konsistenter Biografie</li>
+<li><strong>Altersgerechte Historie:</strong> Der Account sollte nicht "heute erstellt" aussehen → über Wochen/Monate vorbereiten</li>
+<li><strong>Nie</strong> mit privatem Account auf dasselbe Ziel zugreifen, nie private Accounts liken/kommentieren</li></ul>
+
+<h3>VPN — der erste (nicht einzige) Schutz</h3>
+
+<ul><li>VPN versteckt die IP, aber nicht den Browser-Fingerabdruck</li>
+<li>Standort des VPN-Servers sollte zum Sock Puppet passen (z.B. deutsches Profil = deutscher VPN-Server)</li>
+<li>Kombinierte Ketten (VPN → Tor) sind möglich, aber langsamer</li></ul>
+
+<h3>Sichere Recherche-Umgebung</h3>
+
+<p><strong>VM-basierte Lösung (empfohlen):</strong></p>
+<ul><li>VirtualBox oder VMware mit Linux (z.B. Ubuntu minimal)</li>
+<li>Komplett isoliert vom Host (keine Shared Folder, kein Shared Clipboard)</li>
+<li>VPN schon auf Host-Ebene ODER in der VM</li>
+<li>Firefox mit <code>resistFingerprinting = true</code> in <code>about:config</code></li>
+<li>uBlock Origin + NoScript installieren</li>
+<li>Immer im Private-Browsing-Modus</li>
+<li>Nach der Session: VM auf clean Snapshot zurücksetzen</li></ul>
+
+<p><strong>Oder: Tails OS</strong></p>
+<ul><li>Amnesic: kein Speichern zwischen Sessions</li>
+<li>Leitet ALLEN Traffic über Tor</li>
+<li>Aber: Target-Websites blockieren oft Tor-Exit-Nodes</li></ul>
+
+<h3>Was du NICHT tun solltest</h3>
+
+<ul><li><strong>Niemals</strong> firmeneigenen Rechner für Recherchen nutzen (hinterlässt Firmen-IP, die zurückverfolgbar ist)</li>
+<li><strong>Niemals</strong> mit privatem LinkedIn/Facebook/X-Profil auf Zielprofile zugreifen ("Wer hat mein Profil besucht?")</li>
+<li><strong>Niemals</strong> OSINT-Arbeit am ungesicherten Café-WLAN ohne VPN</li>
+<li><strong>Niemals</strong> Dateien aus unsicheren Quellen direkt öffnen (Sandbox / VM verwenden)</li></ul>
+
+<h3>Praktische Checkliste vor der Recherche</h3>
+
+<ul><li>[ ] VPN läuft und zeigt korrekten Standort? → <code>ipinfo.io</code> prüfen</li>
+<li>[ ] Browser-Leak-Test: WebRTC-Leak? DNS-Leak? → <code>ipleak.net</code> oder <code>browserleaks.com</code></li>
+<li>[ ] Sock-Puppet-Account ist vorbereitet?</li>
+<li>[ ] Screenshot-Tool bereit (für Beweisdokumentation)?</li>
+<li>[ ] Notiz-App geöffnet (alles dokumentieren: Suchbegriffe, URLs, Funde, Zeitstempel)?</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>curl ipinfo.io</code> — eigene öffentliche IP prüfen</li>
+<li><code>whoer.net</code> — umfassender Leak-Test</li>
+<li>VirtualBox + Ubuntu + VPN → Stundenaufwand für Einrichtung, aber unverzichtbar</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Fedasiuk, R. (CSET): Into the Jungle — Best Practices for Open-Source Researchers</li>
+<li><a href="https://www.bellingcat.com/resources/2022/04/06/into-the-jungle-best-practices-for-open-source-researchers/">Bellingcat OPSEC Guide</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forensisches Imaging: Datenträger sicher kopieren — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Forensisches Imaging: Datenträger sicher kopieren</span>
+</nav>
+<main>
+<article>
+<h1>Forensisches Imaging: Datenträger sicher kopieren <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Forensisches Imaging ist der erste Schritt jeder Untersuchung: eine bit-genaue Kopie des Original-Datenträgers. Jeder Fehler hier kann die gesamte Untersuchung gefährden. Das Image ist der Standard: alles andere sind Abweichungen, die begründet werden müssen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Image-Formate</h3>
+
+<table class="styled-table">
+<thead><tr><th>Format</th><th>Beschreibung</th><th>Vorteil</th></tr></thead><tbody>
+<tr><td>**DD / Raw**</td><td>Bit-für-Bit-Kopie ohne Metadaten</td><td>Einfach, universell lesbar</td></tr>
+<tr><td>**E01 (EWF)**</td><td>EnCase-Format, komprimiert + Metadaten (Fallnummer, Prüfer, Hash)</td><td>Integrität eingebaut, platzsparend</td></tr>
+<tr><td>**AFF (Advanced Forensic Format)**</td><td>Open-Source (Brian Carrier), Metadaten, Kompression</td><td>Flexibel, erweiterbar</td></tr>
+<tr><td>**VMDK / VHD**</td><td>Virtuelle Maschinen-Images</td><td>Direkt bootbar für dynamische Analyse</td></tr>
+</tbody></table>
+
+<h3>Der Imaging-Prozess</h3>
+
+<ul><li><strong>Write-Blocker</strong> anschließen (Hardware oder Software) — nie ohne!</li>
+<li><strong>Identifikation:</strong> <code>fdisk -l</code>, <code>lsblk</code> → Welches Device ist das Asservat? Nicht das eigene System überschreiben!</li>
+<li><strong>Hash des Originals:</strong> <code>sha256sum /dev/sdb</code> (Linux), <code>Get-FileHash</code> (Windows)</li>
+<li><strong>Imaging:</strong> <code>dd</code>, <code>dcfldd</code>, <code>guymager</code>, FTK Imager</li>
+<li><strong>Hash des Images:</strong> Muss mit Original-Hash identisch sein</li></ul>
+
+<h3>dd vs. dcfldd</h3>
+
+<pre><code>dd if=/dev/sdb of=/mnt/forensics/case001/image.dd bs=4M status=progress
+
+# dcfldd: Forensik-Variante — Hashing während des Kopierens
+dcfldd if=/dev/sdb hash=sha256 hashlog=hash.log of=image.dd</code></pre>
+
+<h3>Fehlerbehandlung</h3>
+
+<ul><li><strong>Lesefehler (Bad Sectors):</strong> <code>dd conv=noerror,sync</code> — Fehler überspringen, Lücken mit Nullen füllen</li>
+<li>Dokumentation: Jeder Lesefehler muss im Bericht vermerkt werden</li></ul>
+
+<h3>Checksummen / Hashing</h3>
+
+<ul><li>Algorithmus: SHA-256 (aktueller Standard), nicht MD5 (Kollisionen)</li>
+<li>Original vorher hashen → kopieren → Image hashen → Hashvergleich</li>
+<li>Bei E01: Hash im Format integriert, <code>ewfinfo</code> zeigt ihn an</li></ul>
+
+<h3>Wichtige Prinzipien</h3>
+
+<ul><li>Arbeite <strong>nie</strong> am Original, immer am Image</li>
+<li>Falls du gezwungen bist, das Original anzufassen: Jeden Schritt dokumentieren und begründen (ACPO Prinzip 2)</li>
+<li>Zwei Kopien: eine Arbeitskopie, eine unberührte Original-Kopie als Referenz</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>guymager</code> — grafisches Imaging-Tool (Linux)</li>
+<li><code>FTK Imager</code> (Windows) — Export als DD oder E01</li>
+<li><code>ewfinfo image.E01</code> — Metadaten eines E01-Images anzeigen</li>
+<li><code>sha256sum image.dd > image.sha256 && sha256sum -c image.sha256</code> — Hash-Verifikation</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>NIST SP 800-86</li>
+<li>Carrier, B.: File System Forensic Analysis</li></ul>
+
+</article>
+</main>
+</body>
+</html>

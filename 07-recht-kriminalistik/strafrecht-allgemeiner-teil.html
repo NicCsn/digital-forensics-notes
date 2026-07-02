@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strafrecht AT — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Recht &amp; Kriminalistik</a> / Strafrecht AT</span>
+</nav>
+<main><article>
+<h1>Strafrecht Allgemeiner Teil <span class="diff-badge diff-intermediate">Mittel</span></h1>
+
+<div class="callout warning"><strong>Disclaimer:</strong> Keine Rechtsberatung. Allgemeine, beispielhafte Darstellung. Die konkrete Rechtslage haengt von der jeweiligen Jurisdiktion ab.</div>
+
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li><li><a href="#deliktsaufbau">Deliktsaufbau</a></li><li><a href="#vorsatz">Vorsatz</a></li><li><a href="#it-delikte">IT-Delikte</a></li></ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Das Strafrecht definiert, welches Verhalten strafbar ist und welche Rechtsfolgen es hat. Der dreistufige Deliktsaufbau (Tatbestand, Rechtswidrigkeit, Schuld) ist zentral fuer jeden Cyber-Forensiker, weil forensische Funde genau auf diese Ebenen einzahlen.</p>
+
+<h2 id="deliktsaufbau">Der dreistufige Deliktsaufbau</h2>
+<div class="layer-diagram">
+<div class="ld-layer"><strong>I. Tatbestand</strong><br><small>Objektiv: Tathandlung, Taterfolg, Kausalitaet | Subjektiv: Vorsatz, Fahrlaessigkeit</small></div>
+<div class="ld-layer"><strong>II. Rechtswidrigkeit</strong><br><small>Durch Tatbestand indiziert. Ausnahmen: Rechtfertigungsgruende (Notwehr, Einwilligung)</small></div>
+<div class="ld-layer"><strong>III. Schuld</strong><br><small>Schuldfaehigkeit, Unrechtsbewusstsein, Entschuldigungsgruende</small></div>
+</div>
+<p style="text-align:center;margin-top:8px"><strong>= Strafbarkeit (+/-)</strong></p>
+
+<h2 id="vorsatz">Vorsatz und Fahrlaessigkeit</h2>
+<table><thead><tr><th>Form</th><th>Beschreibung</th><th>Cyber-Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Absicht</strong></td><td>Taeter WILL den Erfolg</td><td>"Ich WILL die Daten stehlen"</td></tr>
+<tr><td><strong>Direkter Vorsatz</strong></td><td>WEISS dass Erfolg eintritt</td><td>"Ich installiere Keylogger"</td></tr>
+<tr><td><strong>Eventualvorsatz</strong></td><td>Haelt fuer moeglich, nimmt in Kauf</td><td>"Ich scanne das Netz — wenn ich Daten finde, nehm ich sie"</td></tr>
+</tbody></table>
+
+<h2 id="it-delikte">IT-spezifische Delikte (Deutsches StGB, exemplarisch)</h2>
+<table><thead><tr><th>Norm</th><th>Delikt</th><th>Cyber-Interpretation</th></tr></thead><tbody>
+<tr><td>202a StGB</td><td>Ausspaehen von Daten</td><td>Zugriff auf fremde, gesicherte Daten</td></tr>
+<tr><td>202b StGB</td><td>Abfangen von Daten</td><td>Mitlesen von Netzwerkverkehr</td></tr>
+<tr><td>263a StGB</td><td>Computerbetrug</td><td>Manipulation von Datenverarbeitungsvorgaengen</td></tr>
+<tr><td>303a StGB</td><td>Datenveraenderung</td><td>Loeschen/Veraendern fremder Daten</td></tr>
+<tr><td>303b StGB</td><td>Computersabotage</td><td>DDoS-Angriff, Ransomware</td></tr>
+</tbody></table>
+</article></main>
+</body>
+</html>

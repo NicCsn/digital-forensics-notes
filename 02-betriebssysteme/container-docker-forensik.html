@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Container- und Docker-Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Container- und Docker-Forensik</span>
+</nav>
+<main>
+<article>
+<h1>Container- und Docker-Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Container (Docker, Podman) sind keine VMs — sie nutzen den Host-Kernel und sind per Namespaces isoliert. Forensisch bedeutet das: Container-Prozesse sind Host-Prozesse, Container-Dateisysteme sind Host-Dateien, und ein Container-Escape macht aus einem kompromittierten Container ein kompromittiertes Host-System.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Container-Architektur — forensisch verstanden</h3>
+
+<pre><code>├── Docker Daemon (dockerd)
+├── containerd / runc
+├── Overlay2 / OverlayFS (Dateisystem-Layer)
+├── Namespaces (PID, NET, MNT, UTS, IPC, User, Cgroup)
+├── CGroups (Ressourcen-Limitierung)
+└── Container-Prozess → läuft als normaler Host-Prozess!</code></pre>
+
+<h3>Docker-Forensik: Layer und Overlay2</h3>
+
+<p>Ein Docker-Image besteht aus mehreren schreibgeschützten Layern:</p>
+
+<pre><code># IMAGE          CREATED       CREATED BY                              SIZE
+# abc123def     3 weeks ago   /bin/sh -c #(nop) CMD [&quot;nginx&quot;...]      0B
+# bcd234efg     3 weeks ago   /bin/sh -c #(nop) EXPOSE 80             0B
+# cde345fgh     3 weeks ago   COPY index.html /usr/share/nginx/html/  612B</code></pre>
+
+<p>Jeder Befehl im Dockerfile erzeugt einen neuen Layer. Die unteren Layer sind unveränderlich.</p>
+
+<p>Forensische Fundorte auf dem Host:</p>
+<ul><li><strong>Layer-Daten:</strong> <code>/var/lib/docker/overlay2/<layer-id>/diff/</code> — das Container-Dateisystem</li>
+<li><strong>Container-Logs:</strong> <code>/var/lib/docker/containers/<container-id>/<container-id>-json.log</code></li>
+<li><strong>Docker-Konfiguration:</strong> <code>/var/lib/docker/containers/<container-id>/config.v2.json</code> — Enthält Environment-Variablen (inkl. Secrets!), Port-Mappings, Mounts</li></ul>
+
+<h3>Forensische Analyse eines Containers</h3>
+
+<pre><code>docker logs &lt;container-id&gt;
+
+# In einen laufenden Container einsteigen
+docker exec -it &lt;container-id&gt; /bin/bash
+
+# Container als Image speichern (forensisches &quot;Image&quot;)
+docker commit &lt;container-id&gt; forensic-snapshot
+docker save forensic-snapshot -o container.tar
+
+# Dateisystem direkt vom Host aus analysieren
+ls /var/lib/docker/overlay2/&lt;layer-id&gt;/diff/
+
+# Gelöschte Dateien im Container?
+# OverlayFS erstellt beim Löschen eine &quot;whiteout&quot;-Datei (character device 0:0)
+# Diese zeigt: &quot;Diese Datei wurde gelöscht&quot;
+find /var/lib/docker/overlay2/ -name &quot;.wh.*&quot;</code></pre>
+
+<h3>Container-Escape — wenn die Isolation bricht</h3>
+
+<p>Angreifer, die einen Container übernehmen, versuchen auf den Host auszubrechen:</p>
+
+<table class="styled-table">
+<thead><tr><th>Escape-Methode</th><th>Wie es funktioniert</th><th>Forensische Spur</th></tr></thead><tbody>
+<tr><td>**Privileged Container**</td><td>Container startet mit `--privileged` → Host-Devices zugreifbar</td><td>Host-Prozesse mit Namespace des Containers</td></tr>
+<tr><td>**Docker Socket Mount**</td><td>`/var/run/docker.sock` ist im Container gemountet → neuer Container starten mit Host-Zugriff</td><td>Container-Logs zeigen `docker run`</td></tr>
+<tr><td>**Kernel-Exploit (Dirty Cow)**</td><td>Alte Kernel-Version erlaubt Container-Escape</td><td>Kernel-Version prüfen!</td></tr>
+<tr><td>**Capabilities Abuse**</td><td>`CAP_SYS_ADMIN` erlaubt Mount-Operationen</td><td>`docker inspect` → "CapAdd": ["SYS_ADMIN"]</td></tr>
+</tbody></table>
+
+<h3>Kubernetes-Forensik</h3>
+
+<p>Kubernetes (K8s) orchestriert Container über mehrere Hosts (Nodes):</p>
+
+<table class="styled-table">
+<thead><tr><th>Artefakt</th><th>Fundort</th><th>Aussage</th></tr></thead><tbody>
+<tr><td>**Pod-Logs**</td><td>`kubectl logs <pod-name>`</td><td>Was hat die Anwendung ausgegeben?</td></tr>
+<tr><td>**Pod-Definition**</td><td>`kubectl describe pod <pod>`</td><td>Welches Image? Welche Env-Vars? Welche Mounts?</td></tr>
+<tr><td>**Events**</td><td>`kubectl get events`</td><td>Pod-Starts/-Stopps, Image-Pulls, Fehler</td></tr>
+<tr><td>**Secrets**</td><td>`kubectl get secrets -o yaml`</td><td>Base64-codierte Secrets (einfach dekodierbar!)</td></tr>
+<tr><td>**Audit-Logs**</td><td>`/var/log/kubernetes/audit.log`</td><td>Wer hat `kubectl exec` ausgeführt? Von welcher IP?</td></tr>
+</tbody></table>
+
+<h3>Forensische Best Practices für Container</h3>
+
+<ul><li><strong>Container NICHT stoppen</strong> — RAM ist flüchtig! Zuerst <code>docker commit</code> oder <code>docker export</code></li>
+<li><strong>Host-System analysieren:</strong> Container-Prozesse sind normale Host-Prozesse (<code>ps aux</code>)</li>
+<li><strong>Image-Layer inspizieren:</strong> <code>docker image history</code>, <code>docker save</code></li>
+<li><strong>Netzwerk analysieren:</strong> Docker-Netzwerk-Treiber (bridge, overlay) → iptables-Regeln auf dem Host zeigen Port-Mappings</li>
+<li><strong>Logs sichern:</strong> Container-Logs werden im JSON-File-Logging-Treiber gespeichert, auch nach <code>docker rm</code></li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>docker inspect <container></code> — vollständige Konfiguration (Env, Mounts, Netzwerk)</li>
+<li><code>docker diff <container></code> — welche Dateien wurden verändert?</li>
+<li><code>docker cp <container>:/etc/passwd /tmp/</code> — Datei aus Container extrahieren</li>
+<li><code>kubectl get pods -o wide</code> — alle Pods mit Node-IP</li>
+<li><code>kubectl exec -it <pod> -- /bin/sh</code> — Shell im Pod</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://www.sans.org/blog/docker-forensics/">Docker Forensics Guide (SANS)</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/">Kubernetes Auditing</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html">OWASP Docker Security</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

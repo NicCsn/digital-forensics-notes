@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenbanken-Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Datenbanken-Forensik</span>
+</nav>
+<main>
+<article>
+<h1>Datenbanken-Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Datenbanken sind das Rückgrat fast jeder Anwendung — und damit eine primäre Quelle forensischer Spuren. Ob SQL oder NoSQL: Transaktions-Logs, Write-Ahead-Logs, Audit-Trails und Schema-Informationen liefern ein detailliertes Bild aller Datenänderungen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Relationale Datenbanken (SQL)</h3>
+
+<table class="styled-table">
+<thead><tr><th>DBMS</th><th>Transaktions-Log</th><th>Forensische Bedeutung</th></tr></thead><tbody>
+<tr><td>**PostgreSQL**</td><td>WAL (Write-Ahead Log) in `pg_wal/`</td><td>Jede Änderung wird VOR dem Schreiben in den WAL protokolliert — lückenlose Chronik</td></tr>
+<tr><td>**MySQL / MariaDB**</td><td>Binary Log (`binlog`)</td><td>Alle Daten- und Schema-Änderungen mit Timestamp und Query</td></tr>
+<tr><td>**MS SQL Server**</td><td>Transaction Log (`.ldf`)</td><td>Rekonstruktion von DELETE/UPDATE auch nach COMMIT</td></tr>
+<tr><td>**Oracle**</td><td>Redo Logs</td><td>Ähnlich WAL, alle Änderungen replaybar</td></tr>
+<tr><td>**SQLite**</td><td>Rollback Journal / WAL</td><td>Einfach zu analysieren (eine Datei!), WAL-Modus protokolliert</td></tr>
+</tbody></table>
+
+<h3>PostgreSQL-Forensik im Detail</h3>
+
+<pre><code>pg_waldump /var/lib/postgresql/14/main/pg_wal/000000010000000000000001
+
+# pg_stat_statements-Erweiterung (wenn aktiviert):
+SELECT query, calls, total_time, last_executed
+FROM pg_stat_statements
+ORDER BY last_executed DESC;</code></pre>
+
+<p>PostgreSQL speichert auch:</p>
+<ul><li><code>pg_log/</code> — Server-Logs (Connection-Versuche, Slow Queries)</li>
+<li><code>pg_stat_activity</code> — aktuelle Queries in Echtzeit</li>
+<li><code>pg_audit</code> (Extension) — detailliertes Audit-Logging pro User und Query</li></ul>
+
+<h3>MySQL/MariaDB-Forensik</h3>
+
+<pre><code>mysqlbinlog /var/lib/mysql/mysql-bin.000001
+
+# General Query Log (wenn aktiviert):
+# Enthält JEDE Query mit Timestamp und User
+grep &quot;DELETE\|UPDATE\|INSERT&quot; /var/log/mysql/query.log</code></pre>
+
+<h3>NoSQL-Datenbanken</h3>
+
+<table class="styled-table">
+<thead><tr><th>DBMS</th><th>Logging-Mechanismus</th><th>Forensische Spuren</th></tr></thead><tbody>
+<tr><td>**MongoDB**</td><td>Oplog (Replica Set)</td><td>Jede Operation wird im Oplog protokolliert (für Replikation) — vollständiges Audit</td></tr>
+<tr><td>**Redis**</td><td>AOF (Append-Only File), RDB (Snapshot)</td><td>AOF enthält JEDEN Befehl; RDB = Snapshot</td></tr>
+<tr><td>**Elasticsearch**</td><td>Translog, Audit-Logs</td><td>Index-Änderungen, Query-Logs</td></tr>
+</tbody></table>
+
+<h3>Forensische Analyse einer Datenbank — Vorgehen</h3>
+
+<ul><li><strong>Schema extrahieren:</strong> Tabellen, Views, Stored Procedures, Trigger → Verständnis der Datenstruktur</li>
+<li><strong>Transaktions-Log analysieren:</strong> Wer hat was wann geändert? (User, Timestamp, Query, betroffene Zeilen)</li>
+<li><strong>Audit-Logs prüfen:</strong> War DB-Auditing aktiviert? Wenn ja: JEDE Datenabfrage protokolliert!</li>
+<li><strong>Gelöschte Daten rekonstruieren:</strong> Aus Transaktions-Logs, WAL-Dateien oder Oplog</li>
+<li><strong>User-Accounts:</strong> Welche DB-User existieren? Welche Berechtigungen? (PostgreSQL: <code>\du</code>, MySQL: <code>SELECT * FROM mysql.user</code>)</li>
+<li><strong>Verbindungs-Logs:</strong> IPs und Zeitpunkte aller Verbindungen</li></ul>
+
+<h3>Typische forensische Fragestellungen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Frage</th><th>Antwort-Quelle</th></tr></thead><tbody>
+<tr><td>"Wurden Kundendaten gestohlen?"</td><td>Query-Log: `SELECT * FROM customers` ohne WHERE-Clause? Große Result-Sets?</td></tr>
+<tr><td>"Wer hat die Preise geändert?"</td><td>Transaktions-Log: `UPDATE products SET price = ... WHERE ...` mit User und Timestamp</td></tr>
+<tr><td>"Seit wann ist dieser User Admin?"</td><td>DB-User-Tabelle: Erstellungsdatum, Grant-Logs</td></tr>
+<tr><td>"Wurde die DB von außen angegriffen?"</td><td>Connection-Logs: ungewöhnliche IPs, viele fehlgeschlagene Logins</td></tr>
+</tbody></table>
+
+<h3>Anti-Forensik in Datenbanken</h3>
+
+<ul><li><strong>Log-Truncation:</strong> Angreifer löscht Transaktions-Logs → Lücke in der Historie</li>
+<li><strong>Direct Disk Write:</strong> Umgehung der DB-Engine, direktes Schreiben in die Datendateien</li>
+<li><strong>Stored Procedure Manipulation:</strong> Code in einer Prozedur wird geändert, ohne dass die Prozedur neu "erstellt" wird (ALTER vs. CREATE OR REPLACE)</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li>PostgreSQL: <code>pg_waldump</code>, <code>pg_stat_statements</code>, <code>pgBadger</code> (Log-Analyzer)</li>
+<li>MySQL: <code>mysqlbinlog</code>, <code>pt-query-digest</code> (Percona Toolkit)</li>
+<li>MongoDB: <code>mongodump --db local --collection oplog.rs</code></li>
+<li>SQLite: <code>sqlite3 database.db ".dump"</code> — vollständiges SQL-Dump als Analyse-Basis</li>
+<li>Docker-basierte DB: Volume extrahieren (<code>docker cp</code>), dann offline analysieren</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Kemper, Eickel: Datenbank-Systeme</li>
+<li>Studer: Relationale Datenbanken mit PostgreSQL</li>
+<li><a href="https://www.postgresql.org/docs/current/wal.html">PostgreSQL Write-Ahead Log</a></li>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/binary-log.html">MySQL Binary Log</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

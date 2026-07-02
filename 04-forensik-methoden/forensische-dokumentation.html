@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forensische Dokumentation und Berichterstattung — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Forensische Dokumentation und Berichterstattung</span>
+</nav>
+<main>
+<article>
+<h1>Forensische Dokumentation und Berichterstattung <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Die beste forensische Analyse ist wertlos, wenn sie nicht dokumentiert wird. Der Bericht ist das Produkt der Untersuchung — er muss vor Gericht bestehen, für Laien verständlich sein und wissenschaftlichen Standards genügen. Ein schlechter Bericht kann einen ansonsten soliden Fall zerstören.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Struktur eines forensischen Berichts</h3>
+
+<pre><code>   - Was wurde untersucht? Wer? Wann? Kernergebnisse in 3-5 Sätzen
+2. Einleitung / Auftrag
+   - Wer beauftragte die Untersuchung? Was war die Fragestellung?
+3. Methodik
+   - Welche Tools? Welche Versionen? Welche Schritte?
+4. Untersuchte Objekte
+   - Liste aller Asservate mit Seriennummer, Hash, Beschreibung
+5. Chain of Custody
+   - Wann wurde was von wem entgegengenommen/weitergegeben?
+6. Analyse und Ergebnisse
+   - Detaillierte Beschreibung aller Funde mit Zeitangaben
+7. Bewertung und Interpretation
+   - Was bedeuten die Funde im Kontext des Falls?
+8. Anhänge
+   - Hash-Listen, Log-Auszüge, Screenshots</code></pre>
+
+<h3>Grundprinzipien guter Dokumentation</h3>
+
+<ul><li><strong>Nachvollziehbarkeit:</strong> Ein Dritter mit gleichen Tools und Daten muss zum gleichen Ergebnis kommen (ACPO Prinzip 3)</li>
+<li><strong>Objektivität:</strong> Nur Fakten, keine Spekulation ohne Kennzeichnung ("Vermutung", "Annahme")</li>
+<li><strong>Vollständigkeit:</strong> Auch Fehlversuche und Sackgassen dokumentieren — sie zeigen methodische Sorgfalt</li>
+<li><strong>Verständlichkeit:</strong> Für technische und nicht-technische Leser schreiben (Staatsanwalt, Richter, Jury)</li>
+<li><strong>Reproduzierbarkeit:</strong> Jedes Ergebnis muss auf einen bestimmten Untersuchungsschritt zurückführbar sein</li></ul>
+
+<h3>Beweiswürdigung</h3>
+
+<p>Nicht alles, was du findest, ist ein Beweis. Deine Aufgabe ist die Einordnung:</p>
+
+<ul><li><strong>Direkter Beweis:</strong> Die gefundene Datei IST die Tatwaffe (z.B. Ransomware-Executable)</li>
+<li><strong>Indizienbeweis:</strong> Die gefundenen Spuren deuten AUF eine Tat hin (z.B. Login zur Tatzeit = der Nutzer war am System)</li>
+<li><strong>Kontextualisierung:</strong> Eine isolierte Spur sagt wenig — die Kombination macht den Fall (Login + USB-Anschluss + Datei-Download = Datenabfluss)</li></ul>
+
+<h3>Werkzeuge für die Dokumentation</h3>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Zweck</th></tr></thead><tbody>
+<tr><td>**Markdown** (dieses Repo!)</td><td>Strukturierte Notizen, versionierbar</td></tr>
+<tr><td>**Cherrytree / Notion**</td><td>Hierarchische Notiz-Apps</td></tr>
+<tr><td>**Dradis**</td><td>Reporting-Plattform für Pentests und Forensik</td></tr>
+<tr><td>**Autopsy**</td><td>Integrierte Case-Management- und Reporting-Funktion</td></tr>
+<tr><td>**Xmind / draw.io**</td><td>Visualisierung von Zusammenhängen (Timeline, Link-Analyse)</td></tr>
+</tbody></table>
+
+<h3>Häufige Fehler</h3>
+
+<ul><li><strong>Zeitzonen-Chaos:</strong> Zeitstempel ohne Zeitzonen-Angabe (UTC? Lokalzeit? Lokalzeit+DST?)</li>
+<li><strong>Fehlende Hash-Protokolle:</strong> "Trust me, das Image ist unverändert" zählt nicht</li>
+<li><strong>Tool-Versionen nicht dokumentiert:</strong> Später nicht reproduzierbar</li>
+<li><strong>Ungenaue Sprache:</strong> "Die Datei wurde gelöscht" vs. "Der MFT-Eintrag wurde als gelöscht markiert und der Cluster-Eintrag in der FAT auf 0x00 gesetzt"</li>
+<li><strong>Persönliche Meinung als Fakt:</strong> "Offensichtlich hat der Täter..." → "Die Zeitstempel zeigen, dass..."</li></ul>
+
+<h3>Beispiel: Ausschnitt aus einem forensischen Bericht</h3>
+
+<pre><code>vom Unterzeichner in einem versiegelten Beweismittelbeutel entgegengenommen 
+(Chain-of-Custody-Referenz: COC-2025-0047).
+
+Das Asservat wurde mittels Tableau T8u Forensic Bridge (FW 1.4.2) an den Analyse-Rechner
+angeschlossen. Eine Schreibschutz-Prüfung wurde erfolgreich durchgeführt.
+
+Vor dem Imaging wurde der SHA-256-Hash des Originals berechnet:
+  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+Das Image wurde mit guymager v0.8.13 im E01-Format erstellt und unter der Referenz
+FALL-2025-042_IMAGE-001 gespeichert. Der Hash des Images stimmt mit dem Hash des
+Originals überein.
+
+-&gt; Ergebnis: Integrität gewahrt. Image ist forensisch korrekt.</code></pre>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Diese Repo-Templates: <code>note-template.md</code>, <code>writeup-template.md</code></li>
+<li>Case-Management mit Autopsy oder FTK</li>
+<li>Für jedes neue Projekt: Template kopieren und ausfüllen</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>ACPO Good Practice Guide for Digital Evidence</li>
+<li>Casey, E.: Digital Evidence and Computer Crime, Kapitel "Reporting"</li></ul>
+
+</article>
+</main>
+</body>
+</html>

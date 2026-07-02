@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dateisysteme — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Dateisysteme</span>
+</nav>
+<main><article>
+<h1>Dateisysteme im Ueberblick <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Ein Dateisystem organisiert, wie Daten auf einem Speichermedium abgelegt, gefunden und verwaltet werden. Jedes hat eigene Metadaten, Zeitstempel und Strukturen — forensisch entscheidend.</p>
+
+<h2 id="details">Die wichtigsten Dateisysteme</h2>
+<table><thead><tr><th>Dateisystem</th><th>Plattform</th><th>Struktur</th><th>Forensische Goldgrube</th></tr></thead><tbody>
+<tr><td><strong>FAT</strong></td><td>USB, SD</td><td>FAT-Tabelle</td><td>E5-Marker bei geloeschten Dateien</td></tr>
+<tr><td><strong>NTFS</strong></td><td>Windows</td><td>MFT (1024 B/Eintrag)</td><td>$MFT, $LogFile, $UsnJrnl</td></tr>
+<tr><td><strong>ext4</strong></td><td>Linux</td><td>Inodes + Journal</td><td>Inodes geloeschter Dateien, Journal-Wiederholung</td></tr>
+<tr><td><strong>APFS</strong></td><td>macOS, iOS</td><td>Container + Snapshots</td><td>Snapshots = alte Versionen rueckholbar</td></tr>
+<tr><td><strong>ZFS</strong></td><td>Linux, Solaris</td><td>Copy-on-Write + RAID-Z</td><td>Snapshots, Dedup, Kompression</td></tr>
+</tbody></table>
+
+<h2 id="vergleich">Forensischer Vergleich</h2>
+<table><thead><tr><th>Feature</th><th>FAT</th><th>NTFS</th><th>ext4</th><th>APFS</th><th>ZFS</th></tr></thead><tbody>
+<tr><td>Journaling</td><td><span class="severity critical">Nein</span></td><td><span class="severity low">LogFile + USN</span></td><td><span class="severity low">3 Modi</span></td><td><span class="severity low">CoW</span></td><td><span class="severity low">ZIL</span></td></tr>
+<tr><td>Zeitstempel</td><td>2</td><td>4 (MACE)</td><td>4</td><td>Nanosek.</td><td>Nanosek.</td></tr>
+<tr><td>Verschluesselung</td><td><span class="severity critical">Nein</span></td><td><span class="severity medium">EFS</span></td><td><span class="severity medium">LUKS</span></td><td><span class="severity low">Nativ</span></td><td><span class="severity low">Nativ</span></td></tr>
+<tr><td>Snapshots</td><td><span class="severity critical">Nein</span></td><td><span class="severity medium">VSS</span></td><td><span class="severity critical">Nein</span></td><td><span class="severity low">Ja</span></td><td><span class="severity low">Ja</span></td></tr>
+</tbody></table>
+
+<details class="fold"><summary>Sleuth Kit Befehle</summary>
+<pre><code># Partition-Layout
+mmls image.dd
+
+# Dateisystem-Info
+fsstat -o 2048 image.dd
+
+# Rekursives File Listing (auch geloeschte!)
+fls -r -o 2048 image.dd
+
+# Datei per Inode extrahieren
+icat -o 2048 image.dd 5</code></pre>
+</details>
+</article></main>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rechnerarchitektur — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Rechnerarchitektur</span>
+</nav>
+<main><article>
+<h1>Rechnerarchitektur: Von Neumann und Harvard <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+<li><a href="#kurz">Kurzueberblick</a></li><li><a href="#neumann">Von Neumann</a></li><li><a href="#hierarchie">Speicher-Hierarchie</a></li><li><a href="#arm">ARM vs x86</a></li></ol></details>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Jeder Computer folgt einem Architekturprinzip. Die zwei fundamentalen Modelle sind Von-Neumann- und Harvard-Architektur. Forensisch relevant, weil die Architektur bestimmt, wo und wie Daten abgelegt werden — und welche Spuren fluechtig sind.</p>
+
+<h2 id="neumann">Von-Neumann-Architektur</h2>
+<p>Gemeinsamer Speicher fuer Programme und Daten. ALU (Rechenwerk) + CU (Steuerwerk) + Speicher + E/A. Alle modernen Desktop-CPUs (x86-64) folgen diesem Prinzip.</p>
+<p>Harvard-Architektur: Getrennte Speicher fuer Code und Daten. Typisch fuer Mikrocontroller (ARM Cortex-M). Moderne CPUs: modifiziertes Harvard mit getrennten L1-Caches aber gemeinsamem Hauptspeicher.</p>
+
+<h2 id="hierarchie">Speicher-Hierarchie und fluechtige Spuren</h2>
+
+<div class="mem-hierarchy">
+  <div class="dh-box dh-reg"><strong>Register</strong><small>~Bytes</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-cache"><strong>L1-Cache</strong><small>~32 KB</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-cache"><strong>L2-Cache</strong><small>~256 KB</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-cache"><strong>L3-Cache</strong><small>~8 MB</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-ram"><strong>RAM</strong><small>~16 GB</small></div><div class="dh-arrow"></div>
+  <div class="dh-box dh-disk"><strong>SSD / HDD</strong><small>~1 TB</small></div>
+</div>
+<div class="diagram-labels">
+  <span>zunehmende Groesse, abnehmende Geschwindigkeit &rarr;</span>
+  <span class="volatile">&larr; fluechtig &rarr;</span>
+  <span class="persistent">&larr; persistent &rarr;</span>
+</div>
+
+<div class="callout tip"><strong>Forensisch relevant:</strong> Cache-Spuren koennen temporaere Daten enthalten, die nie auf die Platte geschrieben wurden. Cold-Boot-Attacke: RAM ueberlebt kurzen Neustart — Verschluesselungsschluessel extrahierbar!</div>
+
+<h2 id="arm">ARM vs. x86</h2>
+<table><thead><tr><th>Aspekt</th><th>x86-64</th><th>ARM</th></tr></thead><tbody>
+<tr><td>Endianness</td><td>Little-Endian</td><td>Bi-Endian (meist Little)</td></tr>
+<tr><td>Register</td><td>16 GP (RAX, RBX)</td><td>31 GP (X0-X30)</td></tr>
+<tr><td>Instruktionen</td><td>CISC (variabel)</td><td>RISC (4 Byte fix)</td></tr>
+<tr><td>RAM-Dump</td><td>WinPMEM</td><td>LiME, spezielle ARM-Profile</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Warnung:</strong> RAM-Dump von ARM braucht andere Volatility-Profile. Falsches Profil = falsche Ergebnisse!</div>
+</article></main>
+</body>
+</html>

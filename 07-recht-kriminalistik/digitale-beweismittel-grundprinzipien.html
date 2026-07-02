@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digitale Beweismittel: Grundprinzipien — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Recht & Kriminalistik</a> / Digitale Beweismittel: Grundprinzipien</span>
+</nav>
+<main>
+<article>
+<h1>Digitale Beweismittel: Grundprinzipien <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<div class="callout warning"><strong>Disclaimer:</strong> Diese Notiz bietet eine allgemeine, beispielhafte Darstellung grundlegender Prinzipien im Umgang mit digitalen Beweismitteln. Sie stellt **keine Rechtsberatung** dar und erhebt keinen Anspruch auf Vollständigkeit. Die tatsächlichen Anforderungen sind stark jurisdiktionsabhängig — konsultiere im Ernstfall juristische Fachpersonen.</div>
+
+<p>Digitale Beweismittel umfassen alle Daten, die in digitaler Form gespeichert oder übertragen werden und in einem Gerichtsverfahren als Beweis dienen können: E-Mails, Logdateien, Fotos, Datenbankinhalte, Browserverläufe, GPS-Tracks und vieles mehr.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Zulässigkeit (Admissibility)</h3>
+
+<p>Damit digitale Beweismittel vor Gericht zugelassen werden, müssen sie in vielen Rechtsordnungen folgende Hürden nehmen:</p>
+
+<ul><li><strong>Relevanz:</strong> Das Beweismittel muss für den Fall von Bedeutung sein</li>
+<li><strong>Authentizität:</strong> Es muss glaubhaft sein, dass die Daten echt und unverändert sind</li>
+<li><strong>Hearsay-Regeln:</strong> Digitale Aufzeichnungen können je nach Rechtsordnung als Hörensagen gelten und müssen unter eine Ausnahmeregelung fallen (z.B. Business Records Exception)</li>
+<li><strong>Best Evidence Rule:</strong> Grundsätzlich ist das Original vorzulegen — im digitalen Kontext wird ein forensisch korrektes Abbild (Image) oder ein als "original" anerkannter Ausdruck akzeptiert</li></ul>
+
+<h3>ACPO-Prinzipien (UK)</h3>
+
+<p>Die ACPO-Guidelines sind eine weit verbreitete Referenz, auch außerhalb des UK:</p>
+
+<ul><li>Kein Handeln von Ermittlungspersonen darf Beweisdaten verändern</li>
+<li>Zugriff auf Originaldaten nur durch kompetente Personen, die ihre Handlungen erklären können</li>
+<li>Vollständige Audit-Trail-Dokumentation aller Prozesse</li>
+<li>Der Untersuchungsleiter trägt die Gesamtverantwortung</li></ul>
+
+<p>Diese Prinzipien sind in England und Schottland gerichtlich anerkannt, ihre Anwendung ist aber formell freiwillig.</p>
+
+<h3>ADAM-Prinzipien</h3>
+
+<p>Erweiterung der ACO-Prinzipien (Adams, 2012) mit Fokus auf generelle Anwendbarkeit:</p>
+
+<ul><li>Zusätzlich zu ACPO: Persönliche und Gerätesicherheit, Rechte Betroffener, organisatorische Richtlinien, Kommunikation mit Stakeholdern</li></ul>
+
+<h3>Authentifizierung</h3>
+
+<ul><li>Ein häufiger Angriff vor Gericht: "Digitale Daten kann man leicht fälschen"</li>
+<li>US-Rechtsprechung: Die bloße *Möglichkeit* der Manipulation begründet noch keine Unzuverlässigkeit (US v. Bonallo, 1988)</li>
+<li>Entscheidend: Nachweis einer intakten Chain of Custody + forensisch saubere Methodik</li></ul>
+
+<h3>Chain of Custody</h3>
+
+<ul><li>Lückenlose Dokumentation aller Personen, die Zugriff auf das Beweismittel hatten</li>
+<li>Pro Übergabe: Datum, Uhrzeit, Grund der Übergabe, übergebende und empfangende Person</li>
+<li>Protokollierung sämtlicher forensischer Arbeitsschritte</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li>CoC-Formular digital oder physisch führen → Vorlagen sind online verfügbar</li>
+<li>Hash-Werte als Integritätsnachweis: <code>sha256sum image.dd</code></li>
+<li>Forensik-Tools wie Autopsy/FTK dokumentieren Aktionen automatisch im Case-Log</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://en.wikipedia.org/wiki/Digital_evidence">Wikipedia: Digital Evidence</a></li>
+<li><a href="https://www.digital-detective.net/digital-forensics-documents/ACPO_Good_Practice_Guide_for_Digital_Evidence_v5.pdf">ACPO Good Practice Guide for Digital Evidence v5</a></li>
+<li>Adams, R. (2012): *The Advanced Data Acquisition Model (ADAM)*</li>
+<li>Casey, E. (2011): *Digital Evidence and Computer Crime*</li></ul>
+
+</article>
+</main>
+</body>
+</html>

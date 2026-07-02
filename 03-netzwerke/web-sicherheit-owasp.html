@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web-Sicherheit und OWASP Top 10 — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / Web-Sicherheit und OWASP Top 10</span>
+</nav>
+<main>
+<article>
+<h1>Web-Sicherheit und OWASP Top 10 <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Webanwendungen sind das häufigste Angriffsziel. Die OWASP Top 10 listet die kritischsten Sicherheitsrisiken für Webanwendungen. Als Forensiker musst du diese Angriffe in Logs und PCAPs erkennen und die Spuren interpretieren können.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Same-Origin-Policy (SOP)</h3>
+
+<ul><li>Fundamentale Browser-Sicherheitsregel: JavaScript von Origin A darf nicht auf Daten von Origin B zugreifen</li>
+<li>Origin = Protokoll + Host + Port (z.B. <code>https://example.com:443</code>)</li>
+<li>Ausnahmen per CORS (<code>Access-Control-Allow-Origin</code>)</li></ul>
+
+<h3>OWASP Top 10 (komprimiert)</h3>
+
+<table class="styled-table">
+<thead><tr><th>Rang</th><th>Risiko</th><th>Kurz erklärt</th><th>Forensische Erkennung</th></tr></thead><tbody>
+<tr><td>A01</td><td>Broken Access Control</td><td>URLs direkt aufrufen ohne Berechtigung</td><td>200 OK auf Admin-URLs ohne Login</td></tr>
+<tr><td>A02</td><td>Cryptographic Failures</td><td>Klartext-Passwörter, schwache Cipher</td><td>Unverschlüsselte Logins in PCAP</td></tr>
+<tr><td>A03</td><td>Injection (SQL, XSS, OS)</td><td>Eingaben werden als Code ausgeführt</td><td>SQL-Commands in URL-Parametern, `<script>` in Logs</td></tr>
+<tr><td>A04</td><td>Insecure Design</td><td>Fehlende Sicherheitsanforderungen</td><td>Schwierig forensisch, eher Audit</td></tr>
+<tr><td>A05</td><td>Security Misconfiguration</td><td>Standard-Passwörter, Debug-Seiten</td><td>`/admin` öffentlich, Header mit Server-Version</td></tr>
+<tr><td>A06</td><td>Vulnerable Components</td><td>Veraltete Bibliotheken mit CVEs</td><td>Server-Header verrät Versionen</td></tr>
+<tr><td>A07</td><td>Auth Failures</td><td>Schwache Passwort-Policy, Session-Hijacking</td><td>Viele 401/403, Session-Cookies ohne Secure-Flag</td></tr>
+<tr><td>A08</td><td>Software/Data Integrity</td><td>Unsigned Updates, CI/CD-Pipeline-Angriffe</td><td>Binary-Analyse auf Manipulation</td></tr>
+<tr><td>A09</td><td>Logging/Monitoring-Failure</td><td>Angriffe werden nicht erkannt und gemeldet</td><td>Keine Logs = blind</td></tr>
+<tr><td>A10</td><td>SSRF</td><td>Server ruft interne URLs auf</td><td>Requests zu `127.0.0.1`, `169.254.169.254` (AWS Metadata)</td></tr>
+</tbody></table>
+
+<h3>XSS (Cross-Site Scripting) im Detail</h3>
+
+<p><strong>Reflected XSS:</strong> Input im Request, direkt in Response reflektiert</p>
+<p><code>GET /search?q=<script>alert(1)</script></code></p>
+
+<p><strong>Stored XSS:</strong> Schadcode auf dem Server gespeichert (z.B. Forenpost) → jeder Besucher kriegt ihn</p>
+<p><strong>DOM-based XSS:</strong> Nur clientseitig, kein Server-Request</p>
+
+<p>Forensisch: <code><script></code> Tags in HTTP-Responses, <code><img onerror=...></code>, <code>javascript:</code> URIs</p>
+
+<h3>SQL Injection</h3>
+
+<pre><code>GET /products?id=1 UNION SELECT username, password FROM users--</code></pre>
+
+<p>Forensisch: SQL-Keywords (<code>UNION</code>, <code>SELECT</code>, <code>--</code>, <code>OR 1=1</code>) in URL-Parametern und POST-Bodies in PCAP/Logs</p>
+
+<h3>CSRF (Cross-Site Request Forgery)</h3>
+
+<p>Angreifer bringt Browser des Opfers dazu, ungewollte Aktionen auszuführen (z.B. Geld überweisen).</p>
+<p>Schutz: CSRF-Token, SameSite-Cookies</p>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Wireshark: <code>http.request.uri contains "<script>"</code> → XSS-Versuche</li>
+<li>Apache-Log: <code>grep -E "UNION|SELECT|--" access.log</code> → SQLi-Versuche</li>
+<li><code>sqlmap -u "http://target.com/page?id=1"</code> — SQLi-Test (nur auf eigenen Systemen!)</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://owasp.org/www-project-top-ten/">OWASP Top Ten</a></li>
+<li>Zalewski: Tangled Web — Der Security-Leitfaden für Webentwickler</li></ul>
+
+</article>
+</main>
+</body>
+</html>

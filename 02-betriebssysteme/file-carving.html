@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File Carving — Gelöschte Dateien wiederherstellen — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / File Carving — Gelöschte Dateien wiederherstellen</span>
+</nav>
+<main>
+<article>
+<h1>File Carving — Gelöschte Dateien wiederherstellen <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>File Carving ist die Wiederherstellung von Dateien ohne Dateisystem-Metadaten — rein anhand der Rohdaten auf dem Datenträger. Wenn eine Datei gelöscht und der Dateisystem-Eintrag überschrieben wurde, ist Carving oft die letzte Chance.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Wie Carving funktioniert</h3>
+
+<ul><li><strong>Header/Footer-Suche:</strong> Jede Datei beginnt mit einer eindeutigen Signatur</li>
+<li>JPEG: <code>FF D8 FF E0</code> / <code>FF D9</code></li>
+<li>PDF: <code>25 50 44 46</code> (%PDF) / <code>25 25 EOF</code></li>
+<li>ZIP: <code>50 4B 03 04</code> / End-Of-Central-Directory</li>
+<li>PNG: <code>89 50 4E 47 0D 0A 1A 0A</code> / <code>IEND</code></li></ul>
+
+<ul><li><strong>Block-basiertes Carving:</strong> Alle Daten zwischen Header und Footer extrahieren. Problem: Fragmentierung</li></ul>
+
+<ul><li><strong>Smart Carving / Struktur-Carving:</strong> Die innere Struktur der Datei validieren (z.B. JPEG-Marker, ZIP-CRC)</li></ul>
+
+<h3>Fragmentierungsproblem</h3>
+
+<p>Wenn eine Datei nicht am Stück gespeichert wird (typisch bei stark fragmentierten Dateisystemen wie FAT), kann einfaches Header/Footer-Carving versagen. Lösungen:</p>
+<ul><li><strong>Bifragment Gap Carving:</strong> Unterschiedliche Längen zwischen Header und Footer testen und Struktur prüfen</li>
+<li><strong>Smart Carving (z.B. PhotoRec):</strong> Kennt die interne Struktur und validiert</li></ul>
+
+<h3>Tools</h3>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Typ</th><th>Besonderheit</th></tr></thead><tbody>
+<tr><td>`foremost`</td><td>Header/Footer</td><td>Einfach, schnell, basierend auf `/etc/foremost.conf`</td></tr>
+<tr><td>`scalpel`</td><td>Header/Footer</td><td>Fork von foremost, mehr Konfiguration</td></tr>
+<tr><td>`photorec`</td><td>Smart Carving</td><td>Teil von TestDisk, 480+ Dateiformate, validiert Struktur</td></tr>
+<tr><td>`bulk_extractor`</td><td>Stream-basiert</td><td>Extrahiert URLs, E-Mails, IPs — nicht ganzes File</td></tr>
+<tr><td>`magicrescue`</td><td>Header/Footer</td><td>Erweiterbar per Magic-Dateien</td></tr>
+</tbody></table>
+
+<h3>Praxis: File Carving mit foremost</h3>
+
+<pre><code>sudo apt install foremost
+
+# Carving auf einem Image
+foremost -t jpg,png,pdf -i image.dd -o /output/
+
+# Carving mit eigener Signatur-Datei (z.B. für proprietäres Format)
+foremost -c /etc/foremost.conf -i image.dd -o /output/</code></pre>
+
+<h3>Carving in der forensischen Praxis</h3>
+
+<ul><li><strong>Vor dem Carving:</strong> Image hashen (SHA-256) — Carving verändert das Image nicht, aber das Protokoll muss lückenlos sein</li>
+<li><strong>In unallocated Space:</strong> Der spannendste Bereich — was zwischen und nach Partitionen liegt</li>
+<li><strong>In Slack Space:</strong> Der ungenutzte Rest eines Clusters kann Daten der Vorgängerdatei enthalten</li>
+<li><strong>In Hibernation-/Swap-Files:</strong> Komplette RAM-Inhalte können gelöschte Dateien enthalten</li></ul>
+
+<h3>Einschränkungen</h3>
+
+<ul><li>Keine Dateinamen, keine Metadaten (außer, was im File selbst steht, z.B. EXIF)</li>
+<li>Bei Fragmentierung unvollständig</li>
+<li>Bei Solid-State-Drives (SSDs): TRIM löscht Daten endgültig</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>foremost -t all -i /dev/sdb1 -o /mnt/forensics/carved/</code></li>
+<li><code>photorec /dev/sdc1</code> — interaktiv, sehr mächtig</li>
+<li>Nach dem Carving: <code>find /output/ -type f | wc -l</code> — wie viele Dateien wurden gefunden?</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://github.com/korczis/foremost">Foremost Wiki</a></li>
+<li>Carrier, B.: File System Forensic Analysis, Kapitel 8</li></ul>
+
+</article>
+</main>
+</body>
+</html>

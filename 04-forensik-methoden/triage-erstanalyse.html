@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forensische Triage und Erstanalyse — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Forensische Triage und Erstanalyse</span>
+</nav>
+<main>
+<article>
+<h1>Forensische Triage und Erstanalyse <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Triage ist die schnelle Ersteinschätzung: Ist dieses System kompromittiert? Wenn ja, wie schwerwiegend? In großen Incident-Response-Fällen kannst du nicht jedes System vollständig analysieren — Triage priorisiert, wo sich der Aufwand lohnt.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Ziele der Triage</h3>
+
+<ul><li><strong>Ist das System betroffen?</strong> (Ja/Nein)</li>
+<li><strong>Wann wurde es kompromittiert?</strong> (Erste Spuren)</li>
+<li><strong>Welche IOC-Indikatoren passen?</strong> (Hash, IP, Domain, Registry-Key)</li>
+<li><strong>Welche Daten könnten betroffen sein?</strong> (Sensibilität des Systems)</li>
+<li><strong>Wie dringend?</strong> (Priorität für tiefere Analyse)</li></ul>
+
+<h3>Triage-Vorgehen (Windows)</h3>
+
+<table class="styled-table">
+<thead><tr><th>Schritt</th><th>Tool/Methode</th><th>Was suchen?</th></tr></thead><tbody>
+<tr><td>1. Laufende Prozesse</td><td>`tasklist`, `pslist`</td><td>Unbekannte Prozesse, cmd.exe als Kind von winword.exe</td></tr>
+<tr><td>2. Netzwerkverbindungen</td><td>`netstat -ano`, `Get-NetTCPConnection`</td><td>Verbindungen zu bekannten C2-IPs, ungewöhnliche Ports</td></tr>
+<tr><td>3. Autostarts</td><td>`autorunsc64.exe` (Sysinternals)</td><td>Registry-Run-Keys, Scheduled Tasks</td></tr>
+<tr><td>4. User Accounts</td><td>`net user`, EventLog 4720</td><td>Neue Accounts, Gruppe "Administratoren"</td></tr>
+<tr><td>5. Prefetch</td><td>`C:\Windows\Prefetch\`</td><td>Kürzlich ausgeführte Programme</td></tr>
+<tr><td>6. EventLog (letzte 24h)</td><td>`Get-WinEvent`</td><td>Logins (4624/4625), Dienst-Installation (7045)</td></tr>
+<tr><td>7. Geplante Tasks</td><td>`schtasks /query`</td><td>Persistenz-Mechanismen</td></tr>
+</tbody></table>
+
+<h3>Triage-Vorgehen (Linux)</h3>
+
+<table class="styled-table">
+<thead><tr><th>Schritt</th><th>Tool/Methode</th><th>Was suchen?</th></tr></thead><tbody>
+<tr><td>1. Laufende Prozesse</td><td>`ps auxf`</td><td>Prozess-Hierarchie, unbekannte Binärs</td></tr>
+<tr><td>2. Netzwerkverbindungen</td><td>`ss -tunap`</td><td>ESTABLISHED zu externen IPs</td></tr>
+<tr><td>3. Letzte Logins</td><td>`last -20`, `lastb -20`</td><td>Ungewöhnliche Login-Zeiten/IPs</td></tr>
+<tr><td>4. Auth-Log</td><td>`grep "Accepted" /var/log/auth.log`</td><td>Erfolgreiche Logins</td></tr>
+<tr><td>5. Shell-History</td><td>`.bash_history`, `.zsh_history`</td><td>Ausgeführte Befehle</td></tr>
+<tr><td>6. Cron-Jobs</td><td>`ls /etc/cron.*`, `crontab -l`</td><td>Automatisierte Malware-Ausführung</td></tr>
+<tr><td>7. Modifizierte Dateien</td><td>`find / -mtime -1 -type f`</td><td>In den letzten 24h veränderte Dateien</td></tr>
+</tbody></table>
+
+<h3>IOC-Abgleich (Indicators of Compromise)</h3>
+
+<ul><li><strong>Hash-IOCs:</strong> <code>sha256sum</code> aller ausführbaren Dateien → gegen IOC-Liste</li>
+<li><strong>IP-IOCs:</strong> <code>netstat</code> + Firewall-Logs → gegen Threat-Intel-Feed</li>
+<li><strong>Domain-IOCs:</strong> DNS-Cache + Browser-History → gegen blocklist</li>
+<li><strong>Registry-IOCs:</strong> Standard-Keys auf bekannte Malware-Patterns prüfen</li></ul>
+
+<h3>Triage-Tools</h3>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Plattform</th><th>Besonderheit</th></tr></thead><tbody>
+<tr><td>**KAPE** (Eric Zimmerman)</td><td>Windows</td><td>Sammelt vordefinierte Artefakt-Sets in Minuten</td></tr>
+<tr><td>**Velociraptor**</td><td>Multi</td><td>Agent-basierte Live-Forensik, skalierbar</td></tr>
+<tr><td>**CyLR**</td><td>Windows/Linux</td><td>Forensischen Artefakt-Kollektor</td></tr>
+<tr><td>**Autoruns**</td><td>Windows</td><td>Persistenz-Mechanismen anzeigen</td></tr>
+</tbody></table>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>KAPE: <code>kape.exe --tsource C: --target KapeTriage --tdest X:\triage\</code></li>
+<li>Velociraptor: <code>velociraptor.exe --config client.config.yaml --artifact Windows.Forensics.Prefetch</code></li>
+<li>Linux: <code>tar czf triage-$(hostname)-$(date +%Y%m%d).tgz /var/log/ ~/.bash_history</code> als Minimal-Triage</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://ericzimmerman.github.io/">Eric Zimmerman's Tools</a></li>
+<li><a href="https://www.sans.org/posters/">SANS DFIR Poster</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

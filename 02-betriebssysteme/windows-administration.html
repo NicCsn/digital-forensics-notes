@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows-Administration für Forensiker — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Windows-Administration für Forensiker</span>
+</nav>
+<main>
+<article>
+<h1>Windows-Administration für Forensiker <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Windows ist das am weitesten verbreitete Desktop-Betriebssystem — und damit das häufigste Ziel forensischer Untersuchungen. Du musst die Admin-Werkzeuge beherrschen, um Spuren zu finden und zu interpretieren.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>PowerShell-Grundlagen</h3>
+
+<p>PowerShell ist die mächtigste Schnittstelle zur Windows-Administration und Forensik:</p>
+
+<pre><code>Get-Service                          # Dienste
+Get-EventLog -LogName Security       # Security-Event-Log
+Get-ItemProperty HKLM:\SOFTWARE\...  # Registry-Wert lesen
+Get-WinEvent                        # moderne Eventlog-Abfrage
+Get-NetTCPConnection                # Netzwerkverbindungen
+Get-WMIObject Win32_UserAccount     # Benutzerliste</code></pre>
+
+<h3>Windows-Registry — das Herzstück</h3>
+
+<p>Die Registry ist eine hierarchische Datenbank für System- und Anwendungseinstellungen:</p>
+
+<table class="styled-table">
+<thead><tr><th>Root-Key</th><th>Inhalt</th></tr></thead><tbody>
+<tr><td>`HKEY_LOCAL_MACHINE (HKLM)`</td><td>Systemweite Einstellungen</td></tr>
+<tr><td>`HKEY_CURRENT_USER (HKCU)`</td><td>Benutzerspezifische Einstellungen</td></tr>
+<tr><td>`HKEY_USERS`</td><td>Profile aller Benutzer</td></tr>
+<tr><td>`HKEY_CLASSES_ROOT`</td><td>Dateizuordnungen und COM-Objekte</td></tr>
+</tbody></table>
+
+<p>Registry-Hives liegen physisch unter <code>%SystemRoot%\System32\config\</code> und pro Benutzer unter <code>NTUSER.DAT</code>.</p>
+
+<h3>EventLog (Ereignisanzeige)</h3>
+
+<table class="styled-table">
+<thead><tr><th>Log</th><th>Details</th></tr></thead><tbody>
+<tr><td>**Security**</td><td>Logins (4624 = Erfolg, 4625 = Fehlschlag), Rechte-Änderungen (4672)</td></tr>
+<tr><td>**System**</td><td>Dienst-Starts/-Stopps, Treiber-Ladungen</td></tr>
+<tr><td>**Application**</td><td>Anwendungs-Events (z.B. MSI-Installationen = 11707/1033)</td></tr>
+<tr><td>**PowerShell Operational**</td><td>Ausgeführte PowerShell-Befehle (Event 4104, 4103)</td></tr>
+</tbody></table>
+
+<p>Event-IDs sind Schlüsselwissen: <strong>4624 = Login</strong>, <strong>4625 = Failed Login</strong>, <strong>4688 = Prozessstart</strong>, <strong>7045 = Dienst installiert</strong></p>
+
+<h3>Benutzer- und Gruppenverwaltung</h3>
+
+<pre><code>net user &lt;name&gt;                    # Details zu einem Benutzer
+net localgroup Administratoren     # Wer ist Admin?
+whoami /groups                     # eigene Gruppen</code></pre>
+
+<h3>Wichtige Admin-Tools</h3>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Zweck</th></tr></thead><tbody>
+<tr><td>`msinfo32`</td><td>Systemübersicht</td></tr>
+<tr><td>`compmgmt.msc`</td><td>Computerverwaltung (Benutzer, Dienste, Datenträger)</td></tr>
+<tr><td>`eventvwr.msc`</td><td>Ereignisanzeige</td></tr>
+<tr><td>`taskschd.msc`</td><td>Aufgabenplanung</td></tr>
+<tr><td>`resmon`</td><td>Ressourcenmonitor</td></tr>
+<tr><td>`secpol.msc`</td><td>Lokale Sicherheitsrichtlinien</td></tr>
+</tbody></table>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>PowerShell-Skript zur forensischen Erstanalyse: Prozesse, Netzwerkverbindungen, Autostarts, Dienste in CSV exportieren</li>
+<li><code>Sysinternals Suite</code> (Autoruns, Process Explorer, ProcMon) — Standardwerkzeuge für Triage</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://learn.microsoft.com/en-us/sysinternals/">Microsoft Sysinternals</a></li>
+<li>Carvey, H.: Windows Registry Forensics</li></ul>
+
+</article>
+</main>
+</body>
+</html>

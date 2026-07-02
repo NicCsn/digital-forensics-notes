@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Forensik: Android und iOS — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Mobile Forensik: Android und iOS</span>
+</nav>
+<main>
+<article>
+<h1>Mobile Forensik: Android und iOS <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Smartphones sind persönliche Tagebücher mit GPS, Kommunikationshistorie und App-Daten. Android und iOS haben fundamental unterschiedliche Sicherheitsarchitekturen — und entsprechend verschiedene forensische Extraktionsmethoden.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Android-Forensik</h3>
+
+<p>#### Sicherheitsarchitektur</p>
+<ul><li><strong>Full-Disk Encryption (FDE):</strong> Android 5-9, basierend auf Nutzer-Passwort/PIN</li>
+<li><strong>File-Based Encryption (FBE):</strong> Android 7+, Dateien separat verschlüsselt — Direct Boot ermöglicht eingeschränkte Funktionen vor der ersten Entsperrung</li>
+<li><strong>Keystore / Keymaster:</strong> Hardware-gestützte Schlüsselspeicherung im TEE (Trusted Execution Environment)</li></ul>
+
+<p>#### Extraktionsmethoden</p>
+
+<table class="styled-table">
+<thead><tr><th>Methode</th><th>Voraussetzung</th><th>Was du bekommst</th></tr></thead><tbody>
+<tr><td>**ADB Backup**</td><td>ADB-Debugging aktiviert, Gerät entsperrt</td><td>Apps und ihre Daten (nur Apps, die Backup erlauben)</td></tr>
+<tr><td>**Nandroid Backup**</td><td>Custom Recovery (TWRP) installiert</td><td>Vollständiges System-Image</td></tr>
+<tr><td>**chip-off**</td><td>Physischer Zugriff, Entlöten</td><td>Rohdaten des Flash-Speichers</td></tr>
+<tr><td>**JTAG**</td><td>Debug-Pins identifiziert</td><td>Speicherzugriff auf niedriger Ebene</td></tr>
+<tr><td>**Flasher-Box** (z.B. EDL-Mode)</td><td>Qualcomm-Gerät, Emergency Download Mode</td><td>Roh-Speicherabbild</td></tr>
+</tbody></table>
+
+<p>#### Android-Dateisystem und Artefakte</p>
+
+<p>Wichtige Fundorte (Root-Zugriff vorausgesetzt):</p>
+<ul><li><strong>SMS / Anrufliste:</strong> <code>/data/data/com.android.providers.telephony/databases/mmssms.db</code></li>
+<li><strong>Kontakte:</strong> <code>/data/data/com.android.providers.contacts/databases/contacts2.db</code></li>
+<li><strong>Chrome:</strong> <code>/data/data/com.android.chrome/app_chrome/Default/</code> (History, Cookies, Login Data)</li>
+<li><strong>WhatsApp:</strong> <code>/data/data/com.whatsapp/databases/msgstore.db</code> (verschlüsselt mit Key in <code>/data/data/com.whatsapp/files/key</code>)</li>
+<li><strong>GPS / Location:</strong> <code>/data/data/com.google.android.gms/databases/</code></li></ul>
+
+<h3>iOS-Forensik</h3>
+
+<p>#### Sicherheitsarchitektur</p>
+<ul><li><strong>Secure Enclave:</strong> Dedizierter Chip für Schlüsselverwaltung — vom Hauptprozessor isoliert</li>
+<li><strong>Data Protection:</strong> Jede Datei hat eine Schutzklasse (NSFileProtectionComplete, .completeUntilFirstUserAuthentication, .none)</li>
+<li><strong>Verschlüsselungshierarchie:</strong> Geräteschlüssel → Klassenschlüssel → Dateischlüssel</li></ul>
+
+<p>#### Extraktionsmethoden</p>
+
+<table class="styled-table">
+<thead><tr><th>Methode</th><th>Voraussetzung</th><th>Was du bekommst</th></tr></thead><tbody>
+<tr><td>**iTunes Backup**</td><td>Passwort bekannt (verschlüsseltes Backup)</td><td>Fast alle App-Daten</td></tr>
+<tr><td>**Checkm8 (bootrom-Exploit)**</td><td>iPhone 4s bis iPhone X</td><td>Vollzugriff auf Dateisystem (Checkra1n, checkm8-nonce-setter)</td></tr>
+<tr><td>**Advanced Logical (AFC)**</td><td>Gerät entsperrt, Pairing-Record vorhanden</td><td>Medien, App-Dateien (eingeschränkt)</td></tr>
+<tr><td>**GrayKey / Cellebrite UFED**</td><td>Kommerzielle Hardware</td><td>Tiefenextraktion, auch bei gesperrten Geräten</td></tr>
+</tbody></table>
+
+<p>#### iOS-Artefakte</p>
+
+<ul><li><strong>SMS/iMessage:</strong> <code>~/Library/SMS/sms.db</code> (SQLite)</li>
+<li><strong>Anrufliste:</strong> <code>~/Library/CallHistoryDB/CallHistory.storedata</code></li>
+<li><strong>Safari:</strong> <code>~/Library/Safari/History.db</code>, <code>Cookies.binarycookies</code></li>
+<li><strong>GPS:</strong> <code>~/Library/Caches/locationd/consolidated.db</code> (Significant Locations)</li>
+<li><strong>KnowledgeC:</strong> <code>~/Library/Application Support/Knowledge/knowledgeC.db</code> — App-Nutzung, Web-Verlauf</li></ul>
+
+<h3>SQLite — das universelle mobile Datenbankformat</h3>
+
+<p>Fast alle mobilen App-Daten sind SQLite-Datenbanken. Forensische Tools:</p>
+
+<pre><code>sqlitebrowser whatsapp.db
+
+# Freie Seiten analysieren (gelöschte Daten!)
+sqlite3 app.db &quot;PRAGMA freelist_count;&quot;
+sqlite3 app.db &quot;PRAGMA integrity_check;&quot;
+
+# WAL-Datei prüfen
+sqlite3 app.db &quot;.recover&quot;  # Daten aus beschädigter DB + WAL wiederherstellen</code></pre>
+
+<h3>Gelöschte Daten in SQLite</h3>
+
+<ul><li><strong>Freelist:</strong> SQLite markiert gelöschte Zeilen für Wiederverwendung, überschreibt sie aber nicht sofort</li>
+<li><strong>WAL-Datei:</strong> Enthält die letzten Änderungen vor dem nächsten Checkpoint → gelöschte Daten können hier noch vorhanden sein</li>
+<li><strong>Journal:</strong> Rollback-Journal kann alte Versionen enthalten</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>adb devices</code> — verbundene Android-Geräte anzeigen</li>
+<li><code>adb backup -apk -shared -all -system</code> — vollständiges Android-Backup</li>
+<li><code>ideviceinfo</code> / <code>idevicebackup2</code> (libimobildevice) — iOS-Backup erstellen</li>
+<li><code>sqlite3 sms.db "SELECT datetime(date/1000000000 + 978307200, 'unixepoch'), text, is_from_me FROM message"</code> — macOS/iOS-Zeitstempel</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://source.android.com/docs/security">Android Developers: Security</a></li>
+<li><a href="https://support.apple.com/guide/security/welcome/web">Apple Platform Security</a></li>
+<li>Hoog, A.: Android Forensics</li>
+<li>Tamma, R. et al.: Learning Android Forensics</li></ul>
+
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arbeitsspeicher-Forensik (Memory Forensics) — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Arbeitsspeicher-Forensik (Memory Forensics)</span>
+</nav>
+<main>
+<article>
+<h1>Arbeitsspeicher-Forensik (Memory Forensics) <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Arbeitsspeicher (RAM) ist flüchtig — nach dem Ausschalten sind die Daten weg. Aber im laufenden Betrieb enthält er ALLES: Prozesse, Passwörter, Netzwerkverbindungen, Malware, Klartexte. Memory Forensics ist oft DER entscheidende Schritt, um fileless Malware oder laufende Angriffe zu identifizieren.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>RAM-Dump erstellen</h3>
+
+<p><strong>Windows:</strong></p>
+<ul><li><code>WinPMEM</code> (Rekall-Toolkit), <code>DumpIt</code>, <code>Magnet RAM Capture</code></li>
+<li>Für VMs: Snapshot = RAM-Dump der VM</li></ul>
+
+<p><strong>Linux:</strong></p>
+<ul><li><code>LiME</code> (Linux Memory Extractor): Kernel-Modul laden → RAM dumpen</li>
+<li><code>insmod lime.ko path=/tmp/mem.dump format=lime</code></li>
+<li><code>fmem</code> (ältere Alternative)</li></ul>
+
+<p><strong>macOS:</strong></p>
+<ul><li><code>osxpmem</code>, <code>Recon Imager</code></li>
+<li>macOS SIP erschwert Kernel-Module → SIP ggf. temporär deaktivieren</li></ul>
+
+<h3>Volatility — Das Werkzeug</h3>
+
+<p>Volatility ist das Standard-Framework zur RAM-Analyse:</p>
+
+<pre><code>volatility -f mem.dump imageinfo
+
+# Prozessliste
+volatility -f mem.dump --profile=Win10x64 pslist
+volatility -f mem.dump --profile=Win10x64 pstree    # Eltern-Kind-Beziehungen
+volatility -f mem.dump --profile=Win10x64 psxview   # versteckte Prozesse finden
+
+# Netzwerkverbindungen
+volatility -f mem.dump --profile=Win10x64 netscan
+
+# Geladene DLLs
+volatility -f mem.dump --profile=Win10x64 dlllist
+
+# Kommandozeilen der Prozesse
+volatility -f mem.dump --profile=Win10x64 cmdline
+
+# Injezierten Code finden
+volatility -f mem.dump --profile=Win10x64 malfind
+
+# Dateien aus dem RAM extrahieren
+volatility -f mem.dump --profile=Win10x64 dumpfiles
+
+# Registry-Hives aus dem RAM
+volatility -f mem.dump --profile=Win10x64 hivelist</code></pre>
+
+<h3>Typische Analyse-Ablauf</h3>
+
+<ul><li><strong>imageinfo</strong> → OS-Profil bestimmen (Win7? Win10? x64?)</li>
+<li><strong>pstree</strong> → Welche Prozesse laufen, welche Eltern-Kind-Verhältnisse?</li>
+<li><strong>cmdline</strong> → Wie wurde der Prozess gestartet?</li>
+<li><strong>netscan</strong> → Wohin bestehen Verbindungen?</li>
+<li><strong>malfind</strong> → Gibt es injizierten Code?</li>
+<li><strong>Suspicious Processes identifiziert? →</strong> <code>memdump -p <PID></code> + Strings-Extraktion + YARA-Scan</li></ul>
+
+<h3>Fileless Malware</h3>
+
+<ul><li>Existiert nur im RAM, nie auf der Festplatte</li>
+<li>Typische Vektoren: PowerShell-Empire, Cobalt Strike (Reflective DLL Loading)</li>
+<li>Erkennung NUR per Memory Forensics möglich</li>
+<li>Anzeichen: Prozess ohne zugehörige EXE-Datei, <code>cmd.exe</code> mit PowerShell-Kindprozess und Netzwerkverbindung</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>volatility3</code> (Python 3, aktiv entwickelt) vs. <code>volatility2</code> (Python 2, Legacy)</li>
+<li><code>strings mem.dump | grep -i password</code> → Erste Schnellanalyse</li>
+<li><code>vol -f mem.dump windows.cmdline.CmdLine</code> → Volatility 3 Syntax</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Ligh, Case, Levy, Walters: The Art of Memory Forensics</li>
+<li><a href="https://www.volatilityfoundation.org/">Volatility Foundation</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

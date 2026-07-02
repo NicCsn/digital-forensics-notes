@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithmen und Komplexität — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Algorithmen und Komplexität</span>
+</nav>
+<main>
+<article>
+<h1>Algorithmen und Komplexität <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Ein Algorithmus ist eine präzise Schritt-für-Schritt-Anweisung zur Lösung eines Problems. In der Forensik brauchst du Algorithmen z.B. für File Carving, Duplikatsuche, Log-Analyse oder Passwort-Hashing. Die Komplexität (O-Notation) sagt dir, wie ein Algorithmus skaliert — entscheidend bei großen Datenmengen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>O-Notation (Landau-Notation)</h3>
+
+<p>Beschreibt das Laufzeitverhalten im Worst Case in Abhängigkeit der Eingabegröße n:</p>
+
+<table class="styled-table">
+<thead><tr><th>Notation</th><th>Name</th><th>Beispiel</th><th>1 TB-Daten</th></tr></thead><tbody>
+<tr><td>O(1)</td><td>Konstant</td><td>Array-Zugriff per Index</td><td>sofort</td></tr>
+<tr><td>O(log n)</td><td>Logarithmisch</td><td>Binäre Suche</td><td>~40 Schritte</td></tr>
+<tr><td>O(n)</td><td>Linear</td><td>Lineare Suche in Image</td><td>~1 Stunde (hängt von I/O ab)</td></tr>
+<tr><td>O(n log n)</td><td>Quasilinear</td><td>Mergesort, Heapsort</td><td>~2 Stunden</td></tr>
+<tr><td>O(n²)</td><td>Quadratisch</td><td>Bubblesort</td><td>~Jahre</td></tr>
+<tr><td>O(2^n)</td><td>Exponentiell</td><td>Brute-Force-Passwort</td><td>nicht praktikabel</td></tr>
+</tbody></table>
+
+<h3>Wichtige Algorithmen für die Forensik</h3>
+
+<p><strong>Hashing (SHA-256, MD5):</strong> O(n) zum Hashen. <code>sha256sum image.dd</code> liest die gesamte Datei einmal linear.</p>
+
+<p><strong>Sortierung (Quicksort, Mergesort):</strong> O(n log n). IP-Adressen oder Zeitstempel sortieren für Timeline-Analyse.</p>
+
+<p><strong>Reguläre Ausdrücke:</strong> Mustersuche in Logs. Worst Case exponentiell → ReDoS (Regular Expression Denial of Service). Immer Regex testen, bevor du ihn auf 10 GB Logs loslässt.</p>
+
+<p><strong>Aho-Corasick-Algorithmus:</strong> Multi-Pattern-String-Matching — sucht nach Tausenden von IOCs gleichzeitig in O(n + m + z), wobei n = Textlänge, m = Summe aller Pattern-Längen, z = Treffer. Perfekt für IOC-Scanning über große Logdateien.</p>
+
+<p><strong>Rabin-Karp-Algorithmus:</strong> Rolling-Hash-Verfahren. Perfekt für File Carving: Statt jeden Byte-Versatz auf eine Header-Signatur zu prüfen (O(n·m)), berechnet Rabin-Karp einen fortlaufenden Hash und vergleicht in O(n+m).</p>
+
+<p><strong>Bloom-Filter:</strong> Datenstruktur, die prüft, ob ein Element in einer Menge enthalten sein KÖNNTE. Falsch-Positive möglich, aber keine Falsch-Negative. Anwendung: NSRL-Abgleich — "Ist dieser Hash in den 80 Millionen Known-Good-Hashes?" → Bloom-Filter sagt "nein" oder "vielleicht". Speicherverbrauch: ~100 MB statt 10 GB.</p>
+
+<h3>Praxis-Beispiel: File Carving mit Rabin-Karp</h3>
+
+<pre><code>Besser: Rolling Hash über 4-Byte-Fenster. Hash == Hash(JPEG-Header)? → Kandidat gefunden!
+Dann: Struktur validieren (JPEG-Marker, Länge)</code></pre>
+
+<h3>Praxis-Beispiel: IOC-Scanning mit Aho-Corasick</h3>
+
+<p>Du hast eine Liste mit 50.000 verdächtigen IPs, Domains und Hashes. Statt 50.000× <code>grep</code>-Durchläufen (Tage) scannt Aho-Corasick deine Logs in EINEM Durchlauf (Minuten).</p>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>ssdeep -r /mnt/image/</code> — Fuzzy-Hashing mit kontextbasiertem Rolling Hash</li>
+<li><code>grep -F -f iocs.txt access.log</code> — Fixed-String-Matching (schneller als Regex für viele IOCs)</li>
+<li><code>sort log.txt | uniq -c | sort -rn</code> — Häufigkeitsanalyse</li>
+<li><code>bulk_extractor -o output/ image.dd</code> — hochoptimiertes Multi-Pattern-Scanning</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Cormen, Leiserson, Rivest, Stein: Introduction to Algorithms</li>
+<li>Harel, D.: Algorithmik — Die Kunst des Rechnens</li>
+<li><a href="https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm">Aho-Corasick Algorithm (Wikipedia)</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

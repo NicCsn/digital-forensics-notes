@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSINT-Recherche: Methodik und Werkzeuge — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">OSINT</a> / OSINT-Recherche: Methodik und Werkzeuge</span>
+</nav>
+<main>
+<article>
+<h1>OSINT-Recherche: Methodik und Werkzeuge <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>OSINT-Recherche beginnt nie einfach mit "mal googeln". Du brauchst einen Plan: Welche Frage willst du beantworten? Welche Quellen sind dafür relevant? Wie verifizierst du die Ergebnisse? Die meisten OSINT-Fehler entstehen durch unstrukturierte Suche und mangelnde Quellenkritik.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Google Dorks (Google Hacking)</h3>
+
+<p>Erweiterte Google-Suchoperatoren, die den Index gezielt durchsuchen:</p>
+
+<table class="styled-table">
+<thead><tr><th>Operator</th><th>Funktion</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td>`site:`</td><td>Nur diese Domain</td><td>`site:example.com`</td></tr>
+<tr><td>`filetype:`</td><td>Dateityp einschränken</td><td>`filetype:pdf "vertraulich"`</td></tr>
+<tr><td>`intitle:`</td><td>Wort im Titel</td><td>`intitle:"index of"`</td></tr>
+<tr><td>`inurl:`</td><td>Wort in der URL</td><td>`inurl:admin`</td></tr>
+<tr><td>`intext:`</td><td>Wort im Text</td><td>`intext:"password"`</td></tr>
+<tr><td>`-`</td><td>Wort ausschließen</td><td>`-site:wikipedia.org`</td></tr>
+<tr><td>`..`</td><td>Zahlenbereich</td><td>`site:example.com 2018..2025`</td></tr>
+</tbody></table>
+
+<p><strong>Recherche-Beispiel:</strong></p>
+<p><code>site:example.com filetype:pdf OR filetype:docx "confidential" OR "internal" OR "password"</code></p>
+
+<h3>Shodan — die Suchmaschine für Geräte</h3>
+
+<ul><li>Durchsucht nicht Websites, sondern offene Ports und Dienste</li>
+<li>Findet: offene Datenbanken, ungesicherte Kameras, ICS/SCADA-Systeme</li>
+<li>Beispiel-Suche: <code>port:3389 country:DE</code> → alle offenen RDP-Ports in Deutschland</li>
+<li><code>org:"Target Corp"</code> → alle Geräte einer Organisation</li></ul>
+
+<h3>Social-Media-Recherche</h3>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Funktion</th></tr></thead><tbody>
+<tr><td>**sherlock**</td><td>Username auf 300+ Plattformen gleichzeitig suchen</td></tr>
+<tr><td>**holehe**</td><td>Prüfen, ob eine E-Mail-Adresse auf bestimmten Seiten registriert ist</td></tr>
+<tr><td>**whatsmyname**</td><td>Ähnlich sherlock, webbasiert</td></tr>
+<tr><td>**twint / snscrape**</td><td>Twitter-Daten ohne API-Key scrapen</td></tr>
+<tr><td>**Instaloader**</td><td>Instagram-Profil und Posts herunterladen</td></tr>
+</tbody></table>
+
+<h3>Quellenbewertung (CRAAP-Test)</h3>
+
+<p>Vor Verwendung einer Quelle prüfen:</p>
+
+<ul><li><strong>C</strong>urrency (Aktualität): Wann zuletzt aktualisiert?</li>
+<li><strong>R</strong>elevance (Relevanz): Passt zum Recherche-Ziel?</li>
+<li><strong>A</strong>uthority (Autorität): Wer ist der Autor/die Organisation? Qualifikation?</li>
+<li><strong>A</strong>ccuracy (Genauigkeit): Sind die Informationen mit anderen Quellen verifizierbar?</li>
+<li><strong>P</strong>urpose (Zweck): Warum wurde die Seite erstellt? (Information, Propaganda, Verkauf?)</li></ul>
+
+<h3>Fact-Checking</h3>
+
+<ul><li><strong>Bilderrückwärtssuche:</strong> Google Images, TinEye, Yandex Images (besser für Gesichter), Bing</li>
+<li><strong>Metadaten:</strong> EXIF-Daten aus Bildern mit <code>exiftool</code> — Kamera, GPS, Zeitpunkt</li>
+<li><strong>Domain-Recherche:</strong> WHOIS (whois.domaintools.com), DNS-History (SecurityTrails)</li>
+<li><strong>Screenshot-Archiv:</strong> archive.org (Wayback Machine), archive.today</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>sherlock johndoe</code> — Username überall suchen</li>
+<li><code>theHarvester -d example.com -b google,linkedin</code> — E-Mails und Kontakte</li>
+<li><code>exiftool -a -u bild.jpg</code> — alle EXIF-Daten anzeigen</li>
+<li><code>whois example.com</code> — Domain-Registrierungsdaten</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://www.exploit-db.com/google-hacking-database">Google Hacking Database (GHDB)</a></li>
+<li><a href="https://docs.google.com/document/d/1B1P7GAwViXcfSSacWWDgCYrqCvtrYwZtgHcSJwv_tiQ/">Bellingcat's Digital Investigation Toolkit</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

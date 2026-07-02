@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethik in der Informationssicherheit — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Recht & Kriminalistik</a> / Ethik in der Informationssicherheit</span>
+</nav>
+<main>
+<article>
+<h1>Ethik in der Informationssicherheit <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>IT-Sicherheit und Forensik sind keine wertfreien Disziplinen. Jede Entscheidung — ob du eine Sicherheitslücke veröffentlichst, welche Daten du während einer forensischen Analyse erhebst oder ob du ein Lösegeld zahlst — hat eine ethische Dimension. Ethiktheorien helfen, diese Entscheidungen zu strukturieren.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Drei zentrale Ethiktheorien</h3>
+
+<table class="styled-table">
+<thead><tr><th>Theorie</th><th>Kernfrage</th><th>Entscheidungsprinzip</th><th>Kritik</th></tr></thead><tbody>
+<tr><td>**Deontologie (Kant)**</td><td>Was ist meine Pflicht?</td><td>Handle so, dass dein Handeln ein allgemeines Gesetz sein könnte (Kategorischer Imperativ)</td><td>Rigide — erlaubt keine Ausnahmen, auch wenn die Konsequenzen schlimm sind</td></tr>
+<tr><td>**Utilitarismus (Bentham/Mill)**</td><td>Was bringt das größte Glück für die größte Zahl?</td><td>Maximiere den Gesamtnutzen, minimiere Schaden</td><td>Minderheitenrechte können dem "Gemeinwohl" geopfert werden</td></tr>
+<tr><td>**Verantwortungsethik (Jonas)**</td><td>Welche Folgen hat mein Handeln für künftige Generationen?</td><td>Handle so, dass die Wirkungen deiner Handlung verträglich sind mit der Permanenz echten menschlichen Lebens</td><td>Schwer operationalisierbar</td></tr>
+</tbody></table>
+
+<h3>Ethische Dilemmata in der IT-Sicherheit</h3>
+
+<p>#### Dilemma 1: Vulnerability Disclosure</p>
+<p><strong>Du findest eine kritische Zero-Day-Lücke in einer weit verbreiteten Software.</strong></p>
+<ul><li>Deontologisch: Pflicht zur Meldung an den Hersteller (keine Geheimhaltung)</li>
+<li>Utilitaristisch: Abwägung: Wenn ich es melde → Hersteller patcht → alle geschützt. Wenn ich es verkaufe → Schaden für viele, aber persönlicher Gewinn → melden</li>
+<li>Problem in der Praxis: Manche Hersteller ignorieren Meldungen, Regierungen kaufen Zero-Days für Offensiv-Operationen</li></ul>
+
+<p>#### Dilemma 2: Forensische Analyse vs. Datenschutz</p>
+<p><strong>Du untersuchst ein System und findest private, nicht fallrelevante Daten.</strong></p>
+<ul><li>Deontologisch: Nicht fallrelevante Daten darfst du nicht verarbeiten (Zweckbindung)</li>
+<li>Utilitaristisch: Wenn das Anschauen dieser Daten unerwartet einen größeren Fall löst → gerechtfertigt?</li>
+<li>Rechtlich: DSGVO-Zweckbindung + Beweiserhebungsverbote</li></ul>
+
+<p>#### Dilemma 3: Ransomware — Lösegeld zahlen?</p>
+<p><strong>Dein Arbeitgeber ist Opfer einer Ransomware-Attacke. Alle Backups sind ebenfalls verschlüsselt.</strong></p>
+<ul><li>Deontologisch: Nicht zahlen (ermutigt Kriminelle, finanziert weitere Straftaten)</li>
+<li>Utilitaristisch: Wenn die Firma sonst pleite geht und 500 Mitarbeiter ihre Jobs verlieren → zahlen?</li>
+<li>Praxis: Kein offizieller Rat zur Zahlung; "no-more-ransom.org" für Entschlüsselungshilfe</li></ul>
+
+<h3>Psychologische Faktoren</h3>
+
+<ul><li><strong>Moral Licensing:</strong> "Ich habe gestern eine Sicherheitslücke verantwortungsvoll gemeldet, also ist es OK, wenn ich heute eine kleine Regel biege"</li>
+<li><strong>Normalisierung von Abweichung:</strong> Wenn jeder in meinem Team Passwörter teilt, erscheint es normal</li>
+<li><strong>Obedience to Authority (Milgram):</strong> "Mein Chef hat gesagt, ich soll den Server hacken" — rechtfertigt das den Eingriff?</li></ul>
+
+<h3>Ethische Fragen in der Zusammenarbeit mit Strafverfolgungsbehörden</h3>
+
+<ul><li>Darfst du als Forensiker Beweise an die Polizei weitergeben, auch wenn dein Arbeitgeber das nicht will? (Whistleblowing)</li>
+<li>Darfst du mit Behörden kooperieren, die in deinem Heimatland vielleicht nicht die gleichen rechtsstaatlichen Standards haben?</li>
+<li>Darfst du forensische Analysen für einen Kunden durchführen, dessen Geschäftsmodell du moralisch ablehnst?</li></ul>
+
+<h3>Rahmenwerke für ethische Entscheidungen in IT-Security</h3>
+
+<ul><li><strong>ACM Code of Ethics:</strong> "Contribute to society and human well-being", "Be honest and trustworthy", "Respect privacy"</li>
+<li><strong>(ISC)² Code of Ethics:</strong> "Protect society, the common good, necessary public trust and confidence"</li>
+<li><strong>SANS/White-Hat-Prinzip:</strong> Erlaubnis, Scope, Verhältnismäßigkeit, Transparenz</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Vor jeder forensischen Analyse: Ethische Selbstprüfung — Warum analysiere ich? Was sind die Konsequenzen?</li>
+<li>Vier-Augen-Prinzip bei ethischen Grenzfragen</li>
+<li>Dokumentation der ethischen Abwägung im Bericht</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Birsch, D.: Ethical Insights</li>
+<li>O'Neil, C.: Weapons of Math Destruction</li>
+<li><a href="https://www.acm.org/code-of-ethics">ACM Code of Ethics</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

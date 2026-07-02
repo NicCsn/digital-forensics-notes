@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Softwareentwicklungsprozess und Vorgehensmodelle — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Softwareentwicklungsprozess und Vorgehensmodelle</span>
+</nav>
+<main>
+<article>
+<h1>Softwareentwicklungsprozess und Vorgehensmodelle <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Softwareentwicklung ist mehr als Code schreiben — es braucht einen strukturierten Prozess. In der Forensik entwickelst du Tools unter hohen Qualitätsanforderungen (gerichtsfest!), was einen disziplinierten Entwicklungsprozess voraussetzt.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Phasenmodell (Wasserfall)</h3>
+
+<ul><li><strong>Anforderungsanalyse:</strong> Was soll das Tool können? (z.B. "Extrahiere alle E-Mail-Adressen aus einer PST-Datei")</li>
+<li><strong>Entwurf:</strong> Architektur festlegen — Module, Datenstrukturen, Schnittstellen</li>
+<li><strong>Implementierung:</strong> Codieren</li>
+<li><strong>Test:</strong> Unit-Tests, Integrationstests, Praxistest mit Beispieldaten</li>
+<li><strong>Wartung:</strong> Bugfixes, Anpassungen</li></ul>
+
+<p>Nachteil: Starte Phase 1 falsch → teurer Fehler am Ende. Gut für: Projekte mit klaren, unveränderlichen Anforderungen.</p>
+
+<h3>Agile / Scrum</h3>
+
+<ul><li><strong>Iterative Entwicklung</strong> in 2-4 Wochen Sprints</li>
+<li>Tägliches Standup (15 min): Was hab ich gestern gemacht? Was mache ich heute? Blockaden?</li>
+<li><strong>Backlog → Sprint Planning → Daily Scrum → Sprint Review → Retro</strong></li>
+<li>Vorteil: Frühes Feedback, Flexibilität bei sich ändernden Anforderungen</li>
+<li>Im Forensik-Kontext: Perfekt für "Ich weiß noch nicht genau, wie die Daten aussehen"</li></ul>
+
+<h3>Git für Versionskontrolle</h3>
+
+<pre><code>git add .
+git commit -m &quot;chore: initial version of forensic tool&quot;
+git branch feature/ntfs-support
+git checkout feature/ntfs-support
+# ... entwickeln ...
+git merge feature/ntfs-support</code></pre>
+
+<ul><li><strong>Commits</strong> sollten klein und atomar sein — jeder Commit ein logischer Schritt</li>
+<li><strong>Branches</strong> für Features, Bugfixes — nie direkt auf main entwickeln</li>
+<li><strong>Tags</strong> für Releases: <code>v1.0</code>, <code>v1.0.1</code></li></ul>
+
+<h3>Qualitätssicherung in der Forensik</h3>
+
+<p>Forensische Tools müssen <strong>zuverlässig</strong> und <strong>nachvollziehbar</strong> sein:</p>
+
+<table class="styled-table">
+<thead><tr><th>Maßnahme</th><th>Warum</th></tr></thead><tbody>
+<tr><td>Unit-Tests</td><td>Jede Funktion isoliert testen (z.B. korrekte Hash-Berechnung)</td></tr>
+<tr><td>Regressionstests</td><td>Nach Änderungen prüfen: Funktioniert das Alte noch?</td></tr>
+<tr><td>Bekannte Testdaten</td><td>NIST-Testimages, standardisierte PCAPs</td></tr>
+<tr><td>Code-Review</td><td>Vier-Augen-Prinzip — Forensik-Fehler können Verfahren gefährden</td></tr>
+<tr><td>Dokumentation</td><td>Welche Annahmen? Welche Limitationen?</td></tr>
+</tbody></table>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>pytest</code> für Python-Tests: <code>test_hash.py</code> → <code>pytest</code></li>
+<li><code>git log --oneline</code> zeigt die Commit-Historie</li>
+<li><code>.gitignore</code> mit <code>__pycache__/</code>, <code>.venv/</code>, <code>*.log</code>, <code>*.tmp</code></li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Sommerville, I.: Software Engineering</li>
+<li>Hanser, E.: Agile Prozesse — Von XP über Scrum bis MAP</li></ul>
+
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TLS/SSL-Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / TLS/SSL-Forensik</span>
+</nav>
+<main>
+<article>
+<h1>TLS/SSL-Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>TLS (Transport Layer Security) verschlüsselt den Großteil des Internetverkehrs. Für Forensiker heißt das: Der Payload ist unsichtbar. Aber der TLS-Handshake selbst liefert wertvolle Spuren — Zertifikate, Cipher Suites, JA3-Fingerprints und Certificate-Transparency-Logs.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Der TLS-Handshake (1.2 vs. 1.3)</h3>
+
+<pre><code>ClientHello  → (Cipher Suites)      ClientHello  → (Key Share)
+ServerHello  ← (Cipher, Cert)       ServerHello  ← (Key Share, Cert)
+ClientKeyEx  → (PreMaster Secret)   [Verschlüsselt ab hier]
+[Encrypted]  →                       Finished    →
+[Encrypted]  ←                       Finished    ←</code></pre>
+
+<p>TLS 1.3 verschlüsselt das Server-Zertifikat — in Wireshark siehst du es nicht mehr im Klartext, nur noch per <code>SSLKEYLOGFILE</code>.</p>
+
+<h3>Forensische Spuren im TLS-Handshake</h3>
+
+<table class="styled-table">
+<thead><tr><th>Feld</th><th>Was es verrät</th></tr></thead><tbody>
+<tr><td>**Server Name Indication (SNI)**</td><td>Welche Domain wurde angefordert? (im Klartext, auch bei TLS 1.3!)</td></tr>
+<tr><td>**Cipher Suites**</td><td>Vom Client angebotene Verschlüsselung → OS/Bibliothek-Fingerprinting</td></tr>
+<tr><td>**Server-Zertifikat**</td><td>Subject CN, Issuer, Validity, SANs → wer ist der Server?</td></tr>
+<tr><td>**JA3 / JA4 Hash**</td><td>MD5-Hash der Client-Hello-Parameter → Malware-Fingerprinting!</td></tr>
+</tbody></table>
+
+<h3>JA3 und JA4 — Malware-Fingerprinting ohne Payload</h3>
+
+<p>JA3 hasht folgende Felder des Client Hello: <code>SSLVersion,Ciphers,Extensions,EllipticCurves,ECPointFormats</code></p>
+
+<pre><code>
+Dieser Hash identifiziert:
+- Chrome 120 auf Windows 11 → immmer der gleiche JA3
+- Cobalt Strike C2 Client → spezifischer JA3
+- Python requests library → eigener JA3</code></pre>
+
+<p>JA4 erweitert das auf QUIC und TLS 1.3. Beide erlauben Malware-Detection ohne einen Blick in die Payload.</p>
+
+<h3>Certificate Transparency (CT)</h3>
+
+<p>Alle von CAs ausgestellten TLS-Zertifikate werden in öffentlichen Logs gespeichert:</p>
+
+<ul><li><strong>crt.sh:</strong> Suche nach Domain → alle jemals ausgestellten Zertifikate</li>
+<li><strong>Forensische Nutzung:</strong> "Domäne evil.com wurde vor 3 Tagen registriert, Zertifikat gestern ausgestellt, heute Phishing-Angriff" → verdächtig</li></ul>
+
+<h3>TLS in Wireshark entschlüsseln</h3>
+
+<p>Wenn du den Session-Key hast (per <code>SSLKEYLOGFILE</code> aus dem Browser oder von einem Server):</p>
+
+<pre><code>export SSLKEYLOGFILE=/tmp/sslkeys.log
+google-chrome
+
+# In Wireshark:
+# Edit → Preferences → Protocols → TLS → (Pre)-Master-Secret log filename: /tmp/sslkeys.log
+# → ALLE Sessions werden entschlüsselt</code></pre>
+
+<h3>Selbst-signierte Zertifikate und forensische Relevanz</h3>
+
+<p>In internen Unternehmensnetzen werden oft selbst-signierte Zertifikate für TLS-Interception verwendet:</p>
+
+<ul><li><strong>Legitim:</strong> Corporate-Firewall (Palo Alto, FortiGate) inspiziert HTTPS per Man-in-the-Middle</li>
+<li><strong>Illegitim:</strong> Angreifer hat eigenen Root-CA im Unternehmensnetz installiert und liest ALLEN TLS-Traffic mit</li>
+<li><strong>Forensische Spuren:</strong> Client-Hello mit JA3, aber falsche Zertifikats-Kette, oder Zertifikat von unbekanntem Issuer</li></ul>
+
+<h3>DNS-over-HTTPS (DoH) und DNS-over-TLS (DoT)</h3>
+
+<ul><li>DoH/DoT verschlüsseln DNS-Anfragen → nicht mehr im Klartext sichtbar</li>
+<li>Forensisch: Der TLS-Handshake zur DoH-Server-IP (z.B. 1.1.1.1, 8.8.8.8) ist das einzige, was du siehst — SNI verrät immerhin die DoH-Domain</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li>Wireshark: <code>tls.handshake.type == 1</code> → alle Client Hellos</li>
+<li>Wireshark: <code>tls.handshake.extensions_server_name</code> → SNI (welche Domain?)</li>
+<li><code>tshark -r capture.pcap -Y "tls.handshake.type == 1" -T fields -e tls.handshake.ja3</code></li>
+<li>Cert-Suche: <code>https://crt.sh/?q=%.example.com</code></li>
+<li>SSLKEYLOGFILE: <code>export SSLKEYLOGFILE=/tmp/keys.log && firefox</code></li>
+<li>JA3-Datenbank: <a href="https://ja3er.com/">ja3er.com</a> und <a href="https://sslbl.abuse.ch/">sslbl.abuse.ch</a></li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>RFC 8446 (TLS 1.3)</li>
+<li><a href="https://github.com/salesforce/ja3">Salesforce JA3</a></li>
+<li><a href="https://certificate.transparency.dev/">Certificate Transparency</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

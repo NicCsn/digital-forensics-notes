@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kryptoanalyse: Verschlüsselung brechen — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">IT-Security</a> / Kryptoanalyse: Verschlüsselung brechen</span>
+</nav>
+<main>
+<article>
+<h1>Kryptoanalyse: Verschlüsselung brechen <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Kryptoanalyse ist die Kunst, Verschlüsselung ohne den Schlüssel zu brechen. In der Forensik brauchst du das, wenn du auf verschlüsselte Container, Passwort-geschützte Dateien oder WPA2-Handshakes stößt — nicht, um neue Verfahren zu entwickeln, sondern um bestehende Schwächen auszunutzen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Angriffsmethoden</h3>
+
+<table class="styled-table">
+<thead><tr><th>Methode</th><th>Beschreibung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td>**Ciphertext-Only**</td><td>Nur der Geheimtext ist bekannt</td><td>Alte Chiffren, schwache moderne Cipher</td></tr>
+<tr><td>**Known-Plaintext**</td><td>Teile des Klartexts sind bekannt</td><td>ZIP-Datei: Einige enthaltene Dateien sind bekannt → Known-Plaintext-Angriff</td></tr>
+<tr><td>**Chosen-Plaintext**</td><td>Angreifer kann Klartexte verschlüsseln lassen</td><td>Angriff auf ECB-Mode</td></tr>
+<tr><td>**Brute-Force**</td><td>Systematisches Durchprobieren aller Schlüssel</td><td>6-stelliges Passwort: 95⁶ Kombinationen</td></tr>
+<tr><td>**Dictionary**</td><td>Wordlist-basierter Angriff</td><td>rockyou.txt, SecLists, zielgerichtete Wordlists</td></tr>
+<tr><td>**Regel-basiert**</td><td>Dictionary + Mutationen (l33t, Groß/Klein, Zahlen anhängen)</td><td>`Password` → `P@ssw0rd!`, `password123`</td></tr>
+<tr><td>**Rainbow Tables**</td><td>Vorberechnete Hash-Ketten</td><td>LANMAN-Hash, MD5 (ohne Salt)</td></tr>
+<tr><td>**Side-Channel**</td><td>Physische Messung (Stromverbrauch, EM-Abstrahlung)</td><td>Smartcards, HSMs</td></tr>
+</tbody></table>
+
+<h3>Häufigkeitsanalyse (Klassische Kryptoanalyse)</h3>
+
+<ul><li>Jede Sprache hat charakteristische Buchstaben-Häufigkeiten</li>
+<li>Deutsch: E (17,4%), N (9,8%), I (7,6%) ... am häufigsten</li>
+<li>Monoalphabetische Substitution (z.B. Caesar): Häufigkeitsprofil bleibt erhalten → leicht zu knacken</li>
+<li>Polyalphabetische Substitution (z.B. Vigenère): Glättet das Profil → Kasiski-Test zur Schlüssellängen-Bestimmung</li></ul>
+
+<h3>Hashcat — Praxis</h3>
+
+<pre><code>hashcat -m 0 -a 3 hash.txt ?l?l?l?l?l?l  # 6 Kleinbuchstaben
+
+# Dictionary + Regel
+hashcat -m 0 -a 0 hash.txt rockyou.txt -r best64.rule
+
+# WPA2-Handshake
+hashcat -m 2500 handshake.hccapx rockyou.txt</code></pre>
+
+<p>Wichtige Hash-Modi für Forensik:</p>
+<ul><li><code>0</code> = MD5</li>
+<li><code>100</code> = SHA1</li>
+<li><code>1400</code> = SHA2-256</li>
+<li><code>1000</code> = NTLM (Windows-Passwort-Hash)</li>
+<li><code>2500</code> = WPA/WPA2</li>
+<li><code>14600</code> = LUKS</li>
+<li><code>13721</code> = VeraCrypt</li></ul>
+
+<h3>John the Ripper</h3>
+
+<pre><code>john hash.txt
+
+# Wordlist mit Regeln
+john --wordlist=rockyou.txt --rules hash.txt
+
+# Passwort aus Windows-SAM-Datei
+john --format=NT sam.txt</code></pre>
+
+<h3>Gegenmaßnahmen (aus Verteidigungssicht)</h3>
+
+<ul><li><strong>Lange, komplexe Passwörter:</strong> Nicht in Wordlists, nicht brute-forcebar</li>
+<li><strong>Salt:</strong> Jeder Hash mit individuellem Zufallswert → Rainbow Tables nutzlos, jede Buchstabenvariante einzeln</li>
+<li><strong>Key Stretching:</strong> bcrypt, scrypt, argon2 — langsame Hash-Funktionen (viele Iterationen)</li>
+<li><strong>Pepper:</strong> Geheimer Schlüssel, der nicht in der DB liegt</li></ul>
+
+<h3>Forensisches Vorgehen bei verschlüsselten Funden</h3>
+
+<ul><li><strong>Um welches Format handelt es sich?</strong> (LUKS-Header, ZIP mit AES, BitLocker?)</li>
+<li><strong>Gibt es Hinweise auf das Passwort?</strong> (Notizzettel, Passwort-Manager, Keyfile)</li>
+<li><strong>RAM-Dump</strong> (Schlüssel könnten noch im Speicher sein)</li>
+<li><strong>Social Engineering / Rechtliche Mittel</strong> (Beschuldigter zur Herausgabe verpflichtet?)</li>
+<li><strong>Brute-Force</strong> als letzte Option — mit GPU-Cluster</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Passwort-Wordlist erstellen: <code>cewl https://ziel.de -w custom_wordlist.txt</code> (Wörter von der Ziel-Website scrapen)</li>
+<li><code>hashcat -I</code> — verfügbare GPUs anzeigen</li>
+<li><code>hashcat --benchmark</code> — Leistung testen</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://hashcat.net/wiki/">Hashcat Wiki</a></li>
+<li>Buchmann, J.: Einführung in die Kryptographie</li></ul>
+
+</article>
+</main>
+</body>
+</html>

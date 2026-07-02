@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux-Administration für Forensiker — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Linux-Administration für Forensiker</span>
+</nav>
+<main>
+<article>
+<h1>Linux-Administration für Forensiker <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Als Forensiker musst du Linux nicht nur bedienen, sondern administrieren: Pakete installieren, Dienste kontrollieren, Logs finden, Benutzer verwalten. Mindestens genauso wichtig: Forensisches Imaging von Linux aus, LVM/RAID-Rekonstruktion und Network-Block-Device-Tricks.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Shell-Basics</h3>
+
+<ul><li><code>bash</code> ist die Standard-Shell auf den meisten Distributionen</li>
+<li><code>~/.bashrc</code> und <code>~/.bash_history</code> sind forensisch relevant (ausgeführte Befehle!)</li>
+<li>Wichtige Shortcuts: <code>Ctrl+R</code> (History-Suche), <code>!!</code> (letzten Befehl wiederholen)</li></ul>
+
+<h3>Paketmanagement</h3>
+
+<table class="styled-table">
+<thead><tr><th>Distro</th><th>Paketmanager</th><th>Befehl</th></tr></thead><tbody>
+<tr><td>Debian/Ubuntu/Kali</td><td>APT</td><td>`apt install <paket>`</td></tr>
+<tr><td>RHEL/Fedora</td><td>DNF/YUM</td><td>`dnf install <paket>`</td></tr>
+<tr><td>Arch</td><td>Pacman</td><td>`pacman -S <paket>`</td></tr>
+</tbody></table>
+
+<h3>Systemd und Logging</h3>
+
+<pre><code>journalctl -u sshd --since &quot;1 hour ago&quot;  # Logs eines Dienstes der letzten Stunde
+journalctl --list-boots        # Alle Boots (forensisch: wie viele Neustarts?)
+timedatectl                    # Zeitzone, NTP-Status (Zeitstempel!)</code></pre>
+
+<h3>Forensisches Imaging von Linux aus</h3>
+
+<pre><code>lsblk -o NAME,SIZE,TYPE,MOUNTPOINT,SERIAL
+
+# Device read-only setzen
+blockdev --setro /dev/sdb
+
+# Forensisches Image mit dcfldd (hash während des Kopierens)
+dcfldd if=/dev/sdb hash=sha256 hashlog=/mnt/case/hash.log of=/mnt/case/image.dd
+
+# Image als Loop-Device einhängen (read-only)
+losetup --read-only /dev/loop0 /mnt/case/image.dd</code></pre>
+
+<h3>LVM (Logical Volume Manager) — forensische Rekonstruktion</h3>
+
+<p>LVM erstellt logische Volumes über physische Partitionen hinweg. In einem Image sind LVM-Metadaten in den Partitionen enthalten:</p>
+
+<pre><code>vgscan
+vgchange -ay    # Alle Volumes aktivieren
+lvdisplay       # Logische Volumes anzeigen
+mount -o ro /dev/vg0/root /mnt/forensic/</code></pre>
+
+<p>Ohne diese Rekonstruktion siehst du nur rohe <code>LVM2</code>-Partitionen ohne Dateisystem-Inhalt.</p>
+
+<h3>RAID-Rekonstruktion (mdadm)</h3>
+
+<p>Software-RAID (mdadm) verteilt Daten über mehrere Platten. Wenn du alle Platten eines RAID-Verbundes gesichert hast:</p>
+
+<pre><code># Jetzt kannst du /dev/md0 mounten</code></pre>
+
+<h3>Network-Block-Device — über Netzwerk imagieren</h3>
+
+<p>Wenn du nicht genug lokalen Speicher hast:</p>
+
+<pre><code>nc -l -p 9999 &gt; image.dd
+
+# Senderseite (Asservat, via Write-Blocker):
+dd if=/dev/sdb bs=4M | nc &lt;forensik-ip&gt; 9999</code></pre>
+
+<p><strong>Achtung:</strong> Keine Verschlüsselung, kein Hashing auf dem Transportweg — <code>dcfldd</code> mit <code>hashlog</code> auf Senderseite verwenden und Hash nach Übertragung prüfen!</p>
+
+<h3>Forensisch wichtige Verzeichnisse und ihre Tools</h3>
+
+<table class="styled-table">
+<thead><tr><th>Pfad / Tool</th><th>Was es liefert</th></tr></thead><tbody>
+<tr><td>`/var/log/auth.log`</td><td>Login-Versuche, sudo, SSH</td></tr>
+<tr><td>`journalctl`</td><td>Systemweites Journal (alles!)</td></tr>
+<tr><td>`/proc/<pid>/maps`</td><td>Speicher-Map eines Prozesses</td></tr>
+<tr><td>`/etc/fstab`</td><td>Mount-Konfiguration (welche Partitionen?)</td></tr>
+<tr><td>`auditd`-Logs</td><td>Detailliertes Audit-Logging</td></tr>
+<tr><td>`faillog` / `lastb`</td><td>Fehlgeschlagene Login-Versuche</td></tr>
+<tr><td>`utmp` / `wtmp` / `btmp`</td><td>Aktuelle Sessions, alle Logins, fehlgeschlagene Logins</td></tr>
+</tbody></table>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Kali Linux / Tsurugi Linux als Standard-Forensik-Distributionen</li>
+<li><code>apt install sleuthkit foremost volatility3 bulk_extractor guymager</code></li>
+<li>Forensik-Workstation IMMER aktuell halten (<code>apt update && apt upgrade</code>)</li>
+<li><code>/tmp/</code> ist meist eine RAM-Disk (tmpfs) — nach Reboot leer, vorher sichern!</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Shotts, W.: The Linux Command Line</li>
+<li><a href="https://www.kali.org/docs/">Kali Linux Documentation</a></li>
+<li>Nikkel, B.: Practical Linux Forensics</li></ul>
+
+</article>
+</main>
+</body>
+</html>

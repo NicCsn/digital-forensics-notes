@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Routing, Switching und VLANs — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / Routing, Switching und VLANs</span>
+</nav>
+<main>
+<article>
+<h1>Routing, Switching und VLANs <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Switche vermitteln innerhalb eines Netzsegments, Router zwischen Netzsegmenten. VLANs trennen logisch, was physisch zusammenhängt. Angreifer können diese Infrastruktur ausnutzen — du musst verstehen, wie sie funktioniert, um ihre Spuren zu lesen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Switching (Layer 2)</h3>
+
+<ul><li>Switch lernt MAC-Adressen und baut eine <strong>MAC-Tabelle</strong> (CAM-Table) auf</li>
+<li>Unbekannte Adresse? Flooding an alle Ports → Angreifer kann per <strong>MAC-Flooding</strong> den Switch in einen Hub verwandeln und Traffic mitschneiden</li>
+<li><strong>Forensisch:</strong> CAM-Table zeigt, welche MAC-Adresse an welchem Port hing — auf dem Switch selbst abfragbar</li></ul>
+
+<h3>VLANs (Virtual LANs)</h3>
+
+<ul><li>Logische Trennung auf Layer 2 — Isolation zwischen Abteilungen (IT, HR, Produktion)</li>
+<li><strong>Trunk-Ports</strong> transportieren mehrere VLANs via 802.1Q-Tags</li>
+<li><strong>VLAN-Hopping:</strong> Angreifer sendet doppelt getaggte Frames, um in andere VLANs zu gelangen</li>
+<li><strong>Forensisch:</strong> VLAN-Konfiguration auf Switchen dokumentieren — nicht jedes Gerät sieht alles</li></ul>
+
+<h3>Spanning Tree Protocol (STP)</h3>
+
+<ul><li>Verhindert Schleifen in redundanten Netzen durch Blockieren von Ports</li>
+<li><strong>STP-Manipulation:</strong> Angreifer kann sich als Root-Bridge ausgeben und Traffic umleiten</li></ul>
+
+<h3>Routing (Layer 3)</h3>
+
+<p>#### Statisches Routing</p>
+<ul><li>Manuell konfigurierte Routen — einfach, aber unflexibel</li>
+<li><code>route add</code> (Windows), <code>ip route add</code> (Linux)</li></ul>
+
+<p>#### Dynamisches Routing</p>
+<table class="styled-table">
+<thead><tr><th>Protokoll</th><th>Typ</th><th>Metrik</th></tr></thead><tbody>
+<tr><td>RIP</td><td>Distance Vector</td><td>Hop Count (max 15)</td></tr>
+<tr><td>OSPF</td><td>Link State</td><td>Kosten (Bandbreite)</td></tr>
+<tr><td>BGP</td><td>Path Vector</td><td>AS-Path (Internet-Routing)</td></tr>
+</tbody></table>
+
+<h3>Forensische Relevanz</h3>
+
+<ul><li><strong>Netflow / sFlow</strong> vom Router zeigt, welche IPs wann und wie viel kommuniziert haben (Metadata, keine Payload)</li>
+<li><strong>Logs auf Routern:</strong> <code>show logging</code> — Konfigurationsänderungen, Login-Versuche</li>
+<li><strong>Traceroute</strong> rekonstruiert den Pfad eines Pakets durchs Netz — wichtig bei Angriffs-Herkunft</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>traceroute <ziel></code> / <code>tracert <ziel></code> (Windows) — Pfadverfolgung</li>
+<li><code>arp -a</code> — lokale ARP-Tabelle (MAC ↔ IP)</li>
+<li>Auf Cisco-Switch: <code>show mac address-table</code>, <code>show vlan</code>, <code>show spanning-tree</code></li>
+<li>Wireshark: <code>vlan</code> Filter zeigt VLAN-Tags, <code>stp</code> zeigt Spanning Tree Frames</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Cisco Press: Networking Essentials Companion Guide</li>
+<li>Tanenbaum, A.S.: Computer Networks</li></ul>
+
+</article>
+</main>
+</body>
+</html>

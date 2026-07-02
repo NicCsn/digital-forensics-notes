@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybercrime-Ökonomie: Geschäftsmodelle im Darknet — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">OSINT</a> / Cybercrime-Ökonomie: Geschäftsmodelle im Darknet</span>
+</nav>
+<main>
+<article>
+<h1>Cybercrime-Ökonomie: Geschäftsmodelle im Darknet <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Cybercrime ist ein Milliardenmarkt mit eigenen Geschäftsmodellen, Dienstleistungen und Zahlungsmethoden. Wer versteht, wie Angreifer wirtschaftlich denken, kann ihre Spuren besser interpretieren und ihre nächsten Schritte antizipieren.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Cybercrime-as-a-Service (CaaS)</h3>
+
+<p>Kriminelle spezialisieren sich und verkaufen ihre Dienste an andere:</p>
+
+<table class="styled-table">
+<thead><tr><th>Service</th><th>Anbieter (Rolle)</th><th>Abnehmer</th></tr></thead><tbody>
+<tr><td>Initial Access Broker (IAB)</td><td>Verschafft Zugang zu kompromittierten Systemen</td><td>Ransomware-Gruppen</td></tr>
+<tr><td>Malware-Developer</td><td>Entwickelt Schadsoftware</td><td>Affiliates (Vertrieb)</td></tr>
+<tr><td>Bulletproof Hoster</td><td>Bietet "ignore abuse"-Hosting</td><td>Malware-C2, Phishing-Seiten</td></tr>
+<tr><td>Dropper-as-a-Service</td><td>Verbreitet Malware über Spam/Exploit-Kits</td><td>Malware-Betreiber</td></tr>
+<tr><td>Money Mules</td><td>Wäscht erbeutetes Geld</td><td>Organisierte Kriminalität</td></tr>
+</tbody></table>
+
+<h3>Ransomware-as-a-Service (RaaS)</h3>
+
+<p>Das dominierende Geschäftsmodell seit 2020:</p>
+<ul><li><strong>Operator:</strong> Entwickelt Ransomware, unterhält Infrastruktur</li>
+<li><strong>Affiliate:</strong> Verteilt die Ransomware, führt Verhandlungen mit Opfern</li>
+<li><strong>Aufteilung:</strong> 70-80% an Affiliate, 20-30% an Operator</li></ul>
+
+<p>Bekannte RaaS-Gruppen: LockBit, BlackCat/ALPHV, Conti (aufgelöst), REvil</p>
+
+<h3>Underground-Marktplätze</h3>
+
+<table class="styled-table">
+<thead><tr><th>Plattform</th><th>Schwerpunkt</th><th>Währung</th></tr></thead><tbody>
+<tr><td>Darknet-Märkte (.onion)</td><td>Drogen, Waffen, gestohlene Daten</td><td>Bitcoin, Monero</td></tr>
+<tr><td>Telegram-Channels</td><td>Malware-Logs, gestohlene Accounts</td><td>Krypto, Tausch</td></tr>
+<tr><td>Exploit-Foren (XSS.is, Exploit.in)</td><td>Zero-Days, Zugangsdaten</td><td>Bitcoin, Escrow</td></tr>
+<tr><td>Paste-Sites</td><td>Geleakte Datenbanken, Dumps</td><td>-</td></tr>
+</tbody></table>
+
+<h3>Bezahlung und Geldwäsche</h3>
+
+<ul><li><strong>Bitcoin:</strong> Pseudonym, alle Transaktionen öffentlich → nachverfolgbar</li>
+<li><strong>Monero:</strong> Wirklich anonym → bevorzugt von Ransomware-Gruppen</li>
+<li><strong>Chain-Hopping:</strong> BTC → Monero → BTC (verwischt die Spur)</li>
+<li><strong>Mixer/Tumbler:</strong> Viele Transaktionen vermischen → Herkunft verschleiern</li>
+<li><strong>KYC-Börsen:</strong> Fiat-Auszahlung erfordert Identitätsverifikation (Angriffspunkt für Ermittler!)</li></ul>
+
+<h3>Forensische Ermittlungsansätze</h3>
+
+<ul><li><strong>Blockchain-Analyse:</strong> Wallet-Adresse aus Erpresserbrief → Transaktionskette verfolgen → Exchange → KYC-Daten</li>
+<li><strong>Infrastruktur-Analyse:</strong> C2-Server-IP → Hosting-Provider → Zahlungsdaten</li>
+<li><strong>Code-Analyse:</strong> Ransomware-Variante → RaaS-Familie identifizieren (Noten, Code-Überschneidungen)</li>
+<li><strong>TTPs:</strong> Taktiken, Techniken, Prozeduren → Gruppenzuordnung (z.B. "LockBit nutzt immer X für initial access")</li>
+<li><strong>Kommunikation:</strong> Erpresserbriefe stilistisch analysieren, Übersetzungsfehler → Herkunftsland?</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>oxt.me</code> oder <code>blockchain.com/explorer</code> — Bitcoin-Transaktionen verfolgen</li>
+<li><code>ransomlook.io</code> — Ransomware-Gruppen und ihre Leak-Sites tracken</li>
+<li><code>urlscan.io</code> — Phishing-Infrastruktur analysieren</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://www.chainalysis.com/">Chainalysis Crypto Crime Report</a> (jährlich)</li>
+<li><a href="https://attack.mitre.org/">MITRE ATT&CK</a> — TTPs von Cybercrime-Gruppen</li></ul>
+
+</article>
+</main>
+</body>
+</html>

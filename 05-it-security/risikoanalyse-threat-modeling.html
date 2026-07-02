@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risikoanalyse und Threat Modeling — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">IT-Security</a> / Risikoanalyse und Threat Modeling</span>
+</nav>
+<main>
+<article>
+<h1>Risikoanalyse und Threat Modeling <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Risikoanalyse bewertet, was passieren kann und wie schlimm es wäre. Threat Modeling identifiziert systematisch, wer was wie angreifen könnte. Beide sind Voraussetzung für effektive Verteidigung — und im Incident-Response-Fall für die Schadensbewertung.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Grundbegriffe</h3>
+
+<ul><li><strong>Asset:</strong> Was ist zu schützen? (Server, Datenbank, Source-Code)</li>
+<li><strong>Bedrohung (Threat):</strong> Wer oder was könnte Schaden anrichten? (Hacker, Innentäter, Naturkatastrophe)</li>
+<li><strong>Schwachstelle (Vulnerability):</strong> Welche Lücke kann ausgenutzt werden? (Ungeschlossener Port, veraltete Software)</li>
+<li><strong>Risiko:</strong> Eintrittswahrscheinlichkeit × Schadensausmaß</li></ul>
+
+<h3>STRIDE (Microsoft Threat Modeling)</h3>
+
+<table class="styled-table">
+<thead><tr><th>Buchstabe</th><th>Bedrohung</th><th>Verletztes Schutzziel</th><th>Beispiel-Angriff</th></tr></thead><tbody>
+<tr><td>**S**poofing</td><td>Identitäts-Täuschung</td><td>Authentizität</td><td>Falsche Absender-E-Mail</td></tr>
+<tr><td>**T**ampering</td><td>Manipulation</td><td>Integrität</td><td>Daten während Übertragung ändern</td></tr>
+<tr><td>**R**epudiation</td><td>Abstreitbarkeit</td><td>Nicht-Abstreitbarkeit</td><td>Logs löschen, Aktion abstreiten</td></tr>
+<tr><td>**I**nfo Disclosure</td><td>Datenleck</td><td>Vertraulichkeit</td><td>SQLi → Datenbank-Dump</td></tr>
+<tr><td>**D**OS</td><td>Denial of Service</td><td>Verfügbarkeit</td><td>DDoS, Server-Crash</td></tr>
+<tr><td>**E**levation of Privilege</td><td>Rechte-Ausweitung</td><td>Authorisierung</td><td>User → Admin durch Exploit</td></tr>
+</tbody></table>
+
+<h3>DREAD (Risiko-Scoring)</h3>
+
+<table class="styled-table">
+<thead><tr><th>Dimension</th><th>0-10</th><th>Bewertung</th></tr></thead><tbody>
+<tr><td>**D**amage</td><td>8</td><td>Wie groß der Schaden (Datenverlust aller Kundendaten)</td></tr>
+<tr><td>**R**eproducibility</td><td>10</td><td>Jederzeit reproduzierbar (öffentlicher Exploit)</td></tr>
+<tr><td>**E**xploitability</td><td>5</td><td>Braucht Insider-Wissen (nicht trivial)</td></tr>
+<tr><td>**A**ffected Users</td><td>7</td><td>Viele Nutzer betroffen (aber nicht alle)</td></tr>
+<tr><td>**D**iscoverability</td><td>9</td><td>Leicht zu entdecken (Port-Scan zeigt offene Ports)</td></tr>
+</tbody></table>
+
+<p><strong>Score = (D+R+E+A+D) / 5 = 7.8</strong> → Hohes Risiko, Gegenmaßnahmen priorisieren</p>
+
+<h3>Risiko-Matrix (qualitativ)</h3>
+
+<table class="styled-table">
+<thead><tr><th>Eintrittswahrscheinlichkeit → <br> Schadensausmaß ↓</th><th>Gering</th><th>Mittel</th><th>Hoch</th></tr></thead><tbody>
+<tr><td>**Katastrophal**</td><td>Mittel</td><td>Hoch</td><td>**Kritisch**</td></tr>
+<tr><td>**Groß**</td><td>Niedrig</td><td>Mittel</td><td>Hoch</td></tr>
+<tr><td>**Klein**</td><td>Niedrig</td><td>Niedrig</td><td>Mittel</td></tr>
+</tbody></table>
+
+<h3>Forensische Anwendung</h3>
+
+<ul><li><strong>Vor dem Vorfall:</strong> Threat Model = wo müssen Logs sein? Was wird überwacht?</li>
+<li><strong>Während des Vorfalls:</strong> STRIDE-Fragen: Was könnte der Angreifer als Nächstes tun? (Was steht im Threat Model?)</li>
+<li><strong>Nach dem Vorfall:</strong> Risikobewertung des entstandenen Schadens (Welche Assets betroffen? Ausmaß?)</li></ul>
+
+<h3>Beispiel-Threat-Model: Web-Shop</h3>
+
+<ul><li>Asset: Kundendatenbank</li>
+<li>Bedrohung: Externer Angreifer stiehlt Kundendaten</li>
+<li>Angriffsvektoren: SQL Injection (STRIDE: Information Disclosure), gestohlene Admin-Credentials (Spoofing)</li>
+<li>Gegenmaßnahmen: Input-Validierung, MFA für Admins, WAF</li>
+<li>Detektions-Maßnahmen: WAF-Logs, Alerting bei ungewöhnlich vielen DB-Abfragen</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Microsoft Threat Modeling Tool (kostenlos)</li>
+<li>OWASP Threat Dragon (Open-Source)</li>
+<li>Einfaches Brainstorming: Whiteboard + STRIDE-Kategorien + Post-its</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Shostack, A.: Threat Modeling — Designing for Security</li>
+<li><a href="https://owasp.org/www-community/Threat_Modeling">OWASP Threat Modeling</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

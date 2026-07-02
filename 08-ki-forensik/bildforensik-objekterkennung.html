@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bildforensik und Objekterkennung mit KI — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">KI & Forensik</a> / Bildforensik und Objekterkennung mit KI</span>
+</nav>
+<main>
+<article>
+<h1>Bildforensik und Objekterkennung mit KI <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Bilder sind digitale Beweismittel — aber sie können manipuliert oder KI-generiert sein. Bildforensik kombiniert klassische Methoden (EXIF, ELA, JPEG-Kompression) mit KI (Deepfake-Erkennung, Objekterkennung mit YOLO), um Echtheit, Herkunft und Inhalt eines Bildes zu prüfen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Klassische Methoden zur Manipulationserkennung</h3>
+
+<p>#### Error Level Analysis (ELA)</p>
+<ul><li>JPEG-Kompression ist verlustbehaftet → mehrfaches Speichern erhöht Kompressionsartefakte</li>
+<li>Wenn ein Teil des Bildes andere Fehlerniveaus aufweist als die Umgebung → möglicherweise nachträglich eingefügt</li>
+<li>Tool: <code>FotoForensics.com</code>, <code>Forensically</code></li></ul>
+
+<p>#### EXIF / Metadaten</p>
+<ul><li>Digitale Bilder speichern Metadaten: Kamera-Modell, Aufnahmezeit, GPS-Koordinaten, Software</li>
+<li>Fehlende EXIF-Daten bei einem "Original-Foto" sind verdächtig</li>
+<li>Widersprüchliche EXIF-Daten: Kamera-Modell laut EXIF = iPhone 13, aber Bildauflösung passt nur zu iPhone 6</li></ul>
+
+<p>#### JPEG-Quantisierungs-Tabelle</p>
+<ul><li>Jede Software/Kamera hat charakteristische Quantisierungs-Matrizen</li>
+<li>Unterschiedliche Matrizen in verschiedenen Bildbereichen = Hinweis auf Compositing</li></ul>
+
+<p>#### Copy-Move-Erkennung</p>
+<ul><li>Gleiches Bildsegment wurde kopiert und woanders eingefügt (z.B. um eine Person zu "verdoppeln")</li>
+<li>Algorithmus: Block-Matching (das Bild in Blöcke zerlegen, identische Blöcke suchen)</li></ul>
+
+<h3>KI-basierte Bildforensik</h3>
+
+<p>#### Deepfake-Erkennung mit CNNs</p>
+
+<p>Künstliche Gesichter haben subtile Artefakte, die ein CNN lernen kann:</p>
+<ul><li><strong>Unnatürliches Blinzeln:</strong> Deepfakes blinzeln weniger oder zu regelmäßig</li>
+<li><strong>Inkonsistente Beleuchtung:</strong> Schatten fallen auf eine Seite, Lichtreflexionen auf die andere</li>
+<li><strong>Ohrläppchen-Unsymmetrie:</strong> Menschen haben asymmetrischere Gesichter als Deepfakes</li>
+<li><strong>Visuelle Inkonsistenzen an den Rändern</strong> des manipulierten Bereichs</li>
+<li>Tool: <code>dfdc_deepfake_challenge</code> (Facebook-Modell), Sensity AI</li></ul>
+
+<p>#### YOLO (You Only Look Once) — Objekterkennung in Echtzeit</p>
+
+<p>YOLO ist ein CNN, das Objekte in einem einzigen Durchlauf erkennt:</p>
+<ul><li><strong>Bounding Boxes:</strong> Rechtecke um erkannte Objekte mit Klassenlabel</li>
+<li><strong>Confidence Score:</strong> Wie sicher ist sich das Modell?</li>
+<li>Forensische Anwendung:</li>
+<li>"Finde alle Autos mit dem Kennzeichen 'M-AB 1234' in 10.000 Überwachungskamerabildern"</li>
+<li>"Finde alle Waffen auf Fotos von einer beschlagnahmten Festplatte"</li>
+<li>"Identifiziere Tatwerkzeuge (Messer, Brecheisen) in Beweisfotos"</li></ul>
+
+<pre><code>model = YOLO(&quot;yolov8n.pt&quot;)  # vortrainiertes Modell
+results = model(&quot;/mnt/case42/photos/&quot;)  # Alle Fotos analysieren
+
+for r in results:
+    if &quot;knife&quot; in r.names.values():  # Messer gefunden!
+        r.save(f&quot;output/knife_{r.path.name}&quot;)</code></pre>
+
+<h3>Generative KI und Forensik</h3>
+
+<ul><li><strong>Stable Diffusion, DALL-E, Midjourney:</strong> Generieren fotorealistische Bilder</li>
+<li>Erkennung generierter Bilder: Wasserzeichen (C2PA-Standard), CNN-basierte Detektoren</li>
+<li>Problem: Immer bessere Generatoren → Wettrüsten mit Detektoren</li></ul>
+
+<h3>Forensischer Workflow bei Bildbeweisen</h3>
+
+<ul><li><strong>Herkunft prüfen:</strong> Woher kommt das Bild? (E-Mail-Anhang, USB-Stick, Cloud-Download?)</li>
+<li><strong>Metadaten extrahieren:</strong> <code>exiftool bild.jpg</code></li>
+<li><strong>Hash berechnen:</strong> SHA-256 für Integrität</li>
+<li><strong>Manipulationsanalyse:</strong> ELA, JPEG-Ghosts, Clone Detection</li>
+<li><strong>KI-basierte Analyse:</strong> Deepfake-Check, falls relevant</li>
+<li><strong>Chain of Custody:</strong> Wie kam das Bild in die Ermittlungsakte? (Screenshot? Export? Originaldatei?)</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>exiftool -a -u bild.jpg</code> — alle Metadaten inkl. unklassifizierter Tags</li>
+<li><code>exiftool -gps* bild.jpg</code> — nur GPS-Daten</li>
+<li><code>jhead -v bild.jpg</code> — JPEG-Header-Infos</li>
+<li>FotoForensics.com (Web-Tool, ELA + Metadaten online)</li>
+<li><code>python3 detect_deepfake.py --input video.mp4</code> (Eigenentwicklung mit vortrainiertem CNN)</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://fotoforensics.com/">FotoForensics</a></li>
+<li>Farid, H.: Photo Forensics (MIT Press)</li>
+<li><a href="https://docs.ultralytics.com/">YOLOv8 Documentation</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

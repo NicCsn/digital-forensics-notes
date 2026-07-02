@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireshark Basics: Paketanalyse — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / Wireshark Basics: Paketanalyse</span>
+</nav>
+<main>
+<article>
+<h1>Wireshark Basics: Paketanalyse <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Wireshark ist ein Open-Source-Netzwerk-Paketanalysator — im Kern ein Messinstrument, das sichtbar macht, was auf einem Netzwerkkabel (oder WLAN) passiert. Es erfasst und dekodiert Pakete in Echtzeit und ist das Schweizer Taschenmesser der Netzwerkforensik.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Was Wireshark kann (und was nicht)</h3>
+
+<ul><li><strong>Kann:</strong> Live-Capture, Offline-Analyse von PCAP-Dateien, hunderte Protokoll-Dissectoren, flexible Filter, Statistiken, Export in viele Formate</li>
+<li><strong>Kann nicht:</strong> Aktiv Pakete senden/manipulieren (kein IDS, kein Port-Scanner, kein Angriffstool)</li>
+<li>Unterstützt viele Medien: Ethernet, WLAN, Bluetooth, USB und mehr</li></ul>
+
+<h3>Capture Filter vs. Display Filter</h3>
+
+<ul><li><strong>Capture Filter</strong> (BPF-Syntax): Werden VOR dem Capture gesetzt, reduzieren was überhaupt mitgeschnitten wird. Beispiel: <code>host 192.168.1.1 and tcp port 80</code></li>
+<li><strong>Display Filter:</strong> Werden auf bereits erfasste Pakete angewendet. Beispiel: <code>ip.src == 192.168.1.1 && http</code></li>
+<li>Display-Filter sind mächtiger (tausende Protokollfelder), Capture-Filter sparen Speicherplatz</li></ul>
+
+<h3>Wichtige Display-Filter für die Forensik</h3>
+
+<table class="styled-table">
+<thead><tr><th>Filter</th><th>Was er findet</th></tr></thead><tbody>
+<tr><td>`tcp.flags.syn == 1 && tcp.flags.ack == 0`</td><td>TCP-Verbindungsaufbau (SYN)</td></tr>
+<tr><td>`tcp.flags.reset == 1`</td><td>Abrupt beendete Verbindungen (RST)</td></tr>
+<tr><td>`http.request.method == POST`</td><td>HTTP POST-Requests (Uploads, Logins)</td></tr>
+<tr><td>`dns.qry.name contains "evil"`</td><td>DNS-Abfragen mit verdächtigen Domains</td></tr>
+<tr><td>`tls.handshake.type == 1`</td><td>TLS Client Hello (JA3-Fingerprinting)</td></tr>
+<tr><td>`ftp.request.command == STOR`</td><td>FTP-Datei-Uploads</td></tr>
+<tr><td>`icmp`</td><td>Ping und ICMP-Tunnel</td></tr>
+</tbody></table>
+
+<h3>tshark — Wireshark auf der Kommandozeile</h3>
+
+<p><code>tshark</code> ist die CLI-Variante von Wireshark — unverzichtbar für automatisierte Analyse und große PCAPs.</p>
+
+<pre><code>tshark -r capture.pcap -Y &quot;http.request&quot;
+
+# Felder für Export extrahieren (CSV-artig)
+tshark -r capture.pcap -T fields \
+  -e frame.time -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport \
+  -Y &quot;tcp&quot; &gt; connections.csv
+
+# Top-Talker-Statistik
+tshark -r capture.pcap -q -z conv,tcp
+
+# HTTP-Objekte exportieren (Dateien aus Traffic extrahieren)
+tshark -r capture.pcap --export-objects http,/output/dir</code></pre>
+
+<h3>Export Objects — Dateien aus PCAPs extrahieren</h3>
+
+<p>Wireshark kann übertragene Dateien automatisch extrahieren: <strong>File → Export Objects → HTTP/SMB/TFTP</strong>. Jedes übertragene Bild, Dokument oder Archiv wird aufgelistet und kann einzeln gespeichert werden. Gold wert bei Malware-Analyse (heruntergeladene Payloads) und Datenabfluss-Untersuchungen.</p>
+
+<h3>I/O-Graph — Anomalien visuell erkennen</h3>
+
+<p>Der I/O-Graph (Statistics → I/O Graph) zeigt Pakete/Bytes pro Sekunde. Typische Muster:</p>
+<ul><li><strong>DDoS:</strong> Plötzlicher, extremer Anstieg</li>
+<li><strong>Beaconing:</strong> Regelmäßige Spitzen alle N Sekunden (C2-Heartbeat)</li>
+<li><strong>Datenexfiltration:</strong> Langer, gleichmäßiger Upload</li></ul>
+
+<h3>Expert Info</h3>
+
+<p>Wireshark markiert ungewöhnliche Protokoll-Events automatisch: <strong>Analyze → Expert Info.</strong> Warnungen (gelb), Fehler (rot), Notizen (cyan). Sortiert nach Severity. Ein SYN ohne ACK, ein RST nach einer bestehenden Verbindung, ein ICMP-Destination-Unreachable — Wireshark zeigt dir, was seltsam aussieht.</p>
+
+<h3>Statistik-Tools für forensische Triage</h3>
+
+<table class="styled-table">
+<thead><tr><th>Tool</th><th>Pfad</th><th>Nutzen</th></tr></thead><tbody>
+<tr><td>Protocol Hierarchy</td><td>Statistics → Protocol Hierarchy</td><td>Welche Protokolle dominieren? (z.B. 90% DNS = DNS-Tunnel?)</td></tr>
+<tr><td>Conversations</td><td>Statistics → Conversations</td><td>Wer spricht mit wem? Wie lange? Wie viele Bytes?</td></tr>
+<tr><td>Endpoints</td><td>Statistics → Endpoints</td><td>Welche IPs sind involviert? MAC-Adressen?</td></tr>
+<tr><td>Flow Graph</td><td>Statistics → Flow Graph</td><td>Sequenz-Diagramm (TCP-Handshake visualisiert)</td></tr>
+</tbody></table>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>tshark -r capture.pcap -Y "http.request" -T fields -e http.host -e http.request.uri</code></li>
+<li><code>tcpdump -i eth0 -w capture.pcap host 10.0.0.5</code> — Capture spezifischen Traffic</li>
+<li><code>capinfos capture.pcap</code> — PCAP-Metadaten (Größe, Dauer, Paketzahl)</li>
+<li><code>editcap -A "2025-03-15 03:00:00" -B "2025-03-15 04:00:00" in.pcap out.pcap</code> — Zeitfenster extrahieren</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://www.wireshark.org/docs/wsug_html_chunked/ChapterIntroduction.html">Wireshark User's Guide, Chapter 1</a></li>
+<li><a href="https://www.wireshark.org/docs/dfref/">Wireshark Display Filters Reference</a></li>
+<li><a href="https://www.wireshark.org/docs/man-pages/tshark.html">tshark Man Page</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

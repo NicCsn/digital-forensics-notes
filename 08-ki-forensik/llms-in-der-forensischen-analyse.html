@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLMs in der forensischen Analyse — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">KI & Forensik</a> / LLMs in der forensischen Analyse</span>
+</nav>
+<main>
+<article>
+<h1>LLMs in der forensischen Analyse <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>KI — insbesondere Large Language Models (LLMs) wie GPT, Claude oder lokale Modelle — findet zunehmend Eingang in die digitale Forensik. Einsatzgebiete reichen von der automatisierten Log-Analyse über Anomalieerkennung bis zur Strukturierung großer, unstrukturierter Datenmengen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Einsatzgebiete</h3>
+
+<ul><li><strong>Logfile-Analyse (NLP):</strong> LLMs durchsuchen Syslog-, Webserver- und Firewall-Logs nach Mustern, generieren natürlichsprachliche Zusammenfassungen und unterscheiden relevante von irrelevanten Einträgen</li>
+<li><strong>Malware-Analyse:</strong> KI-gestützte Disassemblierung und Code-Erklärung. Auch YARA-Regeln können per Prompting generiert werden</li>
+<li><strong>E-Mail-Forensik:</strong> Phishing-Erkennung, Stilanalyse zur Autorenidentifikation, Clustering ähnlicher Nachrichten</li>
+<li><strong>Bildforensik:</strong> Deepfake-Erkennung, Manipulationsspuren-Identifikation (ELA), OCR-Textextraktion aus Bildern</li>
+<li><strong>Strukturierung:</strong> Extraktion von IOCs (IPs, Domains, Hashes) aus unstrukturierten Threat-Intelligence-Reports</li></ul>
+
+<h3>RAG (Retrieval-Augmented Generation) für forensische Reports</h3>
+
+<p>RAG kombiniert ein LLM mit einer Wissensdatenbank. In der Forensik: Du lädst alle gefundenen Artefakte in eine Vektordatenbank, und das LLM generiert daraus automatisch einen forensischen Bericht.</p>
+
+<pre><code>1. Alle Funde (Logs, Timelines, Datei-Auflistungen) → Embedding-Modell → Vektordatenbank (z.B. ChromaDB)
+2. Prompt: &quot;Erstelle einen forensischen Bericht basierend auf den gefundenen Artefakten&quot;
+3. RAG-System sucht relevante Fakten aus der Vektordatenbank
+4. LLM generiert Bericht mit konkreten Funden (nicht halluziniert)
+
+Qualitätskontrolle: Der Bericht MUSS manuell geprüft werden. RAG reduziert Halluzinationen, eliminiert sie aber nicht.</code></pre>
+
+<h3>Embeddings und Similar-Case-Matching</h3>
+
+<p>Embeddings sind numerische Vektorrepräsentationen von Text. Gleiche Bedeutung → ähnliche Vektoren:</p>
+
+<ul><li><strong>Use Case 1:</strong> "Finde alle Fälle, die diesem ähneln" — Embeddings aller Fallzusammenfassungen in der Datenbank, Abfrage per nearest-neighbor</li>
+<li><strong>Use Case 2:</strong> "Sind diese beiden Malware-Samples verwandt?" — Embeddings von Disassembly-Output oder Strings vergleichen</li></ul>
+
+<h3>Limitationen und Risiken (erweitert)</h3>
+
+<ul><li><strong>Halluzination:</strong> LLMs erfinden Fakten — ohne Verifikation unbrauchbar. JEDES LLM-Ergebnis MUSS durch einen menschlichen Analysten validiert werden</li>
+<li><strong>Chain of Custody:</strong> KI-Analyse muss dokumentierbar und reproduzierbar sein. Prompt, Modell-Version und Seed-Wert protokollieren</li>
+<li><strong>Datenschutz:</strong> Keine sensiblen Fall-Daten in Cloud-LLMs hochladen ohne Freigabe. Lokale Modelle (Ollama, llama.cpp) als datenschutzkonforme Alternative</li>
+<li><strong>Gerichtliche Verwertbarkeit:</strong> KI-generierte Analyseergebnisse sind vor Gericht problematisch. Ein LLM kann nicht als "Sachverständiger" auftreten. Der Bericht muss vom menschlichen Analysten verantwortet werden. Das LLM ist ein Werkzeug, nicht die Quelle der Schlussfolgerung</li></ul>
+
+<h3>Gerichtsfeste Dokumentation von KI-Einsatz</h3>
+
+<p>Wenn du KI in einer forensischen Analyse einsetzt, dokumentiere:</p>
+<ul><li>Welches Modell (Name, Version, Parameter)</li>
+<li>Welcher Prompt wurde verwendet?</li>
+<li>Welche Daten wurden dem Modell übergeben?</li>
+<li>Wie wurde das Ergebnis validiert?</li>
+<li>Wer hat die Validierung durchgeführt?</li></ul>
+
+<p>Beispiel: "Das Modell Llama-3.1-70B (lokal via Ollama) wurde verwendet, um Log-Einträge nach Anomalien zu klassifizieren. Der Prompt lautete: [...]. Es wurden 14.723 Log-Zeilen übergeben. Das Modell markierte 47 Zeilen als anomal. Alle 47 Zeilen wurden manuell vom Analysten überprüft, 12 wurden als tatsächliche IOCs bestätigt."</p>
+
+<h3>Prompt Engineering für DFIR</h3>
+
+<ul><li>Gute Prompts enthalten: Rolle (Forensiker), Kontext (Fallart), Datenformat (Syslog, PCAP), Aufgabenstellung, gewünschtes Output-Format</li>
+<li>Beispiel: "Du bist ein DFIR-Analyst. Analysiere folgende Apache-Log-Zeilen und identifiziere alle IPs mit ungewöhnlich vielen 403- und 404-Antworten pro Minute. Gib das Ergebnis als Markdown-Tabelle aus."</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>ollama run llama3</code> — Lokales LLM starten</li>
+<li>Log-Summarization: <code>cat access.log | head -1000 | ollama run mistral "Fasse Auffälligkeiten zusammen"</code></li>
+<li>YARA-Regel-Generierung: "Erstelle eine YARA-Regel für Ransomware mit .locked-Endung"</li>
+<li><code>chromadb</code> + <code>langchain</code> für RAG-basierte forensische Assistenz</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>SANS DFIR Summit — jährliche Vorträge zu KI in der Forensik</li>
+<li><a href="https://ollama.com/">Ollama — Lokale LLMs</a></li>
+<li>Casey, E.: The Role of AI in Digital Forensics (Forensic Science International: Digital Investigation)</li></ul>
+
+</article>
+</main>
+</body>
+</html>

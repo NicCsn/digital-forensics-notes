@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Incident Management — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">IT-Security</a> / Security Incident Management</span>
+</nav>
+<main>
+<article>
+<h1>Security Incident Management <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Security Incident Management ist der strukturierte Prozess zur Erkennung, Reaktion und Nachbereitung von Sicherheitsvorfällen. Ziel: Schaden minimieren, Betrieb wiederherstellen und aus dem Vorfall lernen, um zukünftige Angriffe zu verhindern.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Incident-Response-Phasen (NIST / SANS)</h3>
+
+<ul><li><strong>Preparation (Vorbereitung):</strong> IR-Plan, Rollen festlegen, Kontaktdaten, Werkzeuge bereithalten</li>
+<li><strong>Identification (Erkennung):</strong> Ist es ein Incident? Oder nur eine Anomalie?</li>
+<li><strong>Containment (Eindämmung):</strong> Kurzfristig (Netzwerk trennen) + Langfristig (Patches, Neuaufbau)</li>
+<li><strong>Eradication (Beseitigung):</strong> Root Cause beseitigen, Malware entfernen</li>
+<li><strong>Recovery (Wiederherstellung):</strong> Systeme aus Backups wiederherstellen, Monitoring intensivieren</li>
+<li><strong>Lessons Learned (Nachbereitung):</strong> Was lief gut? Was nicht? IR-Plan aktualisieren</li></ul>
+
+<h3>Rollen und Verantwortlichkeiten</h3>
+
+<table class="styled-table">
+<thead><tr><th>Rolle</th><th>Aufgabe</th></tr></thead><tbody>
+<tr><td>**Incident Commander**</td><td>Gesamtkoordination, Entscheidungen</td></tr>
+<tr><td>**Technischer Lead**</td><td>Forensische Analyse, Eindämmung</td></tr>
+<tr><td>**Kommunikationsbeauftragter**</td><td>Internes/Externes Reporting, Presse</td></tr>
+<tr><td>**Legal / Compliance**</td><td>DSGVO-Meldepflicht, Beweissicherung</td></tr>
+<tr><td>**Management-Liaison**</td><td>Business-Entscheidungen, Ressourcen</td></tr>
+</tbody></table>
+
+<h3>Eskalationsstufen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Stufe</th><th>Beschreibung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td>**Level 1 (Helpdesk)**</td><td>Erste Meldung, Triage</td><td>"Mein Rechner ist langsam"</td></tr>
+<tr><td>**Level 2 (Security-Analyst)**</td><td>Technische Erstanalyse</td><td>SIEM-Alert, Log-Analyse</td></tr>
+<tr><td>**Level 3 (IR-Team)**</td><td>Schwerer Vorfall, Eskalation</td><td>Ransomware-Ausbruch, Datenabfluss</td></tr>
+<tr><td>**War Room**</td><td>Krisenstab aller Stakeholder</td><td>Großangriff mit Business-Impact</td></tr>
+</tbody></table>
+
+<h3>Incident-Response-Plan / Playbooks</h3>
+
+<p>Ein <strong>Playbook</strong> ist ein spezifisches Ablaufdokument für einen bestimmten Vorfalltyp:</p>
+
+<pre><code>1. Betroffene Systeme identifizieren
+2. Netzwerkverbindung trennen (Isolation!)
+3. Ransomware-Note dokumentieren (Foto machen)
+4. Hash der Malware an Threat-Intel melden
+5. Backup-Status prüfen
+6. KEIN Lösegeld zahlen (außer von Management autorisiert)
+7. Entschlüsselungs-Tools suchen (nomoreransom.org)
+8. Lessons Learned durchführen</code></pre>
+
+<h3>Compliance und Meldepflichten</h3>
+
+<ul><li><strong>DSGVO Art. 33:</strong> Datenpanne → Meldung an Aufsichtsbehörde innerhalb 72 Stunden</li>
+<li><strong>DSGVO Art. 34:</strong> Wenn hohes Risiko für Betroffene → Benachrichtigung der Betroffenen</li>
+<li><strong>ISO 27035:</strong> Internationaler Standard für Incident Management</li>
+<li><strong>NIS-2:</strong> Betreiber kritischer Infrastrukturen haben erweiterte Meldepflichten</li></ul>
+
+<h3>Forensische Aspekte im IR-Prozess</h3>
+
+<ul><li><strong>Beweissicherung während Eindämmung nicht vergessen:</strong> RAM-Dump, Festplatten-Image VOR der Bereinigung</li>
+<li><strong>Zeitstempel kritisch:</strong> Wann begann der Vorfall? (Erste IOC-Spur vs. Entdeckung)</li>
+<li><strong>Logs sichern bevor sie rotieren/überschrieben werden</strong></li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>IR-Plan-Vorlage: <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf">NIST Computer Security Incident Handling Guide (SP 800-61)</a></li>
+<li>Ticket-System: Jira, ServiceNow, TheHive (Open-Source IR-Platform)</li>
+<li>Kommunikation: Eigener, isolierter Chat-Kanal (Angreifer könnten sonst mitlesen)</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide</li>
+<li>ISO 27035: Information Security Incident Management</li></ul>
+
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IP-Adressierung und Subnetting — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / IP-Adressierung und Subnetting</span>
+</nav>
+<main>
+<article>
+<h1>IP-Adressierung und Subnetting <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Jedes Gerät im Netz hat eine IP-Adresse. Ob IPv4 oder IPv6 — du musst Adressen lesen, private von öffentlichen unterscheiden und Subnetting verstehen, um Netzwerkverkehr forensisch korrekt zu interpretieren.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>IPv4 (32 Bit)</h3>
+
+<ul><li>Darstellung: 4 Oktette dezimal, z.B. <code>192.168.1.1</code></li>
+<li><strong>Private Adressbereiche (RFC 1918):</strong></li>
+<li><code>10.0.0.0/8</code> — ca. 16,7 Mio. Adressen, typisch für große Unternehmen</li>
+<li><code>172.16.0.0/12</code> — ca. 1 Mio. Adressen, mittlere Netze</li>
+<li><code>192.168.0.0/16</code> — 65.536 Adressen, Heimnetzwerke</li>
+<li><strong>APIPA</strong> (<code>169.254.0.0/16</code>): Selbst zugewiesen bei DHCP-Ausfall — wenn du diese IP im Log siehst, gab es ein DHCP-Problem</li>
+<li><strong>Loopback:</strong> <code>127.0.0.0/8</code>, meist <code>127.0.0.1</code></li></ul>
+
+<h3>Subnetmask und CIDR — praktische Berechnung</h3>
+
+<table class="styled-table">
+<thead><tr><th>CIDR</th><th>Subnetmask</th><th>Adressen gesamt</th><th>Nutzbar</th></tr></thead><tbody>
+<tr><td>/8</td><td>255.0.0.0</td><td>16.777.216</td><td>16.777.214</td></tr>
+<tr><td>/16</td><td>255.255.0.0</td><td>65.536</td><td>65.534</td></tr>
+<tr><td>/24</td><td>255.255.255.0</td><td>256</td><td>254</td></tr>
+<tr><td>/28</td><td>255.255.255.240</td><td>16</td><td>14</td></tr>
+<tr><td>/30</td><td>255.255.255.252</td><td>4</td><td>2 (Point-to-Point)</td></tr>
+<tr><td>/32</td><td>255.255.255.255</td><td>1</td><td>1 (einzelner Host)</td></tr>
+</tbody></table>
+
+<p>Berechnung: <code>Anzahl nutzbarer Hosts = 2^(32-CIDR) - 2</code></p>
+
+<h3>Typische Subnetting-Fragen für die Forensik</h3>
+
+<ul><li>"Ist die Angreifer-IP aus dem INTERNEN Netz?" → CIDR des Firmennetzes prüfen</li>
+<li>"Gehört 10.0.5.23 und 10.0.5.47 zum selben Subnetz?" → Subnetmask vergleichen</li>
+<li>"Warum kommuniziert Server A (DMZ) mit Server B (Intern)?" → Routing-Tabelle prüfen</li></ul>
+
+<h3>GeoIP und WHOIS — Herkunft einer IP bestimmen</h3>
+
+<pre><code>geoiplookup 203.0.113.42
+
+# WHOIS-Abfrage — wem gehört die IP?
+whois 203.0.113.42 | grep -E &quot;netname|descr|country|OrgName&quot;
+
+# DNS Reverse-Lookup — welcher Hostname?
+dig -x 203.0.113.42</code></pre>
+
+<p>Forensisch: Wenn eine IP laut GeoIP in Nordkorea liegt und der Angriff kommt von dort → Verdacht auf VPN/Proxy oder tatsächlich staatlicher Akteur.</p>
+
+<h3>IPv6 (128 Bit)</h3>
+
+<ul><li>Darstellung: 8 Gruppen à 4 Hex-Ziffern, z.B. <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+<li>Kürzung: <code>2001:db8:85a3::8a2e:370:7334</code></li>
+<li>Wichtige Adressbereiche:</li>
+<li><strong>Link-Local:</strong> <code>fe80::/10</code> — nur im lokalen Netzsegment gültig, nicht geroutet</li>
+<li><strong>Unique Local (ULA):</strong> <code>fc00::/7</code> — IPv6-Äquivalent zu privaten IPv4-Adressen</li>
+<li><strong>Global Unicast:</strong> <code>2000::/3</code> — öffentlich geroutet</li>
+<li><strong>Multicast:</strong> <code>ff00::/8</code></li></ul>
+
+<h3>IPv6 und Forensik — das unterschätzte Risiko</h3>
+
+<ul><li><strong>Privacy Extensions (RFC 4941):</strong> IPv6-Adressen wechseln regelmäßig aus Datenschutzgründen. Forensisch: eine IPv6-Adresse ist NICHT dauerhaft einem Gerät zugeordnet</li>
+<li><strong>SLAAC:</strong> Geräte konfigurieren ihre Adresse selbst, kein DHCPv6 nötig — keine DHCP-Logs!</li>
+<li><strong>Covert Channels:</strong> Angreifer verstecken Daten in IPv6-Flow-Label oder Hop-by-Hop-Options-Headern</li>
+<li><strong>6to4/Teredo:</strong> IPv4-IPv6-Tunnel, die Firewalls umgehen können</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>ip addr show</code> — eigene IPs anzeigen (IPv4 + IPv6)</li>
+<li><code>ipcalc 192.168.1.0/24</code> — Subnetz-Details berechnen</li>
+<li>Wireshark: <code>ip.src == 10.0.0.0/8</code> — Traffic aus privaten Netzen</li>
+<li><code>ip6.addr == fe80::/10</code> — IPv6 Link-Local-Traffic</li>
+<li><code>whois 8.8.8.8</code> — IP-Besitzer ermitteln</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>RFC 1918 (Private Adressen), RFC 4291 (IPv6 Addressing)</li>
+<li>RFC 4941 (IPv6 Privacy Extensions)</li>
+<li><a href="https://dev.maxmind.com/geoip/">MaxMind GeoLite2 Database</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

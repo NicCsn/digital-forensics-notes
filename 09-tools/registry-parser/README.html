@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registry Hive Parser — DF Field Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../../index.html">Tools</a> / Registry Hive Parser</span>
+</nav>
+<main><article>
+<h1>Registry Hive Parser <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+
+<h2>Registry Hive Parser</h2>
+
+<h3>What It Does</h3>
+
+<p>Parses Windows Registry hive files (regf format) and extracts structural metadata: root key name, version, number of keys and values, sequence numbers, and last-write timestamp. A minimalist forensic tool for quick hive inspection without needing the full Windows Registry Editor.</p>
+
+<h3>Installation</h3>
+
+<pre><code>
+<h2>No external dependencies (stdlib only)</h2>
+<p>python3 --version  # requires Python 3.9+</p>
+<p>chmod +x main.py</p>
+<pre><code>
+
+<h3>Usage</h3>
+
+<pre><code>
+<h2>Basic analysis of a registry hive</h2>
+<p>./main.py /mnt/case/SYSTEM</p>
+
+<h2>JSON output for further processing</h2>
+<p>./main.py /mnt/case/NTUSER.DAT --json</p>
+
+<h2>Analyze multiple hives in a loop</h2>
+<p>for hive in /cases/*/SYSTEM; do</p>
+<p>echo "=== $hive ==="</p>
+<p>./main.py "$hive"</p>
+<p>done</p>
+<pre><code>
+
+<h3>Limitations</h3>
+
+<li>Parses only the **structural metadata** of the hive (not individual keys/values recursively)</li>
+<li>Does not support repair of corrupted hives</li>
+<li>Windows-only format (no cross-platform hives)</li>
+<li>No write support (read-only by design)</li>
+<li>Does not decrypt encrypted values (EFS, DPAPI)</li>
+
+</article></main>
+</body>
+</html>

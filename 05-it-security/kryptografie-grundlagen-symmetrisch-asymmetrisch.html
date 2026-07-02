@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kryptografie-Grundlagen: Symmetrisch und Asymmetrisch — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">IT-Security</a> / Kryptografie-Grundlagen: Symmetrisch und Asymmetrisch</span>
+</nav>
+<main>
+<article>
+<h1>Kryptografie-Grundlagen: Symmetrisch und Asymmetrisch <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Kryptografie ist die Wissenschaft der sicheren Kommunikation in Gegenwart von Angreifern. Sie stellt Vertraulichkeit, Integrität, Authentizität und Nicht-Abstreitbarkeit sicher. Die zwei fundamentalen Paradigmen sind symmetrische und asymmetrische Verschlüsselung.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Symmetrische Kryptografie</h3>
+
+<ul><li><strong>Ein Schlüssel</strong> für Ver- und Entschlüsselung — Sender und Empfänger teilen dasselbe Geheimnis</li>
+<li>Schnell und effizient, geeignet für große Datenmengen</li>
+<li>Problem: Schlüsselaustausch — wie kommt der Schlüssel sicher zum Empfänger?</li>
+<li>Wichtige Algorithmen: <strong>AES</strong> (Advanced Encryption Standard, Blockgröße 128 Bit, Schlüssel 128/192/256 Bit), veraltetes DES/3DES</li>
+<li>Betriebsmodi: ECB (unsicher!), CBC, CTR, GCM (authenticated encryption)</li></ul>
+
+<h3>Asymmetrische Kryptografie</h3>
+
+<ul><li><strong>Zwei Schlüssel:</strong> Öffentlicher Schlüssel (public key) zum Verschlüsseln, privater Schlüssel (private key) zum Entschlüsseln</li>
+<li>Löst das Schlüsselaustausch-Problem</li>
+<li>Langsamer als symmetrisch — daher in der Praxis hybrid: Asymmetrisch wird ein Session-Key ausgehandelt, symmetrisch werden die Daten verschlüsselt</li>
+<li>Wichtige Algorithmen: <strong>RSA</strong> (basiert auf Faktorisierungsproblem), <strong>ECC</strong> (Elliptic Curve Cryptography, kleinere Schlüssel bei gleicher Sicherheit), <strong>Diffie-Hellman</strong> (reiner Schlüsselaustausch)</li>
+<li>Quantencomputing-Gefahr: Shor's Algorithmus kann RSA und ECC brechen → Post-Quantum-Kryptografie als aktives Forschungsfeld</li></ul>
+
+<h3>Hash-Funktionen</h3>
+
+<ul><li>Einweg-Funktion: Aus einem Hash kann nicht auf die Eingabe geschlossen werden</li>
+<li>Gleiche Eingabe → gleicher Hash; minimale Änderung → völlig anderer Hash (Avalanche-Effekt)</li>
+<li>Wichtige Algorithmen: SHA-256, SHA-3; veraltet: MD5, SHA-1</li>
+<li>Anwendung: Passwort-Hashing (bcrypt, argon2), Integritätsprüfung, digitale Signaturen</li></ul>
+
+<h3>Digitale Signaturen</h3>
+
+<ul><li>Privater Schlüssel signiert, öffentlicher Schlüssel verifiziert</li>
+<li>Stellt Authentizität und Nicht-Abstreitbarkeit sicher</li>
+<li>Signatur wird über den Hash der Nachricht gebildet, nicht direkt über die Nachricht</li></ul>
+
+<h3>Kerckhoffs-Prinzip</h3>
+
+<ul><li>Die Sicherheit eines Kryptosystems darf nicht von der Geheimhaltung des Algorithmus abhängen, sondern nur vom Schlüssel</li>
+<li>Formuliert von Auguste Kerckhoffs (1883), von Claude Shannon als "the enemy knows the system" verschärft</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>openssl enc -aes-256-cbc -in klartext.txt -out verschluesselt.bin</code> — symmetrisch verschlüsseln</li>
+<li><code>openssl dgst -sha256 datei</code> — Hash berechnen</li>
+<li><code>gpg --gen-key</code> — GPG-Schlüsselpaar erzeugen</li>
+<li><code>hashcat -m 0 hash.txt wordlist.txt</code> — MD5-Hash cracken (für Penetrationstests)</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://en.wikipedia.org/wiki/Cryptography">Wikipedia: Cryptography</a></li>
+<li>Paar, C. & Pelzl, J. (2010): *Understanding Cryptography*</li>
+<li><a href="https://cryptopals.com/">Cryptopals Crypto Challenges</a> — praktische Übungen</li></ul>
+
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireless-Forensik: WLAN und Bluetooth — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / Wireless-Forensik: WLAN und Bluetooth</span>
+</nav>
+<main>
+<article>
+<h1>Wireless-Forensik: WLAN und Bluetooth <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Drahtlose Netzwerke hinterlassen andere Spuren als kabelgebundene: Signalstärken, Beacon-Frames, WPA-Handshakes. Wireless-Forensik analysiert, welche Geräte wann mit welchem Access Point verbunden waren — und ob jemand einen gefälschten Access Point betrieben hat.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>802.11 (WLAN)-Frame-Typen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Typ</th><th>Subtyp</th><th>Forensische Bedeutung</th></tr></thead><tbody>
+<tr><td>**Beacon**</td><td>—</td><td>AP sendet regelmäßig: SSID, BSSID (MAC), Kanal, supported rates</td></tr>
+<tr><td>**Probe Request**</td><td>—</td><td>Client fragt: "Gibt es hier SSID 'MyCorp'?" — verrät, wonach das Gerät sucht!</td></tr>
+<tr><td>**Probe Response**</td><td>—</td><td>AP antwortet: "Ja, hier bin ich (BSSID xx:xx)"</td></tr>
+<tr><td>**Authentication**</td><td>—</td><td>Client ↔ AP: Open System oder Shared Key</td></tr>
+<tr><td>**Association**</td><td>—</td><td>Client verbindet sich mit AP</td></tr>
+<tr><td>**Data**</td><td>QoS Data, Null</td><td>Eigentliche Nutzdaten (verschlüsselt)</td></tr>
+<tr><td>**Deauthentication**</td><td>—</td><td>"Du bist raus!" — Deauth-Attacke zwingt Client zur Neuverbindung (um Handshake zu capturen)</td></tr>
+</tbody></table>
+
+<h3>WPA2-4-Way-Handshake im Detail</h3>
+
+<pre><code>  |------ANonce----------→|  1: AP sendet Zufallszahl
+  |←-----SNonce + MIC-----|  2: Client antwortet mit eigener Zufallszahl + MIC (Message Integrity Code)
+  |---GTK + MIC---------→|  3: AP bestätigt und sendet Gruppenschlüssel
+  |←-------ACK------------|  4: Client bestätigt</code></pre>
+
+<p>Der MIC im zweiten Frame enthält die Passwort-Prüfsumme — das ist der Angriffspunkt für Brute-Force! Capture diesen Handshake, und du kannst das WLAN-Passwort offline mit <code>hashcat</code> oder <code>aircrack-ng</code> knacken.</p>
+
+<h3>WPA3 — Verbesserungen und forensische Implikationen</h3>
+
+<ul><li><strong>SAE (Simultaneous Authentication of Equals):</strong> Ersetzt den PSK-basierten 4-Way-Handshake. Kein Capture + Brute-Force mehr möglich!</li>
+<li><strong>Forward Secrecy:</strong> Auch wenn das Passwort später bekannt wird — alte Sessions sind sicher (Perfect Forward Secrecy)</li>
+<li><strong>OWE (Opportunistic Wireless Encryption):</strong> Offene WLANs (Cafés) werden trotzdem verschlüsselt (keine Passworteingabe nötig)</li></ul>
+
+<p>Forensisch: WPA3 macht Handshake-Capture als Beweismittel nahezu wertlos. Du musst andere Spuren finden: DHCP-Logs, RADIUS-Accounting, AP-Verbindungs-Logs.</p>
+
+<h3>WLAN-Überwachungsmodus (Monitor Mode)</h3>
+
+<p>Netzwerkkarten im Monitor-Mode fangen ALLEN Funkverkehr im Kanal ein, nicht nur den an sie adressierten:</p>
+
+<pre><code>airmon-ng start wlan0
+
+# Alle WLANs in Reichweite scannen
+airodump-ng wlan0mon
+
+# Spezifischen Kanal capturen
+airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon
+
+# Ergebnis: capture-01.cap mit allen Frames im Kanal</code></pre>
+
+<h3>Rogue Access Point — Erkennung</h3>
+
+<p>Ein Rogue AP ahmt ein legitimes WLAN nach:</p>
+<ul><li><strong>Gleiche SSID</strong> wie das Firmennetz</li>
+<li><strong>Stärkeres Signal</strong> → Clients verbinden sich automatisch mit dem stärksten Signal</li>
+<li><strong>Man-in-the-Middle</strong> → gesamter Traffic läuft über den Angreifer</li></ul>
+
+<p>Forensische Erkennung:</p>
+<ul><li><strong>Beacon-Analyse:</strong> Zwei APs mit gleicher SSID aber unterschiedlicher BSSID? → einer ist fake</li>
+<li><strong>Signalstärke:</strong> Rogue AP hat andere Signalstärke (näher am Client)</li>
+<li><strong>Kanal:</strong> Legitimer AP sendet auf Kanal 1, Rogue auf Kanal 6? → verdächtig</li></ul>
+
+<h3>Bluetooth-Forensik</h3>
+
+<ul><li><strong>BD_ADDR:</strong> Bluetooth-MAC-Adresse (48 Bit) — identifiziert ein Gerät eindeutig</li>
+<li><strong>Bluetooth LE (BLE):</strong> Geringere Reichweite, weniger Energie → typisch für Wearables, Beacons</li>
+<li><strong>Pairing-Spuren:</strong> <code>/var/lib/bluetooth/<adapter>/<device>/info</code> (Linux), Registry (Windows)</li>
+<li><strong>Angriff:</strong> Bluejacking (Nachrichten senden), Bluesnarfing (Daten stehlen), Bluebugging (Gerät fernsteuern)</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>airmon-ng start wlan0</code> — Monitor-Mode aktivieren</li>
+<li><code>airodump-ng wlan0mon</code> — WLANs scannen</li>
+<li><code>aireplay-ng -0 10 -a <AP-BSSID> -c <Client-MAC> wlan0mon</code> — Deauth-Attacke</li>
+<li><code>aircrack-ng -w rockyou.txt -b <BSSID> capture.cap</code> — WPA-Crack mit Wordlist</li>
+<li><code>hashcat -m 22000 handshake.hc22000 rockyou.txt</code> — WPA2-Crack mit GPU</li>
+<li><code>hcitool scan</code> — Bluetooth-Geräte in Reichweite finden (Linux)</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://www.aircrack-ng.org/documentation.html">Aircrack-ng Documentation</a></li>
+<li>IEEE 802.11 Standard</li>
+<li><a href="https://www.wi-fi.org/discover-wi-fi/security">Wi-Fi Alliance: WPA3 Specification</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

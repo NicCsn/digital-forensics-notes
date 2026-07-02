@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser-Forensik: Spuren im Browser — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Netzwerke</a> / Browser-Forensik: Spuren im Browser</span>
+</nav>
+<main>
+<article>
+<h1>Browser-Forensik: Spuren im Browser <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Browser speichern eine enorme Menge an Nutzerdaten: besuchte URLs, Suchbegriffe, Downloads, gespeicherte Passwörter, Cookies, Cache-Dateien. In der Forensik ist der Browser oft die ergiebigste Quelle für das Nutzerverhalten.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Chromium-basierte Browser (Chrome, Edge, Brave, Opera)</h3>
+
+<p>Daten liegen unter <code>%AppData%\Local\Google\Chrome\User Data\Default\</code> (Windows) oder <code>~/.config/google-chrome/Default/</code> (Linux)</p>
+
+<table class="styled-table">
+<thead><tr><th>Datei</th><th>Format</th><th>Inhalt</th></tr></thead><tbody>
+<tr><td>`History`</td><td>SQLite</td><td>URLs, Titel, Besuchszeit, Anzahl Besuche</td></tr>
+<tr><td>`Cookies`</td><td>SQLite</td><td>Cookie-Name, Wert, Domain, Ablaufdatum</td></tr>
+<tr><td>`Login Data`</td><td>SQLite</td><td>Gespeicherte Logins (verschlüsselt mit OS-Schlüssel)</td></tr>
+<tr><td>`Web Data`</td><td>SQLite</td><td>Autofill, Kreditkarten, Suchbegriffe</td></tr>
+<tr><td>`Bookmarks`</td><td>JSON</td><td>Lesezeichen mit URLs und Ordnern</td></tr>
+<tr><td>`Favicons`</td><td>SQLite</td><td>Favicon-URLs (auch wenn nie als Lesezeichen gespeichert)</td></tr>
+<tr><td>`Cache/`</td><td>Binär</td><td>Zwischengespeicherte Dateien (Bilder, CSS, JS)</td></tr>
+<tr><td>`Downloads`</td><td>SQLite</td><td>Heruntergeladene Dateien mit Pfad und Quelle</td></tr>
+<tr><td>`Top Sites`</td><td>SQLite</td><td>Meistbesuchte Seiten mit Thumbnail</td></tr>
+<tr><td>`Extensions/`</td><td>Ordner</td><td>Installierte Erweiterungen → Rückschlüsse auf Nutzerverhalten</td></tr>
+</tbody></table>
+
+<h3>Firefox</h3>
+
+<p>Daten unter <code>%AppData%\Roaming\Mozilla\Firefox\Profiles\<profil>\</code> (Windows) bzw. <code>~/.mozilla/firefox/<profil>/</code></p>
+
+<table class="styled-table">
+<thead><tr><th>Datei</th><th>Format</th><th>Inhalt</th></tr></thead><tbody>
+<tr><td>`places.sqlite`</td><td>SQLite</td><td>History, Bookmarks, Downloads</td></tr>
+<tr><td>`cookies.sqlite`</td><td>SQLite</td><td>Cookies</td></tr>
+<tr><td>`formhistory.sqlite`</td><td>SQLite</td><td>Gespeicherte Formulardaten</td></tr>
+<tr><td>`logins.json`</td><td>JSON</td><td>Gespeicherte Logins (verschlüsselt)</td></tr>
+</tbody></table>
+
+<h3>Safari (macOS)</h3>
+
+<ul><li>History: <code>~/Library/Safari/History.db</code> (SQLite)</li>
+<li>Cookies: <code>~/Library/Cookies/Cookies.binarycookies</code></li>
+<li>Downloads: <code>~/Library/Safari/Downloads.plist</code></li></ul>
+
+<h3>Forensische Arbeitstechniken</h3>
+
+<ul><li><strong>History rekonstruieren:</strong> Zeitachse aller besuchten Seiten → Täter-Recherche, Besuch von Darknet-Links?</li>
+<li><strong>Downloads prüfen:</strong> Welche Dateien von wo heruntergeladen? → Malware-Infektionsvektor</li>
+<li><strong>Eingegebene Suchbegriffe:</strong> Wonach hat der Nutzer gesucht? (z.B. "how to make a bomb" vs. "Windows Fehler 0x80070005")</li>
+<li><strong>Cache durchsuchen:</strong> Auch gelöschte Dateien können noch im Cache sein → Strings-Extraktion</li>
+<li><strong>Erweiterungen:</strong> Ad-Blocker oder Crypto-Wallet-Erweiterung?</li></ul>
+
+<h3>InPrivate / Incognito-Modus</h3>
+
+<ul><li>Browser speichert keine History, Cookies, Cache <strong>während</strong> der Session</li>
+<li>Nach Schließen der Session: Daten im RAM (wenn das System noch läuft)</li>
+<li>Kein absoluter Schutz: DNS-Resolver, Proxy/Firewall, Router sehen den Traffic trotzdem</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li>SQLite auslesen: <code>sqlite3 History.db "SELECT url, title, last_visit_time FROM urls ORDER BY last_visit_time DESC LIMIT 20"</code></li>
+<li>Chrome-Zeitstempel: <code>datetime(last_visit_time / 1000000 - 11644473600, 'unixepoch')</code> — Chrome-Zeit → menschenlesbar</li>
+<li><code>Hindsight</code> (Tool): Automatische Auswertung von Chrome-Profilen</li>
+<li><code>browser-history</code> (Python-Paket): CLI-Tool zum Auslesen aller Browser</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://github.com/ForensicArtifacts/artifacts">Forensic Artifacts: Browsers</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

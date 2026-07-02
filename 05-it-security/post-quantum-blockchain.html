@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post-Quantum-Kryptografie und Blockchain — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">IT-Security</a> / Post-Quantum-Kryptografie und Blockchain</span>
+</nav>
+<main>
+<article>
+<h1>Post-Quantum-Kryptografie und Blockchain <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Quantencomputer bedrohen aktuelle asymmetrische Kryptografie (RSA, ECC). Post-Quantum-Kryptografie entwickelt resistente Verfahren. Blockchain ist eine dezentrale, manipulationssichere Datenstruktur — forensisch relevant wegen Kryptowährungen und Smart Contracts.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Quanten-Bedrohung</h3>
+
+<table class="styled-table">
+<thead><tr><th>Algorithmus</th><th>Bedroht durch</th><th>Betroffene Systeme</th></tr></thead><tbody>
+<tr><td>RSA</td><td>Shor's Algorithmus</td><td>TLS, SSH, digitale Signaturen, GPG</td></tr>
+<tr><td>ECDSA / ECDH</td><td>Shor's Algorithmus</td><td>Bitcoin, TLS 1.3, Signal-Protokoll</td></tr>
+<tr><td>AES-256</td><td>Grover's Algorithmus</td><td>Halbiert effektive Schlüssellänge (→ 128 Bit)</td></tr>
+<tr><td>SHA-256</td><td>Grover's Algorithmus</td><td>Halbiert Sicherheitsniveau</td></tr>
+</tbody></table>
+
+<p><strong>Zeithorizont:</strong> Unklar. "Harvest now, decrypt later" — Angreifer könnten heute verschlüsselte Daten speichern und in 10-15 Jahren entschlüsseln. Langfristig sensible Daten müssen JETZT mit quantensicheren Verfahren geschützt werden.</p>
+
+<h3>Post-Quantum-Algorithmen (NIST-Standardisierung)</h3>
+
+<ul><li><strong>CRYSTALS-Kyber:</strong> Schlüsselaustausch (gitterbasiert)</li>
+<li><strong>CRYSTALS-Dilithium:</strong> Digitale Signaturen (gitterbasiert)</li>
+<li><strong>SPHINCS+:</strong> Hash-basierte Signaturen (konservativer Ansatz)</li>
+<li>Status: Standardisierung läuft, TLS 1.3 integriert PQC-Hybrid-Modi</li></ul>
+
+<h3>Blockchain-Grundlagen</h3>
+
+<ul><li><strong>Block =</strong> Transaktionen + Hash des Vorgängerblocks + Nonce</li>
+<li><strong>Mining:</strong> Nonce finden, sodass Block-Hash mit ausreichend Nullen beginnt (Proof-of-Work)</li>
+<li><strong>Konsens:</strong> Längste Kette gewinnt — Änderung eines alten Blocks gibt die ganze Kette ungültig</li></ul>
+
+<h3>Forensische Relevanz von Kryptowährungen</h3>
+
+<p>#### Bitcoin</p>
+<ul><li><strong>Pseudonym, nicht anonym:</strong> Jede Transaktion ist öffentlich einsehbar (Blockchain Explorer)</li>
+<li><strong>Cluster-Analyse:</strong> Gleiche Input-Adressen → gleicher Besitzer</li>
+<li><strong>Chainalysis, Crystal, Elliptic:</strong> Kommerzielle Tools zur Transaktionsverfolgung</li>
+<li><strong>Mixer / Tumbler:</strong> Verschleiern den Transaktionsfluss — aber Pattern-Erkennung möglich</li></ul>
+
+<p>#### Monero</p>
+<ul><li>Wirklich anonym (Ring Signatures, Stealth-Adressen, RingCT)</li>
+<li>Keine Transaktionsverfolgung möglich (Stand heute)</li>
+<li>Forensisch: Wenn Täter Monero nutzt → Blockchain-Analyse nutzlos → andere Spuren suchen</li></ul>
+
+<p>#### Smart Contracts (Ethereum)</p>
+<ul><li>Code auf der Blockchain, der automatisch bei Transaktionen ausgeführt wird</li>
+<li>Forensisch: Code ist öffentlich einsehbar → Angriffsmuster analysieren, Betrugsmuster identifizieren</li>
+<li>Flash Loan Attacks, Rug Pulls — Spuren sind in der Blockchain unveränderlich</li></ul>
+
+<h3>Forensisches Vorgehen bei Krypto-Fällen</h3>
+
+<ul><li><strong>Wallet-Software identifizieren</strong> (Bitcoin Core, Electrum, MetaMask...)</li>
+<li><strong>Wallet-Datei finden</strong> (<code>wallet.dat</code>, Seedphrase, private Keys)</li>
+<li><strong>Transaktionshistorie analysieren</strong> (Blockchain-Explorer, eigene Full-Node)</li>
+<li><strong>Exchange-Verbindung herstellen</strong> (KYC-Daten bei regulierten Börsen)</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>bitcoin-cli gettransaction <txid></code> — Transaktionsdetails (wenn Full-Node)</li>
+<li>Blockchain Explorer: <code>blockchain.com/explorer</code>, <code>etherscan.io</code></li>
+<li><code>oxt.me</code> — Bitcoin-Transaktionsgraph visualisieren</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Narayanan, A. et al.: Bitcoin and Cryptocurrency Technologies</li>
+<li><a href="https://csrc.nist.gov/projects/post-quantum-cryptography">NIST Post-Quantum Cryptography</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

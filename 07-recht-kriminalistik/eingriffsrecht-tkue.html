@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eingriffsrecht: Telekommunikationsüberwachung (TKÜ) — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Recht & Kriminalistik</a> / Eingriffsrecht: Telekommunikationsüberwachung (TKÜ)</span>
+</nav>
+<main>
+<article>
+<h1>Eingriffsrecht: Telekommunikationsüberwachung (TKÜ) <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<div class="callout warning"><strong>Disclaimer:</strong> Keine Rechtsberatung. Die folgenden Ausführungen basieren auf dem deutschen Rechtsrahmen und sind jurisdiktionsabhängig.</div>
+
+<p>Die Telekommunikationsüberwachung (TKÜ) ist der stärkste staatliche Eingriff in die Privatsphäre. §§ 100a ff. StPO regeln, unter welchen Voraussetzungen Kommunikation überwacht werden darf — für Forensiker relevant, weil viele Ermittlungen mit einer TKÜ-Anordnung beginnen oder auf TKÜ-Daten zurückgreifen.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Gesetzliche Grundlagen</h3>
+
+<table class="styled-table">
+<thead><tr><th>Norm</th><th>Inhalt</th><th>Voraussetzungen</th></tr></thead><tbody>
+<tr><td>**§ 100a StPO**</td><td>TKÜ (Inhaltsdaten)</td><td>Schwere Straftat (Katalog), Subsidiarität</td></tr>
+<tr><td>**§ 100g StPO**</td><td>Verkehrsdaten (wer mit wem wann)</td><td>Straftat von erheblicher Bedeutung</td></tr>
+<tr><td>**§ 100b StPO**</td><td>Online-Durchsuchung</td><td>Gefahr für Leib/Leben oder Staat, Richtervorbehalt</td></tr>
+<tr><td>**§ 100e StPO**</td><td>Quellen-TKÜ</td><td>Wie § 100a, aber Überwachung vor Verschlüsselung</td></tr>
+</tbody></table>
+
+<h3>§ 100a StPO — Telekommunikationsüberwachung</h3>
+
+<p><strong>Voraussetzungen:</strong></p>
+<ul><li><strong>Katalogtat:</strong> Bestimmte, im Gesetz aufgezählte schwere Straftaten (z.B. Bildung krimineller Vereinigung, Geldwäsche, besonders schwerer Diebstahl)</li>
+<li><strong>Bestimmte Tatsachen:</strong> Konkreter Verdacht, kein "Fishing"</li>
+<li><strong>Subsidiarität:</strong> Andere Ermittlungsmethoden wären aussichtslos oder wesentlich erschwert</li>
+<li><strong>Richtervorbehalt:</strong> Anordnung durch Richter, bei Gefahr im Verzug durch Staatsanwaltschaft (dann binnen 3 Tagen richterliche Bestätigung)</li></ul>
+
+<p><strong>Umfang:</strong> Inhaltsdaten (Wortlaut des Telefonats, E-Mail-Text, Messenger-Nachrichten)</p>
+
+<h3>§ 100g StPO — Verkehrsdaten</h3>
+
+<ul><li>Nicht der INHALT, sondern die VERBINDUNGSDATEN: Wer? Mit wem? Wann? Wie lange?</li>
+<li>Rechtlich einfacher zu erlangen als 100a (kein Katalog, aber "Straftat von erheblicher Bedeutung")</li>
+<li>Forensisch extrem wertvoll: IPs, Ports, Übertragungsmengen, Zeitstempel</li></ul>
+
+<h3>Kernbereichsschutz</h3>
+
+<ul><li>Der absolut geschützte Kernbereich privater Lebensgestaltung darf NICHT überwacht werden</li>
+<li>Beispiele: Gespräche mit Ehepartner, Tagebuch, Arzt, Anwalt, Seelsorger, Abgeordnete (§ 100d StPO)</li>
+<li>Wenn bei der Überwachung kernbereichsrelevante Daten anfallen → sofort löschen, nicht verwerten</li></ul>
+
+<h3>Online-Durchsuchung (§ 100b StPO)</h3>
+
+<ul><li>Heimliches Eindringen in das IT-System des Beschuldigten (Bundestrojaner)</li>
+<li>Nur bei Gefahr für überragend wichtige Rechtsgüter (Leib, Leben, Staat)</li>
+<li>Richtervorbehalt ZWINGEND (keine Gefahr im Verzug)</li>
+<li>Technisch: Installation von Überwachungssoftware auf Zielsystem</li></ul>
+
+<h3>Quellen-TKÜ (§ 100e StPO)</h3>
+
+<ul><li>Überwachung VOR der Verschlüsselung (z.B. bevor Signal-Nachricht verschlüsselt wird)</li>
+<li>Installiert Software auf dem Endgerät, die Nachrichten auf Tastaturebene abfängt</li>
+<li>Strengere Voraussetzungen als "normale" TKÜ, da in IT-Grundrecht eingegriffen wird</li></ul>
+
+<h3>Forensische Verwertung von TKÜ-Daten</h3>
+
+<ul><li>Beweiserhebungsverbote: Daten aus rechtswidriger TKÜ sind unverwertbar</li>
+<li>Beweisverwertungsverbote: Auch bei rechtmäßiger Erhebung können bestimmte Daten unverwertbar sein (z.B. kernbereichsrelevant)</li>
+<li><strong>Fernwirkung:</strong> Führt eine rechtswidrige TKÜ dazu, dass alle darauf basierenden weiteren Funde ebenfalls unverwertbar sind? → Umstritten, Abwägung im Einzelfall</li></ul>
+
+<h3>Rechtliche Prüfreihenfolge bei TKÜ-Fällen</h3>
+
+<ul><li>Liegt eine Katalogtat vor? (§ 100a II StPO)</li>
+<li>Besteht konkreter Tatverdacht?</li>
+<li>Ist die Maßnahme verhältnismäßig? (Subsidiarität!)</li>
+<li>Liegt eine richterliche Anordnung vor?</li>
+<li>Wurde der Kernbereichsschutz beachtet?</li>
+<li>Wurden Löschungs- und Dokumentationspflichten eingehalten?</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Forensiker arbeiten oft mit TKÜ-Daten: PCAPs, mitgeschnittene E-Mails → IMMER Rechtsgrundlage prüfen</li>
+<li>Gutachterliche Stellungnahme: Ist das gefundene Material TKÜ-rechtlich verwertbar?</li>
+<li>Zusammenarbeit mit Staatsanwaltschaft: Welche Norm erlaubt welche Analyse?</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>StPO § 100a-100e</li>
+<li>BGH, Urteile zur Quellen-TKÜ und Online-Durchsuchung</li></ul>
+
+</article>
+</main>
+</body>
+</html>

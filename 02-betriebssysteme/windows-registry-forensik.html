@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows Registry Forensik — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Windows Registry Forensik</span>
+</nav>
+<main>
+<article>
+<h1>Windows Registry Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Die Registry ist die zentrale Konfigurationsdatenbank von Windows — und eine der ergiebigsten Quellen für forensische Artefakte. Hier findest du: ausgeführte Programme, angeschlossene USB-Geräte, Netzwerkkonfigurationen und vieles mehr.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Physische Lage der Registry-Hives</h3>
+
+<table class="styled-table">
+<thead><tr><th>Hive</th><th>Pfad</th></tr></thead><tbody>
+<tr><td>SAM</td><td>`%SystemRoot%\System32\config\SAM`</td></tr>
+<tr><td>SECURITY</td><td>`%SystemRoot%\System32\config\SECURITY`</td></tr>
+<tr><td>SOFTWARE</td><td>`%SystemRoot%\System32\config\SOFTWARE`</td></tr>
+<tr><td>SYSTEM</td><td>`%SystemRoot%\System32\config\SYSTEM`</td></tr>
+<tr><td>NTUSER.DAT</td><td>`C:\Users\<User>\NTUSER.DAT` (pro Benutzer)</td></tr>
+<tr><td>UsrClass.dat</td><td>`C:\Users\<User>\AppData\Local\Microsoft\Windows\UsrClass.dat`</td></tr>
+</tbody></table>
+
+<h3>Forensisch relevante Registry-Keys</h3>
+
+<p>#### System-Informationen</p>
+<ul><li><code>HKLM\SYSTEM\CurrentControlSet\Control\ComputerName\ComputerName</code> — Rechnername</li>
+<li><code>HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation</code> — Zeitzone</li>
+<li><code>HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces</code> — Netzwerkkonfiguration inkl. IPs</li></ul>
+
+<p>#### Benutzer-Aktivität</p>
+<ul><li><code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs</code> — kürzlich geöffnete Dateien</li>
+<li><code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU</code> — Ausführen-Dialog-Verlauf</li>
+<li><code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths</code> — in Explorer-Adressleiste eingegebene Pfade</li></ul>
+
+<p>#### USB-Geräte</p>
+<ul><li><code>HKLM\SYSTEM\CurrentControlSet\Enum\USBSTOR</code> — alle jemals angeschlossenen USB-Speichergeräte</li>
+<li><code>HKLM\SYSTEM\CurrentControlSet\Enum\USB</code> — allgemein USB-Geräte</li></ul>
+
+<p>#### Programm-Ausführung</p>
+<ul><li><strong>AmCache</strong> (<code>%SystemRoot%\AppCompat\Programs\Amcache.hve</code>): Eigenstaendige Registry-Hive-Datei, die ausgefuhrte Programme mit Pfad, SHA1-Hash und Ausfuehrungszeitpunkt protokolliert</li>
+<li><strong>ShimCache / AppCompatCache</strong> (<code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache</code>): Liegt im laufenden SYSTEM-Hive, enthaelt ausgefuhrte Programme — auch solche, die nicht mehr existieren. Nicht zu verwechseln mit AmCache (das eine eigene Datei ist)</li>
+<li><strong>UserAssist</strong> (<code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</code>): GUI-gestartete Programme mit Ausführungszähler und letzter Ausführung (ROT13-verschlüsselt)</li></ul>
+
+<p>#### Autostarts</p>
+<ul><li><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</code></li>
+<li><code>HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</code></li>
+<li><code>HKLM\SYSTEM\CurrentControlSet\Services</code> — Treiber und Dienste</li></ul>
+
+<h3>ShellBags</h3>
+
+<p>Zeigt, welche Ordner der Benutzer geöffnet hat und wie sie angeordnet waren:</p>
+<ul><li><code>NTUSER.DAT\Software\Microsoft\Windows\Shell\BagMRU</code></li>
+<li><code>UsrClass.dat\Local Settings\Software\Microsoft\Windows\Shell\BagMRU</code></li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>reg query "HKLM\SYSTEM\CurrentControlSet\Enum\USBSTOR" /s</code> — alle USB-Geräte</li>
+<li><code>reg save HKLM\SYSTEM system.hive</code> — Hive extrahieren</li>
+<li>Tools: Registry Explorer, RegRipper, Eric Zimmerman's Registry Explorer/RECmd</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Carvey, H.: Windows Registry Forensics</li>
+<li><a href="https://ericzimmerman.github.io/">Eric Zimmerman's Tools</a></li></ul>
+
+</article>
+</main>
+</body>
+</html>

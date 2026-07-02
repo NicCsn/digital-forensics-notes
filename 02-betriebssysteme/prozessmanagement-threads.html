@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prozessmanagement und Threads — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Betriebssysteme</a> / Prozessmanagement und Threads</span>
+</nav>
+<main>
+<article>
+<h1>Prozessmanagement und Threads <span class="diff-badge diff-intermediate">Mittel</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung-befehle">Praktische Anwendung / Befehle</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Prozesse sind laufende Programme, Threads sind Ausführungsstränge innerhalb eines Prozesses. In der Forensik liest du aus Prozesslisten ab, welche Malware läuft — und aus RAM-Dumps, was ein Prozess im Speicher hatte.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Prozesszustände</h3>
+
+<p>Ein Prozess durchläuft Zustände: <strong>New → Ready → Running → Waiting → Terminated</strong></p>
+
+<ul><li><strong>Orphan:</strong> Elternprozess terminiert vor Kind → wird von init (PID 1) adoptiert</li>
+<li><strong>Zombie:</strong> Prozess terminiert, aber Eltern hat <code>wait()</code> nicht aufgerufen — steht noch in der Prozesstabelle. Forensisch relevant: Ein Zombie deutet entweder auf einen Bug oder auf absichtliche Verschleierung (Anti-Forensik)</li></ul>
+
+<h3>Prozess-Strukturen im Detail</h3>
+
+<p><strong>Linux:</strong></p>
+<ul><li><code>task_struct</code> im Kernel (eine pro Prozess) mit: PID, PPID, State, Memory-Maps, offene Dateideskriptoren</li>
+<li><code>/proc/<pid>/</code> als lesbare Schnittstelle — <code>cmdline</code>, <code>environ</code>, <code>maps</code>, <code>fd/</code>, <code>exe</code>, <code>cwd</code></li></ul>
+
+<p><strong>Windows:</strong></p>
+<ul><li>EPROCESS-Block im Kernel, enthält: PID, PPID, CreateTime, ExitTime, Token, VAD-Tree (Virtual Address Descriptors), PEB (Process Environment Block)</li></ul>
+
+<h3>Process Injection — wie Malware sich versteckt</h3>
+
+<table class="styled-table">
+<thead><tr><th>Technik</th><th>Beschreibung</th><th>Forensische Erkennung</th></tr></thead><tbody>
+<tr><td>**DLL Injection**</td><td>Malware zwingt einen legitimen Prozess, eine bösartige DLL zu laden</td><td>`volatility dlllist` → unbekannte DLLs</td></tr>
+<tr><td>**Process Hollowing**</td><td>Legitimer Prozess wird im SUSPENDED-Zustand gestartet, sein Code durch Malware ersetzt, dann fortgesetzt</td><td>Image-Path vs. tatsächlicher Speicherinhalt im RAM-Dump</td></tr>
+<tr><td>**Process Doppelgänging**</td><td>Transaktionelles NTFS (TxF) wird ausgenutzt, um eine ausführbare Datei zu überschreiben, ohne dass die Änderung auf die Platte geschrieben wird</td><td>Sehr schwer zu erkennen, nur per RAM-Analyse</td></tr>
+<tr><td>**Reflective DLL Loading**</td><td>DLL wird direkt aus dem Speicher geladen, nie auf die Platte geschrieben</td><td>`volatility malfind` → Code in nicht-DLL-Speicherbereichen</td></tr>
+</tbody></table>
+
+<h3>Sysmon Event-IDs für Prozess-Forensik</h3>
+
+<p>Sysmon (System Monitor) von Sysinternals protokolliert detaillierte Prozess-Ereignisse:</p>
+
+<table class="styled-table">
+<thead><tr><th>Event ID</th><th>Ereignis</th><th>Forensischer Nutzen</th></tr></thead><tbody>
+<tr><td>1</td><td>Process Creation</td><td>Wer startete welchen Prozess mit welcher Kommandozeile?</td></tr>
+<tr><td>5</td><td>Process Terminated</td><td>Wann endete der Prozess?</td></tr>
+<tr><td>8</td><td>CreateRemoteThread</td><td>DLL Injection / Code Injection! (höchst verdächtig)</td></tr>
+<tr><td>10</td><td>ProcessAccess</td><td>Ein Prozess öffnete einen anderen mit bestimmten Rechten (mögliche Injection)</td></tr>
+<tr><td>22</td><td>DNS Query</td><td>Welcher Prozess löste welche DNS-Abfrage aus?</td></tr>
+</tbody></table>
+
+<h3>Prozesse im Volatility</h3>
+
+<pre><code>volatility -f mem.dump pslist
+
+# Eltern-Kind-Beziehungen (cmd.exe als Kind von winword.exe?)
+volatility -f mem.dump pstree
+
+# Versteckte Prozesse durch Vergleich verschiedener Quellen
+volatility -f mem.dump psxview
+
+# Injezierten Code finden
+volatility -f mem.dump malfind
+
+# Kommandozeile, mit der ein Prozess gestartet wurde
+volatility -f mem.dump cmdline -p 1234</code></pre>
+
+<h3>Suspicious Process Chains</h3>
+
+<p>Typische bösartige Eltern-Kind-Beziehungen:</p>
+
+<ul><li><code>winword.exe</code> → <code>cmd.exe</code> → <code>powershell.exe</code> (Dokument-Makro → Shell)</li>
+<li><code>services.exe</code> → <code>cmd.exe</code> (Dienst startet Shell — sehr selten legitim)</li>
+<li><code>explorer.exe</code> → <code>wscript.exe</code> (Nutzer klickte auf bösartiges Skript)</li>
+<li><code>wmiprvse.exe</code> → <code>powershell.exe</code> (WMI-Persistence)</li></ul>
+
+<h2 id="praktische-anwendung-befehle">Praktische Anwendung / Befehle</h2>
+
+<ul><li><code>ps auxf</code> — Prozess-Hierarchie (Linux)</li>
+<li><code>volatility -f mem.dump pslist</code>, <code>pstree</code>, <code>psxview</code></li>
+<li><code>lsof -p <pid></code> — offene Dateien eines Prozesses</li>
+<li><code>strace -p <pid></code> — Syscalls live verfolgen (Linux, mit Vorsicht — Anti-Forensik!)</li>
+<li>Windows EventLog: Event 4688 (Process Creation via Audit Policy)</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Tanenbaum, A.S.: Moderne Betriebssysteme</li>
+<li>Ligh, Case, Levy, Walters: The Art of Memory Forensics (Kapitel "Processes and DLLs")</li></ul>
+
+</article>
+</main>
+</body>
+</html>

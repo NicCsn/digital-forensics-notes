@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live-Sicherung — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Forensik-Methoden</a> / Live-Sicherung</span>
+</nav>
+<main><article>
+<h1>Forensische Live-Sicherung <span class="diff-badge diff-intermediate">Mittel</span></h1>
+
+<h2 id="kurz">Kurzueberblick</h2>
+<p>Live-Forensik: Du triffst ein laufendes System an. Jeder Befehl, den du ausfuehrst, veraendert Spuren. Deshalb gilt strikt: Fluechtigstes zuerst sichern!</p>
+
+<h2 id="order">Order of Volatility (RFC 3227)</h2>
+<div class="timeline">
+<div class="tl-item"><strong>1. Register, CPU-Cache</strong><p>Mikrosekunden. Praktisch nicht sicherbar (nur per Hardware-Debugger).</p></div>
+<div class="tl-item"><strong>2. RAM</strong><p><span class="severity critical">Kritisch!</span> Verloren beim Ausschalten. Allerhoechste Prioritaet!</p></div>
+<div class="tl-item"><strong>3. Netzwerkverbindungen</strong><p>Minuten. State geht verloren. <code>netstat</code>, <code>ss</code>, <code>arp</code> sichern.</p></div>
+<div class="tl-item"><strong>4. Laufende Prozesse</strong><p>Veraendert sich staendig. Mindestens Liste sichern mit <code>ps auxf</code>.</p></div>
+<div class="tl-item"><strong>5. Festplatten / SSDs</strong><p>Persistent. Zuletzt, nachdem alles andere gesichert ist.</p></div>
+</div>
+
+<h2 id="entscheidungen">Live-System-Entscheidungen</h2>
+<table><thead><tr><th>Frage</th><th>Empfehlung</th><th>Begruendung</th></tr></thead><tbody>
+<tr><td>Runterfahren oder laufen lassen?</td><td><span class="severity low">Laufen lassen</span></td><td>RAM bleibt erhalten, C2-Verbindung beobachtbar</td></tr>
+<tr><td>Netzwerk trennen?</td><td><span class="severity medium">Ja</span> (bei C2-Gefahr)</td><td>Unterbricht laufende Datenexfiltration</td></tr>
+<tr><td>Verschluesseltes System?</td><td><span class="severity critical">NIEMALS herunterfahren!</span></td><td>Schluessel gehen im RAM verloren</td></tr>
+</tbody></table>
+
+<div class="callout danger"><strong>NIEMALS:</strong> Das System herunterfahren ohne RAM-Dump. Fremde USB-Sticks einstecken. Das System weiter benutzen ("nur kurz was googlen").</div>
+</article></main>
+</body>
+</html>

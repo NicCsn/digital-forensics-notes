@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSGVO und Datenschutz — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Recht & Kriminalistik</a> / DSGVO und Datenschutz</span>
+</nav>
+<main>
+<article>
+<h1>DSGVO und Datenschutz <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<div class="callout warning"><strong>Disclaimer:</strong> Keine Rechtsberatung. Allgemeine Einführung in die DSGVO-Systematik.</div>
+
+<p>Die Datenschutz-Grundverordnung (DSGVO) regelt EU-weit den Umgang mit personenbezogenen Daten. Für Forensiker ist sie doppelt relevant: Als Schutzmaßstab (welche Daten darfst du überhaupt analysieren?) und als Rechtsquelle für Meldepflichten nach einem Vorfall.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Grundprinzipien der DSGVO (Art. 5)</h3>
+
+<table class="styled-table">
+<thead><tr><th>Prinzip</th><th>Bedeutung</th><th>Forensische Implikation</th></tr></thead><tbody>
+<tr><td>**Rechtmäßigkeit**</td><td>Datenverarbeitung nur mit Rechtsgrundlage (Einwilligung, Vertrag, berechtigtes Interesse)</td><td>Forensische Analyse = Datenverarbeitung → braucht Rechtsgrundlage!</td></tr>
+<tr><td>**Zweckbindung**</td><td>Daten nur für festgelegten Zweck</td><td>Forensische Daten nicht zweckentfremden (z.B. Mitarbeiter-Überwachung unter dem Deckmantel "Sicherheitsanalyse")</td></tr>
+<tr><td>**Datenminimierung**</td><td>Nur Daten, die für den Zweck nötig sind</td><td>Nur Logs des betroffenen Zeitraums analysieren, nicht alles pauschal</td></tr>
+<tr><td>**Richtigkeit**</td><td>Daten müssen korrekt und aktuell sein</td><td>Forensische Funde auf Richigkeit prüfen (manipulierte Logs?)</td></tr>
+<tr><td>**Speicherbegrenzung**</td><td>Nicht länger als nötig speichern</td><td>Forensische Images nach Fallabschluss löschen/anonymisieren?</td></tr>
+<tr><td>**Integrität und Vertraulichkeit**</td><td>Angemessene Sicherheitsmaßnahmen</td><td>Verschlüsselte Speicherung forensischer Daten</td></tr>
+</tbody></table>
+
+<h3>Personenbezogene Daten</h3>
+
+<ul><li><strong>Definition:</strong> Alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen</li>
+<li>Beispiele in der Forensik: IP-Adressen (EuGH: dynamische IPs sind personenbezogen!), E-Mails, Browser-History, GPS-Daten, Mitarbeiter-Login-Daten</li>
+<li><strong>Besondere Kategorien (Art. 9):</strong> Gesundheitsdaten, biometrische Daten, politische Meinungen → noch strengere Regeln</li></ul>
+
+<h3>Rechte der betroffenen Person</h3>
+
+<table class="styled-table">
+<thead><tr><th>Recht</th><th>Art.</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td>**Auskunftsrecht**</td><td>15</td><td>Beschuldigter kann Auskunft über gespeicherte Daten verlangen — auch forensische Analysen?</td></tr>
+<tr><td>**Recht auf Löschung**</td><td>17</td><td>Nach Fallabschluss: Forensische Kopien löschen?</td></tr>
+<tr><td>**Recht auf Einschränkung**</td><td>18</td><td>Wenn Betroffener Richtigkeit bestreitet → Verarbeitung einschränken bis Klärung</td></tr>
+</tbody></table>
+
+<h3>Datenpanne und Meldepflicht (Art. 33, 34)</h3>
+
+<ul><li><strong>Data Breach Notification:</strong> Innerhalb von 72 Stunden an die Aufsichtsbehörde</li>
+<li>Voraussetzung: Verletzung des Schutzes personenbezogener Daten</li>
+<li><strong>Hohes Risiko für Betroffene?</strong> → Zusätzlich Benachrichtigung der Betroffenen (Art. 34)</li>
+<li>Forensisch: Während du noch analysierst, läuft die 72h-Frist → IR und Forensik parallel!</li></ul>
+
+<h3>Auftragsverarbeitung (Art. 28)</h3>
+
+<ul><li>Werden externe Forensik-Dienstleister beauftragt? → Auftragsverarbeitungsvertrag (AVV) nötig!</li>
+<li>Der Dienstleister verarbeitet personenbezogene Daten im Auftrag des Verantwortlichen</li></ul>
+
+<h3>Bußgelder</h3>
+
+<ul><li>Bis zu 20 Millionen EUR oder 4% des weltweiten Jahresumsatzes (je nachdem, was höher ist)</li>
+<li>Beispiel: Data Breach durch nicht behobene Schwachstelle → DSGVO-Bußgeld + Reputationsverlust</li></ul>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Vor jeder Analyse prüfen: Welche personenbezogenen Daten sind betroffen?</li>
+<li>Rechtsgrundlage dokumentieren (Einwilligung? Berechtigtes Interesse? Strafverfolgung?)</li>
+<li>Nach Abschluss: Aufbewahrungsfristen beachten, Daten löschen</li>
+<li>Datenschutz-Folgenabschätzung (DSFA) wenn hohes Risiko (Art. 35)</li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li><a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32016R0679">DSGVO Volltext</a></li>
+<li>Kühling, Buchner: DS-GVO / BDSG — Kommentar</li></ul>
+
+</article>
+</main>
+</body>
+</html>

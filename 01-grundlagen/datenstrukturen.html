@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenstrukturen — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Datenstrukturen</span>
+</nav>
+<main>
+<article>
+<h1>Datenstrukturen <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#vergleich-der-operationen">Vergleich der Operationen</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Datenstrukturen organisieren Daten im Speicher. Die richtige Wahl entscheidet über Laufzeit und Speicherverbrauch deines Forensik-Tools. Falsche Datenstrukturen lassen selbst einfache Aufgaben an großen Datasets scheitern.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Arrays / Listen</h3>
+
+<ul><li><strong>Array:</strong> Feste Größe, direkter Index-Zugriff O(1), zusammenhängender Speicher</li>
+<li><strong>Verkettete Liste (Linked List):</strong> Dynamisch, Einfügen/Löschen O(1) wenn Position bekannt, Zugriff O(n)</li>
+<li>Forensik: Array für Hash-Listen (schneller Zugriff), verkettete Liste selten direkt</li></ul>
+
+<h3>Stack (Stapel)</h3>
+
+<ul><li><strong>LIFO</strong> (Last In, First Out) — wie ein Tellerstapel</li>
+<li>Forensik: Call-Stack-Analyse bei Malware (welche Funktion rief welche auf?), Undo-Stack</li></ul>
+
+<h3>Queue (Warteschlange)</h3>
+
+<ul><li><strong>FIFO</strong> (First In, First Out) — wie eine Warteschlange an der Kasse</li>
+<li>Forensik: Job-Queues für parallele Hash-Berechnung, Event-Log-Verarbeitung</li></ul>
+
+<h3>Hash-Tabelle / Dictionary / Map</h3>
+
+<ul><li><strong>Schlüssel → Wert</strong>, Zugriff O(1) im Durchschnitt</li>
+<li>Forensik: IP-Zähler (<code>{"192.168.1.1": 42}</code>), eindeutige Hashes gegen bekannte Listen abgleichen</li>
+<li><strong>Kollisionen:</strong> Zwei Schlüssel mappen auf denselben Bucket — in Python intern durch Open Addressing gelöst</li></ul>
+
+<h3>Bäume</h3>
+
+<ul><li><strong>Binärbaum:</strong> Jeder Knoten max. 2 Kinder, sortierte Variante = binärer Suchbaum (O(log n))</li>
+<li>Forensik: MFT-Analyse (NTFS organisiert Dateien als B-Baum), Ordnerstrukturen</li>
+<li><strong>Trie/Präfixbaum:</strong> Effiziente Textsuche, Autovervollständigung</li></ul>
+
+<h3>Heap (Prioritätswarteschlange)</h3>
+
+<ul><li>Immer Zugriff auf das "höchste" Element O(log n)</li>
+<li>Forensik: Top-N-IPs nach Häufigkeit, älteste/jüngste Events priorisieren</li></ul>
+
+<h2 id="vergleich-der-operationen">Vergleich der Operationen</h2>
+
+<table class="styled-table">
+<thead><tr><th>Struktur</th><th>Zugriff</th><th>Suchen</th><th>Einfügen</th><th>Löschen</th></tr></thead><tbody>
+<tr><td>Array</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(n)</td></tr>
+<tr><td>Linked List</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td></tr>
+<tr><td>Hash-Map</td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>O(1)</td></tr>
+<tr><td>Binärer Suchbaum</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td></tr>
+</tbody></table>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li><code>collections.Counter()</code> in Python: Hash-Map für IP-Zählung</li>
+<li><code>heapq</code> für Top-N-Analyse von Log-Einträgen</li>
+<li><code>dict</code> für IOC-Lookup: <code>iocs.get(hash_value)</code></li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Sedgewick, R.: Algorithmen und Datenstrukturen</li></ul>
+
+</article>
+</main>
+</body>
+</html>

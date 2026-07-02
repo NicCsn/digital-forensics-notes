@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programmierparadigmen — DF Field Notes</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<nav class="top-nav">
+  <a href="../index.html" class="home-link">DF Field Notes</a>
+  <span class="nav-crumb">/ <a href="../index.html">Grundlagen</a> / Programmierparadigmen</span>
+</nav>
+<main>
+<article>
+<h1>Programmierparadigmen <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Programmierparadigmen sind grundlegende Denkstile beim Programmieren. Forensische Tools werden in unterschiedlichen Paradigmen geschrieben — das Paradigma bestimmt, wie du Daten durch dein Skript schleifst, wie du Fehler behandelst und wie wartbar der Code ist.</p>
+
+<h2 id="details">Details</h2>
+
+<h3>Imperative Programmierung</h3>
+
+<ul><li><strong>"Was und wie"</strong> — Schritt-für-Schritt-Anweisungen mit Zustandsänderungen</li>
+<li>Sprachen: C, Python, Bash</li>
+<li>Forensik-Beispiel — Log-Parsing in Bash:</li></ul>
+<pre><code># Imperativ: Jeder Schritt explizit
+grep &quot;Failed password&quot; /var/log/auth.log &gt; failed.txt
+awk &#x27;{print $(NF-3)}&#x27; failed.txt | sort | uniq -c | sort -rn &gt; ip_counts.txt
+echo &quot;Top 10 Angreifer-IPs:&quot;
+head -10 ip_counts.txt</code></pre>
+
+<h3>Objektorientierte Programmierung (OOP)</h3>
+
+<ul><li>Daten und Methoden in Klassen gekapselt, Vererbung, Polymorphie</li>
+<li>Sprachen: Python, Java, C++</li>
+<li>Forensik-Beispiel — Image-Verarbeitung:</li></ul>
+<pre><code>    def __init__(self, path):
+        self.path = path
+        self._hash = None
+
+    def compute_hash(self, algo=&quot;sha256&quot;):
+        h = hashlib.new(algo)
+        with open(self.path, &#x27;rb&#x27;) as f:
+            for chunk in iter(lambda: f.read(65536), b&#x27;&#x27;):
+                h.update(chunk)
+        self._hash = h.hexdigest()
+        return self._hash
+
+class NTFSImage(ForensicImage):
+    def extract_mft(self):
+        # NTFS-spezifische MFT-Extraktion
+        pass</code></pre>
+
+<h3>Funktionale Programmierung</h3>
+
+<ul><li>Keine Seiteneffekte, unveränderliche Daten, Funktionen als First-Class-Citizens</li>
+<li>Forensik-Beispiel — parallele Hash-Berechnung ohne Race-Conditions:</li></ul>
+<pre><code>from hashlib import sha256
+
+def hash_file(path):
+    # Pure Function: gleicher Input → gleicher Output, keine Seiteneffekte
+    h = sha256()
+    h.update(open(path, &#x27;rb&#x27;).read())
+    return (path, h.hexdigest())
+
+files = [&quot;/mnt/image/file1.jpg&quot;, &quot;/mnt/image/file2.png&quot;]
+with ProcessPoolExecutor() as pool:
+    results = dict(pool.map(hash_file, files))</code></pre>
+
+<h3>Deklarative Programmierung</h3>
+
+<ul><li><strong>"Was, nicht wie"</strong> — du beschreibst das Ergebnis</li>
+<li>Forensik-Beispiele:</li></ul>
+<pre><code>SELECT timestamp, username, source_ip
+FROM event_logs
+WHERE event_id = 4624
+  AND EXTRACT(HOUR FROM timestamp) BETWEEN 22 AND 6;
+
+-- YARA: Finde Ransomware-Artefakte
+rule Ransomware_CryptoNote {
+    strings:
+        $note = &quot;Your files have been encrypted&quot; nocase
+        $ext = &quot;.encrypted&quot; ascii
+    condition:
+        any of them
+}</code></pre>
+
+<h3>Fehlerbehandlung — forensisch kritisch</h3>
+
+<p>Forensische Tools brauchen robuste Fehlerbehandlung. Ein abgestürztes Tool verliert keine Daten — ein Tool, das <strong>falsche Ergebnisse ohne Fehler</strong> liefert, gefährdet ein ganzes Verfahren.</p>
+
+<table class="styled-table">
+<thead><tr><th>Paradigma</th><th>Fehlerbehandlung</th></tr></thead><tbody>
+<tr><td>Imperativ</td><td>Return-Codes (`if (result < 0)`) oder `try/except`</td></tr>
+<tr><td>OOP</td><td>Exceptions als Objekte (`raise CorruptImageError`)</td></tr>
+<tr><td>Funktional</td><td>`Result<T, E>`-Typen (kein Exception-Werfen, Fehler sind Rückgabewerte)</td></tr>
+</tbody></table>
+
+<h3>Wahl des Paradigmas — Forensik-Praxis</h3>
+
+<table class="styled-table">
+<thead><tr><th>Aufgabe</th><th>Paradigma</th><th>Begründung</th></tr></thead><tbody>
+<tr><td>Einmaliges Log-Parsing</td><td>Imperativ</td><td>Schnell geschrieben, kein Framework-Overhead</td></tr>
+<tr><td>Forensik-Plattform (Autopsy)</td><td>OOP</td><td>Modularität, Team-Entwicklung, Wartbarkeit</td></tr>
+<tr><td>YARA-Regeln, SQL-Queries</td><td>Deklarativ</td><td>Sag was du suchst, nicht wie du es findest</td></tr>
+<tr><td>Bilderverarbeitung (Tausende parallel)</td><td>Funktional</td><td>Keine Race-Conditions, deterministisch</td></tr>
+</tbody></table>
+
+<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+
+<ul><li>Python-Skript für IP-Extraktion: <a href="https://github.com/NicCsn/digital-forensics-notes/09-tools/ip-log-analyzer/">ip-log-analyzer</a></li>
+<li>Teste dein Paradigma mit pytest: <code>def test_hash_consistency(): assert hash_file("a.jpg") == hash_file("a.jpg")</code></li></ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+
+<ul><li>Hunt, J.: A Beginners Guide to Python 3 Programming</li>
+<li>Passig, Jander: Weniger schlecht programmieren</li></ul>
+
+</article>
+</main>
+</body>
+</html>
