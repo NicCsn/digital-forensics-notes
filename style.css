@@ -339,9 +339,41 @@ details.fold > table { border: none; }
 
 /* Desktop (existing, 769px+) — no changes needed */
 
+/* ---- Theme Toggle ---- */
+.theme-toggle { background: none; border: 1px solid var(--border); border-radius: 50%; width: 28px; height: 28px; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding: 0; line-height: 1; float: right; margin-top: -2px; transition: transform 0.2s ease; }
+.theme-toggle:hover { transform: scale(1.15); background: var(--card-hover); }
+.sidebar-header { overflow: hidden; }
+
 /* ---- Dark Mode ---- */
+[data-theme="dark"] {
+  --bg: #1a1a2e; --sidebar-bg: #16213e; --border: #2a2a4a;
+  --text: #e0e0e0; --text-muted: #a0a0b0; --link: #7aa2f7;
+  --link-visited: #bb9af7; --accent: #7aa2f7;
+  --card-bg: #1e1e3a; --card-hover: #252550;
+  --input-bg: #1a1a2e; --input-border: #3a3a5a;
+  --code-bg: #1a1a2e;
+  --info-bg: #1a2332; --info-border: #7aa2f7;
+  --warn-bg: #2a2010; --warn-border: #e0af68;
+  --danger-bg: #2a1015; --danger-border: #f7768e;
+  --tip-bg: #0d2a1e; --tip-border: #73daca;
+  --severity-critical: #f7768e; --severity-high: #e0af68;
+  --severity-medium: #e6c300; --severity-low: #73daca;
+}
+[data-theme="dark"] .severity.medium { background: #2a2510; color: var(--severity-medium); }
+[data-theme="dark"] .nav-list a:hover { background: #1e2a4a; }
+[data-theme="dark"] .cat-list a:hover { background: #1e2a4a; }
+[data-theme="dark"] .note-view tr:hover td { background: #1e2a4a; }
+[data-theme="dark"] kbd { background: #2a2a4a; border-color: #4a4a6a; box-shadow: 0 1px 0 #3a3a5a; }
+[data-theme="dark"] .mem-hierarchy .dh-reg { background: #0d2a1e; }
+[data-theme="dark"] .mem-hierarchy .dh-cache { background: #1a2332; }
+[data-theme="dark"] .mem-hierarchy .dh-ram { background: #2a2010; }
+[data-theme="dark"] .mem-hierarchy .dh-disk { background: #2a1015; }
+[data-theme="dark"] .search-box-home input { background: var(--input-bg); color: var(--text); }
+[data-theme="dark"] .timeline .tl-item::before { border-color: var(--bg); }
+
+/* First visit: respect OS preference (theme.js not yet applied) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --bg: #1a1a2e; --sidebar-bg: #16213e; --border: #2a2a4a;
     --text: #e0e0e0; --text-muted: #a0a0b0; --link: #7aa2f7;
     --link-visited: #bb9af7; --accent: #7aa2f7;
@@ -355,17 +387,6 @@ details.fold > table { border: none; }
     --severity-critical: #f7768e; --severity-high: #e0af68;
     --severity-medium: #e6c300; --severity-low: #73daca;
   }
-  .severity.medium { background: #2a2510; color: var(--severity-medium); }
-  .nav-list a:hover { background: #1e2a4a; }
-  .cat-list a:hover { background: #1e2a4a; }
-  .note-view tr:hover td { background: #1e2a4a; }
-  kbd { background: #2a2a4a; border-color: #4a4a6a; box-shadow: 0 1px 0 #3a3a5a; }
-  .mem-hierarchy .dh-reg { background: #0d2a1e; }
-  .mem-hierarchy .dh-cache { background: #1a2332; }
-  .mem-hierarchy .dh-ram { background: #2a2010; }
-  .mem-hierarchy .dh-disk { background: #2a1015; }
-  .search-box-home input { background: var(--input-bg); color: var(--text); }
-  .timeline .tl-item::before { border-color: var(--bg); }
 }
 
 /* ---- Print ---- */
@@ -401,7 +422,7 @@ details.fold > table { border: none; }
 .var { color: #e06c75; }
 .op { color: #56b6c2; }
 @media (prefers-color-scheme: dark) {
-  .cmt { color: #54546c; }
+  [data-theme="auto"] .cmt, :root:not([data-theme]) .cmt { color: #54546c; }
 }
 
 .page-footer { text-align: center; padding: 32px 0 16px; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 40px; max-width: 860px; margin-left: auto; margin-right: auto; }
