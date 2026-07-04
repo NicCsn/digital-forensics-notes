@@ -129,11 +129,11 @@
 </nav>
 <main><article>
 <h1>Glossar <span class="diff-badge diff-beginner">Referenz</span></h1>
-<p>Alphabetische Begriffsammlung zur Digitalen Forensik, IT-Security und Informatik-Grundlagen. Jeder Begriff verlinkt auf die ausfuehrliche Notiz. <strong>245 Eintraege.</strong></p>
+<p>Alphabetische Begriffsammlung zur Digitalen Forensik, IT-Security und Informatik-Grundlagen. Jeder Begriff verlinkt auf die ausfuehrliche Notiz. <strong>390 Eintraege.</strong></p>
 
 <div class="glossary-filter">
   <input type="text" id="glossaryFilter" placeholder="Filter Glossar..." autocomplete="off">
-  <span id="glossaryCount">245 Eintraege</span>
+  <span id="glossaryCount">390 Eintraege</span>
 </div>
 
 <nav class="alpha-nav">
@@ -143,7 +143,7 @@
   <a href="#sec-M">M</a> <a href="#sec-N">N</a> <a href="#sec-O">O</a> <a href="#sec-P">P</a>
   <a href="#sec-Q">Q</a> <a href="#sec-R">R</a> <a href="#sec-S">S</a> <a href="#sec-T">T</a>
   <a href="#sec-U">U</a> <a href="#sec-V">V</a> <a href="#sec-W">W</a> <a href="#sec-X">X</a>
-  <a href="#sec-Y">Y</a> <a href="#sec-Z">Z</a>
+  <a href="#sec-Y">Y</a> <a href="#sec-Z">Z</a> <a href="#sec-para">&sect;</a>
 </nav>
 
 <section id="sec-A" class="alpha-section"><h2>A</h2><div class="card-grid">
@@ -170,6 +170,11 @@
 <div class="gloss-card"><strong>Assembler</strong><p>Uebersetzt Mnemonics (MOV, ADD) in Maschinencode</p><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur &rarr;</a></div>
 <div class="gloss-card"><strong>Authentifizierung</strong><p>Identitaetsnachweis: Wissen (Passwort), Besitz (Token), Inhaerenz (Biometrie)</p><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI &rarr;</a></div>
 <div class="gloss-card"><strong>Autopsy</strong><p>Open-Source-Forensik-Plattform (GUI fuer Sleuth Kit)</p><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>Adversarial Examples</strong><p>Manipulierte ML-Eingaben: minimale Änderung → falsche Klassifikation (1-Pixel-Angriff)</p><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze &rarr;</a></div>
+<div class="gloss-card"><strong>Anti-Debugging</strong><p>Techniken zur Erkennung/Vermeidung von Debuggern (IsDebuggerPresent, ptrace, Timing-Checks)</p><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware dynamisch &rarr;</a></div>
+<div class="gloss-card"><strong>AppArmor</strong><p>Linux Mandatory Access Control: dateibasierte Zugriffsprofile für Anwendungen (einfacher als SELinux)</p><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration &rarr;</a></div>
+<div class="gloss-card"><strong>ARP Cache</strong><p>Temporäre IP→MAC-Zuordnungstabelle; angreifbar via ARP-Spoofing → Cache-Einträge werden überschrieben</p><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP &rarr;</a></div>
+<div class="gloss-card"><strong>Attack Surface</strong><p>Summe aller angreifbaren Punkte eines Systems: Ports, APIs, Formularfelder; Ziel der Härtung: minimieren</p><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse &rarr;</a></div>
 </div></section>
 
 <section id="sec-B" class="alpha-section"><h2>B</h2><div class="card-grid">
@@ -190,6 +195,14 @@
 <div class="gloss-card"><strong>Brute-Force</strong><p>Systematisches Durchprobieren aller Kombinationen (Passwoerter)</p><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse &rarr;</a></div>
 <div class="gloss-card"><strong>Byte</strong><p>8 Bit. Kleinste adressierbare Speichereinheit (0-255)</p><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme &rarr;</a></div>
 <div class="gloss-card"><strong>Bytecode</strong><p>Zwischencode, von einer VM ausgefuehrt (Java, CPython, .NET)</p><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen &rarr;</a></div>
+<div class="gloss-card"><strong>BGP Hijacking</strong><p>Angriff: falsche BGP-Routenankündigung leitet Traffic um (YouTube 2008 durch Pakistan Telecom)</p><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; Switching &rarr;</a></div>
+<div class="gloss-card"><strong>Bias in ML-Modellen</strong><p>Systematische Verzerrung durch unbalancierte Trainingsdaten; forensische ML-Tools müssen auf Fairness geprüft werden</p><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">KI-Grundlagen &rarr;</a></div>
+<div class="gloss-card"><strong>Big-O-Notation</strong><p>O(1) &lt; O(log n) &lt; O(n) &lt; O(n²): asymptotische Worst-Case-Laufzeit; ignoriert Konstanten und kleinere Terme</p><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen &rarr;</a></div>
+<div class="gloss-card"><strong>binwalk</strong><p>Firmware-Analyse-Tool: findet Dateisignaturen, entpackt eingebettete Dateien, identifiziert Kompression, erstellt Entropie-Graphen</p><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT &rarr;</a></div>
+<div class="gloss-card"><strong>Bitweise Operatoren</strong><p>AND (&amp;), OR (|), XOR (^), NOT (~), Shift (&lt;&lt;, &gt;&gt;); arbeiten direkt auf Bit-Ebene, z.B. 5&amp;3=1</p><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme &rarr;</a></div>
+<div class="gloss-card"><strong>Bootkit</strong><p>Rootkit-Variante, die VOR dem OS im Bootprozess lädt (MBR/VBR/UEFI); überlebt OS-Neuinstallation</p><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>Browser Cache Forensik</strong><p>Chrome/Firefox/Edge-Caches enthalten Webseiten-Copies mit Original-URLs und Timestamps; forensische Goldmine</p><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>Bulk Extractor</strong><p>Hochgeschwindigkeits-Tool: scannt Disk-Images nach Mustern (E-Mails, URLs, Kreditkarten, Domains)</p><a href="../04-forensik-methoden/datentraeger-forensik.html">Datenträger-Forensik &rarr;</a></div>
 </div></section>
 
 <section id="sec-C" class="alpha-section"><h2>C</h2><div class="card-grid">
@@ -208,6 +221,20 @@
 <div class="gloss-card"><strong>CSRF</strong><p>Cross-Site Request Forgery: Browser fuer ungewollte Aktionen ausgenutzt</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
 <div class="gloss-card"><strong>CVE / CVSS</strong><p>Eindeutige Schwachstellen-ID und Schweregrad (0-10)</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
 <div class="gloss-card"><strong>CWE</strong><p>Hierarchische Liste von Schwachstellen-Typen (CWE-79 = XSS)</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
+<div class="gloss-card"><strong>Capabilities (Linux)</strong><p>Feingranulare Rechte statt allmächtigem root: CAP_SYS_ADMIN, CAP_NET_RAW; sicherer als setuid</p><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration &rarr;</a></div>
+<div class="gloss-card"><strong>Cellebrite</strong><p>Marktführer für mobile Forensik: UFED (Extraktion) + Physical Analyzer; unterstützt iOS und Android</p><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>Certificate Pinning</strong><p>Client akzeptiert nur ein bestimmtes Zertifikat/Public-Key; schützt vor gefälschten CAs und MITM-Proxies</p><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>chroot / Jail</strong><p>Prozess in Teilverzeichnis einsperren (chroot); FreeBSD-Jail erweitert um Netzwerk-/Prozess-Isolation</p><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration &rarr;</a></div>
+<div class="gloss-card"><strong>Compiler-Phasen</strong><p>Lexer (Tokenisierung) → Parser (AST) → Semantische Analyse → Optimierung → Code-Generierung</p><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen &rarr;</a></div>
+<div class="gloss-card"><strong>Confusion Matrix</strong><p>4-Felder-Tafel zur Modellbewertung: TP/FP/FN/TN; Basis für Precision, Recall, F1-Score und Accuracy</p><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees &rarr;</a></div>
+<div class="gloss-card"><strong>Context Switching</strong><p>Wechsel der CPU von einem Prozess/Thread zum nächsten; sichert Register, lädt neuen Kontext; kostet ~1-10µs</p><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement &rarr;</a></div>
+<div class="gloss-card"><strong>Cookie-Forensik</strong><p>Session-Cookies = Login-Status; Persistent-Cookies = Tracking/Preferences; analysierbar via SQLite (Cookies-Datenbank)</p><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>Copy-on-Write (CoW)</strong><p>fork() kopiert Speicherseiten nur bei Schreibzugriff: alle lesenden Prozesse teilen dieselbe physische Seite</p><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement &rarr;</a></div>
+<div class="gloss-card"><strong>CORS</strong><p>Cross-Origin Resource Sharing: HTTP-Header regeln, welche Origins auf eine API zugreifen dürfen; schützt vor CSRF</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
+<div class="gloss-card"><strong>Crash Dump</strong><p>Speicherabbild nach Systemabsturz (Windows: memory.dmp, Linux: kdump/vmcore); Kern der Post-Crash-Forensik</p><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher &rarr;</a></div>
+<div class="gloss-card"><strong>Credential Stuffing</strong><p>Automatisiertes Login mit geleakten Credential-Listen; nutzt Wiederverwendung von Passwörtern aus</p><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI &rarr;</a></div>
+<div class="gloss-card"><strong>Cuckoo Sandbox</strong><p>Automatisierte Malware-Analyse-Sandbox: führt Malware in VM aus, sammelt API-Calls, Netzwerk, Dateisystem-Änderungen</p><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware dynamisch &rarr;</a></div>
+<div class="gloss-card"><strong>CVSS Vector String</strong><p>Maschinenlesbare CVSS-Darstellung: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H → Base Score 9.8 Critical</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
 </div></section>
 
 <section id="sec-D" class="alpha-section"><h2>D</h2><div class="card-grid">
@@ -229,6 +256,12 @@
 <div class="gloss-card"><strong>DRY</strong><p>Don't Repeat Yourself: jedes Wissen nur einmal im System</p><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklung &rarr;</a></div>
 <div class="gloss-card"><strong>DSGVO</strong><p>EU-Datenschutz-Grundverordnung. Meldepflicht bei Datenpannen: 72h</p><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO &rarr;</a></div>
 <div class="gloss-card"><strong>Durchsuchung</strong><p>Betreten von Raeumlichkeiten zur Beweissuche. Braucht richterlichen Beschluss</p><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT &rarr;</a></div>
+<div class="gloss-card"><strong>Data Exfiltration</strong><p>Unbefugter Datentransfer: DNS-Tunnel, ICMP-Covert-Channel, Cloud-Uploads; Erkennung via Traffic-Anomalien</p><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik &rarr;</a></div>
+<div class="gloss-card"><strong>DDoS</strong><p>Distributed Denial of Service: Volumetric (Gbps), Protocol (SYN-Flood), Application-Layer (HTTP-Flood); Ziel: Überlastung</p><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik &rarr;</a></div>
+<div class="gloss-card"><strong>Deadlock</strong><p>Zyklische Warteabhängigkeit: Prozess A wartet auf B, B wartet auf A → beide für immer blockiert</p><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement &rarr;</a></div>
+<div class="gloss-card"><strong>Deepfake-Detection</strong><p>Erkennung synthetischer Medien: Frequenzanalyse, Blinzelmuster, Inkonsistenzen in Beleuchtung/Schatten</p><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &rarr;</a></div>
+<div class="gloss-card"><strong>Defense in Depth</strong><p>Mehrschichtige Sicherheitsarchitektur: Perimeter → Netzwerk → Host → Applikation → Daten; keine Einzelabwehr reicht</p><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA) &rarr;</a></div>
+<div class="gloss-card"><strong>Deleted File Recovery</strong><p>Wiederherstellung gelöschter Dateien: FAT (E5-Marker), NTFS ($MFT-Record unallocated), ext4 (Inode-Freigabe)</p><a href="../02-betriebssysteme/file-carving.html">File Carving &rarr;</a></div>
 </div></section>
 
 <section id="sec-E" class="alpha-section"><h2>E</h2><div class="card-grid">
@@ -243,6 +276,8 @@
 <div class="gloss-card"><strong>EXIF</strong><p>Metadaten-Standard fuer Fotos: Kamera, GPS, Zeit</p><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &rarr;</a></div>
 <div class="gloss-card"><strong>Exploit</strong><p>Ausnutzen einer Schwachstelle zum Eindringen in ein System</p><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware statisch &rarr;</a></div>
 <div class="gloss-card"><strong>ext4</strong><p>Linux-Standard-Dateisystem: Inodes, Journaling, extents</p><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme &rarr;</a></div>
+<div class="gloss-card"><strong>ExifTool</strong><p>Metadaten-Extraktion für 200+ Dateiformate; Kommandozeilen-Tool; Goldstandard für Bildforensik und Time-Stamping</p><a href="../02-betriebssysteme/file-carving.html">File Carving &rarr;</a></div>
+<div class="gloss-card"><strong>Explainable AI (XAI)</strong><p>Nachvollziehbare KI-Entscheidungen: SHAP, LIME erklären bei forensischen Tools, WARUM ein Modell klassifiziert hat</p><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees &rarr;</a></div>
 </div></section>
 
 <section id="sec-F" class="alpha-section"><h2>F</h2><div class="card-grid">
@@ -254,6 +289,11 @@
 <div class="gloss-card"><strong>Fork</strong><p>Unix-Syscall: erstellt eine Kindprozess-Kopie des Aufrufers</p><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement &rarr;</a></div>
 <div class="gloss-card"><strong>FPU</strong><p>Floating-Point Unit: CPU-Teil fuer Gleitkomma-Berechnungen</p><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur &rarr;</a></div>
 <div class="gloss-card"><strong>FTK</strong><p>Forensic Toolkit: kommerzielle Forensik-Suite von AccessData</p><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>Federated Learning</strong><p>Dezentrales ML-Training: Rohdaten bleiben lokal, nur Gewicht-Updates werden geteilt; datenschutzkonforme Forensik</p><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">KI-Grundlagen &rarr;</a></div>
+<div class="gloss-card"><strong>Fernmeldegeheimnis (Art. 10 GG)</strong><p>Schützt Inhalt UND Umstände der Telekommunikation; Eingriff nur durch Gesetz oder Richterbeschluss</p><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKÜ &rarr;</a></div>
+<div class="gloss-card"><strong>Fileless Malware</strong><p>Malware ohne Datei auf Disk: nur im RAM via PowerShell, WMI, Registry; extrem schwer forensisch nachzuweisen</p><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware dynamisch &rarr;</a></div>
+<div class="gloss-card"><strong>Filesystem Fragmentation</strong><p>Dateien in nicht-zusammenhängenden Blöcken gespeichert → Performance-Verlust; TRIM/Defragmentierung helfen</p><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme &rarr;</a></div>
+<div class="gloss-card"><strong>foremost / scalpel</strong><p>File-Carving-Tools: stellen gelöschte Dateien via Header/Footer-Signaturen wieder her; scalpel ist der schnellere Nachfolger</p><a href="../02-betriebssysteme/file-carving.html">File Carving &rarr;</a></div>
 </div></section>
 
 <section id="sec-G" class="alpha-section"><h2>G</h2><div class="card-grid">
@@ -264,6 +304,10 @@
 <div class="gloss-card"><strong>GPT</strong><p>GUID Partition Table: 128 Partitionen, redundante Header</p><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik &rarr;</a></div>
 <div class="gloss-card"><strong>GraphQL</strong><p>API-Sprache: Client bestimmt, welche Felder er bekommt</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
 <div class="gloss-card"><strong>gRPC</strong><p>High-Performance-RPC mit Protocol Buffers und HTTP/2</p><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik &rarr;</a></div>
+<div class="gloss-card"><strong>Garbage Collector</strong><p>Automatische Speicherbereinigung: Mark-and-Sweep (zyklische Referenzen) und Reference Counting (CPython)</p><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen &rarr;</a></div>
+<div class="gloss-card"><strong>Geolocation via Landmarks</strong><p>Standortbestimmung anhand erkennbarer Gebäude, Straßenschilder, Vegetation; Kombination mit Google Earth/Street View</p><a href="../06-osint/osint-recherche-methodik.html">OSINT-Recherche &rarr;</a></div>
+<div class="gloss-card"><strong>Ghidra</strong><p>NSA-Open-Source-Reverse-Engineering-Framework: Disassembler, Decompiler, Scripting (Java/Python); Alternative zu IDA Pro</p><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware statisch &rarr;</a></div>
+<div class="gloss-card"><strong>Golden Ticket</strong><p>Gefälschtes Kerberos-TGT mit KRBTGT-Hash; gewährt unbegrenzten Zugriff auf ALLE Dienste einer Windows-Domäne</p><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI &rarr;</a></div>
 </div></section>
 
 <section id="sec-H" class="alpha-section"><h2>H</h2><div class="card-grid">
@@ -273,6 +317,12 @@
 <div class="gloss-card"><strong>Heap</strong><p>Dynamischer Speicherbereich (malloc/new)</p><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen &rarr;</a></div>
 <div class="gloss-card"><strong>HTTP-Methoden</strong><p>GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
 <div class="gloss-card"><strong>HTTP-Status-Codes</strong><p>200 OK, 301 Redirect, 403 Forbidden, 404 Not Found, 500 Server Error</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
+<div class="gloss-card"><strong>Halluzination (LLM)</strong><p>KI erzeugt plausibel klingenden, aber faktisch falschen Output; kritisches Risiko für forensische Berichte</p><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse &rarr;</a></div>
+<div class="gloss-card"><strong>Hash-Kollision</strong><p>Zwei unterschiedliche Eingaben erzeugen denselben Hash (MD5 ist anfällig); Tool-Verifikation: immer SHA-256 verwenden</p><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging &rarr;</a></div>
+<div class="gloss-card"><strong>Hashfunktion</strong><p>Einweg-Funktion: beliebige Eingabe → fester Hash (SHA-256=32 Byte); Kollisionsresistenz und Preimage-Resistance erforderlich</p><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie &rarr;</a></div>
+<div class="gloss-card"><strong>Hibernation File</strong><p>hiberfil.sys: komprimiertes RAM-Abbild beim Ruhezustand (Windows); enthält laufende Prozesse, Keys, Netzwerkverbindungen</p><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher &rarr;</a></div>
+<div class="gloss-card"><strong>Honeypot</strong><p>Köder-System zur Angriffserkennung: simuliert verwundbare Dienste; Honeynet = mehrere vernetzte Honeypots</p><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring &rarr;</a></div>
+<div class="gloss-card"><strong>HSTS</strong><p>HTTP Strict Transport Security: Browser erzwingt HTTPS für gesamte Domain (max-age im Header); verhindert SSL Stripping</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
 </div></section>
 
 <section id="sec-I" class="alpha-section"><h2>I</h2><div class="card-grid">
@@ -291,6 +341,10 @@
 <div class="gloss-card"><strong>IoT-Security</strong><p>Sicherheit vernetzter Geraete: MQTT, CoAP, Firmware-Signierung</p><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security &rarr;</a></div>
 <div class="gloss-card"><strong>IPv4</strong><p>32-Bit (4,3 Mrd). Private: 10/8, 172.16/12, 192.168/16</p><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP-Adressierung &rarr;</a></div>
 <div class="gloss-card"><strong>IPv6</strong><p>128-Bit. Link-Local: fe80::/10. Privacy Extensions</p><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP-Adressierung &rarr;</a></div>
+<div class="gloss-card"><strong>IDA Pro</strong><p>Kommerzieller Disassembler/Debugger (Hex-Rays); Industriestandard für Malware-Reverse-Engineering und Exploit-Entwicklung</p><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware statisch &rarr;</a></div>
+<div class="gloss-card"><strong>Immutable</strong><p>Unveränderliches Objekt (str, int, tuple in Python): Operationen erzeugen neues Objekt statt zu modifizieren</p><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen &rarr;</a></div>
+<div class="gloss-card"><strong>Inode-Erschöpfung</strong><p>Angriff/Fehler: alle Inodes belegt, aber Plattenplatz frei → keine neuen Dateien mehr möglich (DoS via Dateisystem)</p><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme &rarr;</a></div>
+<div class="gloss-card"><strong>IOA (Indicator of Attack)</strong><p>Erkennung der Täter-Motivation statt nur Spuren: Warum tut jemand etwas? Ergänzung zu IOC-basierter Erkennung</p><a href="../04-forensik-methoden/threat-hunting.html">Threat Hunting &rarr;</a></div>
 </div></section>
 
 <section id="sec-J" class="alpha-section"><h2>J</h2><div class="card-grid">
@@ -299,6 +353,8 @@
 <div class="gloss-card"><strong>John the Ripper</strong><p>Passwort-Cracker mit Fokus auf Unix-Hashes</p><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse &rarr;</a></div>
 <div class="gloss-card"><strong>JTAG</strong><p>Hardware-Debug-Schnittstelle (IEEE 1149.1) zum Flash-Auslesen</p><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT &rarr;</a></div>
 <div class="gloss-card"><strong>JWT</strong><p>JSON Web Token: Payload NUR kodiert, NICHT verschluesselt</p><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI &rarr;</a></div>
+<div class="gloss-card"><strong>Journaling</strong><p>Dateisystem-Feature: Änderungen erst in Log schreiben, dann ausführen; schützt vor Inkonsistenz nach Crash (ext4, NTFS)</p><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme &rarr;</a></div>
+<div class="gloss-card"><strong>Jump Lists</strong><p>Windows-Taskleiste: .automaticDestinations-ms-Dateien zeigen kürzlich geöffnete Dateien pro Anwendung mit Timestamps</p><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche &rarr;</a></div>
 </div></section>
 
 <section id="sec-K" class="alpha-section"><h2>K</h2><div class="card-grid">
@@ -307,6 +363,9 @@
 <div class="gloss-card"><strong>Kerckhoffs-Prinzip</strong><p>Sicherheit haengt nur vom Schluessel ab, nicht vom Algorithmus</p><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie &rarr;</a></div>
 <div class="gloss-card"><strong>KISS</strong><p>Keep It Simple, Stupid: Einfachheit ist ein Sicherheitsziel</p><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklung &rarr;</a></div>
 <div class="gloss-card"><strong>Kryptoanalyse</strong><p>Brechen von Verschluesselung ohne Schluessel</p><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse &rarr;</a></div>
+<div class="gloss-card"><strong>Kernel Panic</strong><p>Kritischer Linux-Kernel-Fehler: System bleibt sofort stehen; BSOD (Blue Screen of Death) ist Windows-Äquivalent</p><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen &rarr;</a></div>
+<div class="gloss-card"><strong>Keylogger</strong><p>Hardware- oder Software-Tool zur Aufzeichnung von Tastatureingaben; Software-Keylogger via SetWindowsHookEx/Input-Hijacking</p><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware statisch &rarr;</a></div>
+<div class="gloss-card"><strong>Kill Chain (Cyber)</strong><p>Lockheed-Martin-Modell: Recon → Weaponize → Deliver → Exploit → Install → C2 → Actions on Objectives (7 Phasen)</p><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK &rarr;</a></div>
 </div></section>
 
 <section id="sec-L" class="alpha-section"><h2>L</h2><div class="card-grid">
@@ -318,6 +377,13 @@
 <div class="gloss-card"><strong>LLM</strong><p>Large Language Model: neuronales Netz fuer Text (GPT, Claude)</p><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse &rarr;</a></div>
 <div class="gloss-card"><strong>LOLBAS</strong><p>Katalog von Windows-Tools, die fuer Angriffe missbraucht werden</p><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik &rarr;</a></div>
 <div class="gloss-card"><strong>LUKS</strong><p>Linux-Verschluesselung (8 Slots). Hashcat-Modus: -m 14600</p><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Verschluesselung &rarr;</a></div>
+<div class="gloss-card"><strong>Lateral Movement</strong><p>Angreifer bewegt sich nach Erstzugriff seitwärts durchs Netzwerk (PSExec, WMI, RDP, Pass-the-Hash)</p><a href="../04-forensik-methoden/mitre-attack-framework.html">MITRE ATT&amp;CK &rarr;</a></div>
+<div class="gloss-card"><strong>Least Privilege</strong><p>Prinzip der minimalen Rechtevergabe: jeder Prozess/User bekommt nur das Nötigste; reduziert Schaden bei Kompromittierung</p><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI &rarr;</a></div>
+<div class="gloss-card"><strong>Live Forensik</strong><p>Beweissicherung am laufenden System (RAM, Prozesse, Netzwerk); keine Trennung vom Strom; Order of Volatility beachten</p><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung &rarr;</a></div>
+<div class="gloss-card"><strong>LNK-Dateien</strong><p>Windows-Verknüpfungen: enthalten Zielpfad, MAC-Zeiten, Laufwerksseriennummer; bleiben nach Löschung der Zieldatei erhalten</p><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche &rarr;</a></div>
+<div class="gloss-card"><strong>Locard'sches Austauschprinzip</strong><p>Jeder Kontakt hinterlässt Spuren: Täter bringt etwas mit und nimmt etwas mit; Fundament der forensischen Wissenschaft</p><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Forensischer Prozess &rarr;</a></div>
+<div class="gloss-card"><strong>Log Rotation</strong><p>Automatisches Archivieren und Löschen alter Logs (logrotate); kritisch: Rotationsintervall bestimmt maximales Analysefenster</p><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse &rarr;</a></div>
+<div class="gloss-card"><strong>LOLBins</strong><p>Living-off-the-Land Binaries: legitime Windows-Tools (certutil.exe, mshta.exe, bitsadmin.exe) für Malware-Zwecke missbraucht</p><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &rarr;</a></div>
 </div></section>
 
 <section id="sec-M" class="alpha-section"><h2>M</h2><div class="card-grid">
@@ -331,6 +397,13 @@
 <div class="gloss-card"><strong>MTU</strong><p>Maximum Transmission Unit (Ethernet: 1500 Bytes)</p><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP &rarr;</a></div>
 <div class="gloss-card"><strong>Multicast</strong><p>Gruppen-Nachricht (224.0.0.0/4, IGMP)</p><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP-Adressierung &rarr;</a></div>
 <div class="gloss-card"><strong>MX-Record</strong><p>DNS-Eintrag: Mailserver einer Domain (mit Prioritaet)</p><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP &rarr;</a></div>
+<div class="gloss-card"><strong>Maltego</strong><p>Grafisches OSINT-Tool für Link-Analysis: visualisiert Beziehungen zwischen Domains, IPs, Personen, Social-Media-Profilen</p><a href="../06-osint/osint-lifecycle-und-tooling.html">OSINT-Lifecycle &rarr;</a></div>
+<div class="gloss-card"><strong>mDNS / Bonjour</strong><p>Multicast DNS: lokale Namensauflösung ohne DNS-Server (.local); Apple Bonjour/Avahi implementieren den Standard</p><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>Metadata Scrubbing</strong><p>Entfernen versteckter Metadaten aus Dateien (EXIF, Autor, Bearbeitungszeit) vor Veröffentlichung; Schutz vor OSINT</p><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC &rarr;</a></div>
+<div class="gloss-card"><strong>Model Poisoning</strong><p>Angriff auf Trainingsdaten: bösartige Samples verfälschen das ML-Modell; Gefahr bei föderierten/Fine-Tuning-Modellen</p><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">KI-Grundlagen &rarr;</a></div>
+<div class="gloss-card"><strong>Mount Points</strong><p>Verzeichnis, unter dem ein Dateisystem in den Verzeichnisbaum eingehängt wird (z.B. /mnt/evidence für Forensik-Images)</p><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration &rarr;</a></div>
+<div class="gloss-card"><strong>MTU Discovery</strong><p>Ermittlung der maximalen Paketgröße auf einem Pfad (Path MTU Discovery); setzt DF-Bit und wartet auf ICMP Frag Needed</p><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP &rarr;</a></div>
+<div class="gloss-card"><strong>Mutex / Semaphore</strong><p>Synchronisationsprimitive: Mutex (binärer Lock für 1 Thread), Semaphore (Zähler für N parallele Zugriffe)</p><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement &rarr;</a></div>
 </div></section>
 
 <section id="sec-N" class="alpha-section"><h2>N</h2><div class="card-grid">
@@ -341,6 +414,9 @@
 <div class="gloss-card"><strong>NOT-Gatter</strong><p>Logikgatter: invertiert den Eingang (0->1, 1->0)</p><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme &rarr;</a></div>
 <div class="gloss-card"><strong>NS-Record</strong><p>DNS-Eintrag: autoritative Nameserver einer Domain</p><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP &rarr;</a></div>
 <div class="gloss-card"><strong>NTFS</strong><p>Windows-Dateisystem: MFT, Journaling, ACLs, EFS, ADS</p><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme &rarr;</a></div>
+<div class="gloss-card"><strong>Namespace</strong><p>Container für Bezeichner (Variablen, Funktionen, Klassen) zur Vermeidung von Namenskonflikten; Python: Module = Namespaces</p><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen &rarr;</a></div>
+<div class="gloss-card"><strong>NAT Traversal</strong><p>Techniken zur Durchquerung von NAT-Gateways: STUN (externe IP), TURN (Relay), ICE (kombiniert beide)</p><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls &rarr;</a></div>
+<div class="gloss-card"><strong>Nmap</strong><p>Network Mapper: Port-Scanner und OS-Fingerprinting; Goldstandard für Netzwerk-Discovery und Sicherheitsaudits</p><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics &rarr;</a></div>
 </div></section>
 
 <section id="sec-O" class="alpha-section"><h2>O</h2><div class="card-grid">
@@ -355,6 +431,8 @@
 <div class="gloss-card"><strong>OSPF</strong><p>Dynamisches Routing (Link-State), Dijkstra-Algorithmus</p><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; Switching &rarr;</a></div>
 <div class="gloss-card"><strong>Overflow</strong><p>Arithmetischer Ueberlauf: Ergebnis &gt; Datentyp-Maximum</p><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme &rarr;</a></div>
 <div class="gloss-card"><strong>OWASP Top 10</strong><p>Kritischste Web-Risiken: Injection, Broken Access Control...</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
+<div class="gloss-card"><strong>Orphan-Prozess</strong><p>Kindprozess, dessen Parent beendet wurde; wird automatisch von init (PID 1) adoptiert und sauber beendet</p><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement &rarr;</a></div>
+<div class="gloss-card"><strong>Overfitting / Underfitting</strong><p>Overfitting: Modell lernt Rauschen statt Muster; Underfitting: Modell zu simpel für die Datenkomplexität</p><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees &rarr;</a></div>
 </div></section>
 
 <section id="sec-P" class="alpha-section"><h2>P</h2><div class="card-grid">
@@ -370,10 +448,23 @@
 <div class="gloss-card"><strong>Post-Quantum-Krypto</strong><p>Verfahren resistent gegen Quantencomputer (CRYSTALS-Kyber)</p><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &rarr;</a></div>
 <div class="gloss-card"><strong>PTR-Record</strong><p>DNS Reverse-Lookup: IP-Adresse &rarr; Hostname</p><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP &rarr;</a></div>
 <div class="gloss-card"><strong>Purple Team</strong><p>Kombination Red+Blue: Wissenstransfer, Detection verbessern</p><a href="../05-it-security/security-incident-management.html">Incident Management &rarr;</a></div>
+<div class="gloss-card"><strong>Packet Sniffing</strong><p>Mitschneiden von Netzwerkverkehr (tcpdump, Wireshark); erfordert Promiscuous Mode + SPAN/Mirror-Port</p><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics &rarr;</a></div>
+<div class="gloss-card"><strong>Page Fault</strong><p>Zugriff auf nicht im RAM geladene Speicherseite → MMU löst Interrupt aus → OS lädt Seite von Disk nach (valid/page fault)</p><a href="../02-betriebssysteme/memory-management.html">Memory Management &rarr;</a></div>
+<div class="gloss-card"><strong>Pass-the-Hash</strong><p>Authentifizierung mit gestohlenem NTLM-Hash statt Klartext-Passwort; klassischer Windows-Domänen-Angriff</p><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI &rarr;</a></div>
+<div class="gloss-card"><strong>Passive DNS</strong><p>Historische DNS-Abfragedaten aus Recursive-Resolvern; zeigt IP↔Domain-Zuordnungen (VirusTotal, SecurityTrails)</p><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP &rarr;</a></div>
+<div class="gloss-card"><strong>Password Spraying</strong><p>Brute-Force mit wenigen Passwörtern gegen VIELE Accounts (Umgehung von Account-Lockout); Gegenteil von Credential Stuffing</p><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI &rarr;</a></div>
+<div class="gloss-card"><strong>Persistence-Mechanismen</strong><p>Techniken zum Überleben von Reboots: Registry-Run-Keys, Scheduled Tasks, WMI-Event-Subscriptions, Startup-Ordner</p><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware dynamisch &rarr;</a></div>
+<div class="gloss-card"><strong>Port Scanning</strong><p>Systematisches Prüfen offener Ports: SYN-Scan (halb-offen), Connect-Scan, FIN/Xmas/Null (Firewall-Evasion)</p><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP &rarr;</a></div>
+<div class="gloss-card"><strong>Precision / Recall / F1</strong><p>Precision = TP/(TP+FP) (Treffergenauigkeit); Recall = TP/(TP+FN) (Vollständigkeit); F1 = harmonisches Mittel beider</p><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees &rarr;</a></div>
+<div class="gloss-card"><strong>Prefetch-Dateien</strong><p>Windows: .pf-Dateien in C:\Windows\Prefetch; zeigen Programm-Ausführungen mit Timestamps und Ausführungszähler</p><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche &rarr;</a></div>
+<div class="gloss-card"><strong>Privilege Escalation</strong><p>Angriff: horizontale Eskalation (gleiche Rechte, anderer User) oder vertikale Eskalation (User→Admin/root/SYSTEM)</p><a href="../05-it-security/security-incident-management.html">Incident Management &rarr;</a></div>
+<div class="gloss-card"><strong>Prompt Injection</strong><p>Angriff auf LLMs: manipulierte Eingabe ändert Verhalten des Modells; ähnlich wie SQL-Injection aber auf Sprachmodelle</p><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse &rarr;</a></div>
 </div></section>
 
 <section id="sec-Q" class="alpha-section"><h2>Q</h2><div class="card-grid">
 <div class="gloss-card"><strong>QUIC</strong><p>Transport auf UDP, Basis von HTTP/3, integriert TLS 1.3</p><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL &rarr;</a></div>
+<div class="gloss-card"><strong>QoS (Quality of Service)</strong><p>Priorisierung von Netzwerkverkehr: DiffServ (IP-TOS-Feld), Traffic Shaping; VoIP braucht niedrige Latenz</p><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; Switching &rarr;</a></div>
+<div class="gloss-card"><strong>Quick-Freeze</strong><p>Einfrieren von Verkehrsdaten bei konkretem Verdacht (keine Vorratsspeicherung); Alternative zur Vorratsdatenspeicherung</p><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKÜ &rarr;</a></div>
 </div></section>
 
 <section id="sec-R" class="alpha-section"><h2>R</h2><div class="card-grid">
@@ -387,6 +478,15 @@
 <div class="gloss-card"><strong>RIP</strong><p>Routing Information Protocol: Hop-Count, max. 15</p><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; Switching &rarr;</a></div>
 <div class="gloss-card"><strong>ROP</strong><p>Return-Oriented Programming: Codeschnipsel kombinieren</p><a href="../02-betriebssysteme/memory-management.html">Memory Management &rarr;</a></div>
 <div class="gloss-card"><strong>RSA</strong><p>Asym. Kryptosystem (Faktorisierung grosser Semiprimzahlen)</p><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie &rarr;</a></div>
+<div class="gloss-card"><strong>Race Condition</strong><p>Ergebnis hängt von nicht-deterministischer Ausführungsreihenfolge paralleler Threads ab; kritisch für Forensik-Tools</p><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement &rarr;</a></div>
+<div class="gloss-card"><strong>RAID-Rekonstruktion</strong><p>Zusammensetzen von RAID-Arrays: Stripe-Größe und Reihenfolge der Platten ermitteln, dann reassemblieren im Forensik-Labor</p><a href="../04-forensik-methoden/datentraeger-forensik.html">Datenträger-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>Recycle Bin Forensik</strong><p>$Recycle.Bin: gelöschte Dateien mit $I- (Metadata: Originalpfad, Löschzeit) und $R-Dateien (Dateiinhalt); ab Windows Vista</p><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche &rarr;</a></div>
+<div class="gloss-card"><strong>Redline</strong><p>FireEye/Mandiant-Tool zur RAM-Analyse und IOC-Suche auf Live-Systemen; sammelt und analysiert in einem Schritt</p><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher &rarr;</a></div>
+<div class="gloss-card"><strong>Reflection/Amplification</strong><p>DDoS-Angriff mit gefälschter Absender-IP: kleine Anfrage → große Antwort (DNS×50, NTP×556, Memcached×51000)</p><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik &rarr;</a></div>
+<div class="gloss-card"><strong>Rekursion</strong><p>Funktion, die sich selbst in verkleinerter Form aufruft (Basis: Fakultät, Fibonacci, Baumtraversierung); braucht Abbruchbedingung</p><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen &rarr;</a></div>
+<div class="gloss-card"><strong>Reverse Image Search</strong><p>Bild sucht nach identischen/ähnlichen Bildern im Web (Google Images, TinEye, Yandex); identifiziert Orte, Personen, Fakes</p><a href="../06-osint/osint-recherche-methodik.html">OSINT-Recherche &rarr;</a></div>
+<div class="gloss-card"><strong>Richtervorbehalt</strong><p>Bestimmte Ermittlungsmaßnahmen (Durchsuchung, TKÜ, Online-Durchsuchung) nur mit richterlicher Anordnung; Ausnahme: Gefahr im Verzug</p><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT &rarr;</a></div>
+<div class="gloss-card"><strong>Rootkit</strong><p>Software zur Verbergung von Prozessen, Dateien, Registry-Keys vor OS und Forensik-Tools; Kernel-Mode-Rootkits am gefährlichsten</p><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik &rarr;</a></div>
 </div></section>
 
 <section id="sec-S" class="alpha-section"><h2>S</h2><div class="card-grid">
@@ -416,6 +516,23 @@
 <div class="gloss-card"><strong>Super-Timeline</strong><p>Alle forensischen Zeitstempel in einer Zeitleiste (Plaso)</p><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche &rarr;</a></div>
 <div class="gloss-card"><strong>Swap</strong><p>Linux-Auslagerungsspeicher, kann RAM-Inhalte enthalten</p><a href="../02-betriebssysteme/memory-management.html">Memory Management &rarr;</a></div>
 <div class="gloss-card"><strong>Syscall</strong><p>Kontrollierter Uebergang User-Mode &rarr; Kernel-Mode</p><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen &rarr;</a></div>
+<div class="gloss-card"><strong>Sandbox Evasion</strong><p>Malware erkennt Sandbox/VM-Umgebung (MAC-Adresse, CPU-Kerne, Timings) und verhält sich harmlos zur Täuschung</p><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware dynamisch &rarr;</a></div>
+<div class="gloss-card"><strong>Scheduler</strong><p>CPU-Zuteilungsstrategie: Round-Robin (fair), Priority-based (wichtig zuerst), CFS (Linux), Multilevel-Feedback-Queue</p><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement &rarr;</a></div>
+<div class="gloss-card"><strong>Scope</strong><p>Gültigkeitsbereich einer Variable: lexikalisch/static (umgebender Block) vs. dynamisch (Aufrufkette); global/local/nonlocal</p><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen &rarr;</a></div>
+<div class="gloss-card"><strong>SELinux</strong><p>Security-Enhanced Linux: Mandatory Access Control mit Labels/Policies für jeden Prozess und jede Datei (NSA/Red-Hat)</p><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration &rarr;</a></div>
+<div class="gloss-card"><strong>Shodan</strong><p>Suchmaschine für Internet-verbundene Geräte: findet offene Ports, ICS-Systeme, Webcams; Banner-Grabbing weltweit</p><a href="../06-osint/osint-recherche-methodik.html">OSINT-Recherche &rarr;</a></div>
+<div class="gloss-card"><strong>Sicherstellung (vs. Beschlagnahme)</strong><p>Vorläufige Beweismittelsicherung (StPO § 94); formelle Beschlagnahme = gerichtliche Bestätigung plus Herausgabepflicht</p><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel &rarr;</a></div>
+<div class="gloss-card"><strong>Silver Ticket</strong><p>Gefälschtes Kerberos-TGS für EINEN spezifischen Dienst; braucht Service-Account-NTLM-Hash; gezielter als Golden Ticket</p><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI &rarr;</a></div>
+<div class="gloss-card"><strong>Smurf Attack</strong><p>ICMP-Broadcast mit gefälschter Quell-IP: alle Geräte antworten gleichzeitig auf das Opfer → massiver Verstärkungseffekt</p><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik &rarr;</a></div>
+<div class="gloss-card"><strong>Social Engineering (OSINT)</strong><p>Psychologische Manipulation statt technischer Angriffe; OSINT liefert die Anker-Daten (Namen, Hobbys, Kontakte)</p><a href="../06-osint/social-media-analyse.html">Social-Media-Analyse &rarr;</a></div>
+<div class="gloss-card"><strong>Sock Puppet Detection</strong><p>Erkennung von Fake-Profilen: Profilbild-Rückwärtssuche, Account-Alter, Posting-Frequenz, Schreibstil-Analyse</p><a href="../06-osint/social-media-analyse.html">Social-Media-Analyse &rarr;</a></div>
+<div class="gloss-card"><strong>SpiderFoot</strong><p>Automatisierte OSINT-Plattform mit 200+ Modulen: DNS, WHOIS, Shodan, Social Media, Darknet; generiert Gesamtbericht</p><a href="../06-osint/osint-lifecycle-und-tooling.html">OSINT-Lifecycle &rarr;</a></div>
+<div class="gloss-card"><strong>SSL Stripping</strong><p>Downgrade-Angriff: HTTPS→HTTP durch Manipulation des Initial-Requests bevor HSTS greift; sslstrip-Tool (Moxie Marlinspike)</p><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>Steganografie</strong><p>Verstecken von Daten in Trägermedien (Bild-LSB, Audio-Phase, Whitespace); Steganalyse = forensische Gegenmaßnahme</p><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik &rarr;</a></div>
+<div class="gloss-card"><strong>Supply-Chain-Angriff</strong><p>Kompromittierung eines Drittanbieters/Updates (SolarWinds 2020, xz-Backdoor 2024); extrem schwer zu erkennen</p><a href="../05-it-security/security-incident-management.html">Incident Management &rarr;</a></div>
+<div class="gloss-card"><strong>SYN Flood</strong><p>TCP-Handshake-Angriff: viele SYN-Pakete ohne ACK → Server-Speicher (Backlog-Queue) läuft voll → legitime Clients blockiert</p><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP &rarr;</a></div>
+<div class="gloss-card"><strong>Sysinternals Suite</strong><p>Microsoft-Toolset für Windows-Systemanalyse: Process Explorer/Monitor, Autoruns, TCPView; essenziell für Live-Forensik</p><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung &rarr;</a></div>
+<div class="gloss-card"><strong>Syslog</strong><p>Standardisiertes Logging-Protokoll (RFC 5424): Facility + Severity; zentraler Syslog-Server sammelt Logs aller Systeme</p><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse &rarr;</a></div>
 </div></section>
 
 <section id="sec-T" class="alpha-section"><h2>T</h2><div class="card-grid">
@@ -428,6 +545,13 @@
 <div class="gloss-card"><strong>Triage</strong><p>Ersteinschaetzung: kompromittiert? IOCs? Prioritaet?</p><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &rarr;</a></div>
 <div class="gloss-card"><strong>TRIM</strong><p>SSD loescht ungenutzte Bloecke &rarr; File Carving unmoeglich</p><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik &rarr;</a></div>
 <div class="gloss-card"><strong>TXT-Record</strong><p>DNS Textdaten (SPF, DKIM, DNS-Tunnel)</p><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP &rarr;</a></div>
+<div class="gloss-card"><strong>tcpdump</strong><p>Kommandozeilen-Paket-Sniffer (Unix/Linux); BPF-Filter; erzeugt .pcap-Dateien für spätere Wireshark-Analyse</p><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics &rarr;</a></div>
+<div class="gloss-card"><strong>theHarvester</strong><p>OSINT-Tool zur E-Mail-/Subdomain-Enumeration; durchsucht Google, Bing, Shodan, LinkedIn, PGP-Keyserver parallel</p><a href="../06-osint/osint-lifecycle-und-tooling.html">OSINT-Lifecycle &rarr;</a></div>
+<div class="gloss-card"><strong>Thrashing</strong><p>OS verbringt mehr Zeit mit Paging als mit Nutzarbeit: zu viele Prozesse, zu wenig RAM; System wird praktisch unbenutzbar</p><a href="../02-betriebssysteme/memory-management.html">Memory Management &rarr;</a></div>
+<div class="gloss-card"><strong>Threat Intelligence</strong><p>Strukturierte Informationen über Bedrohungen: TTPs, IOCs, Akteure; Threat Feeds: MISP, AlienVault OTX, Mandiant</p><a href="../06-osint/osint-recherche-methodik.html">OSINT-Recherche &rarr;</a></div>
+<div class="gloss-card"><strong>Traceroute</strong><p>Ermittelt Netzwerkpfad via TTL-Feld: jede Station sendet ICMP Time-Exceeded zurück; zeigt Sprung-für-Sprung-Route (Hop-by-Hop)</p><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; Switching &rarr;</a></div>
+<div class="gloss-card"><strong>Transfer Learning</strong><p>Vortrainiertes Modell wird auf neue Aufgabe feinjustiert (z.B. ImageNet→Forensik); spart Trainingsdaten und Rechenzeit</p><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze &rarr;</a></div>
+<div class="gloss-card"><strong>Type Casting</strong><p>Explizite Datentyp-Umwandlung (int→float, str→int); implizites Coercion in JS/PHP oft unerwartet: "5"+3 = "53"</p><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen &rarr;</a></div>
 </div></section>
 
 <section id="sec-U" class="alpha-section"><h2>U</h2><div class="card-grid">
@@ -438,6 +562,7 @@
 <div class="gloss-card"><strong>UTF-8</strong><p>Unicode-Kodierung (1-4 Bytes), ASCII-kompatibel</p><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme &rarr;</a></div>
 <div class="gloss-card"><strong>UTF-16</strong><p>Unicode-Kodierung (2/4 Bytes). NTFS-Dateinamen in UTF-16</p><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme &rarr;</a></div>
 <div class="gloss-card"><strong>Utilitarismus</strong><p>Ethik: Maximiere den Gesamtnutzen fuer die groesste Zahl</p><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik &rarr;</a></div>
+<div class="gloss-card"><strong>Unschuldsvermutung</strong><p>Bis zur rechtskräftigen Verurteilung gilt der Beschuldigte als unschuldig (Art. 6 EMRK); Beweislast liegt beim Staat</p><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT &rarr;</a></div>
 </div></section>
 
 <section id="sec-V" class="alpha-section"><h2>V</h2><div class="card-grid">
@@ -446,6 +571,10 @@
 <div class="gloss-card"><strong>Volatility</strong><p>RAM-Analyse-Framework: pslist, netscan, malfind, dumpfiles</p><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher &rarr;</a></div>
 <div class="gloss-card"><strong>VPN</strong><p>Verschluesselter Tunnel: IPSec, OpenVPN, WireGuard</p><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls &rarr;</a></div>
 <div class="gloss-card"><strong>VSS</strong><p>Volume Shadow Copy: Windows-Snapshots, alte Dateiversionen</p><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche &rarr;</a></div>
+<div class="gloss-card"><strong>Verhältnismäßigkeitsprinzip</strong><p>Staatliche Eingriffe müssen geeignet, erforderlich und angemessen sein; zentral für TKÜ und Online-Durchsuchung</p><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte digital &rarr;</a></div>
+<div class="gloss-card"><strong>Verwertungsverbot</strong><p>Rechtswidrig erlangte Beweise dürfen vor Gericht nicht verwendet werden; Beweiserhebungsverbot → Beweisverwertungsverbot</p><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel &rarr;</a></div>
+<div class="gloss-card"><strong>Volatilitätsreihenfolge</strong><p>Beweissicherung nach Flüchtigkeit (RFC 3227): CPU-Register → RAM → Netzwerk → Disk → Archive → Druckerzeugnisse</p><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung &rarr;</a></div>
+<div class="gloss-card"><strong>Vorratsdatenspeicherung</strong><p>Anlasslose Speicherung von Verkehrsdaten aller Bürger; in Deutschland mehrfach vom EuGH/BVerfG gekippt</p><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKÜ &rarr;</a></div>
 </div></section>
 
 <section id="sec-W" class="alpha-section"><h2>W</h2><div class="card-grid">
@@ -453,10 +582,17 @@
 <div class="gloss-card"><strong>WebSocket</strong><p>Bidirektionale Verbindung ueber TCP, Upgrade von HTTP</p><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik &rarr;</a></div>
 <div class="gloss-card"><strong>Word</strong><p>Datenwort: natuerliche Verarbeitungsbreite der CPU</p><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme &rarr;</a></div>
 <div class="gloss-card"><strong>Write-Blocker</strong><p>Hardware/Software blockiert Schreibzugriffe (Tableau, blockdev)</p><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker &rarr;</a></div>
+<div class="gloss-card"><strong>Wayback Machine</strong><p>Internet Archive: historische Snapshots von Webseiten; zeigt gelöschte Inhalte und frühere Versionen; essenziell für OSINT</p><a href="../06-osint/osint-recherche-methodik.html">OSINT-Recherche &rarr;</a></div>
+<div class="gloss-card"><strong>WebRTC</strong><p>Echtzeit-Kommunikation im Browser (Video/Audio/Data); Risiko: echte interne IP-Adresse leakt trotz VPN-Verbindung</p><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik &rarr;</a></div>
+<div class="gloss-card"><strong>WHOIS-Analyse</strong><p>Domain-Registrierungsdaten: Registrant, Registrar, Erstellungs-/Ablaufdatum, Nameserver; via whois-Befehl oder RDAP</p><a href="../06-osint/osint-recherche-methodik.html">OSINT-Recherche &rarr;</a></div>
+<div class="gloss-card"><strong>Wireshark</strong><p>De-facto-Standard für Netzwerk-Paketanalyse; GUI + mächtige Filter-Sprache; unterstützt 3000+ Protokolle via Dissectors</p><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics &rarr;</a></div>
+<div class="gloss-card"><strong>Write-Once Media</strong><p>Medium, das nur einmal beschrieben werden kann (CD-R, WORM-Tape); forensisch wertvoll weil inhärent nicht manipulierbar</p><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation &rarr;</a></div>
 </div></section>
 
 <section id="sec-X" class="alpha-section"><h2>X</h2><div class="card-grid">
 <div class="gloss-card"><strong>XSS</strong><p>Cross-Site Scripting: JavaScript in Webseiten eingeschleust</p><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP &rarr;</a></div>
+<div class="gloss-card"><strong>X-Ways Forensics</strong><p>Kommerzielle Forensik-Suite (deutsche Entwicklung); extrem effizient, portabel, tiefe NTFS/ReFS-Integration; Alternative zu EnCase</p><a href="../09-tools/ftk-encase-axiom/README.html">FTK/EnCase/AXIOM &rarr;</a></div>
+<div class="gloss-card"><strong>XOR (Exklusiv-ODER)</strong><p>Bitweise Operation: Ergebnis=1 wenn Eingänge ungleich sind; zentral in Kryptografie (One-Time-Pad) und RAID5-Parität</p><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme &rarr;</a></div>
 </div></section>
 
 <section id="sec-Y" class="alpha-section"><h2>Y</h2><div class="card-grid">
@@ -467,7 +603,19 @@
 <section id="sec-Z" class="alpha-section"><h2>Z</h2><div class="card-grid">
 <div class="gloss-card"><strong>Zeek</strong><p>Netzwerk-Monitor: protokolliert Verbindungen in strukturierten Logs</p><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik &rarr;</a></div>
 <div class="gloss-card"><strong>Zero-Day</strong><p>Schwachstelle ohne bekannten Patch (Hersteller unbekannt)</p><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware statisch &rarr;</a></div>
+<div class="gloss-card"><strong>Zeiger-Arithmetik</strong><p>Pointer-Addition/Subtraktion: *(ptr+n) greift auf Speicher relativ zu Basisadresse zu; Risiko: Buffer Overflow</p><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen &rarr;</a></div>
+<div class="gloss-card"><strong>Zero Trust Architecture</strong><p>Security-Modell: "Never trust, always verify" – jeder Zugriff wird authentifiziert, kein implizites Vertrauen im Netzwerk</p><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI &rarr;</a></div>
+<div class="gloss-card"><strong>Zero-Copy</strong><p>Datenübertragung ohne CPU-Kopie: DMA + sendfile() – Daten fließen direkt von Disk zur Netzwerkkarte</p><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration &rarr;</a></div>
+<div class="gloss-card"><strong>Zeugnisverweigerungsrecht</strong><p>Bestimmte Personen (Angehörige, Geistliche, Verteidiger) müssen nicht aussagen; gilt auch für digitale Beweismittel</p><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik &rarr;</a></div>
+<div class="gloss-card"><strong>Zombie-Prozess</strong><p>Beendeter Prozess, dessen Exit-Status noch nicht vom Parent per wait() abgeholt wurde; erscheint als &lt;defunct&gt; in ps</p><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozessmanagement &rarr;</a></div>
 </div></section>
+<section id="sec-para" class="alpha-section"><h2>§ (StGB)</h2><div class="card-grid">
+<div class="gloss-card"><strong>§ 202a StGB — Ausspähen von Daten</strong><p>Unbefugtes Verschaffen von besonders gesicherten Daten; erfasst Hacking, SQL-Injection, Passwort-Cracking</p><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel &rarr;</a></div>
+<div class="gloss-card"><strong>§ 202b StGB — Abfangen von Daten</strong><p>Unbefugtes Abfangen nicht-öffentlicher Datenübertragungen (Sniffing, MITM); TKÜ-Vorbehalt beachten</p><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKÜ &rarr;</a></div>
+<div class="gloss-card"><strong>§ 202c StGB — Vorbereiten des Ausspähens</strong><p>Herstellen/Verschaffen/Überlassen von Hacker-Tools MIT Vorsatz zur Straftat; Dual-Use-Problematik für Forensik-Tools</p><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel &rarr;</a></div>
+<div class="gloss-card"><strong>§ 303a/b StGB — Datenveränderung/Computersabotage</strong><p>Rechtswidriges Löschen/Unterdrücken/Verändern von Daten; § 303b: Störung fremder Datenverarbeitung von wesentlicher Bedeutung</p><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik &rarr;</a></div>
+</div></section>
+
 
 </article></main>
 <nav class="prev-next" id="prevNextNav"></nav>
