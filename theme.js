@@ -16,5 +16,5 @@
     updateIcon(next);
   });
 
-  function updateIcon(t) { btn.textContent = t === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19'; }
+  function updateIcon(t) { btn.textContent = t === 'dark' ? 'Light' : 'Dark'; }
 })();
