@@ -8,6 +8,8 @@ var navOrder = {
     "programmierparadigmen.html",
     "python-grundlagen.html",
     "oop-klassen-vererbung.html",
+    "uml-diagramme-softwaremodellierung.html",
+    "software-tests-qualitaetssicherung.html",
     "softwareentwicklungsprozess.html"
   ],
   "02-betriebssysteme": [
@@ -21,6 +23,8 @@ var navOrder = {
     "windows-registry-forensik.html",
     "betriebssystem-forensik-spurensuche.html",
     "file-carving.html",
+    "interprozesskommunikation-io-management.html",
+    "backup-recovery-audit-systeme.html",
     "mobile-forensik-android-ios.html",
     "macos-forensik.html",
     "anti-forensik-betriebssystem.html",
@@ -36,6 +40,7 @@ var navOrder = {
     "vpn-und-firewalls.html",
     "wireshark-basics-paketanalyse.html",
     "netzwerkforensik-methoden.html",
+    "netzwerkmanagement-snmp-monitoring.html",
     "tls-ssl-forensik.html",
     "web-sicherheit-owasp.html",
     "browser-forensik.html",
@@ -55,6 +60,7 @@ var navOrder = {
     "datenbanken-forensik.html",
     "malware-analyse-statisch.html",
     "malware-analyse-dynamisch.html",
+    "botnetze-c2-architekturen.html",
     "timeline-analysis.html",
     "threat-hunting.html",
     "mitre-attack-framework.html",
@@ -86,7 +92,9 @@ var navOrder = {
     "kriminalistik-grundlagen.html",
     "tatortarbeit-spurenkunde.html",
     "eingriffsrecht-tkue.html",
+    "quellen-tkue-online-durchsuchung.html",
     "ethik-informationssicherheit.html",
+    "urheberrecht-immaterialgueterrecht-digital.html",
     "juristische-fallbearbeitung-gutachtenstil.html"
   ],
   "08-ki-forensik": [

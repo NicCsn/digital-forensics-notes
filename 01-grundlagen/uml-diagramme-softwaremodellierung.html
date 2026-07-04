@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Decision Trees und Klassifikation in der Forensik — DF Field Notes</title>
+<meta name="description" content="Lernnotizen zur Digitalen Forensik und IT-Security">
+<link rel="canonical" href="https://niccsn.github.io/digital-forensics-notes/">
+<meta property="og:title" content="UML-Diagramme und Softwaremodellierung — cosman.dev">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="cosman.dev">
+<title>UML-Diagramme und Softwaremodellierung — cosman.dev</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="note-page">
@@ -133,97 +138,165 @@
 <div class="note-wrapper">
 <nav class="top-nav">
   <a href="https://cosman.dev" class="home-link">cosman.dev</a>
-  <span class="nav-crumb">/ <a href="../index.html#cat-ki">KI & Forensik</a> / Decision Trees und Klassifikation in der Forensik</span>
+  <span class="nav-crumb">/ <a href="../index.html#cat-grundlagen">Grundlagen</a> / UML-Diagramme</span>
 </nav>
 <main>
 <article>
-<h1>Decision Trees und Klassifikation in der Forensik <span class="diff-badge diff-intermediate">Mittel</span></h1>
-<details class="fold"><summary>Inhaltsverzeichnis</summary><ol><li><a href="#kurz-berblick">Kurzüberblick</a></li><li><a href="#details">Details</a></li><li><a href="#praktische-anwendung">Praktische Anwendung</a></li><li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li></ol></details>
+<h1>UML-Diagramme und Softwaremodellierung <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzüberblick</a></li>
+  <li><a href="#strukturdiagramme">Strukturdiagramme (Klassendiagramm)</a></li>
+  <li><a href="#verhaltensdiagramme">Verhaltensdiagramme (Sequenz, Aktivität, Zustand)</a></li>
+  <li><a href="#forensik-relevanz">Relevanz für die Digitale Forensik</a></li>
+  <li><a href="#werkzeuge">Werkzeuge und Praxis</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li>
+</ol></details>
 
 <h2 id="kurz-berblick">Kurzüberblick</h2>
 
-<p>Decision Trees (Entscheidungsbäume) sind eines der transparentesten ML-Verfahren — und damit besonders gut für die Forensik geeignet, wo Nachvollziehbarkeit entscheidend ist. Du kannst den Entscheidungsbaum ausdrucken und genau zeigen, warum Modell X als "bösartig" klassifiziert wurde.</p>
+<p>Die Unified Modeling Language (UML) ist die standardisierte grafische Modellierungssprache für objektorientierte Software-Systeme. Für digitale Forensiker ist UML relevant, weil sie die Struktur von Malware (Klassendiagramm), den Ablauf von Angriffen (Sequenzdiagramm), Systemarchitekturen (Komponentendiagramm) und forensische Workflows (Aktivitätsdiagramm) dokumentieren hilft — essenziell für Code-Review, Reverse Engineering und forensische Berichterstattung.</p>
 
-<h2 id="details">Details</h2>
+<p>MHB-Mapping: BDF103 (Programmierung) — Grundlagen des objektorientierten Anwendungsentwurfs mit UML.</p>
 
-<h3>Wie ein Decision Tree funktioniert</h3>
+<h2 id="strukturdiagramme">Strukturdiagramme</h2>
 
-<ul><li>Der Baum teilt die Daten rekursiv nach dem informativsten Merkmal</li>
-<li>Jeder Knoten stellt eine Frage: "Ist die Dateigröße > 500 KB?"</li>
-<li>An den Blättern steht die Klasse: "Malware" oder "Legitim"</li></ul>
+<h3>Klassendiagramm (Class Diagram)</h3>
+<p>Das meistgenutzte UML-Diagramm. Zeigt Klassen, Attribute, Methoden und Beziehungen. Für Malware-Analyse: Verstehen der Code-Struktur ohne Sourcecode.</p>
 
-<p><strong>Informationsgewinn (Information Gain):</strong></p>
-<ul><li>ID3-Algorithmus: Wähle das Merkmal, das die Entropie am stärksten reduziert</li>
-<li>Entropie = Maß für Unsicherheit ("Gemisch" aus Malware/Legitim vs. "Rein" nur Malware)</li></ul>
+<pre><code>+------------------+
+|   C2Connector    |
++------------------+
+| - server: String  |
+| - interval: int   |
++------------------+
+| + connect(): bool |
+| + sendData(d):void|
+| + beacon(): void  |
++------------------+
+        ^
+        |
++------------------+
+| HttpConnector    |
++------------------+
+| + connect(): bool |
++------------------+</code></pre>
 
-<h3>Beispiel: Decision Tree für Logfile-Klassifikation</h3>
-
-<pre><code>                 /              \
-            &lt; 100                &gt;= 100
-            /                      \
-    [Tageszeit?]             [Status-Codes &gt; 50% 403?]
-     /        \                /                   \
-  Tag      Nacht            Ja                    Nein
-  /          \              /                       \
-Legitim   Verdächtig   [Verschiedene IPs?]     [Große Payload?]
-                         /           \           /           \
-                      &lt; 5         &gt;= 5       Ja           Nein
-                      /              \       /              \
-              Brute-Force        DDoS   Exfiltration    Hohe Last</code></pre>
-
-<h3>Random Forest — Bäume im Ensemble</h3>
-
-<ul><li>Trainiere 100 verschiedene Decision Trees auf zufälligen Teilmengen der Daten und Merkmale</li>
-<li>Klassifikation durch Mehrheitsentscheid ("Forest")</li>
-<li>Viel robuster als ein einzelner Baum, aber weniger interpretierbar</li></ul>
-
-<h3>Forensische Anwendung: Logfile-Klassifikation</h3>
-
-<pre><code>from sklearn.tree import DecisionTreeClassifier, export_text
-
-# Features: requests_per_min, unique_ips, error_ratio, avg_payload_size, is_weekend
-data = pd.read_csv(&quot;log_features.csv&quot;)
-X = data[[&quot;req_per_min&quot;, &quot;unique_ips&quot;, &quot;err_ratio&quot;, &quot;payload&quot;, &quot;weekend&quot;]]
-y = data[&quot;label&quot;]  # &quot;normal&quot; / &quot;attack&quot;
-
-tree = DecisionTreeClassifier(max_depth=4)
-tree.fit(X, y)
-
-# Baum ausgeben — nachvollziehbar!
-print(export_text(tree, feature_names=list(X.columns)))</code></pre>
-
-<h3>Warum Decision Trees für die Forensik?</h3>
-
-<table class="styled-table">
-<thead><tr><th>Vorteil</th><th>Erklärung</th></tr></thead><tbody>
-<tr><td>**Interpretierbar**</td><td>Jede Entscheidung ist eine einfache "wenn-dann"-Regel</td></tr>
-<tr><td>**Keine Normalisierung nötig**</td><td>Features müssen nicht skaliert werden</td></tr>
-<tr><td>**Mixed Data**</td><td>Numerische + kategorische Daten gleichzeitig</td></tr>
-<tr><td>**Feature-Importance**</td><td>Zeigt, welche Merkmale am wichtigsten sind (z.B. "Payload-Größe wichtiger als Anzahl IPs")</td></tr>
-<tr><td>**Vor Gericht erklärbar**</td><td>"Das Modell klassifizierte die Aktivität als Angriff, weil die Error-Ratio > 0.5 UND > 100 Anfragen/Minute UND es Nacht ist"</td></tr>
+<table>
+<thead><tr><th>Beziehung</th><th>Notation</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td><strong>Assoziation</strong></td><td>durchgezogene Linie</td><td>Klasse nutzt andere Klasse</td></tr>
+<tr><td><strong>Aggregation</strong></td><td>hohle Raute ◇</td><td>Teil-Ganzes, Teil kann alleine existieren (Schwache Bindung)</td></tr>
+<tr><td><strong>Komposition</strong></td><td>gefüllte Raute ◆</td><td>Teil-Ganzes, Teil kann NICHT alleine existieren (Starke Bindung)</td></tr>
+<tr><td><strong>Vererbung</strong></td><td>hohles Dreieck △</td><td>Subklasse erbt von Superklasse (is-a)</td></tr>
+<tr><td><strong>Interface-Impl.</strong></td><td>gestrichelt + hohles Dreieck</td><td>Klasse implementiert Interface (can-do)</td></tr>
+<tr><td><strong>Abhängigkeit</strong></td><td>gestrichelte Linie + Pfeil</td><td>Klasse benutzt andere temporär (use-a)</td></tr>
 </tbody></table>
 
-<h3>Grenzen</h3>
+<div class="callout tip"><strong>Forensischer Hinweis:</strong> Ein rekonstruiertes Klassendiagramm aus dekompiliertem Malware-Bytecode zeigt sofort: Welche Klasse steuert C2? Welche verschlüsselt? Wo ist die Persistenz-Logik? Das ist schneller als 5000 Zeilen Disassembler-Code zu lesen.</div>
 
-<ul><li>Einzelne Bäume overfitten leicht → Random Forest bevorzugen</li>
-<li>Sehr tiefe Bäume = nicht mehr interpretierbar</li>
-<li>Bei sehr vielen Features können Bäume ineffizient werden → Feature Selection vorab</li></ul>
+<h3>Komponentendiagramm</h3>
+<p>Zeigt die physische Struktur eines Systems: welche Module (.dll, .so, .jar) gibt es, wie sind sie verbunden. Für Forensik: Verstehen der Angreifer-Infrastruktur (C2-Server ↔ Proxy ↔ Malware-Binary ↔ Keylogger-DLL).</p>
 
-<h2 id="praktische-anwendung">Praktische Anwendung</h2>
+<h3>Paketdiagramm</h3>
+<p>Gruppiert Klassen in logische Pakete (Namespaces). Malware-Analyse: Welcher Code gehört zum Encryption-Modul, welcher zum Network-Modul?</p>
 
-<ul><li><code>from sklearn.tree import DecisionTreeClassifier, plot_tree</code></li>
-<li><code>tree.feature_importances_</code> — Welche Merkmale waren entscheidend?</li>
-<li><code>export_graphviz(tree, out_file="tree.dot")</code> → Graphviz → Baum visualisieren</li>
-<li>"Baum in forensischen Bericht einfügen" = maximale Transparenz</li></ul>
+<h3>Verteilungsdiagramm (Deployment)</h3>
+<p>Zeigt Hardware (Nodes) + Software (Artefakte). Forensisches Beispiel: Ransomware auf Workstation → SMB-Spread auf Fileserver → Exfiltration über VPN-Node.</p>
 
-<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<h2 id="verhaltensdiagramme">Verhaltensdiagramme</h2>
 
-<ul><li>Quinlan, J.R.: C4.5: Programs for Machine Learning</li>
-<li><a href="https://scikit-learn.org/stable/modules/tree.html">Scikit-Learn: Decision Trees</a></li></ul>
+<h3>Sequenzdiagramm</h3>
+<p>Zeitlicher Ablauf von Objekt-Interaktionen. Perfekt für: TCP-Handshake, Malware-Infektionskette, Ransomware-Verschlüsselungsprozess.</p>
+
+<pre><code>Opfer                          Malware                           C2-Server
+  |                                |                                  |
+  |────Phishing-Mail erhalten─────>|                                  |
+  |                                |────beacon()────────────────────>|
+  |                                |<────commands: keylog,loot────────|
+  |                                |─────exfil_data()───────────────>|
+  |<────Verschlüsselung startet────|                                  |</code></pre>
+
+<h3>Aktivitätsdiagramm</h3>
+<p>Flussdiagramm-artig: Start → Aktivitäten → Entscheidungen → Ende. Forensischer Einsatz: Visualisierung von Incident-Response-Workflows, forensischen Prozessmodellen oder Malware-Verhalten.</p>
+
+<pre><code>[Neue Ransomware-Meldung]
+         │
+         ▼
+  ┌──────────────┐
+  │Netzwerk isolieren│
+  └──────┬───────┘
+         │
+         ▼
+    ┌─────────┐
+   < Stunde >    ───── ja ────▶ Live-Sicherung (RAM + Disk)
+    └─────────┘
+         │ nein
+         ▼
+    Post-Mortem Image erstellen</code></pre>
+
+<h3>Zustandsdiagramm</h3>
+<p>Zustände und Übergänge eines Objekts. Malware: Infektion → Persistenz → Idle → Active → Exfiltration → Cleanup.</p>
+
+<h3>Use-Case-Diagramm</h3>
+<p>Zeigt Akteure und Systemfunktionen. Forensik-Lab: "Forensiker" erstellt Image, führt Analyse durch, schreibt Bericht. Oder: "Angreifer" infiziert System, exfiltriert Daten, löscht Spuren.</p>
+
+<h2 id="forensik-relevanz">Relevanz für die Digitale Forensik</h2>
+
+<table>
+<thead><tr><th>Forensische Aufgabe</th><th>Passendes UML-Diagramm</th><th>Nutzen</th></tr></thead><tbody>
+<tr><td>Malware-Reverse-Engineering</td><td>Klassendiagramm</td><td>Code-Struktur visualisieren, Abhängigkeiten finden</td></tr>
+<tr><td>Angriffsrekonstruktion</td><td>Sequenzdiagramm</td><td>Zeitlichen Ablauf des Angriffs darstellen</td></tr>
+<tr><td>Incident Response Plan</td><td>Aktivitätsdiagramm</td><td>Workflow dokumentieren, Entscheidungslogik klar machen</td></tr>
+<tr><td>Systemanalyse (Target)</td><td>Komponenten-/Verteilungsdiagramm</td><td>Infrastruktur verstehen: welche Server, welche Clients</td></tr>
+<tr><td>Forensische Berichterstattung</td><td>Use-Case-Diagramm</td><td>Akteure + Aktionen für nicht-technische Stakeholder</td></tr>
+<tr><td>Datenflussanalyse</td><td>Aktivitätsdiagramm</td><td>Wo fließen Daten hin? Welche Logs entstehen wo?</td></tr>
+</tbody></table>
+
+<h2 id="werkzeuge">Werkzeuge und Praxis</h2>
+
+<h3>Open Source</h3>
+<ul>
+  <li><strong>PlantUML:</strong> Text-zu-UML — schreibe Diagramme als Code. Versionierbar in Git, ideal für Dokumentation. <code>@startuml ... @enduml</code></li>
+  <li><strong>draw.io (diagrams.net):</strong> GUI-basiert, exportiert SVG/PNG/XML. Schnellster Weg für Ad-hoc-Diagramme</li>
+  <li><strong>Mermaid:</strong> JavaScript-basiert, funktioniert in Markdown/GitHub. Für schnelle Sequenzdiagramme</li>
+</ul>
+
+<h3>Praxis-Beispiel: Malware-Klassendiagramm rekonstruieren</h3>
+<pre><code># Mit Ghidra decompilieren, dann per Hand in PlantUML übertragen:
+
+@startuml
+class MalwareCore {
+  -botId: String
+  -serverUrl: String
+  +start(): void
+  +encrypt(): void
+}
+class ConfigManager {
+  -config: HashMap
+  +loadConfig(): void
+  +getValue(key): String
+}
+class NetworkLayer {
+  +post(url, data): bool
+  +get(url): String
+}
+MalwareCore "1" o-- "1" ConfigManager : aggregation
+MalwareCore "1" --> "1" NetworkLayer : uses
+@enduml</code></pre>
+
+<div class="related-notes">
+  <strong>Verwandte Notizen</strong>
+  <div class="related-grid">
+    <a href="oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a>
+    <a href="softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+    <a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a>
+    <a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a>
+  </div>
+</div>
+
+<nav class="prev-next" id="prevNextNav"></nav>
 
 </article>
 </main>
-<nav class="prev-next" id="prevNextNav"></nav>
 <footer class="page-footer">
   <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
 </footer>
@@ -232,6 +305,48 @@ print(export_text(tree, feature_names=list(X.columns)))</code></pre>
 <script src="../nav-order.js"></script>
 <script src="../search.js"></script>
 <script>
+(function(){
+  var inp = document.getElementById('sidebarSearch');
+  var res = document.getElementById('sidebarSearchResults');
+  if (!inp || !res) return;
+  function findNotes(q) {
+    q = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i], score = 0;
+      if (n.t.toLowerCase().indexOf(q) !== -1) score += 10;
+      if (n.f.toLowerCase().indexOf(q) !== -1) score += 5;
+      for (var j = 0; j < n.g.length; j++) {
+        if (n.g[j].toLowerCase().indexOf(q) !== -1) score += 3;
+      }
+      if (score > 0) out.push({n:n, s:score});
+    }
+    out.sort(function(a,b){return b.s - a.s;});
+    return out;
+  }
+  inp.addEventListener('input', function() {
+    var q = this.value.trim();
+    if (q.length < 1) { res.innerHTML = ''; res.classList.remove('show'); return; }
+    var matches = findNotes(q);
+    if (matches.length === 0) {
+      res.innerHTML = '<div style="padding:10px;color:var(--text-muted);font-size:12px">Keine Ergebnisse</div>';
+    } else {
+      var html = '';
+      for (var k = 0; k < Math.min(matches.length, 12); k++) {
+        var m = matches[k];
+        html += '<a href="../' + m.n.p + '" class="sr-item"><div class="sr-title">' + m.n.t + '</div><div class="sr-meta">' + m.n.f + '</div></a>';
+      }
+      res.innerHTML = html;
+    }
+    res.classList.add('show');
+  });
+  document.addEventListener('click', function(e) {
+    if (!res.contains(e.target) && e.target !== inp) res.classList.remove('show');
+  });
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { res.classList.remove('show'); inp.blur(); }
+  });
+})();
 (function(){
   var btn = document.getElementById('back-to-top');
   if (!btn) return;

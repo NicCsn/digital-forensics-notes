@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lernnotizen zur Digitalen Forensik und IT-Security">
+<link rel="canonical" href="https://niccsn.github.io/digital-forensics-notes/">
+<meta property="og:title" content="Netzwerkmanagement — SNMP und Monitoring — cosman.dev">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="cosman.dev">
+<title>Netzwerkmanagement — SNMP und Monitoring — cosman.dev</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (10)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (17)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; IO-Management</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; Recovery</a></li>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC &amp; IO</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup &amp; Recovery</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (13)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP <a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>amp; Monitoring</a></li>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze <a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>amp; C2</a></li>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze &amp; C2</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (11)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKÜ</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="https://cosman.dev" class="home-link">cosman.dev</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-netzwerke">Netzwerke</a> / SNMP &amp; Monitoring</span>
+</nav>
+<main>
+<article>
+<h1>Netzwerkmanagement — SNMP und Monitoring <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzüberblick</a></li>
+  <li><a href="#snmp">SNMPv1/v2c/v3: Manager, Agent, MIB, OID</a></li>
+  <li><a href="#snmpv3-security">SNMPv3 Security: USM und VACM</a></li>
+  <li><a href="#netflow">NetFlow/IPFIX: Flow-basiertes Monitoring</a></li>
+  <li><a href="#sflow">sFlow: Sampling-basierte Alternative</a></li>
+  <li><a href="#syslog">Syslog im Netzwerk-Kontext (RFC 5424)</a></li>
+  <li><a href="#nms-tools">NMS-Tools: Zabbix, Nagios, PRTG, LibreNMS</a></li>
+  <li><a href="#netconf-yang">NetConf/YANG: Programmgesteuerte Konfiguration</a></li>
+  <li><a href="#forensischer-nutzen">Forensischer Nutzen</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li>
+</ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Netzwerkmanagement umfasst die Uberwachung, Steuerung und Konfiguration von Netzwerkkomponenten (Router, Switches, Firewalls, Server) uber standardisierte Protokolle. SNMP (Simple Network Management Protocol) ist das dominierende Monitoring-Protokoll seit 1988. NetFlow/IPFIX und sFlow liefern granulare Verkehrsdaten auf Flow-Ebene. Fur die digitale Forensik sind diese Protokolle und die durch sie gesammelten Daten von unschatzbarem Wert: Sie rekonstruieren Netzwerkverhalten, identifizieren Angriffsmuster und liefern gerichtsfeste Beweise in Form von Metadaten.</p>
+
+<p>MHB-Mapping: BDF208 (Netzwerke) — Protokolle und Methoden des Netzwerkmanagements und ihre forensische Anwendung.</p>
+
+<h2 id="snmp">SNMPv1/v2c/v3: Manager, Agent, MIB, OID</h2>
+
+<p>SNMP arbeitet nach dem Manager-Agent-Modell. Der Manager (NMS — Network Management Station) fragt Daten von Agents ab, die auf den verwalteten Geraten laufen. Ein Agent kann auch unaufgefordert Traps an den Manager senden.</p>
+
+<h3>SNMP-Architektur</h3>
+<table>
+<thead><tr><th>Komponente</th><th>Rolle</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><strong>NMS (Manager)</strong></td><td>Fragt Agents ab, empfangt Traps, visualisiert Daten</td><td>LibreNMS, PRTG, Zabbix mit SNMP-Modul</td></tr>
+<tr><td><strong>Agent</strong></td><td>Lauft auf verwaltetem Gerat, beantwortet Queries, sendet Traps</td><td>snmpd (Linux), Windows SNMP Service</td></tr>
+<tr><td><strong>MIB (Management Information Base)</strong></td><td>Datenbank-Schema: Definiert, welche Daten abfragbar sind</td><td>IF-MIB (Interfaces), TCP-MIB, HOST-RESOURCES-MIB</td></tr>
+<tr><td><strong>OID (Object Identifier)</strong></td><td>Adresse eines Datenpunkts in der MIB-Hierarchie</td><td><code>1.3.6.1.2.1.1.3.0</code> = sysUpTime</td></tr>
+</tbody></table>
+
+<h3>SNMP-Versionen im Vergleich</h3>
+<table>
+<thead><tr><th>Merkmal</th><th>SNMPv1 (RFC 1157)</th><th>SNMPv2c (RFC 1901)</th><th>SNMPv3 (RFC 3410)</th></tr></thead><tbody>
+<tr><td><strong>Authentifizierung</strong></td><td>Community-String (Klartext)</td><td>Community-String (Klartext)</td><td>USM: MD5/SHA + Benutzername + optional Verschlusselung</td></tr>
+<tr><td><strong>Verschlusselung</strong></td><td>Keine</td><td>Keine</td><td>AES/DES (Privatsphare)</td></tr>
+<tr><td><strong>Zugriffskontrolle</strong></td><td>Read/Write-Community</td><td>Read/Write-Community</td><td>VACM: Feingranulare View-basierte Zugriffskontrolle</td></tr>
+<tr><td><strong>Bulk-Transfers</strong></td><td>Nein (ein OID pro Request)</td><td>GETBULK (mehrere OIDs auf einmal)</td><td>GETBULK</td></tr>
+<tr><td><strong>Sicherheitsniveau</strong></td><td>Keines (Klartext im Netzwerk)</td><td>Keines</td><td>Hoch (Authentifizierung + Verschlusselung)</td></tr>
+</tbody></table>
+
+<h3>Wichtige OIDs fur die Forensik</h3>
+<pre><code># System-Informationen (System MIB)
+1.3.6.1.2.1.1.1.0    # sysDescr  — Geratetyp, OS-Version
+1.3.6.1.2.1.1.3.0    # sysUpTime — Wie lange lauft das Gerat schon?
+1.3.6.1.2.1.1.5.0    # sysName   — Hostname
+
+# Interface-Statistiken (IF-MIB)
+1.3.6.1.2.1.2.2.1.10  # ifInOctets  — Empfangene Bytes pro Interface
+1.3.6.1.2.1.2.2.1.16  # ifOutOctets — Gesendete Bytes pro Interface
+1.3.6.1.2.1.2.2.1.8   # ifOperStatus — Up/Down/Testing
+
+# TCP-Verbindungen (TCP-MIB)
+1.3.6.1.2.1.6.13.1.1  # tcpConnState — Aktive TCP-Verbindungen
+
+# Abfrage-Beispiel mit snmpget und snmpwalk
+snmpget -v2c -c public 192.168.1.1 1.3.6.1.2.1.1.1.0
+snmpwalk -v2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.2</code></pre>
+
+<div class="callout warning"><strong>Sicherheitswarnung:</strong> SNMPv1/v2c-Community-Strings werden im Klartext ubertragen. Der Default-Community-String <code>public</code> (read) und <code>private</code> (write) ist auf Millionen Geraten weltweit aktiv. Ein Angreifer mit Zugriff auf UDP/161 kann komplette Netzwerk-Topologien auslesen — dies ist ein klassischer Reconnaissance-Vektor und in forensischen Untersuchungen einer der ersten Prufpunkte.</div>
+
+<h2 id="snmpv3-security">SNMPv3 Security: USM und VACM</h2>
+
+<p>SNMPv3 fuhrt ein mehrschichtiges Sicherheitsmodell ein, das die gravierenden Schwachen von v1/v2c adressiert. Forensisch relevant, weil Angreifer oft ungesicherte SNMPv1/v2c-Installationen ausnutzen — die Existenz von SNMPv3 auf einem Gerat zeigt Security-Awareness, das Fehlen dagegen ein potenzielles Einfallstor.</p>
+
+<h3>USM (User-based Security Model)</h3>
+<table>
+<thead><tr><th>Parameter</th><th>Funktion</th></tr></thead><tbody>
+<tr><td><strong>UserName</strong></td><td>Identifiziert den Benutzer (z.B. "forensic_monitor")</td></tr>
+<tr><td><strong>Authentication Protocol</strong></td><td>MD5 oder SHA — stellt Integritat und Authentizitat sicher (HMAC)</td></tr>
+<tr><td><strong>Authentication Key</strong></td><td>Mindestens 8 Zeichen; wird lokal gehasht und im Request als Digest gesendet</td></tr>
+<tr><td><strong>Privacy Protocol</strong></td><td>DES (veraltet) oder AES — verschlusselt den Payload</td></tr>
+<tr><td><strong>Privacy Key</strong></td><td>Ahnlich wie Auth-Key; zur Verschlusselung des SNMP-Payloads</td></tr>
+<tr><td><strong>Engine ID</strong></td><td>Eindeutige ID des SNMP-Agents; Teil der Key-Lokalisierung</td></tr>
+</tbody></table>
+
+<h3>VACM (View-based Access Control Model)</h3>
+<p>Definiert, welcher Benutzer welche OIDs lesen oder schreiben darf — granular auf MIB-View-Ebene. Eine MIB-View ist ein Subtree des OID-Baums (z.B. "alle OIDs unter 1.3.6.1.2.1.2" = nur Interface-Daten). VACM erlaubt so, einem Auditor nur Lese-Zugriff auf Traffic-Statistiken zu geben.</p>
+
+<h2 id="netflow">NetFlow/IPFIX: Flow-basiertes Monitoring</h2>
+
+<p>NetFlow (Cisco, 1996) und sein Nachfolger IPFIX (IETF, RFC 7011) zeichnen nicht jedes einzelne Paket auf, sondern aggregierte Flows — definiert durch das 5-Tupel: <strong>SrcIP, DstIP, SrcPort, DstPort, Protocol</strong>. Ein Flow ist eine unidirektionale Sequenz von Paketen mit gleichem 5-Tupel innerhalb eines Zeitfensters.</p>
+
+<h3>NetFlow-Record (v5) — Typische Felder</h3>
+<pre><code>Src IP:     10.0.0.5
+Dst IP:     203.0.113.42
+Src Port:   49152
+Dst Port:   443 (HTTPS)
+Protocol:   6 (TCP)
+Packets:    1,847
+Bytes:      2,301,442
+Start Time: 2026-07-04 14:22:09.123
+End Time:   2026-07-04 14:22:11.890
+Input If:   Gi0/1
+Output If:  Gi0/3
+TCP Flags:  0x1b (SYN+ACK+FIN+PSH)
+Next Hop:   192.168.1.1</code></pre>
+
+<h3>IPFIX (NetFlow v9/v10)</h3>
+<p>IPFIX verwendet Templates: Der Exporter definiert, welche Felder ein Record enthalt. Das ermoglicht flexible Erweiterungen (z.B. HTTP-Host-Header, DNS-Queries, VLAN-Tags) ohne Protokollanderung. Forensisch enorm wertvoll, weil auch Layer-7-Daten im Flow-Kontext sichtbar werden.</p>
+
+<h2 id="sflow">sFlow: Sampling-basierte Alternative</h2>
+
+<p>sFlow (sampled Flow) sampelt Pakete (z.B. jedes 1000. Paket) statt alle Flows zu erfassen. Das reduziert die Last auf dem Gerat drastisch und ist statistisch fur Traffic-Analyse und Anomalieerkennung ausreichend. Allerdings eignen sich gesampelte Daten weniger fur forensische Beweisfuhrung, da einzelne Verbindungen nicht luckenlos dokumentiert sind.</p>
+
+<table>
+<thead><tr><th>Aspekt</th><th>NetFlow/IPFIX</th><th>sFlow</th></tr></thead><tbody>
+<tr><td><strong>Erfassungsmethode</strong></td><td>Flow-basiert: Jeder Flow wird erfasst</td><td>Sampling: Nur ein Teil der Pakete</td></tr>
+<tr><td><strong>Genauigkeit</strong></td><td>100% (vollstandig)</td><td>Statistisch (je nach Sample-Rate)</td></tr>
+<tr><td><strong>Ressourcenverbrauch</strong></td><td>Mittel bis hoch (je nach Traffic-Volumen)</td><td>Gering (nur Sample-Daten)</td></tr>
+<tr><td><strong>Forensische Eignung</strong></td><td>Hoch: Jede Verbindung ist dokumentiert</td><td>Eingeschrankt: Einzelne Verbindungen konnen fehlen</td></tr>
+<tr><td><strong>Verbreitung</strong></td><td>Cisco-dominierte Umgebungen</td><td>Data-Center (HP, Arista, Juniper), Switches</td></tr>
+</tbody></table>
+
+<div class="callout tip"><strong>Forensik-Tipp:</strong> NetFlow-Daten sind eine unvergleichliche Timeline-Quelle. Sie zeigen nicht nur, wer wann mit wem kommuniziert hat, sondern auch Traffic-Volumen, Session-Dauer und TCP-Flag-Anomalien. Kombinieren Sie NetFlow mit DNS-Logs und Firewall-Logs, um eine vollstandige Kommunikations-Timeline zu rekonstruieren.</div>
+
+<h2 id="syslog">Syslog im Netzwerk-Kontext (RFC 5424)</h2>
+
+<p>Syslog ist das universelle Logging-Protokoll fur Netzwerkgerate. Praktisch jeder Router, Switch, jede Firewall und jeder Server kann Logs per Syslog (UDP/514 oder TCP/601) an einen zentralen Collector senden.</p>
+
+<h3>Syslog-Meldungsformat (RFC 5424)</h3>
+<pre><code>PRI VERSION TIMESTAMP HOSTNAME APP-NAME PROCID MSGID [SD] MESSAGE
+
+# Beispiel einer authentifizierten SSH-Anmeldung:
+134 1 2026-07-04T14:22:09.123Z fw01.example.com SSH - -
+[login user="root" src_ip="10.0.0.5"]
+Accepted password for root from 10.0.0.5 port 49152 ssh2</code></pre>
+
+<h3>Priority (PRI) = Facility x 8 + Severity</h3>
+<table>
+<thead><tr><th>Facility</th><th>Wert</th><th>Severity</th><th>Wert</th></tr></thead><tbody>
+<tr><td>kern (Kernel)</td><td>0</td><td>Emergency</td><td>0</td></tr>
+<tr><td>auth (Authentifizierung)</td><td>4</td><td>Alert</td><td>1</td></tr>
+<tr><td>daemon</td><td>3</td><td>Critical</td><td>2</td></tr>
+<tr><td>syslog</td><td>5</td><td>Error</td><td>3</td></tr>
+<tr><td>local0–local7</td><td>16–23</td><td>Warning</td><td>4</td></tr>
+<tr><td>—</td><td>—</td><td>Notice</td><td>5</td></tr>
+<tr><td>—</td><td>—</td><td>Info</td><td>6</td></tr>
+<tr><td>—</td><td>—</td><td>Debug</td><td>7</td></tr>
+</tbody></table>
+
+<p>Fur die Forensik ist besonders die <strong>auth-Facility (4)</strong> relevant — sie enthalt Login-Versuche, sudo-Nutzung, SSH-Sessions. Ein klassisches Angriffs-Indiz ist eine Folge von "authentication failure"-Meldungen (Severity 5, Notice) gefolgt von einer "Accepted" Meldung — ein Hinweis auf erfolgreiches Brute-Forcing.</p>
+
+<div class="callout info"><strong>Syslog-Trap und SNMP-Trap:</strong> Ein SNMP-Trap ist eine unaufgeforderte Nachricht vom Agent an den Manager — "Interface down", "CPU uber 90%", "Authentifizierungsfehler". Syslog-Traps werden oft via SNMP-Trap-Infrastruktur transportiert. Fur SIEM-Systeme sind SNMP-Traps wertvolle Security-Events: Ein <code>linkDown</code>-Trap an Interface eth0 kann auf physische Manipulation (Kabelziehen) oder einen DoS-Angriff hindeuten.</div>
+
+<h2 id="nms-tools">NMS-Tools: Zabbix, Nagios, PRTG, LibreNMS</h2>
+
+<p>Network Management Systems (NMS) sind die grafische und datenbankgestutzte Schicht uber SNMP, NetFlow und Syslog. Sie speichern historische Daten, generieren Alarme und visualisieren Netzwerkzustande.</p>
+
+<table>
+<thead><tr><th>Tool</th><th>Typ</th><th>Starken</th><th>Forensische Relevanz</th></tr></thead><tbody>
+<tr><td><strong>Zabbix</strong></td><td>Open Source</td><td>Auto-Discovery, Templates fur 100+ Geratetypen, API-first</td><td>Historische SNMP-Daten: Wer war wann im Netzwerk aktiv? Traffic-Spikes?</td></tr>
+<tr><td><strong>Nagios / Icinga</strong></td><td>Open Source</td><td>Modular (Plugins), bewahrt in Grossunternehmen</td><td>State-History: Wann ging Interface down? Wann wurde eine ACL geandert?</td></tr>
+<tr><td><strong>PRTG</strong></td><td>Kommerziell (Paessler)</td><td>Sensor-basiert, NetFlow/Syslog integriert, Windows-nativ</td><td>Flow-Daten + Syslog in einem Dashboard: Korrelation von Traffic und Logins</td></tr>
+<tr><td><strong>LibreNMS</strong></td><td>Open Source (Fork von Observium)</td><td>Automatische Erkennung von Geraten, Syslog/NetFlow-Integration, API</td><td>Billing-Daten (95th Percentile): Wurde mehr Traffic als ublich verbraucht?</td></tr>
+<tr><td><strong>Graylog</strong></td><td>Open Source</td><td>Log-Management mit Syslog-focus; Pipeline-Regeln zur Anreicherung</td><td>Syslog-Streams filtern und mit GeoIP, ASN anreichern; Alerts auf Failed-Logins</td></tr>
+</tbody></table>
+
+<pre><code># Zabbix: Historische Interface-Daten via API abrufen (Forensik-Skript)
+# Abfrage der Traffic-Daten von Switch-Port Gi0/1 im Zeitraum des Vorfalls
+curl -s -X POST http://zabbix.example.com/api_jsonrpc.php \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "method": "history.get",
+    "params": {
+      "itemids": ["35567"],
+      "time_from": "1736000000",
+      "time_to": "1736100000",
+      "output": "extend"
+    },
+    "auth": "API_TOKEN",
+    "id": 1
+  }'</code></pre>
+
+<h2 id="netconf-yang">NetConf/YANG: Programmgesteuerte Netzwerk-Konfiguration</h2>
+
+<p>NetConf (RFC 6241) und YANG (RFC 6020/7950) sind die modernen Standards fur programmierbares Netzwerkmanagement. Wahrend SNMP Monitoring-dominierte Umgebungen bedient, erlaubt NetConf die automatisierte Konfiguration von Netzwerkgeraten — ein Paradigmenwechsel vom "Polling" zum "Intent-based Networking".</p>
+
+<table>
+<thead><tr><th>Schicht</th><th>NetConf (RFC 6241)</th><th>RESTCONF (RFC 8040)</th></tr></thead><tbody>
+<tr><td><strong>Transport</strong></td><td>SSH (Port 830) — sicher per Default</td><td>HTTPS — RESTful API</td></tr>
+<tr><td><strong>Operationen</strong></td><td>get-config, edit-config, lock, unlock, commit, rollback</td><td>GET, POST, PUT, PATCH, DELETE (HTTP-Methoden)</td></tr>
+<tr><td><strong>Datenmodell</strong></td><td>YANG (hierarchisch, typed)</td><td>YANG + JSON/XML-Encoding</td></tr>
+<tr><td><strong>Transaktionen</strong></td><td>Candidate-Datastore + explizites Commit/Rollback</td><td>Keine nativen Transaktionen; jede Anderung ist sofort aktiv</td></tr>
+</tbody></table>
+
+<p><strong>Forensisch relevant:</strong> NetConf-Logs (Audit-Trail) dokumentieren jede Konfigurationsanderung mit Benutzer, Zeitstempel und altem/neuem Wert — anders als SNMP-SETs, die haufig ohne Logging erfolgen. Eine NetConf-Infrastruktur ist daher ein Segen fur Post-Incident-Analysen: Sie zeigt punktgenau, wann eine ACL geandert oder ein Interface deaktiviert wurde.</p>
+
+<h2 id="forensischer-nutzen">Forensischer Nutzen</h2>
+
+<h3>NetFlow-Daten als Timeline-Quelle</h3>
+<p>NetFlow-Daten erlauben die Rekonstruktion der Netzwerkkommunikation ohne vollstandige Packet Captures (PCAPs). Ein Flow-Export von einem Core-Router zeigt, welche internen Hosts mit externen IPs kommuniziert haben — inklusive Byte-Volumen, Port und Dauer. Das reicht haufig, um Command-and-Control-Traffic (periodische Verbindungen zu einer unbekannten IP auf Port 443) oder Data-Exfiltration (unubliche Byte-Mengen zu einer seltenen externen IP) zu identifizieren.</p>
+
+<h3>SNMP-Traps als Security-Events</h3>
+<table>
+<thead><tr><th>SNMP-Trap</th><th>OID (Basis)</th><th>Security-Interpretation</th></tr></thead><tbody>
+<tr><td><strong>linkDown</strong></td><td>1.3.6.1.6.3.1.1.5.3</td><td>Physische Manipulation, Kabelziehen, Switch-Port deaktiviert</td></tr>
+<tr><td><strong>authenticationFailure</strong></td><td>1.3.6.1.6.3.1.1.5.5</td><td>SNMP-Brute-Force-Angriff, falscher Community-String</td></tr>
+<tr><td><strong>coldStart</strong></td><td>1.3.6.1.6.3.1.1.5.1</td><td>Gerat wurde neu gestartet — nach einem Angriff? Stromausfall?</td></tr>
+<tr><td><strong>configManEvent</strong></td><td>CISCO-CONFIG-MAN-MIB</td><td>Konfigurationsanderung — legitim oder Angreifer-Aktivitat?</td></tr>
+</tbody></table>
+
+<h3>Kombinierte Analyse: SNMP + NetFlow + Syslog</h3>
+<p>Die wahre forensische Starke entfaltet sich in der <strong>Korrelation</strong>: Ein Syslog-Eintrag "SSH login accepted for root from 203.0.113.42" + ein NetFlow-Record mit 1.2 GB Datenvolumen von 203.0.113.42 → Datenexfiltration. Ein SNMP-Trap "linkDown" an Port 17 + Syslog "Interface Gi0/17 changed state to down" + kein entsprechender Change-Ticket → physischer Angriff.</p>
+
+<div class="callout tip"><strong>Forensik-Tipp:</strong> Viele Organisationen loschen NMS-Daten nach 30 oder 90 Tagen (Retention Policy). Bei einem Incident sofort einen Snapshot der NMS-Datenbank und der RRD-Dateien (Round-Robin Database fur Zeitreihen) ziehen. Diese Daten sind nach Ablauf der Retention Policy unwiederbringlich verloren und konnen die einzige Quelle fur historische Netzwerkzustande sein.</div>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuhrendes</h2>
+<ul>
+  <li>RFC 3410–3418: SNMPv3 Framework, MIB, Transport Mappings</li>
+  <li>RFC 7011–7015: IPFIX Protocol Specification</li>
+  <li>RFC 5424: The Syslog Protocol (aktuelle Version)</li>
+  <li>RFC 6241: Network Configuration Protocol (NETCONF)</li>
+  <li>RFC 7950: The YANG 1.1 Data Modeling Language</li>
+  <li>Cisco NetFlow v9 Export Format — Cisco Whitepaper</li>
+  <li>Douglas R. Mauro, Kevin J. Schmidt: "Essential SNMP", 2nd Edition (O'Reilly, 2005)</li>
+  <li>Zabbix 6.4 Documentation — API Reference</li>
+</ul>
+
+<div class="related-notes">
+  <strong>Verwandte Notizen</strong>
+  <div class="related-grid">
+    <a href="tcp-ip-protokollfamilie.html">TCP/IP-Protokollfamilie</a>
+    <a href="routing-switching-vlans.html">Routing, Switching und VLANs</a>
+    <a href="vpn-und-firewalls.html">VPN und Firewalls</a>
+    <a href="netzwerkforensik-methoden.html">Netzwerkforensik</a>
+    <a href="../05-it-security/siem-und-monitoring.html">SIEM und Monitoring</a>
+    <a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a>
+  </div>
+</div>
+
+<nav class="prev-next" id="prevNextNav"></nav>
+
+</article>
+</main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var inp = document.getElementById('sidebarSearch');
+  var res = document.getElementById('sidebarSearchResults');
+  if (!inp || !res) return;
+  function findNotes(q) {
+    q = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i], score = 0;
+      if (n.t.toLowerCase().indexOf(q) !== -1) score += 10;
+      if (n.f.toLowerCase().indexOf(q) !== -1) score += 5;
+      for (var j = 0; j < n.g.length; j++) {
+        if (n.g[j].toLowerCase().indexOf(q) !== -1) score += 3;
+      }
+      if (score > 0) out.push({n:n, s:score});
+    }
+    out.sort(function(a,b){return b.s - a.s;});
+    return out;
+  }
+  inp.addEventListener('input', function() {
+    var q = this.value.trim();
+    if (q.length < 1) { res.innerHTML = ''; res.classList.remove('show'); return; }
+    var matches = findNotes(q);
+    if (matches.length === 0) {
+      res.innerHTML = '<div style="padding:10px;color:var(--text-muted);font-size:12px">Keine Ergebnisse</div>';
+    } else {
+      var html = '';
+      for (var k = 0; k < Math.min(matches.length, 12); k++) {
+        var m = matches[k];
+        html += '<a href="../' + m.n.p + '" class="sr-item"><div class="sr-title">' + m.n.t + '</div><div class="sr-meta">' + m.n.f + '</div></a>';
+      }
+      res.innerHTML = html;
+    }
+    res.classList.add('show');
+  });
+  document.addEventListener('click', function(e) {
+    if (!res.contains(e.target) && e.target !== inp) res.classList.remove('show');
+  });
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { res.classList.remove('show'); inp.blur(); }
+  });
+})();
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

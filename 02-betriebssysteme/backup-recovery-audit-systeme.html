@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lernnotizen zur Digitalen Forensik und IT-Security">
+<link rel="canonical" href="https://niccsn.github.io/digital-forensics-notes/">
+<meta property="og:title" content="Backup, Recovery und Audit-Systeme — cosman.dev">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="cosman.dev">
+<title>Backup, Recovery und Audit-Systeme — cosman.dev</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (10)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (17)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; IO-Management</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; Recovery</a></li>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC &amp; IO</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup &amp; Recovery</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (13)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP <a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>amp; Monitoring</a></li>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze <a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>amp; C2</a></li>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze &amp; C2</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (11)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKU</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="https://cosman.dev" class="home-link">cosman.dev</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-betriebssysteme">Betriebssysteme</a> / Backup &amp; Recovery</span>
+</nav>
+<main>
+<article>
+<h1>Backup, Recovery und Audit-Systeme <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzüberblick</a></li>
+  <li><a href="#backup-typen">Backup-Typen: Voll, Differentiell, Inkrementell, Synthetisch</a></li>
+  <li><a href="#rpo-rto">RPO und RTO: Recovery-Kennzahlen</a></li>
+  <li><a href="#snapshot">Snapshot-Technologien</a></li>
+  <li><a href="#replikation">Replikation: Synchron, Asynchron, Site Recovery</a></li>
+  <li><a href="#audit">Audit-Subsysteme: auditd und Windows Event Log</a></li>
+  <li><a href="#forensische-relevanz">Forensische Relevanz</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuhrendes</a></li>
+</ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Backup- und Recovery-Systeme stellen die Verfugbarkeit und Wiederherstellbarkeit von Daten im Katastrophenfall sicher. Audit-Subsysteme protokollieren sicherheitsrelevante Ereignisse auf Betriebssystemebene. Fur die digitale Forensik sind beide Bereiche von zentraler Bedeutung: Backups dienen als historische Datenquelle (was war wann auf dem System?), Audit-Logs als Beweismittel fur Benutzeraktionen (wer hat was wann gemacht?). Umgekehrt sind Backup- und Audit-Systeme selbst Angriffsziele — Ransomware verschlusselt oder löscht Backups, und Angreifer manipulieren oder deaktivieren Audit-Logs, um Spuren zu verwischen.</p>
+
+<p>MHB-Mapping: BDF102 (Betriebssysteme) — Datensicherung, Wiederherstellung und Audit-Mechanismen moderner Betriebssysteme.</p>
+
+<h2 id="backup-typen">Backup-Typen: Voll, Differentiell, Inkrementell, Synthetisch</h2>
+
+<table>
+<thead><tr><th>Typ</th><th>Beschreibung</th><th>Vorteile</th><th>Nachteile</th></tr></thead><tbody>
+<tr><td><strong>Vollbackup</strong></td><td>Komplette Kopie aller Daten. Jedes Backup ist unabhangig und vollstandig.</td><td>Einfache Wiederherstellung: Nur das letzte Vollbackup wird benotigt</td><td>Langsam, hoher Speicherverbrauch; Jedes Backup = 100% der Datenmenge</td></tr>
+<tr><td><strong>Differentiell</strong></td><td>Sichert alle Anderungen seit dem letzten Vollbackup. Kumulativ: Backup 3 enthalt Anderungen seit Backup 1 (Voll).</td><td>Schnellere Wiederherstellung als Inkrementell (nur Voll + letztes Differentiell)</td><td>Wachst mit jeder Generation; bei taglichem Backup wird Backup 7 so gross wie Backup 2</td></tr>
+<tr><td><strong>Inkrementell</strong></td><td>Sichert nur Anderungen seit dem letzten Backup (egal ob Voll oder Inkrem.).</td><td>Kleinste Backup-Grosse, schnellste Erstellung</td><td>Wiederherstellung braucht Voll + ALLE Inkremente in Reihenfolge — ein fehlendes = Datenlucke</td></tr>
+<tr><td><strong>Synthetisches Vollbackup</strong></td><td>Erzeugt ein Vollbackup aus einem vorherigen Vollbackup + Inkrementen auf dem Backup-Server — ohne das Quellsystem zu belasten.</td><td>Keine Belastung des Quellsystems; schnelle Erstellung</td><td>Rechenintensiv auf dem Backup-Server; abhangig von der Integritat der Inkremente</td></tr>
+<tr><td><strong>Forever-Incremental</strong></td><td>Einmaliges Vollbackup, dann nur noch Inkremente. Synthetische Vollbackups ersetzen das initiale Vollbackup periodisch.</td><td>Minimale Backup-Fenster; moderne Standardstrategie (Veeam, Commvault)</td><td>Wiederherstellung komplex; Backup-Kette uber Jahre verwalten</td></tr>
+</tbody></table>
+
+<h3>Backup-Strategie: Grandfather-Father-Son (GFS)</h3>
+<p>Die GFS-Strategie organisiert Backups in drei Ebenen: <strong>Son</strong> (tagliche Inkremente, 7 Tage Rollierend), <strong>Father</strong> (wohentliche Vollbackups, 4–5 Wochen), <strong>Grandfather</strong> (monatliche Vollbackups, 12 Monate). Forensisch wertvoll: Die monatlichen Grandfather-Backups sind historische Zeitpunkte, zu denen der Systemzustand rekonstruiert werden kann — ideal zur Feststellung, wann eine Malware-Infektion erstmals auftrat.</p>
+
+<h2 id="rpo-rto">RPO und RTO: Recovery-Kennzahlen</h2>
+
+<table>
+<thead><tr><th>Kennzahl</th><th>Definition</th><th>Fragestellung</th><th>Forensischer Aspekt</th></tr></thead><tbody>
+<tr><td><strong>RPO (Recovery Point Objective)</strong></td><td>Maximal tolerierbarer Datenverlust in Zeiteinheiten</td><td>"Wie viele Daten durfen wir verlieren?"</td><td>Je kleiner der RPO, desto mehr Backup-Punkte = mehr forensische Zeitpunkte zur Analyse</td></tr>
+<tr><td><strong>RTO (Recovery Time Objective)</strong></td><td>Maximal tolerierbare Ausfallzeit bis zur Wiederherstellung</td><td>"Wie lange darf das System ausfallen?"</td><td>Forensische Untersuchung verlangert RTO; Incident-Response-Teams mussen beide Bedurfnisse abwagen</td></tr>
+</tbody></table>
+
+<pre><code># Beispiel: Webshop mit RPO=15min, RTO=2h
+# RPO=15min: Alle 15 Minuten ein inkrementelles Backup
+# → Forensisch: Datenandernungen in 15-Minuten-Auflosung nachvollziehbar
+#
+# RTO=2h: Nach einem Ransomware-Angriff muss der Shop in 2h wieder online sein
+# → Forensisch: In 2h kann kein vollstandiges forensisches Imaging durchgefuhrt werden
+# → Abwagung: Zuerst Backup-Recovery (Business), dann forensische Analyse</code></pre>
+
+<h2 id="snapshot">Snapshot-Technologien</h2>
+
+<p>Snapshots sind punktuelle Zustandsaufnahmen eines Speichersystems (Dateisystem, Volume, VM) ohne vollstandige Datenkopie. Sie sind keine Backups im klassischen Sinne — sie schutzen nicht vor physischem Storage-Ausfall — aber sie ermoglichen schnelle Wiederherstellung und sind forensisch hochgradig wertvoll.</p>
+
+<h3>Snapshot-Verfahren</h3>
+<table>
+<thead><tr><th>Verfahren</th><th>Prinzip</th><th>Vorteil</th><th>Nachteil</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Copy-on-Write (CoW)</strong></td><td>Vor dem Uberschreiben eines Blocks wird der alte Block in einen Snapshot-Bereich kopiert</td><td>Platzsparend; Snapshot enthalt nur differenzielle Daten</td><td>Performance-Einbusse beim ersten Schreibzugriff (zusatzlicher Copy-Vorgang)</td><td>LVM Snapshots (Linux), VSS (Windows)</td></tr>
+<tr><td><strong>Redirect-on-Write (RoW)</strong></td><td>Neue Schreibvorgange werden in neuen Bereich umgeleitet; Snapshot behalt Originaldaten</td><td>Bessere Schreib-Performance (kein zusatzlicher Copy)</td><td>Snapshot-Daten sind fragmentiert; Lesen verteilt sich uber Original + neue Blocks</td><td>NetApp WAFL, ZFS (teilweise)</td></tr>
+<tr><td><strong>Split-Mirror</strong></td><td>Vollstandige physische Kopie (Spiegel) wird zum Snapshot-Zeitpunkt abgetrennt</td><td>Voll performant; Snapshot ist physisch unabhangig</td><td>Benötigt mindestens doppelten Speicher; aufwandiges Erstellen</td><td>EMC TimeFinder, klassische Storage-Array-Snapshots</td></tr>
+</tbody></table>
+
+<h3>Forensische Nutzung von Snapshots</h3>
+<pre><code># VSS (Volume Shadow Copy Service) auf Windows — forensische Goldgrube
+vssadmin list shadows                       # Alle VSS-Snapshots auflisten
+vssadmin list shadowstorage                 # Speicherverbrauch der Snapshots
+
+# Mit sleuthkit auf VSS zugreifen:
+mmls /dev/sda2                              # Partitionstabelle
+mount -o ro,offset=... /dev/sda2 /mnt/vss   # VSS-Volume mounten
+
+# VSS enthalt altere Versionen von:
+# — Registry-Hives (SAM, SYSTEM, SOFTWARE)
+# — Gelöschten Dateien (wenn im Snapshot-Zeitraum noch vorhanden)
+# — Pre-Verschlusselungs-Zustanden (Ransomware: Dateien vor der Verschlusselung!)
+</code></pre>
+
+<div class="callout tip"><strong>Forensik-Tipp:</strong> VSS-Snapshots sind bei Ransomware-Untersuchungen oft die Rettung: Selbst wenn die Live-Dateien verschlusselt sind, enthalten die Snapshots die unverschlusselten Originale. Prufen Sie immer zuerst <code>vssadmin list shadows</code>, bevor Sie aufgeben. Tools wie <code>ShadowExplorer</code> oder <code>Eric Zimmerman's VSCMount</code> erleichtern den Zugriff.</div>
+
+<h2 id="replikation">Replikation: Synchron, Asynchron, Site Recovery</h2>
+
+<table>
+<thead><tr><th>Typ</th><th>Funktionsweise</th><th>RPO</th><th>Einsatz</th></tr></thead><tbody>
+<tr><td><strong>Synchron</strong></td><td>Jeder Schreibvorgang wird gleichzeitig auf Primar- und Sekundar-Storage geschrieben. Bestatigung erst, wenn beide bestatigen.</td><td>0 (kein Datenverlust)</td><td>Kritische Systeme (Finanzdatenbanken); erfordert geringe Latenz (< 10ms)</td></tr>
+<tr><td><strong>Asynchron</strong></td><td>Schreibvorgange werden zunachst nur auf den Primar-Storage geschrieben und zeitversetzt (Sekunden bis Minuten) an den Sekundar-Storage ubertragen.</td><td>Sekunden bis Minuten</td><td>Georedundanz uber grosse Entfernungen; akzeptiert minimalen Datenverlust bei Failover</td></tr>
+<tr><td><strong>Near-Synchronous</strong></td><td>Kombination: Schreibvorgang auf Primar, Bestatigung an App, dann zeitnahe Replikation (z.B. < 1 Sekunde).</td><td>Millisekunden</td><td>Kompromiss zwischen Performance und Datensicherheit</td></tr>
+</tbody></table>
+
+<h3>Site Recovery / Disaster Recovery Plan (DRP)</h3>
+<p>Ein DRP definiert, wie ein Unternehmen nach einem katastrophalen Ausfall (Brand, Hochwasser, Ransomware) den IT-Betrieb wiederherstellt. Fur Forensiker ist der DRP doppelt relevant: Erstens als zu untersuchendes Dokument (Wurde der DRP im Incident befolgt? Gab es Abweichungen?), zweitens als Verfahren, das die forensische Untersuchung beeinflusst (Muss ein Backup vor der forensischen Analyse zuruckgespielt werden, um den Geschaftsbetrieb wiederherzustellen?).</p>
+
+<h2 id="audit">Audit-Subsysteme: auditd und Windows Event Log</h2>
+
+<h3>auditd (Linux Audit Daemon)</h3>
+<p>auditd ist das native Audit-Framework des Linux-Kernels. Es protokolliert Systemaufrufe (syscalls), Dateizugriffe, Prozess-Starts und Authentifizierungsereignisse mit hohem Detailgrad.</p>
+
+<pre><code># auditd-Architektur
+# ┌─────────┐    ┌──────────┐    ┌─────────┐
+# │ Kernel  │───#│ auditd   │───#│ audisp  │───# syslog / SIEM
+# │ (Rules) │    │ (Daemon) │    │ (Plugin)│
+# └─────────┘    └──────────┘    └─────────┘
+# Netlink-Socket      Event Queue      Dispatcher
+
+# Forensisch relevante Audit-Regeln setzen
+# Alle ausgefuhren Kommandos protokollieren (execve-Syscall)
+auditctl -a always,exit -F arch=b64 -S execve -k exec_commands
+
+# Dateizugriffe auf /etc/shadow protokollieren
+auditctl -w /etc/shadow -p rwxa -k shadow_access
+
+# Regelabfrage und Log-Analyse
+ausearch -k exec_commands --start today         # Alle execve-Events von heute
+ausearch -f /etc/shadow -i                      # Alle Zugriffe auf /etc/shadow
+aureport -x --start 07/01/2026 --end 07/04/2026 # Exec-Report fur einen Zeitraum</code></pre>
+
+<h3>Windows Event Log</h3>
+<table>
+<thead><tr><th>Log-Typ</th><th>Speicherort</th><th>Forensisch relevante Event-IDs</th></tr></thead><tbody>
+<tr><td><strong>Security</strong></td><td><code>%SystemRoot%\System32\winevt\Logs\Security.evtx</code></td><td>4624 (erfolgreiche Anmeldung), 4625 (fehlgeschlagene Anmeldung), 4672 (Admin-Rechte zugewiesen), 4688 (Prozess gestartet), 5140 (Netzwerkfreigabe-Zugriff)</td></tr>
+<tr><td><strong>System</strong></td><td><code>%SystemRoot%\System32\winevt\Logs\System.evtx</code></td><td>7045 (neuer Dienst installiert — Malware-Persistenz!), 7036 (Dienst gestartet/gestoppt), 6005/6006 (Systemstart/-shutdown)</td></tr>
+<tr><td><strong>Application</strong></td><td><code>%SystemRoot%\System32\winevt\Logs\Application.evtx</code></td><td>1000/1001 (App-Crash), 11707/11724 (MSI-Installationen), SQL-Server-Ereignisse</td></tr>
+<tr><td><strong>Powershell Operational</strong></td><td><code>Microsoft-Windows-PowerShell/Operational</code></td><td>4104 (Script-Block-Logging — vollstandiger Skript-Inhalt!), 4103 (Modul-Logging), 800 (Pipeline-Ausfuhrung)</td></tr>
+</tbody></table>
+
+<pre><code># Windows Event Forwarding (WEF)
+# WEF leitet Events von vielen Windows-Clients zentral an einen Collector weiter.
+# Forensisch extrem wertvoll: Events liegen zentral und sind vor Manipulation
+# auf dem einzelnen Client geschutzt (wenn korrekt konfiguriert).
+#
+# Prufen der WEF-Konfiguration:
+wecutil qc                    # Quick-Config: Collector einrichten
+wecutil gs "ForensicEvents"   # Subscription-Config auslesen
+</code></pre>
+
+<div class="callout warning"><strong>Forensische Warnung:</strong> Windows Event Logs sind im laufenden Betrieb manipulierbar. Ein Administrator (oder Angreifer mit Admin-Rechten) kann Events löschen (<code>wevtutil cl Security</code>) oder den gesamten Event Log deaktivieren. Achten Sie bei der Analyse auf Lucken in den Event-Sequenzen: Fehlende Event-IDs zwischen zwei Eintragen konnen auf manuelle Löschung hindeuten. Korrelieren Sie mit VSS-Snapshots — altere Versionen der .evtx-Dateien konnen die gelöschten Events noch enthalten.</div>
+
+<h2 id="forensische-relevanz">Forensische Relevanz</h2>
+
+<h3>Backup-Timeline: Was war wann gesichert?</h3>
+<p>Backup-Kataloge (Bacula Catalog, Veeam Backup DB, Windows Server Backup History) sind eine unterschatzte forensische Quelle. Sie dokumentieren:</p>
+<ul>
+  <li>Welche Dateien zu welchem Zeitpunkt gesichert wurden</li>
+  <li>Welche Dateien <strong>nicht</strong> gesichert wurden (Ausschlusslisten — wurden bestimmte Verzeichnisse bewusst ausgeschlossen?)</li>
+  <li>Anderungen in der Backup-Grosse (ein plotzlicher Anstieg = Datenexfiltration? Ein Abfall = Ransomware?)</li>
+</ul>
+
+<h3>Audit-Logs als Beweismittel</h3>
+<table>
+<thead><tr><th>Forensische Frage</th><th>Linux (auditd)</th><th>Windows (Event Log)</th></tr></thead><tbody>
+<tr><td>Wer hat sich wann angemeldet?</td><td><code>ausearch -m USER_LOGIN</code></td><td>Event-ID 4624 (Logon Type 2=interaktiv, 10=RDP)</td></tr>
+<tr><td>Wurde eine Datei gelöscht?</td><td><code>ausearch -f /path/to/file -k delete</code></td><td>Event-ID 4663 (Object Access) + SACL auf Datei</td></tr>
+<tr><td>Welcher Prozess hat einen Netzwerk-Socket geoffnet?</td><td><code>ausearch -S socket</code> (mit PID-Auflösung)</td><td>Event-ID 5156 (Windows Filtering Platform)</td></tr>
+<tr><td>Wurde ein neuer Dienst installiert?</td><td><code>ausearch -S execve</code> + systemctl-Kontext</td><td>Event-ID 7045 (System Log)</td></tr>
+</tbody></table>
+
+<h3>Ransomware-Erkennung durch veranderte Datei-Muster</h3>
+<p>Audit-Logs zeigen Massenanderungen an Dateien in kurzer Zeit — das klassische Ransomware-Muster. Ein Benutzerkonto, das innerhalb von 60 Sekunden 500 Dateien mit <code>.encrypted</code>- oder zufalliger Extension offnet, umbenennt und schreibt, ist ein hochsignifikanter Ransomware-Indikator.</p>
+
+<pre><code># Beispiel: auditd-Regel fur Ransomware-Erkennung
+# Protokolliere alle Datei-Umbenennungen (rename/renameat syscalls)
+auditctl -a always,exit -F arch=b64 -S rename -S renameat -k rename_events
+
+# Analyse: Gruppiere rename-Events nach Benutzer + Zeitfenster
+ausearch -k rename_events --start 07/04/2026-14:00 --end 07/04/2026-14:05 \
+  | aureport -f -i | awk '{print $6}' | sort | uniq -c | sort -rn
+# Zeigt Top-Nutzer nach Anzahl der Rename-Operationen —
+# ein Benutzer mit >100 Renames in 5 Min = Ransomware-Verdacht!</code></pre>
+
+<h3>Disaster Recovery Plan und Forensik</h3>
+<p>Der DRP ist nicht nur ein Recovery-Dokument, sondern auch forensisches Beweismittel. Im Incident muss der Forensiker abwagen:</p>
+<ul>
+  <li><strong>Recovery First:</strong> Systeme nach DRP wiederherstellen, um Geschaftsbetrieb zu gewahrleisten — aber dabei forensische Daten (RAM, Disk, Logs) <strong>vor</strong> dem Restore sichern</li>
+  <li><strong>Forensics First:</strong> Erst das gesamte System forensisch kopieren (Imaging), dann Restore — aber dafur den Geschaftsbetrieb langer unterbrechen</li>
+  <li><strong>Kompromiss:</strong> Triage-Sicherung (RAM + wichtige Logs + Registry) in 15 Minuten, dann Restore nach DRP, dann Post-Mortem-Analyse der Triage-Daten</li>
+</ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuhrendes</h2>
+<ul>
+  <li>W. Curtis Preston: "Backup & Recovery" (O'Reilly, 2007) — Umfassendes Referenzwerk zu Backup-Strategien und -Technologien</li>
+  <li>NIST SP 800-34 Rev. 1: Contingency Planning Guide for Federal Information Systems</li>
+  <li>Microsoft Docs: "Advanced Audit Policy" und "Windows Event Forwarding"</li>
+  <li>Red Hat Enterprise Linux 9: "Security Hardening" — Kapitel 7 (Audit System)</li>
+  <li>Eric Zimmerman's Tools: EvtxeCmd, VSCMount (VSS-Zugriff)</li>
+  <li>MITRE ATT&CK: T1070 (Indicator Removal on Host) — Techniken zur Log-Manipulation</li>
+  <li>Veeam Backup & Replication 12: "Backup Methods and RPO/RTO Planning"</li>
+</ul>
+
+<div class="related-notes">
+  <strong>Verwandte Notizen</strong>
+  <div class="related-grid">
+    <a href="linux-administration.html">Linux-Administration</a>
+    <a href="windows-administration.html">Windows-Administration</a>
+    <a href="dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a>
+    <a href="anti-forensik-betriebssystem.html">Anti-Forensik</a>
+    <a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a>
+    <a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a>
+    <a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a>
+  </div>
+</div>
+
+<nav class="prev-next" id="prevNextNav"></nav>
+
+</article>
+</main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var inp = document.getElementById('sidebarSearch');
+  var res = document.getElementById('sidebarSearchResults');
+  if (!inp || !res) return;
+  function findNotes(q) {
+    q = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i], score = 0;
+      if (n.t.toLowerCase().indexOf(q) !== -1) score += 10;
+      if (n.f.toLowerCase().indexOf(q) !== -1) score += 5;
+      for (var j = 0; j < n.g.length; j++) {
+        if (n.g[j].toLowerCase().indexOf(q) !== -1) score += 3;
+      }
+      if (score > 0) out.push({n:n, s:score});
+    }
+    out.sort(function(a,b){return b.s - a.s;});
+    return out;
+  }
+  inp.addEventListener('input', function() {
+    var q = this.value.trim();
+    if (q.length < 1) { res.innerHTML = ''; res.classList.remove('show'); return; }
+    var matches = findNotes(q);
+    if (matches.length === 0) {
+      res.innerHTML = '<div style="padding:10px;color:var(--text-muted);font-size:12px">Keine Ergebnisse</div>';
+    } else {
+      var html = '';
+      for (var k = 0; k < Math.min(matches.length, 12); k++) {
+        var m = matches[k];
+        html += '<a href="../' + m.n.p + '" class="sr-item"><div class="sr-title">' + m.n.t + '</div><div class="sr-meta">' + m.n.f + '</div></a>';
+      }
+      res.innerHTML = html;
+    }
+    res.classList.add('show');
+  });
+  document.addEventListener('click', function(e) {
+    if (!res.contains(e.target) && e.target !== inp) res.classList.remove('show');
+  });
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { res.classList.remove('show'); inp.blur(); }
+  });
+})();
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

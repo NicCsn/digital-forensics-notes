@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lernnotizen zur Digitalen Forensik und IT-Security">
+<link rel="canonical" href="https://niccsn.github.io/digital-forensics-notes/">
+<meta property="og:title" content="Urheberrecht und Immaterialguterrecht (digital) — cosman.dev">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="cosman.dev">
+<title>Urheberrecht und Immaterialguterrecht (digital) — cosman.dev</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (10)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (17)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; IO-Management</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; Recovery</a></li>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC &amp; IO</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup &amp; Recovery</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (13)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP <a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>amp; Monitoring</a></li>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze <a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>amp; C2</a></li>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze &amp; C2</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (11)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKU</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="https://cosman.dev" class="home-link">cosman.dev</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-recht">Recht &amp; Kriminalistik</a> / Urheberrecht</span>
+</nav>
+<main>
+<article>
+<h1>Urheberrecht und Immaterialguterrecht (digital) <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzüberblick</a></li>
+  <li><a href="#grundlagen">Urheberrecht digital: Schutz von Software und Datenbanken</a></li>
+  <li><a href="#lizenzen">Software-Lizenzen: Proprietar vs. Open Source</a></li>
+  <li><a href="#copyleft">GPL (Copyleft) im Detail</a></li>
+  <li><a href="#permissiv">MIT, Apache, BSD: Permissive Lizenzen</a></li>
+  <li><a href="#lizenz-kompatibilitaet">Lizenz-Kompatibilitat und Lizenz-Verletzungen</a></li>
+  <li><a href="#forensische-relevanz">Forensische Relevanz</a></li>
+  <li><a href="#patentrecht">Patentrecht vs. Urheberrecht bei Software</a></li>
+  <li><a href="#praxis">Praktische Anwendung fur Forensik-Tools</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuhrendes</a></li>
+</ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Das Immaterialguterrecht — und insbesondere das Urheberrecht — regelt die rechtliche Zuweisung und den Schutz geistiger Schopfungen. Im digitalen Kontext betrifft dies Software, Datenbanken, Webseiten und digitale Inhalte. Fur Forensiker ist Urheberrecht von praktischer Relevanz: Bei der Analyse von Malware konnen fremde Codebestandteile identifiziert werden (Lizenzverstoss als rechtlicher Hebel), bei der Erstellung forensischer Tools mussen Lizenzen korrekt angewendet werden (Compliance), und bei der Sicherung von Beweisen konnen urheberrechtlich geschutzte Werke tangiert sein (Schrankenregelungen fur Strafverfolgung).</p>
+
+<p>MHB-Mapping: BDF402 (Recht) — Immaterialguterrecht im digitalen Zeitalter mit Fokus auf Software und forensische Praxis.</p>
+
+<h2 id="grundlagen">Urheberrecht digital: Schutz von Software und Datenbanken</h2>
+
+<h3>Schutzgegenstande</h3>
+<table>
+<thead><tr><th>Werkkategorie</th><th>Geschutzt?</th><th>Rechtsgrundlage (DE)</th><th>Beispiele</th></tr></thead><tbody>
+<tr><td><strong>Computerprogramme</strong></td><td>Ja (jede Ausdrucksform, einschliesslich Entwurfsmaterial)</td><td>Par. 69a UrhG</td><td>Quellcode, Objektcode, kompilierte Binary, Flowcharts, UML-Diagramme als Vorstufe</td></tr>
+<tr><td><strong>Datenbanken</strong></td><td>Ja (wenn systematisch/methodisch angeordnet und wesentliche Investition)</td><td>Par.Par. 87a–87e UrhG (Sui-generis-Schutz)</td><td>Malware-Signatur-Datenbanken, VirusTotal-API-Daten, Forensik-Hash-Sets (NSRL)</td></tr>
+<tr><td><strong>Webseiten</strong></td><td>Ja (als Sammelwerk; einzelne Elemente: Texte, Grafiken, HTML/CSS-Struktur)</td><td>Par. 4 UrhG (Sammelwerke), Par. 2 UrhG (Sprachwerke, Lichtbildwerke)</td><td>Blog-Artikel, Forensik-Dokumentation, Tutorials</td></tr>
+</tbody></table>
+
+<h3>Ungeschutzte Elemente</h3>
+<p>Nicht alles ist urheberrechtlich geschutzt. Nach Par. 69a Abs. 2 UrhG und allgemeiner Rechtsdogmatik sind folgende Elemente nicht geschutzt:</p>
+<ul>
+  <li><strong>Ideen und Grundsatze:</strong> Das Konzept eines Carving-Algorithmus ist nicht geschutzt, nur der konkrete Code</li>
+  <li><strong>Algorithmen an sich:</strong> Ein mathematisches Verfahren (z.B. SHA-256) ist nicht urheberrechtsfahig; die konkrete Implementierung schon</li>
+  <li><strong>Reine Fakten und Daten:</strong> Rohdaten (z.B. IP-Adressen, Log-Eintrage) sind nicht geschutzt; eine kreative Datenbankstruktur kann es sein</li>
+  <li><strong>Protokolle und Schnittstellen:</strong> Die Spezifikation von HTTP ist nicht geschutzt; eine konkrete Server-Implementierung schon</li>
+</ul>
+
+<div class="callout info"><strong>Forensische Abgrenzung:</strong> Wenn Sie in einem forensischen Gutachten einen Algorithmus beschreiben (z.B. "Der DGA von Malware-Familie X funktioniert nach dem SHA-256 + Datumsseed-Prinzip"), verletzen Sie keine Urheberrechte. Wenn Sie dagegen den dekompilierten Quellcode der Malware wortlich in den Bericht kopieren, kann ein Urheberrechtsverstoss vorliegen — auch wenn es sich um Malware handelt!</div>
+
+<h2 id="lizenzen">Software-Lizenzen: Proprietar vs. Open Source</h2>
+
+<table>
+<thead><tr><th>Lizenztyp</th><th>Merkmale</th><th>Beispiele</th><th>Forensik-Nutzung</th></tr></thead><tbody>
+<tr><td><strong>Proprietar</strong></td><td>Quellcode nicht offentlich; Nutzung durch Endbenutzer-Lizenzvertrag (EULA) beschrankt; Vervielfaltigung, Dekompilierung meist verboten</td><td>Windows, EnCase, FTK, Magnet AXIOM</td><td>Forensik-Tools durfen i.d.R. nur auf lizenzierten Systemen eingesetzt werden; Dekompilierung ist verboten (Par. 69e UrhG enge Ausnahmen)</td></tr>
+<tr><td><strong>Open Source (Copyleft)</strong></td><td>Quellcode offentlich; abgeleitete Werke mussen unter gleicher Lizenz veroffentlicht werden (virale Klausel)</td><td>GPLv2, GPLv3, AGPLv3</td><td>Forensik-Tool unter GPL: Jede Modifikation muss wieder unter GPL stehen; Kompatibilitat mit anderen Lizenzen prufen</td></tr>
+<tr><td><strong>Open Source (Permissiv)</strong></td><td>Quellcode offentlich; keine Copyleft-Pflicht; abgeleitete Werke durfen unter beliebiger Lizenz stehen (auch proprietar)</td><td>MIT, Apache 2.0, BSD (2/3-Klausel), Unlicense</td><td>Forensik-Tool unter MIT: Kann in kommerzielles Produkt integriert werden; Namensnennung und Haftungsausschluss bleiben bestehen</td></tr>
+<tr><td><strong>Dual-Licensing</strong></td><td>Gleicher Code unter zwei Lizenzen verfugbar: z.B. GPL (fur Open-Source-Nutzer) und kommerzielle Lizenz (fur proprietare Nutzer)</td><td>Qt, MySQL, Berkeley DB (Oracle)</td><td>Forensik-Tool mit MySQL-Anbindung: Bei kommerzieller Nutzung ggf. kommerzielle Lizenz erforderlich</td></tr>
+</tbody></table>
+
+<h2 id="copyleft">GPL (Copyleft) im Detail</h2>
+
+<h3>GPLv2 vs. GPLv3</h3>
+<table>
+<thead><tr><th>Aspekt</th><th>GPLv2 (1991)</th><th>GPLv3 (2007)</th></tr></thead><tbody>
+<tr><td><strong>Copyleft-Umfang</strong></td><td>Abgeleitete Werke und Ganzes, das GPL-Code enthalt</td><td>Gleicher Umfang, aber klarere Definition von "Corresponding Source"</td></tr>
+<tr><td><strong>Tivoisierung</strong></td><td>Kein Schutz dagegen (Hardware, die modifizierte GPL-Software ablehnt)</td><td>Anti-Tivoisierung-Klausel: Hardware muss modifizierte Versionen ausfuhren</td></tr>
+<tr><td><strong>Patentklausel</strong></td><td>Implizit (keine explizite Patent-Lizenz)</td><td>Explizite Patent-Lizenz; Lizenznehmer, die Patentklage einreichen, verlieren GPL-Rechte</td></tr>
+<tr><td><strong>Kompatibilitat</strong></td><td>Nicht kompatibel mit Apache 2.0</td><td>Kompatibel mit Apache 2.0 (Paragraph 7e)</td></tr>
+<tr><td><strong>Forensische Relevanz</strong></td><td>Viele altere Forensik-Tools (dcfldd, sleuthkit alt) unter GPLv2</td><td>Neuere Tools (Plaso, Volatility 3) und Libraries bevorzugen GPLv3 oder Apache 2.0</td></tr>
+</tbody></table>
+
+<h3>AGPLv3 — Affero GPL</h3>
+<p>Schliesst das "ASP-Loophole": Wer eine AGPL-lizenzierte Software als Netzwerkdienst (SaaS) anbietet, muss den Quellcode auch dann offenlegen, wenn die Software nicht "verteilt" wird. Fur Forensik-Tools als Web-Service (z.B. eine Online-Timeline-Analyse-Plattform) relevant.</p>
+
+<h2 id="permissiv">MIT, Apache, BSD: Permissive Lizenzen</h2>
+
+<table>
+<thead><tr><th>Lizenz</th><th>Bedingungen</th><th>Fur Forensik-Tools geeignet weil</th></tr></thead><tbody>
+<tr><td><strong>MIT</strong></td><td>Copyright-Vermerk + Lizenztext mussen in allen Kopien enthalten sein. Keine Copyleft-Pflicht.</td><td>Maximale Freiheit: Code kann in proprietare Forensik-Suiten integriert werden; akademische Forensik-Forschung bevorzugt MIT</td></tr>
+<tr><td><strong>Apache 2.0</strong></td><td>Attributionshinweis + Lizenztext + Anderungshinweis. Explizite Patent-Lizenz. Kompatibel mit GPLv3.</td><td>Patent-Lizenz schutzt vor Patent-Trolling; APLv2 ist der Standard fur grosse Projekte (Android, Kubernetes)</td></tr>
+<tr><td><strong>BSD 2-Clause</strong></td><td>Copyright-Vermerk + Lizenztext + Haftungsausschluss. Keine "Werbungsklausel" (anders als alte BSD 4-Clause).</td><td>Einfachste permissive Lizenz; weniger Rechts-Overhead als Apache 2.0; ideal fur kleine Forensik-Skripte</td></tr>
+<tr><td><strong>BSD 3-Clause</strong></td><td>Wie 2-Clause + Verbot der Nutzung des Namens des Rechteinhabers zur Werbung ohne Erlaubnis</td><td>Schutzt Reputation des Autors; wenn Sie ein Forensik-Tool veroffentlichen und nicht von Dritten als Werbemittel benutzt werden wollen</td></tr>
+</tbody></table>
+
+<h2 id="lizenz-kompatibilitaet">Lizenz-Kompatibilitat und Lizenz-Verletzungen</h2>
+
+<h3>Kompatibilitats-Matrix (vereinfacht)</h3>
+<pre><code># Kann ich Code unter Lizenz A mit Code unter Lizenz B kombinieren?
+# (A = eigenes Projekt, B = Bibliothek, die ich nutzen mochte)
+
+         # B: MIT  BSD  Apache2  GPLv2  GPLv3  Proprietar
+# A: MIT      Ja   Ja   Ja       Ja     Ja     Ja (unter MIT-Bedingungen)
+# A: GPLv2    Ja   Ja   Nein     Ja     Nein   Nein
+# A: GPLv3    Ja   Ja   Ja       Nein   Ja     Nein
+# A: Proprietar Ja  Ja   Ja      Nein   Nein   —</code></pre>
+
+<h3>Typische Lizenz-Verletzungen und forensische Erkennung</h3>
+<table>
+<thead><tr><th>Verletzung</th><th>Beschreibung</th><th>Forensischer Nachweis</th></tr></thead><tbody>
+<tr><td><strong>GPL-Code in proprietarer Software</strong></td><td>Kommerzielles Produkt enthalt GPL-Code, ohne die GPL-Bedingungen zu erfullen</td><td>String-Analyse der Binary (GPL-Header, Lizenztexte in Strings); Code-Similarity-Analyse (BinDiff, Diaphora)</td></tr>
+<tr><td><strong>Fehlende Quellcode-Veroffentlichung</strong></td><td>GPL-Code wird in Embedded-Gerat verwendet, Quellcode nicht veroffentlicht</td><td>Firmware-Extraktion (Binwalk); Vergleich bekannter GPL-Bibliotheken (z.B. BusyBox) mit Firmware-Inhalten</td></tr>
+<tr><td><strong>Fehlende Attributierung</strong></td><td>MIT/Apache-Code wird verwendet, aber Copyright-Vermerk fehlt</td><td>Code-Vergleich von dekompiliertem Bytecode mit Open-Source-Repositories; Git-Historie als Beweis</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Forensische Praxis — GPL-Verletzung in Malware:</strong> Viele Malware-Autoren verwenden Open-Source-Code (z.B. OpenSSL fur Verschlusselung, libcurl fur HTTP-Kommunikation). Der Nachweis, dass Malware GPL-Code enthalt, kann rechtliche Hebel eroffnen: Der GPL-Lizenzgeber kann Unterlassungsanspruche geltend machen. In der Praxis ist dies jedoch selten, da Malware-Autoren anonym und schwer greifbar sind.</div>
+
+<h2 id="forensische-relevanz">Forensische Relevanz</h2>
+
+<h3>Szenarien mit Urheberrechtsbezug</h3>
+<table>
+<thead><tr><th>Szenario</th><th>Urheberrechtliche Frage</th><th>Forensische Methode</th></tr></thead><tbody>
+<tr><td><strong>Malware enthalt GPL-Code</strong></td><td>Liegt eine Urheberrechtsverletzung vor? (ermoglicht rechtliche Handhabe)</td><td>Dekompilierung + Code-String-Suche + Cross-Reference-Analyse</td></tr>
+<tr><td><strong>Unternehmen verwendet nicht-lizenzierte Forensik-Software</strong></td><td>Verstoss gegen EULA; Beweismittel eventuell unrechtmassig erlangt?</td><td>Lizenzprufung + Installationsnachweise + Rechnungsbelege</td></tr>
+<tr><td><strong>Mitarbeiter kopiert Quellcode in privates Projekt</strong></td><td>Urheberrechtsverletzung; Arbeitsvertrag regelt Rechte an Arbeitsergebnissen</td><td>Git-Commit-Historie, Timestamps, Zugriffs-Logs; Code-Plagiats-Analyse</td></tr>
+<tr><td><strong>Forensik-Bericht enthalt geschutzte Screenshots</strong></td><td>Zitatrecht (Par. 51 UrhG) vs. Urheberrechtsverletzung bei ubermassiger Nutzung</td><td>Prufung der Bildquellen; Einhaltung der Zitatschranken (Quellenangabe, Zweck, Umfang)</td></tr>
+</tbody></table>
+
+<h3>Code-Diebstahl bei Malware — Forensische Untersuchung</h3>
+<p>Malware-Autoren "leihen" haufig Code aus Open-Source-Projekten oder sogar von anderen Malware-Familien. Forensische Methoden zur Feststellung:</p>
+<ol>
+  <li><strong>Strings-Analyse:</strong> <code>strings malware.exe | grep -i "GNU General Public License"</code> — direktes Indiz fur GPL-Code</li>
+  <li><strong>Funktions-Hashing:</strong> Dekompilierte Funktionen hashen und mit Open-Source-Repositories vergleichen (z.B. "function hash bloom filter")</li>
+  <li><strong>Compiler-Fingerprinting:</strong> Erkennung des Compilers (GCC, MSVC, Clang) und der verwendeten Standardbibliotheken</li>
+  <li><strong>Code-Reuse uber BinDiff:</strong> Binare Differenz zweier Malware-Samples zeigt Code-Uberlappungen — derselbe Autor?</li>
+</ol>
+
+<h2 id="patentrecht">Patentrecht vs. Urheberrecht bei Software</h2>
+
+<table>
+<thead><tr><th>Aspekt</th><th>Urheberrecht (Copyright)</th><th>Patentrecht</th></tr></thead><tbody>
+<tr><td><strong>Schutzgegenstand</strong></td><td>Konkrete Ausdrucksform (Code, UI-Design, Dokumentation)</td><td>Technische Erfindung — eine neue, erfinderische Lehre zum technischen Handeln</td></tr>
+<tr><td><strong>Entstehung</strong></td><td>Automatisch mit Schaffung des Werks (keine Registrierung notig)</td><td>Nur nach erfolgreicher Patentanmeldung und Prufung (aufwandig, teuer)</td></tr>
+<tr><td><strong>Dauer</strong></td><td>70 Jahre nach Tod des Urhebers (DE: Par. 64 UrhG)</td><td>Max. 20 Jahre ab Anmeldetag (Par. 16 PatG)</td></tr>
+<tr><td><strong>Software-Patentierbarkeit (EU)</strong></td><td>— (Urheberrecht schutzt per se)</td><td>Software "als solche" nicht patentierbar (Art. 52(2)(c) EPU); nur wenn technisches Problem gelöst wird (z.B. Steuerung einer CNC-Maschine)</td></tr>
+<tr><td><strong>Forensik-Relevanz</strong></td><td>Hoch (Lizenz-Compliance, Code-Nachweis)</td><td>Gering (wenige Software-Patente in der forensischen Praxis relevant)</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>EU vs. USA:</strong> In den USA sind Software-Patente deutlich einfacher durchsetzbar als in der EU. Die US-Rechtsprechung (Alice Corp. v. CLS Bank, 2014) hat die Patentierbarkeit zwar eingeschrankt, aber viele Software-Patente existieren weiterhin. Forensik-Tools, die in den USA eingesetzt werden, mussen daher auch Patentrecherchen durchfuhren — in der EU ist das Risiko von Software-Patentklagen geringer.</div>
+
+<h2 id="praxis">Praktische Anwendung fur Forensik-Tools</h2>
+
+<h3>Open-Source-Lizenzen im eigenen Forensik-Tool korrekt anwenden</h3>
+<p>Schritt-fur-Schritt-Leitfaden fur die Veroffentlichung eines forensischen Open-Source-Tools:</p>
+
+<ol>
+  <li><strong>Lizenz wahlen:</strong> Entscheiden Sie, ob Copyleft (GPL) oder permissiv (MIT/Apache). Fur akademische Forensik-Forschung ist MIT ublich; fur Tools, die Teil eines grosseren Okosystems sind (z.B. Volatility-Plugins), richtet sich die Lizenz nach dem Hauptprojekt</li>
+  <li><strong>LICENSE-Datei:</strong> Im Repository-Wurzelverzeichnis die vollstandige Lizenz als <code>LICENSE</code> ablegen</li>
+  <li><strong>Copyright-Header in jeder Datei:</strong> Kurzer Hinweis in den ersten Zeilen jeder Quellcode-Datei</li>
+  <li><strong>Dependencies prufen:</strong> Alle verwendeten Bibliotheken auflisten und deren Lizenzen dokumentieren (am besten mit <code>pip-licenses</code>, <code>cargo-license</code>, <code>license_finder</code>)</li>
+  <li><strong>Contributions klaren:</strong> Contributor License Agreement (CLA) oder Developer Certificate of Origin (DCO) einrichten, um Rechte an Beitragen zu regeln</li>
+</ol>
+
+<pre><code># Beispiel: Copyright-Header in einer Python-Forensik-Datei
+# Copyright (c) 2026 Max Mustermann <max@forensics-lab.de>
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, ...
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, ...
+
+# __init__.py — Forensic Hash Validator
+from .hash_utils import validate_sha256, validate_md5
+
+__version__ = "1.0.0"
+__license__ = "MIT"
+</code></pre>
+
+<h3>Creative Commons fur Forensik-Dokumentation</h3>
+<p>Fur Dokumentation, Berichte und Schulungsmaterialien (nicht fur Code!) sind Creative-Commons-Lizenzen geeignet. Fur Forensik-Notizen und -Dokumentation empfiehlt sich:</p>
+
+<ul>
+  <li><strong>CC BY 4.0:</strong> Namensnennung erforderlich; maximale Verbreitung (auch kommerzielle Nutzung erlaubt). Geeignet fur offentlich zugangliche Forensik-Notizen und Tutorials</li>
+  <li><strong>CC BY-SA 4.0:</strong> Namensnennung + Weitergabe unter gleichen Bedingungen (Copyleft fur Dokumente). Analog zur GPL fur Texte</li>
+  <li><strong>CC BY-NC 4.0:</strong> Namensnennung + nur nicht-kommerzielle Nutzung. Gut fur Forensik-Schulungsmaterial, das nicht von kommerziellen Unternehmen monetarisiert werden soll</li>
+</ul>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuhrendes</h2>
+<ul>
+  <li>Gesetz uber Urheberrecht und verwandte Schutzrechte (Urheberrechtsgesetz — UrhG) in der Fassung vom 23.06.2021</li>
+  <li>Richtlinie 2009/24/EG uber den Rechtsschutz von Computerprogrammen (Software-Richtlinie)</li>
+  <li>Richtlinie 96/9/EG uber den rechtlichen Schutz von Datenbanken (Datenbank-Richtlinie)</li>
+  <li>Europaisches Patentubereinkommen (EPU), Art. 52 — Patentierbare Erfindungen</li>
+  <li>GNU General Public License v3 — gnu.org/licenses/gpl-3.0</li>
+  <li>Open Source Initiative (OSI): "The BSD 3-Clause License" und "The MIT License"</li>
+  <li>Lawrence Rosen: "Open Source Licensing: Software Freedom and Intellectual Property Law" (Prentice Hall, 2004)</li>
+  <li>Creative Commons: "About The Licenses" — creativecommons.org/share-your-work/cclicenses/</li>
+  <li>IfrOSS (Institut fur Rechtsfragen der Freien und Open Source Software): ifross.org — Lizenzkompatibilitat und Rechtsgutachten</li>
+</ul>
+
+<div class="related-notes">
+  <strong>Verwandte Notizen</strong>
+  <div class="related-grid">
+    <a href="digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel: Grundprinzipien</a>
+    <a href="dsgvo-datenschutz.html">DSGVO und Datenschutz</a>
+    <a href="grundrechte-digital.html">Grundrechte im digitalen Raum</a>
+    <a href="juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a>
+    <a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+    <a href="../04-forensik-methoden/forensische-dokumentation.html">Forensische Dokumentation</a>
+    <a href="ethik-informationssicherheit.html">Ethik in der Informationssicherheit</a>
+  </div>
+</div>
+
+<nav class="prev-next" id="prevNextNav"></nav>
+
+</article>
+</main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var inp = document.getElementById('sidebarSearch');
+  var res = document.getElementById('sidebarSearchResults');
+  if (!inp || !res) return;
+  function findNotes(q) {
+    q = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i], score = 0;
+      if (n.t.toLowerCase().indexOf(q) !== -1) score += 10;
+      if (n.f.toLowerCase().indexOf(q) !== -1) score += 5;
+      for (var j = 0; j < n.g.length; j++) {
+        if (n.g[j].toLowerCase().indexOf(q) !== -1) score += 3;
+      }
+      if (score > 0) out.push({n:n, s:score});
+    }
+    out.sort(function(a,b){return b.s - a.s;});
+    return out;
+  }
+  inp.addEventListener('input', function() {
+    var q = this.value.trim();
+    if (q.length < 1) { res.innerHTML = ''; res.classList.remove('show'); return; }
+    var matches = findNotes(q);
+    if (matches.length === 0) {
+      res.innerHTML = '<div style="padding:10px;color:var(--text-muted);font-size:12px">Keine Ergebnisse</div>';
+    } else {
+      var html = '';
+      for (var k = 0; k < Math.min(matches.length, 12); k++) {
+        var m = matches[k];
+        html += '<a href="../' + m.n.p + '" class="sr-item"><div class="sr-title">' + m.n.t + '</div><div class="sr-meta">' + m.n.f + '</div></a>';
+      }
+      res.innerHTML = html;
+    }
+    res.classList.add('show');
+  });
+  document.addEventListener('click', function(e) {
+    if (!res.contains(e.target) && e.target !== inp) res.classList.remove('show');
+  });
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { res.classList.remove('show'); inp.blur(); }
+  });
+})();
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

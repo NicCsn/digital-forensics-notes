@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lernnotizen zur Digitalen Forensik und IT-Security">
+<link rel="canonical" href="https://niccsn.github.io/digital-forensics-notes/">
+<meta property="og:title" content="Quellen-TKU und Online-Durchsuchung — cosman.dev">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="cosman.dev">
+<title>Quellen-TKU und Online-Durchsuchung — cosman.dev</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (10)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (17)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; IO-Management</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; Recovery</a></li>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC &amp; IO</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup &amp; Recovery</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (13)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP <a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>amp; Monitoring</a></li>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze <a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>amp; C2</a></li>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze &amp; C2</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (11)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKU</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="https://cosman.dev" class="home-link">cosman.dev</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-recht">Recht &amp; Kriminalistik</a> / Quellen-TKU</span>
+</nav>
+<main>
+<article>
+<h1>Quellen-TKU und Online-Durchsuchung <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzüberblick</a></li>
+  <li><a href="#it-grundrecht">IT-Grundrecht (BVerfG 2008)</a></li>
+  <li><a href="#quellen-tkue">Quellen-TKU: Definition und Abgrenzung</a></li>
+  <li><a href="#online-durchsuchung">Online-Durchsuchung: Rechtsrahmen und Voraussetzungen</a></li>
+  <li><a href="#stpo">Paragraphen 100a und 100b StPO</a></li>
+  <li><a href="#messenger">Messenger-Problematik und Ende-zu-Ende-Verschlusselung</a></li>
+  <li><a href="#eu">EU-Rechtsrahmen: e-Evidence-Verordnung</a></li>
+  <li><a href="#implikationen">Praktische Implikationen fur Forensiker</a></li>
+  <li><a href="#diskussion">Diskussion: Sicherheit vs. Privatsphare</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuhrendes</a></li>
+</ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Quellen-Telekommunikationsuberwachung (Quellen-TKU) und Online-Durchsuchung sind die eingriffsintensivsten Ermittlungsmassnahmen im digitalen Raum. Sie ermoglichen Strafverfolgungsbehorden den Zugriff auf laufende Kommunikation und gespeicherte Daten auf informationstechnischen Systemen — noch bevor oder wahrend eine Verschlusselung greift. Fur digitale Forensiker ist das Verstandnis der rechtlichen Grenzen dieser Massnahmen essenziell: Was darf im Rahmen einer Quellen-TKU gesichert werden? Wann ist eine Online-Durchsuchung zulassig? Wo beginnt der unantastbare Kernbereich privater Lebensgestaltung?</p>
+
+<p>MHB-Mapping: BDF402 (Recht) — Vertiefung des Eingriffsrechts im digitalen Kontext mit Fokus auf aktuelle technische Entwicklungen.</p>
+
+<h2 id="it-grundrecht">IT-Grundrecht (BVerfG 2008)</h2>
+
+<p>Mit dem Urteil vom 27. Februar 2008 (1 BvR 370/07, 1 BvR 595/07) hat das Bundesverfassungsgericht ein neues Grundrecht aus Art. 2 Abs. 1 i.V.m. Art. 1 Abs. 1 GG abgeleitet: das <strong>Grundrecht auf Gewahrleistung der Vertraulichkeit und Integritat informationstechnischer Systeme</strong> — kurz IT-Grundrecht.</p>
+
+<h3>Kernaussagen des BVerfG-Urteils</h3>
+<table>
+<thead><tr><th>Aspekt</th><th>Inhalt</th></tr></thead><tbody>
+<tr><td><strong>Schutzbereich</strong></td><td>Schutzt informationstechnische Systeme (PCs, Smartphones, Server, IoT-Gerate) vor unbefugtem Zugriff, der die Moglichkeit schafft, das gesamte System oder wesentliche Teile auszuspähen</td></tr>
+<tr><td><strong>Abgrenzung zu Art. 10 GG</strong></td><td>Art. 10 GG (Fernmeldegeheimnis) schutzt laufende Kommunikation; das IT-Grundrecht schutzt die Integritat des Systems selbst und die darauf ruhenden Daten</td></tr>
+<tr><td><strong>Kernbereichsschutz</strong></td><td>Unantastbarer Kernbereich privater Lebensgestaltung muss geschutzt sein; automatisierte Erfassung ohne menschliche Vorfilterung ist unzulassig</td></tr>
+<tr><td><strong>Eingriffsvoraussetzungen</strong></td><td>Nur bei uberragend wichtigen Rechtsgutern (Leib, Leben, Freiheit, Bestand des Staates); tatsachliche Anhaltspunkte fur konkrete Gefahr; Richtervorbehalt</td></tr>
+<tr><td><strong>Technische Schutzmassnahmen</strong></td><td>Gesetzgeber muss technische Vorkehrungen zum Kernbereichsschutz vorsehen (z.B. KI-basierte Vorfilterung, manuelle Sichtung)</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Bedeutung fur Forensiker:</strong> Das IT-Grundrecht ist die verfassungsrechtliche Schranke fur alle staatlichen Zugriffe auf IT-Systeme. Jede forensische Sicherung durch staatliche Stellen — ob Quellen-TKU, Online-Durchsuchung oder klassische Datentragerauswertung — muss sich an diesem Grundrecht messen lassen. Private Forensiker (z.B. im Auftrag eines Unternehmens) sind nicht direkt an Grundrechte gebunden, aber die Ergebnisse durfen nur verwertet werden, wenn die Beweiserhebung rechtskonform war.</div>
+
+<h2 id="quellen-tkue">Quellen-TKU: Definition und Abgrenzung</h2>
+
+<h3>Was ist Quellen-TKU?</h3>
+<p>Die Quellen-TKU ist die Uberwachung laufender Telekommunikation an der Quelle — also auf dem Endgerat des Kommunikationsteilnehmers, <strong>bevor</strong> die Daten verschlusselt werden. Sie erfasst Kommunikation, die uber das Internet gefuhrt wird und die bei einer herkommlichen TKU (die am Provider ansetzt) wegen Ende-zu-Ende-Verschlusselung nicht mehr lesbar ware.</p>
+
+<h3>Abgrenzung zur herkommlichen TKU</h3>
+<table>
+<thead><tr><th>Merkmal</th><th>Herkommliche TKU</th><th>Quellen-TKU</th></tr></thead><tbody>
+<tr><td><strong>Ansatzpunkt</strong></td><td>Beim Telekommunikationsanbieter (Provider)</td><td>Auf dem Endgerat des Betroffenen (Quelle)</td></tr>
+<tr><td><strong>Erfasste Daten</strong></td><td>Verkehrsdaten + unverschlusselte Inhaltsdaten</td><td>Inhaltsdaten <strong>vor</strong> der Verschlusselung durch den Messenger</td></tr>
+<tr><td><strong>Technische Umsetzung</strong></td><td>Schnittstelle beim Provider (gesetzliche Auskunftspflicht)</td><td>Staatstrojaner / Software auf dem Zielgerat (Remote/Physisch)</td></tr>
+<tr><td><strong>Grundrechtseingriff</strong></td><td>Art. 10 GG (Fernmeldegeheimnis)</td><td>Art. 10 GG + IT-Grundrecht (weil das System infiltriert wird)</td></tr>
+<tr><td><strong>Rechtsgrundlage</strong></td><td>Par. 100a StPO</td><td>Par. 100a Abs. 1 S. 2 und 3 StPO (eingefugt 2017)</td></tr>
+</tbody></table>
+
+<h3>BGH-Urteil 2017 zur Quellen-TKU</h3>
+<p>Der Bundesgerichtshof (3 StR 104/17, Urteil vom 21. April 2017) hat die Quellen-TKU fur zulassig erklart, sofern sie sich auf die Erfassung <strong>laufender</strong> Telekommunikation beschrankt und nicht auf bereits gespeicherte Inhalte zugreift. Der BGH fuhrte aus, dass die einmalige Infiltration des Systems zum Zweck der TKU vom bisherigen Par. 100a StPO gedeckt sei — eine gesonderte gesetzliche Grundlage fur den "Einbruch" in das System sei nicht erforderlich.</p>
+
+<h2 id="online-durchsuchung">Online-Durchsuchung: Rechtsrahmen und Voraussetzungen</h2>
+
+<p>Die Online-Durchsuchung geht uber die Quellen-TKU hinaus: Sie erfasst <strong>gespeicherte Daten</strong> auf dem Zielsystem — also Dateien, E-Mails, Bilder, Dokumente — und nicht nur laufende Kommunikation. Wegen der hoheren Eingriffsintensitat gelten strengere Voraussetzungen.</p>
+
+<h3>Rechtsgrundlagen</h3>
+<table>
+<thead><tr><th>Gesetz</th><th>Regelung</th><th>Voraussetzungen</th></tr></thead><tbody>
+<tr><td><strong>Par. 100b StPO</strong></td><td>Online-Durchsuchung im Strafverfahren</td><td>Tatsachliche Anhaltspunkte fur eine besonders schwere Straftat (Katalog aus Par. 100b Abs. 2); Erforschung des Sachverhalts auf andere Weise wesentlich erschwert oder aussichtslos; Richtervorbehalt; technische Sicherung des Kernbereichs</td></tr>
+<tr><td><strong>Par. 49 BKA-Gesetz (BKAG)</strong></td><td>Online-Durchsuchung zur Gefahrenabwehr (BKA)</td><td>Dringende Gefahr fur Leib, Leben, Freiheit einer Person oder Bestand des Staates; Richtervorbehalt des BGH-Ermittlungsrichters</td></tr>
+<tr><td><strong>Landespolizeigesetze</strong></td><td>Prasventive Online-Durchsuchung durch Lander</td><td>Teilweise verfassungswidrig (BVerfG zu Bayern 2022); Regelungsdschungel mit uneinheitlichen Standards</td></tr>
+</tbody></table>
+
+<h3>Richtervorbehalt</h3>
+<p>Die Anordnung obliegt — anders als bei der "einfachen" TKU — nicht der Staatsanwaltschaft, sondern ausschliesslich dem Richter (Par. 100b Abs. 1 S. 3 StPO). Bei Gefahr im Verzug kann die Staatsanwaltschaft anordnen, muss aber binnen drei Tagen die richterliche Bestatigung nachholen. Diese Frist beginnt mit der Anordnung, nicht mit dem technischen Zugriff.</p>
+
+<h3>Kernbereichsschutz</h3>
+<p>Erhebung von Daten aus dem Kernbereich privater Lebensgestaltung ist absolut verboten (Par. 100d Abs. 1 StPO). Werden solche Daten dennoch erhoben, durfen sie nicht verwertet werden und mussen unverzuglich gelöscht werden. Die Loschung ist zu dokumentieren. Praktisch bedeutet dies: Ein automatisierter Filter muss intime Kommunikation (Partnergesprache, Tagebuchaufzeichnungen, Seelsorge) erkennen und aussortieren — eine technisch und rechtlich ungeloste Herausforderung.</p>
+
+<h2 id="stpo">Paragraphen 100a und 100b StPO</h2>
+
+<h3>Par. 100a StPO — Telekommunikationsuberwachung (inkl. Quellen-TKU)</h3>
+<ul>
+  <li><strong>Abs. 1:</strong> TKU darf angeordnet werden bei Verdacht auf eine Katalogstraftat (Abs. 2 listet 40+ Delikte: Mord, Totschlag, Bildung krimineller Vereinigungen, Geldwasche, Computersabotage etc.)</li>
+  <li><strong>Abs. 1 S. 2 und 3:</strong> Ermöglicht die Quellen-TKU durch Eingriff in das informationstechnische System des Betroffenen — aber nur zur Uberwachung laufender Kommunikation</li>
+  <li><strong>Abs. 3:</strong> Drittanordnung: Auch Anschlusse Dritter konnen uberwacht werden, wenn tatsachliche Anhaltspunkte bestehen, dass der Beschuldigte diesen Anschluss nutzt</li>
+</ul>
+
+<h3>Par. 100b StPO — Online-Durchsuchung</h3>
+<ul>
+  <li><strong>Abs. 1:</strong> Auf das informationstechnische System des Beschuldigten darf mit technischen Mitteln zugegriffen und es durfen gespeicherte Daten erhoben werden</li>
+  <li><strong>Abs. 2:</strong> Nur bei besonders schwerer Straftat (engerer Katalog als 100a) oder wenn die Erforschung auf andere Weise wesentlich erschwert ware</li>
+  <li><strong>Abs. 5:</strong> Drittanordnung: Zugriff auf Systeme Dritter nur, wenn der Beschuldigte sie nachweislich nutzt</li>
+</ul>
+
+<h3>Par. 100d StPO — Kernbereichsschutz</h3>
+<p>Verbot der Erhebung kernbereichsrelevanter Daten; Loschungs- und Dokumentationspflichten; Verwertungsverbot bei versehentlicher Erhebung.</p>
+
+<h2 id="messenger">Messenger-Problematik und Ende-zu-Ende-Verschlusselung</h2>
+
+<p>Ende-zu-Ende-verschlusselte Messenger (WhatsApp, Signal, Threema, Telegram Secret Chats) stellen Strafverfolgungsbehorden vor ein technisches Problem: Die Kommunikationsinhalte sind selbst fur den Provider unlesbar. Eine herkommliche TKU beim Provider liefert nur Metadaten (wer kommuniziert wann mit wem), aber keine Inhalte. Die Quellen-TKU setzt an dieser Lucke an, indem sie den Trojaner auf dem Endgerat platziert, um die Nachricht <strong>vor</strong> der Verschlusselung (am Eingang) oder <strong>nach</strong> der Entschlusselung (am Ausgang) abzugreifen.</p>
+
+<table>
+<thead><tr><th>Messenger</th><th>Verschlusselung</th><th>TKU beim Provider?</th><th>Quellen-TKU moglich?</th></tr></thead><tbody>
+<tr><td><strong>WhatsApp</strong></td><td>E2E (Signal-Protokoll)</td><td>Nein (nur Metadaten)</td><td>Ja (vor/nach Verschlusselung auf dem Gerat)</td></tr>
+<tr><td><strong>Signal</strong></td><td>E2E (Signal-Protokoll) + Sealed Sender</td><td>Nein (selbst Metadaten minimiert)</td><td>Ja (aber technisch anspruchsvoll)</td></tr>
+<tr><td><strong>Telegram</strong></td><td>Cloud-Chats: Transport-Verschlusselung; Secret Chats: E2E</td><td>Cloud-Chats: Ja (Server hat Klartext); Secret: Nein</td><td>Ja (Secret Chats)</td></tr>
+<tr><td><strong>Threema</strong></td><td>E2E (NaCl-Bibliothek)</td><td>Nein</td><td>Ja</td></tr>
+</tbody></table>
+
+<div class="callout warning"><strong>Technische Eskalation:</strong> Die Quellen-TKU ist eine Reaktion auf die zunehmende Verschlusselung. Kritiker warnen vor einem "Wettrusten": Messenger fuhren bessere Verschlusselung ein → Staat fordert starkere Trojaner → Messenger implementieren Anti-Tampering-Mechanismen → Staat verlangt gesetzliche Hinterturen (Encryption Backdoors). Dieser Kreislauf gefahrdet die IT-Sicherheit aller Nutzer, weil jede Backdoor auch von Angreifern genutzt werden kann.</div>
+
+<h2 id="eu">EU-Rechtsrahmen: e-Evidence-Verordnung (EU 2023/1543)</h2>
+
+<p>Die e-Evidence-Verordnung (in Kraft getreten am 17. August 2023, anwendbar ab August 2026) ermoglicht es Strafverfolgungsbehorden eines EU-Mitgliedstaats, direkt von Diensteanbietern in anderen EU-Landern elektronische Beweismittel anzufordern — ohne Umweg uber Rechtshilfeersuchen.</p>
+
+<h3>Kernpunkte</h3>
+<ul>
+  <li><strong>European Production Order (EPO):</strong> Richterliche Anordnung aus Land A kann direkt an Provider in Land B gerichtet werden. Antwortfrist: 10 Tage (Notfall: 8 Stunden)</li>
+  <li><strong>European Preservation Order (EPO-PR):</strong> Verpflichtet Provider, Daten fur spatere Herausgabe zu sichern (60 Tage, verlangernbar)</li>
+  <li><strong>Betroffene Daten:</strong> Subscriber-Daten (Name, Adresse, IP) und Traffic-Daten (Verbindungsdaten). Inhaltsdaten nur unter engeren Voraussetzungen (max. 3 Jahre Freiheitsstrafe als Mindestschwelle)</li>
+  <li><strong>Designierte Stelle:</strong> Jeder Mitgliedstaat benennt eine zentrale Behorde, die EPOs im eigenen Land empfangt und pruft</li>
+</ul>
+
+<p>Fur Forensiker bedeutet e-Evidence: Cloud-Daten (z.B. E-Mails bei Microsoft 365, Dateien in Google Drive) konnen schneller gesichert werden als bisher — aber die Daten mussen immer noch forensisch korrekt extrahiert, validiert und dokumentiert werden.</p>
+
+<h2 id="implikationen">Praktische Implikationen fur Forensiker</h2>
+
+<h3>Was darf gesichert werden?</h3>
+<table>
+<thead><tr><th>Massnahme</th><th>Darf gesichert werden</th><th>Darf NICHT gesichert werden</th></tr></thead><tbody>
+<tr><td><strong>Quellen-TKU</strong></td><td>Laufende Kommunikation (Chats, VoIP, E-Mail in Echtzeit) vor/nach Verschlusselung; Metadaten der Kommunikation</td><td>Gespeicherte Dateien; E-Mails, die vor Beginn der Massnahme empfangen wurden; lokale Datenbanken</td></tr>
+<tr><td><strong>Online-Durchsuchung</strong></td><td>Gesamtes Dateisystem; E-Mails (lokal und auf Server); Messenger-Verlaufe; Browserverlauf; Cloud-Synchronisation</td><td>Kernbereichsdaten; Daten, die offensichtlich nichts mit dem Tatvorwurf zu tun haben; anwaltliche Korrespondenz (Beschlagnahmeverbot)</td></tr>
+<tr><td><strong>E-Evidence EPO</strong></td><td>Subscriber-Daten (stets); Traffic-Daten (stets); Inhaltsdaten (nur bei schweren Straftaten)</td><td>Daten, die nicht in der Anordnung spezifiziert sind; Daten von Dritten ohne Bezug zum Verfahren</td></tr>
+</tbody></table>
+
+<h3>Wann ist Echtzeit-Uberwachung zulassig?</h3>
+<p>Echtzeit-Uberwachung (Quellen-TKU) ist zulassig, wenn alle folgenden Bedingungen erfullt sind:</p>
+<ol>
+  <li>Verdacht auf eine Katalogstraftat nach Par. 100a Abs. 2 StPO</li>
+  <li>Die Erforschung des Sachverhalts auf andere Weise ware wesentlich erschwert oder aussichtslos (Subsidiaritat)</li>
+  <li>Richterliche Anordnung liegt vor (oder Gefahr-im-Verzug-Anordnung mit Nachholung)</li>
+  <li>Technische Massnahmen zum Kernbereichsschutz sind implementiert</li>
+  <li>Die Anordnung ist auf maximal 3 Monate befristet (verlangerbar)</li>
+</ol>
+
+<h2 id="diskussion">Diskussion: Sicherheit vs. Privatsphare</h2>
+
+<h3>Vorratsdatenspeicherung</h3>
+<p>Die Vorratsdatenspeicherung (anlasslose Speicherung von Verkehrsdaten aller Burger) ist ein Dauerbrenner der rechtspolitischen Debatte. Der EuGH hat mehrfach nationale Regelungen fur unionsrechtswidrig erklart (zuletzt: SpaceNet/Telekom Deutschland, C-793/19 und C-794/19, 2022), weil sie unverhaltnismassig in Art. 7 und 8 der EU-Grundrechtecharta eingreifen. Dennoch diskutiert die EU-Kommission weiterhin uber eine gezielte Vorratsdatenspeicherung fur IP-Adressen.</p>
+
+<h3>Encryption-Debatte</h3>
+<p>Die Forderung nach Hinterturen in Verschlusselung (Client-Side Scanning, Key Escrow) wird von Sicherheitsexperten einhellig abgelehnt: Eine Hintertur fur den Staat ist eine Hintertur fur alle. Die technische Konsequenz ware eine generelle Schwachung der IT-Sicherheit, die insbesondere kritische Infrastrukturen und Unternehmen gefahrdet. Die Alternative — gezielte Quellen-TKU bei konkretem Verdacht — ist eingriffsintensiv, aber auf Einzelfalle beschrankt.</p>
+
+<h3>Fazit fur Forensiker</h3>
+<p>Fur den digitalen Forensiker ist die Rechtslage ein zweischneidiges Schwert: Einerseits ermoglicht sie tiefe Einblicke in Zielsysteme und damit wertvolle Beweise. Andererseits ist jeder Verstoss gegen die engen rechtlichen Grenzen ein Beweisverwertungsverbot — und damit ein potenzieller Verfahrensfehler, der die gesamte Ermittlung gefahrdet. Das Wissen uber die Grenzen des rechtlich Zulassigen ist daher genauso wichtig wie die technische Fahigkeit, Daten forensisch zu sichern.</p>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuhrendes</h2>
+<ul>
+  <li>BVerfG, Urteil vom 27.02.2008, 1 BvR 370/07, 1 BvR 595/07 — IT-Grundrecht (amtliche Entscheidungssammlung BVerfGE 120, 274)</li>
+  <li>BGH, Urteil vom 21.04.2017, 3 StR 104/17 — Quellen-TKU (NStZ 2018, 53)</li>
+  <li>BVerfG, Urteil vom 20.04.2016, 1 BvR 966/09, 1 BvR 1140/09 — BKA-Gesetz (BVerfGE 141, 220)</li>
+  <li>Meyer-Gossner/Schmitt: StPO-Kommentar, 67. Auflage 2024 — Kommentierung zu Par.Par. 100a–100e, 100b, 100d StPO</li>
+  <li>Verordnung (EU) 2023/1543 — e-Evidence-Verordnung (ABl. L 191 vom 28.07.2023)</li>
+  <li>Baumgartner/Esser: "IT-Forensik und Strafprozessrecht" — NJW 2023, 1425</li>
+  <li>CCC (Chaos Computer Club): Stellungnahme zur Quellen-TKU und Online-Durchsuchung (2018)</li>
+</ul>
+
+<div class="related-notes">
+  <strong>Verwandte Notizen</strong>
+  <div class="related-grid">
+    <a href="digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel: Grundprinzipien</a>
+    <a href="eingriffsrecht-tkue.html">Eingriffsrecht: TKUe</a>
+    <a href="grundrechte-digital.html">Grundrechte im digitalen Raum</a>
+    <a href="dsgvo-datenschutz.html">DSGVO und Datenschutz</a>
+    <a href="kriminalistik-grundlagen.html">Kriminalistik: Grundlagen</a>
+    <a href="juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a>
+    <a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a>
+  </div>
+</div>
+
+<nav class="prev-next" id="prevNextNav"></nav>
+
+</article>
+</main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var inp = document.getElementById('sidebarSearch');
+  var res = document.getElementById('sidebarSearchResults');
+  if (!inp || !res) return;
+  function findNotes(q) {
+    q = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i], score = 0;
+      if (n.t.toLowerCase().indexOf(q) !== -1) score += 10;
+      if (n.f.toLowerCase().indexOf(q) !== -1) score += 5;
+      for (var j = 0; j < n.g.length; j++) {
+        if (n.g[j].toLowerCase().indexOf(q) !== -1) score += 3;
+      }
+      if (score > 0) out.push({n:n, s:score});
+    }
+    out.sort(function(a,b){return b.s - a.s;});
+    return out;
+  }
+  inp.addEventListener('input', function() {
+    var q = this.value.trim();
+    if (q.length < 1) { res.innerHTML = ''; res.classList.remove('show'); return; }
+    var matches = findNotes(q);
+    if (matches.length === 0) {
+      res.innerHTML = '<div style="padding:10px;color:var(--text-muted);font-size:12px">Keine Ergebnisse</div>';
+    } else {
+      var html = '';
+      for (var k = 0; k < Math.min(matches.length, 12); k++) {
+        var m = matches[k];
+        html += '<a href="../' + m.n.p + '" class="sr-item"><div class="sr-title">' + m.n.t + '</div><div class="sr-meta">' + m.n.f + '</div></a>';
+      }
+      res.innerHTML = html;
+    }
+    res.classList.add('show');
+  });
+  document.addEventListener('click', function(e) {
+    if (!res.contains(e.target) && e.target !== inp) res.classList.remove('show');
+  });
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { res.classList.remove('show'); inp.blur(); }
+  });
+})();
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

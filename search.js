@@ -85,6 +85,13 @@ var notes = [
   {t:"Velociraptor — IR and Forensics",p:"09-tools/velociraptor/README.html",f:"Tools",g:["velociraptor","vql","agent","offline-collector","hunting"],d:"advanced"},
   {t:"Autopsy — Digital Forensics Platform",p:"09-tools/autopsy/README.html",f:"Tools",g:["autopsy","sleuthkit","ingest","timeline","case-management"],d:"basics"},
   {t:"FTK, EnCase, AXIOM — Tool-Vergleich",p:"09-tools/ftk-encase-axiom/README.html",f:"Tools",g:["ftk","encase","axiom","tool-vergleich","forensik","commercial"],d:"intermediate"},
+  {t:"Software-Tests und Qualitatssicherung",p:"01-grundlagen/software-tests-qualitaetssicherung.html",f:"Grundlagen",g:["software-tests","unit-test","pytest","junit","tdd","coverage","mocking","code-review"],d:"basics"},
+  {t:"Interprozesskommunikation und IO-Management",p:"02-betriebssysteme/interprozesskommunikation-io-management.html",f:"Betriebssysteme",g:["ipc","pipes","signals","sockets","shared-memory","semaphore","dma","irq","io-scheduler"],d:"advanced"},
+  {t:"Backup, Recovery und Audit-Systeme",p:"02-betriebssysteme/backup-recovery-audit-systeme.html",f:"Betriebssysteme",g:["backup","recovery","snapshot","rpo","rto","auditd","windows-event-log","ransomware"],d:"basics"},
+  {t:"Netzwerkmanagement — SNMP und Monitoring",p:"03-netzwerke/netzwerkmanagement-snmp-monitoring.html",f:"Netzwerke",g:["snmp","netflow","ipfix","sflow","syslog","nms","zabbix","netconf","yang"],d:"advanced"},
+  {t:"Botnetze und C2-Architekturen",p:"04-forensik-methoden/botnetze-c2-architekturen.html",f:"Forensik",g:["botnetz","c2","dga","fast-flux","irc","dns-tunnel","mirai","emotet","trickbot"],d:"advanced"},
+  {t:"Quellen-TKU und Online-Durchsuchung",p:"07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html",f:"Recht",g:["quellen-tkue","online-durchsuchung","it-grundrecht","stpo","e-evidence","messenger","verschlusselung"],d:"advanced"},
+  {t:"Urheberrecht und Immaterialguterrecht (digital)",p:"07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html",f:"Recht",g:["urheberrecht","gpl","mit","apache","bsd","lizenzen","patentrecht","creative-commons"],d:"basics"},
   {t:"Glossar (A-Z)",p:"00-meta/glossary.html",f:"Meta",g:["glossar","referenz","begriffe"],d:"basics"}
 ];
 

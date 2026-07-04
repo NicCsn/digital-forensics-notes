@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lernnotizen zur Digitalen Forensik und IT-Security">
+<link rel="canonical" href="https://niccsn.github.io/digital-forensics-notes/">
+<meta property="og:title" content="Interprozesskommunikation und IO-Management — cosman.dev">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="cosman.dev">
+<title>Interprozesskommunikation und IO-Management — cosman.dev</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (10)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (17)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; IO-Management</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; Recovery</a></li>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC &amp; IO</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup &amp; Recovery</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (13)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP <a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>amp; Monitoring</a></li>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze <a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>amp; C2</a></li>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze &amp; C2</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (11)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKÜ</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="https://cosman.dev" class="home-link">cosman.dev</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-betriebssysteme">Betriebssysteme</a> / IPC &amp; IO</span>
+</nav>
+<main>
+<article>
+<h1>Interprozesskommunikation und IO-Management <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzüberblick</a></li>
+  <li><a href="#pipes">Pipes: Anonym und Named (FIFO)</a></li>
+  <li><a href="#signals">Signals: SIGINT, SIGKILL, SIGTERM und mehr</a></li>
+  <li><a href="#sockets">Sockets: Unix Domain, TCP, UDP</a></li>
+  <li><a href="#shared-memory">Shared Memory: shmget/shmat und mmap</a></li>
+  <li><a href="#message-queues">Message Queues: POSIX mq und SysV msg</a></li>
+  <li><a href="#semaphore">Semaphore: POSIX sem vs. SysV sem</a></li>
+  <li><a href="#io-management">IO-Management: Block/Char/Network und IO-Scheduler</a></li>
+  <li><a href="#forensische-relevanz">Forensische Relevanz</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li>
+</ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Interprozesskommunikation (IPC) umfasst alle Mechanismen, mit denen Prozesse untereinander Daten austauschen und ihr Verhalten synchronisieren. Das IO-Management kontrolliert, wie das Betriebssystem Ein- und Ausgabeoperationen mit Geräten (Festplatten, Netzwerkkarten, Terminals) plant und ausführt. Beide Konzepte sind fundamental für das Verständnis von Betriebssystemen — und für die forensische Analyse: Malware nutzt IPC für Injection und Kommunikation, während IO-Performance-Muster Hinweise auf Angriffsaktivitäten geben können.</p>
+
+<p>MHB-Mapping: BDF102 (Betriebssysteme) — Vertiefung der Prozesskommunikation und des IO-Subsystems.</p>
+
+<h2 id="pipes">Pipes: Anonym und Named (FIFO)</h2>
+
+<p>Pipes sind die älteste und einfachste Form der IPC unter Unix/Linux. Sie verbinden die Standardausgabe (stdout) eines Prozesses mit der Standardeingabe (stdin) eines anderen.</p>
+
+<h3>Anonyme Pipes</h3>
+<p>Existieren nur, solange der erzeugende Prozess läuft. Können nur zwischen verwandten Prozessen verwendet werden (Parent-Child, erzeugt via <code>pipe()</code>-Systemaufruf vor einem <code>fork()</code>). Unix-Pipes in der Shell sind anonyme Pipes: <code>cat /var/log/auth.log | grep "Failed" | wc -l</code>.</p>
+
+<table>
+<thead><tr><th>Eigenschaft</th><th>Unix-Pipe (|)</th><th>pipe()-Syscall</th></tr></thead><tbody>
+<tr><td><strong>Richtung</strong></td><td>Unidirektional (einseitig)</td><td>Unidirektional; bidirektional nur mit zwei Pipes</td></tr>
+<tr><td><strong>Sichtbarkeit</strong></td><td>Nur als geöffneter File-Descriptor (fd)</td><td>Fd[0] = Lese-Ende, fd[1] = Schreib-Ende</td></tr>
+<tr><td><strong>Kapazität</strong></td><td>64 KB (Linux, PIPE_BUF)</td><td>Gleicher Kernel-Buffer, blockierend bei Überlauf</td></tr>
+<tr><td><strong>Lebensdauer</strong></td><td>Bis beide Enden geschlossen sind</td><td>Wird vom Kernel freigegeben, wenn keine fd mehr referenzieren</td></tr>
+</tbody></table>
+
+<h3>Named Pipes (FIFO)</h3>
+<p>Haben einen Eintrag im Dateisystem (via <code>mkfifo</code>) und können von unabhängigen Prozessen verwendet werden. Sie erscheinen als reguläre Datei, verhalten sich aber wie eine Pipe: Daten werden nie auf die Platte geschrieben, sondern im Kernel-Buffer gehalten.</p>
+
+<pre><code># Named Pipe erstellen und verwenden
+mkfifo /tmp/forensic_pipe
+# Terminal 1: Schreiber
+echo "evidence_block_001" > /tmp/forensic_pipe
+# Terminal 2: Leser
+cat /tmp/forensic_pipe
+# Ausgabe: evidence_block_001
+# Nach dem Lesen ist die Pipe leer — Daten sind konsumiert
+</code></pre>
+
+<div class="callout warning"><strong>Forensisches Problem:</strong> Named Pipes hinterlassen im Dateisystem einen Inode (via <code>mkfifo</code>), aber keine Inhaltsdaten. Der Datenstrom existiert nur im Kernel-Speicher und ist nach dem Lesen verloren. Eine Memory-Dump-Analyse kann unter Umständen Reste des Pipe-Buffers enthalten — aber nur, wenn die Pipe zum Zeitpunkt des Dumps noch Daten enthielt.</div>
+
+<h2 id="signals">Signals: SIGINT, SIGKILL, SIGTERM und mehr</h2>
+
+<p>Signals sind asynchrone Unterbrechungen, die das Betriebssystem an einen Prozess sendet. Sie dienen der Benachrichtigung über Ereignisse (Timer-Ablauf, ungültiger Speicherzugriff) oder der Steuerung des Prozesslebenszyklus.</p>
+
+<h3>Wichtige Standardsignals</h3>
+
+<table>
+<thead><tr><th>Signal</th><th>Nummer</th><th>Standardverhalten</th><th>Kann blockiert werden?</th><th>Forensischer Kontext</th></tr></thead><tbody>
+<tr><td><strong>SIGKILL</strong></td><td>9</td><td>Sofortige Terminierung, kein Cleanup</td><td>Nein</td><td>Angreifer killt Forensik-Tool; Prozess kann sich nicht wehren</td></tr>
+<tr><td><strong>SIGTERM</strong></td><td>15</td><td>Höfliche Bitte um Terminierung</td><td>Ja (kann ignoriert werden)</td><td>Standard-Kill; Malware kann SIGTERM abfangen und sich verschleiern</td></tr>
+<tr><td><strong>SIGINT</strong></td><td>2</td><td>Terminierung nach Ctrl+C</td><td>Ja</td><td>Forensik-Tool mit Ctrl+C abbrechen: Datenverlust möglich</td></tr>
+<tr><td><strong>SIGSEGV</strong></td><td>11</td><td>Core-Dump + Terminierung</td><td>Ja (Handler, dann weiterlaufen ist gefährlich)</td><td>Buffer-Overflow-Exploit in Forensik-Parser — Core-Dump analysieren!</td></tr>
+<tr><td><strong>SIGSTOP</strong></td><td>19</td><td>Prozess anhalten (pausieren)</td><td>Nein</td><td>Debugger-Trick: Malware pausieren, dann Memory-Dump</td></tr>
+<tr><td><strong>SIGCONT</strong></td><td>18</td><td>Angehaltenen Prozess fortsetzen</td><td>Nein</td><td>Nach Memory-Dump fortsetzen; Malware merkt Zeit-Sprung</td></tr>
+<tr><td><strong>SIGUSR1/2</strong></td><td>10/12</td><td>Benutzerdefiniert</td><td>Ja</td><td>Forensik-Tools nutzen SIGUSR1 für Status-Reports während Imaging</td></tr>
+</tbody></table>
+
+<pre><code># Signal-Handler in Python für forensisches Imaging-Tool
+import signal
+import sys
+
+def handle_sigterm(signum, frame):
+    print("[!] SIGTERM erhalten — schließe Image-Datei sauber...")
+    cleanup()
+    sys.exit(0)
+
+def handle_sigusr1(signum, frame):
+    print(f"[*] Status: {current_sector}/{total_sectors} Sektoren geschrieben")
+
+signal.signal(signal.SIGTERM, handle_sigterm)
+signal.signal(signal.SIGUSR1, handle_sigusr1)
+</code></pre>
+
+<div class="callout tip"><strong>Forensik-Strategie:</strong> Ein Angreifer, der ein Forensik-Tool mit SIGKILL beendet, verhindert ordnungsgemäßen Cleanup. Deshalb verwenden viele Imaging-Tools Write-Ahead-Logs: Selbst nach SIGKILL kann der nächste Start den unterbrochenen Vorgang wiederherstellen.</div>
+
+<h2 id="sockets">Sockets: Unix Domain, TCP, UDP</h2>
+
+<p>Sockets sind der universellste IPC-Mechanismus. Sie abstrahieren die Kommunikation über einen Endpunkt — lokal (Unix Domain) oder über das Netzwerk (TCP/UDP). Forensisch relevant, weil sie sowohl legitime (DBus, Systemd, X11) als auch bösartige (C2, Reverse Shell) Verbindungen transportieren.</p>
+
+<table>
+<thead><tr><th>Socket-Typ</th><th>Adressierung</th><th>Reichweite</th><th>Forensische Fundstelle</th></tr></thead><tbody>
+<tr><td><strong>Unix Domain (AF_UNIX)</strong></td><td>Pfad im Dateisystem (z.B. <code>/var/run/docker.sock</code>)</td><td>Lokal (gleicher Host)</td><td><code>ss -xlp</code>, <code>/proc/net/unix</code>, Inode im Dateisystem</td></tr>
+<tr><td><strong>TCP (AF_INET, SOCK_STREAM)</strong></td><td>IP:Port (z.B. 192.168.1.1:443)</td><td>Netzwerkweit (verbindungsorientiert)</td><td><code>ss -tnp</code>, <code>/proc/net/tcp</code>, PCAP-Dateien</td></tr>
+<tr><td><strong>UDP (AF_INET, SOCK_DGRAM)</strong></td><td>IP:Port</td><td>Netzwerkweit (verbindungslos)</td><td><code>ss -unp</code>, <code>/proc/net/udp</code>, NetFlow-Daten</td></tr>
+</tbody></table>
+
+<h3>Unix Domain Sockets in der Forensik</h3>
+<p>Werden von vielen Systemdiensten genutzt: <code>systemd-journald</code> (Logs), <code>Docker</code> (Container-Management), <code>MySQL</code> (lokale Clients), <code>PHP-FPM</code>. Malware nutzt sie für lokale Kommunikation zwischen Komponenten — z.B. ein Dropper, der mit einem bereits installierten Keylogger kommuniziert.</p>
+
+<pre><code># Unix Domain Socket Spurensuche
+ss -xlp | grep -v "^$"       # Alle aktiven Unix-Sockets mit Prozess-Zuordnung
+lsof -U                        # Offene Unix-Sockets auflisten
+find / -type s 2>/dev/null    # Alle Socket-Dateien im Dateisystem finden
+
+# Forensisch: Socket-Inode → Prozess-Zuordnung via /proc
+ls -la /proc/*/fd 2>/dev/null | grep socket
+</code></pre>
+
+<h2 id="shared-memory">Shared Memory: shmget/shmat und mmap</h2>
+
+<p>Shared Memory ist die schnellste IPC-Methode: Zwei oder mehr Prozesse teilen sich einen physischen Speicherbereich direkt, ohne Kopiervorgänge über den Kernel (Zero-Copy). Linux implementiert Shared Memory über das <code>tmpfs</code>-Dateisystem (meist unter <code>/dev/shm</code>).</p>
+
+<h3>System-V Shared Memory</h3>
+<table>
+<thead><tr><th>Syscall</th><th>Zweck</th></tr></thead><tbody>
+<tr><td><code>shmget(key, size, flags)</code></td><td>Erzeugt/öffnet ein Shared-Memory-Segment. Der Key identifiziert es systemweit.</td></tr>
+<tr><td><code>shmat(shmid, addr, flags)</code></td><td>Hängt das Segment in den Adressraum des aufrufenden Prozesses ein (attach).</td></tr>
+<tr><td><code>shmdt(addr)</code></td><td>Löst das Segment vom Adressraum (detach).</td></tr>
+<tr><td><code>shmctl(shmid, cmd, buf)</code></td><td>Kontrolloperationen: Löschen, Berechtigungen ändern, Status abfragen.</td></tr>
+</tbody></table>
+
+<h3>mmap-basiertes Shared Memory</h3>
+<p>Mit <code>mmap(MAP_SHARED)</code> können Prozesse eine Datei (oder anonyme Page) in ihren Adressraum mappen. Änderungen werden für alle Prozesse sichtbar. Dies ist der bevorzugte Weg unter Linux, weil POSIX-konform und flexibler als SysV-SHM.</p>
+
+<pre><code># Shared Memory Spurensuche (Linux)
+ipcs -m                # Alle SysV-Shared-Memory-Segmente auflisten
+ls -la /dev/shm/       # POSIX-Shared-Memory (tmpfs-mapped)
+cat /proc/*/maps | grep "/dev/shm"  # Welcher Prozess hat was gemappt?
+
+# Relevant: Malware verwendet /dev/shm für temporäre Dateien
+# — kein Schreiben auf die Platte, keine Dateisystem-Artefakte!
+</code></pre>
+
+<div class="callout warning"><strong>Forensische Warnung: Shared Memory als Angriffsvektor.</strong> DLL-Injection unter Windows nutzt Shared Memory, um Schadcode in legitime Prozesse einzuschleusen. Der Angreifer alloziert Shared Memory, schreibt Shellcode hinein und zwingt einen Ziel-Prozess (via <code>CreateRemoteThread</code>), diesen Code auszuführen. Die forensische Untersuchung solcher Injektionen erfordert Memory-Analyse (Volatility Plugin: malfind, ldrmodules), da der injizierte Code nie auf der Platte existiert hat.</div>
+
+<h2 id="message-queues">Message Queues: POSIX mq und SysV msg</h2>
+
+<p>Message Queues erlauben strukturierte, nachrichtenbasierte Kommunikation mit Prioritätssteuerung. Anders als Pipes sind Nachrichten typisiert und unabhängig voneinander lesbar — kein reiner Byte-Strom.</p>
+
+<h3>SysV Message Queues vs. POSIX Message Queues</h3>
+<table>
+<thead><tr><th>Merkmal</th><th>SysV msg</th><th>POSIX mq</th></tr></thead><tbody>
+<tr><td><strong>Identifikation</strong></td><td>Integer-Key (IPC_PRIVATE, ftok())</td><td>Name (String, wie <code>/forensic_queue</code>)</td></tr>
+<tr><td><strong>API</strong></td><td><code>msgget()</code>, <code>msgsnd()</code>, <code>msgrcv()</code></td><td><code>mq_open()</code>, <code>mq_send()</code>, <code>mq_receive()</code></td></tr>
+<tr><td><strong>Prioritäten</strong></td><td>Ganze Nachricht priorisiert (msgtyp)</td><td>Nachrichten-Priorität (0–sysconf)</td></tr>
+<tr><td><strong>Persistenz</strong></td><td>Kernel-Persistenz (bis Reboot oder explizites Löschen)</td><td>Kernel-Persistenz + optional als Datei unter <code>/dev/mqueue</code></td></tr>
+<tr><td><strong>Benachrichtigung</strong></td><td>Keine native Benachrichtigung</td><td><code>mq_notify()</code>: Signal/Thread bei neuer Nachricht</td></tr>
+</tbody></table>
+
+<pre><code># POSIX Message Queue forensisch inspizieren
+mount -t mqueue none /dev/mqueue   # Mqueue-Dateisystem mounten
+ls -la /dev/mqueue/                # Alle aktiven Queues anzeigen
+cat /dev/mqueue/my_queue           # Queue-Metadaten (kein Inhalt — nur Größe, Max-Nachrichten etc.)
+
+# SysV Message Queue inspizieren
+ipcs -q                            # Alle aktiven SysV-Queues
+ipcrm -q <msqid>                   # Queue löschen (während Live-Analyse)
+</code></pre>
+
+<h2 id="semaphore">Semaphore: POSIX sem vs. SysV sem</h2>
+
+<p>Semaphore sind Synchronisationsprimitive, die den Zugriff auf gemeinsam genutzte Ressourcen koordinieren. Anders als Mutexe (binär: gesperrt/entsperrt) sind Semaphore Zähler: Ein Zählerstand N erlaubt N gleichzeitige Zugriffe.</p>
+
+<table>
+<thead><tr><th>Typ</th><th>API</th><th>Persistenz</th><th>Sichtbarkeit</th></tr></thead><tbody>
+<tr><td><strong>SysV Semaphore-Sets</strong></td><td><code>semget()</code>, <code>semop()</code>, <code>semctl()</code></td><td>Kernel-Persistenz (bis Reboot / explizites Löschen)</td><td><code>ipcs -s</code> listet alle Sets</td></tr>
+<tr><td><strong>POSIX Named Semaphore</strong></td><td><code>sem_open()</code>, <code>sem_wait()</code>, <code>sem_post()</code></td><td>Kernel-Persistenz; erscheint unter <code>/dev/shm/sem.*</code></td><td>Als tmpfs-Datei im Dateisystem sichtbar</td></tr>
+<tr><td><strong>POSIX Unnamed Semaphore</strong></td><td><code>sem_init()</code>, <code>sem_wait()</code>, <code>sem_post()</code></td><td>Im Shared Memory; nur für verwandte Prozesse</td><td>Nur via Memory-Analyse sichtbar (Thread-Shared)</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Forensischer Hinweis:</strong> Orphaned Semaphore (Semaphore, deren besitzender Prozess beendet wurde, ohne sie freizugeben) können auf abgestürzte Malware oder fehlgeschlagene Angriffe hindeuten. <code>ipcs -s</code> zeigt Semaphore ohne zugehörigen Prozess — eine Untersuchung wert.</div>
+
+<h2 id="io-management">IO-Management: Block/Char/Network und IO-Scheduler</h2>
+
+<h3>Gerätetypen im Linux-Kernel</h3>
+<table>
+<thead><tr><th>Typ</th><th>Major-Nummer</th><th>Beispiele</th><th>Zugriff</th></tr></thead><tbody>
+<tr><td><strong>Block Devices (b)</strong></td><td>8, 259 (nvme)</td><td><code>/dev/sda</code>, <code>/dev/nvme0n1</code>, <code>/dev/loop0</code></td><td>Wahlfreier Zugriff, gepuffert via Page Cache</td></tr>
+<tr><td><strong>Character Devices (c)</strong></td><td>1, 4, 5</td><td><code>/dev/tty</code>, <code>/dev/null</code>, <code>/dev/random</code></td><td>Sequenzieller Bytestrom, ungepuffert</td></tr>
+<tr><td><strong>Network Devices</strong></td><td>— (kein Device-File)</td><td><code>eth0</code>, <code>wlan0</code>, <code>lo</code></td><td>Paketorientiert über Socket-API, kein traditionelles Read/Write</td></tr>
+</tbody></table>
+
+<h3>IO-Scheduler unter Linux</h3>
+<p>IO-Scheduler bestimmen die Reihenfolge, in der IO-Requests an Block-Devices gesendet werden. Linux verwendet seit Kernel 5.0 das Multi-Queue-Block-Layer (blk-mq) mit den folgenden Schedulern:</p>
+
+<table>
+<thead><tr><th>Scheduler</th><th>Prinzip</th><th>Einsatz</th><th>Forensische Bedeutung</th></tr></thead><tbody>
+<tr><td><strong>none / noop</strong></td><td>FIFO-Reihenfolge, keine Optimierung</td><td>VMs, SSDs (Hardware-eigenes Scheduling)</td><td>Keine Request-Reihenfolge-Änderung; gut für deterministische Benchmarks</td></tr>
+<tr><td><strong>kyber</strong></td><td>Latenz-basiert, adaptiv; misst IO-Zeiten und drosselt bei Sättigung</td><td>SSDs, Mischlasten (Desktop/Server)</td><td>Geringe Latenz für interaktive Anwendungen; erkennbar an gleichmäßiger IO-Last</td></tr>
+<tr><td><strong>bfq (Budget Fair Queueing)</strong></td><td>Garantiert jedem Prozess ein IO-Budget; verhindert, dass ein Prozess das Device monopolisiert</td><td>HDDs, interaktive Desktops</td><td>Prozess X schreibt 500 MB/s? BFQ bremst X, damit Prozess Y (Forensik-Tool) nicht blockiert</td></tr>
+<tr><td><strong>mq-deadline</strong></td><td>Deadline pro Request (Read ~500ms, Write ~5000ms) + Sector-Sorting</td><td>SSDs mit geringer Latenz, Server</td><td>Faire Deadline-Verteilung; Writes werden zurückgestellt, bis Reads bedient wurden</td></tr>
+</tbody></table>
+
+<pre><code># IO-Scheduler auslesen und ändern
+cat /sys/block/sda/queue/scheduler
+# Ausgabe: [mq-deadline] kyber bfq none
+echo bfq > /sys/block/sda/queue/scheduler
+
+# IO-Statistiken für forensische Performance-Analyse
+iostat -x 1                    # Laufende IO-Statistiken (await, svctm, %util)
+cat /proc/diskstats            # Rohdaten der Disk-Statistiken
+ioping -c 10 /dev/sda          # IO-Latenz messen (ähnlich ping für Disk)
+</code></pre>
+
+<h3>DMA und IRQ</h3>
+<p><strong>DMA (Direct Memory Access):</strong> Ermöglicht Peripheriegeräten, direkt in den Hauptspeicher zu schreiben, ohne die CPU für jeden Byte-Transfer zu unterbrechen. Ein DMA-Controller übernimmt den Transfer; die CPU wird nur bei Abschluss per Interrupt benachrichtigt.</p>
+<p><strong>IRQ (Interrupt Request):</strong> Hardware-Signal, das die CPU auf ein Ereignis aufmerksam macht: "Daten sind angekommen", "Festplatte hat Sektor gelesen", "Netzwerk-Paket im Puffer". Linux verwaltet IRQs über <code>/proc/interrupts</code>. Malware kann IRQ-Handler modifizieren (Kernel-Rootkit), um IO-Operationen zu verbergen.</p>
+
+<h2 id="forensische-relevanz">Forensische Relevanz</h2>
+
+<h3>IPC als Angriffsvektor — Live-Analyse</h3>
+<table>
+<thead><tr><th>IPC-Mechanismus</th><th>Angriffs-Szenario</th><th>Forensische Spur (Linux)</th></tr></thead><tbody>
+<tr><td><strong>Shared Memory</strong></td><td>DLL-Injection: Schadcode in legitimen Prozess injizieren</td><td><code>/proc/PID/maps</code> auf anonyme/verdächtige RWX-Bereiche prüfen; Volatility malfind</td></tr>
+<tr><td><strong>Unix Domain Sockets</strong></td><td>Rootkit kommuniziert mit Userland-Komponente über versteckten Socket</td><td><code>ss -xlp</code>, <code>lsof -U</code>, <code>/proc/net/unix</code> auf unbekannte Sockets untersuchen</td></tr>
+<tr><td><strong>Signals</strong></td><td>Malware sendet SIGSTOP an Forensik-Tool, um Analyse zu verhindern</td><td><code>auditd</code>-Regel auf <code>kill()</code>-Syscall; <code>/proc/PID/status</code> zeigt SigCgt (caught signals)</td></tr>
+<tr><td><strong>Pipes</strong></td><td>Daten-Exfiltration: Malware piped gestohlene Daten an externen Socket</td><td><code>lsof | grep pipe</code>, <code>/proc/PID/fd</code> auf Pipe-FDs untersuchen</td></tr>
+</tbody></table>
+
+<h3>IO-Scheduler als Performance-Indikator</h3>
+<p>Ein plötzlicher Anstieg der IO-Wartezeit (<code>iostat await</code>) kann auf Ransomware hindeuten, die tausende Dateien parallel verschlüsselt. Ein ungewöhnliches Muster aus kurzen Reads und langen Writes deutet auf Datenexfiltration hin (Lesen + Netzwerk-Senden). Die Korrelation von IO-Mustern mit Netzwerkaktivität ist ein starkes forensisches Signal.</p>
+
+<div class="callout tip"><strong>Forensik-Tipp:</strong> Bei der Live-Analyse immer <code>ipcs -a</code> (alle IPC-Objekte) und <code>ss -tulpn</code> (alle Sockets) ausführen, bevor das System heruntergefahren wird. IPC-Objekte sind flüchtig — sie überleben einen Reboot nicht. Dokumentieren Sie den Zustand mit Screenshots und Log-Dumps.</div>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<ul>
+  <li>Michael Kerrisk: "The Linux Programming Interface" (No Starch Press, 2010) — Kapitel 43–52 (IPC), Kapitel 4 (IO)</li>
+  <li>Robert Love: "Linux Kernel Development", 3rd Edition — Chapter 14 (Block IO Layer), Chapter 16 (CFQ IO Scheduler)</li>
+  <li>Linux Kernel Documentation: <code>Documentation/block/</code> für blk-mq und IO-Scheduler</li>
+  <li>POSIX.1-2017: IEEE Std 1003.1 — Abschnitte zu <code>mq_*</code>, <code>sem_*</code>, <code>shm_*</code></li>
+  <li>Volatility Foundation: malfind Plugin Documentation</li>
+  <li>Sysinternals: Handle (Windows-Handle-Analyse für IPC-Objekte)</li>
+</ul>
+
+<div class="related-notes">
+  <strong>Verwandte Notizen</strong>
+  <div class="related-grid">
+    <a href="prozessmanagement-threads.html">Prozessmanagement und Threads</a>
+    <a href="memory-management.html">Memory Management</a>
+    <a href="betriebssystem-architekturen.html">BS-Architekturen</a>
+    <a href="linux-administration.html">Linux-Administration</a>
+    <a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher-Forensik</a>
+    <a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a>
+  </div>
+</div>
+
+<nav class="prev-next" id="prevNextNav"></nav>
+
+</article>
+</main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var inp = document.getElementById('sidebarSearch');
+  var res = document.getElementById('sidebarSearchResults');
+  if (!inp || !res) return;
+  function findNotes(q) {
+    q = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i], score = 0;
+      if (n.t.toLowerCase().indexOf(q) !== -1) score += 10;
+      if (n.f.toLowerCase().indexOf(q) !== -1) score += 5;
+      for (var j = 0; j < n.g.length; j++) {
+        if (n.g[j].toLowerCase().indexOf(q) !== -1) score += 3;
+      }
+      if (score > 0) out.push({n:n, s:score});
+    }
+    out.sort(function(a,b){return b.s - a.s;});
+    return out;
+  }
+  inp.addEventListener('input', function() {
+    var q = this.value.trim();
+    if (q.length < 1) { res.innerHTML = ''; res.classList.remove('show'); return; }
+    var matches = findNotes(q);
+    if (matches.length === 0) {
+      res.innerHTML = '<div style="padding:10px;color:var(--text-muted);font-size:12px">Keine Ergebnisse</div>';
+    } else {
+      var html = '';
+      for (var k = 0; k < Math.min(matches.length, 12); k++) {
+        var m = matches[k];
+        html += '<a href="../' + m.n.p + '" class="sr-item"><div class="sr-title">' + m.n.t + '</div><div class="sr-meta">' + m.n.f + '</div></a>';
+      }
+      res.innerHTML = html;
+    }
+    res.classList.add('show');
+  });
+  document.addEventListener('click', function(e) {
+    if (!res.contains(e.target) && e.target !== inp) res.classList.remove('show');
+  });
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { res.classList.remove('show'); inp.blur(); }
+  });
+})();
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

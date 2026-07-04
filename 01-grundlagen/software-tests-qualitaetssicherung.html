@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lernnotizen zur Digitalen Forensik und IT-Security">
+<link rel="canonical" href="https://niccsn.github.io/digital-forensics-notes/">
+<meta property="og:title" content="Software-Tests und Qualitätssicherung — cosman.dev">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="cosman.dev">
+<title>Software-Tests und Qualitätssicherung — cosman.dev</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="note-page">
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo">DF <span>Field Notes</span></a>
+  </div>
+  <div class="search-box">
+    <input type="text" id="sidebarSearch" placeholder="Notizen durchsuchen..." autocomplete="off">
+    <div class="sb-search-results" id="sidebarSearchResults"></div>
+  </div>
+  <ul class="nav-list nav-home">
+    <li><a href="../index.html">Startseite</a></li>
+    <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Grundlagen (10)</summary><ul>
+      <li><a href="../01-grundlagen/zahlensysteme-und-kodierung.html">Zahlensysteme und Kodierung</a></li>
+      <li><a href="../01-grundlagen/rechnerarchitektur-von-neumann.html">Rechnerarchitektur</a></li>
+      <li><a href="../01-grundlagen/algorithmen-und-komplexitaet.html">Algorithmen und Komplexitaet</a></li>
+      <li><a href="../01-grundlagen/datenstrukturen.html">Datenstrukturen</a></li>
+      <li><a href="../01-grundlagen/programmierparadigmen.html">Programmierparadigmen</a></li>
+      <li><a href="../01-grundlagen/python-grundlagen.html">Python-Grundlagen</a></li>
+      <li><a href="../01-grundlagen/oop-klassen-vererbung.html">OOP: Klassen und Vererbung</a></li>
+      <li><a href="../01-grundlagen/softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+      <li><a href="../01-grundlagen/uml-diagramme-softwaremodellierung.html">UML-Diagramme</a></li>
+      <li><a href="../01-grundlagen/software-tests-qualitaetssicherung.html">Software-Tests</a></li>
+    </ul></details></li>
+    <li><details><summary>Betriebssysteme (17)</summary><ul>
+      <li><a href="../02-betriebssysteme/dateisysteme-uebersicht-fat-ntfs-ext4-apfs.html">Dateisysteme</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-architekturen.html">BS-Architekturen</a></li>
+      <li><a href="../02-betriebssysteme/prozessmanagement-threads.html">Prozesse und Threads</a></li>
+      <li><a href="../02-betriebssysteme/memory-management.html">Memory Management</a></li>
+      <li><a href="../02-betriebssysteme/linux-administration.html">Linux-Administration</a></li>
+      <li><a href="../02-betriebssysteme/windows-administration.html">Windows-Administration</a></li>
+      <li><a href="../02-betriebssysteme/datentraeger-verschluesselung.html">Datentraeger-Verschluesselung</a></li>
+      <li><a href="../02-betriebssysteme/windows-registry-forensik.html">Registry Forensik</a></li>
+      <li><a href="../02-betriebssysteme/betriebssystem-forensik-spurensuche.html">Spurensuche</a></li>
+      <li><a href="../02-betriebssysteme/file-carving.html">File Carving</a></li>
+      <li><a href="../02-betriebssysteme/embedded-systems-iot-forensik.html">Embedded &amp; IoT</a></li>
+      <li><a href="../02-betriebssysteme/anti-forensik-betriebssystem.html">Anti-Forensik</a></li>
+      <li><a href="../02-betriebssysteme/mobile-forensik-android-ios.html">Mobile Forensik</a></li>
+      <li><a href="../02-betriebssysteme/container-docker-forensik.html">Container &amp; Docker</a></li>
+      <li><a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; IO-Management</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup <a href="../02-betriebssysteme/iot-security-grundlagen.html">IoT-Security</a>amp; Recovery</a></li>
+      <li><a href="../02-betriebssysteme/interprozesskommunikation-io-management.html">IPC &amp; IO</a></li>
+      <li><a href="../02-betriebssysteme/backup-recovery-audit-systeme.html">Backup &amp; Recovery</a></li>
+    </ul></details></li>
+    <li><details><summary>Netzwerke (13)</summary><ul>
+      <li><a href="../03-netzwerke/wireshark-basics-paketanalyse.html">Wireshark Basics</a></li>
+      <li><a href="../03-netzwerke/tcp-ip-protokollfamilie.html">TCP/IP</a></li>
+      <li><a href="../03-netzwerke/ip-adressierung-subnetting.html">IP &amp; Subnetting</a></li>
+      <li><a href="../03-netzwerke/routing-switching-vlans.html">Routing &amp; VLANs</a></li>
+      <li><a href="../03-netzwerke/dhcp-dns-arp.html">DHCP, DNS, ARP</a></li>
+      <li><a href="../03-netzwerke/vpn-und-firewalls.html">VPN &amp; Firewalls</a></li>
+      <li><a href="../03-netzwerke/netzwerkforensik-methoden.html">Netzwerkforensik</a></li>
+      <li><a href="../03-netzwerke/darknet-tor-i2p.html">Darknet &amp; Tor</a></li>
+      <li><a href="../03-netzwerke/web-sicherheit-owasp.html">Web &amp; OWASP</a></li>
+      <li><a href="../03-netzwerke/browser-forensik.html">Browser-Forensik</a></li>
+      <li><a href="../03-netzwerke/tls-ssl-forensik.html">TLS/SSL-Forensik</a></li>
+      <li><a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP <a href="../03-netzwerke/wireless-forensik.html">Wireless-Forensik</a>amp; Monitoring</a></li>
+      <li><a href="../03-netzwerke/netzwerkmanagement-snmp-monitoring.html">SNMP &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>Forensik-Methoden (14)</summary><ul>
+      <li><a href="../04-forensik-methoden/forensischer-prozess-chain-of-custody.html">Prozess &amp; Chain of Custody</a></li>
+      <li><a href="../04-forensik-methoden/forensisches-imaging.html">Forensisches Imaging</a></li>
+      <li><a href="../04-forensik-methoden/write-blocker.html">Write-Blocker</a></li>
+      <li><a href="../04-forensik-methoden/datentraeger-forensik.html">Datentraeger-Forensik</a></li>
+      <li><a href="../04-forensik-methoden/arbeitsspeicher-forensik.html">Arbeitsspeicher (Memory)</a></li>
+      <li><a href="../04-forensik-methoden/logfile-analyse.html">Logfile-Analyse</a></li>
+      <li><a href="../04-forensik-methoden/triage-erstanalyse.html">Triage &amp; Erstanalyse</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-statisch.html">Malware (Statisch)</a></li>
+      <li><a href="../04-forensik-methoden/malware-analyse-dynamisch.html">Malware (Dynamisch)</a></li>
+      <li><a href="../04-forensik-methoden/forensische-dokumentation.html">Dokumentation</a></li>
+      <li><a href="../04-forensik-methoden/datenbanken-forensik.html">Datenbanken</a></li>
+      <li><a href="../04-forensik-methoden/forensische-live-sicherung.html">Live-Sicherung</a></li>
+      <li><a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze <a href="../04-forensik-methoden/cloud-forensik.html">Cloud-Forensik</a>amp; C2</a></li>
+      <li><a href="../04-forensik-methoden/botnetze-c2-architekturen.html">Botnetze &amp; C2</a></li>
+    </ul></details></li>
+    <li><details><summary>IT-Security (8)</summary><ul>
+      <li><a href="../05-it-security/schutzziele-cia-triad.html">Schutzziele (CIA)</a></li>
+      <li><a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse</a></li>
+      <li><a href="../05-it-security/kryptografie-grundlagen-symmetrisch-asymmetrisch.html">Kryptografie</a></li>
+      <li><a href="../05-it-security/authentifizierung-pki.html">Authentifizierung &amp; PKI</a></li>
+      <li><a href="../05-it-security/kryptoanalyse.html">Kryptoanalyse</a></li>
+      <li><a href="../05-it-security/post-quantum-blockchain.html">Post-Quantum &amp; Blockchain</a></li>
+      <li><a href="../05-it-security/security-incident-management.html">Incident Management</a></li>
+      <li><a href="../05-it-security/siem-und-monitoring.html">SIEM &amp; Monitoring</a></li>
+    </ul></details></li>
+    <li><details><summary>OSINT (5)</summary><ul>
+      <li><a href="../06-osint/osint-lifecycle-und-tooling.html">Lifecycle &amp; Tooling</a></li>
+      <li><a href="../06-osint/osint-recherche-methodik.html">Recherche-Methodik</a></li>
+      <li><a href="../06-osint/osint-anonymisierung-opsec.html">Anonymisierung &amp; OPSEC</a></li>
+      <li><a href="../06-osint/social-media-analyse.html">Social Media</a></li>
+      <li><a href="../06-osint/cybercrime-oekonomie.html">Cybercrime-Oekonomie</a></li>
+    </ul></details></li>
+    <li><details><summary>Recht &amp; Kriminalistik (11)</summary><ul>
+      <li><a href="../07-recht-kriminalistik/digitale-beweismittel-grundprinzipien.html">Digitale Beweismittel</a></li>
+      <li><a href="../07-recht-kriminalistik/strafrecht-allgemeiner-teil.html">Strafrecht AT</a></li>
+      <li><a href="../07-recht-kriminalistik/grundrechte-digital.html">Grundrechte</a></li>
+      <li><a href="../07-recht-kriminalistik/dsgvo-datenschutz.html">DSGVO</a></li>
+      <li><a href="../07-recht-kriminalistik/kriminalistik-grundlagen.html">Kriminalistik</a></li>
+      <li><a href="../07-recht-kriminalistik/tatortarbeit-spurenkunde.html">Tatort &amp; Spurenkunde</a></li>
+      <li><a href="../07-recht-kriminalistik/eingriffsrecht-tkue.html">Eingriffsrecht TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/ethik-informationssicherheit.html">Ethik</a></li>
+      <li><a href="../07-recht-kriminalistik/juristische-fallbearbeitung-gutachtenstil.html">Gutachtenstil</a>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKUe</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+      <li><a href="../07-recht-kriminalistik/quellen-tkue-online-durchsuchung.html">Quellen-TKÜ</a></li>
+      <li><a href="../07-recht-kriminalistik/urheberrecht-immaterialgueterrecht-digital.html">Urheberrecht</a></li>
+    </ul></details></li>
+    <li><details><summary>KI &amp; Forensik (5)</summary><ul>
+      <li><a href="../08-ki-forensik/llms-in-der-forensischen-analyse.html">LLMs in der Analyse</a></li>
+      <li><a href="../08-ki-forensik/ki-grundlagen-ml-overview.html">ML Overview</a></li>
+      <li><a href="../08-ki-forensik/neuronale-netze-deep-learning.html">Neuronale Netze</a></li>
+      <li><a href="../08-ki-forensik/decision-trees-klassifikation.html">Decision Trees</a></li>
+      <li><a href="../08-ki-forensik/bildforensik-objekterkennung.html">Bildforensik &amp; YOLO</a></li>
+    </ul></details></li>
+  </ul>
+  <ul class="nav-list">
+    <li><details><summary>Tools &amp; Referenzen</summary><ul>
+      <li><a href="../09-tools/ip-log-analyzer/README.html">IP Log Analyzer</a></li>
+      <li><a href="../09-tools/registry-parser/README.html">Registry Parser</a></li>
+      <li><a href="../00-meta/glossary.html">Glossar (A-Z)</a></li>
+      <li><a href="../INDEX.html">Themen-Index</a></li>
+      <li><a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a></li>
+    </ul></details></li>
+  </ul>
+</aside>
+<div class="note-wrapper">
+<nav class="top-nav">
+  <a href="https://cosman.dev" class="home-link">cosman.dev</a>
+  <span class="nav-crumb">/ <a href="../index.html#cat-grundlagen">Grundlagen</a> / Software-Tests</span>
+</nav>
+<main>
+<article>
+<h1>Software-Tests und Qualitätssicherung <span class="diff-badge diff-beginner">Grundlagen</span></h1>
+<details class="fold"><summary>Inhaltsverzeichnis</summary><ol>
+  <li><a href="#kurz-berblick">Kurzüberblick</a></li>
+  <li><a href="#unit-tests">Unit-Tests: JUnit und pytest</a></li>
+  <li><a href="#integrationstests">Integrationstests: Top-down, Bottom-up, Sandwich</a></li>
+  <li><a href="#tdd">Test-Driven Development (TDD)</a></li>
+  <li><a href="#testabdeckung">Testabdeckung (Coverage)</a></li>
+  <li><a href="#statische-dynamische-analyse">Statische vs. dynamische Analyse</a></li>
+  <li><a href="#code-reviews">Code-Reviews und Pair Programming</a></li>
+  <li><a href="#forensischer-bezug">Forensischer Bezug</a></li>
+  <li><a href="#quellen-weiterf-hrendes">Quellen / Weiterführendes</a></li>
+</ol></details>
+
+<h2 id="kurz-berblick">Kurzüberblick</h2>
+
+<p>Software-Tests und Qualitätssicherung (QS) bilden das Rückgrat jeder professionellen Softwareentwicklung. Sie stellen sicher, dass Code nicht nur funktional korrekt ist, sondern auch unter unerwarteten Bedingungen zuverlässig arbeitet. Für digitale Forensiker ist Qualitätssicherung essenziell: Ein Hash-Tool, das in 0,01% der Fälle falsche Werte liefert, kann Beweise entwerten. Ein Imaging-Werkzeug, das Sektoren überspringt, macht Ermittlungen angreifbar. Die Prinzipien des Software-Testens helfen Forensikern, ihre eigenen Werkzeuge zu validieren und die Glaubwürdigkeit ihrer Ergebnisse vor Gericht zu verteidigen.</p>
+
+<p>MHB-Mapping: BDF103 (Programmierung) — Qualitätssicherung von Software, Testmethoden und forensische Anwendung.</p>
+
+<h2 id="unit-tests">Unit-Tests: JUnit und pytest</h2>
+
+<p>Unit-Tests prüfen die kleinste testbare Einheit einer Software — typischerweise eine einzelne Methode oder Funktion — isoliert von ihrer Umgebung. Ziel ist es, Fehler frühzeitig und lokalisiert zu erkennen, bevor sie sich in der Integration ausbreiten.</p>
+
+<h3>Arrange-Act-Assert (AAA-Muster)</h3>
+<p>Das AAA-Muster strukturiert jeden Test in drei klar getrennte Phasen:</p>
+
+<table>
+<thead><tr><th>Phase</th><th>Beschreibung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Arrange</strong></td><td>Testumgebung vorbereiten, Objekte initialisieren, Eingabedaten festlegen</td><td>Neues User-Objekt mit Test-E-Mail erstellen</td></tr>
+<tr><td><strong>Act</strong></td><td>Die zu testende Operation ausführen</td><td><code>user.changeEmail("neu@test.de")</code> aufrufen</td></tr>
+<tr><td><strong>Assert</strong></td><td>Ergebnis prüfen, Soll-Ist-Vergleich durchführen</td><td><code>assertEquals("neu@test.de", user.email)</code></td></tr>
+</tbody></table>
+
+<h3>Python: pytest mit AAA-Pattern</h3>
+<pre><code># test_hash_utils.py
+import hashlib
+from forensics.hash_utils import compute_sha256
+
+class TestComputeSHA256:
+    def test_empty_input(self):
+        # Arrange
+        data = b""
+        expected = hashlib.sha256(b"").hexdigest()
+
+        # Act
+        result = compute_sha256(data)
+
+        # Assert
+        assert result == expected
+
+    def test_known_string(self):
+        # Arrange
+        data = b"forensic evidence"
+        expected = hashlib.sha256(b"forensic evidence").hexdigest()
+
+        # Act
+        result = compute_sha256(data)
+
+        # Assert
+        assert result == expected
+        assert len(result) == 64
+</code></pre>
+
+<h3>Java: JUnit 5 mit AAA-Pattern</h3>
+<pre><code>// SectorReaderTest.java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class SectorReaderTest {
+
+    @Test
+    void testSectorAlignment() {
+        // Arrange
+        SectorReader reader = new SectorReader("/dev/sda", 512);
+        long offset = 1024L;
+
+        // Act
+        byte[] sector = reader.readSector(offset);
+
+        // Assert
+        assertNotNull(sector, "Sektor darf nicht null sein");
+        assertEquals(512, sector.length, "Sektorgröße muss 512 Bytes betragen");
+    }
+}
+</code></pre>
+
+<h3>Mocking und Stubbing</h3>
+<p>Mocks und Stubs ersetzen reale Abhängigkeiten durch kontrollierte Test-Doubles. Ein Stub gibt vorprogrammierte Werte zurück (z.B. eine Fake-Datenbank). Ein Mock registriert zusätzlich, wie er aufgerufen wurde: Welche Methoden mit welchen Parametern?</p>
+
+<pre><code># pytest mit unittest.mock
+from unittest.mock import Mock, patch
+
+def test_disk_imager_with_mocked_device():
+    # Arrange: Mock des physischen Block-Devices
+    mock_device = Mock()
+    mock_device.read.return_value = b"\x00" * 512
+
+    imager = DiskImager(mock_device)
+
+    # Act
+    checksum = imager.create_image("output.dd")
+
+    # Assert
+    mock_device.read.assert_called()  # Wurde read() überhaupt aufgerufen?
+    assert checksum is not None       # Prüfsumme muss berechnet sein
+</code></pre>
+
+<div class="callout tip"><strong>Forensik-Praxis: Mocking von Hardware-Abhängigkeiten.</strong> Ein Imaging-Tool, das direkt auf <code>/dev/sda</code> zugreift, ist im Test schwer prüfbar. Mit Mocks simulieren Sie das Verhalten einer Festplatte — inklusive Fehlerfällen wie fehlerhaften Sektoren oder Timeout beim Lesevorgang. So testen Sie das Fehlerhandling, ohne eine echte Platte zu gefährden.</div>
+
+<h2 id="integrationstests">Integrationstests: Top-down, Bottom-up, Sandwich</h2>
+
+<p>Integrationstests prüfen das Zusammenspiel mehrerer Module. Während Unit-Tests Einzelkomponenten isolieren, decken Integrationstests Fehler in den Schnittstellen auf: Falsche Parameter, abweichende Datenformate oder unerwartete Seiteneffekte.</p>
+
+<h3>Teststrategien</h3>
+
+<table>
+<thead><tr><th>Strategie</th><th>Vorgehen</th><th>Vorteil</th><th>Nachteil</th></tr></thead><tbody>
+<tr><td><strong>Top-down</strong></td><td>Startet beim Hauptmodul. Untermodule werden durch Stubs ersetzt und schrittweise durch echte Module ersetzt.</td><td>Früher Überblick über das Gesamtverhalten, GUI-getriebene Tests früh möglich</td><td>Braucht viele Stubs, die selbst fehleranfällig sein können</td></tr>
+<tr><td><strong>Bottom-up</strong></td><td>Startet bei den Basismodulen (z.B. Datenbank-Treiber, File-I/O). Treiber rufen sie auf und prüfen Ergebnisse.</td><td>Keine Stubs nötig, da unterste Schicht echt ist; gute Fehlerlokalisierung</td><td>Gesamtsystem erst spät sichtbar; System-Level-Bugs zeigen sich verzögert</td></tr>
+<tr><td><strong>Sandwich</strong></td><td>Kombiniert Top-down und Bottom-up: Gleichzeitig von oben (mit Stubs) und unten (mit Treibern) integrieren, bis sie sich treffen.</td><td>Parallelisierbar, nutzt Vorteile beider Ansätze, gute Testabdeckung</td><td>Komplexere Koordination nötig; mehr Overhead im Testmanagement</td></tr>
+</tbody></table>
+
+<h3>Test-Doubles im Detail</h3>
+<table>
+<thead><tr><th>Typ</th><th>Verhalten</th><th>Forensik-Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Dummy</strong></td><td>Wird nur als Platzhalter übergeben, aber nie verwendet.</td><td>Ein Log-Level-Parameter, der in diesem Test nicht relevant ist</td></tr>
+<tr><td><strong>Stub</strong></td><td>Liefert fest codierte Antworten auf Aufrufe.</td><td>Stub einer Hash-Library, die immer <code>"abc123"</code> zurückgibt</td></tr>
+<tr><td><strong>Mock</strong></td><td>Registriert Aufrufe und erlaubt Assertions auf Interaktion.</td><td>Mock eines Write-Blockers: Wurde <code>preventWrite()</code> aufgerufen?</td></tr>
+<tr><td><strong>Fake</strong></td><td>Leichtgewichtige Arbeitsimplementierung (z.B. In-Memory-DB statt PostgreSQL).</td><td>In-Memory-Dateisystem statt eines physischen E01-Images</td></tr>
+<tr><td><strong>Spy</strong></td><td>Echtes Objekt, das Aufrufe mitprotokolliert.</td><td>Echter SQLite-Treiber, der alle Queries in eine Liste loggt</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Forensik-Integrationstest:</strong> Ein Imaging-Tool muss nicht nur korrekte Sektoren lesen (Unit-Test), sondern auch Prüfsummen über mehrere Sektoren akkumulieren (Integrationstest mit Mock-Device), das E01-Format schreiben (Integrationstest: Imager + E01-Encoder) und schließlich Kompression und Metadaten korrekt speichern (End-to-End-Test).</div>
+
+<h2 id="tdd">Test-Driven Development (TDD)</h2>
+
+<p>TDD kehrt die klassische Reihenfolge um: Erst der Test, dann der Code. Der Zyklus: <strong>Red → Green → Refactor</strong>.</p>
+
+<ol>
+  <li><strong>Red:</strong> Schreibe einen fehlschlagenden Test (rote Ampel). Der Test definiert das gewünschte Verhalten, scheitert aber, weil die Implementierung fehlt.</li>
+  <li><strong>Green:</strong> Schreibe minimalen Code, der den Test bestehen lässt (grüne Ampel). Nicht mehr Code als nötig — keine Vorab-Optimierung, keine "könnte man später brauchen"-Features.</li>
+  <li><strong>Refactor:</strong> Verbessere den Code (ohne Verhalten zu ändern): Duplikate entfernen, Lesbarkeit erhöhen, Performance optimieren. Die Tests schützen vor Regression.</li>
+</ol>
+
+<pre><code># TDD-Beispiel: Funktion zur Validierung einer MD5-Prüfsumme
+
+# --- Red-Phase: Test schreiben ---
+def test_valid_md5_checksum():
+    """Ein gültiger 32-stelliger Hex-String wird akzeptiert."""
+    assert validate_md5("d41d8cd98f00b204e9800998ecf8427e") == True
+
+def test_invalid_md5_checksum():
+    """Ein String mit falscher Länge wird abgelehnt."""
+    assert validate_md5("abc123") == False   # Zu kurz
+    assert validate_md5("z" * 32) == False   # Ungültige Hex-Zeichen
+
+# --- Green-Phase: Minimaler Code ---
+import re
+def validate_md5(s: str) -> bool:
+    return bool(re.match(r'^[a-f0-9]{32}$', s))
+
+# --- Refactor-Phase: Code verbessern ---
+import re
+from typing import Final
+
+MD5_PATTERN: Final = re.compile(r'^[a-f0-9]{32}$', re.IGNORECASE)
+
+def validate_md5(s: str) -> bool:
+    """Prüft, ob ein String eine gültige MD5-Hex-Prüfsumme ist."""
+    if not isinstance(s, str):
+        return False
+    return bool(MD5_PATTERN.match(s))
+</code></pre>
+
+<div class="callout tip"><strong>TDD für Forensik-Tools:</strong> Schreiben Sie zuerst den Test für ein neues Carving-Signatur-Modul (Red), bevor Sie die Signatur-Datenbank erweitern. Der Test definiert, welche Header/Footer-Kombination erkannt werden muss. Der Green-Code implementiert exakt diese Signatur — und der Refactor entfernt Duplikate zu bereits existierenden Signaturen. TDD zwingt Sie, das Problem vor der Lösung zu verstehen.</div>
+
+<h2 id="testabdeckung">Testabdeckung (Coverage)</h2>
+
+<p>Coverage misst, welcher Anteil des Quellcodes durch Tests ausgeführt wurde. Sie ist ein notwendiges, aber nicht hinreichendes Qualitätsmerkmal: 100% Coverage bedeutet nicht, dass der Code fehlerfrei ist — nur dass jede Zeile mindestens einmal durchlaufen wurde.</p>
+
+<h3>Coverage-Typen</h3>
+
+<table>
+<thead><tr><th>Metrik</th><th>Was gemessen wird</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><strong>Line Coverage</strong></td><td>Welche Code-Zeilen wurden ausgeführt?</td><td>Zeile <code>x = a / b</code> wurde ausgeführt, aber keiner hat <code>b=0</code> getestet</td></tr>
+<tr><td><strong>Branch Coverage</strong></td><td>Wurden alle Zweige von Bedingungen abgedeckt? (if/else, switch/case)</td><td>Ein <code>if</code> hat zwei Branches. Beide müssen getestet werden</td></tr>
+<tr><td><strong>Statement Coverage</strong></td><td>Anzahl der ausgeführten Statements im Verhältnis zur Gesamtzahl</td><td>Gröbere Metrik als Line; eine Zeile kann mehrere Statements haben</td></tr>
+<tr><td><strong>Function Coverage</strong></td><td>Welche Funktionen wurden überhaupt aufgerufen?</td><td>Eine Hilfsfunktion wurde nie getestet und hat möglicherweise Bugs</td></tr>
+<tr><td><strong>Path Coverage</strong></td><td>Alle möglichen Pfade durch den Code (exponentiell viele)</td><td>In der Praxis selten 100% erreichbar — teuer und umständlich</td></tr>
+</tbody></table>
+
+<h3>Tools</h3>
+<table>
+<thead><tr><th>Tool</th><th>Sprache</th><th>Besonderheit</th></tr></thead><tbody>
+<tr><td><strong>coverage.py</strong></td><td>Python</td><td>Misst Line, Branch; HTML-Reports; integriert mit pytest via <code>pytest-cov</code></td></tr>
+<tr><td><strong>JaCoCo</strong></td><td>Java</td><td>Bytecode-Level Coverage; integriert in Maven/Gradle; XML/HTML-Export</td></tr>
+<tr><td><strong>Istanbul (nyc)</strong></td><td>JavaScript/TypeScript</td><td>Works with Jest, Mocha; accurate source-map support</td></tr>
+<tr><td><strong>gcov / lcov</strong></td><td>C/C++</td><td>Compiler-basiert; lcov erzeugt HTML-Reports; genhtml für Visualisierung</td></tr>
+<tr><td><strong>tarpaulin</strong></td><td>Rust</td><td>Line Coverage für Rust-Projekte; LLVM-basierte Instrumentierung</td></tr>
+</tbody></table>
+
+<pre><code># Python: Coverage mit pytest ausführen und Report erzeugen
+pytest --cov=forensics --cov-report=html --cov-report=term
+
+# Ausgabe:
+# ---------- coverage: platform darwin, python 3.12.4 ----------
+# Name                           Stmts   Miss Branch BrPart  Cover
+# forensics/hash_utils.py           45      2     10      2    93%
+# forensics/carving.py             120     18     34      5    82%
+# forensics/imaging.py              67      0     22      1    99%
+# TOTAL                            232     20     66      8    89%
+</code></pre>
+
+<div class="callout warning"><strong>Forensik-Warnung:</strong> 100% Line Coverage ist im Forensik-Kontext nicht genug. Sie müssen auch Edge Cases testen: Was passiert bei einem 4-GB-File mit 0-Byte-Inhalt? Was bei einer corrupten E01-Metadaten-Sektion? Was bei Unicode-Pfaden auf Windows? Coverage misst Quantität, nicht Qualität. Ein einzelner ungetesteter Branch in einem Hash-Algorithmus kann katastrophal sein.</div>
+
+<h2 id="statische-dynamische-analyse">Statische vs. dynamische Analyse</h2>
+
+<h3>Statische Analyse (Compile-Time)</h3>
+<p>Analysiert den Quellcode oder Bytecode ohne Ausführung des Programms. Findet potenzielle Fehler, Sicherheitslücken, Coding-Style-Verstöße und toten Code.</p>
+
+<table>
+<thead><tr><th>Tool</th><th>Sprache</th><th>Erkennt</th></tr></thead><tbody>
+<tr><td><strong>SonarQube</strong></td><td>Multi (25+ Sprachen)</td><td>Code Smells, Bugs, Sicherheitslücken (OWASP-Top-10-Regeln), Technical Debt</td></tr>
+<tr><td><strong>ESLint</strong></td><td>JavaScript/TypeScript</td><td>Style-Verstöße, potenzielle Runtime-Fehler, Best-Practice-Deviationen</td></tr>
+<tr><td><strong>pylint / ruff</strong></td><td>Python</td><td>PEP-8-Abweichungen, unbenutzte Variablen, zu komplexe Funktionen (McCabe)</td></tr>
+<tr><td><strong>SpotBugs</strong></td><td>Java-Bytecode</td><td>Null-Pointer-Dereferenzen, Resource Leaks, Concurrency-Bugs</td></tr>
+<tr><td><strong>Semgrep</strong></td><td>Multi</td><td>Benutzerdefinierte Regeln ("Finde alle Stellen, wo <code>subprocess</code> mit Shell=True aufgerufen wird")</td></tr>
+</tbody></table>
+
+<h3>Dynamische Analyse (Runtime)</h3>
+<p>Analysiert das Programm während der Ausführung — beobachtet Speicher, Aufrufe, Abhängigkeiten. Dazu gehören auch Fuzzing und Sanitizer.</p>
+
+<table>
+<thead><tr><th>Tool/Konzept</th><th>Einsatz</th><th>Forensik-Nutzen</th></tr></thead><tbody>
+<tr><td><strong>Valgrind (memcheck)</strong></td><td>C/C++: Speicherlecks, Use-after-Free</td><td>Imaging-Tool auf Memory-Corruption prüfen</td></tr>
+<tr><td><strong>AddressSanitizer (ASan)</strong></td><td>C/C++: Buffer overflows, Stack overflows</td><td>Forensik-Parser auf Pufferüberläufe testen</td></tr>
+<tr><td><strong>AFL / libFuzzer</strong></td><td>C/C++: Fuzzing mit Coverage-Guided Mutation</td><td>JPEG-Carver fuzzen: Korrumpierte Header erkennen?</td></tr>
+<tr><td><strong>Python Profiler (cProfile)</strong></td><td>Python: Hotspots identifizieren</td><td>Warum dauert die Timeline-Analyse 3 Stunden?</td></tr>
+</tbody></table>
+
+<div class="callout info"><strong>Zusammenspiel in der Forensik:</strong> Statische Analyse prüft den Code auf Schwachstellen, bevor er im Feld eingesetzt wird. Dynamische Analyse validiert das Laufzeitverhalten und deckt Fehler auf, die statisch nicht sichtbar sind (Rennbedingungen, Speicherkorruption). Beide sind komplementär und müssen in der QS forensischer Tools kombiniert werden.</div>
+
+<h2 id="code-reviews">Code-Reviews und Pair Programming</h2>
+
+<p>Code-Reviews sind systematische Prüfungen von Quellcode durch andere Entwickler, bevor Änderungen in den Hauptzweig gemerged werden. Sie sind eine der effektivsten Methoden zur Fehlerfindung.</p>
+
+<h3>Review-Tiefe</h3>
+<table>
+<thead><tr><th>Stufe</th><th>Fokus</th><th>Dauer</th></tr></thead><tbody>
+<tr><td><strong>Walkthrough</strong></td><td>Autor führt den Code vor, Reviewer stellen Fragen. Informell.</td><td>30–60 min</td></tr>
+<tr><td><strong>Technical Review</strong></td><td>Technische Korrektheit, Architektur-Entscheidungen, Performance.</td><td>1–2 h</td></tr>
+<tr><td><strong>Formal Inspection</strong></td><td>Strukturierte Sitzung mit Checkliste, Rollen (Moderator, Autor, Reviewer), Metriken.</td><td>2–4 h</td></tr>
+<tr><td><strong>Pull-Request-Review</strong></td><td>Asynchrones Review über GitHub/GitLab. Inline-Kommentare, CI-Checks.</td><td>Variabel</td></tr>
+</tbody></table>
+
+<h3>Forensische Perspektive: Warum Code-Reviews für Forensik-Tools unverzichtbar sind</h3>
+<ul>
+  <li><strong>Beweisintegrität:</strong> Ein Bug in der Hash-Berechnung kann im Gerichtssaal fatal sein. Reviews fangen Logikfehler, die Tests übersehen.</li>
+  <li><strong>Toolchain-Transparenz:</strong> Die Verteidigung kann nach der Code-Historie fragen. Dokumentierte Reviews zeigen Sorgfalt.</li>
+  <li><strong>Wissensverteilung:</strong> Wenn nur eine Person den MFT-Parser versteht, ist das ein Single Point of Failure. Reviews verteilen Wissen im Team.</li>
+  <li><strong>Compliance:</strong> ISO 17025 (Forensik-Labore) verlangt dokumentierte Validierungsprozesse — Code-Reviews sind Teil davon.</li>
+</ul>
+
+<h3>Pair Programming</h3>
+<p>Zwei Entwickler an einem Rechner: <strong>Driver</strong> (schreibt Code) und <strong>Navigator</strong> (denkt strategisch, prüft jede Zeile). Studien zeigen 15% weniger Fehler bei nur 15% mehr Zeitaufwand — eine positive Kosten-Nutzen-Bilanz.</p>
+
+<h2 id="forensischer-bezug">Forensischer Bezug</h2>
+
+<table>
+<thead><tr><th>Forensisches Tool</th><th>Kritischer Test</th><th>Warum essenziell</th></tr></thead><tbody>
+<tr><td><strong>Hash-Generator (sha256deep)</strong></td><td>Leere Datei, 4-GB-Datei, Unicode-Pfad, Symlink, Device-File</td><td>Falscher Hash = Beweis wertlos; Daubert/Frye-Standard fordert validierte Tools</td></tr>
+<tr><td><strong>Imaging-Tool (dd, dc3dd)</strong></td><td>Alle Sektoren kopiert? Prüfsumme nach Imaging? Fehler-Sektoren korrekt geloggt?</td><td>Ein nicht kopierter Slack-Space kann den einzigen Hinweis enthalten</td></tr>
+<tr><td><strong>Carving-Tool (foremost, scalpel)</strong></td><td>Falsch-Positive? Falsch-Negative? Fragmentierte Dateien? Korrumpierte Header?</td><td>Ein falsch gecarvtes JPEG kann zu einer falschen Verdächtigung führen</td></tr>
+<tr><td><strong>Log-Parser (Plaso, log2timeline)</strong></td><td>Zeitzonen-Konvertierung? Zeilenumbruch in Einträgen? Unterschiedliche Log-Formate?</td><td>Zeitstempel sind das Rückgrat jeder Timeline-Analyse</td></tr>
+<tr><td><strong>Memory-Analyse (Volatility 3)</strong></td><td>Prozessliste vollständig? Versteckte Prozesse (DKOM)? DLL-Injection erkannt?</td><td>Rootkits manipulieren aktiv die Datenstrukturen im RAM</td></tr>
+</tbody></table>
+
+<p>Tests sind im forensischen Kontext nicht optional — sie sind die Grundlage der gerichtlichen Verwertbarkeit. Nach dem <strong>Daubert-Standard</strong> (US) und den <strong>ACPO-Richtlinien</strong> (UK) müssen forensische Methoden und Werkzeuge validiert sein. Ein nicht getestetes Tool ist ein nicht validiertes Tool — und damit vor Gericht potenziell unbrauchbar.</p>
+
+<h2 id="quellen-weiterf-hrendes">Quellen / Weiterführendes</h2>
+<ul>
+  <li>ISTQB Certified Tester — Foundation Level Syllabus, Version 4.0 (2023)</li>
+  <li>Martin Fowler: "Mocks Aren't Stubs" — martinfowler.com</li>
+  <li>Kent Beck: "Test-Driven Development: By Example" (Addison-Wesley, 2002)</li>
+  <li>SWEBOK v4.0: Chapter 10 — Software Quality, IEEE Computer Society</li>
+  <li>NIST SP 800-86: Guide to Integrating Forensic Techniques into Incident Response</li>
+  <li>Brian Carrier: "File System Forensic Analysis" (Addison-Wesley, 2005) — Kapitel zu Tool-Validierung</li>
+</ul>
+
+<div class="related-notes">
+  <strong>Verwandte Notizen</strong>
+  <div class="related-grid">
+    <a href="softwareentwicklungsprozess.html">Softwareentwicklungsprozess</a>
+    <a href="uml-diagramme-softwaremodellierung.html">UML-Diagramme</a>
+    <a href="python-grundlagen.html">Python-Grundlagen</a>
+    <a href="../04-forensik-methoden/forensische-dokumentation.html">Forensische Dokumentation</a>
+    <a href="../05-it-security/risikoanalyse-threat-modeling.html">Risikoanalyse &amp; Threat Modeling</a>
+  </div>
+</div>
+
+<nav class="prev-next" id="prevNextNav"></nav>
+
+</article>
+</main>
+<footer class="page-footer">
+  <a href="https://github.com/NicCsn/digital-forensics-notes">GitHub</a> &middot; <a href="../00-meta/glossary.html">Glossar</a> &middot; <a href="../INDEX.html">Index</a>
+</footer>
+</div>
+<button id="back-to-top" title="Nach oben">↑</button>
+<script src="../nav-order.js"></script>
+<script src="../search.js"></script>
+<script>
+(function(){
+  var inp = document.getElementById('sidebarSearch');
+  var res = document.getElementById('sidebarSearchResults');
+  if (!inp || !res) return;
+  function findNotes(q) {
+    q = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < notes.length; i++) {
+      var n = notes[i], score = 0;
+      if (n.t.toLowerCase().indexOf(q) !== -1) score += 10;
+      if (n.f.toLowerCase().indexOf(q) !== -1) score += 5;
+      for (var j = 0; j < n.g.length; j++) {
+        if (n.g[j].toLowerCase().indexOf(q) !== -1) score += 3;
+      }
+      if (score > 0) out.push({n:n, s:score});
+    }
+    out.sort(function(a,b){return b.s - a.s;});
+    return out;
+  }
+  inp.addEventListener('input', function() {
+    var q = this.value.trim();
+    if (q.length < 1) { res.innerHTML = ''; res.classList.remove('show'); return; }
+    var matches = findNotes(q);
+    if (matches.length === 0) {
+      res.innerHTML = '<div style="padding:10px;color:var(--text-muted);font-size:12px">Keine Ergebnisse</div>';
+    } else {
+      var html = '';
+      for (var k = 0; k < Math.min(matches.length, 12); k++) {
+        var m = matches[k];
+        html += '<a href="../' + m.n.p + '" class="sr-item"><div class="sr-title">' + m.n.t + '</div><div class="sr-meta">' + m.n.f + '</div></a>';
+      }
+      res.innerHTML = html;
+    }
+    res.classList.add('show');
+  });
+  document.addEventListener('click', function(e) {
+    if (!res.contains(e.target) && e.target !== inp) res.classList.remove('show');
+  });
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { res.classList.remove('show'); inp.blur(); }
+  });
+})();
+(function(){
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
+</script>
+</body>
+</html>
